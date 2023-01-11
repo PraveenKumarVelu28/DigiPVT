@@ -81,7 +81,7 @@
   .inputclass {
     height: 46px;
     width: 410px;
-    left: 300px;
+    left: 290px;
     top: 316px;
     border-radius: 5px;
     margin-bottom: 15px;
@@ -146,7 +146,11 @@
     opacity: 1;
   }
   
- 
+  .inputText {
+    font-size: 14px;
+    width: 200px;
+    height: 35px;
+  }
   
   .floating-label {
     position: absolute;
@@ -172,12 +176,35 @@
     color: #3247D5;
   }
   
-
+  .enter-your-name {
+  
+    /* margin: 10px 0px 0px 0px; */
+  
+    padding: 20px 10px 10px 25px;
+  
+    border-radius: 50px;
+  
+    border: solid 1px #dae7ec;
+  
+    background-color: #ffffff;
+  
+    outline: none;
+  
+    width: 100%;
+  
+    font-size: 14px;
+  
+    /* height: 75px; */
+  
+    height: 50px;
+  
+  }
+  
   .input-group {
   
     position: relative;
   
-    margin-left: 50px;
+    margin-left: 143px;
   
   }
   
@@ -189,7 +216,7 @@
   
     outline: #999;
   
-
+    padding: 20px 10px 10px 25px;
   
     box-shadow: 0 0 16px 0 #d4dbdd;
   
@@ -203,7 +230,7 @@
   
     outline: #999;
   
-
+    padding: 20px 10px 10px 25px;
   
   }
   
@@ -237,7 +264,7 @@
   
     pointer-events: none;
   
-    left: 5px;
+    left: 26px;
   
     top: 5px;
   
@@ -254,7 +281,7 @@
   
   .password {
     color: #3247D5;
-    margin-left: -200px;
+    margin-left: -224px;
     margin-top: 18px;
   }
   

@@ -5,9 +5,9 @@
             <div class="maindiv">
                 <div class="inndercard">
                     <img src="assets/Images/Logo_digiOffice_Colored.png" class="digi-logo">
-                    <div class="input-group">
+                    <div class="input-group ">
 
-                        <select class="inputclass" (change)="getCompanyDetails($event)">
+                        <select class="inputclass padp-20" (change)="getCompanyDetails($event)">
                             <option selected disabled>Select Company</option>
                             <option value="1001">ALI</option>
                             <option value="1002">ALO</option>
@@ -20,18 +20,53 @@
                         <img class="imgview" src="assets/Images/dropdown.svg">
 
                     </div>
-                    <div class="input-group">
+
+                    <!-- <div class="input-group ">
+
+                        <select class="inputclass padp-20" (change)="getroleid($event)">
+                            <option selected>Select Position</option>
+                            <option value="1">Admin</option>
+                            <option value="2">Manager</option>
+                            <option value="6">Employee</option>
+                            <option value="9">HR</option>
+                            <option value="17">Payroll Manager</option>
+                            <!- <option value="8">Finance</option>-->
+                            <!-- <option value="10">SBU</option>
+                            <option value="11">IT Team</option>
+                            <option value="12">HR HEAD</option>
+                        </select>
+                        <img class="imgview" src="assets/Images/dropdown.svg">
+                    </div>  -->
+
+                    <div class="input-group ">
+
                         <input type="text" class="inputclass" [(ngModel)]="username" name="username">
-                        <label>Username</label>
+                        <span class="highlight"></span>
+
+                        <span class="bar"></span>
+
+                        <label class="placeholder">Username</label>
+
                     </div>
                     <div class="input-group ">
+
                         <input *ngIf="showpassword==0" type="password" class="inputclass" [(ngModel)]="password"
                             name="password" />
                         <input *ngIf="showpassword==1" type="text" class="inputclass" [(ngModel)]="password"
                             name="password" />
                         <img class="paswordview" (click)="Showhidepassword()" src="assets/Images/view.svg">
-                        <label>Password</label>
+
+
+                        <span class="highlight"></span>
+
+                        <span class="bar"></span>
+                    
+
+                        <label class="placeholder">Password</label>
+
                     </div>
+
+                    
 
                     <div class="btnalign">
                         <a class="forg-ps" target="_blank" href="https://itassist.ayalaland.com.ph/ChangePassword/">

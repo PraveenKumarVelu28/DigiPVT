@@ -7,4 +7,11 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'DigiPVT';
+
+  company_name: any;
+  temp:any
+  ngOnInit() {
+    this.temp=sessionStorage.getItem('temp')
+    this.company_name = localStorage.getItem("company_name");
+  }
 }

@@ -131,32 +131,27 @@ export class LoginComponent implements OnInit {
                 location.reload();
               });
             }
+            // else {
+            //   this.router.navigate(['/Manager/ALIAVIDAManagerdashboard']).then(() => {
+            //     this.loader = false;
+            //     location.reload();
+            //   });
+            // }
             else {
-              this.router.navigate(['/Manager/ALIAVIDAManagerdashboard']).then(() => {
+              this.router.navigate(['/Employee/StaffDashboard']).then(() => {
                 this.loader = false;
                 location.reload();
               });
             }
           }
           else if (this.roleid == 9) {
-            if (this.companyid == 1002 || this.companyid == 1003) {
-              this.router.navigate(['/HR/ALIAVIDAHRDashboard']).then(() => {
-                this.loader = false;
-                location.reload();
-              });
-            }
-            else if (this.companyid == 1005) {
-              this.router.navigate(['/HR/AVIDAHRDashboard']).then(() => {
-                this.loader = false;
-                location.reload();
-              });
-            }
-            else {
-              this.router.navigate(['/HR/ALIAVIDAHRDashboard']).then(() => {
-                this.loader = false;
-                location.reload();
-              });
-            }
+            this.router.navigate(['/Employee/StaffDashboard']).then(() => {
+              this.loader = false;
+              location.reload();
+            });
+
+
+           
           }
           else if (this.roleid == 1 || this.roleid == 41) {
 
@@ -201,8 +196,14 @@ export class LoginComponent implements OnInit {
                 location.reload();
               });
             }
+            // else {
+            //   this.router.navigate(['/Employee/ALIAVIDAEmployeedashboard']).then(() => {
+            //     this.loader = false;
+            //     location.reload();
+            //   });
+            // }
             else {
-              this.router.navigate(['/Employee/ALIAVIDAEmployeedashboard']).then(() => {
+              this.router.navigate(['/Employee/StaffDashboard']).then(() => {
                 this.loader = false;
                 location.reload();
               });

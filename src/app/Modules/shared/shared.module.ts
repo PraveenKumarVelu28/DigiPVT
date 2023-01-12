@@ -3,30 +3,41 @@ import { CommonModule, DatePipe } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { SharedRoutingModule } from './shared-routing.module';
 import { SharedComponent } from './shared.component';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { NgWizardConfig, NgWizardModule, THEME } from 'ng-wizard';
+import { NgxDropzoneModule } from 'ngx-dropzone';
+import {Ng2SearchPipeModule } from 'ng2-search-filter';
+ 
 
-
-
+const ngWizardConfig: NgWizardConfig = {
+  theme: THEME.circles
+};
 @NgModule({
   declarations: [
-    SharedComponent
+    SharedComponent,
+   
   ],
   imports: [
     CommonModule,
     FormsModule,
     SharedRoutingModule,
-  //  Ng2SearchPipeModule
+    NgxPaginationModule,
+    NgxDropzoneModule,
+    NgWizardModule,
+    Ng2SearchPipeModule
   ],
   exports: [
+    CommonModule,
     FormsModule,
-    //  NgWizardModule,
-        //  LoaderComponent,
+    NgxDropzoneModule,
+    NgxPaginationModule,
+    NgWizardModule,
+    Ng2SearchPipeModule
+    //  LoaderComponent,
     //  NgMultiSelectDropDownModule,
-    //  NgxDropzoneModule,
-    //  Ng2SearchPipeModule,
-    //  NgxPaginationModule,
+      //Ng2SearchPipeModule,
     //  SpinnerComponent,
-     
-    //ConnectionServiceModule
+    //  ConnectionServiceModule
 
   ],
   providers: [

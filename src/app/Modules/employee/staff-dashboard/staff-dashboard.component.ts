@@ -610,7 +610,7 @@ export class StaffDashboardComponent implements OnInit {
     this.clikedid = item.id;
   }
   public Edit() {
-    this.router.navigate(['/HR/AddressDetailsWizard', this.clikedid]);
+    this.router.navigate(['/Employee/StaffDetailsWizard', this.clikedid]);
     this.loader=false;
   } 
 

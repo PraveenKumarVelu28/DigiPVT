@@ -896,8 +896,6 @@ export class SidebarComponent implements OnInit {
     this.active = 3;
     localStorage.setItem('Pagename', 'Staff')
     this.router.navigate(['/Employee/StaffDashboard']);
-
-
   }
 
 

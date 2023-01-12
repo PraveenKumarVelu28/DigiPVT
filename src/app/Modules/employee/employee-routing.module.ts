@@ -7,6 +7,7 @@ import { StaffDetailsWizardComponent } from './staff-details-wizard/staff-detail
 const routes: Routes = [
   { path: '', component: EmployeeComponent },
   { path: 'StaffDetailsWizard', component: StaffDetailsWizardComponent },
+  { path: 'StaffDetailsWizard/:id', component: StaffDetailsWizardComponent },
   { path: 'StaffDashboard', component: StaffDashboardComponent },
 
 

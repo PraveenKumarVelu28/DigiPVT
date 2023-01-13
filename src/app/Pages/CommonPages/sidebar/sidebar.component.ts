@@ -23,6 +23,26 @@ export class SidebarComponent implements OnInit {
   companyid: any;
   roledid: any
   AttendanceEnable:any
+  ExitFormalit: any
+  loan: any
+  grievanc: any
+  Helpdesk: any
+  regularize: any
+  attendancereport: any
+  leavereport: any
+  timesheetreport: any
+  expensereport: any
+  locatorreport: any
+  travelreport: any
+  probationreport: any
+  employeereport: any
+  leavetype: any
+  policy: any
+  Holiday: any
+  company: any
+  Leave: any;
+  active: any
+
   ngOnInit(): void {
     this.login = sessionStorage.getItem('roledid');
     this.temp1 = sessionStorage.getItem('temp');
@@ -48,7 +68,6 @@ export class SidebarComponent implements OnInit {
     evt.currentTarget.className += " active";
   }
 
-  active: any
   public Home() {
     debugger
     this.active = 1;
@@ -121,7 +140,6 @@ export class SidebarComponent implements OnInit {
     }
   }
 
-  Leave: any;
   public Leaves() {
     debugger
     this.active = 7;
@@ -183,10 +201,14 @@ export class SidebarComponent implements OnInit {
 
   }
 
+  public getSettings() {
+    this.active = 867;
+  }
+
   public getAttendacmenu() {
     this.active = 8;
-
   }
+
   public Orgchart() {
     this.active = 'Orgchart';
     localStorage.setItem('Pagename', 'Org Chart');
@@ -194,21 +216,7 @@ export class SidebarComponent implements OnInit {
       location.reload();
     });
   }
-  public AbsenceTrends() {
-    this.active = 'AbsenceTrends';
-    this.router.navigate(['/Admin/AbsenceTrends']);
-    localStorage.setItem('Pagename', 'Absence Trends')
-  }
 
-  public Succesive() {
-    this.active = 'Succesive';
-    this.router.navigate(['/Admin/SuccesorDashboard']);
-    localStorage.setItem('Pagename', 'Succesive')
-  }
-
-
-
-  regularize: any
   public Attendance() {
     debugger
     this.active = 11;
@@ -220,69 +228,7 @@ export class SidebarComponent implements OnInit {
     else {
       this.router.navigate(['/HR/AttendanceView']);
       localStorage.setItem('Pagename', 'Regularisation')
-
-
-
     }
-
-  }
-
-  ExitFormalit: any
-  loan: any
-  grievanc: any
-  Helpdesk: any
-  public ExitFormality() {
-    debugger
-    localStorage.setItem('Pagename', 'Exit Formality')
-    this.router.navigate(['/Manager/Exitformalityformdash']);
-  }
-  public LoanRequest() {
-    debugger
-    this.active = 17;
-    localStorage.setItem('Pagename', 'Loans Request')
-    this.router.navigate(['/Employee/Appliedloans']);
-
-  }
-
-  public LoanClearence() {
-    debugger
-    this.active = 177;
-    localStorage.setItem('Pagename', 'Loans Request')
-    this.router.navigate(['/HR/LoanClearenceDashboard']);
-
-  }
-
-  public LoanDeduction() {
-
-    debugger
-    this.active = 178;
-    localStorage.setItem('Pagename', 'Loan Deduction')
-    this.router.navigate(['/HR/LoanDeductionDashboard']);
-
-
-
-  }
-
-
-  public Adhocpayments() {
-
-    debugger
-    this.active = 179;
-    localStorage.setItem('Pagename', 'Adhoc Payments')
-    this.router.navigate(['/HR/AdhocPaymentsDashboard']);
-
-
-  }
-
-
-
-
-  public grievance() {
-    debugger
-    this.active = 18
-    localStorage.setItem('Pagename', 'Grievance Request')
-    this.router.navigate(['/Employee/Grievancedash']);
-
   }
   public Helpdeskdash() {
     debugger
@@ -291,6 +237,7 @@ export class SidebarComponent implements OnInit {
     this.router.navigate(['/Admin/Helpdeskdash']);
 
   }
+  
   public MyTeamWeeklyShift() {
     debugger
     this.active = 'myTeamWeeklyShift';
@@ -301,10 +248,7 @@ export class SidebarComponent implements OnInit {
     else {
       localStorage.setItem('Pagename', 'Shift Details');
       this.router.navigate(['/HR/WeeklyShift']);
-
     }
-
-
   }
 
 
@@ -321,12 +265,6 @@ export class SidebarComponent implements OnInit {
     this.active = 12;
   }
 
-  public OnBoardingStaff() {
-    debugger
-    this.active = 122;
-  }
-
-
   public Requests23() {
     debugger
     this.active = 890;
@@ -335,48 +273,6 @@ export class SidebarComponent implements OnInit {
   public Configuration() {
     debugger
     this.active = 'Configuration';
-  }
-  public comapnylook() {
-    debugger
-    this.active = 'Lookandfeel1';
-    localStorage.setItem('Pagename', 'Look and Feel');
-    this.router.navigate(['/HR/Lookandfeeldash']);
-  }
-  public JobHistory() {
-    debugger
-    this.active = 'JobHistory';
-    localStorage.setItem('Pagename', 'Job History');
-    this.router.navigate(['/Admin/Employeejobhistory']);
-  }
-
-
-  public LoanReport() {
-    debugger
-    this.active = 'PayrollLoanReport';
-    localStorage.setItem('Pagename', 'Loan Report');
-    this.router.navigate(['/Employee/LoanReport']);
-  }
-
-  public BlackList() {
-    debugger
-    this.active = 'BlackList';
-    localStorage.setItem('Pagename', 'BlackList Report');
-    this.router.navigate(['/Employee/BlacklistReport']);
-  }
-
-  public Confirmation() {
-    debugger
-    this.active = 'Confirmation';
-    localStorage.setItem('Pagename', 'Confirmation');
-    this.router.navigate(['/HR/Confirmation']);
-  }
-
-
-  public PromotionHistory() {
-    debugger
-    this.active = 'PromotionHistory';
-    localStorage.setItem('Pagename', 'Promotion History');
-    this.router.navigate(['/Admin/PromotionHistory']);
   }
 
 
@@ -395,8 +291,6 @@ export class SidebarComponent implements OnInit {
     this.router.navigate(['/Admin/Overtimereportforhr']);
   }
 
-
-
   public LeavebalanceReport() {
     debugger
     this.active = 'LeavebalanceReport';
@@ -405,55 +299,13 @@ export class SidebarComponent implements OnInit {
   }
 
 
-  public RetirementList() {
-    debugger
-    this.active = 'RetirementList';
-    localStorage.setItem('Pagename', 'Retirement List');
-    this.router.navigate(['/HR/RetirementList']);
-  }
-
-  public WorkAnniversary() {
-    debugger
-    this.active = 'WorkAnniversary';
-    localStorage.setItem('Pagename', 'Work Anniversary');
-    this.router.navigate(['/Admin/WorkAnnivarsary']);
-  }
-
-
-
   public LeaveConfiguration() {
     debugger
     this.active = 'LeaveConfiguration';
     localStorage.setItem('Pagename', 'Leave Configuration');
     this.router.navigate(['/HR/LeaveConfigurationdash']);
   }
-  public CheckListMaster() {
-    debugger
-    this.active = 'CheckListMaster';
-    localStorage.setItem('Pagename', 'CheckList Master');
-    this.router.navigate(['/HR/CheckListMasterDash']);
-  }
-
-  public HRApprovalConfig() {
-    debugger
-    this.active = 'HRApprovalConfig';
-    localStorage.setItem('Pagename', 'CheckList Master');
-    this.router.navigate(['/HR/HrApprovalConfigDash']);
-  }
-
-  public ExitFormalityCheckList() {
-    debugger
-    this.active = 'exit';
-    localStorage.setItem('Pagename', 'CheckList Master');
-    this.router.navigate(['/HR/ExitFormalityChecklistDash']);
-  }
-
-  public CheckListConfiguration() {
-    debugger
-    this.active = 'CheckListConfiguration';
-    localStorage.setItem('Pagename', 'CheckList Configuration');
-    this.router.navigate(['/HR/CheckListConfiguration']);
-  }
+ 
   public Attendanceconfig() {
     debugger
     this.active = 'Attendanceconfig';
@@ -466,45 +318,15 @@ export class SidebarComponent implements OnInit {
     localStorage.setItem('Pagename', 'Upload Attendance');
     this.router.navigate(['/HR/Loadattedance']);
   }
-  public Transferemployee() {
-    debugger
-    this.active = 'Transferemployee';
-    localStorage.setItem('Pagename', 'EmployeeTransfer');
-    this.router.navigate(['/HR/EmployeeTransfer']);
-  }
-
-
-  public Deminimisrolemappingdash() {
-    debugger
-    this.active = 'Deminimisrolemappingdash';
-    localStorage.setItem('Pagename', 'De-Minimis to Role')
-    this.router.navigate(['/Admin/Deminimisrolemappingdash']);
-
-  }
-  public Rolebenefitsmappingdash() {
-    debugger
-    this.active = 'rolebenefitsmappingdash';
-    localStorage.setItem('Pagename', 'Benefits to Position')
-    this.router.navigate(['/HR/Rolebenefitsmappingdash']);
-
-  }
-
-
-  company: any
+ 
+ 
   public Company() {
     debugger
     this.active = 'com';
     this.router.navigate(['/Admin/Companydashboard']);
   }
 
-  attendancereport: any
-  leavereport: any
-  timesheetreport: any
-  expensereport: any
-  locatorreport: any
-  travelreport: any
-  probationreport: any
-  employeereport: any
+
 
   public Attendancereport() {
     this.active = 24;
@@ -518,14 +340,6 @@ export class SidebarComponent implements OnInit {
     this.router.navigate(['/HR/AllStaffReport']);
   }
 
-  public NotPunchedInAttendancereport() {
-    this.active = 'NotPunchedIN';
-    localStorage.setItem('Pagename', 'Attendance Report')
-    this.router.navigate(['/Manager/NotPunchedInReport']);
-
-  }
-
-
   public Leavereport() {
     this.active = 25
     localStorage.setItem('Pagename', 'Leave Report')
@@ -538,33 +352,9 @@ export class SidebarComponent implements OnInit {
     this.router.navigate(['/Employee/OverTimeReports']);
   }
 
-  public Onboardingreport() {
-    this.active = 29
-    localStorage.setItem('Pagename', 'Onboarding Report')
-    this.router.navigate(['/HR/OnboardingReport']);
-  }
-
-
-  public Separationreport() {
-    this.active = 27
-    localStorage.setItem('Pagename', 'Separation Report')
-    this.router.navigate(['/HR/SeparationReport']);
-  }
-  // public LoanReport() {
-  //   this.active = 25
-  //   localStorage.setItem('Pagename', 'Leave Report')
-  //   this.router.navigate(['/HR/LoanMasterDash']);
-  // }
 
 
 
-
-
-  public TimesheetReports() {
-    this.active = 26;
-    localStorage.setItem('Pagename', 'Timesheet Report')
-    this.router.navigate(['/Employee/TimesheetReports']);
-  }
 
   public restday() {
     this.active = 'restday';
@@ -576,116 +366,12 @@ export class SidebarComponent implements OnInit {
     this.active = 23;
   }
 
-
-
-
-  public Expensesreports() {
-    this.active = 27
-    localStorage.setItem('Pagename', 'Expenses Report')
-    this.router.navigate(['/Admin/Expensesreports']);
-
-
-  }
-
-
-  public LocaterReports() {
-    this.active = 28
-    localStorage.setItem('Pagename', 'Locator Report')
-    this.router.navigate(['/Employee/LocaterReports']);
-  }
-
-
-  public Travelreport() {
-    this.active = 29;
-    localStorage.setItem('Pagename', 'Travel Report')
-    this.router.navigate(['/Employee/Mytravelreport']);
-
-
-  }
-
-
-  public Probationevaluation() {
-    this.active = 30;
-    localStorage.setItem('Pagename', 'Probation Evaluation')
-    this.router.navigate(['/HR/Probationevaluation']);
-  }
-
-  public EmployeeTransition() {
-    this.active = 45;
-    localStorage.setItem('Pagename', 'Employee Transition')
-    this.router.navigate(['/HR/Employeetransitiondash']);
-  }
-  // public JobHistory() {
-  //   this.active = 46;
-  //   localStorage.setItem('Pagename', 'Employee Job History')
-  //   this.router.navigate(['/Employeejobhistory']);
-  // }
-
-  public EmployeeBenifits() {
-    this.active = 47;
-    localStorage.setItem('Pagename', 'Employee Benefits')
-    this.router.navigate(['/HR/Employeebenfitsmasterdash']);
-  }
-  // public BenifitsMapping() {
-  //   this.active = 48;
-  //   localStorage.setItem('Pagename', 'Benefits Mapping')
-  //   this.router.navigate(['/HR/Employeebenefitsdash']);
-  // }
-
-  public GrievanceMaster() {
-    debugger
-    this.active = 49;
-    localStorage.setItem('Pagename', 'Grievance Master')
-    this.router.navigate(['/HR/GrievanceMasterDash']);
-  }
-
-  public GroupMaster() {
-    debugger
-    this.active = 51;
-    localStorage.setItem('Pagename', 'Group Master')
-    this.router.navigate(['/HR/GroupMaster']);
-  }
-  public SubSectionMaster() {
-    debugger
-    this.active = 53;
-    localStorage.setItem('Pagename', 'Sub-Section Master')
-    this.router.navigate(['/HR/SubSectionMaster']);
-  }
-
-
-  public SectionMaster() {
-    debugger
-    this.active = 54;
-    localStorage.setItem('Pagename', 'SectionMaster')
-    this.router.navigate(['/HR/SectionMaster']);
-  }
-
-  public LanguageMaster() {
-    debugger
-    this.active = 541;
-    localStorage.setItem('Pagename', 'LanguageMaster')
-    this.router.navigate(['/HR/LanguageMasterDashBoard']);
-  }
-
-
   public Masters() {
     this.active = 32;
 
   }
 
-  public Employeereport() {
-    this.active = 31;
-    localStorage.setItem('Pagename', 'Employee report')
-    this.router.navigate(['/Employee/Employeereport']);
 
-  }
-
-  exit: any
-  public Exitformalityformdash() {
-    localStorage.setItem('Pagename', 'Employee report')
-    this.router.navigate(['/Manager/Exitformalityformdash']);
-
-  }
 
   public swal() {
     this.active = 44;
@@ -713,17 +399,14 @@ export class SidebarComponent implements OnInit {
   }
 
 
-  policy: any
-  Holiday: any
   public Staff() {
     debugger
     localStorage.setItem('Pagename', 'Staff')
     this.router.navigate(['/HR/EmployeeProfileModify']);
     this.policy = true
-
   }
 
-  leavetype: any
+
   Leavetype() {
     debugger
     localStorage.setItem('Pagename', 'Leave Type')
@@ -736,19 +419,6 @@ export class SidebarComponent implements OnInit {
   //   this.router.navigate(['/Admin/Expensetypedashboard']);
   //   this.active = 34;
   // }
-  WorkstationType() {
-    debugger
-    localStorage.setItem('Pagename', 'Workstation Type')
-    this.router.navigate(['/Admin/WorkStationTypeDash']);
-    this.active = 35;
-  }
-  TransportationType() {
-    debugger
-    localStorage.setItem('Pagename', 'Transportation Type')
-    this.router.navigate(['/HR/TransportationTypeDash']);
-    this.active = 36;
-  }
-
   ShiftMaster() {
     debugger
     localStorage.setItem('Pagename', 'Shift Master')
@@ -817,78 +487,7 @@ export class SidebarComponent implements OnInit {
     this.active = 43;
   }
 
-  vaccine: any
-  public Vaccination() {
-    debugger
-    this.active = 6;
-    localStorage.setItem('Pagename', 'Vaccination')
-    this.router.navigate(['/Admin/Vaccinedashboard']);
 
-  }
-
-  announcement: any
-  public Announcement() {
-    this.active = 5;
-    localStorage.setItem('Pagename', 'Announcements')
-    this.router.navigate(['/Admin/AnnouncementsDashboard']);
-
-  }
-  EmployeePromotion: any
-  public EmployeePromotion1() {
-    this.active = 'EmployeePromotion1';
-    localStorage.setItem('Pagename', 'EmployeePromotion')
-    this.router.navigate(['/Employee/EmployeePromotion']);
-
-  }
-
-  public Holidays() {
-    this.active = 4;
-    localStorage.setItem('Pagename', 'Holidays')
-    this.router.navigate(['/Admin/Holidaysdashboard']);
-
-  }
-
-
-
-
-  public Onboarding() {
-    this.active = 'SETUP';
-    localStorage.setItem('Pagename', 'Employee Onboarding')
-
-  }
-  public Award() {
-    this.active = 'SERVICE';
-    localStorage.setItem('Pagename', 'Employee Award')
-
-  }
-
-
-  public Manpower() {
-    this.active = 'Manpower';
-    localStorage.setItem('Pagename', 'Manpower Planning and Budgeting')
-    this.router.navigate(['/Admin/ManpowerPlanningandBudgetingdash']);
-
-  }
-  // public CostAlocation() {
-  //   this.active = 'CostAlocation';
-  //   localStorage.setItem('Pagename', 'Cost Allocation')
-  //   this.router.navigate(['/Admin/Costallocationdash']);
-
-  // }
-
-  public EmployeeBonus() {
-    this.active = 'EmployeeBonus';
-    localStorage.setItem('Pagename', 'Employee Bonus')
-    this.router.navigate(['/Admin/EmployeeBonus']);
-
-  }
-
-  public SalaryBenchmarking() {
-    this.active = 'SalaryBenchmarking';
-    localStorage.setItem('Pagename', 'Salary Benchmarking')
-    this.router.navigate(['/Admin/SalaryBenchmarking']);
-
-  }
   staff: any
   public Staff123() {
     debugger
@@ -907,131 +506,6 @@ export class SidebarComponent implements OnInit {
 
   }
 
-
-  public Expense() {
-    debugger
-    if (this.login == '6') {
-      localStorage.setItem('Pagename', 'Expense Request')
-      this.router.navigate(['/Admin/ExpenseDashboard']);
-
-    }
-    else if (this.login == '8') {
-      localStorage.setItem('Pagename', 'Finance Expense')
-      this.router.navigate(['/Admin/financeexpensedash']);
-
-    }
-    else {
-      localStorage.setItem('Pagename', 'Manager Expense')
-      this.router.navigate(['/Admin/ManagerExpensesList']);
-    }
-  }
-  public Timesheet() {
-    debugger
-    this.active = 'timesheet';
-    if (this.login == '6') {
-      localStorage.setItem('Pagename', 'Timesheet Request')
-      this.router.navigate(['/Employee/TimeSheet']);
-    }
-    else if (this.login == '9') {
-      localStorage.setItem('Pagename', 'Timesheet Request')
-      this.router.navigate(['/Employee/TimeSheet']);
-    }
-    else if (this.login == '8') {
-      localStorage.setItem('Pagename', 'Timesheet Request')
-      this.router.navigate(['/Employee/TimeSheet']);
-    }
-    else {
-      localStorage.setItem('Pagename', 'Timesheet Request')
-      this.router.navigate(['/Manager/MyTeamTimesheet']);
-
-    }
-
-  }
-
-
-  travel: any;
-  public TravelRequest() {
-    debugger
-    this.active = 16;
-    if (this.login == '6') {
-      localStorage.setItem('Pagename', 'Travel Request')
-      this.router.navigate(['/Admin/Travelrequestdash']);
-
-
-    }
-    else if (this.login == '9') {
-      localStorage.setItem('Pagename', 'Travel Request')
-      this.router.navigate(['/Admin/Travelrequestdash']);
-
-    }
-    else if (this.login == '8') {
-      localStorage.setItem('Pagename', 'Travel Request')
-      this.router.navigate(['/Admin/Travelrequestdash']);
-
-    }
-    else {
-      localStorage.setItem('Pagename', 'Travel Request')
-      this.router.navigate(['/Admin/TeamTravelRequest']);
-
-    }
-  }
-
-
-  locator: any
-  public LocatorRequest() {
-    debugger
-    this.active = 15;
-    if (this.login == '6') {
-      localStorage.setItem('Pagename', 'Locator Request')
-      this.router.navigate(['/Employee/LocatorDashboard']);
-
-    }
-    else if (this.login == '9') {
-      localStorage.setItem('Pagename', 'Locator Request')
-      this.router.navigate(['/Employee/LocatorDashboard']);
-
-    }
-    else if (this.login == '8') {
-      localStorage.setItem('Pagename', 'Locator Request')
-      this.router.navigate(['/Employee/LocatorDashboard']);
-
-    }
-    else {
-      localStorage.setItem('Pagename', 'Locator Request')
-      this.router.navigate(['/Manager/ManagerLocatorDetails']);
-
-    }
-  }
-
-
-
-  workplace: any
-  public WorkplaceRequest() {
-    debugger
-    this.active = 14;
-    if (this.login == '6') {
-      localStorage.setItem('Pagename', 'Workplace Request')
-      this.router.navigate(['/Admin/Workplacerequestdash']);
-
-
-    }
-    else if (this.login == '9') {
-      localStorage.setItem('Pagename', 'Workplace Request')
-      this.router.navigate(['/Admin/Workplacerequestdash']);
-
-    }
-    else if (this.login == '8') {
-      localStorage.setItem('Pagename', 'Workplace Request')
-      this.router.navigate(['/Admin/Workplacerequestdash']);
-
-    }
-    else {
-      localStorage.setItem('Pagename', 'Workplace Request')
-      this.router.navigate(['/Admin/TeamWorkplaceRequest']);
-
-    }
-
-  }
 
 
   public logout() {
@@ -1144,78 +618,6 @@ export class SidebarComponent implements OnInit {
     }
 
   }
-  expense: any;
-  public ExpenseRequest() {
-    debugger
-    this.active = 13;
-    if (this.login == '2') {
-      localStorage.setItem('Pagename', 'Allowance Request')
-      this.router.navigate(['/Admin/ManagerExpensesList']);
-
-
-    }
-    else {
-      localStorage.setItem('Pagename', 'Allowance Request')
-      this.router.navigate(['/Admin/ExpenseDashboard']);
-
-    }
-
-  }
-  
-  exitformality: any;
-  public Exitformality() {
-    debugger
-    this.active = 21;
-    if (this.login == '2' || this.login == '9') {
-      localStorage.setItem('Pagename', 'Exit Formality')
-      this.router.navigate(['/Manager/ExitFormalityDash']);
-    }
-    else {
-      localStorage.setItem('Pagename', 'Exit Formality')
-      this.router.navigate(['/Manager/ExitFormalityDash']);
-
-    }
-
-  }
-
-  public EmployeeChangeRequest() {
-    debugger
-    this.active = 'EmployeeChangeRequest';
-    localStorage.setItem('Pagename', 'Employee Change Request')
-    // if (this.login == '6' || this.login == '2') {
-    //   localStorage.setItem('Pagename', 'Employee Change Request')
-    //   this.router.navigate(['/HR/EmployeeChangeRequestDashboard']);
-    // }
-    if (this.login !='9') {
-      localStorage.setItem('Pagename', 'Employee Change Request')
-      this.router.navigate(['/HR/EmployeeChangeRequestDashboard']);
-    }
-    else if (this.login == '9'){
-      localStorage.setItem('Pagename', 'Employee Change Request')
-      this.router.navigate(['/HR/TeamEmployeChangeRequestDetails']);
-    }
-  }
-
-  public CheckList() {
-    debugger
-    this.active = 'Checklist';
-    localStorage.setItem('Pagename', 'CheckList')
-    this.router.navigate(['/Admin/Onboardingchecklistmaster']);
-  }
-  public NewJoinees() {
-    debugger
-    this.active = 'NewJoinees';
-    localStorage.setItem('Pagename', 'New Joinees')
-    this.router.navigate(['/Admin/Newjoineesforhr']);
-  }
-  public Orientaiondocumnets() {
-    debugger
-    this.active = 'Orientaiondocumnets';
-    localStorage.setItem('Pagename', 'ORIENTATION DOCS')
-    this.router.navigate(['/Admin/Orientaiondocumnets']);
-  }
-
-
   public PayrollReport() {
     debugger
     this.active = 'PayrollReport';
@@ -1223,97 +625,6 @@ export class SidebarComponent implements OnInit {
     this.router.navigate(['/HR/GenerateCsvfiles']);
   }
 
-  public Onboardingstatus() {
-    debugger
-    this.active = 'Onboardingstatus';
-    localStorage.setItem('Pagename', 'Onboarding Status')
-    this.router.navigate(['/Admin/Onboardingstatus']);
-  }
-
-  public OrientationSession() {
-    debugger
-    this.active = 'OrientationSession';
-    localStorage.setItem('Pagename', 'Orientation Session')
-    this.router.navigate(['/Admin/OrientationSessionPlanDash']);
-  }
-  public Orientation() {
-    debugger
-    this.active = 'Orientation';
-    localStorage.setItem('Pagename', 'ORIENTATION')
-    this.router.navigate(['/Admin/OrientationPlanDash']);
-  }
-
-  public AssetTypeDashboard() {
-    debugger
-    this.active = 'AssetType';
-    localStorage.setItem('Pagename', 'ASSET TYPE')
-    this.router.navigate(['/Admin/AssetTypeDashboard']);
-  }
-
-  public AssignedAssets() {
-    debugger
-    this.active = 'Assigned';
-    localStorage.setItem('Pagename', 'Assigned Assets')
-    this.router.navigate(['/Admin/AssignedAssets']);
-  }
-  public Assets() {
-    debugger
-    this.active = 'Assets';
-    localStorage.setItem('Pagename', 'Assets')
-
-  }
-
-
-
-  public HeadCount() {
-    debugger
-    this.active = 'HeadCount';
-    localStorage.setItem('Pagename', 'HEAD COUNT')
-    this.router.navigate(['/Admin/HeadCountDashboard']);
-  }
-
-
-
-
-  // public Benefirsenrollmetdash() {
-  //   debugger
-  //   this.active = 'Benefirsenrollmetdash';
-  //   localStorage.setItem('Pagename', 'Benefits Enrollment')
-  //   this.router.navigate(['/HR/Benefirsenrollmetdash']);
-  // }
-  public Mytask() {
-    debugger
-    this.active = 'MyTask';
-    localStorage.setItem('Pagename', 'My Task')
-
-  }
-
-  public leaveConversion() {
-    debugger
-    this.active = 'leaveConversion';
-
-
-  }
-  public leaveelection() {
-    debugger
-    this.active = 'leaveelection';
-    localStorage.setItem('clickname', 'Leave Election')
-    this.router.navigate(['/HR/LeaveElection']);
-  }
-  public UpdateLeaveConfiguration() {
-    debugger
-    this.active = 'UpdateLeaveConfiguration';
-    localStorage.setItem('clickname', 'Update Leave Balance')
-    this.router.navigate(['/HR/UpdateLeaveConfiguration']);
-  }
-
-
-  public Retirementconfiguration() {
-    debugger
-    this.active = 'RetirementConfig';
-    localStorage.setItem('Pagename', 'Retirement Config')
-    this.router.navigate(['/HR/RetirementConfiguration']);
-  }
 
   public Loanconfiguration() {
     debugger
@@ -1322,71 +633,6 @@ export class SidebarComponent implements OnInit {
     this.router.navigate(['/HR/LoanConfigurationDash']);
   }
 
-
-  public LoanType() {
-    debugger
-    this.active = 'LoanType';
-    localStorage.setItem('Pagename', 'Loan Master')
-    this.router.navigate(['/HR/LoanMasterDash']);
-  }
-
-
-  public SalaryDeductions() {
-    debugger
-    this.active = 'ATDRequest';
-    localStorage.setItem('Pagename', 'SALARY DEDUCTIONS')
-    this.router.navigate(['/HR/ATDRequestsDash']);
-  }
-
-
-
-  public ServiceAward() {
-    debugger
-    this.active = 'ServiceAward';
-    localStorage.setItem('Pagename', 'Service Awards')
-    this.router.navigate(['/Admin/ServiceAwardDashboard']);
-  }
-
-
-  public ServiceAwardList() {
-    debugger
-    this.active = 'ServiceAwardList';
-    localStorage.setItem('Pagename', 'Service Awards')
-    this.router.navigate(['/Admin/ServiceAwardList']);
-  }
-
-
-  public EmployeeResignation() {
-    this.active = 'Resignation';
-    localStorage.setItem('Pagename', 'Employee Resignation')
-    this.router.navigate(['/Employee/EmployeeResignation']);
-
-  }
-  public Employee() {
-    this.active = 'Employee';
-    localStorage.setItem('Pagename', 'Employee')
-
-
-  }
-
-
-
-  public attritionanalysis() {
-    this.active = 'attritionanalytics';
-    localStorage.setItem('Pagename', 'Employee Resignation')
-    this.router.navigate(['/Admin/AttritionAnalytics']);
-
-  }
-
-  public MyTask() {
-
-  }
-
-  public EmployeeTask() {
-    this.active = 'EmployeeTask';
-    localStorage.setItem('Pagename', 'Employee Task')
-    this.router.navigate(['/Admin/EmployeeTask']);
-  }
 
   public Contradictiondash() {
     this.active = 'Contradictiondash';
@@ -1401,14 +647,6 @@ export class SidebarComponent implements OnInit {
   }
 
 
-
-
-  public completetask() {
-    this.active = 'completetask';
-    localStorage.setItem('Pagename', 'Employee Task')
-    this.router.navigate(['/Admin/Completedtask'])
-  }
-
   help() {
     this.active = 'help'
     localStorage.setItem("clickname", "HELP")
@@ -1419,24 +657,6 @@ export class SidebarComponent implements OnInit {
     localStorage.setItem("clickname", "support tickets")
   }
 
-
-  floor() {
-    this.active = 'floor'
-    localStorage.setItem("Pagename", "Floor Master")
-    this.router.navigate(['/Admin/Floordash'])
-  }
-
-  building() {
-    this.active = 'building'
-    localStorage.setItem("Pagename", "Building Master")
-  }
-
-  room() {
-    this.active = 'room'
-    localStorage.setItem("Pagename", "Room Master");
-    this.router.navigate(['/Admin/WorkStationTypeDash'])
-
-  }
 
   rolemaster() {
     this.active = 'role'
@@ -1449,24 +669,6 @@ export class SidebarComponent implements OnInit {
     localStorage.setItem("Pagename", "Job Level Type");
     this.router.navigate(['/HR/LevelTypeDash'])
 
-  }
-
-  promotion() {
-    debugger
-    localStorage.setItem('Pagename', 'Employee Promotion')
-    this.router.navigate(['/HR/EmployeePromotionDash']);
-    this.active = 444;
-  }
-  EmployeePreLoan() {
-    this.active = 'EmployeePreLoanPaymentDashboard'
-    localStorage.setItem("clickname", "Employee PreLoan Payment")
-    this.router.navigate(['/Employee/EmployeePreLoanPaymentDashboard'])
-  }
-
-  MyTeamPreLoanPayments() {
-    this.active = 'MyTeamPreLoanPayments'
-    localStorage.setItem("clickname", "My Team PreLoan Payments")
-    this.router.navigate(['/HR/MyTeamPreLoanPayments'])
   }
 
   DivisionMaster() {
@@ -1488,9 +690,5 @@ export class SidebarComponent implements OnInit {
     this.router.navigate(['/HR/WorkLocationMasterDash'])
   }
 
-  OnboardingInitiation() {
-    this.active = 'OnboardingInitiation'
-    localStorage.setItem("clickname", "Onboarding Initiation")
-    this.router.navigate(['/HR/OnboardingInitiationDash'])
-  }
+
 }

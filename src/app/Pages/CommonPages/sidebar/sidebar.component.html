@@ -15,6 +15,17 @@
     </a>
 
 
+    
+    <a data-toggle="collapse" *ngIf="login != 1 && companyid!=1005 && companyid != 1007"
+      class="togglebtn" data-target="#Attendance" (click)="getSettings()">
+      <img [ngClass]="active != 867 ? 'Active1' : 'Active2'"
+        src="assets/Images/64_GREY/64/ATTENDANCE/Report/Attendance_report.png" class="admin" />
+      <img [ngClass]="active == 867 ? 'Active1' : 'Active2'" src="assets/64/ATTENDANCE/ATTENDANCE DETAILS.png"
+        class="admin" />&nbsp;
+      <span [ngClass]="active == 867 ? 'Active1' : 'Active3'"> Settings</span>
+    </a>
+
+
     <a data-toggle="collapse" *ngIf="login != 1 && companyid!=1005 && companyid != 1007 && AttendanceEnable!=false"
       class="togglebtn" data-target="#Attendance" (click)="getAttendacmenu()">
       <img [ngClass]="active != 8 ? 'Active1' : 'Active2'"
@@ -87,6 +98,7 @@
           </span>
         </a> -->
     </div>
+
 
 
 
@@ -497,16 +509,7 @@
         ">Leave Configuration
           </span>
         </a>
-        <a (click)="CheckListMaster()" *ngIf="login == 9" class="insidea nonactive">
-          <img [ngClass]="active == 'CheckListMaster' ? 'Active1' : 'Active2'"
-            src="assets/64/ATTENDANCE/REGULARIZATION.png" class="admin" />
-          <img [ngClass]="active != 'CheckListMaster' ? 'Active1' : 'Active2'"
-            src="assets/Images/64_GREY/64/ATTENDANCE/REGULARIZATION   REQUESTS.png" class="admin" />
-          &nbsp;
-          <span [ngClass]="active == 'CheckListMaster' ? 'Active1' : 'Active3'"
-            style="display: flex; position: relative; top: -20px; left: 40px">Onboarding Checklist
-          </span>
-        </a>
+
 
 
 

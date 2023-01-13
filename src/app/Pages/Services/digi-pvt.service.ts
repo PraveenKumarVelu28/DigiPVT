@@ -10,7 +10,8 @@ export class DigiPVTService {
   private url: string = '';
   // public host = sessionStorage.getItem('digiofficeapiurl');
 
-  public host = 'http://localhost:1807'
+  // public host = 'http://localhost:1807'
+  public host='https://103.12.1.76/DigiPVTAPI/'
   public basehost = "https://103.12.1.76//AliLiveUATApi"
 
   // public GetNotification(UserID: any) {
@@ -4073,8 +4074,40 @@ export class DigiPVTService {
     return this.http.post(this.url, data);
   }
 
+  public GetComponentMaster(){
+    return this.http.get<any[]>(
+      this.basehost +"/Master/GetComponentMaster"
+    );
+  }
+  
+  public DeleteComponentMaster(ID : any){
+    return this.http.get<any[]>(
+      this.basehost + "/Master/DeleteComponentMaster?ID=" + ID);
+  }
 
+  public GetComponentMasterNotInComponentMapping(){
+    return this.http.get<any[]>(
+      this.basehost +"/Master/GetComponentMasterNotInComponentMapping"
+    );
+  }
 
+  public UpdateComponentMapping(data: any) {
+    debugger;
+    this.url = this.basehost + '/Master/UpdateComponentMapping';
+    return this.http.post(this.url, data);
+  }
+
+  public InsertComponentMapping(data: any) {
+    debugger;
+    this.url = this.basehost+ '/Master/InsertComponentMapping';
+    return this.http.post(this.url, data);
+  }
+
+  public GetComponentMapping() {
+    return this.http.get<any[]>(
+      this.basehost + "/Master/GetComponentMapping"
+      );
+    }
 }
 
 

@@ -656,5 +656,35 @@ export class SidebarComponent implements OnInit {
     this.router.navigate(['/HR/WorkLocationMasterDash'])
   }
 
+  settings(){
+    this.active='Settings'
+       localStorage.setItem("clickname", "Settings")     
+  }
 
+  ComponentMaster(){
+    this.active='ComponentMaster'
+       localStorage.setItem("clickname", "Component  Master")
+       this.router.navigate(['/PayrollProcessor/ComponentMaster'])
+  }
+
+  public ComponentMapping() {
+    debugger
+    this.active = 'PayrollLoanReport1';
+    localStorage.setItem('Pagename', 'Component Mapping');
+    this.router.navigate(['/PayrollProcessor/ComponentMappingDashboard']);
+  }
+  
+  public Componentbulkupload() {
+    debugger
+    this.active = 'bulk';
+    localStorage.setItem('clickname', 'Component bulk upload')
+    this.router.navigate(['/PayrollProcessor/PayrollComponentBulkUpload']);
+  }
+
+  public AttendanceUnits() {
+    debugger
+    this.active = 9999;
+    localStorage.setItem('Pagename', 'Over Time');
+    this.router.navigate(['/PayrollProcessor/MyTeamOverTimeDetails']);
+  }
 }

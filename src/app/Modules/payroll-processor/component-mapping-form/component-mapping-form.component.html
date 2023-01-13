@@ -1,1 +1,156 @@
-<p>component-mapping-form works!</p>
+<div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-4">
+        <h3 class="Heading">Component Mapping</h3>
+      </div>
+      <div class="col-lg-6"></div>
+      <div class="col-lg-2">
+      </div>
+    </div>
+    <br>
+    <div class="card">
+      <div class="row">
+        <div class="col-lg-2">
+          <label>PayrollComponentType<span style="color: red;">*</span></label>
+          <select class="form-control" id="PayrollComponentType" name="PayrollComponentType"
+            [(ngModel)]="PayrollComponentType" [disabled]="Backend==1">
+            <option value="0" disabled selected>Select Payroll Component Type</option>
+            <option value="Earning">Earning</option>
+            <option value="Deduction">Deduction</option>
+            <option value="Neutral">Neutral</option>
+          </select>
+         </div>
+        
+  
+  
+        <div class="col-lg-2">
+          <label>Code<span style="color: red;">*</span></label>
+          <input type="text" placeholder="Enter Your Code" class="form-control" [(ngModel)]="Code" id="Code" name="Code" [disabled]="Backend==1">
+        </div>
+        <div class="col-lg-2" >
+          <label>Component Name<span style="color: red;">*</span></label>
+  
+          <select class="form-control" *ngIf="id==undefined" [(ngModel)]="ComponentName" id="ComponentName" name="ComponentName" [disabled]="Backend==1">
+            <option value="0" disabled selected>Select Component </option>
+            <option *ngFor="let list of componentmappingmaster" value="{{list.name}}">{{list.name}}</option>
+  
+            
+          </select>
+  
+          <select class="form-control" *ngIf="id!=undefined" [(ngModel)]="ComponentName" id="ComponentName" name="ComponentName" [disabled]="Backend==1">
+            <option value="0" disabled selected>Select Component </option>
+            <option *ngFor="let list of componentmaster" value="{{list.name}}">{{list.name}}</option>
+  
+          </select>
+  
+  
+        </div>
+        
+        <div class="col-lg-2">
+          <label>Tax Flag<span style="color: red;">*</span></label><br>
+          <input type="checkbox" placeholder="Tax Flag" [(ngModel)]="TaxFlag" id="TaxFlag" name="TaxFlag" />
+        </div>
+        <div class="col-lg-2">
+          <label>Affects<span style="color: red;">*</span></label>
+  
+          <!-- <ng-multiselect-dropdown [placeholder]="'Select Rest Day'" [settings]="staffdropdownSettings1"
+            [data]="Affectslist" [(ngModel)]="Affects" (onSelect)="onItemSelect2($event)" class="fonttxt" *ngIf="Backend==1" [disabled]="Backend==1">
+          </ng-multiselect-dropdown>
+  
+          <ng-multiselect-dropdown [placeholder]="'Select Rest Day'" [settings]="staffdropdownSettings1"
+          [data]="Affectslist" [(ngModel)]="Affects" (onSelect)="onItemSelect2($event)" class="fonttxt"  *ngIf="Backend!=1" >
+        </ng-multiselect-dropdown> -->
+  
+  
+        </div>
+        <div class="col-lg-2">
+          <label>90,000 Tax Exemption<span style="color: red;">*</span></label><br>
+          <input type="checkbox" placeholder="90,000 Tax Exemption" [(ngModel)]="TaxExemption" id="TaxExemption"
+            name="TaxExemption" />
+        </div>
+      </div>
+      <br>
+  
+      <div class="row">
+        <div class="col-lg-2">
+          <label>Payroll Period*</label>
+  
+          <select class="form-control" id="PayrollPeriod" name="PayrollPeriod" [(ngModel)]="PayrollPeriod" [disabled]="Backend==1">
+            <option value="" disabled selected>Select Payroll Period</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+          </select>
+          <!-- <select class="form-control" id="PayrollPeriod" name="PayrollPeriod" [(ngModel)]="PayrollPeriod" [disabled]="Backend==1">
+            <option value="">Select Payroll Period</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+          </select> -->
+        </div>
+        <!-- <div class=" col-lg-4">
+          <p>Select Paycode
+              <div class="dropdown">
+                  <select class="form-control inputfield" id="PaycodeID" name="PaycodeID"
+                      [(ngModel)]="PaycodeID" (change)="GetStartdate()" style="margin-top: 25px;">
+                      <option value="">Select Paycode </option>
+                      <option *ngFor="let role of PayPeriodSettingList" value="{{role.id}}">{{role.payCode}}</option>
+                  </select>
+              </div>
+         </div>
+      -->
+        <div class="col-lg-2">
+          <label>Enable<span style="color: red;">*</span></label><br>
+          <input type="checkbox" [(ngModel)]="Enable" id="Enable" name="Enable">&nbsp; Yes
+        </div>
+        <div class="col-lg-2">
+          <label>Print On PaySlip<span style="color: red;">*</span></label><br>
+          <input type="checkbox" [(ngModel)]="PrintOnPaySlip" id="PrintOnPaySlip" name="position" />
+        </div>
+        <!-- <div class="col-lg-2">
+          <label>Amount</label>
+          <input class="form-control" type="number" id="Amount" name="Amount" [(ngModel)]="Amount" [disabled]="Backend==1">
+        </div> -->
+  
+      </div>
+      <br>
+      <div class="row">
+        <div class="col-lg-4">
+          <label>Formula<span style="color: red;">*</span></label>
+          <textarea type="text" placeholder="Formula" class="form-control"[disabled]="Backend==1" [(ngModel)]="Formula" id="Formula"
+            name="phoneNumber"></textarea>
+        </div>
+  
+        <div class="col-lg-4">
+          <p>Type</p>
+  
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="type" id="type" [(ngModel)]="type" value="Recurring">
+            <label class="form-check-label" for="flexRadioDefault1">&nbsp;
+              Recurring
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="type" id="type" checked [(ngModel)]="type" value="Fixed">
+            <label class="form-check-label" for="flexRadioDefault2">&nbsp;
+              Fixed
+            </label>
+          </div>
+  
+        </div>
+      </div>
+      <br>
+      <div class="row">
+        <div class="col-lg-10"></div>
+        <div class="col-lg-1">
+          <button class="button" (click)="post()">{{ submit }}</button>
+        </div>
+        <div class="col-lg-1">
+          <button class="button" routerLink="/Payroll/ComponentMappingDashboard">
+            Cancel
+          </button>
+        </div>
+        <br />
+        <br />
+      </div>
+    </div>
+  </div>
+  

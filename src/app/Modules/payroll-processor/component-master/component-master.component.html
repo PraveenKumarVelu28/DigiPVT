@@ -1,1 +1,77 @@
-<p>component-master works!</p>
+<div class="row">
+    <div class="col-md-12">
+        <div class="row">
+            <div class="col-lg-11">
+                <p class="Heading">Component Master Dashboard</p>
+            </div>
+        </div>
+        <div class="row FilterClass">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="row">
+                        <div class="col-lg-1">
+                            <p>Filter By</p>
+                        </div>
+                        <div class="col-lg-4 fontstyle">
+                            <input class="form-control" type="search" placeholder="Search.." 
+                            id="term" [(ngModel)]="term">
+                        </div>
+                        <div class="col-lg-4"></div>
+                    </div>
+                </div>
+            </div>
+        </div><br>
+        <div class="row">
+            <div class="col-lg-6">
+                <!-- <p class="show3res">SHOWING <span> 
+                </span>RESULTS</p> -->
+
+            </div>
+            <div class="col-lg-6">
+                <a   routerLink="/Payroll/ComponentMasterForm"><button class="button">Add New</button> </a>
+                <button class="AddButton" style="width: 182px;margin-top: 1px;height: 30px;;margin-left: 80px;" (click)="exportexcel()">Export to Excel</button>
+
+            </div>
+        </div><br>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="container-fluid">
+                    <table class="table" id="downloadaplication">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th> Description</th>
+                                <th>Actions</th>
+                                <!-- <th>Attachment</th>
+                                <th *ngIf="roleid=='1'">Actions</th> -->
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let list of componentmaster|filter:term |paginate: { itemsPerPage: count2, currentPage: p1}  " >
+                             
+                                <td>{{list.name}}</td>
+                                <td>{{list.description}}</td>
+                                <td > <button class="upload" [routerLink]="['/Payroll/ComponentMasterForm',list.id]">Edit</button><br><br>
+                                    <button class="upload"  (click)="delete(list.id)">Delete</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <!-- <div class="text-left">
+                        <br>
+                        <pagination-controls (pageChange)="p = $event" class="poppinns"></pagination-controls>
+                    </div> -->
+                    <!-- <ng-template #noResults>
+                        <p class="NoResultShow"> No results found </p>
+                    </ng-template> -->
+                    <div class="text-left">
+                        <br>
+                        <pagination-controls (pageChange)="p1 = $event" class="poppinns"></pagination-controls>
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="col-md-1"></div>
+        </div>
+    </div>
+</div>

@@ -7,7 +7,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { NgWizardConfig, NgWizardModule, THEME } from 'ng-wizard';
 import { NgxDropzoneModule } from 'ngx-dropzone';
 import {Ng2SearchPipeModule } from 'ng2-search-filter';
- 
+import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
+
 
 const ngWizardConfig: NgWizardConfig = {
   theme: THEME.circles
@@ -24,7 +25,8 @@ const ngWizardConfig: NgWizardConfig = {
     NgxPaginationModule,
     NgxDropzoneModule,
     NgWizardModule,
-    Ng2SearchPipeModule
+    Ng2SearchPipeModule,
+    // NgMultiSelectDropDownModule.forRoot()
   ],
   exports: [
     CommonModule,
@@ -32,9 +34,9 @@ const ngWizardConfig: NgWizardConfig = {
     NgxDropzoneModule,
     NgxPaginationModule,
     NgWizardModule,
-    Ng2SearchPipeModule
+    Ng2SearchPipeModule,
     //  LoaderComponent,
-    //  NgMultiSelectDropDownModule,
+      // NgMultiSelectDropDownModule,
       //Ng2SearchPipeModule,
     //  SpinnerComponent,
     //  ConnectionServiceModule

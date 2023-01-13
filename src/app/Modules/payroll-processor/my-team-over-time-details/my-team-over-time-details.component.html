@@ -1,1 +1,676 @@
-<p>my-team-over-time-details works!</p>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-12">
+                    <ul>
+                        <li *ngIf="(level=='A1' || level=='A2' || level=='A3')"><a class="active Heading underlineclr"
+                                routerLink="/HR/MyOverTimeDetails">
+                                Attendance Units</a></li>
+                       
+                    </ul>
+                </div>
+            </div>
+            <br>
+            <div class="card filtercard">
+                <div class="row">
+                    <div class="col-md-1">
+                        Filter By
+                    </div>
+                    <div class="col-md-2">
+                        <p>Pay Date
+                            <input class="form-control" type="date" onkeydown="return false"placeholder="Duration" id="sdate" name="sdate"
+                                [(ngModel)]="sdate"    (change)="filterbydate()">
+                    </div>
+                    
+                    <div class="col-md-4">
+                        <p><br>
+                            <input class="form-control" id="term" name="term" [(ngModel)]="term" type="search"
+                                (ngModelChange)="FilterAttendence()" placeholder="Search for staff.. ">
+                    </div>
+                    <div class="col-md-3">
+                       <br/>
+
+                        <button class="form-control AddExpense" data-toggle="modal" data-target="#import" style="width: 80%;">Upload
+                            Overtime</button>
+                    </div>
+                    
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-lg-10"></div>
+             <div class="col-lg-2">
+                <Button class="AddButton" (click)="ExporttoExcel()">Export to Excel</Button>
+             </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-md-5">
+                </div>
+                <div class="col-md-5">
+                </div>
+                <div class="col-md-2">
+                    <a><button *ngIf="selecallbtn" class="form-control AddExpense" (click)="Approveall()">Approve
+                            All</button></a>
+                </div>
+            </div><br>
+            <div class="row">
+                <div class="row">
+                    
+                </div>
+                <br>
+
+                <div >
+                    <div >
+
+                        <div class="row" *ngIf="show==1">
+                            <div class="col-md-10">
+                                <p class="show3res" >SHOWING <span>{{timedetails.length}}</span> RESULTS </p>
+                                    
+                            </div>
+                        </div><br>
+                        
+                        <br />
+                        <br />
+                    
+                        <div class="col-md-12" *ngIf="show==1">
+                            <div class="container-fluid">
+                                <table class="table" >
+                                    <thead>
+                                        <tr class="thwidth">
+                                            <th>Employee ID</th>
+                                            <th>Employee Name</th>
+                                            <th class="thwidth">Position</th>
+                                            <th class="thwidth">Department</th>
+                                            
+                                            <th class="thwidth">Pay Date</th>
+                                           
+
+                                         
+                                            <th >Action</th>
+                                        </tr>
+                                        <tr
+                                            *ngFor="let time of timedetails| filter:term |paginate: { itemsPerPage: count1, currentPage: p}">
+                                            <td>{{time.employeID}}</td>
+                                            <td>{{time.firstAndLastName}}</td>
+                                             <td>{{time.role}}</td>
+                                            <td>{{time.department_name}}</td> 
+                                          
+                                            
+                                           
+                                            <td>{{time.date|date}}</td>
+                                            <td>
+                                                <button class="edit-btn" data-toggle="modal"
+                                                    (click)="GetOTDetails(time)"
+                                                    data-target="#CheckListStatusform">Details
+                                                </button>
+                                            </td>
+                                            
+                                        </tr>
+                                    </thead>
+                                </table>
+                          
+                                <!-- <span *ngIf="preapprovaldetails1.length==0"><b>No Results Found</b></span> -->
+                            </div>
+                            
+                        </div>
+                        <!-- <div *ngSwitchCase="'tab333'" id="tab333">
+                            <br />
+                            <br />
+                            <div class="row">
+                                <div class="col-md-10">
+                                    <p class="show3res">SHOWING <span>{{timedetails3.length}}</span> RESULTS
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="btn-group" role="group" aria-label="Basic example">
+                                <button type="button" class="btn btn-secondary" value="0"
+                                    (click)="preapprove()">PreApprovals</button>
+                                <button type="button" class="btn btn-secondary" value="0" (click)="applyot()"> OT
+                                    Requests</button>
+
+                            </div>
+                            <br />
+                            <br />
+                            <div class="col-md-12">
+                                <div class="container-fluid">
+                                    <table class="table" *ngIf="applyot1==1">
+                                        <thead>
+                                            <tr class="thwidth">
+                                                <th>Employee Name</th>
+                                                <th class="thwidth">Date</th>
+                                                <th class="thwidth">Start Time</th>
+                                                <th class="thwidth">End Time</th>
+                                                <th class="thwidth">OT Details</th>
+                                                <th class="thwidth">Attachment</th>
+                                                <th class="thwidth">Comments</th>
+                                                <th class="thwidth">Status</th>
+                                            </tr>
+                                            <tr
+                                                *ngFor="let time of timedetails3|paginate: { itemsPerPage: count1, currentPage: p}">
+                                                <td>{{time.staffname}}</td>
+                                                <td>{{time.date|date}}</td>
+                                                <td>{{time.startTime|date:'HH:mm'}}</td>
+                                                <td>{{time.endTime|date:'HH:mm'}}</td>
+                                              
+                                                <td>
+                                                    <button class="edit-btn" data-toggle="modal"
+                                                        (click)="GetOTDetails(time)"
+                                                        data-target="#CheckListStatusform">Details
+                                                    </button>
+                                                </td>
+                                                <td><a href="{{time.attachment}}" target="blank"> <img
+                                                            *ngIf="time.attachment!=null"
+                                                            src="assets/Images/attachment (1).png"
+                                                            class="attachmentimg"></a> </td>
+                                                <td>{{time.comments}}</td>
+                                                <td>{{time.status}}</td>
+                                            </tr>
+                                        </thead>
+                                    </table>
+                                    <table class="table" *ngIf="preapprove1==1">
+                                        <thead>
+                                            <tr class="thwidth">
+                                                <th>Employee Name</th>
+                                                <th class="thwidth">Date</th>
+                                                <th class="thwidth">Start Time</th>
+                                                <th class="thwidth">End Time</th>
+                                                <th class="thwidth"> OT Details</th>
+                                                <th class="thwidth">Attachment</th>
+                                                <th class="thwidth">Comments</th>
+                                                <th class="thwidth">Status</th>
+                                            </tr>
+                                            <tr
+                                                *ngFor="let time of preapprovaldetails3|paginate: { itemsPerPage: count1, currentPage: p}">
+                                                <td>{{time.staffname}}</td>
+                                                <td>{{time.date|date}}</td>
+                                                <td>{{time.startTime|date:'HH:mm'}}</td>
+                                                <td>{{time.endTime|date:'HH:mm'}}</td>
+                                                <td>
+                                                    <button class="edit-btn" data-toggle="modal"
+                                                        (click)="GetOTDetails1(time)"
+                                                        data-target="#CheckListStatusform">Details
+                                                    </button>
+                                                </td>
+                                                <td><a href="{{time.attachment}}" target="blank"> <img
+                                                            *ngIf="time.attachment!=null"
+                                                            src="assets/Images/attachment (1).png"
+                                                            class="attachmentimg"></a> </td>
+                                                <td>{{time.comments}}</td>
+                                                <td>{{time.status}}</td>
+                                            </tr>
+                                        </thead>
+                                    </table>
+                                   
+                                </div>
+                  
+                                <div class="text-left">
+                                    <br>
+                                    <pagination-controls (pageChange)="p = $event" class="poppinns">
+                                    </pagination-controls>
+                                </div>
+                            </div>
+                        </div> -->
+                    </div>
+                 
+                </div>
+                <div class="col-md-1"></div>
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-5"></div>
+            <div class="col-lg-2">
+            </div>
+            <div class="col-lg-5"></div>
+        </div>
+    </div>
+    <div class="col-md-1"></div>
+</div>
+<br />
+<br />
+<br />
+<br />
+<div id="CheckListStatusform" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Attendance Units Details</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Attendance Unit Type</th>
+                        <th>Units</th>
+                        <!-- <th></th> -->
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                    <tr>
+                        <td>OT ON REG DAY</td>
+                        <td>{{noofhours}}</td>
+                    </tr>
+                    <tr>
+                        <td>OT NIGHT DIFFERENTIAL </td>
+                        <td>{{nightOT}}</td>
+                    </tr>
+                    <!-- <tr>
+                        <td> Restday OT </td>
+                        <td> {{restNormalOT}}</td>
+                    </tr> -->
+                   
+                    <tr>
+
+                        <td> OT ON REG DAY > 8 HRS</td>
+                        <td> {{ExccessNormalOt}}</td>
+                      
+                    </tr>
+                    <tr>
+
+                        <td> OT NIGHT DIFFERENTIAL>8 HRS</td>
+                        <td> {{ExccessNightOt}}</td>
+                    </tr>
+                   
+                
+                    <tr>
+
+                        <td>OT ON REST DAY</td>
+                        <td>{{RestNormalOT}}</td>
+                    </tr>
+                    <tr>
+
+                        <td> NDOT ON REST DAY </td>
+                        <td> {{RestNightOt}}</td>
+                    </tr>
+                    <tr>
+                        <td>OT ON REST DAY > 8 HRS</td>
+                        <td> {{ExccessRestNormalOt}}</td>
+                    </tr>
+                    <tr>
+
+                        <td> NDOT ON REST DAY>8 HRS </td>
+                        <td> {{RestExccessNightOt}}</td>
+                    </tr>
+                    <tr>
+
+                        <td> OT ON LEGAL HOL </td>
+                        <td> {{LegalNormalOT}}</td>
+                    </tr>
+                    <tr>
+
+                        <td>NDOT LEGAL Holiday </td>
+                        <td> {{LegalNightOt}}</td>
+                    </tr>
+                   
+                    <tr>
+
+                        <td> OT ON LEGAL HOL>8 hrs</td>
+                        <td> {{LegalExccessNormalOt}}</td>
+                    </tr>
+                    <tr>
+                        <td>NDOT ON LEGAL HOL>8 HRS </td>
+                        <td>{{LegalExccessNightOt}}</td>
+                    </tr>
+                    <tr>
+
+                        <td> OT ON SPECIAL HOL </td>
+                        <td> {{SpecialNormalOT}}</td>
+                    </tr>
+                    <tr>
+                        <td> OT Night Differential Special Holiday </td>
+                        <td> {{SpecialNightOt}}</td>
+                    </tr>
+                   
+                    <tr>
+
+                        <td> OT ON SPECIAL HOL>8 hrs</td>
+                        <td> {{SpecialExccessNormalOt}}</td>
+                    </tr>
+                    <tr>
+
+                        <td> OT Night Differential Special Holiday Excess 8</td>
+                        <td> {{SpecialExccessNightOt}}</td>
+                    </tr>
+                    <tr>
+
+                        <td> OT ON REST DAY SPECIAL HOL </td>
+                        <td> {{SpecialRestNormalOT}}</td>
+                    </tr>
+                    <tr>
+
+                        <td> OT Night Differential Special Holiday on Restday </td>
+                        <td> {{SpecialRestNightOt}}</td>
+                    </tr>
+                    <tr>
+
+                        <td> OT ON REST DAY SPECIAL HOL>8 h </td>
+                        <td> {{SpecialRestExccessNormalOt}}</td>
+                    </tr>
+                    <tr>
+
+                        <td> OT Night Differential Special Holiday on Restday > 8 h </td>
+                        <td> {{SpecialRestExccessNightOt}}</td>
+                    </tr>
+                    <tr>
+
+                        <td> OT ON REST DAY LEGAL HOL </td>
+                        <td> {{LegalRestNormalOT}}</td>
+                    </tr>
+                    <tr>
+
+                        <td> OTND ON LEGAL HOLIDAY REST DAY </td>
+                        <td> {{LegalRestNightOt}}</td>
+                    </tr>
+                   
+                    <tr>
+
+                        <td> OT ON REST DAY LEGAL HOL>8 HRS </td>
+                        <td> {{LegalExccessRestNormalOt}}</td>
+                    </tr>
+                    <tr>
+
+                        <td> Legal Excess Rest Night OT </td>
+                        <td> {{LegalExccessRestNightOt}}</td>
+                    </tr>
+                    <tr>
+
+                        <td> Double Holiday Normal OT </td>
+                        <td> {{DoubleHolidayNormalOt}}</td>
+                    </tr>
+                    <tr>
+
+                        <td>  Double Holiday Night OT </td>
+                        <td> {{DoubleHolidayNightOt}}</td>
+                    </tr>
+                    <tr>
+
+                        <td>  Double Holiday Excess 8 Normal OT </td>
+                        <td> {{DoubleHolidayExcessNormalOt}}</td>
+                    </tr>
+                    <tr>
+
+                        <td>Double Holiday Excess 8 Night OT </td>
+                        <td> {{DoubleHolidayExcessNightOt}}</td>
+                    </tr>
+
+                    <tr>
+
+                        <td> Double Holiday Rest Normal OT </td>
+                        <td> {{DoubleHolidayRestNormalOt}}</td>
+                    </tr>
+                    <tr>
+
+                        <td>  Double Holiday Rest Night OT </td>
+                        <td> {{DoubleHolidayRestNightOt}}</td>
+                    </tr>
+                    <tr>
+
+                        <td>  Double Holiday  Rest Excess 8 Normal OT </td>
+                        <td> {{DoubleHolidayRestExcessNormalOt}}</td>
+                    </tr>
+                    <tr>
+
+                        <td>Double Holiday  Rest Excess 8 Night OT </td>
+                        <td> {{DoubleHolidayRestExcessNightOt}}</td>
+                    </tr>
+
+                    <tr>
+
+                        <td>LWOP </td>
+                        <td> {{LWOP}}</td>
+                    </tr>
+                    <tr>
+
+                        <td> Tardiness</td>
+                        <td> {{Undertime}}</td>
+                    </tr>
+
+                    <tr>
+
+                        <td> Undertime </td>
+                        <td> {{Tardiness}}</td>
+                    </tr>
+
+
+
+                    <tr>
+                        <td>OT ON REG DAY Adjustment</td>
+                        <td>{{noofhoursAdjustment}}</td>
+                    </tr>
+                    <tr>
+                        <td>OT NIGHT DIFFERENTIAL Adjustment </td>
+                        <td>{{nightOTAdjustment}}</td>
+                    </tr>
+                    <!-- <tr>
+                        <td> Restday OT </td>
+                        <td> {{restNormalOT}}</td>
+                    </tr> -->
+                   
+                    <tr>
+
+                        <td> OT ON REG DAY > 8 HRS Adjustment</td>
+                        <td> {{ExccessNormalOtAdjustment}}</td>
+                      
+                    </tr>
+                    <tr>
+
+                        <td> OT NIGHT DIFFERENTIAL>8 HRS Adjustment</td>
+                        <td> {{ExccessNightOtAdjustment}}</td>
+                    </tr>
+                   
+                
+                    <tr>
+
+                        <td>OT ON REST DAY Adjustment</td>
+                        <td>{{RestNormalOTAdjustment}}</td>
+                    </tr>
+                    <tr>
+
+                        <td> NDOT ON REST DAY Adjustment</td>
+                        <td> {{RestNightOtAdjustment}}</td>
+                    </tr>
+                    <tr>
+                        <td>OT ON REST DAY > 8 HRS Adjustment</td>
+                        <td> {{ExccessRestNormalOtAdjustment}}</td>
+                    </tr>
+                    <tr>
+
+                        <td> NDOT ON REST DAY>8 HRS Adjustment</td>
+                        <td> {{RestExccessNightOtAdjustment}}</td>
+                    </tr>
+                    <tr>
+
+                        <td> OT ON LEGAL HOL Adjustment</td>
+                        <td> {{LegalNormalOTAdjustment}}</td>
+                    </tr>
+                    <tr>
+
+                        <td>NDOT LEGAL Holiday Adjustment</td>
+                        <td> {{LegalNightOtAdjustment}}</td>
+                    </tr>
+                   
+                    <tr>
+
+                        <td> OT ON LEGAL HOL>8 hrs Adjustment</td>
+                        <td> {{LegalExccessNormalOtAdjustment}}</td>
+                    </tr>
+                    <tr>
+                        <td>NDOT ON LEGAL HOL>8 HRS Adjustment</td>
+                        <td>{{LegalExccessNightOtAdjustment}}</td>
+                    </tr>
+                    <tr>
+
+                        <td> OT ON SPECIAL HOL Adjustment</td>
+                        <td> {{SpecialNormalOTAdjustment}}</td>
+                    </tr>
+                    <tr>
+                        <td> OT Night Differential Special Holiday Adjustment</td>
+                        <td> {{SpecialNightOtAdjustment}}</td>
+                    </tr>
+                   
+                    <tr>
+
+                        <td> OT ON SPECIAL HOL>8 hrs Adjustment</td>
+                        <td> {{SpecialExccessNormalOtAdjustment}}</td>
+                    </tr>
+                    <tr>
+
+                        <td> OT Night Differential Special Holiday Excess 8 Adjustment</td>
+                        <td> {{SpecialExccessNightOtAdjustment}}</td>
+                    </tr>
+                    <tr>
+
+                        <td> OT ON REST DAY SPECIAL HOL Adjustment</td>
+                        <td> {{SpecialRestNormalOTAdjustment}}</td>
+                    </tr>
+                    <tr>
+
+                        <td> OT Night Differential Special Holiday on Restday Adjustment</td>
+                        <td> {{SpecialRestNightOtAdjustment}}</td>
+                    </tr>
+                    <tr>
+
+                        <td> OT ON REST DAY SPECIAL HOL>8 h Adjustment</td>
+                        <td> {{SpecialRestExccessNormalOtAdjustment}}</td>
+                    </tr>
+                    <tr>
+
+                        <td> OT Night Differential Special Holiday on Restday > 8 h  Adjustment</td>
+                        <td> {{SpecialRestExccessNightOtAdjustment}}</td>
+                    </tr>
+                    <tr>
+
+                        <td> OT ON REST DAY LEGAL HOL Adjustment</td>
+                        <td> {{LegalRestNormalOTAdjustment}}</td>
+                    </tr>
+                    <tr>
+
+                        <td> OTND ON LEGAL HOLIDAY REST DAY Adjustment</td>
+                        <td> {{LegalRestNightOtAdjustment}}</td>
+                    </tr>
+                   
+                    <tr>
+
+                        <td> OT ON REST DAY LEGAL HOL>8 HRS Adjustment</td>
+                        <td> {{LegalExccessRestNormalOtAdjustment}}</td>
+                    </tr>
+                    <tr>
+
+                        <td> Legal Excess Rest Night OT Adjustment</td>
+                        <td> {{LegalExccessRestNightOtAdjustment}}</td>
+                    </tr>
+                    <tr>
+
+                        <td> Double Holiday Normal OT Adjustment</td>
+                        <td> {{DoubleHolidayNormalOtAdjustment}}</td>
+                    </tr>
+                    <tr>
+
+                        <td>  Double Holiday Night OT Adjustment</td>
+                        <td> {{DoubleHolidayNightOtAdjustment}}</td>
+                    </tr>
+                    <tr>
+
+                        <td>  Double Holiday Excess 8 Normal OT Adjustment</td>
+                        <td> {{DoubleHolidayExcessNormalOtAdjustment}}</td>
+                    </tr>
+                    <tr>
+
+                        <td>Double Holiday Excess 8 Night OT Adjustment</td>
+                        <td> {{DoubleHolidayExcessNightOtAdjustment}}</td>
+                    </tr>
+
+                    <tr>
+
+                        <td> Double Holiday Rest Normal OT Adjustment</td>
+                        <td> {{DoubleHolidayRestNormalOtAdjustment}}</td>
+                    </tr>
+                    <tr>
+
+                        <td>  Double Holiday Rest Night OT Adjustment </td>
+                        <td> {{DoubleHolidayRestNightOtAdjustment}}</td>
+                    </tr>
+                    <tr>
+
+                        <td>  Double Holiday  Rest Excess 8 Normal OT Adjustment</td>
+                        <td> {{DoubleHolidayRestExcessNormalOtAdjustment}}</td>
+                    </tr>
+                    <tr>
+
+                        <td>Double Holiday  Rest Excess 8 Night OT Adjustment</td>
+                        <td> {{DoubleHolidayRestExcessNightOtAdjustment}}</td>
+                    </tr>
+
+                    <tr>
+
+                        <td>LWOP Adjustment</td>
+                        <td> {{LWOPAdjustment}}</td>
+                    </tr>
+                    <tr>
+
+                        <td> Tardiness Adjustment</td>
+                        <td> {{UndertimeAdjustment}}</td>
+                    </tr>
+
+                    <tr>
+
+                        <td> Undertime Adjustment</td>
+                        <td> {{TardinessAdjustment}}</td>
+                    </tr>
+
+                    <tr>
+
+                        <td> NSD</td>
+                        <td> {{NSDRegular}}</td>
+                    </tr>
+
+                    <tr>
+
+                        <td> NSD Adjustment</td>
+                        <td> {{NSDRegularAdjustment}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<br />
+<br />
+
+
+
+<div id="import" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Upload Overtime</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-lg-8">
+                        <input type="file" accept=".xls,.xlsx" style="display: inline-block;"
+                            (change)="incomingfile($event)" placeholder="Upload file" accept=".xlsx">
+                    </div>
+                    <div class="col-lg-4">
+                        <a href="https://103.12.1.76//AliLiveUATApi/AttendanceUnitsUploadTemplate.xlsx" style="color:navy"><u>Template.XLSX</u></a>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <button type="button" class="save-btn" style="width: 70%;" data-dismiss="modal"
+                            (click)="Upload_file()">Upload
+                            Overtime</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

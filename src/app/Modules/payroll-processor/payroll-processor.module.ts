@@ -9,6 +9,7 @@ import { ComponentMappingDashboardComponent } from './component-mapping-dashboar
 import { ComponentMappingFormComponent } from './component-mapping-form/component-mapping-form.component';
 import { PayrollComponentBulkUploadComponent } from './payroll-component-bulk-upload/payroll-component-bulk-upload.component';
 import { MyTeamOverTimeDetailsComponent } from './my-team-over-time-details/my-team-over-time-details.component';
+import { SharedModule } from '../shared/shared.module';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { MyTeamOverTimeDetailsComponent } from './my-team-over-time-details/my-t
   ],
   imports: [
     CommonModule,
-    PayrollProcessorRoutingModule
+    PayrollProcessorRoutingModule,
+    SharedModule
   ]
 })
 export class PayrollProcessorModule { }

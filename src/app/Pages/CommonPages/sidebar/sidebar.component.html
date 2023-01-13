@@ -6,20 +6,6 @@
           [ngClass]="active != 1 ? 'Active1' : 'Active2'" />&nbsp;
         <span [ngClass]="active == 1 ? 'Active1' : 'Active3'"> Home</span>
       </a>
-      <!-- <a (click)="Orgchart()" class="nonactive" (click)="openCity($event)" *ngIf="login!=1">
-              <img src="assets/64/Home1.png" class="admin" [ngClass]="active == 'Orgchart' ? 'Active1' : 'Active2'" />
-              <img id="Home" src="assets/Images/64_GREY/64/home.png" class="admin"
-                  [ngClass]="active != 'Orgchart' ? 'Active1' : 'Active2'">&nbsp;
-              <span [ngClass]="active == 'Orgchart' ? 'Active1' : 'Active3'"> Org Chart</span>
-          </a>
-  
-          <a *ngIf="login==1" (click)="Company()" class="nonactive" (click)="openCity($event)">
-              <img src="assets/Images/64_GREY/64/Staff.png" class="admin"
-                  [ngClass]="active != 'com' ? 'Active1' : 'Active2'" />
-              <img src="assets/64/Staff.png" class="admin" [ngClass]="active == 'com' ? 'Active1' : 'Active2'" />
-              &nbsp; <span [ngClass]="active == 'com' ? 'Active1' : 'Active3'"> Company</span>
-          </a>
-   -->
   
       <a *ngIf="login == 9 && companyid != 1007" (click)="Staff123()" class="nonactive" (click)="openCity($event)">
         <img src="assets/Images/64_GREY/64/Staff.png" [ngClass]="active != 3 ? 'Active1' : 'Active2'" class="admin" />

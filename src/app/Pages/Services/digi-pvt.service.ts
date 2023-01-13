@@ -11,7 +11,7 @@ export class DigiPVTService {
   // public host = sessionStorage.getItem('digiofficeapiurl');
 
   public host = 'http://localhost:1807'
-
+  public basehost = "https://103.12.1.76//AliLiveUATApi"
 
   // public GetNotification(UserID: any) {
   //   return this.http.get<any[]>(
@@ -1687,11 +1687,6 @@ export class DigiPVTService {
   public InsertStaffOverTimeDetails(data: any) {
     //debugger;
     this.url = this.host + '/Announcement/InsertStaffOverTimeDetails';
-    return this.http.post(this.url, data);
-  }
-  public UpdateStaffOverTimeDetails(data: any) {
-    //debugger;
-    this.url = this.host + '/Announcement/UpdateStaffOverTimeDetails';
     return this.http.post(this.url, data);
   }
 
@@ -4032,6 +4027,53 @@ export class DigiPVTService {
     this.url = this.host + '/Master/RejectEmployeeTransfer';
     return this.http.post(this.url, data);
   }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  public GetPayPeriodSetting(){
+    return this.http.get<any[]>(
+      this.basehost +"/Master/GetPayPeriodSetting"
+    );
+  }
+
+
+  public GetStaffOverTimeDetailsUpload() {
+    return this.http.get<any[]>(
+      this.host + "/Announcement/GetStaffOverTimeDetailsUpload"
+    );
+  }
+
+  public InsertStaffOverTimeDetailsUpload(data: any) {
+    debugger;
+    this.url = this.host + '/Announcement/InsertStaffOverTimeDetailsUpload';
+    return this.http.post(this.url, data);
+  }
+  
+  public UpdateStaffOverTimeDetails(data: any) {
+    debugger;
+    this.url = this.host + '/Announcement/UpdateStaffOverTimeDetails';
+    return this.http.post(this.url, data);
+  }
+
+
 
 }
 

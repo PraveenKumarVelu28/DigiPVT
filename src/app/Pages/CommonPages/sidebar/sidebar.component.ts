@@ -8,7 +8,7 @@ import Swal from 'sweetalert2';
 })
 export class SidebarComponent implements OnInit {
 
- 
+
   constructor(public router: Router) { }
 
   login: any;
@@ -22,7 +22,7 @@ export class SidebarComponent implements OnInit {
   roleid: any;
   companyid: any;
   roledid: any
-  AttendanceEnable:any
+  AttendanceEnable: any
   ExitFormalit: any
   loan: any
   grievanc: any
@@ -41,7 +41,11 @@ export class SidebarComponent implements OnInit {
   Holiday: any
   company: any
   Leave: any;
-  active: any
+  active: any;
+  staff: any
+  overtime: any
+  Attendanc: any
+  chat: any
 
   ngOnInit(): void {
     this.login = sessionStorage.getItem('roledid');
@@ -64,7 +68,6 @@ export class SidebarComponent implements OnInit {
     for (i = 0; i < tablinks.length; i++) {
       tablinks[i].className = tablinks[i].className.replace(" active", "");
     }
-
     evt.currentTarget.className += " active";
   }
 
@@ -103,17 +106,17 @@ export class SidebarComponent implements OnInit {
       }
 
     }
-    else if (this.login == '1'||this.login == '41'||this.UserName=="Admin") {
-      if(this.companyid == 1002){
+    else if (this.login == '1' || this.login == '41' || this.UserName == "Admin") {
+      if (this.companyid == 1002) {
         this.router.navigate(['/Admin/Admindashbaord']);
-      localStorage.setItem('Pagename', 'Home')
+        localStorage.setItem('Pagename', 'Home')
       }
-      else{
-      this.router.navigate(['/Admin/Admindashbaord']);
-      localStorage.setItem('Pagename', 'Home')
+      else {
+        this.router.navigate(['/Admin/Admindashbaord']);
+        localStorage.setItem('Pagename', 'Home')
+      }
     }
-    }
-  
+
     else if (this.login == '9') {
       if (this.companyid == 1001) {
         this.router.navigate(['/HR/ALIAVIDAHRDashboard']);
@@ -237,7 +240,7 @@ export class SidebarComponent implements OnInit {
     this.router.navigate(['/Admin/Helpdeskdash']);
 
   }
-  
+
   public MyTeamWeeklyShift() {
     debugger
     this.active = 'myTeamWeeklyShift';
@@ -305,7 +308,7 @@ export class SidebarComponent implements OnInit {
     localStorage.setItem('Pagename', 'Leave Configuration');
     this.router.navigate(['/HR/LeaveConfigurationdash']);
   }
- 
+
   public Attendanceconfig() {
     debugger
     this.active = 'Attendanceconfig';
@@ -318,15 +321,12 @@ export class SidebarComponent implements OnInit {
     localStorage.setItem('Pagename', 'Upload Attendance');
     this.router.navigate(['/HR/Loadattedance']);
   }
- 
- 
+
   public Company() {
     debugger
     this.active = 'com';
     this.router.navigate(['/Admin/Companydashboard']);
   }
-
-
 
   public Attendancereport() {
     this.active = 24;
@@ -352,10 +352,6 @@ export class SidebarComponent implements OnInit {
     this.router.navigate(['/Employee/OverTimeReports']);
   }
 
-
-
-
-
   public restday() {
     this.active = 'restday';
     localStorage.setItem('Pagename', 'RestDays')
@@ -370,8 +366,6 @@ export class SidebarComponent implements OnInit {
     this.active = 32;
 
   }
-
-
 
   public swal() {
     this.active = 44;
@@ -392,12 +386,10 @@ export class SidebarComponent implements OnInit {
         }
         else {
           Swal.showValidationMessage(`Please enter correct pin`)
-
         }
       }
     })
   }
-
 
   public Staff() {
     debugger
@@ -405,7 +397,6 @@ export class SidebarComponent implements OnInit {
     this.router.navigate(['/HR/EmployeeProfileModify']);
     this.policy = true
   }
-
 
   Leavetype() {
     debugger
@@ -432,7 +423,6 @@ export class SidebarComponent implements OnInit {
     this.router.navigate(['/HR/OTRateDash']);
     this.active = 38;
   }
-
 
   Subsidary() {
     debugger
@@ -472,8 +462,8 @@ export class SidebarComponent implements OnInit {
     this.router.navigate(['/HR/DepartmentMasterDash']);
     this.active = 42;
   }
-  
-  Designation(){
+
+  Designation() {
     debugger
     localStorage.setItem('Pagename', 'Designation Master')
     this.router.navigate(['/HR/DesignationMaster']);
@@ -487,16 +477,12 @@ export class SidebarComponent implements OnInit {
     this.active = 43;
   }
 
-
-  staff: any
   public Staff123() {
     debugger
-
     this.active = 3;
     localStorage.setItem('Pagename', 'Staff')
     this.router.navigate(['/Employee/StaffDashboard']);
   }
-
 
   public Policies() {
     debugger
@@ -506,24 +492,18 @@ export class SidebarComponent implements OnInit {
 
   }
 
-
-
   public logout() {
     debugger
     localStorage.setItem('roledid', "0");
     this.router.navigate(['/Login']).then(() => {
       location.reload();
-    });;;
-
+    });
   }
   public myprofile() {
     debugger
     localStorage.setItem('Pagename', 'Profile ')
     this.router.navigate(['/EmployeeProfileView']);
   }
-
-
-
 
   public openCity(evt: any) {
     var i, tablinks;
@@ -536,28 +516,20 @@ export class SidebarComponent implements OnInit {
     evt.currentTarget.className += " active";
   }
 
-
-
-
-
-
-
   public accountsetting() {
     debugger
     localStorage.setItem('Pagename', 'My Account ')
     this.router.navigate(['/MyAccountSetting']);
   }
 
-  chat: any
+
   public Chat() {
     debugger
     this.active = 22;
     localStorage.setItem('Pagename', 'Chat ')
     this.router.navigate(['/Employee/ViewGroup']);
-
   }
 
-  overtime: any
 
   public MyOverTimeDetails() {
     debugger
@@ -576,16 +548,12 @@ export class SidebarComponent implements OnInit {
         this.router.navigate(['/HR/MyOverTimeDetails']);
       }
     }
-
-    
-
   }
 
-  public  AttendanceCorrection(){
-
-       this.active = 101;
-        localStorage.setItem('Pagename', 'Attendance Correction')
-        this.router.navigate(['/Employee/AttendanceCorrection']);
+  public AttendanceCorrection() {
+    this.active = 101;
+    localStorage.setItem('Pagename', 'Attendance Correction')
+    this.router.navigate(['/Employee/AttendanceCorrection']);
   }
 
   public WeeklyShift() {
@@ -598,10 +566,8 @@ export class SidebarComponent implements OnInit {
       localStorage.setItem('Pagename', 'Weeklyshift ')
       this.router.navigate(['/Employee/WeeklyShift']);
     }
-
-
   }
-  Attendanc: any
+
 
   public AttendenceDetails() {
     debugger

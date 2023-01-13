@@ -528,29 +528,27 @@
         </a>
 
       </div>
-
-
-      <a *ngIf="companyid != 1007" routerLink="/Admin/Help" class="tablinks" (click)="highlight($event)"
-        (click)="help()">
-        <img src="assets/64 Blue/Attendance Report.png" style="width: 13%; margin-right: 17px"
-          [ngClass]="active == 'help' ? 'Active1' : 'Active2'" />
-        <img [ngClass]="active != 'help' ? 'Active1' : 'Active2'" src="assets/64/Attendance Report.png"
-          style="width: 13%; margin-right: 17px" />
-        &nbsp;
-        <span [ngClass]="active == 'help' ? 'Active1' : 'Active3'">Policies and Guidelines</span>
-        &nbsp;
-      </a>
-
-      <a routerLink="/Shared/SupportTicketDashboard" class="tablinks" (click)="highlight($event)"
-        (click)="SupportTickets()">
-        <img src="assets/64 Blue/ATTENDANCE/attendance.png" style="width: 13%; margin-right: 17px"
-          [ngClass]="active == 'SupportTickets' ? 'Active1' : 'Active2'" />
-        <img [ngClass]="active != 'SupportTickets' ? 'Active1' : 'Active2'" src="assets/64/ATTENDANCE/attendance.png"
-          style="width: 13%; margin-right: 17px" />
-        &nbsp;
-        <span [ngClass]="active == 'SupportTickets' ? 'Active1' : 'Active3'">Help Desk</span>
-        &nbsp;
-      </a>
     </div>
+    <a *ngIf="companyid != 1007" routerLink="/Admin/Help" class="tablinks" (click)="highlight($event)"
+    (click)="help()">
+    <img src="assets/64 Blue/Attendance Report.png" style="width: 13%; margin-right: 17px"
+      [ngClass]="active == 'help' ? 'Active1' : 'Active2'" />
+    <img [ngClass]="active != 'help' ? 'Active1' : 'Active2'" src="assets/64/Attendance Report.png"
+      style="width: 13%; margin-right: 17px" />
+    &nbsp;
+    <span [ngClass]="active == 'help' ? 'Active1' : 'Active3'">Policies and Guidelines</span>
+    &nbsp;
+  </a>
+
+  <a routerLink="/Shared/SupportTicketDashboard" class="tablinks" (click)="highlight($event)"
+    (click)="SupportTickets()">
+    <img src="assets/64 Blue/ATTENDANCE/attendance.png" style="width: 13%; margin-right: 17px"
+      [ngClass]="active == 'SupportTickets' ? 'Active1' : 'Active2'" />
+    <img [ngClass]="active != 'SupportTickets' ? 'Active1' : 'Active2'" src="assets/64/ATTENDANCE/attendance.png"
+      style="width: 13%; margin-right: 17px" />
+    &nbsp;
+    <span [ngClass]="active == 'SupportTickets' ? 'Active1' : 'Active3'">Help Desk</span>
+    &nbsp;
+  </a>
   </div>
 </div>

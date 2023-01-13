@@ -4108,6 +4108,38 @@ export class DigiPVTService {
       this.basehost + "/Master/GetComponentMapping"
       );
     }
+
+
+    public InsertComponentMaster(data : any){
+      this.url = 'http://localhost:1807/' +  '/Master/InsertComponentMaster'
+      return this.http.post(this.url, data)
+    }
+    public UpdateComponentMaster(data : any){
+      this.url =this.basehost + '/Master/UpdateComponentMaster'
+      return this.http.post(this.url,data)
+    }
+
+    public DeleteComponentMapping(ID: any) {
+      return this.http.get<any[]>(
+        this.basehost + "/Master/DeleteStaffRestDays?ID=" + ID);
+    }
+    
+  public GetPayrollComponentBulkUpload(){
+    return this.http.get<any[]>(
+      this.basehost +"/Master/GetPayrollComponentBulkUpload"
+    );
+  }
+
+  public InsertPayrollComponentBulkUpload(data: any) {
+    debugger;
+    this.url =   this.host + '/Master/InsertPayrollComponentBulkUpload';
+    return this.http.post(this.url, data);
+  }
+
+  public DeletePayrollComponentBulkUpload(ID : any){
+    return this.http.get<any[]>(
+      this.basehost + "/Master/DeletePayrollComponentBulkUpload?ID=" + ID);
+  }
 }
 
 

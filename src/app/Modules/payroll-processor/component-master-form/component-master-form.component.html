@@ -1,1 +1,38 @@
-<p>component-master-form works!</p>
+<div class="row">
+    <div class="col-md-12">
+        <div class="row">
+            <div class="col-lg-11">
+                <p class="Heading headingcolor">Component Details</p>
+            </div>
+        </div>
+        <div class="card">
+            <div class="row leavereq">
+                <div class="col-md-2">
+                    <label>Name<span class="span">*</span></label>
+                </div>
+                <div class="col-md-4">
+                    <label>Description<span class="span">*</span></label>
+                </div>
+            </div>
+            <div class="row leavereq">
+                <div class="col-md-2">
+                    <input type="text" class="form-control" placeholder="Name" placeholder="Name" [(ngModel)]="Name" >
+                </div>
+                <div class="col-md-4">
+                    <textarea type="text" class="form-control" placeholder="Write here..." rows="4" placeholder="Description" [(ngModel)]="Description"></textarea>
+                </div>  
+            </div> 
+            <br>
+            <div class="row">
+                <div class="col-lg-10"></div>
+                <div class="col-lg-1">
+                    <button   class="form-control Edit"  *ngIf="id!=undefined"  (click)="update()">Update</button>
+                    <button   class="form-control Edit" *ngIf="id==undefined"  (click)="save()">Save</button>
+                </div>
+                <div class="col-lg-1">
+                    <button class="form-control Edit" routerLink='/PayrollProcessor/ComponentMaster'>Cancel</button>
+                </div>
+            </div> 
+        </div>
+    </div>
+</div>

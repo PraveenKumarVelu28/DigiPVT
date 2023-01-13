@@ -199,7 +199,7 @@ export class ComponentMappingFormComponent implements OnInit {
       this.DigiPVTService.InsertComponentMapping(entity).subscribe(
         (data) => {
           Swal.fire('Saved Successfully');
-          location.href = "#/Payroll/ComponentMappingDashboard";
+          location.href = "#/PayrollProcessor/ComponentMappingDashboard";
         }
       );
     } else {
@@ -259,7 +259,7 @@ export class ComponentMappingFormComponent implements OnInit {
       this.DigiPVTService.UpdateComponentMapping(entity).subscribe(
         (data) => {
           Swal.fire('Update Successfully');
-          location.href = "#/Payroll/ComponentMappingDashboard";
+          location.href = "#/PayrollProcessor/ComponentMappingDashboard";
         }
       );
     } else {

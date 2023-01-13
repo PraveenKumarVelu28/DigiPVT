@@ -28,7 +28,7 @@
 
             </div>
             <div class="col-lg-6">
-                <a   routerLink="/Payroll/ComponentMasterForm"><button class="button">Add New</button> </a>
+                <a   routerLink="/PayrollProcessor/ComponentMasterForm"><button class="button">Add New</button> </a>
                 <button class="AddButton" style="width: 182px;margin-top: 1px;height: 30px;;margin-left: 80px;" (click)="exportexcel()">Export to Excel</button>
 
             </div>
@@ -51,7 +51,7 @@
                              
                                 <td>{{list.name}}</td>
                                 <td>{{list.description}}</td>
-                                <td > <button class="upload" [routerLink]="['/Payroll/ComponentMasterForm',list.id]">Edit</button><br><br>
+                                <td > <button class="upload" [routerLink]="['/PayrollProcessor/ComponentMasterForm',list.id]">Edit</button><br><br>
                                     <button class="upload"  (click)="delete(list.id)">Delete</button>
                                 </td>
                             </tr>

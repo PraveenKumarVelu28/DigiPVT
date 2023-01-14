@@ -153,4 +153,8 @@ ul {
     margin-top: -10px;
   
   }
+  .input-date{
+    border-color: blue;
+    content:''
+  }
   

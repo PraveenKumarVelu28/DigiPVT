@@ -2,7 +2,8 @@
 <div class="row">
     <div class="col-md-12">
         <div class="row">
-            <p class="Heading"><u>Staff Dashboard</u></p>
+            <p class="Heading">Staff Dashboard</p>
+                
         </div>
         <br>
         <div class="row FilterClass">
@@ -11,6 +12,7 @@
 
                     <div class="row">
                         <div class="col-lg-1">
+                            <!-- <img src="assets/Images/filter.svg" class="filter-img"> -->
                             <p>Filter By</p>
                         </div>
                         <!-- <div class="col-lg-2">
@@ -85,7 +87,7 @@
                 <table class="table" id="lvs"
                     *ngIf="(stafflist  | paginate: { itemsPerPage: count1, currentPage: p})?.length > 0; else noResults">
                     <thead>
-                        <tr class="heading123">
+                        <tr >
                             <!-- <th>Check Box</th> -->
                             <th>Employee Id</th>
                             <th>Employee Name</th>

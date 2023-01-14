@@ -15,11 +15,12 @@
             <div class="card filtercard">
                 <div class="row">
                     <div class="col-md-1">
+                        <img src="assets/Images/filter.svg" class="filter-img">
                         Filter By
                     </div>
                     <div class="col-md-2">
                         <p>Pay Date
-                            <input class="form-control" type="date" onkeydown="return false"placeholder="Duration" id="sdate" name="sdate"
+                            <input class="form-control input-date  " type="date" onkeydown="return false"placeholder="Duration" id="sdate" name="sdate"
                                 [(ngModel)]="sdate"    (change)="filterbydate()">
                     </div>
                     

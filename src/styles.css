@@ -168,14 +168,14 @@ textarea {
 }
 
 
-.Heading {
+/* .Heading {
   color: #3247d5;
   font-family: "Poppins";
   font-weight: bold;
   font-size: 19px !important;
   padding-left: 5px;
   text-transform: capitalize;
-}
+} */
 
 .text {
   font-family: "Poppins";
@@ -183,12 +183,21 @@ textarea {
   font-weight: bold;
 }
 
+/* .card {
+  padding: 20px;
+  background: #ffffff;
+  box-shadow: 1px 1px 15px 3px rgba(0, 0, 0, 0.12);
+  border-radius: 12px;
+  width: 100%;
+} */
+
 .card {
   padding: 20px;
   background: #ffffff;
   box-shadow: 1px 1px 15px 3px rgba(0, 0, 0, 0.12);
   border-radius: 12px;
   width: 100%;
+  border: none !important
 }
 
 .container-fluid {
@@ -272,15 +281,15 @@ textarea {
   text-transform: uppercase;
   padding: 10px 0 5px;
 } */
-table {
+/* table {
 
   border-radius: 6px;
-}
+} */
 
-.table th {
+/* .table th {
   background-color: #02cfff !important;
   color: #ffffff;
-}
+} */
 
 
 
@@ -393,7 +402,7 @@ button {
   color: #0C275A;
 }
 
-table tbody {
+/* table tbody {
   font-family: 'Poppins';
 }
 
@@ -420,7 +429,7 @@ th:last-of-type {
 tr:last-of-type td:first-of-type {
   border-bottom-left-radius: 10px;
 
-}
+} */
 
 .callenderboxes {
   width: 100%;
@@ -433,7 +442,7 @@ tr:last-of-type td:last-of-type {
   border-bottom-right-radius: 10px;
 }
 
-table,
+/* table,
 tr,
 td {
   border: none !important;
@@ -442,16 +451,16 @@ td {
   font-weight: normal;
   font-size: 13px;
   line-height: 17px;
-  /* identical to box height, or 131% */
+ 
   color: #0C275A;
-}
+} */
 
 .mr-lf-15 {
   margin-left: 15px;
 }
 
 
-tr:nth-child(odd) {
+/* tr:nth-child(odd) {
   background-color: #FFFFFF !important
 }
 
@@ -462,7 +471,7 @@ tr:nth-child(even) {
 .tablepadding {
   padding: 0px;
   margin: 0px;
-}
+} */
 
 .numberblue {
   font-family: 'Poppins';
@@ -765,3 +774,93 @@ ngx-dropzone-label {
   font-weight: bold;
   cursor: pointer;
 }
+
+
+
+
+
+
+th:first-of-type {
+  border-top-left-radius: 10px;
+}
+
+th:last-of-type {
+  border-top-right-radius: 10px;
+}
+
+tr:last-of-type td:first-of-type {
+  border-bottom-left-radius: 10px;
+
+}
+
+
+
+table tbody {
+  font-family: 'Poppins';
+}
+
+table thead {
+  font-family: 'Poppins';
+}
+
+th {
+  white-space: nowrap;
+}
+
+table {
+
+  border-radius: 6px;
+}
+
+.table th {
+  background: #E4EBF4 !important;
+  color: #737373;
+  /* background-color: #02cfff !important; */
+  /* color: #ffffff; */
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 17px;
+  font-family: 'Poppins';
+  font-style: normal;
+}
+input[type="date"]::-webkit-calendar-picker-indicator {
+  color: rgba(0, 0, 0, 0);
+  opacity: 1;
+  display: block;
+  background: url(assets/Images/calander-icon.png) no-repeat;
+  width: 20px;
+  height: 20px;
+  border-width: thin;
+}
+
+.Heading {
+  color: #4F4F4F !important;
+  font-family: "Poppins";
+  font-weight: 600;
+  font-size: 19px !important;
+  padding-left: 5px;
+  text-transform: capitalize;
+  letter-spacing: 0.5px;
+  line-height: 15px;
+  font-style: normal;
+  /* width: 136px;
+  height: 15px;
+  left: 240px;
+  top: 40px; */
+}
+
+.filter-img {
+  position: absolute;
+  height: 18px;
+  left: 13.43%;
+  right: 81.6%;
+  top: 9px;
+}
+
+
+
+
+
+
+
+

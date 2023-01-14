@@ -178,3 +178,46 @@ ul {
     top: 0;
     z-index: 1;
   }
+
+
+  table,
+tr,
+td {
+  border: none !important;
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 17px;
+  /* identical to box height, or 131% */
+  color: #0C275A;
+}
+
+
+tr:nth-child(odd) {
+  background-color: #FFFFFF !important
+}
+
+tr:nth-child(even) {
+  background-color: #F2F2F2 !important
+}
+
+.tablepadding {
+  padding: 0px;
+  margin: 0px;
+}
+
+.form-control {
+  display: block;
+  width: 100%;
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #495057;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+  transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+  font-weight: 400 !important;
+}

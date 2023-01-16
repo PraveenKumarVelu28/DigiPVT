@@ -19,12 +19,62 @@
       </span>
       <span class="icon-text">Dashboard</span>
     </a>
-    <a (click)="Announcement()" [ngClass]="(active == 2 )&&!mini ? 'menu1' : (active == 2)&&mini?'menu-mini':'menu'">
+    <!-- <a (click)="Announcement()" [ngClass]="(active == 2 )&&!mini ? 'menu1' : (active == 2)&&mini?'menu-mini':'menu'">
       <img *ngIf="(active == 2&&!mini)" src="assets/Images/revamp/announcementwhite.png">
       <img *ngIf="active != 2 " src="assets/Images/revamp/announcementnewgray-icon.png">
       <img *ngIf="(active == 2&&mini) " src="assets/Images/revamp/announcementnewblue-icon.png">
 
-      <span class="icon-text">Announcement</span></a>
+      <span class="icon-text">Announcement</span></a> -->
+
+      <a data-toggle="collapse" data-target="#settings"  (click)="settings()" [ngClass]="(active == 2 )&&!mini ? 'menu1' : (active == 2)&&mini?'menu-mini':'menu'">
+        <img *ngIf="(active == 2&&!mini)" src="assets/Images/revamp/announcementwhite.png">
+        <img *ngIf="active != 2 " src="assets/Images/revamp/announcementnewgray-icon.png">
+        <img *ngIf="(active == 2&&mini) " src="assets/Images/revamp/announcementnewblue-icon.png">
+  
+        <span class="icon-text">Settings</span></a>
+  
+        <div id="settings" class="collapse length ">
+          <a (click)="ComponentMaster()" class="nonactive">
+            <span [ngClass]="active == 'ComponentMaster' ? 'Active1' : 'Active3'" class="sub-request">  Component Master</span>
+          </a>
+    
+          <a (click)="ComponentMapping()" class="nonactive">
+    
+            <span [ngClass]="active == 'ComponentMapping' ? 'Active1' : 'Active3'" class="sub-request"> Component Mapping</span>
+          </a>
+    
+    
+    
+          <a (click)="Componentbulkupload()" class="nonactive">
+            <span class="sub-request">Payroll Component bulkupload </span>
+    
+          </a>
+  
+          
+          <a (click)="AttendanceUnits()" class="nonactive">
+            <span class="sub-request">Attendance Units Upload </span>
+    
+          </a>
+  
+        </div>
+
+
+        <a data-toggle="collapse" data-target="#PayRoll"  (click)="PayRoll()" [ngClass]="(active == 'PayRoll' )&&!mini ? 'menu1' : (active == PayRoll)&&mini?'menu-mini':'menu'">
+          <img *ngIf="(active == 'PayRoll'&&!mini)" src="assets/Images/revamp/announcementwhite.png">
+          <img *ngIf="active != 'PayRoll' " src="assets/Images/revamp/announcementnewgray-icon.png">
+          <img *ngIf="(active == 'PayRoll'&&mini) " src="assets/Images/revamp/announcementnewblue-icon.png">
+    
+          <span class="icon-text">PayRoll</span></a>
+
+          <div id="PayRoll" class="collapse length ">
+            <a (click)="InitialPayroll()" class="nonactive">
+              <span [ngClass]="active == 'InitialPayroll' ? 'Active1' : 'Active3'" class="sub-request">Initial Payroll</span>
+            </a>
+            <a (click)="InitialPayrollDetails()" class="nonactive">
+              <span [ngClass]="active == 'InitialPayrollDetails' ? 'Active1' : 'Active3'" class="sub-request">Initial Payroll Details</span>
+            </a>
+          </div>
+  
 
     <a data-toggle="collapse" data-target="#Attendance" (click)="getAttendacmenu()"
       [ngClass]="(active == 8 )&&!mini ? 'menu1' : (active == 9)&&mini?'menu-mini':'menu'">

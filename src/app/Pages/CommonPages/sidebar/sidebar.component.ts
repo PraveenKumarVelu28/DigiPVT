@@ -42,6 +42,7 @@ export class SidebarComponent implements OnInit {
     } else {
       console.log("closing sidebar");
       (document.getElementById("mySidebar") as HTMLInputElement).style.width = "85px";
+      // (document.getElementById("mini") as HTMLInputElement).style.width= "85px";
       (document.getElementById("mySidebar") as HTMLInputElement).style.backgroundColor = 'none';
       // (document.getElementById("main") as HTMLInputElement).style.marginLeft = "85px";
       this.mini = true;
@@ -73,13 +74,21 @@ export class SidebarComponent implements OnInit {
 
 
   }
-  Announcement() {
+  settings() {
     debugger
     this.active = 2;
     localStorage.setItem('Pagename', 'Announcements')
+
     this.router.navigate(['/Admin/AnnouncementDashboard']);
 
   }
+  public PayRoll(){
+    debugger
+    this.active='PayRoll'
+    localStorage.setItem('PayRoll', 'PayRoll')
+
+  }
+
   public AttendenceDetails() {
     debugger
     this.active = 9;
@@ -321,5 +330,45 @@ export class SidebarComponent implements OnInit {
   public getAttendacmenu() {
     this.active = 8;
 
+  }
+
+  public ComponentMaster(){
+    this.active='ComponentMaster'
+       localStorage.setItem("clickname", "Component  Master")
+       this.router.navigate(['/PayrollProcessor/ComponentMaster'])
+
+  }
+
+  public ComponentMapping(){
+    debugger
+    this.active = 'PayrollLoanReport1';
+    localStorage.setItem('Pagename', 'Component Mapping');
+    this.router.navigate(['/PayrollProcessor/ComponentMappingDashboard']);
+
+  }
+  public Componentbulkupload(){
+    debugger
+    this.active = 'bulk';
+    localStorage.setItem('clickname', 'Component bulk upload')
+    this.router.navigate(['/PayrollProcessor/PayrollComponentBulkUpload']);
+
+  }  public AttendanceUnits(){
+    debugger
+    this.active = 9999;
+    localStorage.setItem('Pagename', 'Over Time');
+    this.router.navigate(['/PayrollProcessor/MyTeamOverTimeDetails']);
+  }
+  public InitialPayroll(){
+    this.active='InitialPayrollDetails'
+    localStorage.setItem("clickname", "Priliminary Report")
+    this.router.navigate(['/Payroll/ExecutedInitialPayrollRuns'])
+  }
+  
+  public InitialPayrollDetails(){
+  this.active='InitialPayrollDetails'
+  localStorage.setItem("clickname", "InitialPayroll")
+    this.router.navigate(['/Payroll/InitialPayrollDash'])
+    
+    
   }
 }

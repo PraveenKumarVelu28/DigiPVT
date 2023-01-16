@@ -88,9 +88,9 @@
     <a data-toggle="collapse" data-target="#Attendance" (click)="getAttendacmenu()"
       [ngClass]="(active == 8 )&&!mini ? 'menu1' : (active == 9)&&mini?'menu-mini':'menu'">
       <!-- <i class="material-icons">monetization_on</i> -->
-      <img *ngIf="(active == 8&&!mini)" src="../../../../assets/Images/revamp/attendencewhite-icon.png">
-      <img *ngIf="active != 8 " src="../../../../assets/Images/revamp/attendancenewgray-icon.png">
-      <img *ngIf="(active == 8&&mini)  " src="../../../../assets/Images/revamp/attendancenewblue-icon.png">
+      <img *ngIf="(active == 8&&!mini)" src="assets/Images/revamp/attendencewhite-icon.png">
+      <img *ngIf="active != 8 " src=".assets/Images/revamp/attendancenewgray-icon.png">
+      <img *ngIf="(active == 8&&mini)  " src="assets/Images/revamp/attendancenewblue-icon.png">
       <span class="icon-text">Attendance</span>
     </a>
 
@@ -227,7 +227,7 @@
 
     <a data-toggle="collapse" class="togglebtn " data-target="#Reports" (click)="Reports()"
       [ngClass]="(active == 11 )&&!mini ? 'menu1' : (active == 11)&&mini?'menu-mini':'menu'">
-      <img *ngIf="(active == 11&&!mini)" src="../../../../assets/Images/revamp/reportswhite-icon.png">
+      <img *ngIf="(active == 11&&!mini)" src="assets/Images/revamp/reportswhite-icon.png">
       <img *ngIf="active != 11 " src="/assets/Images/revamp/reportsnewgray-icon.png">
       <img *ngIf="(active == 11&&mini) " src="/assets/Images/revamp/reportsnewblue-icon.png">
       <span class="icon-text"> Reports</span>
@@ -340,7 +340,7 @@
 
     <a (click)="Doccuments()" [ngClass]="(active == 12 )&&!mini ? 'menu1' : (active == 12)&&mini?'menu-mini':'menu'">
       <img *ngIf="(active == 12&&!mini)" src="/assets/Images/revamp/doccumentswhite-icon.png">
-      <img *ngIf="active != 12  " src="../../../../assets/Images/revamp/doccumentsnewgray-icon.png">
+      <img *ngIf="active != 12  " src="assets/Images/revamp/doccumentsnewgray-icon.png">
       <img *ngIf="(active == 12&&mini) " src="assets/Images/revamp/doccumentsnewblue-icon.png">
       <span class="icon-text">Documents</span>
     </a>
@@ -351,7 +351,7 @@
       <span class="icon-text">Help</span>
     </a>
     <div *ngIf="!mini">
-      <img src="../../../../assets/Images/revamp/siderbar-icon.png" class="sidebar-image">
+      <img src="assets/Images/revamp/siderbar-icon.png" class="sidebar-image">
       <br>
       <p class="icon-text1">Can’t find what you
         <br>
@@ -378,6 +378,6 @@
   <div id="main1" class="sidebar" *ngIf="mini">
     <!-- <i class="material-icons"  (click)="toggleSidebar()">info</i> -->
 
-    <img src="../../../../assets/Images/revamp/menuOpen-image.png" (click)="toggleSidebar()">
+    <img src="assets/Images/revamp/menuOpen-image.png" (click)="toggleSidebar()">
   </div>
 </div>

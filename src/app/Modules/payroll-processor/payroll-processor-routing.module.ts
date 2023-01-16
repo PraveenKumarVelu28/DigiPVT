@@ -4,6 +4,8 @@ import { ComponentMappingDashboardComponent } from './component-mapping-dashboar
 import { ComponentMappingFormComponent } from './component-mapping-form/component-mapping-form.component';
 import { ComponentMasterFormComponent } from './component-master-form/component-master-form.component';
 import { ComponentMasterComponent } from './component-master/component-master.component';
+import { ExecutedInitialPayrollRunsComponent } from './executed-initial-payroll-runs/executed-initial-payroll-runs.component';
+import { InitialPayrollDashComponent } from './initial-payroll-dash/initial-payroll-dash.component';
 import { MyTeamOverTimeDetailsComponent } from './my-team-over-time-details/my-team-over-time-details.component';
 import { PayrollComponentBulkUploadComponent } from './payroll-component-bulk-upload/payroll-component-bulk-upload.component';
 import { PayrollProcessorComponent } from './payroll-processor.component';
@@ -19,6 +21,8 @@ const routes: Routes = [
   { path: 'ComponentMaster', component: ComponentMasterComponent },
   { path: 'ComponentMasterForm', component: ComponentMasterFormComponent },
   { path: 'ComponentMasterForm/:id', component: ComponentMasterFormComponent },
+  {path:'ExecutedInitialPayrollRuns',component:ExecutedInitialPayrollRunsComponent},
+  {path:'InitialPayrollDash',component:InitialPayrollDashComponent},
 
 ];
 

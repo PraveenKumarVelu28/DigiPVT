@@ -1,0 +1,471 @@
+<!-- <app-spinner *ngIf="loader"></app-spinner> -->
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-12">
+            <p class="Heading1">Initial Payroll Details</p>
+        </div>
+    </div>
+    <div class="card" *ngIf="selectrun==1">
+
+        <div class="row FilterClass fontheading" style="color:#0C275A">
+
+            <div class="col-lg-1">
+                <p>Filter By</p>
+            </div>
+
+            <div class="col-lg-2">
+
+                <input class="form-control search" type="date" [(ngModel)]="PayDate"  (change)="filteremployee()"
+                    placeholder="PayDate">
+                <!-- <select name="Month" id="Month" class="form-control" (change)="filteremployee()" [(ngModel)]="Duration">
+                    <option value="" disabled selected>Select Month </option>
+                    <option value="1">January </option>
+                    <option value="2">February </option>
+                    <option value="3">March </option>
+                    <option value="4">April </option>
+                    <option value="5">May </option>
+                    <option value="6">June </option>
+                    <option value="7">July</option>
+                    <option value="8">August </option>
+                    <option value="9">September </option>
+                    <option value="10">October </option>
+                    <option value="11">November </option>
+                    <option value="12">December </option>
+                </select> -->
+                <!-- <input style="color:#0C275A" class="form-control" type="date" placeholder="Duration"
+                    [(ngModel)]="Duration" (ngModelChange)="filteremployee()"> -->
+            </div>
+            <div class="col-lg-3" style="color:#0C275A">
+                <input class="form-control search" type="search" [(ngModel)]="Search" (ngModelChange)="Filterstaff()"
+                    placeholder="Search">
+            </div>
+            
+                <div class="col-lg-2">
+                    
+                        <select class="form-control" id="Department" name="Department" [(ngModel)]="Department"
+                            (change)="filterByDepartment()">
+                            <option value="" disabled selected>Select Department</option>
+                            <option value="{{item.department_name}}" *ngFor="let item of Departmentlist">
+                                {{item.department_name}}
+                            </option>
+                        </select>
+                   
+                </div>
+                <!-- <button class="form-control CancelBTN" type="button" (click)="currentmonth()">Current Month
+                </button> -->
+           
+            <div class="col-md-3">
+                <button class="form-control CancelBTN" type="button" >Export To Excel
+                </button>
+            </div>
+
+            <!-- (click)="exportexcel()" -->
+        </div>
+    </div>
+    <div class="card"  *ngIf="finalpayroll==1" >
+
+        <div class="row FilterClass fontheading" style="color:#0C275A">
+
+            <div class="col-lg-1">
+                <p>Filter By</p>
+            </div>
+
+           
+            <div class="col-lg-3" style="color:#0C275A">
+                <input class="form-control search" type="search" [(ngModel)]="Search" (ngModelChange)="Filterjobs()"
+                    placeholder="Search">
+            </div>
+            
+                <div class="col-lg-2">
+                    
+                        <select class="form-control" id="Department" name="Department" [(ngModel)]="Department"
+                            (change)="filterByDepartmentFinal()">
+                            <option value="">Select Department</option>
+                            <option value="{{item.department_name}}" *ngFor="let item of Departmentlist">
+                                {{item.department_name}}
+                            </option>
+                        </select>
+                   
+                </div>
+                <!-- <button class="form-control CancelBTN" type="button" (click)="currentmonth()">Current Month
+                </button> -->
+           
+            <div class="col-md-3">
+                <button class="form-control CancelBTN" type="button" >Export To Excel
+                </button>
+            </div>
+            <!-- (click)="exportexcel()" -->
+
+        </div>
+    </div>
+    <br>
+   
+    <div class="row">
+        <div class="col-lg-6 dashbutton bttn">
+            <!-- <div class="tab-slider--nav">
+                        <ul class="tab-slider--tabs">
+                            <li class="tab-slider--trigger" [class.active]="viewMode == 'tab1'" rel="tab1"
+                                (click)="viewMode ='tab1'">
+                                Normal Payroll</li>
+                           
+                        </ul>
+                    </div> -->
+        </div>
+        <div class="col-lg-2"></div>
+        <div class="col-lg-2">
+
+        </div>
+
+        <!-- <div class="col-lg-2">
+          
+            <button class="form-control  CancelBTN" style="width:80%;" *ngIf="selectrun==1" routerLink='/RunPayroll'>Run Payroll</button>
+
+            <button class="form-control  CancelBTN" style="width:80%;" *ngIf="thirteenthrunpayroll2==1" routerLink='/ThirtheenMonthPayroll'>13th Payroll</button>
+
+            <button class="form-control  CancelBTN" style="width:80%;" *ngIf="finalpayroll==1" routerLink='/FinalPayroll'>Final Payroll</button>
+        </div> -->
+    </div><br>
+    <div class="row">
+        <div class="col-lg-4">
+
+        </div>
+        <div class="col-lg-5">
+            
+        </div>
+        <div class="col-lg-3">
+            <p>Total Amount: {{totalamount|number:'1.2-2'}} </p>
+        </div>
+
+    </div>
+    <div class="row">
+        <br />
+        <div class="col-lg-12 dashbutton bttn">
+            <div class="tab-slider--nav">
+                <ul class="tab-slider--tabs">
+                    <li class="tab-slider--trigger" [class.active]="viewMode == 'tab1'" rel="tab1"
+                        (click)="viewMode ='tab1'" (click)="runpayroll()">
+                        Normal Payroll</li>
+                    <!-- <li class="tab-slider--trigger" [class.active]="viewMode == 'tab2'" rel="tab2"
+                        (click)="viewMode ='tab2'" (click)="thirteenthrunpayroll()">13th Month Payroll</li> -->
+                    <li class="tab-slider--trigger" [class.active]="viewMode == 'tab3'" rel="tab3"
+                        (click)="viewMode ='tab3'" (click)="FinalPayroll()">Final Payroll</li>
+                </ul>
+
+            </div>
+        </div>
+        
+
+    </div>
+
+    
+    <div class="row smalltable" >
+
+        <div class="tab-slider--container" [ngSwitch]="viewMode">
+            <div *ngSwitchCase="'tab1'" id="tab1">
+                <div class="row tablehead">
+                    <div class="col-lg-6"></div>
+                    <div class="col-lg-4">
+                       
+                        <td>
+                            <button class="upload" style="Width:200px;margin-bottom: 10px;" (click)="DeleteInitialPayroll()">Delete</button>
+                       <br/>
+                        </td>
+                      
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-8">
+                        <p class="active Heading1" style="text-align: center;">Employees in selected Period</p>
+                        <a class="active fontheading" (click)="selectALL(true)" >Select ALL</a>
+                    </div>
+                   
+            
+            
+                </div>
+                <div class="col-lg-12 ">
+                    <table class="table" id="lvs"
+                        *ngIf="(employeelist |paginate: { itemsPerPage: count1, currentPage: p}).length > 0; else noResults" >
+                        <thead>
+                            <tr>
+                                <th>Select</th> 
+                                <th>Employee ID</th>
+                                <th>Start Date</th>
+                                <th>End Date</th>
+                                <th>Employee Name</th>
+                                <th>Department</th>
+                                <th>Basic Monthly Salary</th>
+                                <!-- <th>Deminimis</th> -->
+                               
+                                <th>Semi Monthly Salary</th>
+                                <th colspan="2" class="v1">Earnings</th>
+                                <th colspan="2" class="v1">Other Earnings</th>
+                                <th colspan="5" style="text-align:center" class="v1">Deductions</th>
+                                <th colspan="1" class="v1">Other Deductions</th>
+                                <th class="v1">Tax</th>
+                                <th class="v1">Net Pay</th>
+                                <!-- <th>Action</th> -->
+                            </tr>
+                            <tr>
+                                <!-- <th>Check Box</th> -->
+                                <th colspan="8"></th>                               
+                                <th class="v1">OT And Night Differentials</th>
+                                <th ></th>
+                                <th class="v1"></th>
+                                <th></th>
+                                <th class="v1">SSS Rate</th>
+                                <th class="v1">Pag-IBIG Rate</th>
+                                <th class="v1">PhilHealth Contribution</th>
+                                <th class="v1">MPF Contribution</th>
+                                <!-- <th class="v1">Tax</th> -->
+                                <th class="v1">Lwop Amount</th>
+                                <th></th>
+                                <th class="v1"></th>
+                                <th class="v1"></th>
+                            
+                                <th colspan="5"></th>                       
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr 
+                                *ngFor="let item of employeelist456 |filter:Search |paginate: { itemsPerPage: count1, currentPage: p }  | filter: Duration">
+                                <td>
+                                    <input type="checkbox" 
+                                        [(ngModel)]="item.checked" [value]="item.value" (click)="getCheckbocdetails(item,$event)"
+                                        >&nbsp;
+                                </td>
+                                <td style="color:#0C275A">{{item.employeeid1}}</td>
+                                <td style="color:#0C275A">{{item.startdate|date}}</td>
+                                <td style="color:#0C275A">{{item.enddate|date}}</td>
+                                <td style="color:#0C275A">{{item.firstAndLastName}}</td>
+                                <td style="color:#0C275A">{{item.department_name}}</td>
+                                <td style="color:#0C275A">{{item.grossSalary}}</td>
+                                <!-- <td style="color:#0C275A"> {{item.deniminimis_amount}}</td> -->
+                                <td style="color:#0C275A"> {{item.grossSalary/2}}</td>
+                                <td style="color:#0C275A"> {{item.otamount}}</td>
+                                <td colspan="2"></td>
+                                <td  style="color:#0C275A">{{item.otherIncome}}</td>
+
+                                <td style="color:#0C275A">{{item.contribution}}</td>
+                                <td style="color:#0C275A">{{item.pagBig}}</td>
+                                <td style="color:#0C275A">{{item.philHealthContribution}}</td>
+                                <td style="color:#0C275A">{{item.mpfContributionEC}}</td>
+                                
+                                <td style="color:#0C275A">{{item.lopamount}}</td>
+                                
+                                <td style="color:#0C275A">{{item.otherDeductions}}</td>
+                               
+                              
+                              
+                                <!-- <td style="color:#0C275A">
+                                    <p *ngIf="item.otamount!=null">{{item.otamount}}</p>
+                                    <p *ngIf="item.otamount==null">0</p>
+                                </td> -->
+                                <td style="color:#0C275A">{{item.tax}}</td>
+                                <td style="color:#0C275A">{{item.netMonthSalary}}</td>
+                                <!-- <td>
+                                    <button class="upload" (click)="DeleteInitialPayroll(item.staffID)">Delete</button>
+                                </td>
+                               -->
+
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+                <div class="text-left">
+                    <br>
+                    <pagination-controls (pageChange)="p = $event" class="poppinns"></pagination-controls>
+                </div>
+                <ng-template #noResults>
+                    <div class="card">
+                        <p class="NoResultShow"> No results found</p>
+                    </div>
+                </ng-template>
+                <br>
+            </div>
+            
+            <div *ngSwitchCase="'tab2'" id="tab2">
+                <div class="row tablehead">
+                    <div class="col-lg-8"></div>
+                    <div class="col-lg-4">
+                        <h5 style="text-align: center;margin-left: 66px;"></h5>
+                    </div>
+                </div>
+                <div class="row">
+                  
+                <div class="col-lg-12 ">
+                    <table class="table" id="lvs" style="width: 145%;"   *ngIf="(thirteenthlist |paginate: { itemsPerPage: count1, currentPage: p}).length" >
+                        <thead>
+                            <tr>
+                                <!-- <th>Check Box</th> -->
+                              
+                                <th>Employee Name</th>
+                                <th>Department</th>
+
+                                <th>Role</th>
+                                <th>Year</th>
+                                <th>Basic Salary</th>
+                                <th *ngIf="ComputationDeminimis==true">Deminimis Amount</th>
+                                <th>Leave Encashment</th>
+                                <th>13th Month Bonus</th>
+                                <th>Net Pay</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let item of thirteenthlist">
+                               <td>{{item.firstName}}</td>
+                               <td>{{item.department_name}}</td>
+                               <td>{{item.emprole}}</td>
+                               <td>{{item.year}}</td>
+                               <td>{{item.basicsalary}}</td>
+                               <td *ngIf="ComputationDeminimis==true" >{{item.deminimsamount}}</td>
+                              <td>{{item.Leaveencashpayout}}</td>
+                               <td>{{item.christmasbonus}}</td>
+                               <td><p *ngIf="ComputationDeminimis==true">
+                                {{item.monthlysalary}}
+                              </p>
+
+                              <p *ngIf="ComputationDeminimis==false">
+                                {{item.basicsalary}}
+                              </p>
+                            </td>
+                               
+
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="text-left">
+                        <br>
+                        <pagination-controls (pageChange)="p = $event" class="poppinns"></pagination-controls>
+                    </div>
+                    <ng-template #noResults>
+                        <div class="card">
+                            <p class="NoResultShow"> No results found</p>
+                        </div>
+                    </ng-template>
+                </div>
+                </div>
+            </div>
+
+
+
+            <div *ngSwitchCase="'tab3'" id="tab3">
+                <div class="row tablehead">
+                    <div class="col-lg-8"></div>
+                    <div class="col-lg-4">
+                        <h5 style="text-align: center;margin-left: 66px;"></h5>
+                    </div>
+                </div>
+                <div class="col-lg-12 ">
+                    <table class="table" id="lvs" *ngIf="(finalist |paginate: { itemsPerPage: count1, currentPage: p}).length" >
+                        <thead>
+                            <tr>
+                                <!-- <th>Check Box</th> -->
+                                
+                                <th>Employee Name</th>
+                               <th>Department</th>
+                               <th>Role</th>
+                                <th>Gross Salary </th>
+                                <th>Deminimis</th>
+                                
+                                <th>SSS Rate</th>
+                                <th>Pag-IBIG Rate</th>
+                                <th>PhilHealth Contribution</th>
+                                <th>Tax</th>
+                               
+                                <th>Benefits</th>
+                                <th>Leave Encashment</th>
+                                <th>13th Month Bonus</th>
+                                <th>Net Pay</th>
+                               
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let item of finalist|filter:Search">
+                               
+                                <td style="color:#0C275A">{{item.name}}</td>
+                                <td style="color:#0C275A">{{item.department_name}}</td>
+                                <td style="color:#0C275A">{{item.emprole}}</td>
+                                <td style="color:#0C275A">{{item.monthlysalaryperperiod}}</td>
+                                <td style="color:#0C275A"> {{item.deminimsamount}}</td>
+                               
+                                <td style="color:#0C275A">{{item.contribution}}</td>
+                                <td style="color:#0C275A">{{item.pagBig}}</td>
+                                <td style="color:#0C275A">{{item.philHealthContribution}}</td>
+                                <td style="color:#0C275A">{{item.tax}}</td>
+                               
+                                <td style="color:#0C275A">{{item.benefits}} </td>
+                                <td>{{item.leaveencashpayout}}</td>
+                                <td>{{item.christmasbonus|number:'1.2-2'}}</td>
+                                <td style="color:#0C275A">{{item.netSalary}}</td>
+                               
+
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="text-left">
+                        <br>
+                        <pagination-controls (pageChange)="p = $event" class="poppinns"></pagination-controls>
+                    </div>
+                    <ng-template #noResults>
+                        <div class="card">
+                            <p class="NoResultShow"> No results found</p>
+                        </div>
+                    </ng-template>
+                </div>
+            </div>
+            <!-- <div class="container-fluid">
+                <div class="row ">
+                    <div class="col-lg-12">
+                        <table class="table" id="lvs">
+                            <thead>
+                                <tr>
+                                   
+                                    <th>Start Date</th>
+                                    <th>End Date</th>
+                                    <th>Employee Name</th>
+                                    <th>Gross Salary</th>
+                                    <th>SSS Rate</th>
+                                    <th>Pag big Rate</th>
+                                    <th>PhilHealth Contribution</th>
+                                    <th>Tax</th>
+                                    <th>Lop Days</th>
+                                    <th>Lop Amount</th>
+                                    <th>Net Pay</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let item of employeelist">
+                                    <td>{{item.startdate|date}}</td>
+                                    <td>{{item.enddate|date}}</td>
+                                    <td>{{item.staffname}}</td>
+                                    <td>{{item.grossSalary}}</td>
+                                    <td>{{item.contribution}}</td>
+                                    <td>{{item.pagBig}}</td>
+                                    <td>{{item.philHealthContribution}}</td>
+                                    <td>{{item.tax}}</td>
+                                    <td>{{item.lopdays}}</td>
+                                    <td>{{item.lopamount}}</td>
+                                    <td>{{item.netMonthSalary}}</td>
+    
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div> -->
+        </div>
+    </div>
+
+
+
+
+
+
+
+    
+
+
+
+
+  

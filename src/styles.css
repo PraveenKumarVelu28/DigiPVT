@@ -858,7 +858,11 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 }
 
 
-
+#main {
+  padding: 16px;
+  margin-left: 85px;
+  transition: margin-left 0.5s;
+}
 
 
 

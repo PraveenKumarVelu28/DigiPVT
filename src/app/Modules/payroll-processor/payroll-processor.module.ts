@@ -12,6 +12,7 @@ import { MyTeamOverTimeDetailsComponent } from './my-team-over-time-details/my-t
 import { SharedModule } from '../shared/shared.module';
 import { InitialPayrollDashComponent } from './initial-payroll-dash/initial-payroll-dash.component';
 import { ExecutedInitialPayrollRunsComponent } from './executed-initial-payroll-runs/executed-initial-payroll-runs.component';
+import { StaffLeavesUploadComponent } from './staff-leaves-upload/staff-leaves-upload.component';
 
 
 @NgModule({
@@ -24,10 +25,10 @@ import { ExecutedInitialPayrollRunsComponent } from './executed-initial-payroll-
     PayrollComponentBulkUploadComponent,
     MyTeamOverTimeDetailsComponent,
     InitialPayrollDashComponent,
-    ExecutedInitialPayrollRunsComponent
+    ExecutedInitialPayrollRunsComponent,
+    StaffLeavesUploadComponent
   ],
   imports: [
-    CommonModule,
     PayrollProcessorRoutingModule,
     SharedModule
   ]

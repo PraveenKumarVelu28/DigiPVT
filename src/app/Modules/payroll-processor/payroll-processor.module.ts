@@ -13,6 +13,8 @@ import { SharedModule } from '../shared/shared.module';
 import { InitialPayrollDashComponent } from './initial-payroll-dash/initial-payroll-dash.component';
 import { ExecutedInitialPayrollRunsComponent } from './executed-initial-payroll-runs/executed-initial-payroll-runs.component';
 import { StaffLeavesUploadComponent } from './staff-leaves-upload/staff-leaves-upload.component';
+import { PayperiodSettingsDashComponent } from './payperiod-settings-dash/payperiod-settings-dash.component';
+import { PayperiodSettingsFormComponent } from './payperiod-settings-form/payperiod-settings-form.component';
 
 
 @NgModule({
@@ -26,7 +28,9 @@ import { StaffLeavesUploadComponent } from './staff-leaves-upload/staff-leaves-u
     MyTeamOverTimeDetailsComponent,
     InitialPayrollDashComponent,
     ExecutedInitialPayrollRunsComponent,
-    StaffLeavesUploadComponent
+    StaffLeavesUploadComponent,
+    PayperiodSettingsDashComponent,
+    PayperiodSettingsFormComponent
   ],
   imports: [
     PayrollProcessorRoutingModule,

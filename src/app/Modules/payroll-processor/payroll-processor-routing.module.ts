@@ -7,6 +7,8 @@ import { ComponentMasterComponent } from './component-master/component-master.co
 import { ExecutedInitialPayrollRunsComponent } from './executed-initial-payroll-runs/executed-initial-payroll-runs.component';
 import { InitialPayrollDashComponent } from './initial-payroll-dash/initial-payroll-dash.component';
 import { MyTeamOverTimeDetailsComponent } from './my-team-over-time-details/my-team-over-time-details.component';
+import { PayperiodSettingsDashComponent } from './payperiod-settings-dash/payperiod-settings-dash.component';
+import { PayperiodSettingsFormComponent } from './payperiod-settings-form/payperiod-settings-form.component';
 import { PayrollComponentBulkUploadComponent } from './payroll-component-bulk-upload/payroll-component-bulk-upload.component';
 import { PayrollProcessorComponent } from './payroll-processor.component';
 
@@ -23,6 +25,9 @@ const routes: Routes = [
   { path: 'ComponentMasterForm/:id', component: ComponentMasterFormComponent },
   {path:'ExecutedInitialPayrollRuns',component:ExecutedInitialPayrollRunsComponent},
   {path:'InitialPayrollDash',component:InitialPayrollDashComponent},
+  { path: 'PayperiodSettingsDash', component: PayperiodSettingsDashComponent },
+  { path: 'PayperiodSettingsForm', component: PayperiodSettingsFormComponent },
+  { path: 'PayperiodSettingsForm/:id', component: PayperiodSettingsFormComponent },
 
 ];
 

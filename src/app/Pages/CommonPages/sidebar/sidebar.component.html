@@ -6,18 +6,28 @@
 
 
     </div>
-    <div class="menu-icon"> <img *ngIf="mini" class="digi-icon" src="../../../../assets/Images/revamp/digi-icon.png">
-      <img *ngIf="!mini" class="digi-icon" src="../../../../assets/Images/revamp/Logo_digiOffice.png">
-      <img src="../../../../assets/Images/revamp/menuClose-image.png" style="    height: 1%;
+    <div class="menu-icon"> <img *ngIf="mini" class="digi-icon" src="assets/Images/revamp/digi-icon.png">
+      <img *ngIf="!mini" class="digi-icon" src="assets/Images/revamp/Logo_digiOffice.png">
+      <img src="assets/Images/revamp/menuClose-image.png" style="    height: 1%;
       " (click)="toggleSidebar()" *ngIf="!mini">
     </div>
     <a (click)="Home()" [ngClass]="(active == 1)&&!mini ? 'menu1' :(active == 1)&&mini?'menu-mini' :'menu'">
       <span>
-        <img *ngIf="(active == 1&&!mini)" src="../../../../assets/Images/revamp/dashboardwhite-icon.png">
-        <img *ngIf="active != 1" src="../../../../assets/Images/revamp/dashboardgray-icon.png">
-        <img *ngIf="(active == 1&&mini)" src="../../../../assets/Images/revamp/dashboardnewblue-icon.png">
+        <img *ngIf="(active == 1&&!mini)" src="assets/Images/revamp/dashboardwhite-icon.png">
+        <img *ngIf="active != 1" src="assets/Images/revamp/dashboardgray-icon.png">
+        <img *ngIf="(active == 1&&mini)" src="assets/Images/revamp/dashboardnewblue-icon.png">
       </span>
       <span class="icon-text">Dashboard</span>
+    </a>
+
+  
+    <a (click)="Staff123()"  *ngIf="login == 9 && companyid != 1007" [ngClass]="(active == 1)&&!mini ? 'menu1' :(active == 1)&&mini?'menu-mini' :'menu'">
+      <span>
+        <img *ngIf="(active == 1&&!mini)" src="assets/Images/revamp/dashboardwhite-icon.png">
+        <img *ngIf="active != 1" src="assets/Images/revamp/dashboardgray-icon.png">
+        <img *ngIf="(active == 1&&mini)" src="assets/Images/revamp/dashboardnewblue-icon.png">
+      </span>
+      <span class="icon-text">Staff</span>
     </a>
     <!-- <a (click)="Announcement()" [ngClass]="(active == 2 )&&!mini ? 'menu1' : (active == 2)&&mini?'menu-mini':'menu'">
       <img *ngIf="(active == 2&&!mini)" src="assets/Images/revamp/announcementwhite.png">
@@ -39,17 +49,16 @@
           </a>
     
           <a (click)="ComponentMapping()" class="nonactive">
-    
             <span [ngClass]="active == 'ComponentMapping' ? 'Active1' : 'Active3'" class="sub-request"> Component Mapping</span>
           </a>
     
-    
-    
           <a (click)="Componentbulkupload()" class="nonactive">
             <span class="sub-request">Payroll Component bulkupload </span>
-    
           </a>
-  
+
+          <a (click)="PayperiodSetting()" class="nonactive">
+            <span class="sub-request">PayPeriod Setting </span>
+          </a>
           
           <a (click)="AttendanceUnits()" class="nonactive">
             <span class="sub-request">Attendance Units Upload </span>

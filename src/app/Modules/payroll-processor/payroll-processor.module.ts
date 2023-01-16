@@ -10,6 +10,8 @@ import { ComponentMappingFormComponent } from './component-mapping-form/componen
 import { PayrollComponentBulkUploadComponent } from './payroll-component-bulk-upload/payroll-component-bulk-upload.component';
 import { MyTeamOverTimeDetailsComponent } from './my-team-over-time-details/my-team-over-time-details.component';
 import { SharedModule } from '../shared/shared.module';
+import { InitialPayrollDashComponent } from './initial-payroll-dash/initial-payroll-dash.component';
+import { ExecutedInitialPayrollRunsComponent } from './executed-initial-payroll-runs/executed-initial-payroll-runs.component';
 
 
 @NgModule({
@@ -20,7 +22,9 @@ import { SharedModule } from '../shared/shared.module';
     ComponentMappingDashboardComponent,
     ComponentMappingFormComponent,
     PayrollComponentBulkUploadComponent,
-    MyTeamOverTimeDetailsComponent
+    MyTeamOverTimeDetailsComponent,
+    InitialPayrollDashComponent,
+    ExecutedInitialPayrollRunsComponent
   ],
   imports: [
     CommonModule,

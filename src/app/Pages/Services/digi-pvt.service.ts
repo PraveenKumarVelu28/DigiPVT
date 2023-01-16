@@ -11,8 +11,8 @@ export class DigiPVTService {
   // public host = sessionStorage.getItem('digiofficeapiurl');
 
   // public host = 'http://localhost:1807'
-  public host='https://103.12.1.76/DigiPVTAPI/'
-  public basehost = "https://103.12.1.76//AliLiveUATApi"
+  public host='https://103.12.1.76/DigiPVTAPI'
+  // public basehost = "https://103.12.1.76//AliLiveUATApi"
 
   // public GetNotification(UserID: any) {
   //   return this.http.get<any[]>(
@@ -3547,125 +3547,6 @@ export class DigiPVTService {
   }
 
 
-
-  // public GetComponentMapping() {
-  //   return this.http.get<any[]>(
-  //     this.basehost + "/Master/GetComponentMapping"
-  //   );
-  // }
-
-  // public GetComponentMaster() {
-  //   return this.http.get<any[]>(
-  //     this.basehost + "/Master/GetComponentMaster"
-  //   );
-  // }
-
-  // public DeleteComponentMapping(ID: any) {
-  //   return this.http.get<any[]>(
-  //     this.basehost + "/Master/DeleteStaffRestDays?ID=" + ID);
-  // }
-
-  // public InsertComponentMapping(data: any) {
-  //   //debugger;
-  //   this.url = this.basehost + '/Master/InsertComponentMapping';
-  //   return this.http.post(this.url, data);
-  // }
-
-
-  // public UpdateComponentMapping(data: any) {
-  //   //debugger;
-  //   this.url = this.basehost + '/Master/UpdateComponentMapping';
-  //   return this.http.post(this.url, data);
-  // }
-
-  // public InsertComponentMaster(data: any) {
-  //   this.url = this.basehost + '/Master/InsertComponentMaster'
-  //   return this.http.post(this.url, data)
-  // }
-
-  // public UpdateComponentMaster(data: any) {
-  //   this.url = this.basehost + '/Master/UpdateComponentMaster'
-  //   return this.http.post(this.url, data)
-  // }
-
-  // public DeleteComponentMaster(ID: any) {
-  //   return this.http.get<any[]>(
-  //     this.basehost + "/Master/DeleteComponentMaster?ID=" + ID);
-  // }
-
-
-  // public GetBIR2316Mapping() {
-  //   return this.http.get<any[]>(
-  //     this.basehost + "/Master/GetBIR2316Mapping"
-  //   );
-  // }
-
-  // public InsertBIR2316Mapping(data: any) {
-  //   this.url = this.basehost + "/Master/InsertBIR2316Mapping"
-  //   return this.http.post(this.url, data)
-  // }
-
-  // public DeleteBIR2316Mapping(ID: any) {
-  //   return this.http.get<any[]>(
-  //     this.basehost + "/Master/DeleteBIR2316Mapping?ID=" + ID);
-  // }
-
-  // public sendemail1(data: any) {
-  //   //debugger;
-  //   this.url = this.host + '/Master/sendemail';
-  //   return this.http.post(this.url, data);
-  // }
-  // public InsertPayslip(data: any) {
-  //   //debugger;
-  //   this.url = this.host + '/Master/InsertPayslip';
-  //   return this.http.post(this.url, data);
-  // }
-
-  // public sendemail(body: any, Email: any, subject: any) {
-  //   //debugger
-  //   return this.http.get<any[]>(this.host + "/MobileUser/SendMail?Body=" + body + "&Email=" + Email + "&subject=" + subject);
-  // }
-
-  // public GetPayPeriodSetting() {
-  //   return this.http.get<any[]>(
-  //     this.basehost + "/Master/GetPayPeriodSetting"
-  //   );
-  // }
-
-  // public DeletePayPeriodSetting(ID: any) {
-  //   return this.http.get<any[]>(
-  //     this.basehost + "/Master/DeletePayPeriodSetting?ID=" + ID);
-  // }
-
-  // public InsertPayPeriodSetting(data: any) {
-  //   //debugger;
-  //   this.url = this.basehost + '/Master/InsertPayPeriodSetting';
-  //   return this.http.post(this.url, data);
-  // }
-
-  // public UpdatePayPeriodSetting(data: any) {
-  //   this.url = this.basehost + '/Master/UpdatePayPeriodSetting'
-  //   return this.http.post(this.url, data)
-  // }
-
-
-  // public GetPayrollComponentBulkUpload() {
-  //   return this.http.get<any[]>(
-  //     this.basehost + "/Master/GetPayrollComponentBulkUpload"
-  //   );
-  // }
-
-  // public InsertPayrollComponentBulkUpload(data: any) {
-  //   //debugger;
-  //   this.url = this.host + '/Master/InsertPayrollComponentBulkUpload';
-  //   return this.http.post(this.url, data);
-  // }
-
-  // public DeletePayrollComponentBulkUpload(ID: any) {
-  //   return this.http.get<any[]>(
-  //     this.basehost + "/Master/DeletePayrollComponentBulkUpload?ID=" + ID);
-  // }
-
   public GetYearEndElection() {
     return this.http.get<any[]>(this.host + "/vendor/GetYearEndElection")
   }
@@ -3682,10 +3563,6 @@ export class DigiPVTService {
     this.url = this.host + '/Master/UpdateVaccinationDetails';
     return this.http.post(this.url, data);
   }
-
-
-
-
 
 
   public InsertCompany_AddressDetails(json: any) {
@@ -4051,7 +3928,7 @@ export class DigiPVTService {
 
   public GetPayPeriodSetting(){
     return this.http.get<any[]>(
-      this.basehost +"/Master/GetPayPeriodSetting"
+      this.host +"/Master/GetPayPeriodSetting"
     );
   }
 
@@ -4074,59 +3951,64 @@ export class DigiPVTService {
     return this.http.post(this.url, data);
   }
 
+
+
+
+
+
   public GetComponentMaster(){
     return this.http.get<any[]>(
-      this.basehost +"/Master/GetComponentMaster"
+      this.host +"/Master/GetComponentMaster"
     );
   }
   
   public DeleteComponentMaster(ID : any){
     return this.http.get<any[]>(
-      this.basehost + "/Master/DeleteComponentMaster?ID=" + ID);
+      this.host + "/Master/DeleteComponentMaster?ID=" + ID);
   }
 
   public GetComponentMasterNotInComponentMapping(){
     return this.http.get<any[]>(
-      this.basehost +"/Master/GetComponentMasterNotInComponentMapping"
+      this.host +"/Master/GetComponentMasterNotInComponentMapping"
     );
   }
 
   public UpdateComponentMapping(data: any) {
     debugger;
-    this.url = this.basehost + '/Master/UpdateComponentMapping';
+    this.url = this.host + '/Master/UpdateComponentMapping';
     return this.http.post(this.url, data);
   }
 
   public InsertComponentMapping(data: any) {
     debugger;
-    this.url = this.basehost+ '/Master/InsertComponentMapping';
+    this.url = this.host+ '/Master/InsertComponentMapping';
     return this.http.post(this.url, data);
   }
 
   public GetComponentMapping() {
     return this.http.get<any[]>(
-      this.basehost + "/Master/GetComponentMapping"
+      this.host + "/Master/GetComponentMapping"
       );
     }
 
 
     public InsertComponentMaster(data : any){
-      this.url = 'http://localhost:1807/' +  '/Master/InsertComponentMaster'
+      this.url = this.host+ '/Master/InsertComponentMaster'
       return this.http.post(this.url, data)
     }
     public UpdateComponentMaster(data : any){
-      this.url =this.basehost + '/Master/UpdateComponentMaster'
+      this.url =this.host + '/Master/UpdateComponentMaster'
       return this.http.post(this.url,data)
     }
 
     public DeleteComponentMapping(ID: any) {
       return this.http.get<any[]>(
-        this.basehost + "/Master/DeleteStaffRestDays?ID=" + ID);
+        this.host + "/Master/DeleteStaffRestDays?ID=" + ID);
     }
     
   public GetPayrollComponentBulkUpload(){
     return this.http.get<any[]>(
-      this.basehost +"/Master/GetPayrollComponentBulkUpload"
+      this.host +"/Master/GetPayrollComponentBulkUpload"
     );
   }
 
@@ -4138,7 +4020,7 @@ export class DigiPVTService {
 
   public DeletePayrollComponentBulkUpload(ID : any){
     return this.http.get<any[]>(
-      this.basehost + "/Master/DeletePayrollComponentBulkUpload?ID=" + ID);
+      this.host + "/Master/DeletePayrollComponentBulkUpload?ID=" + ID);
   }
 }
 

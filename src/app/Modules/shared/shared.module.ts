@@ -26,7 +26,7 @@ const ngWizardConfig: NgWizardConfig = {
     NgxDropzoneModule,
     NgWizardModule,
     Ng2SearchPipeModule,
-    // NgMultiSelectDropDownModule.forRoot()
+     NgMultiSelectDropDownModule.forRoot()
   ],
   exports: [
     CommonModule,
@@ -36,7 +36,7 @@ const ngWizardConfig: NgWizardConfig = {
     NgWizardModule,
     Ng2SearchPipeModule,
     //  LoaderComponent,
-      // NgMultiSelectDropDownModule,
+     NgMultiSelectDropDownModule,
       //Ng2SearchPipeModule,
     //  SpinnerComponent,
     //  ConnectionServiceModule

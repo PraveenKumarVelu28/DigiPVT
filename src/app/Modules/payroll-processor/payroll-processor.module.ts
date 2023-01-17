@@ -15,6 +15,7 @@ import { ExecutedInitialPayrollRunsComponent } from './executed-initial-payroll-
 import { StaffLeavesUploadComponent } from './staff-leaves-upload/staff-leaves-upload.component';
 import { PayperiodSettingsDashComponent } from './payperiod-settings-dash/payperiod-settings-dash.component';
 import { PayperiodSettingsFormComponent } from './payperiod-settings-form/payperiod-settings-form.component';
+import { MyTeamAttendenceComponent } from './my-team-attendence/my-team-attendence.component';
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import { PayperiodSettingsFormComponent } from './payperiod-settings-form/payper
     ExecutedInitialPayrollRunsComponent,
     StaffLeavesUploadComponent,
     PayperiodSettingsDashComponent,
-    PayperiodSettingsFormComponent
+    PayperiodSettingsFormComponent,
+    MyTeamAttendenceComponent
   ],
   imports: [
     PayrollProcessorRoutingModule,

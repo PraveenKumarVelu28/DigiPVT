@@ -390,4 +390,11 @@ export class SidebarComponent implements OnInit {
     localStorage.setItem('Pagename', 'Staff')
     this.router.navigate(['/PayrollProcessor/PayperiodSettingsDash']);
   }
+
+  public AttendanceUpload() {
+    debugger
+    this.active = 3;
+    localStorage.setItem('Pagename', 'Staff')
+    this.router.navigate(['/PayrollProcessor/MyTeamAttendence']);
+  }
 }

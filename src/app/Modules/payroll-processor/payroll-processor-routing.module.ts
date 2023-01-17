@@ -7,10 +7,10 @@ import { ComponentMasterComponent } from './component-master/component-master.co
 import { MyTeamOverTimeDetailsComponent } from './my-team-over-time-details/my-team-over-time-details.component';
 import { PayrollComponentBulkUploadComponent } from './payroll-component-bulk-upload/payroll-component-bulk-upload.component';
 import { PayrollProcessorComponent } from './payroll-processor.component';
-
+import { StaffLeavesUploadComponent } from './staff-leaves-upload/staff-leaves-upload.component';
 const routes: Routes = [
   { path: '', component: PayrollProcessorComponent },
-
+  { path: 'StaffLeavesUpload', component: StaffLeavesUploadComponent },
   { path: 'PayrollComponentBulkUpload', component: PayrollComponentBulkUploadComponent },
   { path: 'MyTeamOverTimeDetails', component: MyTeamOverTimeDetailsComponent },
   { path: 'ComponentMappingDashboard', component: ComponentMappingDashboardComponent },

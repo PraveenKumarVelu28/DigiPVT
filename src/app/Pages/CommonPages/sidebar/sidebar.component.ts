@@ -82,6 +82,16 @@ export class SidebarComponent implements OnInit {
     this.router.navigate(['/Admin/AnnouncementDashboard']);
 
   }
+
+  LwopValidation() {
+    debugger
+    this.active = 108;
+    localStorage.setItem('Pagename', 'Announcements')
+
+    this.router.navigate(['/Admin/AnnouncementDashboard']);
+
+  }
+
   public PayRoll(){
     debugger
     this.active='PayRoll'
@@ -331,6 +341,13 @@ export class SidebarComponent implements OnInit {
     this.active = 8;
 
   }
+
+  public UploadStaffLeaves(){
+    this.active='UploadStaffLeaves'
+    localStorage.setItem("clickname", "Upload Staff Leaves")
+    this.router.navigate(['/PayrollProcessor/StaffLeavesUpload'])
+  }
+
 
   public ComponentMaster(){
     this.active='ComponentMaster'

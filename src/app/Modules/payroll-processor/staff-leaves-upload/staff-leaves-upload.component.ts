@@ -81,7 +81,7 @@ export class StaffLeavesUploadComponent implements OnInit {
     this.StaffID = localStorage.getItem('staffid');
     this.level = localStorage.getItem('level');
 
-    this.GetMyOverTimeDetails();
+    // this.GetMyOverTimeDetails();
    
 
     this.DigiofficeService.GetPayPeriodSetting().subscribe(data => {
@@ -185,13 +185,14 @@ export class StaffLeavesUploadComponent implements OnInit {
 
     debugger
   
-    
+    this.DigiofficeService.GetAllStaffLeaves(localStorage.getItem('staffid'), 1, "01-01-2020", "01-01-2025").subscribe(data => {
+
    
-    this.DigiofficeService.GetStaffOverTimeDetailsUpload().subscribe(data => {
+   
       debugger
-      this.timedetails = data.filter(x=>(x.filterdate == this.sdate ));
+      this.staffleaves2 = data.filter(x=>(x.filterdate >= this.sdate  && x.filterdate1<=this.edate));
      
-      if(this.timedetails.length==0){
+      if(this.staffleaves2.length==0){
         Swal.fire('No Records Found On This Date')
       }
       else{
@@ -303,7 +304,7 @@ export class StaffLeavesUploadComponent implements OnInit {
 
 
         let temp = this.PayPeriodSettingList.filter((x: { payDate: any; })=>x.payDate==this.exceldata[this.i].Period);
-        this.Date = new Date(Date.UTC(0, 0, this.exceldata[this.i].PayDate-1 )); 
+        this.Date = new Date(Date.UTC(0, 0, this.exceldata[this.i].Startdate-1 )); 
         this.EndDate = new Date(Date.UTC(0, 0, this.exceldata[this.i].Enddate-1 )); 
       
 
@@ -315,10 +316,10 @@ export class StaffLeavesUploadComponent implements OnInit {
             'StaffName': this.StaffID,
             'SDateOfLeave': this.Date,
             'EDateOfLeave': this.EndDate ,
-            'NoOfDays': this.exceldata[this.i].lopdays,
+            'NoOfDays': this.exceldata[this.i].noofdays,
             'diffDays': 0,
             'LeaveReason': this.exceldata[this.i].LeaveReason,
-            'LeaveType': this.exceldata[this.i].LeaveType,
+            'LeaveType': 10056,
             'HalfDayBit': 0,
             'HalfDayType': 0,
             'PaidBit': 1,

@@ -2279,6 +2279,7 @@ export class DigiPVTService {
     );
   }
 
+
   public AttachmentsUpload(files: any) {
     //debugger
     let formdata: FormData = new FormData();
@@ -3951,11 +3952,6 @@ export class DigiPVTService {
     return this.http.post(this.url, data);
   }
 
-
-
-
-
-
   public GetComponentMaster(){
     return this.http.get<any[]>(
       this.host +"/Master/GetComponentMaster"
@@ -4021,6 +4017,21 @@ export class DigiPVTService {
   public DeletePayrollComponentBulkUpload(ID : any){
     return this.http.get<any[]>(
       this.host + "/Master/DeletePayrollComponentBulkUpload?ID=" + ID);
+  }
+
+  public DeletePayPeriodSetting(ID : any){
+    return this.http.get<any[]>(
+      this.host + "/Master/DeletePayPeriodSetting?ID=" + ID);
+  }
+  public InsertPayPeriodSetting(data: any) {
+    debugger;
+    this.url = this.host + '/Master/InsertPayPeriodSetting';
+    return this.http.post(this.url, data);
+  }
+
+  public UpdatePayPeriodSetting(data : any){
+    this.url =this.host + '/Master/UpdatePayPeriodSetting'
+    return this.http.post(this.url,data)
   }
 }
 

@@ -10,7 +10,12 @@ import { ComponentMappingFormComponent } from './component-mapping-form/componen
 import { PayrollComponentBulkUploadComponent } from './payroll-component-bulk-upload/payroll-component-bulk-upload.component';
 import { MyTeamOverTimeDetailsComponent } from './my-team-over-time-details/my-team-over-time-details.component';
 import { SharedModule } from '../shared/shared.module';
+import { InitialPayrollDashComponent } from './initial-payroll-dash/initial-payroll-dash.component';
+import { ExecutedInitialPayrollRunsComponent } from './executed-initial-payroll-runs/executed-initial-payroll-runs.component';
 import { StaffLeavesUploadComponent } from './staff-leaves-upload/staff-leaves-upload.component';
+import { PayperiodSettingsDashComponent } from './payperiod-settings-dash/payperiod-settings-dash.component';
+import { PayperiodSettingsFormComponent } from './payperiod-settings-form/payperiod-settings-form.component';
+import { MyTeamAttendenceComponent } from './my-team-attendence/my-team-attendence.component';
 
 
 @NgModule({
@@ -22,10 +27,14 @@ import { StaffLeavesUploadComponent } from './staff-leaves-upload/staff-leaves-u
     ComponentMappingFormComponent,
     PayrollComponentBulkUploadComponent,
     MyTeamOverTimeDetailsComponent,
-    StaffLeavesUploadComponent
+    InitialPayrollDashComponent,
+    ExecutedInitialPayrollRunsComponent,
+    StaffLeavesUploadComponent,
+    PayperiodSettingsDashComponent,
+    PayperiodSettingsFormComponent,
+    MyTeamAttendenceComponent
   ],
   imports: [
-    CommonModule,
     PayrollProcessorRoutingModule,
     SharedModule
   ]

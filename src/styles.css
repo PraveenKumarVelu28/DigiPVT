@@ -286,10 +286,10 @@ textarea {
   border-radius: 6px;
 } */
 
-/* .table th {
-  background-color: #02cfff !important;
-  color: #ffffff;
-} */
+.table td {
+  background-color: #ffffff !important;
+ 
+}
 
 
 
@@ -776,10 +776,6 @@ ngx-dropzone-label {
 }
 
 
-
-
-
-
 th:first-of-type {
   border-top-left-radius: 10px;
 }
@@ -811,6 +807,7 @@ table {
 
   border-radius: 6px;
 }
+
 
 .table th {
   background: #E4EBF4 !important;

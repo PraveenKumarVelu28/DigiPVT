@@ -1,0 +1,85 @@
+<div class="row">
+    <div class="col-md-12">
+        <div class="row">
+            <div class="col-lg-11">
+                <p class="Heading">Pay Period Settings</p>
+            </div>
+        </div>
+        <div class="row FilterClass">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="row">
+                        <div class="col-lg-1">
+                            <p>Filter By</p>
+                        </div>
+                        <div class="col-lg-4 fontstyle">
+                            <input class="form-control" type="search" placeholder="Search.." 
+                                name="term">
+                        </div>
+                        <div class="col-lg-4"></div>
+                    </div>
+                </div>
+            </div>
+        </div><br>
+        <div class="row">
+            <div class="col-lg-10">
+                <!-- <p class="show3res">SHOWING <span> 
+                </span>RESULTS</p> -->
+
+            </div>
+            <div class="col-lg-2">
+                <a   routerLink="/PayrollProcessor/PayperiodSettingsForm"><button class="button">Add New</button> </a>
+            </div>
+        </div><br>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="container-fluid">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Pay Code</th>
+                                <th>Pay Period</th>
+                                <th>Attendance Coverage Startdate</th>
+                                <th>Attendance Coverage Enddate</th>
+                                <th>Payroll  Start date</th>
+                                <th>Payroll End date</th>
+                                <th>Payroll Run Type</th>
+                                <th>Comments</th>
+                                <th>Actions</th>
+                             
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let list of PayPeriodSettingList | filter:term| paginate:{ itemsPerPage: count2, currentPage: p1}" >
+                             
+                                <td>{{list.payCode}}</td>
+                                <td>{{list.payPeriod}}</td>
+                                <td>{{list.attendanceCoverageStartdate|date}}</td>
+                                <td>{{list.attendanceCoverageEndDate|date}}</td>
+                                <td>{{list.payrollStartDate|date}}</td>
+                                <td>{{list.payrollEndDate|date}}</td>
+                                <td>{{list.payrollRunType}}</td>
+                                <td>{{list.comments}}</td>
+                                <td > <button class="upload" [routerLink]="['/PayrollProcessor/PayperiodSettingsForm',list.id]">Edit</button><br><br>
+                                    <button class="upload"  (click)="delete(list.id)">Delete</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <!-- <div class="text-left">
+                        <br>
+                        <pagination-controls (pageChange)="p = $event" class="poppinns"></pagination-controls>
+                    </div> -->
+                    <!-- <ng-template #noResults>
+                        <p class="NoResultShow"> No results found </p>
+                    </ng-template> -->
+                     <div class="text-left">
+                        <br>
+                        <pagination-controls (pageChange)="p1 = $event" class="poppinns"></pagination-controls>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-1"></div>
+        </div>
+    </div>
+</div>

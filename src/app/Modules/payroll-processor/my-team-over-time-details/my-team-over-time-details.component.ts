@@ -12,7 +12,7 @@ declare var JSZipUtils: any;
 })
 export class MyTeamOverTimeDetailsComponent implements OnInit {
 
- 
+
   constructor(public DigiofficeService: DigiPVTService, public router: Router) { }
   viewMode = 'tab1';
   viewMode1 = 'tab11';
@@ -61,7 +61,7 @@ export class MyTeamOverTimeDetailsComponent implements OnInit {
   id: any;
   sdte: any;
   Notes: any;
-  level:any;
+  level: any;
   specialNormalOT: any;
   ExccessNightOt: any;
   ExccessNormalOt: any;
@@ -85,8 +85,7 @@ export class MyTeamOverTimeDetailsComponent implements OnInit {
   LegalRestNormalOT: any;
   LegalExccessRestNormalOt: any;
   LegalExccessRestNightOt: any;
-  PayPeriodSettingList:any;
-
+  PayPeriodSettingList: any;
   specialNormalOTAdjustment: any;
   ExccessNightOtAdjustment: any;
   ExccessNormalOtAdjustment: any;
@@ -110,101 +109,119 @@ export class MyTeamOverTimeDetailsComponent implements OnInit {
   LegalRestNormalOTAdjustment: any;
   LegalExccessRestNormalOtAdjustment: any;
   LegalExccessRestNightOtAdjustment: any;
-  PayPeriodSettingListAdjustment:any;
-  stafflist:any;
-  ngOnInit(): void {
-    this.currentUrl = window.location.href;
-    this.preapprove1=true;
-    this.applyot1=false;
-    this.Department = "";
-    this.RoleType = "";
- 
-  this.pendingpreapprove1=true;
-    this.roleid = sessionStorage.getItem('roledid');
-    this.StaffID = localStorage.getItem('staffid');
-    this.level = localStorage.getItem('level');
-
-    this.GetMyOverTimeDetails();
-   
-
-    this.DigiofficeService.GetPayPeriodSetting().subscribe(data => {
-      debugger
-      this.PayPeriodSettingList = data;
-      
-    });
-  
-
-    this.DigiofficeService.GetAllStaffNew().
-    subscribe({
-      next: data => {
-        debugger
-        this.stafflist = data;
-       
-       
-      }
-    })
-    
-   
-  }
-
-  pendingpreapprove1:any;
-  pendingapplyot:any;
-  approvedpreapprove1:any;
-  approvedapplyot:any;
-  Rejectedpreapprove1:any;
-  Rejectedapplyot:any;
-
-  PendingPreRequest(){
-    
-    this.pendingpreapprove1=true
-    this.pendingapplyot=false
-
-  }
-
-  PendingRequest(){
-    
-    this.pendingpreapprove1=false
-    this.pendingapplyot=true
-
-  }
-
-  ApprovedPreRequest(){
-    
-    this.approvedpreapprove1=true
-    this.approvedapplyot=false
-
-  }
-
-  ApprovedRequest(){
-    
-    this.approvedpreapprove1=false
-    this.approvedapplyot=true
-
-
-  }
-
-
-
-  RejectedPreRequest(){
-    
-    this.Rejectedpreapprove1=true
-    this.Rejectedapplyot=false
-
-
-  }
-
-  RejectedRequest(){
-    
-    this.Rejectedpreapprove1=false
-    this.Rejectedapplyot=true
-
-  }
-
+  PayPeriodSettingListAdjustment: any;
+  stafflist: any;
+  pendingpreapprove1: any;
+  pendingapplyot: any;
+  approvedpreapprove1: any;
+  approvedapplyot: any;
+  Rejectedpreapprove1: any;
+  Rejectedapplyot: any;
   fromlogin: any;
   exceldata: any;
   arrayBuffer: any;
   filetype: any;
   file: any;
+  show: any;
+  i: any;
+  startdate: any;
+  Attachment: any;
+  stafflistcopy123: any;
+  noofhoursAdjustment: any;
+  loader: any;
+  nightOT: any;
+  restNormalOT: any;
+  LWOP: any;
+  Undertime: any;
+  Tardiness: any;
+  nightOTAdjustment: any;
+  restNormalOTAdjustment: any;
+  DoubleHolidayNormalOt: any;
+  DoubleHolidayExcessNormalOt: any;
+  DoubleHolidayNightOt: any;
+  DoubleHolidayExcessNightOt: any;
+  DoubleHolidayRestNormalOt: any;
+  DoubleHolidayRestNightOt: any;
+  DoubleHolidayRestExcessNormalOt: any;
+  DoubleHolidayRestExcessNightOt: any;
+  LWOPAdjustment: any;
+  UndertimeAdjustment: any;
+  TardinessAdjustment: any;
+  DoubleHolidayNormalOtAdjustment: any;
+  DoubleHolidayExcessNormalOtAdjustment: any;
+  DoubleHolidayNightOtAdjustment: any;
+  DoubleHolidayExcessNightOtAdjustment: any;
+  DoubleHolidayRestNormalOtAdjustment: any;
+  DoubleHolidayRestNightOtAdjustment: any;
+  DoubleHolidayRestExcessNormalOtAdjustment: any;
+  DoubleHolidayRestExcessNightOtAdjustment: any;
+  NSDRegular: any;
+  NSDRegularAdjustment: any;
+  undefined: any;
+  sequenceNumber1: any
+  SequenceNumber: any
+  preapprove1: any;
+  applyot1: any;
+  preapprovaldetails: any;
+  preapprovaldetails1: any;
+  preapprovaldetails2: any;
+  preapprovaldetails3: any;
+
+  ngOnInit(): void {
+    this.currentUrl = window.location.href;
+    this.preapprove1 = true;
+    this.applyot1 = false;
+    this.Department = "";
+    this.RoleType = "";
+    this.pendingpreapprove1 = true;
+    this.roleid = sessionStorage.getItem('roledid');
+    this.StaffID = localStorage.getItem('staffid');
+    this.level = localStorage.getItem('level');
+
+    this.GetMyOverTimeDetails();
+    this.DigiofficeService.GetPayPeriodSetting().subscribe(data => {
+      debugger
+      this.PayPeriodSettingList = data;
+    });
+
+    this.DigiofficeService.GetAllStaffNew().
+      subscribe({
+        next: data => {
+          debugger
+          this.stafflist = data;
+        }
+      })
+  }
+
+  PendingPreRequest() {
+    this.pendingpreapprove1 = true
+    this.pendingapplyot = false
+  }
+
+  PendingRequest() {
+    this.pendingpreapprove1 = false
+    this.pendingapplyot = true
+  }
+
+  ApprovedPreRequest() {
+    this.approvedpreapprove1 = true
+    this.approvedapplyot = false
+  }
+
+  ApprovedRequest() {
+    this.approvedpreapprove1 = false
+    this.approvedapplyot = true
+  }
+
+  RejectedPreRequest() {
+    this.Rejectedpreapprove1 = true
+    this.Rejectedapplyot = false
+  }
+
+  RejectedRequest() {
+    this.Rejectedpreapprove1 = false
+    this.Rejectedapplyot = true
+  }
 
   incomingfile(event: any) {
     debugger;
@@ -230,15 +247,10 @@ export class MyTeamOverTimeDetailsComponent implements OnInit {
       };
       fileReader.readAsArrayBuffer(this.file);
 
-
-
     } else {
       Swal.fire("Imported file format not supported.");
     }
   }
-
-
-
 
   public GetMyOverTimeDetails() {
     debugger
@@ -247,9 +259,7 @@ export class MyTeamOverTimeDetailsComponent implements OnInit {
         next: data => {
           debugger
           this.timedetails = data;
-          
-           
-           
+
           this.count = this.timedetails.length
         }, error: (err) => {
           Swal.fire('Issue in Getting Staff Over Time Details');
@@ -262,7 +272,8 @@ export class MyTeamOverTimeDetailsComponent implements OnInit {
             data => {
               debugger
             },
-          )}
+          )
+        }
       })
   }
 
@@ -274,108 +285,93 @@ export class MyTeamOverTimeDetailsComponent implements OnInit {
     this.count = this.attendancelist.length;
   }
 
-  show:any;
-
   public filterbydate() {
-
     debugger
-  
-    
-   
     this.DigiofficeService.GetStaffOverTimeDetailsUpload().subscribe(data => {
       debugger
-      this.timedetails = data.filter(x=>(x.filterdate == this.sdate ));
-     
-      if(this.timedetails.length==0){
+      this.timedetails = data.filter(x => (x.filterdate == this.sdate));
+
+      if (this.timedetails.length == 0) {
         Swal.fire('No Records Found On This Date')
       }
-      else{
-        this.show=1;
-      }   
-             
+      else {
+        this.show = 1;
+      }
     })
-  
-  
   }
 
   public filterdatepreapproval() {
-
     debugger
     if (this.sdate == undefined) {
       Swal.fire('Please Select Start Date');
       this.edate = ""
-      this.loader=false;
+      this.loader = false;
     }
-   
     else if (this.edate == "") {
       this.edate = "";
       this.sdate = "";
       this.ngOnInit();
     }
 
-    else if (this.edate<this.sdate){
+    else if (this.edate < this.sdate) {
       Swal.fire('Enddate Must Be Greater Than Startdate')
       this.edate = ""
       this.sdate = ""
     }
-    else{
-    // this.DigiofficeService.GetStaffOverTimeDetails().subscribe(data => {
-    //   debugger
-    //   this.timedetails = data;
-    //   if (this.roleid == 2) {
-    //     this.timedetails1 = data.filter(x => x.supervisor == localStorage.getItem('staffid') && (x.status == 'Manager Pending' ) &&  (x.filterdate >= this.sdate && x.filterdate <= this.edate));
-    //     this.timedetails2 = data.filter(x => x.supervisor == localStorage.getItem('staffid') && (x.status == 'Manager Approved' ) && (x.filterdate >= this.sdate && x.filterdate <= this.edate))
-    //     this.timedetails3 = data.filter(x => x.supervisor == localStorage.getItem('staffid') && x.status == 'Manager Rejected');
-    //   }
-    //   else {
-    //     this.timedetails1 = data.filter(x => x.status == 'Manager Pending' && (x.filterdate >= this.sdate && x.filterdate <= this.edate));
-    //     this.timedetails2 = data.filter(x => (x.status == 'Manager Approved') && (x.filterdate >= this.sdate && x.filterdate <= this.edate))
-    //     this.timedetails3 = data.filter(x => x.status == 'Manager Rejected');
-    //   }
+    else {
+      // this.DigiofficeService.GetStaffOverTimeDetails().subscribe(data => {
+      //   debugger
+      //   this.timedetails = data;
+      //   if (this.roleid == 2) {
+      //     this.timedetails1 = data.filter(x => x.supervisor == localStorage.getItem('staffid') && (x.status == 'Manager Pending' ) &&  (x.filterdate >= this.sdate && x.filterdate <= this.edate));
+      //     this.timedetails2 = data.filter(x => x.supervisor == localStorage.getItem('staffid') && (x.status == 'Manager Approved' ) && (x.filterdate >= this.sdate && x.filterdate <= this.edate))
+      //     this.timedetails3 = data.filter(x => x.supervisor == localStorage.getItem('staffid') && x.status == 'Manager Rejected');
+      //   }
+      //   else {
+      //     this.timedetails1 = data.filter(x => x.status == 'Manager Pending' && (x.filterdate >= this.sdate && x.filterdate <= this.edate));
+      //     this.timedetails2 = data.filter(x => (x.status == 'Manager Approved') && (x.filterdate >= this.sdate && x.filterdate <= this.edate))
+      //     this.timedetails3 = data.filter(x => x.status == 'Manager Rejected');
+      //   }
 
 
-    //   this.count = this.timedetails.length
-    // })
-    this.DigiofficeService.GetPreApprovalOverTime()
-    .subscribe({
-      next: data => {
-        debugger
-        this.preapprovaldetails = data
-        if (this.roleid == 2) {
-        // this.preapprovaldetails = data.filter(x => x.supervisor == localStorage.getItem('staffid'));
-        this.preapprovaldetails1 = data.filter(x => x.supervisor == localStorage.getItem('staffid') && (x.status == 'Manager Pending' || x.status == 'Manager Pending HR Pending') &&  (x.filterdate >= this.sdate && x.filterdate <= this.edate));
-        this.preapprovaldetails2 = data.filter(x => x.supervisor == localStorage.getItem('staffid') && (x.status == 'Manager Approved' || x.status == 'Manager Approved HR Pending') && (x.filterdate >= this.sdate && x.filterdate <= this.edate))
-        this.preapprovaldetails3 = data.filter(x => x.supervisor == localStorage.getItem('staffid') && x.status == 'Manager Rejected');
-        // this.count = this.preapprovaldetails.length;
-        }
-        else{
-          this.preapprovaldetails1 = data.filter(x => x.status == 'Manager Pending' && (x.filterdate >= this.sdate && x.filterdate <= this.edate));
-        this.preapprovaldetails2 = data.filter(x => (x.status == 'Manager Approved') && (x.filterdate >= this.sdate && x.filterdate <= this.edate))
-        this.preapprovaldetails3 = data.filter(x => x.status == 'Manager Rejected');
-        }
-
-      }, error: (err) => {
-        Swal.fire('Issue in Getting PreApproval OverTime');
-        // Insert error in Db Here//
-        var obj = {
-          'PageName': this.currentUrl,
-          'ErrorMessage': err.error.message
-        }
-        this.DigiofficeService.InsertExceptionLogs(obj).subscribe(
-          data => {
+      //   this.count = this.timedetails.length
+      // })
+      this.DigiofficeService.GetPreApprovalOverTime()
+        .subscribe({
+          next: data => {
             debugger
-          },
-        )
-      }
-    })
+            this.preapprovaldetails = data
+            if (this.roleid == 2) {
+              // this.preapprovaldetails = data.filter(x => x.supervisor == localStorage.getItem('staffid'));
+              this.preapprovaldetails1 = data.filter(x => x.supervisor == localStorage.getItem('staffid') && (x.status == 'Manager Pending' || x.status == 'Manager Pending HR Pending') && (x.filterdate >= this.sdate && x.filterdate <= this.edate));
+              this.preapprovaldetails2 = data.filter(x => x.supervisor == localStorage.getItem('staffid') && (x.status == 'Manager Approved' || x.status == 'Manager Approved HR Pending') && (x.filterdate >= this.sdate && x.filterdate <= this.edate))
+              this.preapprovaldetails3 = data.filter(x => x.supervisor == localStorage.getItem('staffid') && x.status == 'Manager Rejected');
+              // this.count = this.preapprovaldetails.length;
+            }
+            else {
+              this.preapprovaldetails1 = data.filter(x => x.status == 'Manager Pending' && (x.filterdate >= this.sdate && x.filterdate <= this.edate));
+              this.preapprovaldetails2 = data.filter(x => (x.status == 'Manager Approved') && (x.filterdate >= this.sdate && x.filterdate <= this.edate))
+              this.preapprovaldetails3 = data.filter(x => x.status == 'Manager Rejected');
+            }
+
+          }, error: (err) => {
+            Swal.fire('Issue in Getting PreApproval OverTime');
+            // Insert error in Db Here//
+            var obj = {
+              'PageName': this.currentUrl,
+              'ErrorMessage': err.error.message
+            }
+            this.DigiofficeService.InsertExceptionLogs(obj).subscribe(
+              data => {
+                debugger
+              },
+            )
+          }
+        })
+    }
   }
-  
-  }
-  i:any;
-  startdate:any;
-  Attachment:any;
-  stafflistcopy123:any;
-   public Upload_file() {
+
+  public Upload_file() {
     debugger
     if (this.exceldata == undefined) {
       Swal.fire('Choose a File');
@@ -384,114 +380,111 @@ export class MyTeamOverTimeDetailsComponent implements OnInit {
 
 
       for (this.i = 0; this.i < this.exceldata.length; this.i++) {
-       
-            this.stafflistcopy123=this.stafflist.filter((x: { employeID: any; })=>x.employeID==this.exceldata[this.i].EmployeeID)
-             
-             if(this.stafflistcopy123.length!=0){
-              this.StaffID = this.stafflistcopy123[0].id
-             }
-             else{
-              this.StaffID = 0
-             }
+
+        this.stafflistcopy123 = this.stafflist.filter((x: { employeID: any; }) => x.employeID == this.exceldata[this.i].EmployeeID)
+
+        if (this.stafflistcopy123.length != 0) {
+          this.StaffID = this.stafflistcopy123[0].id
+        }
+        else {
+          this.StaffID = 0
+        }
 
 
-        let temp = this.PayPeriodSettingList.filter((x: { payDate: any; })=>x.payDate==this.exceldata[this.i].Period);
-        this.Date = new Date(Date.UTC(0, 0, this.exceldata[this.i].PayDate-1 )); 
+        let temp = this.PayPeriodSettingList.filter((x: { payDate: any; }) => x.payDate == this.exceldata[this.i].Period);
+        this.Date = new Date(Date.UTC(0, 0, this.exceldata[this.i].PayDate - 1));
 
 
-          var eb = {
-            'StaffID': this.StaffID,
-            'Date': this.Date,
-            'noofhours': this.exceldata[this.i].OT_ON_REG_DAY ,
-            'NightOT': this.exceldata[this.i].OT_NIGHT_DIFFERENTIAL,
-            'Comments': 'Uploaded Overtime',
-            'StartTime': '10:00',
-            'EndTime': '19:00',
-            'Status': 'Manager Approved',
-            'Attachment': this.Attachment == " " ? null : this.Attachment,
-            'ExccessNormalOt': this.exceldata[this.i].OT_ON_REG_DAY_GREATER_THAN_8_HRS,
-            'ExccessNightOt': this.exceldata[this.i].OT_NIGHT_DIFFERENTIAL_GREATER_THAN_8_HRS,
-            'NSD_REGULAR': this.exceldata[this.i].NSD_REGULAR ,
-            'RestNightOt': this.exceldata[this.i].OT_ND_ON_REST_DAY ,
-            'RestNormalOT': this.exceldata[this.i].OT_ON_REST_DAY,
-            'ExccessRestNormalOt': this.exceldata[this.i].OT_ON_REST_DAY_GREATER_THAN_8_HRS,
-            'RestExccessNightOt': this.exceldata[this.i].OTND_ON_REST_DAY_Greater_Than_8HRS,
-            'LegalNightOt': this.exceldata[this.i].ND_ON_LEGAL_HOL,
-            'LegalNormalOT': this.exceldata[this.i].OT_ON_LEGAL_HOL,
-            'LegalExccessNormalOt': this.exceldata[this.i].OT_ON_LEGAL_HOL_GREATER_THAN_8_hrs,
-            'LegalExccessNightOt': this.exceldata[this.i].OTND_ON_LEGAL_HOL_GREATER_THAN_8_HRS,
-            'SpecialHoliday': this.exceldata[this.i].OT_ON_SPECIAL_HOL,
-            'SpecialNightOt': this.exceldata[this.i].ND_ON_SPECIAL_HOL,
-            'SpecialNormalOT': this.exceldata[this.i].OT_ON_SPECIAL_HOL,
-            'SpecialExccessNormalOt': this.exceldata[this.i].OT_ON_SPECIAL_HOL_GREATER_THAN_8_hrs,
-            'SpecialExccessNightOt': this.exceldata[this.i].OTND_ON_SPECIAL_HOL_GREATER_THAN_8_hrs,
-            'SpecialRestNightOt': this.exceldata[this.i].OT_ND_SPECIAL_HOL_ON_RESTDAY,
-            'SpecialRestNormalOT': this.exceldata[this.i].OT_Special_HOL_ON_RESTDAY,
-            'SpecialRestExccessNormalOt': this.exceldata[this.i].OT_SPECIAL_HOL_ON_RESTDAY_GREATER_THAN_8hrs,
-            'SpecialRestExccessNightOt': this.exceldata[this.i].OTND_SPECIAL_HOL_ON_RESTDAY_GREATER_THAN_8hrs,
-            'LegalRestNightOt': this.exceldata[this.i].OT_ND_LEGAL_HOL_ON_RESTDAY,
-            'LegalRestNormalOT': this.exceldata[this.i].OT_LEGAL_HOL_ON_RESTDAY,
-            'LegalExccessRestNormalOt': this.exceldata[this.i].OT_LEGAL_HOL_ON_RESTDAY_GREATER_THAN_8hrs,
-            'LegalExccessRestNightOt': this.exceldata[this.i].OTND_LEGAL_HOL_ON_RESTDAY_GREATR_THAN_8hrs,
-            'LWOP' : this.exceldata[this.i].LWOP,
-            'Undertime' : this.exceldata[this.i].TARDY,
-            'Tardiness' : this.exceldata[this.i].UNDERTIME,
-            'DoubleHolidayNormalOt' : this.exceldata[this.i].OT_ON_DOUBLE_DAY,
-            'DoubleHolidayNightOt' : this.exceldata[this.i].OTND_ON_DOUBLE_DAY,
-            'DoubleHolidayExcessNormalOt' : this.exceldata[this.i].OT_ON_DOUBLE_DAY_8_HRS,
-            'DoubleHolidayExcessNightOt' : this.exceldata[this.i].OTND_ON_DOUBLE_DAY_8_HRS,
-            'DoubleHolidayRestNormalOt' : this.exceldata[this.i].OT_DOUBLE_DAY_ON_RESTDAY,
-            'DoubleHolidayRestNightOt' : this.exceldata[this.i].OTND_DOUBLE_DAY_ON_RESTDAY,
-            'DoubleHolidayRestExcessNormalOt' : this.exceldata[this.i].OT_DOUBLE_DAY_ON_RESTDAY_8_HRS,
-            'DoubleHolidayRestExcessNightOt' : this.exceldata[this.i].OTND_DOUBLE_DAY_ON_RESTDAY_8_HRS,
-            'noofhoursAdjustment': this.exceldata[this.i].OT_REG_ADJ ,
-            'NightOTAdjustment': this.exceldata[this.i].OTND_REG_ADJ,
-            'ExccessNormalOtAdjustment': this.exceldata[this.i].OT_REG_EXC8_ADJ,
-            'ExccessNightOtAdjustment': this.exceldata[this.i].OTND_REG_EXC8_ADJ,
-          
-            'RestNightOtAdjustment': this.exceldata[this.i].OT_ND_ON_REST_DAY_ADJ ,
-            'RestNormalOTAdjustment': this.exceldata[this.i].OT_ON_REST_DAY_ADJ,
-            'ExccessRestNormalOtAdjustment': this.exceldata[this.i].OT_ON_REST_DAY_GREATER_THAN_8_HRS_ADJ,
-            'RestExccessNightOtAdjustment': this.exceldata[this.i].OTND_ON_REST_DAY_Greater_Than_8HRS_ADJ,
-            'LegalNightOtAdjustment': this.exceldata[this.i].OTND_LEGALWD_ADJ,
-            'LegalNormalOTAdjustment': this.exceldata[this.i].OT_LEGALWD_ADJ,
-            'LegalExccessNormalOtAdjustment': this.exceldata[this.i].OT_LEGALWD_EXC8_ADJ,
-            'LegalExccessNightOtAdjustment': this.exceldata[this.i].OTND_LEGALWD_EXC8_ADJ,
-            'SpecialNightOtAdjustment': this.exceldata[this.i].OTND_SPECIALWD_ADJ,
-            'SpecialNormalOTAdjustment': this.exceldata[this.i].OT_SPECIALWD_ADJ,
-            'SpecialExccessNormalOtAdjustment': this.exceldata[this.i].OT_SPECIALWD_EXC8_ADJ ,
-            'SpecialExccessNightOtAdjustment': this.exceldata[this.i].OTND_SPECIALWD_EXC8_ADJ ,
-            'SpecialRestNightOtAdjustment': this.exceldata[this.i].OTND_SPECIALRD_ADJ,
-            'SpecialRestNormalOTAdjustment': this.exceldata[this.i].OT_SPECIALRD_ADJ,
-            'SpecialRestExccessNormalOtAdjustment': this.exceldata[this.i].OT_SPECIALRD_EXC8_ADJ,
-            'SpecialRestExccessNightOtAdjustment': this.exceldata[this.i].OTND_SPECIALRD_EXC8_ADJ,
-            'LegalRestNightOtAdjustment': this.exceldata[this.i].OTND_LEGALRD_ADJ,
-            'LegalRestNormalOTAdjustment': this.exceldata[this.i].OT_LEGALRD_ADJ,
-            'LegalExccessRestNormalOtAdjustment': this.exceldata[this.i].OT_LEGALRD_EXC8_ADJ,
-            'LegalExccessRestNightOtAdjustment': this.exceldata[this.i].OTND_LEGALRD_EXC8_ADJ,
-            'LWOPAdjustment' : this.exceldata[this.i].LWOP_ADJ,
-            'UndertimeAdjustment' : this.exceldata[this.i].TARDY_ADJ,
-            'TardinessAdjustment' : this.exceldata[this.i].UNDERTIME_ADJ,
-            'DoubleHolidayNormalOtAdjustment' : this.exceldata[this.i].OT_ON_DOUBLE_DAY_ADJ,
-            'DoubleHolidayNightOtAdjustment' : this.exceldata[this.i].OTND_ON_DOUBLE_DAY_ADJ,
-            'DoubleHolidayExcessNormalOtAdjustment' : this.exceldata[this.i].OT_ON_DOUBLE_DAY_8_HRS_ADJ,
-            'DoubleHolidayExcessNightOtAdjustment' : this.exceldata[this.i].OTND_ON_DOUBLE_DAY_8_HRS_ADJ,
-            'DoubleHolidayRestNormalOtAdjustment' : this.exceldata[this.i].OT_DOUBLE_DAY_ON_RESTDAY_ADJ,
-            'DoubleHolidayRestNightOtAdjustment' : this.exceldata[this.i].OTND_DOUBLE_DAY_ON_RESTDAY_ADJ,
-            'DoubleHolidayRestExcessNormalOtAdjustment' : this.exceldata[this.i].OT_DOUBLE_DAY_ON_RESTDAY_8_HRS_ADJ,
-            'DoubleHolidayRestExcessNightOtAdjustment' : this.exceldata[this.i].OTND_DOUBLE_DAY_ON_RESTDAY_8_HRS_ADJ,
-            'NSD_REGULARAdjustment': this.exceldata[this.i].NSD_REGULARAdjustment ,
-          }
-          this.DigiofficeService.InsertStaffOverTimeDetailsUpload(eb).subscribe({
-            next: data => {
+        var eb = {
+          'StaffID': this.StaffID,
+          'Date': this.Date,
+          'noofhours': this.exceldata[this.i].OT_ON_REG_DAY,
+          'NightOT': this.exceldata[this.i].OT_NIGHT_DIFFERENTIAL,
+          'Comments': 'Uploaded Overtime',
+          'StartTime': '10:00',
+          'EndTime': '19:00',
+          'Status': 'Manager Approved',
+          'Attachment': this.Attachment == " " ? null : this.Attachment,
+          'ExccessNormalOt': this.exceldata[this.i].OT_ON_REG_DAY_GREATER_THAN_8_HRS,
+          'ExccessNightOt': this.exceldata[this.i].OT_NIGHT_DIFFERENTIAL_GREATER_THAN_8_HRS,
+          'NSD_REGULAR': this.exceldata[this.i].NSD_REGULAR,
+          'RestNightOt': this.exceldata[this.i].OT_ND_ON_REST_DAY,
+          'RestNormalOT': this.exceldata[this.i].OT_ON_REST_DAY,
+          'ExccessRestNormalOt': this.exceldata[this.i].OT_ON_REST_DAY_GREATER_THAN_8_HRS,
+          'RestExccessNightOt': this.exceldata[this.i].OTND_ON_REST_DAY_Greater_Than_8HRS,
+          'LegalNightOt': this.exceldata[this.i].ND_ON_LEGAL_HOL,
+          'LegalNormalOT': this.exceldata[this.i].OT_ON_LEGAL_HOL,
+          'LegalExccessNormalOt': this.exceldata[this.i].OT_ON_LEGAL_HOL_GREATER_THAN_8_hrs,
+          'LegalExccessNightOt': this.exceldata[this.i].OTND_ON_LEGAL_HOL_GREATER_THAN_8_HRS,
+          'SpecialHoliday': this.exceldata[this.i].OT_ON_SPECIAL_HOL,
+          'SpecialNightOt': this.exceldata[this.i].ND_ON_SPECIAL_HOL,
+          'SpecialNormalOT': this.exceldata[this.i].OT_ON_SPECIAL_HOL,
+          'SpecialExccessNormalOt': this.exceldata[this.i].OT_ON_SPECIAL_HOL_GREATER_THAN_8_hrs,
+          'SpecialExccessNightOt': this.exceldata[this.i].OTND_ON_SPECIAL_HOL_GREATER_THAN_8_hrs,
+          'SpecialRestNightOt': this.exceldata[this.i].OT_ND_SPECIAL_HOL_ON_RESTDAY,
+          'SpecialRestNormalOT': this.exceldata[this.i].OT_Special_HOL_ON_RESTDAY,
+          'SpecialRestExccessNormalOt': this.exceldata[this.i].OT_SPECIAL_HOL_ON_RESTDAY_GREATER_THAN_8hrs,
+          'SpecialRestExccessNightOt': this.exceldata[this.i].OTND_SPECIAL_HOL_ON_RESTDAY_GREATER_THAN_8hrs,
+          'LegalRestNightOt': this.exceldata[this.i].OT_ND_LEGAL_HOL_ON_RESTDAY,
+          'LegalRestNormalOT': this.exceldata[this.i].OT_LEGAL_HOL_ON_RESTDAY,
+          'LegalExccessRestNormalOt': this.exceldata[this.i].OT_LEGAL_HOL_ON_RESTDAY_GREATER_THAN_8hrs,
+          'LegalExccessRestNightOt': this.exceldata[this.i].OTND_LEGAL_HOL_ON_RESTDAY_GREATR_THAN_8hrs,
+          'LWOP': this.exceldata[this.i].LWOP,
+          'Undertime': this.exceldata[this.i].TARDY,
+          'Tardiness': this.exceldata[this.i].UNDERTIME,
+          'DoubleHolidayNormalOt': this.exceldata[this.i].OT_ON_DOUBLE_DAY,
+          'DoubleHolidayNightOt': this.exceldata[this.i].OTND_ON_DOUBLE_DAY,
+          'DoubleHolidayExcessNormalOt': this.exceldata[this.i].OT_ON_DOUBLE_DAY_8_HRS,
+          'DoubleHolidayExcessNightOt': this.exceldata[this.i].OTND_ON_DOUBLE_DAY_8_HRS,
+          'DoubleHolidayRestNormalOt': this.exceldata[this.i].OT_DOUBLE_DAY_ON_RESTDAY,
+          'DoubleHolidayRestNightOt': this.exceldata[this.i].OTND_DOUBLE_DAY_ON_RESTDAY,
+          'DoubleHolidayRestExcessNormalOt': this.exceldata[this.i].OT_DOUBLE_DAY_ON_RESTDAY_8_HRS,
+          'DoubleHolidayRestExcessNightOt': this.exceldata[this.i].OTND_DOUBLE_DAY_ON_RESTDAY_8_HRS,
+          'noofhoursAdjustment': this.exceldata[this.i].OT_REG_ADJ,
+          'NightOTAdjustment': this.exceldata[this.i].OTND_REG_ADJ,
+          'ExccessNormalOtAdjustment': this.exceldata[this.i].OT_REG_EXC8_ADJ,
+          'ExccessNightOtAdjustment': this.exceldata[this.i].OTND_REG_EXC8_ADJ,
+
+          'RestNightOtAdjustment': this.exceldata[this.i].OT_ND_ON_REST_DAY_ADJ,
+          'RestNormalOTAdjustment': this.exceldata[this.i].OT_ON_REST_DAY_ADJ,
+          'ExccessRestNormalOtAdjustment': this.exceldata[this.i].OT_ON_REST_DAY_GREATER_THAN_8_HRS_ADJ,
+          'RestExccessNightOtAdjustment': this.exceldata[this.i].OTND_ON_REST_DAY_Greater_Than_8HRS_ADJ,
+          'LegalNightOtAdjustment': this.exceldata[this.i].OTND_LEGALWD_ADJ,
+          'LegalNormalOTAdjustment': this.exceldata[this.i].OT_LEGALWD_ADJ,
+          'LegalExccessNormalOtAdjustment': this.exceldata[this.i].OT_LEGALWD_EXC8_ADJ,
+          'LegalExccessNightOtAdjustment': this.exceldata[this.i].OTND_LEGALWD_EXC8_ADJ,
+          'SpecialNightOtAdjustment': this.exceldata[this.i].OTND_SPECIALWD_ADJ,
+          'SpecialNormalOTAdjustment': this.exceldata[this.i].OT_SPECIALWD_ADJ,
+          'SpecialExccessNormalOtAdjustment': this.exceldata[this.i].OT_SPECIALWD_EXC8_ADJ,
+          'SpecialExccessNightOtAdjustment': this.exceldata[this.i].OTND_SPECIALWD_EXC8_ADJ,
+          'SpecialRestNightOtAdjustment': this.exceldata[this.i].OTND_SPECIALRD_ADJ,
+          'SpecialRestNormalOTAdjustment': this.exceldata[this.i].OT_SPECIALRD_ADJ,
+          'SpecialRestExccessNormalOtAdjustment': this.exceldata[this.i].OT_SPECIALRD_EXC8_ADJ,
+          'SpecialRestExccessNightOtAdjustment': this.exceldata[this.i].OTND_SPECIALRD_EXC8_ADJ,
+          'LegalRestNightOtAdjustment': this.exceldata[this.i].OTND_LEGALRD_ADJ,
+          'LegalRestNormalOTAdjustment': this.exceldata[this.i].OT_LEGALRD_ADJ,
+          'LegalExccessRestNormalOtAdjustment': this.exceldata[this.i].OT_LEGALRD_EXC8_ADJ,
+          'LegalExccessRestNightOtAdjustment': this.exceldata[this.i].OTND_LEGALRD_EXC8_ADJ,
+          'LWOPAdjustment': this.exceldata[this.i].LWOP_ADJ,
+          'UndertimeAdjustment': this.exceldata[this.i].TARDY_ADJ,
+          'TardinessAdjustment': this.exceldata[this.i].UNDERTIME_ADJ,
+          'DoubleHolidayNormalOtAdjustment': this.exceldata[this.i].OT_ON_DOUBLE_DAY_ADJ,
+          'DoubleHolidayNightOtAdjustment': this.exceldata[this.i].OTND_ON_DOUBLE_DAY_ADJ,
+          'DoubleHolidayExcessNormalOtAdjustment': this.exceldata[this.i].OT_ON_DOUBLE_DAY_8_HRS_ADJ,
+          'DoubleHolidayExcessNightOtAdjustment': this.exceldata[this.i].OTND_ON_DOUBLE_DAY_8_HRS_ADJ,
+          'DoubleHolidayRestNormalOtAdjustment': this.exceldata[this.i].OT_DOUBLE_DAY_ON_RESTDAY_ADJ,
+          'DoubleHolidayRestNightOtAdjustment': this.exceldata[this.i].OTND_DOUBLE_DAY_ON_RESTDAY_ADJ,
+          'DoubleHolidayRestExcessNormalOtAdjustment': this.exceldata[this.i].OT_DOUBLE_DAY_ON_RESTDAY_8_HRS_ADJ,
+          'DoubleHolidayRestExcessNightOtAdjustment': this.exceldata[this.i].OTND_DOUBLE_DAY_ON_RESTDAY_8_HRS_ADJ,
+          'NSD_REGULARAdjustment': this.exceldata[this.i].NSD_REGULARAdjustment,
+        }
+        this.DigiofficeService.InsertStaffOverTimeDetailsUpload(eb).subscribe({
+          next: data => {
 
             debugger
-            this.StaffID=data;
-            
-              Swal.fire('Saved Successfully')
-            
-             
-          
+            this.StaffID = data;
+
+            Swal.fire('Saved Successfully')
             // // this.SavePositionDetails();
             // var eb = {
             //   'EmergencyContactName': this.exceldata[this.i-(this.exceldata.length)].EmergencyContactName,
@@ -501,35 +494,25 @@ export class MyTeamOverTimeDetailsComponent implements OnInit {
             // }
             // this.i++;
             // this.AliprojectService.InsertMyAddressDetails(eb).subscribe(
-              
+
             //   data => {
             //     debugger
             //     Swal.fire('Staffs Added Successfully');
             //     // this.router.navigate(['/EmployeeDashboard']);
-      
+
             //   },
             // )
-           
-           
-           
-            
-           
+
           }, error: (err) => {
             Swal.fire('Issue in Inserting Attendance Units');
             // Insert error in Db Here//
-          
+
           }
         }
         )
       }
     }
-
-
   }
-
-  
-  
- 
 
   selectALL(checked: boolean) { // pass true or false to check or uncheck all
     this.selecallbtn = true;
@@ -541,42 +524,13 @@ export class MyTeamOverTimeDetailsComponent implements OnInit {
       }
     }
   }
-  noofhoursAdjustment:any;
-  loader:any;
-  nightOT:any;
-  restNormalOT:any;
-  LWOP:any;
-  Undertime:any;
-  Tardiness:any;
-  nightOTAdjustment:any;
-  restNormalOTAdjustment:any;
-  DoubleHolidayNormalOt:any;
-  DoubleHolidayExcessNormalOt:any;
-  DoubleHolidayNightOt:any;
-  DoubleHolidayExcessNightOt:any;
-  DoubleHolidayRestNormalOt:any;
-  DoubleHolidayRestNightOt:any;
-  DoubleHolidayRestExcessNormalOt:any;
-  DoubleHolidayRestExcessNightOt:any;
-  LWOPAdjustment:any;
-  UndertimeAdjustment:any;
-  TardinessAdjustment:any;
-  DoubleHolidayNormalOtAdjustment:any;
-  DoubleHolidayExcessNormalOtAdjustment:any;
-  DoubleHolidayNightOtAdjustment:any;
-  DoubleHolidayExcessNightOtAdjustment:any;
-  DoubleHolidayRestNormalOtAdjustment:any;
-  DoubleHolidayRestNightOtAdjustment:any;
-  DoubleHolidayRestExcessNormalOtAdjustment:any;
-  DoubleHolidayRestExcessNightOtAdjustment:any;
-  NSDRegular:any;
-  NSDRegularAdjustment:any;
+  
   public GetOTDetails(time: any) {
     this.DigiofficeService.GetStaffOverTimeDetailsUpload()
       .subscribe({
         next: data => {
           debugger
-          this.loader=false;
+          this.loader = false;
           let temp: any = data.filter(x => x.id == time.id);
           this.noofhours = temp[0].noofhours;
           this.nightOT = temp[0].nightOT;
@@ -608,14 +562,14 @@ export class MyTeamOverTimeDetailsComponent implements OnInit {
           this.Undertime = temp[0].undertime;
           this.Tardiness = temp[0].tardiness;
           this.DoubleHolidayNormalOt = temp[0].doubleHolidayNormalOt,
-          this.DoubleHolidayNightOt = temp[0].doubleHolidayNightOt,
-          this.DoubleHolidayExcessNormalOt = temp[0].doubleHolidayExcessNormalOt,
-          this.DoubleHolidayExcessNightOt = temp[0].doubleHolidayExcessNightOt,
-          this.DoubleHolidayRestNormalOt =temp[0].doubleHolidayRestNormalOt,
-          this.DoubleHolidayRestNightOt = temp[0].doubleHolidayRestNightOt,
-          this.DoubleHolidayRestExcessNormalOt =temp[0].doubleHolidayRestExcessNormalOt,
-          this.DoubleHolidayRestExcessNightOt = temp[0].doubleHolidayRestExcessNightOt,
-          this.noofhoursAdjustment = temp[0].noofhoursAdjustment;
+            this.DoubleHolidayNightOt = temp[0].doubleHolidayNightOt,
+            this.DoubleHolidayExcessNormalOt = temp[0].doubleHolidayExcessNormalOt,
+            this.DoubleHolidayExcessNightOt = temp[0].doubleHolidayExcessNightOt,
+            this.DoubleHolidayRestNormalOt = temp[0].doubleHolidayRestNormalOt,
+            this.DoubleHolidayRestNightOt = temp[0].doubleHolidayRestNightOt,
+            this.DoubleHolidayRestExcessNormalOt = temp[0].doubleHolidayRestExcessNormalOt,
+            this.DoubleHolidayRestExcessNightOt = temp[0].doubleHolidayRestExcessNightOt,
+            this.noofhoursAdjustment = temp[0].noofhoursAdjustment;
           this.nightOTAdjustment = temp[0].nightOTAdjustment;
           this.restNormalOTAdjustment = temp[0].restNormalOTAdjustment;
           this.specialNormalOTAdjustment = temp[0].specialNormalOTAdjustment;
@@ -645,17 +599,15 @@ export class MyTeamOverTimeDetailsComponent implements OnInit {
           this.UndertimeAdjustment = temp[0].undertimeAdjustment;
           this.TardinessAdjustment = temp[0].tardinessAdjustment;
           this.DoubleHolidayNormalOtAdjustment = temp[0].doubleHolidayNormalOtAdjustment,
-          this.DoubleHolidayNightOtAdjustment = temp[0].doubleHolidayNightOtAdjustment,
-          this.DoubleHolidayExcessNormalOtAdjustment = temp[0].doubleHolidayExcessNormalOtAdjustment,
-          this.DoubleHolidayExcessNightOtAdjustment = temp[0].doubleHolidayExcessNightOtAdjustment,
-          this.DoubleHolidayRestNormalOtAdjustment =temp[0].doubleHolidayRestNormalOtAdjustment,
-          this.DoubleHolidayRestNightOtAdjustment = temp[0].doubleHolidayRestNightOtAdjustment,
-          this.DoubleHolidayRestExcessNormalOtAdjustment =temp[0].doubleHolidayRestExcessNormalOtAdjustment,
-          this.DoubleHolidayRestExcessNightOtAdjustment = temp[0].doubleHolidayRestExcessNightOtAdjustment
-          this.NSDRegular =temp[0].nsD_REGULAR,
-          this.NSDRegularAdjustment = temp[0].nsD_REGULARAdjustment
-
-
+            this.DoubleHolidayNightOtAdjustment = temp[0].doubleHolidayNightOtAdjustment,
+            this.DoubleHolidayExcessNormalOtAdjustment = temp[0].doubleHolidayExcessNormalOtAdjustment,
+            this.DoubleHolidayExcessNightOtAdjustment = temp[0].doubleHolidayExcessNightOtAdjustment,
+            this.DoubleHolidayRestNormalOtAdjustment = temp[0].doubleHolidayRestNormalOtAdjustment,
+            this.DoubleHolidayRestNightOtAdjustment = temp[0].doubleHolidayRestNightOtAdjustment,
+            this.DoubleHolidayRestExcessNormalOtAdjustment = temp[0].doubleHolidayRestExcessNormalOtAdjustment,
+            this.DoubleHolidayRestExcessNightOtAdjustment = temp[0].doubleHolidayRestExcessNightOtAdjustment
+          this.NSDRegular = temp[0].nsD_REGULAR,
+            this.NSDRegularAdjustment = temp[0].nsD_REGULARAdjustment
         }, error: (err) => {
           Swal.fire('Issue in Getting Staff Over Time Details');
           // Insert error in Db Here//
@@ -677,7 +629,7 @@ export class MyTeamOverTimeDetailsComponent implements OnInit {
       .subscribe({
         next: data => {
           debugger
-          this.loader=false;
+          this.loader = false;
           let temp: any = data.filter(x => x.id == time.id);
           this.noofhours = temp[0].noofhours;
           this.nightOT = temp[0].nightOT;
@@ -740,7 +692,6 @@ export class MyTeamOverTimeDetailsComponent implements OnInit {
     var entity = {
       'ID': id.id,
       'Status': 'Manager Approved',
-      
     }
     this.DigiofficeService.UpdateOtFromManager(entity)
       .subscribe({
@@ -785,7 +736,6 @@ export class MyTeamOverTimeDetailsComponent implements OnInit {
           debugger
           if (data != 0) {
 
-
           }
         }, error: (err) => {
           Swal.fire('Issue in Inserting Notification');
@@ -808,7 +758,7 @@ export class MyTeamOverTimeDetailsComponent implements OnInit {
     var entity = {
       'ID': id.id,
       'Status': 'Manager Approved'
-     
+
     }
     this.DigiofficeService.PreApproveOtRequest(entity)
       .subscribe({
@@ -881,9 +831,6 @@ export class MyTeamOverTimeDetailsComponent implements OnInit {
           debugger
           location.reload();
           if (data != 0) {
-
-
-
           }
         }, error: (err) => {
           Swal.fire('Issue in Inserting Notification');
@@ -906,7 +853,6 @@ export class MyTeamOverTimeDetailsComponent implements OnInit {
     var entity = {
       'ID': id.id,
       'Status': 'Manager Rejected'
-      
     }
     this.DigiofficeService.PreApproveOtRequest(entity)
       .subscribe({
@@ -931,27 +877,20 @@ export class MyTeamOverTimeDetailsComponent implements OnInit {
       })
   }
 
-
-  preapprove1:any;
-  applyot1:any;
-  preapprove(){
-    this.preapprove1=true
-    this.applyot1=false
+  preapprove() {
+    this.preapprove1 = true
+    this.applyot1 = false
   }
 
-  applyot(){
-    this.preapprove1=false
-    this.applyot1=true
+  applyot() {
+    this.preapprove1 = false
+    this.applyot1 = true
   }
 
 
-  preapprovaldetails:any;
-  preapprovaldetails1:any;
-  preapprovaldetails2:any;
-  preapprovaldetails3:any;
   public GetPreApprovalOverTime() {
     debugger
-  
+
     this.DigiofficeService.GetPreApprovalOverTime()
       .subscribe({
         next: data => {
@@ -961,7 +900,7 @@ export class MyTeamOverTimeDetailsComponent implements OnInit {
           this.preapprovaldetails2 = data.filter(x => x.supervisor == localStorage.getItem('staffid') && (x.status == 'Manager Approved' || x.status == 'Manager Approved HR Pending'))
           this.preapprovaldetails3 = data.filter(x => x.supervisor == localStorage.getItem('staffid') && x.status == 'Manager Rejected');
           this.count = this.timedetails.length;
-         
+
         }, error: (err) => {
           Swal.fire('Issue in Getting PreApproval OverTime');
           // Insert error in Db Here//
@@ -977,10 +916,6 @@ export class MyTeamOverTimeDetailsComponent implements OnInit {
         }
       })
   }
-
-  undefined: any;
-  sequenceNumber1: any
-  SequenceNumber : any
 
   public ExporttoExcel() {
     debugger
@@ -1030,14 +965,6 @@ export class MyTeamOverTimeDetailsComponent implements OnInit {
         LWOP: String,
         Undertime: String,
         Tardiness: String,
-   
-
-
-
-
-
-        
-
       }
       //singleData.SequenceNumber = this.sequenceNumber1;
       singleData.EmployeID = this.timedetails[i].employeID;
@@ -1045,46 +972,40 @@ export class MyTeamOverTimeDetailsComponent implements OnInit {
       singleData.Role = this.timedetails[i].role;
       singleData.Department_name = this.timedetails[i].department_name;
       singleData.Date = this.timedetails[i].date;
-
-
-
-      singleData.NormalOT  = this.timedetails[i].noofhours;
+      singleData.NormalOT = this.timedetails[i].noofhours;
       singleData.NightOT = this.timedetails[i].nightOT;
       singleData.HolidayOT = this.timedetails[i].specialNormalOT;
       singleData.ExcessNightOT = this.timedetails[i].exccessNightOt;
       singleData.ExccessNormalOt = this.timedetails[i].exccessNormalOt;
-      singleData.RestNightOt  = this.timedetails[i].restNightOt;
+      singleData.RestNightOt = this.timedetails[i].restNightOt;
       singleData.RestNormalOT = this.timedetails[i].restNormalOT;
       singleData.ExccessRestNormalOt = this.timedetails[i].exccessRestNormalOt;
       singleData.RestExccessNightOt = this.timedetails[i].restExccessNightOt;
       singleData.LegalNightOt = this.timedetails[i].legalNightOt;
-      singleData.LegalNormalOT  = this.timedetails[i].legalNormalOT;
+      singleData.LegalNormalOT = this.timedetails[i].legalNormalOT;
       singleData.LegalExccessNormalOt = this.timedetails[i].legalExccessNormalOt;
       singleData.LegalExccessNightOt = this.timedetails[i].legalExccessNightOt;
       singleData.SpecialNightOt = this.timedetails[i].specialNightOt;
       singleData.SpecialNormalOT = this.timedetails[i].specialNormalOT;
-      singleData.SpecialExccessNormalOt  = this.timedetails[i].specialExccessNormalOt;
+      singleData.SpecialExccessNormalOt = this.timedetails[i].specialExccessNormalOt;
       singleData.SpecialExccessNightOt = this.timedetails[i].specialExccessNightOt;
       singleData.SpecialRestNightOt = this.timedetails[i].specialRestNightOt;
       singleData.SpecialRestExccessNightOt = this.timedetails[i].specialRestExccessNightOt;
       singleData.LegalRestNightOt = this.timedetails[i].legalRestNightOt;
-      singleData.LegalRestNormalOT  = this.timedetails[i].legalRestNormalOT;
+      singleData.LegalRestNormalOT = this.timedetails[i].legalRestNormalOT;
       singleData.LegalExccessRestNormalOt = this.timedetails[i].legalExccessRestNormalOt;
       singleData.LegalExccessRestNightOt = this.timedetails[i].legalExccessRestNightOt;
       singleData.DoubleHolidayNormalOt = this.timedetails[i].doubleHolidayNormalOt;
       singleData.DoubleHolidayNightOt = this.timedetails[i].doubleHolidayNightOt;
-      singleData.DoubleHolidayExcessNormalOt  = this.timedetails[i].doubleHolidayExcessNormalOt;
+      singleData.DoubleHolidayExcessNormalOt = this.timedetails[i].doubleHolidayExcessNormalOt;
       singleData.DoubleHolidayExcessNightOt = this.timedetails[i].doubleHolidayExcessNightOt;
       singleData.DoubleHolidayRestNormalOt = this.timedetails[i].doubleHolidayRestNormalOt;
       singleData.DoubleHolidayRestNightOt = this.timedetails[i].doubleHolidayRestNightOt;
       singleData.DoubleHolidayRestExcessNormalOt = this.timedetails[i].doubleHolidayRestExcessNormalOt;
-      singleData.DoubleHolidayRestExcessNightOt  = this.timedetails[i].doubleHolidayRestExcessNightOt;
+      singleData.DoubleHolidayRestExcessNightOt = this.timedetails[i].doubleHolidayRestExcessNightOt;
       singleData.LWOP = this.timedetails[i].lopDays;
       singleData.Undertime = this.timedetails[i].undertime;
       singleData.Tardiness = this.timedetails[i].tardiness;
-      
-
-
       ExportData.push(singleData);
       debugger
     }
@@ -1103,7 +1024,6 @@ export class MyTeamOverTimeDetailsComponent implements OnInit {
     const csvExporter = new ExportToCsv(Export_to_excel_options);
     debugger
     csvExporter.generateCsv(ExportData);
-
   }
 
 }

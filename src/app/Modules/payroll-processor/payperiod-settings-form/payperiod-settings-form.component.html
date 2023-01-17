@@ -1,0 +1,140 @@
+<div class="container-fluid">
+    <div class="row ">
+        <div class="col-lg-12">
+            <p class="Heading1">Pay Period Details</p>
+        </div>
+    </div>
+    <div class="card">
+        <div class="row leavereq">
+            <div class="col-md-2">
+                <p>Pay Code<span style="color: red;">*</span></p>
+                <input class="form-control" id="payperiodcode" name="payperiodcode" [(ngModel)]="payperiodcode"
+                    placeholder="Pay Code">
+            </div>
+            <div class="col-md-2">
+                <p>Pay Period<span style="color: red;">*</span></p>
+                <select class="form-control" id="payperiod" name="payperiod" [(ngModel)]="payperiod">
+                    <option value="0" disabled selected>Select Pay Period</option>
+                    <option value="Semi Payperiod 1">Semi Payperiod 1</option>
+                    <option value="Semi Payperiod 2">Semi Payperiod 2</option>
+                </select>
+            </div>
+            <div class="col-md-2">
+                <p>Attendace Coverage Start Date<span style="color: red;">*</span></p>
+                <input  type="date" class="form-control" id="attendanceCoverageStartDate" name="attendanceCoverageStartDate" [(ngModel)]="attendanceCoverageStartDate"
+                    placeholder="Attendace Coverage Start Date">
+            </div>
+            <div class="col-md-2">
+                <p>Attendace Coverage End Date<span style="color: red;">*</span></p>
+                <input type="date" class="form-control" id="attendanceCoverageEndDate" name="attendanceCoverageEndDate" [(ngModel)]="attendanceCoverageEndDate"
+                    placeholder="Attendace Coverage End Date">
+            </div>
+            <div class="col-md-2">
+                <p>Payroll Start Date<span style="color: red;">*</span></p>
+                <input type="date" class="form-control" id="payrollStartDate" name="payrollStartDate" [(ngModel)]="payrollStartDate"
+                    placeholder="Payroll Start Date">
+            </div>
+            <div class="col-md-2">
+                <p>Payroll End Date<span style="color: red;">*</span></p>
+                <input type="date" class="form-control" id="payrollEndDate" name="payrollEndDate" [(ngModel)]="payrollEndDate"
+                    placeholder="Payroll End Date">
+            </div>
+          
+        </div>
+        <br />
+        <div class="row leavereq">
+            <div class="col-lg-3">
+                <p>Payroll Run Type<span style="color: red;">*</span></p>
+                <select class="form-control" id="payrollRunType" name="payrollRunType" [(ngModel)]="payrollRunType">
+                    <option value="0" disabled selected>Select Payroll Run Type</option>
+                    <option value="Normal Run" >Normal Run</option>
+                    <option value="Off Cycle Run" >Off Cycle Run</option>
+                </select>
+            </div>
+        </div><br>
+        <p class="leavereq Heading1" *ngIf="payrollRunType=='Off Cycle Run'">Filter Staff By</p>
+        <div class="row leavereq" *ngIf="payrollRunType=='Off Cycle Run'">
+            <div class="col-lg-2">
+                <p>Department<span style="color: red;">*</span></p>
+                <select class="form-control" id="Department" name="Department" [(ngModel)]="Department"
+                    (change)="getDepartment()">
+                    <option value="0">Select Department</option>
+                    <option value="{{item.id}}" *ngFor="let item of Departmentlist">
+                        {{item.department_name}}
+                    </option>
+                </select>
+            </div>
+            <div class="col-lg-2">
+                <p>Level Type<span style="color: red;">*</span></p>
+                <select class="form-control" id="Department" name="Department" [(ngModel)]="level" (change)="geLevel()">
+                    <option value="0">Select Level</option>
+                    <option *ngFor="let levels of leveltypeList" value="{{levels.id}}">{{levels.short}}
+                    </option>
+
+
+                </select>
+            </div>
+            <div class="col-lg-2">
+                <p>Position<span style="color: red;">*</span></p>
+                <select class="form-control" id="RoleType" name="RoleType" (change)='getRoleType()'
+                    [(ngModel)]="RoleType">
+                    <option value="0">Select Position</option>
+                    <option *ngFor="let item of RoleTypeList" value="{{item.id}}">{{item.short}}
+                    </option>
+                </select>
+            </div>
+
+            <div class="col-lg-2">
+
+                <p>Employement Type<span style="color: red;">*</span></p>
+                <select class="form-control" placeholder="Employeement Type" id="EmployeementType"
+                    name="EmployeementType" [(ngModel)]="EmployeementType">
+                    <option value="0">Select Type</option>
+                    <option value="Regular">Regular</option>
+                    <option value="Project Hire">Project Hire</option>
+                    <option value="Consultant">Consultant</option>
+                </select>
+            </div>
+
+            <div class="col-md-2">
+
+                <label>Staff<span style="color: red;">*</span></label>
+
+                <div class="dropdown">
+                    <!-- <ng-multiselect-dropdown style="height: 30px;" [placeholder]="'Select Staff'"
+                        [settings]="staffdropdownSettings1" [data]="stafflist" (onSelect)="L1Manager($event)">
+                    </ng-multiselect-dropdown> -->
+                </div>
+            </div>
+        </div>
+
+        <br>
+        <div class="row leavereq">
+             <div class="col-md-3">
+                <p>Pay Date<span style="color: red;">*</span></p>
+                <input type="date" class="form-control" id="PayDate" name="PayDate" [(ngModel)]="PayDate"
+                    placeholder="PayDate">
+              
+            </div> 
+            <div class="col-md-3">
+                <p>Comments<span style="color: red;">*</span></p>
+                <textarea class="form-control" rows="4" id="Comments" name="Comments" [(ngModel)]="Comments"
+                    placeholder="Comments"></textarea>
+            </div>
+            <br />
+            <br />
+
+        </div>
+        <div class="row">
+            <div class="col-lg-10"></div>
+            <div class="col-lg-1">
+                <button class="button" (click)="cancel()">CANCEL</button>
+            </div>
+            <div class="col-lg-1">
+                <!-- <button type="button" class="button" *ngIf="ID!=undefined"
+                    (click)="UpdateEmployeePromotion()">UPDATE</button> -->
+                <button class="button" (click)="post()">{{ submit }}</button>
+            </div>
+        </div>
+    </div>
+</div>

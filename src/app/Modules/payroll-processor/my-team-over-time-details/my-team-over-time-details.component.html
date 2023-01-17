@@ -5,9 +5,13 @@
                 <div class="col-md-12">
                     <ul>
                         <li *ngIf="(level=='A1' || level=='A2' || level=='A3')"><a class="active Heading underlineclr"
-                                routerLink="/HR/MyOverTimeDetails">
+                                routerLink="/PayrollProcessor/MyTeamOverTimeDetails">
                                 Attendance Units</a></li>
-                       
+
+                        <li><a class="active Heading underlineclr"
+                                routerLink="/PayrollProcessor/MyTeamOverTimeDetails">
+                                Attendance Units</a></li>
+
                     </ul>
                 </div>
             </div>
@@ -16,34 +20,36 @@
                 <div class="row">
                     <div class="col-lg-1">
                         <img src="assets/Images/filter.svg" class="filter-img">
-                          <p class="filter">Filter By</p>
-                      </div>
+                        <p class="filter">Filter By</p>
+                    </div>
                     <div class="col-md-2">
                         <p>Pay Date
-                            <input class="form-control input-date  " type="date" onkeydown="return false"placeholder="Duration" id="sdate" name="sdate"
-                                [(ngModel)]="sdate"    (change)="filterbydate()">
+                            <input class="form-control input-date  " type="date" onkeydown="return false"
+                                placeholder="Duration" id="sdate" name="sdate" [(ngModel)]="sdate"
+                                (change)="filterbydate()">
                     </div>
-                    
+
                     <div class="col-md-4">
                         <p><br>
                             <input class="form-control" id="term" name="term" [(ngModel)]="term" type="search"
                                 (ngModelChange)="FilterAttendence()" placeholder="Search for staff.. ">
                     </div>
                     <div class="col-md-3">
-                       <br/>
+                        <br />
 
-                        <button class="form-control AddExpense" data-toggle="modal" data-target="#import" style="width: 80%;">Upload
+                        <button class="form-control AddExpense" data-toggle="modal" data-target="#import"
+                            style="width: 80%;">Upload
                             Overtime</button>
                     </div>
-                    
+
                 </div>
             </div>
             <br>
             <div class="row">
                 <div class="col-lg-10"></div>
-             <div class="col-lg-2">
-                <Button class="AddButton" (click)="ExporttoExcel()">Export to Excel</Button>
-             </div>
+                <div class="col-lg-2">
+                    <Button class="AddButton" (click)="ExporttoExcel()">Export to Excel</Button>
+                </div>
             </div>
             <br>
             <div class="row">
@@ -58,48 +64,48 @@
             </div><br>
             <div class="row">
                 <div class="row">
-                    
+
                 </div>
                 <br>
 
-                <div >
-                    <div >
+                <div>
+                    <div>
 
                         <div class="row" *ngIf="show==1">
                             <div class="col-md-10">
-                                <p class="show3res" >SHOWING <span>{{timedetails.length}}</span> RESULTS </p>
-                                    
+                                <p class="show3res">SHOWING <span>{{timedetails.length}}</span> RESULTS </p>
+
                             </div>
                         </div><br>
-                        
+
                         <br />
                         <br />
-                    
+
                         <div class="col-md-12" *ngIf="show==1">
                             <div class="container-fluid">
-                                <table class="table" >
+                                <table class="table">
                                     <thead>
                                         <tr class="thwidth">
                                             <th>Employee ID</th>
                                             <th>Employee Name</th>
                                             <th class="thwidth">Position</th>
                                             <th class="thwidth">Department</th>
-                                            
-                                            <th class="thwidth">Pay Date</th>
-                                           
 
-                                         
-                                            <th >Action</th>
+                                            <th class="thwidth">Pay Date</th>
+
+
+
+                                            <th>Action</th>
                                         </tr>
                                         <tr
                                             *ngFor="let time of timedetails| filter:term |paginate: { itemsPerPage: count1, currentPage: p}">
                                             <td>{{time.employeID}}</td>
                                             <td>{{time.firstAndLastName}}</td>
-                                             <td>{{time.role}}</td>
-                                            <td>{{time.department_name}}</td> 
-                                          
-                                            
-                                           
+                                            <td>{{time.role}}</td>
+                                            <td>{{time.department_name}}</td>
+
+
+
                                             <td>{{time.date|date}}</td>
                                             <td>
                                                 <button class="edit-btn" data-toggle="modal"
@@ -107,14 +113,14 @@
                                                     data-target="#CheckListStatusform">Details
                                                 </button>
                                             </td>
-                                            
+
                                         </tr>
                                     </thead>
                                 </table>
-                          
+
                                 <!-- <span *ngIf="preapprovaldetails1.length==0"><b>No Results Found</b></span> -->
                             </div>
-                            
+
                         </div>
                         <!-- <div *ngSwitchCase="'tab333'" id="tab333">
                             <br />
@@ -214,7 +220,7 @@
                             </div>
                         </div> -->
                     </div>
-                 
+
                 </div>
                 <div class="col-md-1"></div>
 
@@ -251,7 +257,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    
+
                     <tr>
                         <td>OT ON REG DAY</td>
                         <td>{{noofhours}}</td>
@@ -264,20 +270,20 @@
                         <td> Restday OT </td>
                         <td> {{restNormalOT}}</td>
                     </tr> -->
-                   
+
                     <tr>
 
                         <td> OT ON REG DAY > 8 HRS</td>
                         <td> {{ExccessNormalOt}}</td>
-                      
+
                     </tr>
                     <tr>
 
                         <td> OT NIGHT DIFFERENTIAL>8 HRS</td>
                         <td> {{ExccessNightOt}}</td>
                     </tr>
-                   
-                
+
+
                     <tr>
 
                         <td>OT ON REST DAY</td>
@@ -307,7 +313,7 @@
                         <td>NDOT LEGAL Holiday </td>
                         <td> {{LegalNightOt}}</td>
                     </tr>
-                   
+
                     <tr>
 
                         <td> OT ON LEGAL HOL>8 hrs</td>
@@ -326,7 +332,7 @@
                         <td> OT Night Differential Special Holiday </td>
                         <td> {{SpecialNightOt}}</td>
                     </tr>
-                   
+
                     <tr>
 
                         <td> OT ON SPECIAL HOL>8 hrs</td>
@@ -367,7 +373,7 @@
                         <td> OTND ON LEGAL HOLIDAY REST DAY </td>
                         <td> {{LegalRestNightOt}}</td>
                     </tr>
-                   
+
                     <tr>
 
                         <td> OT ON REST DAY LEGAL HOL>8 HRS </td>
@@ -385,12 +391,12 @@
                     </tr>
                     <tr>
 
-                        <td>  Double Holiday Night OT </td>
+                        <td> Double Holiday Night OT </td>
                         <td> {{DoubleHolidayNightOt}}</td>
                     </tr>
                     <tr>
 
-                        <td>  Double Holiday Excess 8 Normal OT </td>
+                        <td> Double Holiday Excess 8 Normal OT </td>
                         <td> {{DoubleHolidayExcessNormalOt}}</td>
                     </tr>
                     <tr>
@@ -406,17 +412,17 @@
                     </tr>
                     <tr>
 
-                        <td>  Double Holiday Rest Night OT </td>
+                        <td> Double Holiday Rest Night OT </td>
                         <td> {{DoubleHolidayRestNightOt}}</td>
                     </tr>
                     <tr>
 
-                        <td>  Double Holiday  Rest Excess 8 Normal OT </td>
+                        <td> Double Holiday Rest Excess 8 Normal OT </td>
                         <td> {{DoubleHolidayRestExcessNormalOt}}</td>
                     </tr>
                     <tr>
 
-                        <td>Double Holiday  Rest Excess 8 Night OT </td>
+                        <td>Double Holiday Rest Excess 8 Night OT </td>
                         <td> {{DoubleHolidayRestExcessNightOt}}</td>
                     </tr>
 
@@ -451,20 +457,20 @@
                         <td> Restday OT </td>
                         <td> {{restNormalOT}}</td>
                     </tr> -->
-                   
+
                     <tr>
 
                         <td> OT ON REG DAY > 8 HRS Adjustment</td>
                         <td> {{ExccessNormalOtAdjustment}}</td>
-                      
+
                     </tr>
                     <tr>
 
                         <td> OT NIGHT DIFFERENTIAL>8 HRS Adjustment</td>
                         <td> {{ExccessNightOtAdjustment}}</td>
                     </tr>
-                   
-                
+
+
                     <tr>
 
                         <td>OT ON REST DAY Adjustment</td>
@@ -494,7 +500,7 @@
                         <td>NDOT LEGAL Holiday Adjustment</td>
                         <td> {{LegalNightOtAdjustment}}</td>
                     </tr>
-                   
+
                     <tr>
 
                         <td> OT ON LEGAL HOL>8 hrs Adjustment</td>
@@ -513,7 +519,7 @@
                         <td> OT Night Differential Special Holiday Adjustment</td>
                         <td> {{SpecialNightOtAdjustment}}</td>
                     </tr>
-                   
+
                     <tr>
 
                         <td> OT ON SPECIAL HOL>8 hrs Adjustment</td>
@@ -541,7 +547,7 @@
                     </tr>
                     <tr>
 
-                        <td> OT Night Differential Special Holiday on Restday > 8 h  Adjustment</td>
+                        <td> OT Night Differential Special Holiday on Restday > 8 h Adjustment</td>
                         <td> {{SpecialRestExccessNightOtAdjustment}}</td>
                     </tr>
                     <tr>
@@ -554,7 +560,7 @@
                         <td> OTND ON LEGAL HOLIDAY REST DAY Adjustment</td>
                         <td> {{LegalRestNightOtAdjustment}}</td>
                     </tr>
-                   
+
                     <tr>
 
                         <td> OT ON REST DAY LEGAL HOL>8 HRS Adjustment</td>
@@ -572,12 +578,12 @@
                     </tr>
                     <tr>
 
-                        <td>  Double Holiday Night OT Adjustment</td>
+                        <td> Double Holiday Night OT Adjustment</td>
                         <td> {{DoubleHolidayNightOtAdjustment}}</td>
                     </tr>
                     <tr>
 
-                        <td>  Double Holiday Excess 8 Normal OT Adjustment</td>
+                        <td> Double Holiday Excess 8 Normal OT Adjustment</td>
                         <td> {{DoubleHolidayExcessNormalOtAdjustment}}</td>
                     </tr>
                     <tr>
@@ -593,17 +599,17 @@
                     </tr>
                     <tr>
 
-                        <td>  Double Holiday Rest Night OT Adjustment </td>
+                        <td> Double Holiday Rest Night OT Adjustment </td>
                         <td> {{DoubleHolidayRestNightOtAdjustment}}</td>
                     </tr>
                     <tr>
 
-                        <td>  Double Holiday  Rest Excess 8 Normal OT Adjustment</td>
+                        <td> Double Holiday Rest Excess 8 Normal OT Adjustment</td>
                         <td> {{DoubleHolidayRestExcessNormalOtAdjustment}}</td>
                     </tr>
                     <tr>
 
-                        <td>Double Holiday  Rest Excess 8 Night OT Adjustment</td>
+                        <td>Double Holiday Rest Excess 8 Night OT Adjustment</td>
                         <td> {{DoubleHolidayRestExcessNightOtAdjustment}}</td>
                     </tr>
 
@@ -659,7 +665,8 @@
                             (change)="incomingfile($event)" placeholder="Upload file" accept=".xlsx">
                     </div>
                     <div class="col-lg-4">
-                        <a href="https://103.12.1.76//AliLiveUATApi/AttendanceUnitsUploadTemplate.xlsx" style="color:navy"><u>Template.XLSX</u></a>
+                        <a href="https://103.12.1.76//AliLiveUATApi/AttendanceUnitsUploadTemplate.xlsx"
+                            style="color:navy"><u>Template.XLSX</u></a>
                     </div>
                 </div>
                 <br>
@@ -674,4 +681,3 @@
         </div>
     </div>
 </div>
-

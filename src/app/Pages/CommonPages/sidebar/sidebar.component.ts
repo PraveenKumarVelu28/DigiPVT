@@ -22,14 +22,21 @@ export class SidebarComponent implements OnInit {
   mini = true;
   active: any;
   announcement: any
+  AttendanceEnable: any
+  companyid: any;
+  roledid: any
   ngOnInit(): void {
     (document.getElementById("main") as HTMLInputElement).style.marginLeft = "250px";
     this.login = sessionStorage.getItem('roledid');
     this.temp1 = sessionStorage.getItem('temp');
+    this.companyid = sessionStorage.getItem('companyid');
+    this.AttendanceEnable = sessionStorage.getItem('AttendanceEnable');
     this.active = 0;
+
     this.UserName = sessionStorage.getItem('UserName');
     this.role = sessionStorage.getItem('role')
     this.roleid = sessionStorage.getItem('roledid')
+    this.roledid = sessionStorage.getItem('roledid')
   }
 
   toggleSidebar() {
@@ -378,14 +385,33 @@ export class SidebarComponent implements OnInit {
   public InitialPayroll(){
     this.active='InitialPayrollDetails'
     localStorage.setItem("clickname", "Priliminary Report")
-    this.router.navigate(['/Payroll/ExecutedInitialPayrollRuns'])
+    this.router.navigate(['/PayrollProcessor/ExecutedInitialPayrollRuns'])
   }
   
   public InitialPayrollDetails(){
   this.active='InitialPayrollDetails'
   localStorage.setItem("clickname", "InitialPayroll")
-    this.router.navigate(['/Payroll/InitialPayrollDash'])
-    
-    
+    this.router.navigate(['/PayrollProcessor/InitialPayrollDash'])
+  }
+
+  public Staff123() {
+    debugger
+    this.active = 312;
+    localStorage.setItem('Pagename', 'Staff')
+    this.router.navigate(['/Employee/StaffDashboard']);
+  }
+
+  public PayperiodSetting() {
+    debugger
+    this.active = 3;
+    localStorage.setItem('Pagename', 'Staff')
+    this.router.navigate(['/PayrollProcessor/PayperiodSettingsDash']);
+  }
+
+  public AttendanceUpload() {
+    debugger
+    this.active = 3;
+    localStorage.setItem('Pagename', 'Staff')
+    this.router.navigate(['/PayrollProcessor/MyTeamAttendence']);
   }
 }

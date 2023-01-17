@@ -13,8 +13,10 @@ import { PayperiodSettingsFormComponent } from './payperiod-settings-form/payper
 import { PayrollComponentBulkUploadComponent } from './payroll-component-bulk-upload/payroll-component-bulk-upload.component';
 import { PayrollProcessorComponent } from './payroll-processor.component';
 import { StaffLeavesUploadComponent } from './staff-leaves-upload/staff-leaves-upload.component';
+import { RunLwopValidationComponent } from './run-lwop-validation/run-lwop-validation.component';
 const routes: Routes = [
   { path: '', component: PayrollProcessorComponent },
+  { path: 'RunLwopValidation', component: RunLwopValidationComponent },
   { path: 'StaffLeavesUpload', component: StaffLeavesUploadComponent },
   { path: 'PayrollComponentBulkUpload', component: PayrollComponentBulkUploadComponent },
   { path: 'MyTeamOverTimeDetails', component: MyTeamOverTimeDetailsComponent },

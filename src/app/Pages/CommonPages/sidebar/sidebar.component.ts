@@ -414,4 +414,11 @@ export class SidebarComponent implements OnInit {
     localStorage.setItem('Pagename', 'Staff')
     this.router.navigate(['/PayrollProcessor/MyTeamAttendence']);
   }
+
+  public RunLwopValidation() {
+    debugger
+    this.active = 889;
+    localStorage.setItem('Pagename', 'Staff')
+    this.router.navigate(['/PayrollProcessor/RunLwopValidation']);
+  }
 }

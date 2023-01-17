@@ -16,6 +16,8 @@ import { StaffLeavesUploadComponent } from './staff-leaves-upload/staff-leaves-u
 import { PayperiodSettingsDashComponent } from './payperiod-settings-dash/payperiod-settings-dash.component';
 import { PayperiodSettingsFormComponent } from './payperiod-settings-form/payperiod-settings-form.component';
 import { MyTeamAttendenceComponent } from './my-team-attendence/my-team-attendence.component';
+import { RunLwopValidationComponent } from './run-lwop-validation/run-lwop-validation.component';
+import { LwopValidationDetailsComponent } from './lwop-validation-details/lwop-validation-details.component';
 
 
 @NgModule({
@@ -32,7 +34,9 @@ import { MyTeamAttendenceComponent } from './my-team-attendence/my-team-attenden
     StaffLeavesUploadComponent,
     PayperiodSettingsDashComponent,
     PayperiodSettingsFormComponent,
-    MyTeamAttendenceComponent
+    MyTeamAttendenceComponent,
+    RunLwopValidationComponent,
+    LwopValidationDetailsComponent
   ],
   imports: [
     PayrollProcessorRoutingModule,

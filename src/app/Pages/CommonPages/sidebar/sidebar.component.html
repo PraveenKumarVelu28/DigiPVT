@@ -47,6 +47,13 @@
 
           
         <div id="LwopValidation" class="collapse length ">
+
+          
+          <a (click)="RunLwopValidation()" class="nonactive">
+            <span class="sub-request">Run Lwop Validation</span>
+          </a>
+    
+
           <a (click)="UploadStaffLeaves()" class="nonactive">
             <span [ngClass]="active == 'UploadStaffLeaves' ? 'Active1' : 'Active3'" class="sub-request">Upload Leaves</span>
           </a>

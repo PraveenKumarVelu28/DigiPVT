@@ -14,6 +14,8 @@ import { PayrollComponentBulkUploadComponent } from './payroll-component-bulk-up
 import { PayrollProcessorComponent } from './payroll-processor.component';
 import { StaffLeavesUploadComponent } from './staff-leaves-upload/staff-leaves-upload.component';
 import { RunLwopValidationComponent } from './run-lwop-validation/run-lwop-validation.component';
+import { LwopValidationDetailsComponent } from './lwop-validation-details/lwop-validation-details.component';
+import { UploadGeneratedLwopComponent } from './upload-generated-lwop/upload-generated-lwop.component';
 const routes: Routes = [
   { path: '', component: PayrollProcessorComponent },
   { path: 'RunLwopValidation', component: RunLwopValidationComponent },
@@ -32,6 +34,8 @@ const routes: Routes = [
   { path: 'PayperiodSettingsForm', component: PayperiodSettingsFormComponent },
   { path: 'PayperiodSettingsForm/:id', component: PayperiodSettingsFormComponent },
   { path: 'MyTeamAttendence', component: MyTeamAttendenceComponent },
+  { path: 'LwopValidationDetails', component: LwopValidationDetailsComponent },
+  { path: 'UploadGeneratedLwop', component: UploadGeneratedLwopComponent },
 
 ];
 

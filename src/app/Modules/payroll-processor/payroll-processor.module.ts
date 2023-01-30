@@ -18,6 +18,7 @@ import { PayperiodSettingsFormComponent } from './payperiod-settings-form/payper
 import { MyTeamAttendenceComponent } from './my-team-attendence/my-team-attendence.component';
 import { RunLwopValidationComponent } from './run-lwop-validation/run-lwop-validation.component';
 import { LwopValidationDetailsComponent } from './lwop-validation-details/lwop-validation-details.component';
+import { UploadGeneratedLwopComponent } from './upload-generated-lwop/upload-generated-lwop.component';
 
 
 @NgModule({
@@ -36,7 +37,8 @@ import { LwopValidationDetailsComponent } from './lwop-validation-details/lwop-v
     PayperiodSettingsFormComponent,
     MyTeamAttendenceComponent,
     RunLwopValidationComponent,
-    LwopValidationDetailsComponent
+    LwopValidationDetailsComponent,
+    UploadGeneratedLwopComponent
   ],
   imports: [
     PayrollProcessorRoutingModule,

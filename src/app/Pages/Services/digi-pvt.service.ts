@@ -1633,9 +1633,9 @@ export class DigiPVTService {
     return this.http.get<any[]>(this.host + "/Announcement/Get_Salary_Splitsfor15days?EmployeeID=" + EmployeeID + "&LopdaysCount=" + LopdaysCount + "&startdate=" + startdate + "&enddate=" + enddate);
   }
 
-  public Get_RunLwopValidation(EmployeeID: any, LopdaysCount: any, startdate: any, enddate: any) {
+  public Get_RunLwopValidation(EmployeeID: any,  startdate: any, enddate: any) {
     //debugger
-    return this.http.get<any[]>(this.host + "/Announcement/Get_RunLwopValidation?EmployeeID=" + EmployeeID + "&LopdaysCount=" + LopdaysCount + "&startdate=" + startdate + "&enddate=" + enddate);
+    return this.http.get<any[]>(this.host + "/Announcement/Get_RunLwopValidation?EmployeeID=" + EmployeeID  + "&startdate=" + startdate + "&enddate=" + enddate);
   }
 
 
@@ -1658,6 +1658,20 @@ export class DigiPVTService {
     );
   }
 
+  public GetValidatedLwopDetails() {
+    //debugger
+    return this.http.get<any[]>(
+      this.host + "/Announcement/GetValidatedLwopDetails"
+    );
+  }
+  
+  public InsertGeneratedLwopValues(data: any) {
+    //debugger;
+    this.url = this.host + '/Master/InsertGeneratedLwopValues';
+    return this.http.post(this.url, data);
+  }
+  
+
   public GetCompanyAddressDetails() {
     //debugger
     return this.http.get<any[]>(
@@ -1665,7 +1679,14 @@ export class DigiPVTService {
     );
   }
 
+  public GetGeneratedLwopValues() {
+    //debugger
+    return this.http.get<any[]>(
+      this.host + "/Master/GetGeneratedLwopValues"
+    );
+  }
 
+  
 
 
   public GetEmployeeSalary() {

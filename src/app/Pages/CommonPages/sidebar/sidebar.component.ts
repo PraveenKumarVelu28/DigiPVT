@@ -355,6 +355,13 @@ export class SidebarComponent implements OnInit {
     this.router.navigate(['/PayrollProcessor/StaffLeavesUpload'])
   }
 
+  public UploadSystemGeneratedLWOP(){
+    this.active='UploadSystemGeneratedLWOP'
+    localStorage.setItem("clickname", "Upload Staff Leaves")
+    this.router.navigate(['/PayrollProcessor/UploadGeneratedLwop'])
+  }
+
+
 
   public ComponentMaster(){
     this.active='ComponentMaster'
@@ -419,6 +426,6 @@ export class SidebarComponent implements OnInit {
     debugger
     this.active = 889;
     localStorage.setItem('Pagename', 'Staff')
-    this.router.navigate(['/PayrollProcessor/RunLwopValidation']);
+    this.router.navigate(['/PayrollProcessor/LwopValidationDetails']);
   }
 }

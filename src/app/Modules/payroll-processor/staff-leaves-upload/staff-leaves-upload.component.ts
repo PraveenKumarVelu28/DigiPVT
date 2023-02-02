@@ -293,7 +293,7 @@ export class StaffLeavesUploadComponent implements OnInit {
 
       for (this.i = 0; this.i < this.exceldata.length; this.i++) {
        
-            this.stafflistcopy123=this.stafflist.filter((x: { employeID: any; })=>x.employeID==this.exceldata[this.i].EmployeeID)
+            this.stafflistcopy123=this.stafflist.filter((x: { employeID: any; })=>x.employeID==this.exceldata[this.i].EmployeID)
              
              if(this.stafflistcopy123.length!=0){
               this.StaffID = this.stafflistcopy123[0].id

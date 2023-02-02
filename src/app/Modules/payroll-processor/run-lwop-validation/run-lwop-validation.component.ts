@@ -692,7 +692,7 @@ export class RunLwopValidationComponent implements OnInit {
       for (let i = 0; i < this.ID.length; i++) {
         debugger;
         this.EmployeeID = this.ID[i];
-        this.DigiofficeService.GetEmployeeSalary().subscribe(data => {
+        this.DigiofficeService.GetRoleType().subscribe(data => {
           debugger
           this.employeelist = data.filter(x => x.id == this.ID[i] && x.startdate1 == this.startdate && x.enddate1 == this.enddate);
           if (this.employeelist.length != 0) {
@@ -718,12 +718,11 @@ export class RunLwopValidationComponent implements OnInit {
                     for (let i = 0; i < this.ID.length; i++) {
                       debugger;
                       this.EmployeeID = this.ID[i];
-                      this.DigiofficeService.GetStaffLeavesForPayrollByDate(this.startdate, this.enddate, this.ID[i]).subscribe(
-                        res => {
+             
                           debugger;
-                          if (res.length == 0) {
+                         
                             this.LOPDays = 0;
-                            this.DigiofficeService.Get_RunLwopValidation(this.ID[i], this.LOPDays, this.startdate, this.enddate).subscribe(
+                            this.DigiofficeService.Get_RunLwopValidation(this.ID[i],  this.startdate, this.enddate).subscribe(
                               res => {
                                 debugger;
                                 this.StaffSalaryReports = res;
@@ -738,86 +737,8 @@ export class RunLwopValidationComponent implements OnInit {
                               }
                             )
   
-                          } else {
-  
-                            this.LOPDays = res[0].noOfDays;
-                            this.DigiofficeService.GetStaffLeavesForPayrollByDate(this.startdate, this.enddate, this.ID[i]).subscribe(
-                              res1 => {
-                                debugger;
-                                this.PrevLOPDays = res1[0].noOfDays;
-                                if (this.LOPDays > 2) {
-                                  if (this.PrevLOPDays == 0) {
-                                    this.LOPDays = this.LOPDays;
-                                    this.DigiofficeService.Get_RunLwopValidation(this.ID[i], this.LOPDays, this.startdate, this.enddate).subscribe(
-                                      res => {
-                                        debugger;
-                                        this.StaffSalaryReports = res;
-                                        Swal.fire(
-                                          'Payroll Ran Successfully!',
-                                          'Payroll run has been Completed',
-                                          'success'
-                                        )
-  
-                                        this.ID = [];
-                                        this.Payrollvis = true;
-                                        this.InsertNotification();
-                                        location.href = '#/PayRoll'
-                                      }
-                                    )
-                                  }
-                                  else if (this.PrevLOPDays != 0) {
-                                    let ActualLOPDays = Number(this.LOPDays) + Number(this.PrevLOPDays);
-                                    if (ActualLOPDays > 4) {
-                                      this.LOPDays = Number(ActualLOPDays) - 4;
-                                      this.DigiofficeService.Get_RunLwopValidation(this.ID[i], this.LOPDays, this.startdate, this.enddate).subscribe(
-                                        res => {
-                                          debugger;
-                                          this.StaffSalaryReports = res;
-                                          Swal.fire(
-                                            'Payroll Ran Successfully!',
-                                            'Payroll run has been Completed',
-                                            'success'
-                                          )
-                                          this.ID = [];
-  
-                                          this.Payrollvis = true;
-                                          this.InsertNotification();
-                                          location.href = '#/PayRoll'
-                                        }
-                                      )
-                                    }
-                                  }
-                                }
-  
-                                else {
-                                  if (this.LOPDays <= 2 || this.PrevLOPDays == 0) {
-                                    this.LOPDays = 0;
-                                    this.DigiofficeService.Get_RunLwopValidation(this.ID[i], this.LOPDays, this.startdate, this.enddate).subscribe(
-                                      res => {
-                                        debugger;
-                                        this.StaffSalaryReports = res;
-                                        Swal.fire(
-                                          'Payroll Ran Successfully!',
-                                          'Payroll run has been Completed',
-                                          'success'
-                                        )
-                                        this.ID = [];
-                                        this.Payrollvis = true
-                                        this.InsertNotification();
-                                        location.href = '#/PayRoll'
-                                      }
-                                    )
-                                  }
-                                }
-  
-                              }
-                            )
-  
-                          }
-  
-                        }
-  
-                      )
+                          
+                        
                     }
   
   
@@ -840,137 +761,64 @@ export class RunLwopValidationComponent implements OnInit {
               }
             })
           }
-          else {
-            Swal.fire({
-              title: 'Are you sure?',
-              text: 'To Run Payroll For This Period!',
-             
-              showCancelButton: true,
-              confirmButtonText: 'Yes, Accept it!',
-              cancelButtonText: 'No, keep it'
-            }).then((result) => {
-              if (result.value==true) {
-                debugger
-                for (let i = 0; i < this.ID.length; i++) {
-                  debugger;
-                  this.EmployeeID = this.ID[i];
-                  this.DigiofficeService.GetStaffLeavesForPayrollByDate(this.startdate, this.enddate, this.ID[i]).subscribe(
-                    res => {
-                      debugger;
-                      if (res.length == 0) {
-                        this.LOPDays = 0;
-                        this.DigiofficeService.Get_RunLwopValidation(this.ID[i], this.LOPDays, this.startdate, this.enddate).subscribe(
-                          res => {
-                            debugger;
-                            this.StaffSalaryReports = res;
-                            Swal.fire(
-                              'Payroll Ran Successfully!',
-                              'Payroll run has been Completed',
-                              'success'
-                            )
-                            this.Payrollvis = true
-                            this.InsertNotification();
-                            location.href = '#/PayRoll'
-                          }
-                        )
-  
-                      } else {
-  
-                        this.LOPDays = res[0].noOfDays;
-                        this.DigiofficeService.GetStaffLeavesForPayrollByDate(this.startdate, this.enddate, this.ID[i]).subscribe(
-                          res1 => {
-                            debugger;
-                            this.PrevLOPDays = res1[0].noOfDays;
-                            if (this.LOPDays > 2) {
-                              if (this.PrevLOPDays == 0) {
-                                this.LOPDays = this.LOPDays;
-                                this.DigiofficeService.Get_RunLwopValidation(this.ID[i], this.LOPDays, this.startdate, this.enddate).subscribe(
-                                  res => {
-                                    debugger;
-                                    this.StaffSalaryReports = res;
-                                    Swal.fire(
-                                      'Payroll Ran Successfully!',
-                                      'Payroll run has been Completed',
-                                      'success'
-                                    )
-  
-                                    this.ID = [];
-                                    this.Payrollvis = true;
-                                    this.InsertNotification();
-                                    location.href = '#/PayRoll'
-                                  }
-                                )
-                              }
-                              else if (this.PrevLOPDays != 0) {
-                                let ActualLOPDays = Number(this.LOPDays) + Number(this.PrevLOPDays);
-                                if (ActualLOPDays > 4) {
-                                  this.LOPDays = Number(ActualLOPDays) - 4;
-                                  this.DigiofficeService.Get_RunLwopValidation(this.ID[i], this.LOPDays, this.startdate, this.enddate).subscribe(
-                                    res => {
-                                      debugger;
-                                      this.StaffSalaryReports = res;
-                                      Swal.fire(
-                                        'Payroll Ran Successfully!',
-                                        'Payroll run has been Completed',
-                                        'success'
-                                      )
-                                      this.ID = [];
-                                      this.Payrollvis = true;
-                                      this.InsertNotification();
-                                      location.href = '#/PayRoll'
-                                    }
-                                  )
-                                }
-                              }
+          else{
+           
+              Swal.fire({
+                title: 'Are you sure?',
+                text: 'To Run Payroll In This Period',
+               
+                showCancelButton: true,
+                confirmButtonText: 'Yes, Accept it!',
+                cancelButtonText: 'No, keep it'
+              }).then((result) => {
+                if (result.value==true) {
+                  debugger
+                  for (let i = 0; i < this.ID.length; i++) {
+                    debugger;
+                    this.EmployeeID = this.ID[i];
+           
+                        debugger;
+                       
+                          this.LOPDays = 0;
+                          this.DigiofficeService.Get_RunLwopValidation(this.ID[i],  this.startdate, this.enddate).subscribe(
+                            res => {
+                              debugger;
+                              this.StaffSalaryReports = res;
+                              Swal.fire(
+                                'Payroll Ran Successfully!',
+                                'Payroll run has been Completed',
+                                'success'
+                              )
+                              this.Payrollvis = true
+                              this.InsertNotification();
+                              location.href = '#/PayRoll'
                             }
-  
-                            else {
-                              if (this.LOPDays <= 2 || this.PrevLOPDays == 0) {
-                                this.LOPDays = 0;
-                                this.DigiofficeService.Get_RunLwopValidation(this.ID[i], this.LOPDays, this.startdate, this.enddate).subscribe(
-                                  res => {
-                                    debugger;
-                                    this.StaffSalaryReports = res;
-                                    Swal.fire(
-                                      'Payroll Ran Successfully!',
-                                      'Payroll run has been Completed',
-                                      'success'
-                                    )
-                                    this.ID = [];
-                                    this.Payrollvis = true
-                                    this.InsertNotification();
-                                    location.href = '#/PayRoll'
-                                  }
-                                )
-                              }
-                            }
-  
-                          }
-                        )
-  
-                      }
-  
-                    }
-  
+                          )
+
+                        
+                      
+                  }
+
+
+
+
+
+
+                  // For more information about handling dismissals please visit
+                  // https://sweetalert2.github.io/#handling-dismissals
+                } else if (result.dismiss === Swal.DismissReason.cancel) {
+                  Swal.fire(
+                    'Cancelled',
+                    'Your imaginary file is safe :)',
+                    'error'
                   )
                 }
-  
-  
-  
-  
-  
-  
-                // For more information about handling dismissals please visit
-                // https://sweetalert2.github.io/#handling-dismissals
-              } else if (result.dismiss === Swal.DismissReason.cancel) {
-                Swal.fire(
-                  'Cancelled',
-                  'Your imaginary file is safe :)',
-                  'error'
-                )
-              }
-            })
+              })
+
+
+            
           }
+      
   
         })
   

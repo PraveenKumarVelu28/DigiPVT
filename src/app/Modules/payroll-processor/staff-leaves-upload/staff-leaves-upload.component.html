@@ -45,47 +45,38 @@
                 </div>
             </div>
             <br>
+            <br>
             <div class="row">
-                <div class="col-lg-10"></div>
-             <div class="col-lg-2">
+                <div class="col-lg-8"></div>
+             <div class="col-lg-4">
                 <Button class="AddButton" (click)="ExporttoExcel()">Export to Excel</Button>
              </div>
             </div>
             <br>
+          
             <div class="row">
-                <div class="col-md-5">
-                </div>
-                <div class="col-md-5">
-                </div>
-                <div class="col-md-2">
-                    <a><button *ngIf="selecallbtn" class="form-control AddExpense" (click)="Approveall()">Approve
-                            All</button></a>
-                </div>
-            </div><br>
-            <div class="row">
-                <div class="row">
-                    
-                </div>
+           
                 <br>
 
-                <div >
-                    <div >
+               
+                  
 
                         <div class="row" *ngIf="show==1">
-                            <div class="col-md-10">
-                                <p class="show3res" >SHOWING <span>{{timedetails.length}}</span> RESULTS </p>
+                            <div class="col-md-12">
+                                <p class="show3res" >SHOWING <span>{{staffleaves2.length}}</span> RESULTS </p>
                                     
                             </div>
                         </div><br>
                         
                         <br />
-                        <br />
+                       
                     
                         <div class="col-md-12" *ngIf="show==1">
                             <div class="container-fluid">
                                 <table class="table" >
                                     <thead>
                                         <tr class="thwidth">
+                                            <th>Name</th>
                                             <th>From Date</th>
                                             <th>To Date</th>
                                             <th>Leave Type</th>
@@ -95,7 +86,8 @@
                                            
                                         </tr>
                                         <tr
-                                            *ngFor="let leaves of staffleaves2| filter:term |paginate: { itemsPerPage: count1, currentPage: p}">
+                                            *ngFor="let leaves of staffleaves2| filter:term ">
+                                            <td>{{leaves.staffName}} </td>
                                             <td>{{leaves.sDateOfLeave}} </td>
                                             <td>{{leaves.eDateOfLeave}} </td>
                                             <td>{{leaves.leavetype}}<br>
@@ -109,11 +101,11 @@
                                 <!-- <span *ngIf="preapprovaldetails1.length==0"><b>No Results Found</b></span> -->
                             </div>
                             
-                        </div>
+                       
                        
                     </div>
                  
-                </div>
+               
                 <div class="col-md-1"></div>
 
             </div>

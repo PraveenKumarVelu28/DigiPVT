@@ -14,6 +14,7 @@ declare var JSZipUtils: any;
 })
 export class BonusValidationComponent implements OnInit {
 
+
   
  viewMode = 'tab1';
 
@@ -707,6 +708,7 @@ export class BonusValidationComponent implements OnInit {
         // This way it won't flip flop them and will set them all to the same value which is passed into the function
       }
     }
+
 
 
   }

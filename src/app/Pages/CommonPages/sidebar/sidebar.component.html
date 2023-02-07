@@ -35,22 +35,26 @@
       <img *ngIf="(active == 2&&mini) " src="assets/Images/revamp/announcementnewblue-icon.png">
 
       <span class="icon-text">Announcement</span></a> -->
-
+     
 
       <a data-toggle="collapse" data-target="#LwopValidation"  (click)="LwopValidation()" [ngClass]="(active == 108 )&&!mini ? 'menu1' : (active == 108)&&mini?'menu-mini':'menu'">
         <img *ngIf="(active == 108&&!mini)" src="assets/Images/revamp/announcementwhite.png">
         <img *ngIf="active != 108 " src="assets/Images/revamp/announcementnewgray-icon.png">
         <img *ngIf="(active == 108&&mini) " src="assets/Images/revamp/announcementnewblue-icon.png">
-  
         <span class="icon-text">Lwop Validation</span></a>
-
-
-          
         <div id="LwopValidation" class="collapse length ">
-
-          
           <a (click)="RunLwopValidation()" class="nonactive">
             <span class="sub-request">Lwop Validated Details</span>
+          </a>
+
+
+          <a (click)="RunbonusValidation()" [ngClass]="(active == 2345)&&!mini ? 'menu1' :(active == 2345)&&mini?'menu-mini' :'menu'">
+            <span>
+              <img *ngIf="(active == 2345 &&!mini)" src="assets/Images/revamp/dashboardwhite-icon.png">
+              <img *ngIf="active != 2345" src="assets/Images/revamp/dashboardgray-icon.png">
+              <img *ngIf="(active == 2345 &&mini)" src="assets/Images/revamp/dashboardnewblue-icon.png">
+            </span>
+            <span class="icon-text">Bonus validation</span>
           </a>
 
 
@@ -63,6 +67,8 @@
           <a (click)="UploadSystemGeneratedLWOP()" class="nonactive">
             <span [ngClass]="active == 'UploadSystemGeneratedLWOP' ? 'Active1' : 'Active3'" class="sub-request">Upload Generated Lwop</span>
           </a>
+
+        
         
         </div>
 

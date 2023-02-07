@@ -439,10 +439,12 @@ export class SidebarComponent implements OnInit {
     this.router.navigate(['/PayrollProcessor/LwopValidationDetails']);
   }
 
-    public ValidatedBonusDetails() {
+
+  
+  public RunbonusValidation() {
     debugger
-    this.active = 988;
+    this.active = 2345;
     localStorage.setItem('Pagename', 'Staff')
-    this.router.navigate(['/PayrollProcessor/LwopValidationDetails']);
+    this.router.navigate(['/PayrollProcessor/BonusValidation']);
   }
 }

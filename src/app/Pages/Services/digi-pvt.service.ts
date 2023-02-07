@@ -1641,7 +1641,7 @@ export class DigiPVTService {
 
   public Get_RunBonusValidation(EmployeeID: any,  startdate: any, enddate: any) {
     //debugger
-    return this.http.get<any[]>(this.host + "/Vendor/Get_RunBonusValidation?EmployeeID=" + EmployeeID  + "&startdate=" + startdate + "&enddate=" + enddate);
+    return this.http.get<any[]>(this.host + "/Announcement/GetRunBonusValidation?EmployeeID=" + EmployeeID  + "&startdate=" + startdate + "&enddate=" + enddate);
   }
 
 
@@ -1680,6 +1680,16 @@ export class DigiPVTService {
   }
   
 
+   public InsertBonusValidation(data: any) {
+    //debugger;
+    this.url = this.host + '/Master/InsertBonusValidation';
+    return this.http.post(this.url, data);
+  }
+  
+  
+
+  
+
   public GetCompanyAddressDetails() {
     //debugger
     return this.http.get<any[]>(
@@ -1694,6 +1704,15 @@ export class DigiPVTService {
     );
   }
 
+
+   public GetBonusValidation() {
+    //debugger
+    return this.http.get<any[]>(
+      this.host + "/Master/GetBonusValidation"
+    );
+  }
+
+  
   
 
 

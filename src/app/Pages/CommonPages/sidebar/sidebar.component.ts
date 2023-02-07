@@ -372,6 +372,13 @@ export class SidebarComponent implements OnInit {
   }
 
 
+  public UploadBonusValues(){
+    this.active='UploadBonusValues'
+    localStorage.setItem("clickname", "Upload Staff Leaves")
+    this.router.navigate(['/PayrollProcessor/UploadBonusValues'])
+  }
+
+
 
   public ComponentMaster(){
     this.active='ComponentMaster'
@@ -445,6 +452,6 @@ export class SidebarComponent implements OnInit {
     debugger
     this.active = 2345;
     localStorage.setItem('Pagename', 'Staff')
-    this.router.navigate(['/PayrollProcessor/BonusValidation']);
+    this.router.navigate(['/PayrollProcessor/BonusValidationDetails']);
   }
 }

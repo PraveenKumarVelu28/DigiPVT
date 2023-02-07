@@ -2,7 +2,7 @@
     <div class="col-md-12">
         <div class="row">
             <div class="col-lg-11">
-                <p class="Heading">Upload System Generated Lwop Values</p>
+                <p class="Heading">Upload Bonus Values</p>
             </div>
         </div>
         <div class="row FilterClass">
@@ -32,7 +32,7 @@
              <div class="col-lg-3">
                 
                 <button class="form-control AddExpense" data-toggle="modal" data-target="#import" >Upload
-                    LWOP</button>
+                    Bonus</button>
 
              </div>
             <!-- <div class="col-lg-3">
@@ -51,10 +51,12 @@
                                 <th>Name</th>
                                 <th>EmployeeID</th>
                                 <th>Pay Date</th>
-                                <th>LWOP Days</th>
-                                <th>LWOP Amount</th>
-                                <th>LWOP Days Adjustment</th>
-                                <th>LWOP Adjustment Amount</th>
+                                <th>13th Month Bonus</th>
+                                <th>14th Month Bonus</th>
+                                <th>Performance Bonus</th>
+                                <th>Taxable Bonus</th>
+                                <th>NonTaxable Bonus</th>
+                                <th>Actions</th>
                                 
                                 <!-- <th>Attachment</th>
                                 <th *ngIf="roleid=='1'">Actions</th> -->
@@ -64,11 +66,13 @@
                             <tr *ngFor="let list of componentmaster|filter:term |paginate: { itemsPerPage: count2, currentPage: p1}  "  >
                                 <td>{{list.name}}</td>
                                 <td>{{list.employeID}}</td>
-                                <td>{{list.paydate|date}}</td>
-                                <td>{{list.lopDays}}</td>
-                                <td>{{list.lwopAmount}}</td>
-                                <td>{{list.lopDaysAdjustment}}</td>
-                                <td>{{list.lwopAmountAdjustment}}</td>
+                                <td>{{list.payDate|date}}</td>
+                                <td>{{list.thirteenthMonthBonus}}</td>
+                                <td>{{list.forteenthMonthBonus}}</td>
+                                <td>{{list.performanceBonus}}</td>
+                                <td>{{list.taxableBonus}}</td>
+                                <td>{{list.nonTaxableBonus}}</td>
+
                                 
                                 <td > 
                                     <button class="upload"  (click)="delete(list.id)">Delete</button>
@@ -101,7 +105,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title">Upload Leaves</h4>
+                <h4 class="modal-title">Upload Bonus Values</h4>
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
             <div class="modal-body">
@@ -119,7 +123,7 @@
                     <div class="col-lg-6">
                         <button type="button" class="save-btn" style="width: 70%;" data-dismiss="modal"
                       (click)="Upload_file()"     >Upload
-                            Leaves</button>
+                            Bonuses</button>
                     </div>
                 </div>
             </div>

@@ -1641,7 +1641,7 @@ export class DigiPVTService {
 
   public Get_RunBonusValidation(EmployeeID: any,  startdate: any, enddate: any) {
     //debugger
-    return this.http.get<any[]>(this.host + "/Announcement/Get_RunBonusValidation?EmployeeID=" + EmployeeID  + "&startdate=" + startdate + "&enddate=" + enddate);
+    return this.http.get<any[]>(this.host + "/Vendor/Get_RunBonusValidation?EmployeeID=" + EmployeeID  + "&startdate=" + startdate + "&enddate=" + enddate);
   }
 
 

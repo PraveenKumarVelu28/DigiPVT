@@ -20,10 +20,9 @@ import { RunLwopValidationComponent } from './run-lwop-validation/run-lwop-valid
 import { LwopValidationDetailsComponent } from './lwop-validation-details/lwop-validation-details.component';
 import { UploadGeneratedLwopComponent } from './upload-generated-lwop/upload-generated-lwop.component';
 import { BonusValidationComponent } from './bonus-validation/bonus-validation.component';
-<<<<<<< HEAD
 import { BonusValidationDetailsComponent } from './bonus-validation-details/bonus-validation-details.component';
-=======
->>>>>>> 5a63adf466ebec4f8788ab78c6b6ca0ee55a61b6
+import { UploadBonusValuesComponent } from './upload-bonus-values/upload-bonus-values.component';
+
 
 
 @NgModule({
@@ -44,12 +43,10 @@ import { BonusValidationDetailsComponent } from './bonus-validation-details/bonu
     RunLwopValidationComponent,
     LwopValidationDetailsComponent,
     UploadGeneratedLwopComponent,
-<<<<<<< HEAD
+
     BonusValidationComponent,
-    BonusValidationDetailsComponent
-=======
-    BonusValidationComponent
->>>>>>> 5a63adf466ebec4f8788ab78c6b6ca0ee55a61b6
+    BonusValidationDetailsComponent,
+    UploadBonusValuesComponent
   ],
   imports: [
     PayrollProcessorRoutingModule,

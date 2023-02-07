@@ -441,7 +441,7 @@ export class SidebarComponent implements OnInit {
 
 
   
-  public RunbonusValidation() {
+  public ValidatedBonusDetails() {
     debugger
     this.active = 2345;
     localStorage.setItem('Pagename', 'Staff')

@@ -7,15 +7,15 @@ import { ExportToCsv } from 'export-to-csv';
 import { DatePipe, formatDate } from '@angular/common';
 declare var JSZipUtils: any;
 
-
 @Component({
-  selector: 'app-run-lwop-validation',
-  templateUrl: './run-lwop-validation.component.html',
-  styleUrls: ['./run-lwop-validation.component.css']
+  selector: 'app-bonus-validation',
+  templateUrl: './bonus-validation.component.html',
+  styleUrls: ['./bonus-validation.component.css']
 })
-export class RunLwopValidationComponent implements OnInit {
+export class BonusValidationComponent implements OnInit {
 
-  viewMode = 'tab1';
+  
+ viewMode = 'tab1';
 
   constructor(public DigiofficeService: DigiPVTService, public router: Router, private datePipe: DatePipe) {
     this.minDate.setDate(this.minDate.getDate() - 1);
@@ -42,6 +42,8 @@ export class RunLwopValidationComponent implements OnInit {
   cutofflist:any;
   PaycodeID:any;
   PayPeriodSettingList:any;
+  myDate:any;
+  startdate:any;
   ngOnInit(): void {
     this.PaycodeID = "";
     this.myDate = new Date();
@@ -493,161 +495,9 @@ export class RunLwopValidationComponent implements OnInit {
   public ID: any = [];
 
 
-  // public getCheckbocdetails(evn: any) {
-  //   debugger
-  //   let temp: any = evn;
-  //   this.temp = Object.entries(temp);
-  //   debugger
-  //   if (this.temp.every((val: { checked: boolean; }) => val.checked == true)) {
-  //     this.IntID = false;
-  //     this.ID = [];
-  //     this.temp.forEach((val: { checked: boolean; }) => { val.checked = false });
-  //     this.IntID = false;
-  //   }
-  //   else {
-  //     debugger;
+  
 
-  //     //  this.ID = [];
-  //     debugger
-  //     this.temp.forEach((val: { checked: boolean; }) => { val.checked = true });
-  //     this.IntID = true;
-  //     this.ID.push(evn.id);
-
-
-  //       debugger;
-  //       this.EmployeeID = this.ID[0];
-  //       this.DigiofficeService.GetStaffLeavesForPayrollByDate(this.startdate, this.enddate, this.ID[0]).subscribe(
-  //         res => {
-  //           debugger;
-  //           if (res.length == 0) {
-  //             this.LOPDays = 0;
-  //             this.DigiofficeService.Get_Salary_Splits(this.ID[0], this.LOPDays, this.startdate, this.enddate).subscribe(
-  //               res => {
-  //                 debugger;
-  //                 this.StaffSalaryReports = res;
-  //                    this.getempdetails(evn)
-  //                 Swal.fire("Payroll Processing Completed");
-  //                 this.Payrollvis = true
-  //               }
-  //             )
-
-  //           } else {
-
-  //             this.LOPDays = res[0].noOfDays;
-  //             this.DigiofficeService.GetStaffLeavesForPayrollByDate(this.startdate, this.enddate, this.ID1[0]).subscribe(
-  //               res1 => {
-  //                 debugger;
-  //                 this.PrevLOPDays = res1[0].noOfDays;
-  //                 if (this.LOPDays > 2) {
-  //                   if (this.PrevLOPDays == 0) {
-  //                     this.LOPDays = this.LOPDays;
-  //                     this.DigiofficeService.Get_Salary_Splits(this.ID[0], this.LOPDays, this.startdate, this.enddate).subscribe(
-  //                       res => {
-  //                         debugger;
-  //                         this.StaffSalaryReports = res;
-  //                         this.getempdetails(evn)
-  //                         Swal.fire("Payroll Processing Completed");
-
-  //                         this.ID = [];
-  //                         this.Payrollvis = true;
-  //                       }
-  //                     )
-  //                   }
-  //                   else if (this.PrevLOPDays != 0) {
-  //                     let ActualLOPDays = Number(this.LOPDays) + Number(this.PrevLOPDays);
-  //                     if (ActualLOPDays > 4) {
-  //                       this.LOPDays = Number(ActualLOPDays) - 4;
-  //                       this.DigiofficeService.Get_Salary_Splits(this.ID[0], this.LOPDays, this.startdate, this.enddate).subscribe(
-  //                         res => {
-  //                           debugger;
-  //                           this.StaffSalaryReports = res;
-  //                              this.getempdetails(evn)
-  //                           Swal.fire("Payroll Processing Completed");
-  //                           this.ID = [];
-  //                           this.Payrollvis = true;
-  //                         }
-  //                       )
-  //                     }
-  //                   }
-  //                 }
-
-  //                 else {
-  //                   if (this.LOPDays <= 2 || this.PrevLOPDays == 0) {
-  //                     this.LOPDays = 0;
-  //                     this.DigiofficeService.Get_Salary_Splits(this.ID[0], this.LOPDays, this.startdate, this.enddate).subscribe(
-  //                       res => {
-  //                         debugger;
-  //                         this.StaffSalaryReports = res;
-  //                         this.getempdetails(evn)
-  //                         Swal.fire("Payroll Processing Completed");
-  //                         this.ID = [];
-  //                         this.Payrollvis = true
-  //                       }
-  //                     )
-  //                   }
-  //                 }
-
-  //               }
-  //             )
-
-  //           }
-
-  //         }
-
-  //       )
-
-
-  //   }
-
-  // }
-
-  sssrate: any;
-  ss_ec: any;
-  ss_er: any;
-  startmonth: any;
-  endmonth: any;
-  startyear: any;
-  endyear: any;
-  myDate: any;
-  companylist: any;
-  companyname: any;
-  Address: any;
-
-  paginigec: any;
-  dob: any;
-  PhilHealthEC: any;
-  joiningdate: any;
-
-  public getempdetails(evn: any) {
-    this.DigiofficeService.GetEmployeeSalary().subscribe(data => {
-      debugger
-      this.employeelist = data.filter(x => x.id == evn.id && x.startdate1 == this.startdate && x.enddate1 == this.enddate);
-      this.fullname = this.employeelist[0].staffname + this.employeelist[0].lastName
-      this.sssrate = this.employeelist[0].contribution,
-        this.ss_ec = this.employeelist[0].ss_ec,
-        this.ss_er = this.employeelist[0].ss_er,
-        this.startmonth = this.employeelist[0].startmonth,
-        this.endmonth = this.employeelist[0].endmonth,
-        this.startyear = this.employeelist[0].startyear,
-        this.endyear = this.employeelist[0].endyear,
-        this.paginigec = this.employeelist[0].pagBig / 2,
-        this.myDate = this.datePipe.transform(this.myDate, 'yyyy-MM-dd');
-        this.dob = this.employeelist[0].dob,
-        this.joiningdate = this.employeelist[0].joiningDate,
-        this.PhilHealth = this.employeelist[0].philHealth,
-        this.PhilHealthEC = this.employeelist[0].philHealthContribution / 2,
-        this.DigiofficeService.GetCompanyDetails().subscribe(data => {
-          debugger
-          this.companylist = data
-          this.companyname = this.companylist[0].companyName,
-            this.Address = this.companylist[0].address
-
-
-
-        })
-
-    });
-  }
+ 
 
 
 
@@ -707,7 +557,7 @@ export class RunLwopValidationComponent implements OnInit {
               if (result.value==true) {
                 Swal.fire({
                   title: 'Are you sure?',
-                  text: 'To Run Lwop Validation In This Period',
+                  text: 'To Run Bonus Validation In This Period',
                  
                   showCancelButton: true,
                   confirmButtonText: 'Yes, Accept it!',
@@ -722,7 +572,7 @@ export class RunLwopValidationComponent implements OnInit {
                           debugger;
                          
                             this.LOPDays = 0;
-                            this.DigiofficeService.Get_RunLwopValidation(this.ID[i],  this.startdate, this.enddate).subscribe(
+                            this.DigiofficeService.Get_RunBonusValidation(this.ID[i],  this.startdate, this.enddate).subscribe(
                               res => {
                                 debugger;
                                 this.StaffSalaryReports = res;
@@ -765,7 +615,7 @@ export class RunLwopValidationComponent implements OnInit {
            
               Swal.fire({
                 title: 'Are you sure?',
-                text: 'To Run Lwop Validation In This Period',
+                text: 'To Run Bonus Validation In This Period',
                
                 showCancelButton: true,
                 confirmButtonText: 'Yes, Accept it!',
@@ -780,7 +630,7 @@ export class RunLwopValidationComponent implements OnInit {
                         debugger;
                        
                           this.LOPDays = 0;
-                          this.DigiofficeService.Get_RunLwopValidation(this.ID[i],  this.startdate, this.enddate).subscribe(
+                          this.DigiofficeService.Get_RunBonusValidation(this.ID[i],  this.startdate, this.enddate).subscribe(
                             res => {
                               debugger;
                               this.StaffSalaryReports = res;
@@ -860,41 +710,6 @@ export class RunLwopValidationComponent implements OnInit {
 
 
   }
-
-  fullname: any;
-  payrolldate: any;
-  datecovered: any;
-  department: any;
-  role: any;
-  tin: any;
-  PhilHealth: any;
-  SSS: any;
-  hdmf: any;
-  deminimisamount: any;
-  BaseSalary: any;
-  lopamount: any;
-  sssamount: any;
-  philHealthContribution: any;
-  pagBig: any;
-  tax: any;
-  netMonthSalary: any;
-  deductions: any;
-  startdate: any;
-
-  id: any;
-  GrossSalary: any;
-  deniminimis_amount: any;
-  semimonthly: any;
-  basicday: any;
-  basichour: any;
-  employeelist2: any;
-  companyloan: any;
-  ssssalaryloan: any;
-  ssscalamity: any;
-  hdmfcalamityloan: any;
-  hdmfsalaryloan: any;
-  benefits: any;
- 
 
 
 }

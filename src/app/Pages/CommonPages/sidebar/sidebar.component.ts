@@ -99,6 +99,16 @@ export class SidebarComponent implements OnInit {
 
   }
 
+
+  BonusValidation() {
+    debugger
+    this.active = 988;
+    localStorage.setItem('Pagename', 'Announcements')
+
+    this.router.navigate(['/Admin/AnnouncementDashboard']);
+
+  }
+
   public PayRoll(){
     debugger
     this.active='PayRoll'
@@ -425,6 +435,13 @@ export class SidebarComponent implements OnInit {
   public RunLwopValidation() {
     debugger
     this.active = 889;
+    localStorage.setItem('Pagename', 'Staff')
+    this.router.navigate(['/PayrollProcessor/LwopValidationDetails']);
+  }
+
+    public ValidatedBonusDetails() {
+    debugger
+    this.active = 988;
     localStorage.setItem('Pagename', 'Staff')
     this.router.navigate(['/PayrollProcessor/LwopValidationDetails']);
   }

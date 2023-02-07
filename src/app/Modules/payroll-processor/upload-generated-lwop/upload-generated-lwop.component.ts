@@ -159,22 +159,26 @@ export class UploadGeneratedLwopComponent implements OnInit {
               this.StaffID = 0
              }
 
+             
+          var options = { hour12: false };
+
+
             //  this.Paydate = new Date(Date.UTC(0, 0, this.exceldata[this.i].Paydate-1 )); 
             this.Paydate = new Date(Date.UTC(0, 0, this.exceldata[this.i].Paydate - 1));
+            // this.Paydate=this.Paydate.toLocaleString('en-US', options)
+            
           ; 
            
-
-
 
           
           var eb = {
             
-            'staffid': this.StaffID,
+            'StaffID': this.StaffID,
             'LwopAmount' : this.exceldata[this.i].LwopAmount,
             'LopDays' : this.exceldata[this.i].LopDays,
             'LwopAmountAdjustment' : this.exceldata[this.i].LwopAmountAdjustment,
             'LopDaysAdjustment' : this.exceldata[this.i].LopDaysAdjustment,
-            'Paydate' : this.Paydate,
+            'Paydate' : this.Paydate
 
             
           }

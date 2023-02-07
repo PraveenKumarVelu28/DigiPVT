@@ -65,6 +65,39 @@
           </a>
         
         </div>
+
+        
+
+        <a data-toggle="collapse" data-target="#LwopValidation"  (click)="BonusValidation()" [ngClass]="(active == 988 )&&!mini ? 'menu1' : (active == 988)&&mini?'menu-mini':'menu'">
+          <img *ngIf="(active == 988&&!mini)" src="assets/Images/revamp/announcementwhite.png">
+          <img *ngIf="active != 988 " src="assets/Images/revamp/announcementnewgray-icon.png">
+          <img *ngIf="(active == 988&&mini) " src="assets/Images/revamp/announcementnewblue-icon.png">
+    
+          <span class="icon-text">Bonus Validation</span></a>
+  
+  
+            
+          <div id="LwopValidation" class="collapse length ">
+  
+            
+            <a (click)="ValidatedBonusDetails()" class="nonactive">
+              <span class="sub-request">Validated Bonus Details</span>
+            </a>
+  
+  
+      
+  
+            <a (click)="UploadStaffLeaves()" class="nonactive">
+              <span [ngClass]="active == 'UploadStaffLeaves' ? 'Active1' : 'Active3'" class="sub-request">Upload Leaves</span>
+            </a>
+  
+            <a (click)="UploadSystemGeneratedLWOP()" class="nonactive">
+              <span [ngClass]="active == 'UploadSystemGeneratedLWOP' ? 'Active1' : 'Active3'" class="sub-request">Upload Generated Lwop</span>
+            </a>
+          
+          </div>
+  
+          
       <a data-toggle="collapse" data-target="#settings"  (click)="settings()" [ngClass]="(active == 2 )&&!mini ? 'menu1' : (active == 2)&&mini?'menu-mini':'menu'">
         <img *ngIf="(active == 2&&!mini)" src="assets/Images/revamp/announcementwhite.png">
         <img *ngIf="active != 2 " src="assets/Images/revamp/announcementnewgray-icon.png">

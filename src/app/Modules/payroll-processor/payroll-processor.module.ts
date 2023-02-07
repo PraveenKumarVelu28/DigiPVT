@@ -19,6 +19,7 @@ import { MyTeamAttendenceComponent } from './my-team-attendence/my-team-attenden
 import { RunLwopValidationComponent } from './run-lwop-validation/run-lwop-validation.component';
 import { LwopValidationDetailsComponent } from './lwop-validation-details/lwop-validation-details.component';
 import { UploadGeneratedLwopComponent } from './upload-generated-lwop/upload-generated-lwop.component';
+import { BonusValidationComponent } from './bonus-validation/bonus-validation.component';
 
 
 @NgModule({
@@ -38,7 +39,8 @@ import { UploadGeneratedLwopComponent } from './upload-generated-lwop/upload-gen
     MyTeamAttendenceComponent,
     RunLwopValidationComponent,
     LwopValidationDetailsComponent,
-    UploadGeneratedLwopComponent
+    UploadGeneratedLwopComponent,
+    BonusValidationComponent
   ],
   imports: [
     PayrollProcessorRoutingModule,

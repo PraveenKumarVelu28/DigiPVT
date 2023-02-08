@@ -19,6 +19,10 @@ import { UploadGeneratedLwopComponent } from './upload-generated-lwop/upload-gen
 import { BonusValidationComponent } from './bonus-validation/bonus-validation.component';
 import { BonusValidationDetailsComponent } from './bonus-validation-details/bonus-validation-details.component';
 import { UploadBonusValuesComponent } from './upload-bonus-values/upload-bonus-values.component';
+import { UploadAllowanceComponent } from './upload-allowance/upload-allowance.component';
+import { UploadPayPeriodAllowanceComponent } from './upload-pay-period-allowance/upload-pay-period-allowance.component';
+import { FMAValidationComponent } from './fmavalidation/fmavalidation.component';
+
 const routes: Routes = [
   { path: '', component: PayrollProcessorComponent },
   { path: 'RunLwopValidation', component: RunLwopValidationComponent },
@@ -39,9 +43,15 @@ const routes: Routes = [
   { path: 'MyTeamAttendence', component: MyTeamAttendenceComponent },
   { path: 'LwopValidationDetails', component: LwopValidationDetailsComponent },
   { path: 'UploadGeneratedLwop', component: UploadGeneratedLwopComponent },
+
   { path: 'BonusValidation', component: BonusValidationComponent },
   { path: 'BonusValidationDetails', component: BonusValidationDetailsComponent },
   { path: 'UploadBonusValues', component: UploadBonusValuesComponent },
+
+  { path: 'UploadAllowance', component: UploadAllowanceComponent },
+  { path: 'UploadPayPeriodAllowance', component: UploadPayPeriodAllowanceComponent},
+  { path: 'FMAValidation', component: FMAValidationComponent},
+
 
 ];
 

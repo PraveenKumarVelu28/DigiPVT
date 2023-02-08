@@ -4087,6 +4087,43 @@ export class DigiPVTService {
     this.url =this.host + '/Master/UpdatePayPeriodSetting'
     return this.http.post(this.url,data)
   }
+
+      
+  public GetAllowancesvalidation(){
+    return this.http.get<any[]>(
+      this.host +"/Vendor/GetAllowancesvalidation"
+    );
+  }
+
+  public InsertAllowancevalidation(data: any) {
+    debugger;
+    this.url = this.host + '/Vendor/InsertAllowancesvalidation';
+    return this.http.post(this.url, data);
+  }
+
+  public InsertUploadAllowancevalues(data: any) {
+    debugger;
+    this.url = this.host + '/Vendor/InsertUploadAllowancevalues';
+    return this.http.post(this.url, data);
+  }
+      
+  public GetUploadAllowancevalues(){
+    return this.http.get<any[]>(
+      this.host +"/Vendor/GetUploadAllowancevalues"
+    );
+  }
+
+  public InsertFMAValidation(data: any) {
+    debugger;
+    this.url = this.host + '/Master/InsertFMAValidation';
+    return this.http.post(this.url, data);
+  }
+      
+  public GetFMAValidation(){
+    return this.http.get<any[]>(
+      this.host +"/Master/GetFMAValidation"
+    );
+  } 
 }
 
 

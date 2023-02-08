@@ -4,66 +4,72 @@
             <div class="row">
                 <div class="col-md-12">
                     <ul>
-
-
                         <li><a class="active Heading underlineclr" routerLink="/PayrollProcessor/MyTeamOverTimeDetails">
                                 LWOP Validation Details</a></li>
-
                     </ul>
                 </div>
             </div>
             <br>
-            <div class="card filtercard">
+            <div class="card ">
                 <div class="row">
                     <div class="col-lg-1">
                         <img src="assets/Images/filter.svg" class="filter-img">
                         <p class="filter">Filter By</p>
                     </div>
-                    <div class="col-md-2">
-                        <!-- <p>Pay Date
-                            <input class="form-control input-date  " type="date" onkeydown="return false"
-                                placeholder="Duration" id="sdate" name="sdate" [(ngModel)]="sdate"
-                                > -->
+                    <div class="col-md-3">
+                        <input type="text" placeholder="search...." class="form-control">
                     </div>
-
-                    <div class="col-md-4">
-                        <!-- <p><br>
-                            <input class="form-control" id="term" name="term" [(ngModel)]="term" type="search"
-                                (ngModelChange)="FilterAttendence()" placeholder="Search for staff.. "> -->
+                    <div class="col-ld-4">
+                        <button class="butn-sadow1">Export to Excel</button>
                     </div>
                     <div class="col-md-3">
                         <br />
-
-                        <button class="form-control AddExpense" routerLink="/PayrollProcessor/RunLwopValidation"
+                        <button class="form-control AddExpense1" routerLink="/PayrollProcessor/RunLwopValidation"
                             style="width: 80%;">Run New Validation
                         </button>
                     </div>
+                    <!-- <div class="col-md-2">
+                         <p>Pay Date
+                            <input class="form-control input-date  " type="date" onkeydown="return false"
+                                placeholder="Duration" id="sdate" name="sdate" [(ngModel)]="sdate"
+                                > 
+                    </div> -->
+                 
+
+                    <!-- <div class="col-md-4">
+                       
+                         <p><br>
+                            <input class="form-control" id="term" name="term" [(ngModel)]="term" type="search"
+                                (ngModelChange)="FilterAttendence()" placeholder="Search for staff.. ">  -->
+                                
+              
 
                 </div>
             </div>
             <br>
-            <div class="row">
+            <!-- <div class="row">
                 <div class="col-lg-10"></div>
                 <div class="col-lg-2">
-                    <!-- <Button class="AddButton" (click)="ExporttoExcel()">Export to Excel</Button> -->
+                    <Button class="AddButton" (click)="ExporttoExcel()">Export to Excel</Button>
                 </div>
-            </div>
-            <br>
+            </div> -->
+            <!-- <br>
             <div class="row">
                 <div class="col-md-5">
                 </div>
                 <div class="col-md-5">
                 </div>
                 <div class="col-md-2">
-                    <!-- <a><button *ngIf="selecallbtn" class="form-control AddExpense" (click)="Approveall()">Approve
-                            All</button></a> -->
+                    <a><button *ngIf="selecallbtn" class="form-control AddExpense" (click)="Approveall()">Approve
+                            All</button></a>
                 </div>
-            </div><br>
-            <div class="row">
+            </div><br> -->
+            <!-- <div class="row">
                 <div class="row">
 
                 </div>
                 <br>
+            </div> -->
 
                 <div>
                     <div>
@@ -73,56 +79,62 @@
                                 <!-- <p class="show3res">SHOWING <span>{{timedetails.length}}</span> RESULTS </p> -->
 
                             </div>
-                        </div><br>
+                        </div>
 
-                        <br />
-                        <br />
-
-                        <div class="col-md-12">
-                            <div class="container-fluid">
-                                <table class="table">
-                                    <thead>
-                                        <tr class="thwidth">
-                                            <th>Employee ID</th>
-                                            <th>Employee Name</th>
-
-                                            <th class="thwidth">Pay Date</th>
-
-                                            <th class="thwidth">Uploaded Lwop Days</th>
-                                            <th class="thwidth">System Generated Lwop Days</th>
-                                            <th class="thwidth">Uploaded Lwop Amount</th>
-                                            <th class="thwidth">System Generated Lwop Amount</th>
-                                            <th class="thwidth">Descrepency Percentage</th>
-
-
-
-
-
-
-
-
-
-                                        </tr>
-                                        <tr
-                                            *ngFor="let time of timedetails| filter:term |paginate: { itemsPerPage: count1, currentPage: p}">
-                                            <td [ngClass]="{'bgred':time.bcolor=='1' }">{{time.employeID}}</td>
-                                            <td [ngClass]="{'bgred':time.bcolor=='1' }">{{time.name}}</td>
-                                            <td [ngClass]="{'bgred':time.bcolor=='1' }">{{time.enddate|date}}</td>
-                                            <td [ngClass]="{'bgred':time.bcolor=='1' }">{{time.uploadedLwopDays}}</td>
-                                            <td [ngClass]="{'bgred':time.bcolor=='1' }">{{time.systemGeneratedLwopDays}}</td>
-                                            <td [ngClass]="{'bgred':time.bcolor=='1' }">{{time.uploadedLwopAmount}}</td>
-                                            <td [ngClass]="{'bgred':time.bcolor=='1' }">{{time.systemGeneratedLwopAmount}}</td>
-
-                                            <td [ngClass]="{'bgred':time.bcolor=='1' }">{{time.descrepencypercentage }}%</td>
-
-
-                                        </tr>
-                                    </thead>
-                                </table>
-
-                                <!-- <span *ngIf="preapprovaldetails1.length==0"><b>No Results Found</b></span> -->
+                        <div class="row">
+                            <div class="col-md-12 listscroll">
+                                <div class="container-fluid">
+                                    <table class="table">
+                                        <thead>
+                                            <tr class="thwidth">
+                                                <th>Employee ID</th>
+                                                <th>Employee Name</th>
+    
+                                                <th class="thwidth">Pay Date</th>
+    
+                                                <th class="thwidth">Uploaded Lwop Days</th>
+                                                <th class="thwidth">System Generated Lwop Days</th>
+                                                <th class="thwidth">Uploaded Lwop Amount</th>
+                                                <th class="thwidth">System Generated Lwop Amount</th>
+                                                <th class="thwidth">Descrepency Percentage</th>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+                                            </tr>
+                                            <tr
+                                                *ngFor="let time of timedetails| filter:term |paginate: { itemsPerPage: count1, currentPage: p}">
+                                                <td [ngClass]="{'bgred':time.bcolor=='1' }">{{time.employeID}}</td>
+                                                <td [ngClass]="{'bgred':time.bcolor=='1' }">{{time.name}}</td>
+                                                <td [ngClass]="{'bgred':time.bcolor=='1' }">{{time.enddate|date}}</td>
+                                                <td [ngClass]="{'bgred':time.bcolor=='1' }">{{time.uploadedLwopDays}}</td>
+                                                <td [ngClass]="{'bgred':time.bcolor=='1' }">{{time.systemGeneratedLwopDays}}</td>
+                                                <td [ngClass]="{'bgred':time.bcolor=='1' }">{{time.uploadedLwopAmount}}</td>
+                                                <td [ngClass]="{'bgred':time.bcolor=='1' }">{{time.systemGeneratedLwopAmount}}</td>
+    
+                                                <td [ngClass]="{'bgred':time.bcolor=='1' }">{{time.descrepencypercentage }}%</td>
+    
+    
+                                            </tr>
+                                        </thead>
+                                    </table>
+    
+                                    <!-- <span *ngIf="preapprovaldetails1.length==0"><b>No Results Found</b></span> -->
+                                </div>
+                            
+    
                             </div>
+                        </div>
+                     
 
+                        <div class="text-right">
+                            <pagination-controls (pageChange)="p = $event"  previousLabel=""
+                            nextLabel="" class="poppinns"></pagination-controls>
                         </div>
                         <!-- <div *ngSwitchCase="'tab333'" id="tab333">
                             <br />
@@ -226,14 +238,14 @@
                 </div>
                 <div class="col-md-1"></div>
 
-            </div>
+        
         </div>
-        <div class="row">
+        <!-- <div class="row">
             <div class="col-lg-5"></div>
             <div class="col-lg-2">
             </div>
             <div class="col-lg-5"></div>
-        </div>
+        </div> -->
     </div>
-    <div class="col-md-1"></div>
+    <!-- <div class="col-md-1"></div> -->
 </div>

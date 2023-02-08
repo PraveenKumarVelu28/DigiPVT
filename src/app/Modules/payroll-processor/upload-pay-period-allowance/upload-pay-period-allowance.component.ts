@@ -4,15 +4,12 @@ import { DigiPVTService } from 'src/app/Pages/Services/digi-pvt.service';
 import Swal from 'sweetalert2';
 import * as XLSX from 'xlsx';
 declare var JSZipUtils: any;
-
 @Component({
-  selector: 'app-upload-bonus-values',
-  templateUrl: './upload-bonus-values.component.html',
-  styleUrls: ['./upload-bonus-values.component.css']
+  selector: 'app-upload-pay-period-allowance',
+  templateUrl: './upload-pay-period-allowance.component.html',
+  styleUrls: ['./upload-pay-period-allowance.component.css']
 })
-export class UploadBonusValuesComponent implements OnInit {
-
- 
+export class UploadPayPeriodAllowanceComponent implements OnInit {
   constructor(public DigiPVTService: DigiPVTService, public router: Router) { }
   componentmaster: any;
   id : any;
@@ -21,47 +18,46 @@ export class UploadBonusValuesComponent implements OnInit {
   count2: any = 10;
   stafflist:any;
   PayPeriodSettingList:any;
-
+  fromlogin: any;
+  exceldata: any;
+  arrayBuffer: any;
+  filetype: any;
+  file: any;
+  fileName = 'Attendance Report.xlsx';
+  i:any;
+  startdate:any;
+  Attachment:any;
+  stafflistcopy123:any;
+  EndDate:any;
+  StaffID:any;
+  Paydate:any;
+  public attachmentsurl: any = [];
 
   ngOnInit(): void {
     debugger
-    this.GetBonusValidation();
-
+    this.GetUploadAllowancevalues();
     this.DigiPVTService.GetAllStaffNew().
     subscribe({
       next: data => {
         debugger
         this.stafflist = data;
-       
-       
       }
     })
 
     this.DigiPVTService.GetPayPeriodSetting().subscribe(data => {
         debugger
         this.PayPeriodSettingList = data;
-        
       });
-    
-    
   }
 
-
-  public GetBonusValidation(){
+  public GetUploadAllowancevalues(){
     debugger
-    this.DigiPVTService.GetBonusValidation().subscribe(data => {
+    this.DigiPVTService.GetUploadAllowancevalues().subscribe(data => {
       debugger
       this.componentmaster = data;
       console.log("componentmaster", this.componentmaster);
     });
-  
   }
- 
-  fromlogin: any;
-  exceldata: any;
-  arrayBuffer: any;
-  filetype: any;
-  file: any;
 
   incomingfile(event: any) {
     debugger;
@@ -86,17 +82,13 @@ export class UploadBonusValuesComponent implements OnInit {
         this.exceldata = XLSX.utils.sheet_to_json(worksheet, { raw: true });
       };
       fileReader.readAsArrayBuffer(this.file);
-
-
-
     } else {
       Swal.fire("Imported file format not supported.");
     }
   }
 
-
-  fileName = 'Attendance Report.xlsx';
   exportexcel(): void {
+    debugger
     /* table id is passed over here */
     let element = document.getElementById('downloadaplication');
     const ws: XLSX.WorkSheet = XLSX.utils.table_to_sheet(element);
@@ -107,7 +99,6 @@ export class UploadBonusValuesComponent implements OnInit {
 
     /* save to file */
     XLSX.writeFile(wb, this.fileName);
-
   }
   
   public delete(ID: any) {
@@ -134,67 +125,38 @@ export class UploadBonusValuesComponent implements OnInit {
     })
   }
 
-  i:any;
-  startdate:any;
-  Attachment:any;
-  stafflistcopy123:any;
-  EndDate:any;
-  StaffID:any;
-  Paydate:any;
-  public attachmentsurl: any = [];
-   public Upload_file() {
+
+  public Upload_file() {
     debugger
     if (this.exceldata == undefined) {
       Swal.fire('Choose a File');
     } else {
       let apiarray = [];
-
-
       for (this.i = 0; this.i < this.exceldata.length; this.i++) {
-       
-            this.stafflistcopy123=this.stafflist.filter((x: { employeID: any; })=>x.employeID==this.exceldata[this.i].EmployeID)
-             
+            this.stafflistcopy123=this.stafflist.filter((x: { employeID: any; })=>x.employeID==this.exceldata[this.i].EmployeID)          
              if(this.stafflistcopy123.length!=0){
               this.StaffID = this.stafflistcopy123[0].id
              }
              else{
               this.StaffID = 0
-             }
-
-             
+             }           
           var options = { hour12: false };
-
-
             //  this.Paydate = new Date(Date.UTC(0, 0, this.exceldata[this.i].Paydate-1 )); 
-            this.Paydate = new Date(Date.UTC(0, 0, this.exceldata[this.i].PayDate - 1));
-            // this.Paydate=this.Paydate.toLocaleString('en-US', options)
-            
+            this.Paydate = new Date(Date.UTC(0, 0, this.exceldata[this.i].Paydate - 1));
+            // this.Paydate=this.Paydate.toLocaleString('en-US', options)          
           ; 
-           
-
-          
-          var eb = {
-            
-            'StaffID': this.StaffID,
-            'ThirteenthMonthBonus' : this.exceldata[this.i].ThirteenthMonthBonus,
-            'ForteenthMonthBonus' : this.exceldata[this.i].ForteenthMonthBonus,
-            'PerformanceBonus' : this.exceldata[this.i].PerformanceBonus,
-            'TaxableBonus' : this.exceldata[this.i].TaxableBonus,
-            'NonTaxableBonus' : this.exceldata[this.i].NonTaxableBonus,
-            'PayDate' : this.Paydate
-
-            
+          var eb = { 
+            'staffid': this.StaffID,
+            'Allowancename' : this.exceldata[this.i].AllowanceName,
+             'Totalallowanceamount' : this.exceldata[this.i].NoofUnits,
+            'paydate' : this.Paydate
           }
-          this.DigiPVTService.InsertBonusValidation(eb).subscribe({
+          this.DigiPVTService.InsertUploadAllowancevalues(eb).subscribe({
             next: data => {
-
             debugger
             this.StaffID=data;
-            
               Swal.fire('Saved Successfully')
-            
-             
-          
+              this.ngOnInit();
             // // this.SavePositionDetails();
             // var eb = {
             //   'EmergencyContactName': this.exceldata[this.i-(this.exceldata.length)].EmergencyContactName,
@@ -212,23 +174,14 @@ export class UploadBonusValuesComponent implements OnInit {
       
             //   },
             // )
-           
-           
-           
-            
-           
+ 
           }, error: (err) => {
             Swal.fire('Issue in Inserting Attendance Units');
-            // Insert error in Db Here//
-          
+            // Insert error in Db Here//         
           }
         }
         )
       }
     }
-
-
   }
-
-
 }

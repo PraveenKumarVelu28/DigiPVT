@@ -2,7 +2,7 @@
     <div class="col-md-12">
         <div class="row">
             <div class="col-lg-11">
-                <p class="Heading">Upload Bonus Values</p>
+                <p class="Heading">Upload Payperiod Allowance</p>
             </div>
         </div>
         <div class="row FilterClass">
@@ -32,15 +32,11 @@
              <div class="col-lg-3">
                 
                 <button class="form-control AddExpense" data-toggle="modal" data-target="#import" >Upload
-                    Bonus</button>
+                    Payperiod Allowance</button>
 
              </div>
             <!-- <div class="col-lg-3">
-                
-                
-
-            </div> -->
-            
+            </div> -->          
         </div><br>
         <div class="row">
             <div class="col-md-12">
@@ -49,48 +45,25 @@
                         <thead>
                             <tr>
                                 <th>Name</th>
-                                <th>EmployeeID</th>
-                                <th>Pay Date</th>
-                                <th>13th Month Bonus</th>
-                                <th>14th Month Bonus</th>
-                                <th>Performance Bonus</th>
-                                <th>Taxable Bonus</th>
-                                <th>NonTaxable Bonus</th>
-                                <th>Actions</th>
-                                
-                                <!-- <th>Attachment</th>
-                                <th *ngIf="roleid=='1'">Actions</th> -->
+                                <!-- <th>EmployeeID</th> -->
+                                <th>Pay Date</th>                         
+                                <th>Allowance Name</th>
+                                <th>Total Allowance Amount</th> 
                             </tr>
                         </thead>
                         <tbody>
                             <tr *ngFor="let list of componentmaster|filter:term |paginate: { itemsPerPage: count2, currentPage: p1}  "  >
                                 <td>{{list.name}}</td>
-                                <td>{{list.employeID}}</td>
-                                <td>{{list.payDate|date}}</td>
-                                <td>{{list.thirteenthMonthBonus}}</td>
-                                <td>{{list.forteenthMonthBonus}}</td>
-                                <td>{{list.performanceBonus}}</td>
-                                <td>{{list.taxableBonus}}</td>
-                                <td>{{list.nonTaxableBonus}}</td>
-
+                                <!-- <td>{{list.employeID}}</td> -->
+                                <td>{{list.paydate|date}}</td>
+                                <td>{{list.allowancename}}</td>
+                                <td>{{list.totalallowanceamount}}</td>
                                 
-                                <td > 
-                                    <button class="upload"  (click)="delete(list.id)">Delete</button>
-                                </td>
+                             
                             </tr>
                         </tbody>
                     </table>
-                    <!-- <div class="text-left">
-                        <br>
-                        <pagination-controls (pageChange)="p = $event" class="poppinns"></pagination-controls>
-                    </div> -->
-                    <!-- <ng-template #noResults>
-                        <p class="NoResultShow"> No results found </p>
-                    </ng-template> -->
-                    <!-- <div class="text-left">
-                        <br>
-                        <pagination-controls (pageChange)="p1 = $event" class="poppinns"></pagination-controls>
-                    </div> -->
+                  
                     
                 </div>
             </div>
@@ -105,7 +78,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title">Upload Bonus Values</h4>
+                <h4 class="modal-title">Upload Pay Period Allowance bonus</h4>
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
             <div class="modal-body">
@@ -123,7 +96,7 @@
                     <div class="col-lg-6">
                         <button type="button" class="save-btn" style="width: 70%;" data-dismiss="modal"
                       (click)="Upload_file()"     >Upload
-                            Bonuses</button>
+                            Leaves</button>
                     </div>
                 </div>
             </div>

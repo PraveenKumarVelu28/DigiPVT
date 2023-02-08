@@ -47,14 +47,9 @@
 
           
         <div id="LwopValidation" class="collapse length ">
-
-          
           <a (click)="RunLwopValidation()" class="nonactive">
             <span class="sub-request">Lwop Validated Details</span>
           </a>
-
-
-    
 
           <a (click)="UploadStaffLeaves()" class="nonactive">
             <span [ngClass]="active == 'UploadStaffLeaves' ? 'Active1' : 'Active3'" class="sub-request">Upload Leaves</span>
@@ -75,17 +70,12 @@
     
           <span class="icon-text">Bonus Validation</span></a>
   
-  
-            
           <div id="BonusValidation" class="collapse length ">
   
             
             <a (click)="ValidatedBonusDetails()" class="nonactive">
               <span class="sub-request">Validated Bonus Details</span>
             </a>
-  
-  
-      
   
             <a (click)="UploadStaffLeaves()" class="nonactive">
               <span [ngClass]="active == 'UploadStaffLeaves' ? 'Active1' : 'Active3'" class="sub-request">Upload Leaves</span>
@@ -96,6 +86,32 @@
             </a>
           
           </div>
+
+
+          <a data-toggle="collapse" data-target="#AllowanceBonus"  (click)="BonusValidation()" [ngClass]="(active == 9230 )&&!mini ? 'menu1' : (active == 9230)&&mini?'menu-mini':'menu'">
+            <img *ngIf="(active == 9230&&!mini)" src="assets/Images/revamp/announcementwhite.png">
+            <img *ngIf="active != 9230 " src="assets/Images/revamp/announcementnewgray-icon.png">
+            <img *ngIf="(active == 9230&&mini) " src="assets/Images/revamp/announcementnewblue-icon.png">
+      
+            <span class="icon-text">Allowance Bonus Validation</span></a>
+    
+            <div id="AllowanceBonus" class="collapse length ">
+    
+<!--               
+              <a (click)="ValidatedBonusDetails()" class="nonactive">
+                <span class="sub-request">Validated Bonus Details</span>
+              </a> -->
+    
+              <a (click)="UploadAllowance()" class="nonactive">
+                <span [ngClass]="active == 'uploadallowance' ? 'Active1' : 'Active3'" class="sub-request">Upload Allowance</span>
+              </a>
+    
+              <a (click)="UploadPayperiodAllowance()" class="nonactive">
+                <span [ngClass]="active == 'uploadpayperiodallowance' ? 'Active1' : 'Active3'" class="sub-request">Upload Payperiod Allowance</span>
+              </a>
+            </div>
+
+         
   
           
       <a data-toggle="collapse" data-target="#settings"  (click)="settings()" [ngClass]="(active == 2 )&&!mini ? 'menu1' : (active == 2)&&mini?'menu-mini':'menu'">

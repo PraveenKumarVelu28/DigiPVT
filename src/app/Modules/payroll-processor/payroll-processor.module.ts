@@ -22,6 +22,9 @@ import { UploadGeneratedLwopComponent } from './upload-generated-lwop/upload-gen
 import { BonusValidationComponent } from './bonus-validation/bonus-validation.component';
 import { BonusValidationDetailsComponent } from './bonus-validation-details/bonus-validation-details.component';
 import { UploadBonusValuesComponent } from './upload-bonus-values/upload-bonus-values.component';
+import { UploadAllowanceComponent } from './upload-allowance/upload-allowance.component';
+import { UploadPayPeriodAllowanceComponent } from './upload-pay-period-allowance/upload-pay-period-allowance.component';
+
 
 
 
@@ -46,7 +49,9 @@ import { UploadBonusValuesComponent } from './upload-bonus-values/upload-bonus-v
 
     BonusValidationComponent,
     BonusValidationDetailsComponent,
-    UploadBonusValuesComponent
+    UploadBonusValuesComponent,
+    UploadAllowanceComponent,
+    UploadPayPeriodAllowanceComponent
   ],
   imports: [
     PayrollProcessorRoutingModule,

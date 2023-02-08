@@ -104,10 +104,10 @@ export class SidebarComponent implements OnInit {
     debugger
     this.active = 988;
     localStorage.setItem('Pagename', 'Announcements')
-
     this.router.navigate(['/Admin/AnnouncementDashboard']);
-
   }
+
+
 
   public PayRoll(){
     debugger
@@ -369,6 +369,18 @@ export class SidebarComponent implements OnInit {
     this.active='UploadSystemGeneratedLWOP'
     localStorage.setItem("clickname", "Upload Staff Leaves")
     this.router.navigate(['/PayrollProcessor/UploadGeneratedLwop'])
+  }
+
+  public UploadAllowance(){
+    this.active='uploadallowance'
+    localStorage.setItem("clickname", "uploadallowance")
+    this.router.navigate(['/PayrollProcessor/UploadAllowance'])
+  }
+
+  public UploadPayperiodAllowance(){
+    this.active='UploadPayperiodAllowance'
+    localStorage.setItem("clickname", "Upload Pay Period Allowance")
+    this.router.navigate(['/PayrollProcessor/UploadPayPeriodAllowance'])
   }
 
 

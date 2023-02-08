@@ -42,6 +42,7 @@ const routes: Routes = [
   { path: 'PayperiodSettingsForm/:id', component: PayperiodSettingsFormComponent },
   { path: 'MyTeamAttendence', component: MyTeamAttendenceComponent },
   { path: 'LwopValidationDetails', component: LwopValidationDetailsComponent },
+  {path:'BonusValidation',component:BonusValidationComponent},
   { path: 'UploadGeneratedLwop', component: UploadGeneratedLwopComponent },
 
   { path: 'BonusValidation', component: BonusValidationComponent },

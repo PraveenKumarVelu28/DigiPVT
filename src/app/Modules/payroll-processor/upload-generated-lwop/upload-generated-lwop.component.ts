@@ -19,6 +19,7 @@ export class UploadGeneratedLwopComponent implements OnInit {
   count2: any = 10;
   stafflist:any;
   PayPeriodSettingList:any;
+  roleid: any
 
 
   ngOnInit(): void {

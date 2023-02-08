@@ -104,9 +104,15 @@ export class SidebarComponent implements OnInit {
     debugger
     this.active = 988;
     localStorage.setItem('Pagename', 'Announcements')
-    this.router.navigate(['/Admin/AnnouncementDashboard']);
   }
 
+  AllowanceValidation() {
+    debugger
+    this.active = 999;
+    localStorage.setItem('Pagename', 'Announcements')
+  }
+
+  
 
 
   public PayRoll(){
@@ -247,6 +253,16 @@ export class SidebarComponent implements OnInit {
 
   }
 
+  public RunAllowanceValidation() {
+    this.active = 'RunAllowanceValidation';
+    localStorage.setItem('Pagename', 'Exception Bulk Logs')
+    this.router.navigate(['/PayrollProcessor/RunAllowanceValidation']);
+
+  }
+
+  
+
+
   public TimesheetReports() {
     this.active = 26;
     localStorage.setItem('Pagename', 'Timesheet Report')
@@ -383,11 +399,23 @@ export class SidebarComponent implements OnInit {
     this.router.navigate(['/PayrollProcessor/UploadPayPeriodAllowance'])
   }
 
+
+  public UploadBonusValues(){
+    this.active='UploadBonusValues'
+    localStorage.setItem("clickname", "Upload Staff Leaves")
+    this.router.navigate(['/PayrollProcessor/UploadBonusValues'])
+  }
+
+
+
   public FMAValidation(){
     this.active='fma'
     localStorage.setItem("clickname", "Upload Pay Period Allowance")
     this.router.navigate(['/PayrollProcessor/FMAValidation'])
   }
+
+
+  
 
   public ComponentMaster(){
     this.active='ComponentMaster'
@@ -455,12 +483,13 @@ export class SidebarComponent implements OnInit {
     this.router.navigate(['/PayrollProcessor/LwopValidationDetails']);
   }
 
-
   
+  
+
   public ValidatedBonusDetails() {
     debugger
     this.active = 2345;
     localStorage.setItem('Pagename', 'Staff')
-    this.router.navigate(['/PayrollProcessor/BonusValidation']);
+    this.router.navigate(['/PayrollProcessor/BonusValidationDetails']);
   }
 }

@@ -25,7 +25,7 @@ export class UploadBonusValuesComponent implements OnInit {
 
   ngOnInit(): void {
     debugger
-    this.GetGeneratedLwopValues();
+    this.GetBonusValidation();
 
     this.DigiPVTService.GetAllStaffNew().
     subscribe({
@@ -47,9 +47,9 @@ export class UploadBonusValuesComponent implements OnInit {
   }
 
 
-  public GetGeneratedLwopValues(){
+  public GetBonusValidation(){
     debugger
-    this.DigiPVTService.GetGeneratedLwopValues().subscribe(data => {
+    this.DigiPVTService.GetBonusValidation().subscribe(data => {
       debugger
       this.componentmaster = data;
       console.log("componentmaster", this.componentmaster);
@@ -166,7 +166,7 @@ export class UploadBonusValuesComponent implements OnInit {
 
 
             //  this.Paydate = new Date(Date.UTC(0, 0, this.exceldata[this.i].Paydate-1 )); 
-            this.Paydate = new Date(Date.UTC(0, 0, this.exceldata[this.i].Paydate - 1));
+            this.Paydate = new Date(Date.UTC(0, 0, this.exceldata[this.i].PayDate - 1));
             // this.Paydate=this.Paydate.toLocaleString('en-US', options)
             
           ; 
@@ -176,15 +176,16 @@ export class UploadBonusValuesComponent implements OnInit {
           var eb = {
             
             'StaffID': this.StaffID,
-            'LwopAmount' : this.exceldata[this.i].LwopAmount,
-            'LopDays' : this.exceldata[this.i].LopDays,
-            'LwopAmountAdjustment' : this.exceldata[this.i].LwopAmountAdjustment,
-            'LopDaysAdjustment' : this.exceldata[this.i].LopDaysAdjustment,
-            'Paydate' : this.Paydate
+            'ThirteenthMonthBonus' : this.exceldata[this.i].ThirteenthMonthBonus,
+            'ForteenthMonthBonus' : this.exceldata[this.i].ForteenthMonthBonus,
+            'PerformanceBonus' : this.exceldata[this.i].PerformanceBonus,
+            'TaxableBonus' : this.exceldata[this.i].TaxableBonus,
+            'NonTaxableBonus' : this.exceldata[this.i].NonTaxableBonus,
+            'PayDate' : this.Paydate
 
             
           }
-          this.DigiPVTService.InsertGeneratedLwopValues(eb).subscribe({
+          this.DigiPVTService.InsertBonusValidation(eb).subscribe({
             next: data => {
 
             debugger

@@ -12,7 +12,7 @@
                 </div>
             </div>
             <br>
-            <div class="card filtercard">
+            <div class="card ">
                 <div class="row">
                     <div class="col-lg-1">
                         <img src="assets/Images/filter.svg" class="filter-img">
@@ -30,15 +30,15 @@
                             [(ngModel)]="edate"    (change)="filterbydate()">
                     </div>
                     
-                    <div class="col-md-4">
+                    <div class="col-md-2">
                         <p><br>
                             <input class="form-control" id="term" name="term" [(ngModel)]="term" type="search"
                                 (ngModelChange)="FilterAttendence()" placeholder="Search for staff.. ">
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-4">
                        <br/>
 
-                        <button class="form-control AddExpense" data-toggle="modal" data-target="#import" style="width: 80%;">Upload
+                        <button class="form-control AddExpense2" data-toggle="modal" data-target="#import" style="width: 80%;">Upload
                             StaffLeaves</button>
                     </div>
                     

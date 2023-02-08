@@ -29,7 +29,7 @@ export class BonusValidationDetailsComponent implements OnInit {
 
   public GetBonusValidation() {
     debugger
-    this.DigiofficeService.GetBonusValidation()
+    this.DigiofficeService.GetValidatedBonusDetails()
       .subscribe({
         next: data => {
           debugger

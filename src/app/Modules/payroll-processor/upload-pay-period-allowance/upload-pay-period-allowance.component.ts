@@ -148,7 +148,7 @@ export class UploadPayPeriodAllowanceComponent implements OnInit {
           var eb = { 
             'staffid': this.StaffID,
             'Allowancename' : this.exceldata[this.i].AllowanceName,
-             'Totalallowanceamount' : this.exceldata[this.i].NoofUnits,
+             'Totalallowanceamount' : this.exceldata[this.i].TotalAmount,
             'paydate' : this.Paydate
           }
           this.DigiPVTService.InsertUploadAllowancevalues(eb).subscribe({

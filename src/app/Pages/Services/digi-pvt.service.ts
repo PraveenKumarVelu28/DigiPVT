@@ -1725,6 +1725,16 @@ export class DigiPVTService {
       this.host + "/Vendor/GetValidatedBonusDetails"
     );
   }
+
+  
+  public GetValidatedAllowanceValues() {
+    //debugger
+    return this.http.get<any[]>(
+      this.host + "/Master/GetValidatedAllowanceValues"
+    );
+  }
+
+  
   
 
   public GetEmployeeSalary() {

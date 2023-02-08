@@ -23,6 +23,7 @@ import { UploadAllowanceComponent } from './upload-allowance/upload-allowance.co
 import { UploadPayPeriodAllowanceComponent } from './upload-pay-period-allowance/upload-pay-period-allowance.component';
 import { FMAValidationComponent } from './fmavalidation/fmavalidation.component';
 import { RunAllowanceValidationComponent } from './run-allowance-validation/run-allowance-validation.component';
+import { ValidatedAllowanceDetailsComponent } from './validated-allowance-details/validated-allowance-details.component';
 const routes: Routes = [
   { path: '', component: PayrollProcessorComponent },
   { path: 'RunLwopValidation', component: RunLwopValidationComponent },
@@ -54,6 +55,7 @@ const routes: Routes = [
   { path: 'FMAValidation', component: FMAValidationComponent},
 
   { path: 'RunAllowanceValidation', component: RunAllowanceValidationComponent},
+  { path: 'ValidatedAllowanceDetails', component: ValidatedAllowanceDetailsComponent},
 ];
 
 @NgModule({

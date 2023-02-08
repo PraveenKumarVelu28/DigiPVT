@@ -256,7 +256,7 @@ export class SidebarComponent implements OnInit {
   public RunAllowanceValidation() {
     this.active = 'RunAllowanceValidation';
     localStorage.setItem('Pagename', 'Exception Bulk Logs')
-    this.router.navigate(['/PayrollProcessor/RunAllowanceValidation']);
+    this.router.navigate(['/PayrollProcessor/ValidatedAllowanceDetails']);
 
   }
 

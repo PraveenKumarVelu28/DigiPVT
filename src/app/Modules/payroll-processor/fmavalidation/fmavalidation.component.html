@@ -46,7 +46,9 @@
                             <tr>
                                 <th>Name</th>
                                 <th>Hirirng Date</th>
-                                <th>Regularisation Date</th>                         
+                                <th>Regularisation Date</th>    
+                                <th>Quarter Start Date</th>      
+                                <th>Quarter End Date</th>               
                                 <th>Pay Date</th>
                                 <th>Amount</th>
                             </tr>
@@ -56,6 +58,8 @@
                                 <td>{{list.name}}</td>
                                 <td>{{list.hiringDate|date}}</td>
                                 <td>{{list.regularisationDate|date}}</td>
+                                <td>{{list.quarterStartDate|date}}</td>
+                                <td>{{list.quarterEndDate|date}}</td>
                                 <td>{{list.payDate|date}}</td>
                                 <td>{{list.amount}}</td>
                             </tr>

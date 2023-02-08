@@ -112,6 +112,8 @@ export class FMAValidationComponent implements OnInit {
             'StaffID': this.StaffID,
             'HiringDate' : new Date(Date.UTC(0, 0, this.exceldata[this.i].HiringDate - 1)),
             'RegularisationDate' : new Date(Date.UTC(0, 0, this.exceldata[this.i].RegularisationDate - 1)),
+            'QuarterStartDate' : new Date(Date.UTC(0, 0, this.exceldata[this.i].QuarterStartDate - 1)),
+            'QuarterEndDate' : new Date(Date.UTC(0, 0, this.exceldata[this.i].QuarterEndDate - 1)),
             'Amount' : this.exceldata[this.i].Amount,
             'PayDate' : this.Paydate
           }

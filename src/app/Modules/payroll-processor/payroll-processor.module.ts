@@ -27,6 +27,8 @@ import { UploadPayPeriodAllowanceComponent } from './upload-pay-period-allowance
 import { FMAValidationComponent } from './fmavalidation/fmavalidation.component';
 import { RunAllowanceValidationComponent } from './run-allowance-validation/run-allowance-validation.component';
 import { ValidatedAllowanceDetailsComponent } from './validated-allowance-details/validated-allowance-details.component';
+import { RunFMAValidationComponent } from './run-fmavalidation/run-fmavalidation.component';
+import { ValidatedFMADetailsComponent } from './validated-fmadetails/validated-fmadetails.component';
 
 
 
@@ -57,7 +59,9 @@ import { ValidatedAllowanceDetailsComponent } from './validated-allowance-detail
     UploadPayPeriodAllowanceComponent,
     FMAValidationComponent,
     RunAllowanceValidationComponent,
-    ValidatedAllowanceDetailsComponent
+    ValidatedAllowanceDetailsComponent,
+    RunFMAValidationComponent,
+    ValidatedFMADetailsComponent
   ],
   imports: [
     PayrollProcessorRoutingModule,

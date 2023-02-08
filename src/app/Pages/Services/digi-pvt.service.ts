@@ -1542,6 +1542,13 @@ export class DigiPVTService {
     );
   }
 
+  public GetValidatedFMAAllowanceValues() {
+    return this.http.get<any[]>(
+      this.host + "/Announcement/GetValidatedFMAAllowanceValues"
+    );
+  }
+  
+
   public DeleteDepartmentMaster(ID: any) {
     return this.http.get<any[]>(
       this.host + "/Announcement/DeleteDepartmentMaster?ID=" + ID);
@@ -1652,6 +1659,13 @@ export class DigiPVTService {
   }
 
 
+  public GetRunFMAValidation(EmployeeID: any,  startdate: any, enddate: any) {
+    //debugger
+    return this.http.get<any[]>(this.host + "/Announcement/GetRunFMAValidation?EmployeeID=" + EmployeeID  + "&startdate=" + startdate + "&enddate=" + enddate);
+  }
+
+  
+
 
 
   public DeleteEmployeeSalary(ID: any) {
@@ -1725,6 +1739,16 @@ export class DigiPVTService {
       this.host + "/Vendor/GetValidatedBonusDetails"
     );
   }
+
+  
+  public GetValidatedAllowanceValues() {
+    //debugger
+    return this.http.get<any[]>(
+      this.host + "/Master/GetValidatedAllowanceValues"
+    );
+  }
+
+  
   
 
   public GetEmployeeSalary() {

@@ -383,7 +383,11 @@ export class SidebarComponent implements OnInit {
     this.router.navigate(['/PayrollProcessor/UploadPayPeriodAllowance'])
   }
 
-
+  public FMAValidation(){
+    this.active='fma'
+    localStorage.setItem("clickname", "Upload Pay Period Allowance")
+    this.router.navigate(['/PayrollProcessor/FMAValidation'])
+  }
 
   public ComponentMaster(){
     this.active='ComponentMaster'

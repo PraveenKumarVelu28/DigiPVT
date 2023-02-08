@@ -2,7 +2,7 @@
     <div class="col-md-12">
         <div class="row">
             <div class="col-lg-11">
-                <p class="Heading">Upload Payperiod Allowance</p>
+                <p class="Heading">FMA Validation Details</p>
             </div>
         </div>
         <div class="row FilterClass">
@@ -23,20 +23,20 @@
             </div>
         </div><br>
         <div class="row">
-            <div class="col-lg-3"></div>
-            <div class="col-lg-2"></div>
-            <div class="col-lg-4">
-                <br/>
-                    <button class="AddButton"  (click)="exportexcel()">Export to Excel</button>
-             </div>
+            <div class="col-lg-9"></div>
+         
              <div class="col-lg-3">
                 
                 <button class="form-control AddExpense" data-toggle="modal" data-target="#import" >Upload
-                    Payperiod Allowance</button>
+                     FMA Validation</button>
 
              </div>
             <!-- <div class="col-lg-3">
-            </div> -->          
+                
+                
+
+            </div> -->
+            
         </div><br>
         <div class="row">
             <div class="col-md-12">
@@ -45,26 +45,22 @@
                         <thead>
                             <tr>
                                 <th>Name</th>
-                                <!-- <th>EmployeeID</th> -->
-                                <th>Pay Date</th>                         
-                                <th>Allowance Name</th>
-                                <th>Total Allowance Amount</th> 
+                                <th>Hirirng Date</th>
+                                <th>Regularisation Date</th>                         
+                                <th>Pay Date</th>
+                                <th>Amount</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr *ngFor="let list of componentmaster|filter:term |paginate: { itemsPerPage: count2, currentPage: p1}  "  >
                                 <td>{{list.name}}</td>
-                                <!-- <td>{{list.employeID}}</td> -->
-                                <td>{{list.paydate|date}}</td>
-                                <td>{{list.allowancename}}</td>
-                                <td>{{list.totalallowanceamount}}</td>
-                                
-                             
+                                <td>{{list.hiringDate|date}}</td>
+                                <td>{{list.regularisationDate|date}}</td>
+                                <td>{{list.payDate|date}}</td>
+                                <td>{{list.amount}}</td>
                             </tr>
                         </tbody>
                     </table>
-                  
-                    
                 </div>
             </div>
             <div class="col-md-1"></div>
@@ -78,7 +74,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title">Upload Pay Period Allowance bonus</h4>
+                <h4 class="modal-title">FMA Validation Details</h4>
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
             <div class="modal-body">
@@ -94,9 +90,8 @@
                 <br>
                 <div class="row">
                     <div class="col-lg-6">
-                        <button type="button" class="save-btn" style="width: 70%;" data-dismiss="modal"
-                      (click)="Upload_file()"     >Upload
-                            Leaves</button>
+                        <button type="button" class="form-control AddExpense" data-dismiss="modal"
+                      (click)="Upload_file()" >Upload FMA Validation</button>
                     </div>
                 </div>
             </div>

@@ -4093,6 +4093,18 @@ export class DigiPVTService {
       this.host +"/Vendor/GetUploadAllowancevalues"
     );
   }
+
+  public InsertFMAValidation(data: any) {
+    debugger;
+    this.url = this.host + '/Master/InsertFMAValidation';
+    return this.http.post(this.url, data);
+  }
+      
+  public GetFMAValidation(){
+    return this.http.get<any[]>(
+      this.host +"/Master/GetFMAValidation"
+    );
+  } 
 }
 
 

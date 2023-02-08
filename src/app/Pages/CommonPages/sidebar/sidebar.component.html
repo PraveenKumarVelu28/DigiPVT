@@ -87,6 +87,15 @@
           
           </div>
 
+          <a (click)="FMAValidation()"  *ngIf="login == 9 && companyid != 1007" [ngClass]="(active == 'fma')&&!mini ? 'menu1' :(active == 'fma')&&mini?'menu-mini' :'menu'">
+            <span>
+              <img *ngIf="(active == 'fma'&&!mini)" src="assets/Images/revamp/dashboardwhite-icon.png">
+              <img *ngIf="active != 'fma'" src="assets/Images/revamp/dashboardgray-icon.png">
+              <img *ngIf="(active == 'fma'&&mini)" src="assets/Images/revamp/dashboardnewblue-icon.png">
+            </span>
+            <span class="icon-text">FMA Validation</span>
+          </a>
+
 
           <a data-toggle="collapse" data-target="#AllowanceBonus"  (click)="BonusValidation()" [ngClass]="(active == 9230 )&&!mini ? 'menu1' : (active == 9230)&&mini?'menu-mini':'menu'">
             <img *ngIf="(active == 9230&&!mini)" src="assets/Images/revamp/announcementwhite.png">

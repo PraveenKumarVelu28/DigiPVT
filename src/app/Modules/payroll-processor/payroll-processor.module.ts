@@ -24,6 +24,7 @@ import { BonusValidationDetailsComponent } from './bonus-validation-details/bonu
 import { UploadBonusValuesComponent } from './upload-bonus-values/upload-bonus-values.component';
 import { UploadAllowanceComponent } from './upload-allowance/upload-allowance.component';
 import { UploadPayPeriodAllowanceComponent } from './upload-pay-period-allowance/upload-pay-period-allowance.component';
+import { FMAValidationComponent } from './fmavalidation/fmavalidation.component';
 
 
 
@@ -51,7 +52,8 @@ import { UploadPayPeriodAllowanceComponent } from './upload-pay-period-allowance
     BonusValidationDetailsComponent,
     UploadBonusValuesComponent,
     UploadAllowanceComponent,
-    UploadPayPeriodAllowanceComponent
+    UploadPayPeriodAllowanceComponent,
+    FMAValidationComponent
   ],
   imports: [
     PayrollProcessorRoutingModule,

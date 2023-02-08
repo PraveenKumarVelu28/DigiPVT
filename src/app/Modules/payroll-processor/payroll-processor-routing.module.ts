@@ -18,6 +18,7 @@ import { LwopValidationDetailsComponent } from './lwop-validation-details/lwop-v
 import { UploadGeneratedLwopComponent } from './upload-generated-lwop/upload-generated-lwop.component';
 import { UploadAllowanceComponent } from './upload-allowance/upload-allowance.component';
 import { UploadPayPeriodAllowanceComponent } from './upload-pay-period-allowance/upload-pay-period-allowance.component';
+import { FMAValidationComponent } from './fmavalidation/fmavalidation.component';
 
 const routes: Routes = [
   { path: '', component: PayrollProcessorComponent },
@@ -41,6 +42,7 @@ const routes: Routes = [
   { path: 'UploadGeneratedLwop', component: UploadGeneratedLwopComponent },
   { path: 'UploadAllowance', component: UploadAllowanceComponent },
   { path: 'UploadPayPeriodAllowance', component: UploadPayPeriodAllowanceComponent},
+  { path: 'FMAValidation', component: FMAValidationComponent},
 
 ];
 

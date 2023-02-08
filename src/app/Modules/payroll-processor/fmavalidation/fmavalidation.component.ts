@@ -5,11 +5,12 @@ import Swal from 'sweetalert2';
 import * as XLSX from 'xlsx';
 declare var JSZipUtils: any;
 @Component({
-  selector: 'app-upload-pay-period-allowance',
-  templateUrl: './upload-pay-period-allowance.component.html',
-  styleUrls: ['./upload-pay-period-allowance.component.css']
+  selector: 'app-fmavalidation',
+  templateUrl: './fmavalidation.component.html',
+  styleUrls: ['./fmavalidation.component.css']
 })
-export class UploadPayPeriodAllowanceComponent implements OnInit {
+export class FMAValidationComponent implements OnInit {
+
   constructor(public DigiPVTService: DigiPVTService, public router: Router) { }
   componentmaster: any;
   id : any;
@@ -35,7 +36,7 @@ export class UploadPayPeriodAllowanceComponent implements OnInit {
 
   ngOnInit(): void {
     debugger
-    this.GetUploadAllowancevalues();
+    this.GetFMAValidation();
     this.DigiPVTService.GetAllStaffNew().
     subscribe({
       next: data => {
@@ -50,9 +51,9 @@ export class UploadPayPeriodAllowanceComponent implements OnInit {
       });
   }
 
-  public GetUploadAllowancevalues(){
+  public GetFMAValidation(){
     debugger
-    this.DigiPVTService.GetUploadAllowancevalues().subscribe(data => {
+    this.DigiPVTService.GetFMAValidation().subscribe(data => {
       debugger
       this.componentmaster = data;
       console.log("componentmaster", this.componentmaster);
@@ -87,46 +88,8 @@ export class UploadPayPeriodAllowanceComponent implements OnInit {
     }
   }
 
-  exportexcel(): void {
-    debugger
-    /* table id is passed over here */
-    let element = document.getElementById('downloadaplication');
-    const ws: XLSX.WorkSheet = XLSX.utils.table_to_sheet(element);
 
-    /* generate workbook and add the worksheet */
-    const wb: XLSX.WorkBook = XLSX.utils.book_new();
-    XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
-
-    /* save to file */
-    XLSX.writeFile(wb, this.fileName);
-  }
-  
-  public delete(ID: any) {
-    debugger
-    Swal.fire({
-      title: 'Are you sure?',
-      text: 'You Want to delete it.',
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonText: 'Yes, Delete it!',
-      cancelButtonText: 'No, keep it'
-    }).then((result) => {
-      if (result.value == true) {
-        this.DigiPVTService.DeleteComponentMaster(ID)
-          .subscribe({
-            next: data => {
-              debugger
-              Swal.fire('Deleted Successfully')
-              location.reload();
-              
-            }
-          })
-      }
-    })
-  }
-
-
-  public Upload_file() {
+   public Upload_file() {
     debugger
     if (this.exceldata == undefined) {
       Swal.fire('Choose a File');
@@ -146,12 +109,13 @@ export class UploadPayPeriodAllowanceComponent implements OnInit {
             // this.Paydate=this.Paydate.toLocaleString('en-US', options)          
           ; 
           var eb = { 
-            'staffid': this.StaffID,
-            'Allowancename' : this.exceldata[this.i].AllowanceName,
-             'Totalallowanceamount' : this.exceldata[this.i].NoofUnits,
-            'paydate' : this.Paydate
+            'StaffID': this.StaffID,
+            'HiringDate' : new Date(Date.UTC(0, 0, this.exceldata[this.i].HiringDate - 1)),
+            'RegularisationDate' : new Date(Date.UTC(0, 0, this.exceldata[this.i].RegularisationDate - 1)),
+            'Amount' : this.exceldata[this.i].Amount,
+            'PayDate' : this.Paydate
           }
-          this.DigiPVTService.InsertUploadAllowancevalues(eb).subscribe({
+          this.DigiPVTService.InsertFMAValidation(eb).subscribe({
             next: data => {
             debugger
             this.StaffID=data;

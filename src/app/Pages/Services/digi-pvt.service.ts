@@ -1646,6 +1646,12 @@ export class DigiPVTService {
 
 
 
+  public GetRunAllowanceValidation(EmployeeID: any,  startdate: any, enddate: any) {
+    //debugger
+    return this.http.get<any[]>(this.host + "/Announcement/GetRunAllowanceValidation?EmployeeID=" + EmployeeID  + "&startdate=" + startdate + "&enddate=" + enddate);
+  }
+
+
 
 
   public DeleteEmployeeSalary(ID: any) {
@@ -1713,8 +1719,13 @@ export class DigiPVTService {
   }
 
   
+  public GetValidatedBonusDetails() {
+    //debugger
+    return this.http.get<any[]>(
+      this.host + "/Vendor/GetValidatedBonusDetails"
+    );
+  }
   
-
 
   public GetEmployeeSalary() {
     //debugger

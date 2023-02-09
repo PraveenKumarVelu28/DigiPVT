@@ -1570,6 +1570,10 @@ export class DigiPVTService {
     this.url = this.host + '/Vendor/InsertBasicpayAdjustments';
     return this.http.post(this.url, data);
   }
+  public DeleteBasicpayAdjustments(ID : any){
+    return this.http.get<any[]>(
+      this.host + "/Announcement/DeleteBasicpayAdjustments?ID=" + ID);
+  }
 
   
 

@@ -12,6 +12,7 @@ declare var JSZipUtils: any;
   styleUrls: ['./staff-leaves-upload.component.css']
 })
 export class StaffLeavesUploadComponent implements OnInit {
+  DigiPVTService: any;
 
   
   constructor(public DigiofficeService: DigiPVTService, public router: Router) { }
@@ -774,6 +775,31 @@ export class StaffLeavesUploadComponent implements OnInit {
     const csvExporter = new ExportToCsv(Export_to_excel_options);
     debugger
     csvExporter.generateCsv(ExportData);
+
+  }
+  data : any
+  delete(ID : any){
+    debugger
+    Swal.fire({
+      title: 'Are you sure?',
+      text: 'You Want to delete it.',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Yes, Delete it!',
+      cancelButtonText: 'No, keep it'
+    }).then((result) => {
+      if (result.value == true) {
+        this.DigiPVTService.DeletePreApprovalOverTime(ID)
+          .subscribe({
+            next: (data: any) => {
+              debugger
+              Swal.fire('Deleted Successfully')
+              location.reload();
+              
+            }
+          })
+      }
+    })
 
   }
 }

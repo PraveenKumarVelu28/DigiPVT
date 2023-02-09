@@ -146,4 +146,27 @@ export class UploadAllowanceComponent implements OnInit {
       }
     }
   }
+  delete(ID : any){
+    debugger
+    Swal.fire({
+      title: 'Are you sure?',
+      text: 'You Want to delete it.',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Yes, Delete it!',
+      cancelButtonText: 'No, keep it'
+    }).then((result) => {
+      if (result.value == true) {
+        this.DigiPVTService.DeleteAllowancesvalidation(ID)
+          .subscribe({
+            next: (data: any) => {
+              debugger
+              Swal.fire('Deleted Successfully')
+              location.reload();
+              
+            }
+          })
+      }
+    })
+  }
 }

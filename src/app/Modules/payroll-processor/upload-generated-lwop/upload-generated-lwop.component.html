@@ -63,9 +63,10 @@
                                 <th>LWOP Amount</th>
                                 <th>LWOP Days Adjustment</th>
                                 <th>LWOP Adjustment Amount</th>
+                              
                                 
                                 <!-- <th>Attachment</th> -->
-                                <th *ngIf="roleid=='1'">Actions</th>
+                                <th>Actions</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -77,9 +78,10 @@
                                 <td>{{list.lwopAmount}}</td>
                                 <td>{{list.lopDaysAdjustment}}</td>
                                 <td>{{list.lwopAmountAdjustment}}</td>
+                             
                                 
                                 <td > 
-                                    <button *ngIf="roleid=='1'" class="upload"  (click)="delete(list.id)">Delete</button>
+                                    <button  class="upload"  (click)="delete(list.id)">Delete</button>
                                 </td>
                             </tr>
                         </tbody>

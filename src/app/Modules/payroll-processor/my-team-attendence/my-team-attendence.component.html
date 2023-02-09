@@ -170,20 +170,21 @@
                     <p class="NoResultShow"> No Results found </p>
                 </ng-template>
                 <br>
-                <div class="text-right">
-                    <br>
-                    <pagination-controls (pageChange)="p = $event" class="poppinns"></pagination-controls>
-                </div>
+           
                 <!-- <span *ngIf="attendancelist.length==0"><b>No Results Found</b></span> -->
             </div>
             <div class="col-md-1">
             </div>
         </div>
+   
     </div>
+    <div class="text-right">
+        <br>
+        <pagination-controls (pageChange)="p = $event"  previousLabel=""
+        nextLabel="" class="poppinns"></pagination-controls>
+     </div>
 </div>
-<br>
-<br>
-<br>
+
 
 
 

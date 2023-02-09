@@ -256,7 +256,7 @@ export class SidebarComponent implements OnInit {
   public RunAllowanceValidation() {
     this.active = 'RunAllowanceValidation';
     localStorage.setItem('Pagename', 'Exception Bulk Logs')
-    this.router.navigate(['/PayrollProcessor/RunAllowanceValidation']);
+    this.router.navigate(['/PayrollProcessor/ValidatedAllowanceDetails']);
 
   }
 
@@ -411,10 +411,40 @@ export class SidebarComponent implements OnInit {
   public FMAValidation(){
     this.active='fma'
     localStorage.setItem("clickname", "Upload Pay Period Allowance")
-    this.router.navigate(['/PayrollProcessor/FMAValidation'])
+ 
   }
 
 
+  public UploadFMAAllowance(){
+    this.active='UploadFMAAllowance'
+       localStorage.setItem("clickname", "Component  Master")
+       this.router.navigate(['/PayrollProcessor/FMAValidation'])
+
+  }
+
+  public UploadBasicPayValues(){
+    this.active='UploadBasicPayValues'
+       localStorage.setItem("clickname", "Component  Master")
+       this.router.navigate(['/PayrollProcessor/UploadBasicPayValues'])
+
+  }
+  
+
+  public RunFMAValidation(){
+    this.active='RunFMAValidation'
+       localStorage.setItem("clickname", "Component  Master")
+       this.router.navigate(['/PayrollProcessor/ValidatedFMADetails'])
+
+  }
+  
+  public BasicPayValidation(){
+    this.active=767
+       localStorage.setItem("clickname", "Component  Master")
+
+  }
+  
+  
+  
   
 
   public ComponentMaster(){

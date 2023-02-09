@@ -1,1 +1,323 @@
-<p>validated-allowance-details works!</p>
+<div class="row">
+    <div class="col-md-12">
+        <div class="row">
+            <div class="col-lg-12">
+                <ul>
+                    <a class="active Heading underlineclr" routerLink="/PayrollProcessor/MyTeamOverTimeDetails">
+                        Allowance Validation Details</a>
+                </ul>
+            </div>
+        </div>
+        <br>
+        <div class="card ">
+            <div class="row">
+                <div class="col-lg-1">
+                    <img src="assets/Images/filter.svg" class="filter-img">
+                    <p class="filter">Filter By</p>
+                </div>
+                <div class=col-lg-4>
+                    <input type="text" class="form-control" name="" id=""
+                        placeholder="search Allowance Validation Details... ">
+                </div>
+              
+                <!-- <div class="col-md-2">
+                        <p>Pay Date
+                            <input class="form-control input-date  " type="date" onkeydown="return false"
+                                placeholder="Duration" id="sdate" name="sdate" [(ngModel)]="sdate"
+                                >
+                    </div> -->
+
+                <!-- <div class="col-md-4">
+                        <p><br>
+                            <input class="form-control" id="term" name="term" [(ngModel)]="term" type="search"
+                                (ngModelChange)="FilterAttendence()" placeholder="Search for staff.. ">
+                    </div> -->
+                <div class="col-md-3">
+
+                    <button class="form-control AddExpense" routerLink="/PayrollProcessor/RunLwopValidation"
+                        style="width: 80%;">Run New Validation
+                    </button>
+                </div>
+                <div class="col-md-3">
+
+                    <button class="form-control AddExpense" 
+                        style="width: 80%;">Export to Excel
+                    </button>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-6"></div>
+            <div class="col-lg-6">
+                <div class="row">
+                    <div class="col-lg-2">
+                        <div style="  width: 63%;border: 8px solid green;margin: 10px;">
+
+                        </div>
+                        <p class="text">13th Month Bonus</p>
+                    </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                    <div class="col-lg-2">
+                        <div style="  width: 63%;border: 8px solid #ADD8E6;margin: 10px;">
+
+                        </div>
+                        <p class="text">14th Month Bonus</p>
+                    </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <div class="col-lg-2">
+                        <div style="  width: 63%;border: 8px solid #FFFF8F;margin: 10px;">
+
+                        </div>
+                        <p class="text">Taxable Bonus</p>
+                    </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <div class="col-lg-2">
+                        <div style="  width: 63%;border: 8px solid #E6E6FA;margin: 10px;">
+
+                        </div>
+                        <p class="text"> Non Taxable Bonus</p>
+                    </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+
+                </div>
+            </div>
+
+            <!-- <div class="col-lg-2">
+                    <label class="container">
+                        <input type="checkbox">
+                        <span class="checkmark"></span>
+                    </label>                    
+                    <h6 class="text">13th Month Bonus</h6>
+                </div> -->
+            <!-- <div class="col-md-10">
+                    <p class="show3res">SHOWING <span>{{timedetails.length}}</span> RESULTS </p>
+                </div> -->
+        </div>
+        <!-- <div class="row">
+                <div class="col-lg-10"></div>
+                <div class="col-lg-2">
+                    <Button class="AddButton" (click)="ExporttoExcel()">Export to Excel</Button>
+                </div>
+            </div> -->
+        <br>
+
+
+
+        <div class="row">
+            <div class="col-md-10">
+                <!-- <p class="show3res">SHOWING <span>{{timedetails.length}}</span> RESULTS </p> -->
+
+            </div>
+        </div><br>
+
+
+        <div class="col-md-12 listscroll">
+            <div class="container-fluid">
+                <table class="table">
+                    <thead>
+                        <tr class="thwidth">
+                            <th>Employee ID</th>
+                            <th>Employee Name</th>
+
+                            <th class="thwidth">Pay Date</th>
+
+                            <th class="thwidth">Uploaded Sixth Day Allowance</th>
+                            <th class="thwidth">Validated Sixth Day Allowance</th>
+                            <th class="thwidth">Descrepency Sixth Day Allowance</th>
+                            <th class="thwidth">Uploaded Seventh Day Allowance</th>
+                            <th class="thwidth">Validated Seventh Day Allowance</th>
+                            <th class="thwidth">Descrepency Seventh Day Allowance</th>
+
+                            <th class="thwidth">Uploaded Holiday Allowance</th>
+                            <th class="thwidth">Validated Holiday Allowance</th>
+                            <th class="thwidth">Descrepency Holiday Allowance</th>
+                            <th class="thwidth">Uploaded ND Allowance</th>
+                            <th class="thwidth">Validated ND Allowance</th>
+                            <th class="thwidth">Descrepency ND Allowance</th>
+
+
+
+
+
+
+
+
+
+                        </tr>
+                        <tr
+                            *ngFor="let time of timedetails| filter:term |paginate: { itemsPerPage: count1, currentPage: p}">
+                            <td [ngClass]="{'bgred':time.bcolor=='1' }" [ngClass]="{'bgblue':time.bfourcolor=='1' }"
+                                [ngClass]="{'bgyellow':time.bTaxcolor=='1' }"
+                                [ngClass]="{'bgviolet':time.bNonTaxcolor=='1' }">{{time.employeID}}</td>
+                            <td [ngClass]="{'bgred':time.bcolor=='1' }" [ngClass]="{'bgblue':time.bfourcolor=='1' }"
+                                [ngClass]="{'bgyellow':time.bTaxcolor=='1' }"
+                                [ngClass]="{'bgviolet':time.bNonTaxcolor=='1' }">{{time.name}}</td>
+                            <td [ngClass]="{'bgred':time.bcolor=='1' }" [ngClass]="{'bgblue':time.bfourcolor=='1' }"
+                                [ngClass]="{'bgyellow':time.bTaxcolor=='1' }"
+                                [ngClass]="{'bgviolet':time.bNonTaxcolor=='1' }">{{time.enddate|date}}</td>
+                            <td [ngClass]="{'bgred':time.bcolor=='1' }" [ngClass]="{'bgblue':time.bfourcolor=='1' }"
+                                [ngClass]="{'bgyellow':time.bTaxcolor=='1' }"
+                                [ngClass]="{'bgviolet':time.bNonTaxcolor=='1' }">{{time.uploadedSixthDayAllowance}}</td>
+                            <td [ngClass]="{'bgred':time.bcolor=='1' }" [ngClass]="{'bgblue':time.bfourcolor=='1' }"
+                                [ngClass]="{'bgyellow':time.bTaxcolor=='1' }"
+                                [ngClass]="{'bgviolet':time.bNonTaxcolor=='1' }">{{time.sixthDayAllowance}}</td>
+                            <td [ngClass]="{'bgred':time.bcolor=='1' }" [ngClass]="{'bgblue':time.bfourcolor=='1' }"
+                                [ngClass]="{'bgyellow':time.bTaxcolor=='1' }"
+                                [ngClass]="{'bgviolet':time.bNonTaxcolor=='1' }">
+                                {{time.sixthDayAllowancedescrepencyValue}}</td>
+                            <td [ngClass]="{'bgred':time.bcolor=='1' }" [ngClass]="{'bgblue':time.bfourcolor=='1' }"
+                                [ngClass]="{'bgyellow':time.bTaxcolor=='1' }"
+                                [ngClass]="{'bgviolet':time.bNonTaxcolor=='1' }">{{time.uploadedSeventhDayAllowance}}
+                            </td>
+                            <td [ngClass]="{'bgred':time.bcolor=='1' }" [ngClass]="{'bgblue':time.bfourcolor=='1' }"
+                                [ngClass]="{'bgyellow':time.bTaxcolor=='1' }"
+                                [ngClass]="{'bgviolet':time.bNonTaxcolor=='1' }">{{time.seventhDayAllowance}}</td>
+                            <td [ngClass]="{'bgred':time.bcolor=='1' }" [ngClass]="{'bgblue':time.bfourcolor=='1' }"
+                                [ngClass]="{'bgyellow':time.bTaxcolor=='1' }"
+                                [ngClass]="{'bgviolet':time.bNonTaxcolor=='1' }">
+                                {{time.seventhDayAllowancedescrepencyValue}}</td>
+                            <td [ngClass]="{'bgred':time.bcolor=='1' }" [ngClass]="{'bgblue':time.bfourcolor=='1' }"
+                                [ngClass]="{'bgyellow':time.bTaxcolor=='1' }"
+                                [ngClass]="{'bgviolet':time.bNonTaxcolor=='1' }">{{time.uploadedHolidayAllowance}}</td>
+
+                            <td [ngClass]="{'bgred':time.bcolor=='1' }" [ngClass]="{'bgblue':time.bfourcolor=='1' }"
+                                [ngClass]="{'bgyellow':time.bTaxcolor=='1' }"
+                                [ngClass]="{'bgviolet':time.bNonTaxcolor=='1' }">{{time.holidayAllowance}}</td>
+                            <td [ngClass]="{'bgred':time.bcolor=='1' }" [ngClass]="{'bgblue':time.bfourcolor=='1' }"
+                                [ngClass]="{'bgyellow':time.bTaxcolor=='1' }"
+                                [ngClass]="{'bgviolet':time.bNonTaxcolor=='1' }">
+                                {{time.holidayAllowancedescrepencyValue}}</td>
+                            <td [ngClass]="{'bgred':time.bcolor=='1' }" [ngClass]="{'bgblue':time.bfourcolor=='1' }"
+                                [ngClass]="{'bgyellow':time.bTaxcolor=='1' }"
+                                [ngClass]="{'bgviolet':time.bNonTaxcolor=='1' }">
+                                {{time.uploadedNightDifferentialAllowance}}</td>
+
+
+                            <td [ngClass]="{'bgred':time.bcolor=='1' }" [ngClass]="{'bgblue':time.bfourcolor=='1' }"
+                                [ngClass]="{'bgyellow':time.bTaxcolor=='1' }"
+                                [ngClass]="{'bgviolet':time.bNonTaxcolor=='1' }">{{time.nightDifferentialAllowance}}
+                            </td>
+                            <td [ngClass]="{'bgred':time.bcolor=='1' }" [ngClass]="{'bgblue':time.bfourcolor=='1' }"
+                                [ngClass]="{'bgyellow':time.bTaxcolor=='1' }"
+                                [ngClass]="{'bgviolet':time.bNonTaxcolor=='1' }">
+                                {{time.nightDifferentialAllowancedescrepencyValue}}</td>
+
+
+
+                        </tr>
+                    </thead>
+                </table>
+
+                <!-- <span *ngIf="preapprovaldetails1.length==0"><b>No Results Found</b></span> -->
+            </div>
+
+        </div>
+        <!-- <div *ngSwitchCase="'tab333'" id="tab333">
+                            <br />
+                            <br />
+                            <div class="row">
+                                <div class="col-md-10">
+                                    <p class="show3res">SHOWING <span>{{timedetails3.length}}</span> RESULTS
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="btn-group" role="group" aria-label="Basic example">
+                                <button type="button" class="btn btn-secondary" value="0"
+                                    (click)="preapprove()">PreApprovals</button>
+                                <button type="button" class="btn btn-secondary" value="0" (click)="applyot()"> OT
+                                    Requests</button>
+
+                            </div>
+                            <br />
+                            <br />
+                            <div class="col-md-12">
+                                <div class="container-fluid">
+                                    <table class="table" *ngIf="applyot1==1">
+                                        <thead>
+                                            <tr class="thwidth">
+                                                <th>Employee Name</th>
+                                                <th class="thwidth">Date</th>
+                                                <th class="thwidth">Start Time</th>
+                                                <th class="thwidth">End Time</th>
+                                                <th class="thwidth">OT Details</th>
+                                                <th class="thwidth">Attachment</th>
+                                                <th class="thwidth">Comments</th>
+                                                <th class="thwidth">Status</th>
+                                            </tr>
+                                            <tr
+                                                *ngFor="let time of timedetails3|paginate: { itemsPerPage: count1, currentPage: p}">
+                                                <td>{{time.staffname}}</td>
+                                                <td>{{time.date|date}}</td>
+                                                <td>{{time.startTime|date:'HH:mm'}}</td>
+                                                <td>{{time.endTime|date:'HH:mm'}}</td>
+                                              
+                                                <td>
+                                                    <button class="edit-btn" data-toggle="modal"
+                                                        (click)="GetOTDetails(time)"
+                                                        data-target="#CheckListStatusform">Details
+                                                    </button>
+                                                </td>
+                                                <td><a href="{{time.attachment}}" target="blank"> <img
+                                                            *ngIf="time.attachment!=null"
+                                                            src="assets/Images/attachment (1).png"
+                                                            class="attachmentimg"></a> </td>
+                                                <td>{{time.comments}}</td>
+                                                <td>{{time.status}}</td>
+                                            </tr>
+                                        </thead>
+                                    </table>
+                                    <table class="table" *ngIf="preapprove1==1">
+                                        <thead>
+                                            <tr class="thwidth">
+                                                <th>Employee Name</th>
+                                                <th class="thwidth">Date</th>
+                                                <th class="thwidth">Start Time</th>
+                                                <th class="thwidth">End Time</th>
+                                                <th class="thwidth"> OT Details</th>
+                                                <th class="thwidth">Attachment</th>
+                                                <th class="thwidth">Comments</th>
+                                                <th class="thwidth">Status</th>
+                                            </tr>
+                                            <tr
+                                                *ngFor="let time of preapprovaldetails3|paginate: { itemsPerPage: count1, currentPage: p}">
+                                                <td>{{time.staffname}}</td>
+                                                <td>{{time.date|date}}</td>
+                                                <td>{{time.startTime|date:'HH:mm'}}</td>
+                                                <td>{{time.endTime|date:'HH:mm'}}</td>
+                                                <td>
+                                                    <button class="edit-btn" data-toggle="modal"
+                                                        (click)="GetOTDetails1(time)"
+                                                        data-target="#CheckListStatusform">Details
+                                                    </button>
+                                                </td>
+                                                <td><a href="{{time.attachment}}" target="blank"> <img
+                                                            *ngIf="time.attachment!=null"
+                                                            src="assets/Images/attachment (1).png"
+                                                            class="attachmentimg"></a> </td>
+                                                <td>{{time.comments}}</td>
+                                                <td>{{time.status}}</td>
+                                            </tr>
+                                        </thead>
+                                    </table>
+                                   
+                                </div>
+                  
+                                <div class="text-left">
+                                    <br>
+                                    <pagination-controls (pageChange)="p = $event" class="poppinns">
+                                    </pagination-controls>
+                                </div>
+                            </div>
+                        </div> -->
+
+
+
+    </div>
+    <div class="row">
+        <div class="col-lg-5"></div>
+        <div class="col-lg-2">
+        </div>
+        <div class="col-lg-5"></div>
+    </div>
+</div>
+<div class="col-md-1"></div>

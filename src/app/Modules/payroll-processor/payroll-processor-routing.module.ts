@@ -23,6 +23,12 @@ import { UploadAllowanceComponent } from './upload-allowance/upload-allowance.co
 import { UploadPayPeriodAllowanceComponent } from './upload-pay-period-allowance/upload-pay-period-allowance.component';
 import { FMAValidationComponent } from './fmavalidation/fmavalidation.component';
 import { RunAllowanceValidationComponent } from './run-allowance-validation/run-allowance-validation.component';
+import { ValidatedAllowanceDetailsComponent } from './validated-allowance-details/validated-allowance-details.component';
+import { RunFMAValidationComponent } from './run-fmavalidation/run-fmavalidation.component';
+import { ValidatedFMADetailsComponent } from './validated-fmadetails/validated-fmadetails.component';
+import { RunBasicPayValidationComponent } from './run-basic-pay-validation/run-basic-pay-validation.component';
+import { UploadBasicPayValuesComponent } from './upload-basic-pay-values/upload-basic-pay-values.component';
+import { ValidatedBasicPayValuesComponent } from './validated-basic-pay-values/validated-basic-pay-values.component';
 const routes: Routes = [
   { path: '', component: PayrollProcessorComponent },
   { path: 'RunLwopValidation', component: RunLwopValidationComponent },
@@ -54,6 +60,15 @@ const routes: Routes = [
   { path: 'FMAValidation', component: FMAValidationComponent},
 
   { path: 'RunAllowanceValidation', component: RunAllowanceValidationComponent},
+  { path: 'ValidatedAllowanceDetails', component: ValidatedAllowanceDetailsComponent},
+
+  { path: 'RunFMAValidation', component: RunFMAValidationComponent},
+  { path: 'ValidatedFMADetails', component: ValidatedFMADetailsComponent},
+  { path: 'RunBasicPayValidation', component: RunBasicPayValidationComponent},
+
+  { path: 'UploadBasicPayValues', component: UploadBasicPayValuesComponent},
+  { path: 'ValidatedBasicPayValues', component: ValidatedBasicPayValuesComponent},
+
 ];
 
 @NgModule({

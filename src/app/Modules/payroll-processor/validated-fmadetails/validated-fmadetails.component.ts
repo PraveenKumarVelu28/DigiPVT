@@ -5,18 +5,19 @@ import { DigiPVTService } from 'src/app/Pages/Services/digi-pvt.service';
 import * as XLSX from 'xlsx';
 import { ExportToCsv } from 'export-to-csv';
 declare var JSZipUtils: any;
+
 @Component({
-  selector: 'app-validated-allowance-details',
-  templateUrl: './validated-allowance-details.component.html',
-  styleUrls: ['./validated-allowance-details.component.css']
+  selector: 'app-validated-fmadetails',
+  templateUrl: './validated-fmadetails.component.html',
+  styleUrls: ['./validated-fmadetails.component.css']
 })
-export class ValidatedAllowanceDetailsComponent implements OnInit {
+export class ValidatedFMADetailsComponent implements OnInit {
 
   constructor(public DigiofficeService: DigiPVTService, public router: Router) { }
 
   ngOnInit(): void {
 
-    this.GetValidatedAllowanceValues();
+    this.GetValidatedFMAAllowanceValues();
   }
 
   timedetails:any;
@@ -26,9 +27,9 @@ export class ValidatedAllowanceDetailsComponent implements OnInit {
   p: any = 1;
   count1: any = 10;
 
-  public GetValidatedAllowanceValues() {
+  public GetValidatedFMAAllowanceValues() {
     debugger
-    this.DigiofficeService.GetValidatedAllowanceValues()
+    this.DigiofficeService.GetValidatedFMAAllowanceValues()
       .subscribe({
         next: data => {
           debugger

@@ -1544,7 +1544,7 @@ export class DigiPVTService {
 
   public GetValidatedFMAAllowanceValues() {
     return this.http.get<any[]>(
-      this.host + "/Announcement/GetValidatedFMAAllowanceValues"
+      this.host + "/Master/GetValidatedFMAAllowanceValues"
     );
   }
   
@@ -1564,6 +1564,14 @@ export class DigiPVTService {
     this.url = this.host + '/Announcement/InsertDepartmentMaster';
     return this.http.post(this.url, data);
   }
+
+  public InsertBasicpayAdjustments(data: any) {
+    //debugger;
+    this.url = this.host + '/Vendor/InsertBasicpayAdjustments';
+    return this.http.post(this.url, data);
+  }
+
+  
 
   public InsertDesignationMaster(data: any) {
     //debugger;
@@ -1588,6 +1596,13 @@ export class DigiPVTService {
       this.host + "/Announcement/GetDe_minimis_Master"
     );
   }
+
+  public GetBasicpayAdjustments() {
+    return this.http.get<any[]>(
+      this.host + "/Vendor/GetBasicpayAdjustments"
+    );
+  } 
+  
 
   public DeleteDe_minimis_Master(ID: any) {
     return this.http.get<any[]>(

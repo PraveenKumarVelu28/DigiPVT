@@ -29,6 +29,9 @@ import { RunAllowanceValidationComponent } from './run-allowance-validation/run-
 import { ValidatedAllowanceDetailsComponent } from './validated-allowance-details/validated-allowance-details.component';
 import { RunFMAValidationComponent } from './run-fmavalidation/run-fmavalidation.component';
 import { ValidatedFMADetailsComponent } from './validated-fmadetails/validated-fmadetails.component';
+import { UploadBasicPayValuesComponent } from './upload-basic-pay-values/upload-basic-pay-values.component';
+import { RunBasicPayValidationComponent } from './run-basic-pay-validation/run-basic-pay-validation.component';
+import { ValidatedBasicPayValuesComponent } from './validated-basic-pay-values/validated-basic-pay-values.component';
 
 
 
@@ -61,7 +64,10 @@ import { ValidatedFMADetailsComponent } from './validated-fmadetails/validated-f
     RunAllowanceValidationComponent,
     ValidatedAllowanceDetailsComponent,
     RunFMAValidationComponent,
-    ValidatedFMADetailsComponent
+    ValidatedFMADetailsComponent,
+    UploadBasicPayValuesComponent,
+    RunBasicPayValidationComponent,
+    ValidatedBasicPayValuesComponent
   ],
   imports: [
     PayrollProcessorRoutingModule,

@@ -14,18 +14,18 @@ declare var JSZipUtils: any;
 export class BonusValidationDetailsComponent implements OnInit {
 
   constructor(public DigiofficeService: DigiPVTService, public router: Router) { }
-
-  ngOnInit(): void {
-
-    this.GetBonusValidation();
-  }
-
   timedetails:any;
   count:any;
   currentUrl:any;
   term:any;
   p: any = 1;
   count1: any = 10;
+
+  ngOnInit(): void {
+
+    this.GetBonusValidation();
+  }
+
 
   public GetBonusValidation() {
     debugger
@@ -51,6 +51,5 @@ export class BonusValidationDetailsComponent implements OnInit {
         }
       })
   }
-
 
 }

@@ -13,12 +13,12 @@ export class ComponentMappingDashboardComponent implements OnInit {
   constructor(private DigiPVTService: DigiPVTService,private router: Router) { }
   p1: any = 1;
   count2: any = 10;
+  term:any;
 
   ngOnInit(): void {
     this.GetComponentMapping();
-   
   }
-  term:any;
+ 
   public GetComponentMapping(){
     this.DigiPVTService.GetComponentMapping().subscribe(data => {
       debugger
@@ -50,8 +50,4 @@ export class ComponentMappingDashboardComponent implements OnInit {
       }
     })
   }
-
-
-
-
 }

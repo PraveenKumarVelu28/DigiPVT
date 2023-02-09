@@ -21,3 +21,10 @@
     background-color: #E6E6FA;
     color: black;
   }
+
+  .text{
+    margin-top: -27px;
+    margin-left: 58px;
+    font-size: 10px;
+   white-space: nowrap;
+  }

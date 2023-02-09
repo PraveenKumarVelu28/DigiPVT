@@ -1603,11 +1603,14 @@ export class DigiPVTService {
     );
   } 
 
-  public DeleteBasicpayAdjustments(ID : any){
-    return this.http.get<any[]>(
-      this.host + "/Vendor/DeleteBasicpayAdjustments?ID=" + ID);
 
-  }
+  
+  public GetValidatedBasicPayAllowances() {
+    return this.http.get<any[]>(
+      this.host + "/Vendor/GetValidatedBasicPayAllowances"
+    );
+  } 
+  
   
 
   public DeleteDe_minimis_Master(ID: any) {
@@ -1665,6 +1668,12 @@ export class DigiPVTService {
     //debugger
     return this.http.get<any[]>(this.host + "/Announcement/Get_RunLwopValidation?EmployeeID=" + EmployeeID  + "&startdate=" + startdate + "&enddate=" + enddate);
   }
+
+  public GetRunBasicPayValidation(EmployeeID: any,  startdate: any, enddate: any) {
+    //debugger
+    return this.http.get<any[]>(this.host + "/Announcement/GetRunBasicPayValidation?EmployeeID=" + EmployeeID  + "&startdate=" + startdate + "&enddate=" + enddate);
+  }
+  
 
 
   public Get_RunBonusValidation(EmployeeID: any,  startdate: any, enddate: any) {

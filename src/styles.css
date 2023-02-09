@@ -92,7 +92,7 @@ textarea {
   line-height: 12px;
   text-align: center;
   white-space: nowrap;
-  width: 70%;
+  width: max-content;
 }
 .AddExpense1 {
   margin-top: -23px;
@@ -601,7 +601,7 @@ span {
 
 .save-btn {
   box-sizing: border-box;
-  width: 135px;
+  width: max-content;
   height: 35px;
   border-radius: 5px;
   font-family: 'Poppins';

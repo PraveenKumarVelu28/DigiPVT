@@ -66,17 +66,28 @@ export class StaffLeavesUploadComponent implements OnInit {
   level:any;
   
   PayPeriodSettingList:any;
-
+  fromlogin: any;
+  exceldata: any;
+  arrayBuffer: any;
+  filetype: any;
+  file: any;
   loader:any;
   PayPeriodSettingListAdjustment:any;
   stafflist:any;
+  i:any;
+  startdate:any;
+  Attachment:any;
+  stafflistcopy123:any;
+  EndDate:any;
+  public attachmentsurl: any = []; 
+  show:any;
+  staffleaves2:any;
   ngOnInit(): void {
     this.currentUrl = window.location.href;
     this.preapprove1=true;
     this.applyot1=false;
     this.Department = "";
     this.RoleType = "";
- 
   
     this.roleid = sessionStorage.getItem('roledid');
     this.StaffID = localStorage.getItem('staffid');
@@ -84,11 +95,9 @@ export class StaffLeavesUploadComponent implements OnInit {
 
     // this.GetMyOverTimeDetails();
    
-
     this.DigiofficeService.GetPayPeriodSetting().subscribe(data => {
       debugger
       this.PayPeriodSettingList = data;
-      
     });
   
 
@@ -97,20 +106,9 @@ export class StaffLeavesUploadComponent implements OnInit {
       next: data => {
         debugger
         this.stafflist = data;
-       
-       
       }
     })
-    
-   
   }
-
- 
-  fromlogin: any;
-  exceldata: any;
-  arrayBuffer: any;
-  filetype: any;
-  file: any;
 
   incomingfile(event: any) {
     debugger;
@@ -135,17 +133,12 @@ export class StaffLeavesUploadComponent implements OnInit {
         this.exceldata = XLSX.utils.sheet_to_json(worksheet, { raw: true });
       };
       fileReader.readAsArrayBuffer(this.file);
-
-
-
     } else {
       Swal.fire("Imported file format not supported.");
     }
   }
 
 
-
-  staffleaves2:any;
   public GetMyOverTimeDetails() {
     debugger
     this.DigiofficeService.GetAllStaffLeaves(localStorage.getItem('staffid'), 1, "01-01-2020", "01-01-2025")
@@ -153,9 +146,6 @@ export class StaffLeavesUploadComponent implements OnInit {
         next: data => {
           debugger
           this.staffleaves2 = data;
-          
-           
-           
           this.count = this.staffleaves2.length
         }, error: (err) => {
           Swal.fire('Issue in Getting Staff Over Time Details');
@@ -180,33 +170,20 @@ export class StaffLeavesUploadComponent implements OnInit {
     this.count = this.attendancelist.length;
   }
 
-  show:any;
-
   public filterbydate() {
-
     debugger
-  
     this.DigiofficeService.GetAllStaffLeaves(localStorage.getItem('staffid'), 1, "01-01-2020", "01-01-2025").subscribe(data => {
-
-   
-   
-      debugger
       this.staffleaves2 = data.filter(x=>(x.filterdate >= this.sdate  && x.filterdate1<=this.edate));
-     
       if(this.staffleaves2.length==0){
         Swal.fire('No Records Found On This Date')
       }
       else{
         this.show=1;
-      }   
-             
+      }       
     })
-  
-  
   }
 
   public filterdatepreapproval() {
-
     debugger
     if (this.sdate == undefined) {
       Swal.fire('Please Select Start Date');
@@ -276,42 +253,26 @@ export class StaffLeavesUploadComponent implements OnInit {
       }
     })
   }
-  
   }
-  i:any;
-  startdate:any;
-  Attachment:any;
-  stafflistcopy123:any;
-  EndDate:any;
-  public attachmentsurl: any = [];
+
    public Upload_file() {
     debugger
     if (this.exceldata == undefined) {
       Swal.fire('Choose a File');
     } else {
       let apiarray = [];
-
-
-      for (this.i = 0; this.i < this.exceldata.length; this.i++) {
-       
-            this.stafflistcopy123=this.stafflist.filter((x: { employeID: any; })=>x.employeID==this.exceldata[this.i].EmployeID)
-             
+      for (this.i = 0; this.i < this.exceldata.length; this.i++) {    
+            this.stafflistcopy123=this.stafflist.filter((x: { employeID: any; })=>x.employeID==this.exceldata[this.i].EmployeID)           
              if(this.stafflistcopy123.length!=0){
               this.StaffID = this.stafflistcopy123[0].id
              }
              else{
               this.StaffID = 0
              }
-
-
         let temp = this.PayPeriodSettingList.filter((x: { payDate: any; })=>x.payDate==this.exceldata[this.i].Period);
         this.Date = new Date(Date.UTC(0, 0, this.exceldata[this.i].Startdate-1 )); 
         this.EndDate = new Date(Date.UTC(0, 0, this.exceldata[this.i].Enddate-1 )); 
-      
-
-
-
-          
+    
           var eb = {
             'Building': 56,
             'StaffName': this.StaffID,

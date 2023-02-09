@@ -1570,6 +1570,10 @@ export class DigiPVTService {
     this.url = this.host + '/Vendor/InsertBasicpayAdjustments';
     return this.http.post(this.url, data);
   }
+  public DeleteBasicpayAdjustments(ID : any){
+    return this.http.get<any[]>(
+      this.host + "/Announcement/DeleteBasicpayAdjustments?ID=" + ID);
+  }
 
   
 
@@ -1602,6 +1606,15 @@ export class DigiPVTService {
       this.host + "/Vendor/GetBasicpayAdjustments"
     );
   } 
+
+
+  
+  public GetValidatedBasicPayAllowances() {
+    return this.http.get<any[]>(
+      this.host + "/Master/GetValidatedBasicPayAllowances"
+    );
+  } 
+  
   
 
   public DeleteDe_minimis_Master(ID: any) {
@@ -1659,6 +1672,12 @@ export class DigiPVTService {
     //debugger
     return this.http.get<any[]>(this.host + "/Announcement/Get_RunLwopValidation?EmployeeID=" + EmployeeID  + "&startdate=" + startdate + "&enddate=" + enddate);
   }
+
+  public GetRunBasicPayValidation(EmployeeID: any,  startdate: any, enddate: any) {
+    //debugger
+    return this.http.get<any[]>(this.host + "/Announcement/GetRunBasicPayValidation?EmployeeID=" + EmployeeID  + "&startdate=" + startdate + "&enddate=" + enddate);
+  }
+  
 
 
   public Get_RunBonusValidation(EmployeeID: any,  startdate: any, enddate: any) {
@@ -1737,6 +1756,10 @@ export class DigiPVTService {
     return this.http.get<any[]>(
       this.host + "/Master/GetGeneratedLwopValues"
     );
+  }
+  public DeleteGeneratedLwopValues( ID : any){
+    return this.http.get<any[]>(
+      this.host + "/Master/DeleteGeneratedLwopValues?ID=" + ID);
   }
 
 
@@ -4145,6 +4168,11 @@ export class DigiPVTService {
     );
   }
 
+  public DeleteAllowancesvalidation(ID : any){
+    return this.http.get<any[]>(
+      this.host + "/Vendor/DeleteAllowancesvalidation?ID=" + ID);
+  }
+
   public InsertAllowancevalidation(data: any) {
     debugger;
     this.url = this.host + '/Vendor/InsertAllowancesvalidation';
@@ -4162,6 +4190,11 @@ export class DigiPVTService {
       this.host +"/Vendor/GetUploadAllowancevalues"
     );
   }
+  public DeleteUploadAllowancevalues(ID : any){
+    return this.http.get<any[]>(
+      this.host + "/Vendor/DeleteUploadAllowancevalues?ID=" + ID);
+  }
+  
 
   public InsertFMAValidation(data: any) {
     debugger;
@@ -4174,6 +4207,10 @@ export class DigiPVTService {
       this.host +"/Master/GetFMAValidation"
     );
   } 
+  public DeleteFMAValidation(ID : any){
+    return this.http.get<any[]>(
+      this.host + "/Master/DeleteFMAValidation?ID=" + ID);
+  }
 }
 
 

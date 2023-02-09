@@ -120,7 +120,7 @@ export class UploadGeneratedLwopComponent implements OnInit {
       cancelButtonText: 'No, keep it'
     }).then((result) => {
       if (result.value == true) {
-        this.DigiPVTService.DeleteComponentMaster(ID)
+        this.DigiPVTService.DeleteGeneratedLwopValues(ID)
           .subscribe({
             next: data => {
               debugger
@@ -227,6 +227,7 @@ export class UploadGeneratedLwopComponent implements OnInit {
 
 
   }
+
 
 
 }

@@ -111,7 +111,7 @@ export class UploadBasicPayValuesComponent implements OnInit {
             // this.Paydate=this.Paydate.toLocaleString('en-US', options)          
           ; 
           var eb = { 
-            'StaffID': this.StaffID,
+            'Staffid': this.StaffID,
             'Effectivedate' : new Date(Date.UTC(0, 0, this.exceldata[this.i].Effectivedate - 1)),
             'Basicpay' : this.exceldata[this.i].Basicpay,
             'Basicpayadjustment' : this.exceldata[this.i].Basicpayadjustment,
@@ -150,6 +150,30 @@ export class UploadBasicPayValuesComponent implements OnInit {
         )
       }
     }
+  }
+  delete(ID : any){
+    debugger
+    Swal.fire({
+      title: 'Are you sure?',
+      text: 'You Want to delete it.',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Yes, Delete it!',
+      cancelButtonText: 'No, keep it'
+    }).then((result) => {
+      if (result.value == true) {
+        this.DigiPVTService.DeleteBasicpayAdjustments(ID)
+          .subscribe({
+            next: data => {
+              debugger
+              Swal.fire('Deleted Successfully')
+              location.reload();
+              
+            }
+          })
+      }
+    })
+
   }
 
 }

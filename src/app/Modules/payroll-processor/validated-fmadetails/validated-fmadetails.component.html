@@ -4,40 +4,45 @@
         <div class="col-md-12">
             <div class="row">
                 <div class="col-md-12">
-                    <ul>
-
-
-                        <li><a class="active Heading underlineclr" routerLink="/PayrollProcessor/MyTeamOverTimeDetails">
-                              FMA Allowance Validation Details</a></li>
+                   <ul>
+                       <a class="active Heading underlineclr" routerLink="/PayrollProcessor/MyTeamOverTimeDetails">
+                              FMA Allowance Validation Details</a>
 
                     </ul>
                 </div>
             </div>
             <br>
-            <div class="card filtercard">
+            <div class="card ">
                 <div class="row">
                     <div class="col-lg-1">
                         <img src="assets/Images/filter.svg" class="filter-img">
                         <p class="filter">Filter By</p>
                     </div>
-                    <div class="col-md-2">
-                        <!-- <p>Pay Date
+                    <div class="col-lg-3">
+                        <input  class="form-control" type="text" name="" id="" placeholder="search FMA Allowance... ">
+                    </div>
+                  
+                    <!-- <div class="col-md-2">
+                        <p>Pay Date
                             <input class="form-control input-date  " type="date" onkeydown="return false"
                                 placeholder="Duration" id="sdate" name="sdate" [(ngModel)]="sdate"
-                                > -->
-                    </div>
+                                >
+                    </div> -->
 
-                    <div class="col-md-4">
-                        <!-- <p><br>
+                    <!-- <div class="col-md-4">
+                        <p><br>
                             <input class="form-control" id="term" name="term" [(ngModel)]="term" type="search"
-                                (ngModelChange)="FilterAttendence()" placeholder="Search for staff.. "> -->
-                    </div>
+                                (ngModelChange)="FilterAttendence()" placeholder="Search for staff.. ">
+                    </div> -->
                     <div class="col-md-3">
                         <br />
 
-                        <button class="form-control AddExpense" routerLink="/PayrollProcessor/RunFMAValidation"
+                        <button class="form-control AddExpense1" routerLink="/PayrollProcessor/RunFMAValidation"
                             style="width: 80%;">Run New Validation
                         </button>
+                    </div>
+                    <div class="col-lg-3">
+                        <button class="form-control AddExpense2" style="width: 80%;">Export to Excel</button>
                     </div>
 
                 </div>
@@ -89,8 +94,8 @@
                                             *ngFor="let time of timedetails| filter:term |paginate: { itemsPerPage: count1, currentPage: p}">
                                             <td [ngClass]="{'bgred':time.bcolor=='1' }">{{time.employeID}}</td>
                                             <td [ngClass]="{'bgred':time.bcolor=='1' }" >{{time.name}}</td>
-                                            <td></td>
-                                            <td [ngClass]="{'bgred':time.bcolor=='1' }" >{{time.enddate|date}}</td>
+                                            <td [ngClass]="{'bgred':time.bcolor=='1' }"></td>
+                                            <td [ngClass]="{'bgred':time.bcolor=='1' }" >{{time.paydate|date}}</td>
                                             <td [ngClass]="{'bgred':time.bcolor=='1' }" >{{time.uploadedFMAAllowance}}</td>
                                             <td [ngClass]="{'bgred':time.bcolor=='1' }" >{{time.validatedFMAAllowance}}</td>
                                             <td [ngClass]="{'bgred':time.bcolor=='1' }" >{{time.fmaAllowanceDescrepency}}</td>

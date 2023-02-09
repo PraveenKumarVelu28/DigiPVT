@@ -1607,7 +1607,7 @@ export class DigiPVTService {
   
   public GetValidatedBasicPayAllowances() {
     return this.http.get<any[]>(
-      this.host + "/Vendor/GetValidatedBasicPayAllowances"
+      this.host + "/Master/GetValidatedBasicPayAllowances"
     );
   } 
   

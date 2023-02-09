@@ -89,8 +89,8 @@
                                             *ngFor="let time of timedetails| filter:term |paginate: { itemsPerPage: count1, currentPage: p}">
                                             <td [ngClass]="{'bgred':time.bcolor=='1' }">{{time.employeID}}</td>
                                             <td [ngClass]="{'bgred':time.bcolor=='1' }" >{{time.name}}</td>
-                                            <td></td>
-                                            <td [ngClass]="{'bgred':time.bcolor=='1' }" >{{time.enddate|date}}</td>
+                                            <td [ngClass]="{'bgred':time.bcolor=='1' }"></td>
+                                            <td [ngClass]="{'bgred':time.bcolor=='1' }" >{{time.paydate|date}}</td>
                                             <td [ngClass]="{'bgred':time.bcolor=='1' }" >{{time.uploadedFMAAllowance}}</td>
                                             <td [ngClass]="{'bgred':time.bcolor=='1' }" >{{time.validatedFMAAllowance}}</td>
                                             <td [ngClass]="{'bgred':time.bcolor=='1' }" >{{time.fmaAllowanceDescrepency}}</td>

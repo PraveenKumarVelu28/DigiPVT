@@ -112,7 +112,7 @@ export class UploadPayPeriodAllowanceComponent implements OnInit {
       cancelButtonText: 'No, keep it'
     }).then((result) => {
       if (result.value == true) {
-        this.DigiPVTService.DeleteComponentMaster(ID)
+        this.DigiPVTService.DeleteUploadAllowancevalues(ID)
           .subscribe({
             next: data => {
               debugger

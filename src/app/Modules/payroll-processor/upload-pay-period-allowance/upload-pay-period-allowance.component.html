@@ -13,11 +13,20 @@
                             <img src="assets/Images/filter.svg" class="filter-img">
                               <p class="filter">Filter By</p>
                           </div>
-                        <div class="col-lg-6 fontstyle">
+                        <div class="col-lg-4 ">
                             <input class="form-control" type="search" placeholder="Search.." 
                             id="term" [(ngModel)]="term">
                         </div>
-                        <div class="col-lg-4"></div>
+                        <div class="col-lg-4">
+                            <br/>
+                                <button class="AddButton"  (click)="exportexcel()">Export to Excel</button>
+                         </div>
+                         <div class="col-lg-3">
+                            
+                            <button class="form-control AddExpense" data-toggle="modal" data-target="#import" >Upload
+                                Payperiod Allowance</button>
+            
+                         </div>
                     </div>
                 </div>
             </div>
@@ -25,7 +34,7 @@
         <div class="row">
             <div class="col-lg-3"></div>
             <div class="col-lg-2"></div>
-            <div class="col-lg-4">
+            <!-- <div class="col-lg-4">
                 <br/>
                     <button class="AddButton"  (click)="exportexcel()">Export to Excel</button>
              </div>
@@ -34,7 +43,7 @@
                 <button class="form-control AddExpense" data-toggle="modal" data-target="#import" >Upload
                     Payperiod Allowance</button>
 
-             </div>
+             </div> -->
             <!-- <div class="col-lg-3">
             </div> -->          
         </div><br>
@@ -49,6 +58,7 @@
                                 <th>Pay Date</th>                         
                                 <th>Allowance Name</th>
                                 <th>Total Allowance Amount</th> 
+                                <th>Actions</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -58,6 +68,9 @@
                                 <td>{{list.paydate|date}}</td>
                                 <td>{{list.allowancename}}</td>
                                 <td>{{list.totalallowanceamount}}</td>
+                                <td>
+                                    <button class="upload" (click)="delete(list.id)">Delete</button>
+                                </td>
                                 
                              
                             </tr>

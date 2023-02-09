@@ -14,7 +14,7 @@
             <br>
             <div class="card ">
                 <div class="row">
-                    <div class="col-lg-1">
+                    <div class="col-md-1">
                         <img src="assets/Images/filter.svg" class="filter-img">
                           <p class="filter">Filter By</p>
                       </div>
@@ -35,11 +35,15 @@
                             <input class="form-control" id="term" name="term" [(ngModel)]="term" type="search"
                                 (ngModelChange)="FilterAttendence()" placeholder="Search for staff.. ">
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-3">
                        <br/>
 
                         <button class="form-control AddExpense2" data-toggle="modal" data-target="#import" style="width: 80%;">Upload
                             StaffLeaves</button>
+                    </div>
+                    
+                    <div class="col-lg-2">
+                        <button class="form-control AddExpense4" (click)="ExporttoExcel()">Export to Excel</button>
                     </div>
                     
                 </div>
@@ -48,9 +52,9 @@
             <br>
             <div class="row">
                 <div class="col-lg-8"></div>
-             <div class="col-lg-4">
+             <!-- <div class="col-lg-4">
                 <Button class="AddButton" (click)="ExporttoExcel()">Export to Excel</Button>
-             </div>
+             </div> -->
             </div>
             <br>
           
@@ -83,6 +87,7 @@
                                             <th>Leave Reason</th>
                                             <th>Leave Days Count</th>
                                             <th>Lwop Days</th>
+                                            <th>Actions</th>
                                            
                                            
                                         </tr>
@@ -95,6 +100,9 @@
                                             <td>{{leaves.leaveReason}}</td>
                                             <td>{{leaves.noOfDays}}</td>
                                             <td>{{leaves.lopdays}}</td>
+                                            <td>
+                                                <button class="Upload" (click)="delete(leaves.id)">Delete</button>
+                                            </td>
                                                 
                                             
                                         </tr>

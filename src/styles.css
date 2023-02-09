@@ -134,6 +134,20 @@ textarea {
   white-space: nowrap;
   width: 70%;
 }
+.AddExpense4 {
+  margin-top: 20px;
+  background-color: #3247d5;
+  color: white;
+  /* font-family: "DIN Bold"; */
+  font-weight: bold;
+  border-left: solid 1px #f5f5f5;
+  font-size: 15px;
+  line-height: 12px;
+  text-align: center;
+  white-space: nowrap;
+  width: 70%;
+}
+
 
 
 .show3res {

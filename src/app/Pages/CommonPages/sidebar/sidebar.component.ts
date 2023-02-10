@@ -26,6 +26,7 @@ export class SidebarComponent implements OnInit {
   companyid: any;
   roledid: any
   ngOnInit(): void {
+    debugger;
     (document.getElementById("main") as HTMLInputElement).style.marginLeft = "250px";
     this.login = sessionStorage.getItem('roledid');
     this.temp1 = sessionStorage.getItem('temp');

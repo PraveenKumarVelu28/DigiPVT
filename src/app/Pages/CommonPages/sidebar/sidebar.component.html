@@ -36,7 +36,7 @@
       <img *ngIf="(active == 2&&mini) " src="assets/Images/revamp/announcementnewblue-icon.png">
 
       <span class="icon-text">Announcement</span></a> -->
-    <a data-toggle="collapse" data-target="#BasicPayValidation" *ngIf="login == 9 && companyid == 1001"
+    <a data-toggle="collapse" data-target="#BasicPayValidation" *ngIf="login == 9 && companyid == 1001 || companyid == 1002 "
       (click)="BasicPayValidation()"
       [ngClass]="(active == 767 )&&!mini ? 'menu1' : (active == 767)&&mini?'menu-mini':'menu'">
       <img *ngIf="(active == 767&&!mini)" src="assets/Images/revamp/announcementwhite.png">

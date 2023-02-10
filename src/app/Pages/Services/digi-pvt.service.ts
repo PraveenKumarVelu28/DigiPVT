@@ -11,9 +11,8 @@ export class DigiPVTService {
   // public host = sessionStorage.getItem('digiofficeapiurl');
 
   // public host = 'http://localhost:1807'
-  public host='https://103.12.1.76/DigiPVTAPI'
   // public basehost = "https://103.12.1.76//AliLiveUATApi"
-
+  public host = sessionStorage.getItem('digiofficeapiurl');
   // public GetNotification(UserID: any) {
   //   return this.http.get<any[]>(
   //     this.host + "/User/GetNotification?UserID=" + UserID
@@ -2899,7 +2898,7 @@ export class DigiPVTService {
   }
   public GetCompanyID(CompanyID: any) {
     //debugger
-    let APIURL = this.host + "/MobileUser/GetCompanyID?CompanyID=" + CompanyID;
+    let APIURL = 'https://103.12.1.76/DigiPVTAPI'+ "/MobileUser/GetCompanyID?CompanyID=" + CompanyID;
     return this.http.get<any[]>(APIURL);
   }
 

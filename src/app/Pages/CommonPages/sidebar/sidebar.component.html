@@ -166,6 +166,28 @@
       </a>
     </div>
 
+    <a data-toggle="collapse" data-target="#OvertimeValidation"
+    *ngIf="login == 9 && companyid == 1002 " (click)="OvertimeValidation()"
+    [ngClass]="(active == 'ot' )&&!mini ? 'menu1' : (active == 'ot')&&mini?'menu-mini':'menu'">
+    <img *ngIf="(active == 'ot'&&!mini)" src="assets/Images/revamp/announcementwhite.png">
+    <img *ngIf="active != 'ot' " src="assets/Images/revamp/announcementnewgray-icon.png">
+    <img *ngIf="(active == 'ot'&&mini) " src="assets/Images/revamp/announcementnewblue-icon.png">
+  
+    <span class="icon-text">Overtime Validation</span></a>
+  
+  <div id="OvertimeValidation" class="collapse length ">
+  
+    <a (click)="AttendanceUnits()" class="nonactive">
+      <span class="sub-request">Attendance Units Upload </span>
+  
+    </a>
+  
+    <a (click)="uploadRetrovalues()" class="nonactive">
+      <span class="sub-request">Upload Retro Values</span>
+    </a>
+  
+  </div>
+
 
     <a data-toggle="collapse" data-target="#Holidays"
     *ngIf="login == 9 && companyid == 1002 " (click)="Holidays()"
@@ -186,6 +208,9 @@
     </a>
 
   </div>
+
+
+
 
 
 
@@ -221,10 +246,10 @@
         <span class="sub-request">PayPeriod Setting </span>
       </a>
 
-      <a (click)="AttendanceUnits()" class="nonactive">
+      <!-- <a (click)="AttendanceUnits()" class="nonactive">
         <span class="sub-request">Attendance Units Upload </span>
 
-      </a>
+      </a> -->
 
     </div>
 

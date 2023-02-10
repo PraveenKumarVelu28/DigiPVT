@@ -31,6 +31,7 @@ import { UploadBasicPayValuesComponent } from './upload-basic-pay-values/upload-
 import { ValidatedBasicPayValuesComponent } from './validated-basic-pay-values/validated-basic-pay-values.component';
 import { HolidaysComponent } from './holidays/holidays.component';
 import { ValidatedRetroBasicPayAdjustmentsComponent } from './validated-retro-basic-pay-adjustments/validated-retro-basic-pay-adjustments.component';
+import { UploadRetroValuesOTComponent } from './upload-retro-values-ot/upload-retro-values-ot.component';
 const routes: Routes = [
   { path: '', component: PayrollProcessorComponent },
   { path: 'RunLwopValidation', component: RunLwopValidationComponent },
@@ -72,6 +73,7 @@ const routes: Routes = [
   { path: 'ValidatedBasicPayValues', component: ValidatedBasicPayValuesComponent},
   { path: 'Holidays', component: HolidaysComponent},
   { path: 'ValidatedRetroBasicPayAdjustments', component: ValidatedRetroBasicPayAdjustmentsComponent},
+  { path: 'UploadRetroValuesOT', component: UploadRetroValuesOTComponent},
 
 ];
 

@@ -123,7 +123,18 @@ export class SidebarComponent implements OnInit {
     localStorage.setItem('Pagename', 'Announcements')
   }
 
-  
+  OvertimeValidation() {
+    debugger
+    this.active = 'ot';
+    localStorage.setItem('Pagename', 'Announcements')
+  }
+
+  public uploadRetrovalues(){
+    debugger
+   
+    localStorage.setItem('Pagename', 'Over Time');
+    this.router.navigate(['/PayrollProcessor/UploadRetroValuesOT']);
+  }
 
 
   public PayRoll(){
@@ -480,7 +491,7 @@ export class SidebarComponent implements OnInit {
 
   }  public AttendanceUnits(){
     debugger
-    this.active = 9999;
+    // this.active = 9999;
     localStorage.setItem('Pagename', 'Over Time');
     this.router.navigate(['/PayrollProcessor/MyTeamOverTimeDetails']);
   }

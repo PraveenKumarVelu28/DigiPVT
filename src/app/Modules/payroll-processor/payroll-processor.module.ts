@@ -34,6 +34,7 @@ import { RunBasicPayValidationComponent } from './run-basic-pay-validation/run-b
 import { ValidatedBasicPayValuesComponent } from './validated-basic-pay-values/validated-basic-pay-values.component';
 import { HolidaysComponent } from './holidays/holidays.component';
 import { ValidatedRetroBasicPayAdjustmentsComponent } from './validated-retro-basic-pay-adjustments/validated-retro-basic-pay-adjustments.component';
+import { UploadRetroValuesOTComponent } from './upload-retro-values-ot/upload-retro-values-ot.component';
 
 
 
@@ -71,7 +72,8 @@ import { ValidatedRetroBasicPayAdjustmentsComponent } from './validated-retro-ba
     RunBasicPayValidationComponent,
     ValidatedBasicPayValuesComponent,
     HolidaysComponent,
-    ValidatedRetroBasicPayAdjustmentsComponent
+    ValidatedRetroBasicPayAdjustmentsComponent,
+    UploadRetroValuesOTComponent
   ],
   imports: [
     PayrollProcessorRoutingModule,

@@ -115,7 +115,7 @@ export class UploadBasicPayValuesComponent implements OnInit {
             'Effectivedate' : new Date(Date.UTC(0, 0, this.exceldata[this.i].Effectivedate - 1)),
             'Basicpay' : this.exceldata[this.i].Basicpay,
             'Basicpayadjustment' : this.exceldata[this.i].Basicpayadjustment,
-            'BMS' : this.exceldata[this.i].Basicpay
+            'BMS' : this.exceldata[this.i].OldBasicpay
 
           }
           this.DigiPVTService.InsertBasicpayAdjustments(eb).subscribe({

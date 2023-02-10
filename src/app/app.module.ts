@@ -18,7 +18,7 @@ import { SharedModule } from './Modules/shared/shared.module';
     FooterComponent,
     HeaderComponent,
     LoaderComponent,
-    SidebarComponent
+    SidebarComponent,
   ],
   imports: [
     BrowserModule,

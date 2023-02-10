@@ -1613,6 +1613,13 @@ export class DigiPVTService {
       this.host + "/Master/GetValidatedBasicPayAllowances"
     );
   } 
+
+  public GetRetroValidatedBasicPayAllowances() {
+    return this.http.get<any[]>(
+      this.host + "/Master/GetRetroValidatedBasicPayAllowances"
+    );
+  } 
+  
   
   
 

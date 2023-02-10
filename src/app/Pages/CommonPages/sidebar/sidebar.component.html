@@ -49,6 +49,9 @@
       <a (click)="ValidatedBasicPayValues()" class="nonactive">
         <span class="sub-request">Validated Basic Pay Details</span>
       </a>
+      <a (click)="ValidatedRetroBasicPayValues()" class="nonactive">
+        <span class="sub-request">Validated Retro Basic Pay </span>
+      </a>
       <a (click)="UploadBasicPayValues()" class="nonactive">
         <span [ngClass]="active == 'UploadBonusValues' ? 'Active1' : 'Active3'" class="sub-request">Upload Basic Pay
           Values</span>
@@ -85,7 +88,7 @@
 
 
 
-    <a data-toggle="collapse" data-target="#BonusValidation" *ngIf="login == 9 && companyid == 1001"
+    <a data-toggle="collapse" data-target="#BonusValidation" *ngIf="login == 9 && (companyid == 1001 || companyid == 1002)"
       (click)="BonusValidation()"
       [ngClass]="(active == 988 )&&!mini ? 'menu1' : (active == 988)&&mini?'menu-mini':'menu'">
       <img *ngIf="(active == 988&&!mini)" src="assets/Images/revamp/announcementwhite.png">

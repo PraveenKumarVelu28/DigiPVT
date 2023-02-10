@@ -531,5 +531,13 @@ export class SidebarComponent implements OnInit {
     this.router.navigate(['/PayrollProcessor/ValidatedBasicPayValues']);
   }
 
+  public ValidatedRetroBasicPayValues() {
+    debugger
+    this.active = 2345;
+    localStorage.setItem('Pagename', 'Staff')
+    this.router.navigate(['/PayrollProcessor/ValidatedRetroBasicPayAdjustments']);
+  }
+
+
   
 }

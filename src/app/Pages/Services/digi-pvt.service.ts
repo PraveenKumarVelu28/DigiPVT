@@ -1775,6 +1775,10 @@ export class DigiPVTService {
       this.host + "/Master/GetBonusValidation"
     );
   }
+  public DeleteBonusValidation(ID : any){
+    return this.http.get<any[]>(
+      this.host + "/Master/DeleteBonusValidation?ID=" + ID);
+  }
 
   
   public GetValidatedBonusDetails() {

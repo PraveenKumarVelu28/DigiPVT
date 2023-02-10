@@ -86,18 +86,28 @@ export class SidebarComponent implements OnInit {
     debugger
     this.active = 2;
     localStorage.setItem('Pagename', 'Announcements')
-
     this.router.navigate(['/Admin/AnnouncementDashboard']);
+  }
 
+
+  public UploadHolidays(){
+    this.active='12321'
+    localStorage.setItem("clickname", "Holidays")
+    this.router.navigate(['/PayrollProcessor/Holidays'])
+  }
+
+  
+  public Holidays(){
+    debugger
+    this.active = 'holi';
+    localStorage.setItem('Pagename', 'Holidays')
   }
 
   LwopValidation() {
     debugger
     this.active = 108;
     localStorage.setItem('Pagename', 'Announcements')
-
     this.router.navigate(['/Admin/AnnouncementDashboard']);
-
   }
 
 

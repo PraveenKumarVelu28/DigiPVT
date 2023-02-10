@@ -53,6 +53,10 @@ export class StaffDashboardComponent implements OnInit {
   DepartmentdropdownSetting : any
   PositiondropdownSetting : any
   Band123:any;
+  Countrylist:any;
+  Citylist:any;
+  Provincelist:any;
+  costcenterlist:any;
   ngOnInit(): void 
   {
     debugger
@@ -174,10 +178,7 @@ export class StaffDashboardComponent implements OnInit {
     })
   }
 
-  Countrylist:any;
-  Citylist:any;
-  Provincelist:any;
-  costcenterlist:any;
+
   public GetCountryType() {
     this.AliprojectService.GetCountryType().subscribe(data => {
       debugger

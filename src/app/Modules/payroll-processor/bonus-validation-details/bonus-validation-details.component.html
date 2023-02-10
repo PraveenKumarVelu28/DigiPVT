@@ -44,8 +44,8 @@
                     <div class="col-md-3">
                         <br />
 
-                        <button class="form-control AddExpense3" routerLink="/PayrollProcessor/RunLwopValidation"
-                            style="width: 50%;">Export to Excel
+                        <button class="form-control AddExpense3" 
+                            style="width: 50%;" (click)="exportexcel()">Export to Excel
                         </button>
                     </div>
 
@@ -106,7 +106,7 @@
             <br>
             <div class="col-md-12 listscroll">
                 <div class="container-fluid">
-                    <table class="table">
+                    <table class="table" id="downloadaplication">
                         <thead>
                             <tr class="thwidth">
                                 <th>Employee ID</th>

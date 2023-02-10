@@ -1572,7 +1572,7 @@ export class DigiPVTService {
   }
   public DeleteBasicpayAdjustments(ID : any){
     return this.http.get<any[]>(
-      this.host + "/Announcement/DeleteBasicpayAdjustments?ID=" + ID);
+      this.host + "/Vendor/DeleteBasicpayAdjustments?ID=" + ID);
   }
 
   

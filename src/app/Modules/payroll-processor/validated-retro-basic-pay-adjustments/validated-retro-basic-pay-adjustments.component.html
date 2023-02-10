@@ -4,9 +4,11 @@
         <div class="col-md-12">
             <div class="row">
                 <div class="col-md-12">
-                   <ul>
-                       <a class="active Heading underlineclr" routerLink="/PayrollProcessor/MyTeamOverTimeDetails">
-                              FMA Allowance Validation Details</a>
+                    <ul>
+
+
+                        <a class="active Heading underlineclr" routerLink="/PayrollProcessor/MyTeamOverTimeDetails">
+                              Basic Pay Validation Details</a>
 
                     </ul>
                 </div>
@@ -19,9 +21,8 @@
                         <p class="filter">Filter By</p>
                     </div>
                     <div class="col-lg-3">
-                        <input  class="form-control" type="text" name="" id="" placeholder="search FMA Allowance... ">
+                        <input class="form-control" type="text" placeholder="Search  BasicPayValidation....">
                     </div>
-                  
                     <!-- <div class="col-md-2">
                         <p>Pay Date
                             <input class="form-control input-date  " type="date" onkeydown="return false"
@@ -37,12 +38,9 @@
                     <div class="col-md-3">
                         <br />
 
-                        <button class="form-control AddExpense1" routerLink="/PayrollProcessor/RunFMAValidation"
+                        <button class="form-control AddExpense1" routerLink="/PayrollProcessor/RunBasicPayValidation"
                             style="width: 80%;">Run New Validation
                         </button>
-                    </div>
-                    <div class="col-lg-3">
-                        <button class="form-control AddExpense2" style="width: 80%;" (click)="exportexcel()">Export to Excel</button>
                     </div>
 
                 </div>
@@ -66,19 +64,20 @@
                         <div class="col-md-1"></div>
                         <div class="col-md-11 listscroll">
                             <div class="container-fluid">
-                                <table class="table" id="downloadaplication">
+                                <table class="table">
                                     <thead>
                                         <tr class="thwidth">
                                             <th>Employee ID</th>
                                             <th>Employee Name</th>
-                                            <th>Department</th>
-
+                                            <th>Old Basic Pay</th>
+                                            <th>New Basic Pay</th>
+                                            <th class="thwidth">Effective Date</th>
                                             <th class="thwidth">Pay Date</th>
+                                            <th class="thwidth">No Of Pay Periods </th>
 
-
-                                            <th class="thwidth">Uploaded FMA Allowance</th>
-                                            <th class="thwidth">Validated FMA Allowance</th>
-                                            <th class="thwidth">Descrepency FMA Allowance</th>
+                                            <th class="thwidth">Uploaded Basic Pay Adjustment</th>
+                                            <th class="thwidth">Validated Basic Pay Adjustment</th>
+                                            <th class="thwidth">Descrepency Basic Pay Adjustment</th>
                                             
 
 
@@ -94,11 +93,15 @@
                                             *ngFor="let time of timedetails| filter:term |paginate: { itemsPerPage: count1, currentPage: p}">
                                             <td [ngClass]="{'bgred':time.bcolor=='1' }">{{time.employeID}}</td>
                                             <td [ngClass]="{'bgred':time.bcolor=='1' }" >{{time.name}}</td>
-                                            <td [ngClass]="{'bgred':time.bcolor=='1' }"></td>
+                                            <td [ngClass]="{'bgred':time.bcolor=='1' }" >{{time.oldbasicpay}}</td>
+                                            <td [ngClass]="{'bgred':time.bcolor=='1' }" >{{time.basicPay}}</td>
+                                            <td [ngClass]="{'bgred':time.bcolor=='1' }" >{{time.effectiveDate|date}}</td>
+
                                             <td [ngClass]="{'bgred':time.bcolor=='1' }" >{{time.paydate|date}}</td>
-                                            <td [ngClass]="{'bgred':time.bcolor=='1' }" >{{time.uploadedFMAAllowance}}</td>
-                                            <td [ngClass]="{'bgred':time.bcolor=='1' }" >{{time.validatedFMAAllowance}}</td>
-                                            <td [ngClass]="{'bgred':time.bcolor=='1' }" >{{time.fmaAllowanceDescrepency}}</td>
+                                            <td [ngClass]="{'bgred':time.bcolor=='1' }" >{{time.noofPayperiods}}</td>
+                                            <td [ngClass]="{'bgred':time.bcolor=='1' }" >{{time.uploadedBasicPayAdjustment}}</td>
+                                            <td [ngClass]="{'bgred':time.bcolor=='1' }" >{{time.basicPayAdjustment}}</td>
+                                            <td [ngClass]="{'bgred':time.bcolor=='1' }" >{{time.basicPayAdjustmentDescrepency}}</td>
                                                                                        
 
 

@@ -24,7 +24,7 @@ export class FMAValidationComponent implements OnInit {
   arrayBuffer: any;
   filetype: any;
   file: any;
-  fileName = 'Attendance Report.xlsx';
+
   i:any;
   startdate:any;
   Attachment:any;
@@ -173,5 +173,18 @@ export class FMAValidationComponent implements OnInit {
       }
     })
 
+  }
+  fileName = 'FMA Validation Details Reports.xlsx';
+  exportexcel(){
+        /* table id is passed over here */
+        let element = document.getElementById('downloadaplication');
+        const ws: XLSX.WorkSheet = XLSX.utils.table_to_sheet(element);
+    
+        /* generate workbook and add the worksheet */
+        const wb: XLSX.WorkBook = XLSX.utils.book_new();
+        XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
+    
+        /* save to file */
+        XLSX.writeFile(wb, this.fileName);
   }
 }

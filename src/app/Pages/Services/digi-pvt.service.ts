@@ -1571,7 +1571,7 @@ export class DigiPVTService {
   }
   public DeleteBasicpayAdjustments(ID : any){
     return this.http.get<any[]>(
-      this.host + "/Announcement/DeleteBasicpayAdjustments?ID=" + ID);
+      this.host + "/Vendor/DeleteBasicpayAdjustments?ID=" + ID);
   }
 
   
@@ -1613,6 +1613,13 @@ export class DigiPVTService {
       this.host + "/Master/GetValidatedBasicPayAllowances"
     );
   } 
+
+  public GetRetroValidatedBasicPayAllowances() {
+    return this.http.get<any[]>(
+      this.host + "/Master/GetRetroValidatedBasicPayAllowances"
+    );
+  } 
+  
   
   
 

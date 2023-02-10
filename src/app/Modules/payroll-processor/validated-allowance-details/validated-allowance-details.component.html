@@ -41,7 +41,7 @@
                 <div class="col-md-3">
 
                     <button class="form-control AddExpense" 
-                        style="width: 80%;">Export to Excel
+                        style="width: 80%;" (click)="exportexcel()">Export to Excel
                     </button>
                 </div>
 
@@ -113,7 +113,7 @@
 
         <div class="col-md-12 listscroll">
             <div class="container-fluid">
-                <table class="table">
+                <table class="table" id="downloadaplication">
                     <thead>
                         <tr class="thwidth">
                             <th>Employee ID</th>

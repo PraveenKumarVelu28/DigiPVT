@@ -6,17 +6,18 @@ import * as XLSX from 'xlsx';
 import { ExportToCsv } from 'export-to-csv';
 declare var JSZipUtils: any;
 @Component({
-  selector: 'app-lwop-validation-details',
-  templateUrl: './lwop-validation-details.component.html',
-  styleUrls: ['./lwop-validation-details.component.css']
+  selector: 'app-validated-retro-basic-pay-adjustments',
+  templateUrl: './validated-retro-basic-pay-adjustments.component.html',
+  styleUrls: ['./validated-retro-basic-pay-adjustments.component.css']
 })
-export class LwopValidationDetailsComponent implements OnInit {
+export class ValidatedRetroBasicPayAdjustmentsComponent implements OnInit {
 
+  
   constructor(public DigiofficeService: DigiPVTService, public router: Router) { }
 
   ngOnInit(): void {
 
-    this.GetValidatedLwopDetails();
+    this.GetRetroValidatedBasicPayAllowances();
   }
 
   timedetails:any;
@@ -26,9 +27,9 @@ export class LwopValidationDetailsComponent implements OnInit {
   p: any = 1;
   count1: any = 10;
 
-  public GetValidatedLwopDetails() {
+  public GetRetroValidatedBasicPayAllowances() {
     debugger
-    this.DigiofficeService.GetValidatedLwopDetails()
+    this.DigiofficeService.GetRetroValidatedBasicPayAllowances()
       .subscribe({
         next: data => {
           debugger
@@ -50,21 +51,5 @@ export class LwopValidationDetailsComponent implements OnInit {
         }
       })
   }
-
-  fileName = 'LWOP Validation Details Reports.xlsx';
-  exportexcel(): void {
-    /* table id is passed over here */
-    let element = document.getElementById('downloadaplication');
-    const ws: XLSX.WorkSheet = XLSX.utils.table_to_sheet(element);
-
-    /* generate workbook and add the worksheet */
-    const wb: XLSX.WorkBook = XLSX.utils.book_new();
-    XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
-
-    /* save to file */
-    XLSX.writeFile(wb, this.fileName);
-
-  }
-
 
 }

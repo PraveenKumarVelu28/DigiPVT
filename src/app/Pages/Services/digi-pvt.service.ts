@@ -1803,6 +1803,10 @@ export class DigiPVTService {
       this.host + "/Master/GetBonusValidation"
     );
   }
+  public DeleteBonusValidation(ID : any){
+    return this.http.get<any[]>(
+      this.host + "/Master/DeleteBonusValidation?ID=" + ID);
+  }
 
   
   public GetValidatedBonusDetails() {
@@ -4245,6 +4249,29 @@ export class DigiPVTService {
     return this.http.get<any[]>(
       this.host + "/Master/DeleteFMAValidation?ID=" + ID);
   }
+
+
+  
+
+  public InsertOTRetroAdjustment(data: any) {
+    debugger;
+    this.url = this.host + '/Master/InsertOTRetroAdjustment';
+    return this.http.post(this.url, data);
+  }
+      
+  public GetOTRetroAdjustment(){
+    return this.http.get<any[]>(
+      this.host +"/Master/GetOTRetroAdjustment"
+    );
+  } 
+  public DeleteOTRetroAdjustment(ID : any){
+    return this.http.get<any[]>(
+      this.host + "/Master/DeleteOTRetroAdjustment?ID=" + ID);
+  }
+
+
+
+
 }
 
 

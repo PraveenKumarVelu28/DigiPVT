@@ -34,9 +34,13 @@ import { RunBasicPayValidationComponent } from './run-basic-pay-validation/run-b
 import { ValidatedBasicPayValuesComponent } from './validated-basic-pay-values/validated-basic-pay-values.component';
 import { HolidaysComponent } from './holidays/holidays.component';
 import { ValidatedRetroBasicPayAdjustmentsComponent } from './validated-retro-basic-pay-adjustments/validated-retro-basic-pay-adjustments.component';
+<<<<<<< HEAD
 import { UploadGeneratedEncashmentsComponent } from './upload-generated-encashments/upload-generated-encashments.component';
 import { RunHolidayEncashmentValidationComponent } from './run-holiday-encashment-validation/run-holiday-encashment-validation.component';
 import { ValidatedHolidayEnCashmentsComponent } from './validated-holiday-en-cashments/validated-holiday-en-cashments.component';
+=======
+import { UploadRetroValuesOTComponent } from './upload-retro-values-ot/upload-retro-values-ot.component';
+>>>>>>> 064b19531b567e989d638bd51a4b196c36819be9
 
 
 
@@ -75,9 +79,13 @@ import { ValidatedHolidayEnCashmentsComponent } from './validated-holiday-en-cas
     ValidatedBasicPayValuesComponent,
     HolidaysComponent,
     ValidatedRetroBasicPayAdjustmentsComponent,
+<<<<<<< HEAD
     UploadGeneratedEncashmentsComponent,
     RunHolidayEncashmentValidationComponent,
     ValidatedHolidayEnCashmentsComponent
+=======
+    UploadRetroValuesOTComponent
+>>>>>>> 064b19531b567e989d638bd51a4b196c36819be9
   ],
   imports: [
     PayrollProcessorRoutingModule,

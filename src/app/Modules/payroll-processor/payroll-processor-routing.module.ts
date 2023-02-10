@@ -34,6 +34,7 @@ import { ValidatedRetroBasicPayAdjustmentsComponent } from './validated-retro-ba
 import { UploadGeneratedEncashmentsComponent } from './upload-generated-encashments/upload-generated-encashments.component';
 import { ValidatedHolidayEnCashmentsComponent } from './validated-holiday-en-cashments/validated-holiday-en-cashments.component';
 import { RunHolidayEncashmentValidationComponent } from './run-holiday-encashment-validation/run-holiday-encashment-validation.component';
+import { UploadRetroValuesOTComponent } from './upload-retro-values-ot/upload-retro-values-ot.component';
 const routes: Routes = [
   { path: '', component: PayrollProcessorComponent },
   { path: 'RunLwopValidation', component: RunLwopValidationComponent },
@@ -75,11 +76,14 @@ const routes: Routes = [
   { path: 'ValidatedBasicPayValues', component: ValidatedBasicPayValuesComponent},
   { path: 'Holidays', component: HolidaysComponent},
   { path: 'ValidatedRetroBasicPayAdjustments', component: ValidatedRetroBasicPayAdjustmentsComponent},
+
   { path: 'UploadGeneratedEncashments', component: UploadGeneratedEncashmentsComponent},
   { path: 'ValidatedHolidayEnCashments', component: ValidatedHolidayEnCashmentsComponent},
   { path: 'RunHolidayEncashmentValidation', component: RunHolidayEncashmentValidationComponent},
 
 
+
+  { path: 'UploadRetroValuesOT', component: UploadRetroValuesOTComponent},
 
 ];
 

@@ -25,6 +25,14 @@ export class DigiPVTService {
     return this.http.post<any>(APIURL, json);
   }
 
+  public InsertUploadedholidayEncashment(json: any) {
+    let APIURL = this.host + "/Master/InsertUploadedholidayEncashment";
+    return this.http.post<any>(APIURL, json);
+  }
+
+
+  
+
   public UpdateOTRates(json: any) {
     //debugger
     let APIURL = this.host + "/Master/UpdateOTRates";
@@ -1606,6 +1614,12 @@ export class DigiPVTService {
     );
   } 
 
+  public GetUploadedholidayEncashment() {
+    return this.http.get<any[]>(
+      this.host + "/Master/GetUploadedholidayEncashment"
+    );
+  } 
+  
 
   
   public GetValidatedBasicPayAllowances() {
@@ -1613,6 +1627,14 @@ export class DigiPVTService {
       this.host + "/Master/GetValidatedBasicPayAllowances"
     );
   } 
+
+  public GetValidatedHolidayEncashments() {
+    return this.http.get<any[]>(
+      this.host + "/Master/GetValidatedHolidayEncashments"
+    );
+  } 
+
+  
 
   public GetRetroValidatedBasicPayAllowances() {
     return this.http.get<any[]>(
@@ -1703,6 +1725,12 @@ export class DigiPVTService {
     //debugger
     return this.http.get<any[]>(this.host + "/Announcement/GetRunFMAValidation?EmployeeID=" + EmployeeID  + "&startdate=" + startdate + "&enddate=" + enddate);
   }
+
+  public GetRunHolidayEncashmentValidation(EmployeeID: any,  startdate: any, enddate: any) {
+    //debugger
+    return this.http.get<any[]>(this.host + "/Announcement/GetRunHolidayEncashmentValidation?EmployeeID=" + EmployeeID  + "&startdate=" + startdate + "&enddate=" + enddate);
+  }
+
 
   
 

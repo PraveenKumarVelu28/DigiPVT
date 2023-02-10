@@ -96,6 +96,19 @@ export class SidebarComponent implements OnInit {
     this.router.navigate(['/PayrollProcessor/Holidays'])
   }
 
+  public UploadHolidaysEncashments(){
+    this.active='12321'
+    localStorage.setItem("clickname", "Holidays")
+    this.router.navigate(['/PayrollProcessor/UploadGeneratedEncashments'])
+  }
+
+  public ValidatedHolidayEncashment(){
+    this.active='12321'
+    localStorage.setItem("clickname", "Holidays")
+    this.router.navigate(['/PayrollProcessor/ValidatedHolidayEnCashments'])
+  }
+
+  
   
   public Holidays(){
     debugger

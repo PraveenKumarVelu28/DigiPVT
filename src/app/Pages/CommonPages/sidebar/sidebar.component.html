@@ -174,12 +174,20 @@
     <img *ngIf="active != 'holi' " src="assets/Images/revamp/announcementnewgray-icon.png">
     <img *ngIf="(active == 'holi'&&mini) " src="assets/Images/revamp/announcementnewblue-icon.png">
 
-    <span class="icon-text">Holidays</span></a>
+    <span class="icon-text">Holiday Encashment </span></a>
 
   <div id="Holidays" class="collapse length ">
     <!-- <a (click)="ValidatedBasicPayValues()" class="nonactive">
       <span class="sub-request">Validated Basic Pay Details</span>
     </a> -->
+    <a (click)="ValidatedHolidayEncashment()" class="nonactive">
+      <span [ngClass]="active == '12321' ? 'Active1' : 'Active3'" class="sub-request">Validated Holiday Encashment
+        </span>
+    </a>
+    <a (click)="UploadHolidaysEncashments()" class="nonactive">
+      <span [ngClass]="active == '12321' ? 'Active1' : 'Active3'" class="sub-request">Upload Generated Encashment
+        </span>
+    </a>
     <a (click)="UploadHolidays()" class="nonactive">
       <span [ngClass]="active == '12321' ? 'Active1' : 'Active3'" class="sub-request">Upload Holidays
         </span>

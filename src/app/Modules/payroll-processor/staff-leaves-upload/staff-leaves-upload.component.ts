@@ -611,58 +611,58 @@ export class StaffLeavesUploadComponent implements OnInit {
       })
   }
 
-  undefined: any;
-  sequenceNumber1: any
-  SequenceNumber : any
+  // undefined: any;
+  // sequenceNumber1: any
+  // SequenceNumber : any
 
-  public ExporttoExcel() {
-    debugger
-    var ExportData = [];
-    this.sequenceNumber1 = 0;
-    this.undefined = 'NA'
-    for (let i = 0; i < this.timedetails.length; i++) {
-      debugger;
-      this.sequenceNumber1 = i + 1;
-      let singleData = {
-        EmployeID: String,
-        FirstAndLastName: String,
-        Role: String,
-        Department_name: String,
-        Date: String,
-        NormalOT: String,
-        NightOT: String,
-        HolidayOT: String,
-        ExcessNightOT: String,
-        ExccessNormalOt: String,
-        RestNightOt: String,
-        RestNormalOT: String,
-        ExccessRestNormalOt: String,
-        RestExccessNightOt: String,
-        LegalNightOt: String,
-        LegalNormalOT: String,
-        LegalExccessNormalOt: String,
-        LegalExccessNightOt: String,
-        SpecialNightOt: String,
-        SpecialNormalOT: String,
-        SpecialExccessNormalOt: String,
-        SpecialExccessNightOt: String,
-        SpecialRestNightOt: String,
-        SpecialRestExccessNightOt: String,
-        LegalRestNightOt: String,
-        LegalRestNormalOT: String,
-        LegalExccessRestNormalOt: String,
-        LegalExccessRestNightOt: String,
-        DoubleHolidayNormalOt: String,
-        DoubleHolidayNightOt: String,
-        DoubleHolidayExcessNormalOt: String,
-        DoubleHolidayExcessNightOt: String,
-        DoubleHolidayRestNormalOt: String,
-        DoubleHolidayRestNightOt: String,
-        DoubleHolidayRestExcessNormalOt: String,
-        DoubleHolidayRestExcessNightOt: String,
-        LWOP: String,
-        Undertime: String,
-        Tardiness: String,
+  // public ExporttoExcel() {
+  //   debugger
+  //   var ExportData = [];
+  //   this.sequenceNumber1 = 0;
+  //   this.undefined = 'NA'
+  //   for (let i = 0; i < this.timedetails.length; i++) {
+  //     debugger;
+  //     this.sequenceNumber1 = i + 1;
+  //     let singleData = {
+  //       EmployeID: String,
+  //       FirstAndLastName: String,
+  //       Role: String,
+  //       Department_name: String,
+  //       Date: String,
+  //       NormalOT: String,
+  //       NightOT: String,
+  //       HolidayOT: String,
+  //       ExcessNightOT: String,
+  //       ExccessNormalOt: String,
+  //       RestNightOt: String,
+  //       RestNormalOT: String,
+  //       ExccessRestNormalOt: String,
+  //       RestExccessNightOt: String,
+  //       LegalNightOt: String,
+  //       LegalNormalOT: String,
+  //       LegalExccessNormalOt: String,
+  //       LegalExccessNightOt: String,
+  //       SpecialNightOt: String,
+  //       SpecialNormalOT: String,
+  //       SpecialExccessNormalOt: String,
+  //       SpecialExccessNightOt: String,
+  //       SpecialRestNightOt: String,
+  //       SpecialRestExccessNightOt: String,
+  //       LegalRestNightOt: String,
+  //       LegalRestNormalOT: String,
+  //       LegalExccessRestNormalOt: String,
+  //       LegalExccessRestNightOt: String,
+  //       DoubleHolidayNormalOt: String,
+  //       DoubleHolidayNightOt: String,
+  //       DoubleHolidayExcessNormalOt: String,
+  //       DoubleHolidayExcessNightOt: String,
+  //       DoubleHolidayRestNormalOt: String,
+  //       DoubleHolidayRestNightOt: String,
+  //       DoubleHolidayRestExcessNormalOt: String,
+  //       DoubleHolidayRestExcessNightOt: String,
+  //       LWOP: String,
+  //       Undertime: String,
+  //       Tardiness: String,
    
 
 
@@ -671,73 +671,89 @@ export class StaffLeavesUploadComponent implements OnInit {
 
         
 
-      }
-      //singleData.SequenceNumber = this.sequenceNumber1;
-      singleData.EmployeID = this.timedetails[i].employeID;
-      singleData.FirstAndLastName = this.timedetails[i].firstAndLastName;
-      singleData.Role = this.timedetails[i].role;
-      singleData.Department_name = this.timedetails[i].department_name;
-      singleData.Date = this.timedetails[i].date;
+  //     }
+  //     //singleData.SequenceNumber = this.sequenceNumber1;
+  //     singleData.EmployeID = this.timedetails[i].employeID;
+  //     singleData.FirstAndLastName = this.timedetails[i].firstAndLastName;
+  //     singleData.Role = this.timedetails[i].role;
+  //     singleData.Department_name = this.timedetails[i].department_name;
+  //     singleData.Date = this.timedetails[i].date;
 
 
 
-      singleData.NormalOT  = this.timedetails[i].noofhours;
-      singleData.NightOT = this.timedetails[i].nightOT;
-      singleData.HolidayOT = this.timedetails[i].specialNormalOT;
-      singleData.ExcessNightOT = this.timedetails[i].exccessNightOt;
-      singleData.ExccessNormalOt = this.timedetails[i].exccessNormalOt;
-      singleData.RestNightOt  = this.timedetails[i].restNightOt;
-      singleData.RestNormalOT = this.timedetails[i].restNormalOT;
-      singleData.ExccessRestNormalOt = this.timedetails[i].exccessRestNormalOt;
-      singleData.RestExccessNightOt = this.timedetails[i].restExccessNightOt;
-      singleData.LegalNightOt = this.timedetails[i].legalNightOt;
-      singleData.LegalNormalOT  = this.timedetails[i].legalNormalOT;
-      singleData.LegalExccessNormalOt = this.timedetails[i].legalExccessNormalOt;
-      singleData.LegalExccessNightOt = this.timedetails[i].legalExccessNightOt;
-      singleData.SpecialNightOt = this.timedetails[i].specialNightOt;
-      singleData.SpecialNormalOT = this.timedetails[i].specialNormalOT;
-      singleData.SpecialExccessNormalOt  = this.timedetails[i].specialExccessNormalOt;
-      singleData.SpecialExccessNightOt = this.timedetails[i].specialExccessNightOt;
-      singleData.SpecialRestNightOt = this.timedetails[i].specialRestNightOt;
-      singleData.SpecialRestExccessNightOt = this.timedetails[i].specialRestExccessNightOt;
-      singleData.LegalRestNightOt = this.timedetails[i].legalRestNightOt;
-      singleData.LegalRestNormalOT  = this.timedetails[i].legalRestNormalOT;
-      singleData.LegalExccessRestNormalOt = this.timedetails[i].legalExccessRestNormalOt;
-      singleData.LegalExccessRestNightOt = this.timedetails[i].legalExccessRestNightOt;
-      singleData.DoubleHolidayNormalOt = this.timedetails[i].doubleHolidayNormalOt;
-      singleData.DoubleHolidayNightOt = this.timedetails[i].doubleHolidayNightOt;
-      singleData.DoubleHolidayExcessNormalOt  = this.timedetails[i].doubleHolidayExcessNormalOt;
-      singleData.DoubleHolidayExcessNightOt = this.timedetails[i].doubleHolidayExcessNightOt;
-      singleData.DoubleHolidayRestNormalOt = this.timedetails[i].doubleHolidayRestNormalOt;
-      singleData.DoubleHolidayRestNightOt = this.timedetails[i].doubleHolidayRestNightOt;
-      singleData.DoubleHolidayRestExcessNormalOt = this.timedetails[i].doubleHolidayRestExcessNormalOt;
-      singleData.DoubleHolidayRestExcessNightOt  = this.timedetails[i].doubleHolidayRestExcessNightOt;
-      singleData.LWOP = this.timedetails[i].lopDays;
-      singleData.Undertime = this.timedetails[i].undertime;
-      singleData.Tardiness = this.timedetails[i].tardiness;
+  //     singleData.NormalOT  = this.timedetails[i].noofhours;
+  //     singleData.NightOT = this.timedetails[i].nightOT;
+  //     singleData.HolidayOT = this.timedetails[i].specialNormalOT;
+  //     singleData.ExcessNightOT = this.timedetails[i].exccessNightOt;
+  //     singleData.ExccessNormalOt = this.timedetails[i].exccessNormalOt;
+  //     singleData.RestNightOt  = this.timedetails[i].restNightOt;
+  //     singleData.RestNormalOT = this.timedetails[i].restNormalOT;
+  //     singleData.ExccessRestNormalOt = this.timedetails[i].exccessRestNormalOt;
+  //     singleData.RestExccessNightOt = this.timedetails[i].restExccessNightOt;
+  //     singleData.LegalNightOt = this.timedetails[i].legalNightOt;
+  //     singleData.LegalNormalOT  = this.timedetails[i].legalNormalOT;
+  //     singleData.LegalExccessNormalOt = this.timedetails[i].legalExccessNormalOt;
+  //     singleData.LegalExccessNightOt = this.timedetails[i].legalExccessNightOt;
+  //     singleData.SpecialNightOt = this.timedetails[i].specialNightOt;
+  //     singleData.SpecialNormalOT = this.timedetails[i].specialNormalOT;
+  //     singleData.SpecialExccessNormalOt  = this.timedetails[i].specialExccessNormalOt;
+  //     singleData.SpecialExccessNightOt = this.timedetails[i].specialExccessNightOt;
+  //     singleData.SpecialRestNightOt = this.timedetails[i].specialRestNightOt;
+  //     singleData.SpecialRestExccessNightOt = this.timedetails[i].specialRestExccessNightOt;
+  //     singleData.LegalRestNightOt = this.timedetails[i].legalRestNightOt;
+  //     singleData.LegalRestNormalOT  = this.timedetails[i].legalRestNormalOT;
+  //     singleData.LegalExccessRestNormalOt = this.timedetails[i].legalExccessRestNormalOt;
+  //     singleData.LegalExccessRestNightOt = this.timedetails[i].legalExccessRestNightOt;
+  //     singleData.DoubleHolidayNormalOt = this.timedetails[i].doubleHolidayNormalOt;
+  //     singleData.DoubleHolidayNightOt = this.timedetails[i].doubleHolidayNightOt;
+  //     singleData.DoubleHolidayExcessNormalOt  = this.timedetails[i].doubleHolidayExcessNormalOt;
+  //     singleData.DoubleHolidayExcessNightOt = this.timedetails[i].doubleHolidayExcessNightOt;
+  //     singleData.DoubleHolidayRestNormalOt = this.timedetails[i].doubleHolidayRestNormalOt;
+  //     singleData.DoubleHolidayRestNightOt = this.timedetails[i].doubleHolidayRestNightOt;
+  //     singleData.DoubleHolidayRestExcessNormalOt = this.timedetails[i].doubleHolidayRestExcessNormalOt;
+  //     singleData.DoubleHolidayRestExcessNightOt  = this.timedetails[i].doubleHolidayRestExcessNightOt;
+  //     singleData.LWOP = this.timedetails[i].lopDays;
+  //     singleData.Undertime = this.timedetails[i].undertime;
+  //     singleData.Tardiness = this.timedetails[i].tardiness;
       
 
 
-      ExportData.push(singleData);
-      debugger
-    }
-    const Export_to_excel_options = {
-      fieldSeparator: ',',
-      quoteStrings: '"',
-      decimalSeparator: '.',
-      showLabels: true,
-      showTitle: true,
-      title: 'EMPLOYEE ATTEDANCE REPORT',
-      useTextFile: false,
-      useBom: true,
-      useKeysAsHeaders: true,
-      filename: 'EMPLOYEE ATTEDANCE REPORT'
-    };
-    const csvExporter = new ExportToCsv(Export_to_excel_options);
-    debugger
-    csvExporter.generateCsv(ExportData);
+  //     ExportData.push(singleData);
+  //     debugger
+  //   }
+  //   const Export_to_excel_options = {
+  //     fieldSeparator: ',',
+  //     quoteStrings: '"',
+  //     decimalSeparator: '.',
+  //     showLabels: true,
+  //     showTitle: true,
+  //     title: 'EMPLOYEE ATTEDANCE REPORT',
+  //     useTextFile: false,
+  //     useBom: true,
+  //     useKeysAsHeaders: true,
+  //     filename: 'EMPLOYEE ATTEDANCE REPORT'
+  //   };
+  //   const csvExporter = new ExportToCsv(Export_to_excel_options);
+  //   debugger
+  //   csvExporter.generateCsv(ExportData);
+
+  // }
+
+  fileName = 'Staff Leaves Upload Reports.xlsx';
+  ExporttoExcel(): void {
+    /* table id is passed over here */
+    let element = document.getElementById('downloadaplication');
+    const ws: XLSX.WorkSheet = XLSX.utils.table_to_sheet(element);
+
+    /* generate workbook and add the worksheet */
+    const wb: XLSX.WorkBook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
+
+    /* save to file */
+    XLSX.writeFile(wb, this.fileName);
 
   }
+
   data : any
   delete(ID : any){
     debugger

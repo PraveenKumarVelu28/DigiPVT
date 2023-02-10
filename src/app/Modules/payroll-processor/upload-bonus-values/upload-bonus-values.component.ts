@@ -95,7 +95,7 @@ export class UploadBonusValuesComponent implements OnInit {
   }
 
 
-  fileName = 'Attendance Report.xlsx';
+  fileName = 'AtUpload Bonus Values Report.xlsx';
   exportexcel(): void {
     /* table id is passed over here */
     let element = document.getElementById('downloadaplication');

@@ -32,7 +32,9 @@ import { ValidatedFMADetailsComponent } from './validated-fmadetails/validated-f
 import { UploadBasicPayValuesComponent } from './upload-basic-pay-values/upload-basic-pay-values.component';
 import { RunBasicPayValidationComponent } from './run-basic-pay-validation/run-basic-pay-validation.component';
 import { ValidatedBasicPayValuesComponent } from './validated-basic-pay-values/validated-basic-pay-values.component';
+import { HolidaysComponent } from './holidays/holidays.component';
 import { ValidatedRetroBasicPayAdjustmentsComponent } from './validated-retro-basic-pay-adjustments/validated-retro-basic-pay-adjustments.component';
+import { UploadRetroValuesOTComponent } from './upload-retro-values-ot/upload-retro-values-ot.component';
 
 
 
@@ -69,7 +71,9 @@ import { ValidatedRetroBasicPayAdjustmentsComponent } from './validated-retro-ba
     UploadBasicPayValuesComponent,
     RunBasicPayValidationComponent,
     ValidatedBasicPayValuesComponent,
-    ValidatedRetroBasicPayAdjustmentsComponent
+    HolidaysComponent,
+    ValidatedRetroBasicPayAdjustmentsComponent,
+    UploadRetroValuesOTComponent
   ],
   imports: [
     PayrollProcessorRoutingModule,

@@ -1,23 +1,29 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { interval } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
 export class DigiPVTService {
 
-  constructor(private http: HttpClient) { }
+
+  public host = sessionStorage.getItem('digiofficeapiurl');
+  // public basehost = 'http://localhost:1807/';
+  // public basehost1 = "http://localhost:4199/"
+//public basehost = "https://ali.digiofficeapp.com/ALIAPI"
+
+  
+  //  public host2 = "http://localhost:4199/";
+
 
   private url: string = '';
-  // public host = sessionStorage.getItem('digiofficeapiurl');
+  constructor(private http: HttpClient) {
+    interval(1000).subscribe(((_x: any) => {
+      //this.host = 'http://localhost:1807/';
+      this.host = sessionStorage.getItem('digiofficeapiurl');
+    }));
+  }
 
-  // public host = 'http://localhost:1807'
-  // public basehost = "https://103.12.1.76//AliLiveUATApi"
-  public host = sessionStorage.getItem('digiofficeapiurl');
-  // public GetNotification(UserID: any) {
-  //   return this.http.get<any[]>(
-  //     this.host + "/User/GetNotification?UserID=" + UserID
-  //   );
-  // }
 
 
   public InsertOTRates(json: any) {

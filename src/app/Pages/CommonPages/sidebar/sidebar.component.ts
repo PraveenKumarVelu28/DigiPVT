@@ -572,6 +572,13 @@ export class SidebarComponent implements OnInit {
     this.router.navigate(['/PayrollProcessor/ValidatedRetroBasicPayAdjustments']);
   }
 
+  ValidationPassword(){
+    this.active='ValidationPassword'
+    localStorage.setItem ('Pagename','Validation Password')
+    this.router.navigate(['/PayrollAdmin/ValidationpasswordDashboard']);
+
+  }
+
 
   
 }

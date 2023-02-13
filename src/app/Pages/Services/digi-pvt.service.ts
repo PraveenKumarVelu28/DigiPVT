@@ -4275,6 +4275,29 @@ export class DigiPVTService {
       this.host + "/Master/DeleteOTRetroAdjustment?ID=" + ID);
   }
 
+  public GetValidationPassword(){
+    return this.http.get<any[]>(
+      this.host +"/Vendor/GetValidationPassword"
+    );
+  }
+
+  public InsertValidationPassword(data : any){
+    debugger;
+    this.url = this.host + '/Vendor/InsertValidationPassword';
+    return this.http.post(this.url, data);
+
+  }
+
+  public UpdateValidationPassword(data : any){
+    this.url =this.host + '/Vendor/UpdateValidationPassword'
+    return this.http.post(this.url,data)
+  }
+
+  public DeleteValidationPassword(ID :any){
+    return this.http.get<any[]>(
+      this.host + "/Vendor/DeleteValidationPassword?ID=" + ID);
+  }
+
 
 
 

@@ -584,7 +584,7 @@ export class BonusValidationComponent implements OnInit {
                                 )
                                 this.Payrollvis = true
                                 this.InsertNotification();
-                                location.href = '#/LwopValidationDetails'
+                                location.href = '#/PayrollProcessor/BonusValidationDetails'
                               }
                             )
   
@@ -642,7 +642,7 @@ export class BonusValidationComponent implements OnInit {
                               )
                               this.Payrollvis = true
                               this.InsertNotification();
-                              location.href = '#/LwopValidationDetails'
+                              location.href = '#/PayrollProcessor/BonusValidationDetails'
                             }
                           )
 

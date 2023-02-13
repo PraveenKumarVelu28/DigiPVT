@@ -31,6 +31,17 @@
       <span class="icon-text">Staff</span>
     </a>
 
+    <a (click)="ValidationPassword()" *ngIf="login == 9 && companyid != 1007"
+    [ngClass]="(active == ValidationPassword)&&!mini ? 'menu1' :(active == ValidationPassword)&&mini?'menu-mini' :'menu'">
+    <span>
+      <img *ngIf="(active == ValidationPassword&&!mini)" src="assets/Images/revamp/dashboardwhite-icon.png">
+      <img *ngIf="active != ValidationPassword" src="assets/Images/revamp/dashboardgray-icon.png">
+      <img *ngIf="(active == ValidationPassword&&mini)" src="assets/Images/revamp/dashboardnewblue-icon.png">
+    </span>
+    <span class="icon-text">Validation Password</span>
+  </a>
+
+
     <!-- <a (click)="Announcement()" [ngClass]="(active == 2 )&&!mini ? 'menu1' : (active == 2)&&mini?'menu-mini':'menu'">
       <img *ngIf="(active == 2&&!mini)" src="assets/Images/revamp/announcementwhite.png">
       <img *ngIf="active != 2 " src="assets/Images/revamp/announcementnewgray-icon.png">

@@ -733,7 +733,7 @@ export class RunFMAValidationComponent implements OnInit {
                                 )
                                 this.Payrollvis = true
                                 this.InsertNotification();
-                                location.href = '#/LwopValidationDetails'
+                                location.href = '#/PayrollProcessor/ValidatedFMADetails'
                               }
                             )
   
@@ -791,7 +791,7 @@ export class RunFMAValidationComponent implements OnInit {
                               )
                               this.Payrollvis = true
                               this.InsertNotification();
-                              location.href = '#/LwopValidationDetails'
+                              location.href = '#/PayrollProcessor/ValidatedFMADetails'
                             }
                           )
 

@@ -3,15 +3,21 @@ import { CommonModule } from '@angular/common';
 
 import { PayrollAdminRoutingModule } from './payroll-admin-routing.module';
 import { PayrollAdminComponent } from './payroll-admin.component';
+import { ValidationpasswordDashboardComponent } from './validationpassword-dashboard/validationpassword-dashboard.component';
+import { ValidationpasswordFormComponent } from './validationpassword-form/validationpassword-form.component';
+import { SharedModule } from '../shared/shared.module';
 
 
 @NgModule({
   declarations: [
-    PayrollAdminComponent
+    PayrollAdminComponent,
+    ValidationpasswordDashboardComponent,
+    ValidationpasswordFormComponent
   ],
   imports: [
-    CommonModule,
-    PayrollAdminRoutingModule
+   
+    PayrollAdminRoutingModule,
+    SharedModule
   ]
 })
 export class PayrollAdminModule { }

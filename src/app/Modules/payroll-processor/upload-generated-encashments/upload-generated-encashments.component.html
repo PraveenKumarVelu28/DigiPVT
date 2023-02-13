@@ -2,7 +2,7 @@
     <div class="col-md-12">
         <div class="row">
             <div class="col-lg-11">
-                <p class="Heading">Holidays Details</p>
+                <p class="Heading">Upload System Generated Holiday Encashment</p>
             </div>
         </div>
         <div class="row FilterClass">
@@ -28,7 +28,7 @@
                             <br />
     
                             <button class="form-control AddExpense3" 
-                                style="width: 50%;" data-toggle="modal" data-target="#import">Upload Holidays
+                              data-toggle="modal" data-target="#import">Upload Basicpay
                                 
                             </button>
                         </div>
@@ -58,18 +58,23 @@
                     <table class="table" id="downloadaplication">
                         <thead>
                             <tr>
-                                <th>Holiday</th>
-                                <th>Date</th>
-                                <th>Description</th>
+                                <th>EmployeID</th>
+                                <th>Name</th>
+                                <th>Tagged Holidays</th>
+                                <th>Amount </th>    
+                                  
                                 <th>Actions</th>    
                                
                             </tr>
                         </thead>
                         <tbody>
                             <tr *ngFor="let list of componentmaster|filter:term |paginate: { itemsPerPage: count2, currentPage: p1}  "  >
-                                <td>{{list.holiday}}</td>
-                                <td>{{list.holidayDate|date}}</td>
-                                <td>{{list.holidayDescription}}</td>
+                                <td>{{list.employeID}}</td>
+                                <td>{{list.name}}</td>
+                                <td>{{list.taggedholiday}}</td>
+                                <td>{{list.amount}}</td>
+                                <td>{{list.paydate|date}}</td>
+                                
                                 <td>
                                     <button class="upload" (click)="delete(list.id)">Delete</button>
                                 </td>
@@ -90,7 +95,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title">Holiday Details</h4>
+                <h4 class="modal-title">Basic Pay Validation Details</h4>
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
             <div class="modal-body">
@@ -107,7 +112,7 @@
                 <div class="row">
                     <div class="col-lg-6">
                         <button type="button" class="form-control AddExpense" data-dismiss="modal"
-                      (click)="Upload_file()" >Upload Holiday </button>
+                      (click)="Upload_file()" >Upload Encashment </button>
                     </div>
                 </div>
             </div>

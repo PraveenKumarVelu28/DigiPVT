@@ -328,7 +328,7 @@ export class RunLwopValidationComponent implements OnInit {
                         debugger;
                         this.StaffSalaryReports = res;
                         this.ID1 = [];
-                        location.href = '#/PayRoll'
+                        location.href = '#/PayrollProcessor/LwopValidationDetails'
                       }
                     )
 
@@ -345,7 +345,7 @@ export class RunLwopValidationComponent implements OnInit {
                         debugger;
                         this.StaffSalaryReports = res;
                         this.ID1 = [];
-                        location.href = '#/PayRoll'
+                        location.href = '#/PayrollProcessor/LwopValidationDetails'
                       }
                     )
                   }
@@ -733,7 +733,7 @@ export class RunLwopValidationComponent implements OnInit {
                                 )
                                 this.Payrollvis = true
                                 this.InsertNotification();
-                                location.href = '#/LwopValidationDetails'
+                                location.href = '#/PayrollProcessor/LwopValidationDetails'
                               }
                             )
   
@@ -791,7 +791,7 @@ export class RunLwopValidationComponent implements OnInit {
                               )
                               this.Payrollvis = true
                               this.InsertNotification();
-                              location.href = '#/LwopValidationDetails'
+                              location.href = '#/PayrollProcessor/LwopValidationDetails'
                             }
                           )
 

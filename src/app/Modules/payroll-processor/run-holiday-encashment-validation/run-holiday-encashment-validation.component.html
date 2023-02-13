@@ -72,10 +72,9 @@
             <br />
 
             <button (click)="SelectAll()" class="form-control CancelBTN" style="width: 70%;" type="button"
-                id="btn_button" *ngIf="selecallbtn==true">Run Payroll</button>
-                
+                id="btn_button" *ngIf="selecallbtn==true">Run Validation</button>
             <button (click)="Accept()" class="form-control CancelBTN" style="width: 70%;" type="button" id="btn_button"
-                *ngIf="seleconebtn==true">Run Payroll</button>
+                *ngIf="seleconebtn==true">Run Validation</button>
         </div>
     </div>
     <br />
@@ -174,7 +173,12 @@
                         <th>Position</th>
                         <th>Phone Number</th>
                         <th>Email</th>
-                        
+                        <th>Weekend Days</th>
+
+                        <th>No Of Days Worked</th>
+                        <th>Total Days</th>
+                        <th>Leave Days</th>
+                        <th>Lop</th>
                         <th>Date Of Joining</th>
                         <th>Manager</th>
 
@@ -194,7 +198,11 @@
 
                         <td>{{item.mobile}}</td>
                         <td>{{item.emailID}}</td>
-                       
+                        <td>{{item.weekenddays}}</td>
+                        <td>{{item.daysworked-item.weekenddaysworked}}</td>
+                        <td>{{(item.daysworked-item.weekenddaysworked)+item.weekenddays}}</td>
+                        <td>{{item.leavedays}}</td>
+                        <td>{{item.lopdays}}</td>
                         <td>{{item.joiningDate|date}}</td>
 
                         <td>

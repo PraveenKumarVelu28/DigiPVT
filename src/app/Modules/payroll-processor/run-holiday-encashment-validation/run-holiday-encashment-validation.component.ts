@@ -7,13 +7,12 @@ import { ExportToCsv } from 'export-to-csv';
 import { DatePipe, formatDate } from '@angular/common';
 declare var JSZipUtils: any;
 
-
 @Component({
-  selector: 'app-run-fmavalidation',
-  templateUrl: './run-fmavalidation.component.html',
-  styleUrls: ['./run-fmavalidation.component.css']
+  selector: 'app-run-holiday-encashment-validation',
+  templateUrl: './run-holiday-encashment-validation.component.html',
+  styleUrls: ['./run-holiday-encashment-validation.component.css']
 })
-export class RunFMAValidationComponent implements OnInit {
+export class RunHolidayEncashmentValidationComponent implements OnInit {
 
   viewMode = 'tab1';
 
@@ -722,7 +721,7 @@ export class RunFMAValidationComponent implements OnInit {
                           debugger;
                          
                             this.LOPDays = 0;
-                            this.DigiofficeService.GetRunFMAValidation(this.ID[i],  this.startdate, this.enddate).subscribe(
+                            this.DigiofficeService.GetRunHolidayEncashmentValidation(this.ID[i],  this.startdate, this.enddate).subscribe(
                               res => {
                                 debugger;
                                 this.StaffSalaryReports = res;
@@ -733,7 +732,7 @@ export class RunFMAValidationComponent implements OnInit {
                                 )
                                 this.Payrollvis = true
                                 this.InsertNotification();
-                                location.href = '#/PayrollProcessor/ValidatedFMADetails'
+                                location.href = '#/LwopValidationDetails'
                               }
                             )
   
@@ -780,7 +779,7 @@ export class RunFMAValidationComponent implements OnInit {
                         debugger;
                        
                           this.LOPDays = 0;
-                          this.DigiofficeService.GetRunFMAValidation(this.ID[i],  this.startdate, this.enddate).subscribe(
+                          this.DigiofficeService.GetRunHolidayEncashmentValidation(this.ID[i],  this.startdate, this.enddate).subscribe(
                             res => {
                               debugger;
                               this.StaffSalaryReports = res;
@@ -791,7 +790,7 @@ export class RunFMAValidationComponent implements OnInit {
                               )
                               this.Payrollvis = true
                               this.InsertNotification();
-                              location.href = '#/PayrollProcessor/ValidatedFMADetails'
+                              location.href = '#/LwopValidationDetails'
                             }
                           )
 
@@ -895,6 +894,5 @@ export class RunFMAValidationComponent implements OnInit {
   hdmfsalaryloan: any;
   benefits: any;
  
-
 
 }

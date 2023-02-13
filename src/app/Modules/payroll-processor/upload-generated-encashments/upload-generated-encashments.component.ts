@@ -4,12 +4,13 @@ import { DigiPVTService } from 'src/app/Pages/Services/digi-pvt.service';
 import Swal from 'sweetalert2';
 import * as XLSX from 'xlsx';
 declare var JSZipUtils: any;
+
 @Component({
-  selector: 'app-holidays',
-  templateUrl: './holidays.component.html',
-  styleUrls: ['./holidays.component.css']
+  selector: 'app-upload-generated-encashments',
+  templateUrl: './upload-generated-encashments.component.html',
+  styleUrls: ['./upload-generated-encashments.component.css']
 })
-export class HolidaysComponent implements OnInit {
+export class UploadGeneratedEncashmentsComponent implements OnInit {
 
  
   constructor(public DigiPVTService: DigiPVTService, public router: Router) { }
@@ -25,7 +26,7 @@ export class HolidaysComponent implements OnInit {
   arrayBuffer: any;
   filetype: any;
   file: any;
-
+  fileName = 'Payroll Summery Reports.xlsx';
   i:any;
   startdate:any;
   Attachment:any;
@@ -33,12 +34,11 @@ export class HolidaysComponent implements OnInit {
   EndDate:any;
   StaffID:any;
   Paydate:any;
-  HolidayDate:any;
   public attachmentsurl: any = [];
 
   ngOnInit(): void {
     debugger
-    this.GetHolidays();
+    this.GetUploadedholidayEncashment();
     this.DigiPVTService.GetAllStaffNew().
     subscribe({
       next: data => {
@@ -53,9 +53,9 @@ export class HolidaysComponent implements OnInit {
       });
   }
 
-  public GetHolidays(){
+  public GetUploadedholidayEncashment(){
     debugger
-    this.DigiPVTService.GetHolidays().subscribe(data => {
+    this.DigiPVTService.GetUploadedholidayEncashment().subscribe(data => {
       debugger
       this.componentmaster = data;
       console.log("componentmaster", this.componentmaster);
@@ -98,33 +98,30 @@ export class HolidaysComponent implements OnInit {
     } else {
       let apiarray = [];
       for (this.i = 0; this.i < this.exceldata.length; this.i++) {
-          //   this.stafflistcopy123=this.stafflist.filter((x: { employeID: any; })=>x.employeID==this.exceldata[this.i].EmployeID)          
-          //    if(this.stafflistcopy123.length!=0){
-          //     this.StaffID = this.stafflistcopy123[0].id
-          //    }
-          //    else{
-          //     this.StaffID = 0
-          //    }           
-          // var options = { hour12: false };
-           
-            this.HolidayDate = new Date(Date.UTC(0, 0, this.exceldata[this.i].HolidayDate - 1));
-               
+            this.stafflistcopy123=this.stafflist.filter((x: { employeID: any; })=>x.employeID==this.exceldata[this.i].EmployeID)          
+             if(this.stafflistcopy123.length!=0){
+              this.StaffID = this.stafflistcopy123[0].id
+             }
+             else{
+              this.StaffID = 0
+             }           
+          var options = { hour12: false };
+            //  this.Paydate = new Date(Date.UTC(0, 0, this.exceldata[this.i].Paydate-1 )); 
+            this.Paydate = new Date(Date.UTC(0, 0, this.exceldata[this.i].Paydate - 1));
+            // this.Paydate=this.Paydate.toLocaleString('en-US', options)          
           ; 
           var eb = { 
-            // 'Staffid': this.StaffID,
-            'HolidayDate' : this.HolidayDate,   
-            'Holiday' : this.exceldata[this.i].Holiday,
-            'HolidayDescription' : this.exceldata[this.i].HolidayDescription,
-            'HolidayCategory' : this.exceldata[this.i].HolidayCategory,
-            'Region' : 'Region',
-            'Attachment' :'https://103.12.1.76/ALIAPI/Images/EmptyProfile/noimage.png'
-            // 'Region' : this.exceldata[this.i].Region,
-            // 'Attachment' : this.exceldata[this.i].Attachment,
+            'StaffID': this.StaffID,
+            'Paydate' : new Date(Date.UTC(0, 0, this.exceldata[this.i].Paydate - 1)),
+            'Taggedholiday' : this.exceldata[this.i].Taggedholiday,
+            'Amount' : this.exceldata[this.i].Amount,
+            'Dailyrate' : this.exceldata[this.i].Amount
+
           }
-          this.DigiPVTService.InsertHolidays(eb).subscribe({
+          this.DigiPVTService.InsertUploadedholidayEncashment(eb).subscribe({
             next: data => {
             debugger
-            // this.StaffID=data;
+            this.StaffID=data;
               Swal.fire('Saved Successfully')
               this.ngOnInit();
             // // this.SavePositionDetails();
@@ -146,12 +143,12 @@ export class HolidaysComponent implements OnInit {
             // )
  
           }, error: (err) => {
-            Swal.fire('Issue in Inserting Holidays');
+            Swal.fire('Issue in Inserting Attendance Units');
             // Insert error in Db Here//         
           }
         }
         )
-       }
+      }
     }
   }
   delete(ID : any){
@@ -165,7 +162,7 @@ export class HolidaysComponent implements OnInit {
       cancelButtonText: 'No, keep it'
     }).then((result) => {
       if (result.value == true) {
-        this.DigiPVTService.DeleteHolidays(ID)
+        this.DigiPVTService.DeleteBasicpayAdjustments(ID)
           .subscribe({
             next: data => {
               debugger
@@ -178,7 +175,6 @@ export class HolidaysComponent implements OnInit {
     })
 
   }
-  fileName = 'Holidays Reports.xlsx';
   exportexcel(): void {
     /* table id is passed over here */
     let element = document.getElementById('downloadaplication');
@@ -191,6 +187,6 @@ export class HolidaysComponent implements OnInit {
     /* save to file */
     XLSX.writeFile(wb, this.fileName);
 
+  }
 
-}
 }

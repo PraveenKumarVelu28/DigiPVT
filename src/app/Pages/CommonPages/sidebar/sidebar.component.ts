@@ -114,6 +114,19 @@ export class SidebarComponent implements OnInit {
   
   }
 
+  public UploadHolidaysEncashments(){
+    this.active='12321'
+    localStorage.setItem("clickname", "Holidays")
+    this.router.navigate(['/PayrollProcessor/UploadGeneratedEncashments'])
+  }
+
+  public ValidatedHolidayEncashment(){
+    this.active='12321'
+    localStorage.setItem("clickname", "Holidays")
+    this.router.navigate(['/PayrollProcessor/ValidatedHolidayEnCashments'])
+  }
+
+  
   
   public Holidays(){
     debugger
@@ -840,6 +853,13 @@ export class SidebarComponent implements OnInit {
         }
       }
     }) 
+
+  }
+
+  ValidationPassword(){
+    this.active='ValidationPassword'
+    localStorage.setItem ('Pagename','Validation Password')
+    this.router.navigate(['/PayrollAdmin/ValidationpasswordDashboard']);
 
   }
 

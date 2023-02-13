@@ -13,7 +13,6 @@ export class ComponentMappingFormComponent implements OnInit {
 
   submit: any;
   id: any;
-  
   PayrollComponentType: any;
   Code: any;
   ComponentName: any;

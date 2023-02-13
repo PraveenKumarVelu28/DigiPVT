@@ -34,6 +34,9 @@ import { RunBasicPayValidationComponent } from './run-basic-pay-validation/run-b
 import { ValidatedBasicPayValuesComponent } from './validated-basic-pay-values/validated-basic-pay-values.component';
 import { HolidaysComponent } from './holidays/holidays.component';
 import { ValidatedRetroBasicPayAdjustmentsComponent } from './validated-retro-basic-pay-adjustments/validated-retro-basic-pay-adjustments.component';
+import { UploadGeneratedEncashmentsComponent } from './upload-generated-encashments/upload-generated-encashments.component';
+import { RunHolidayEncashmentValidationComponent } from './run-holiday-encashment-validation/run-holiday-encashment-validation.component';
+import { ValidatedHolidayEnCashmentsComponent } from './validated-holiday-en-cashments/validated-holiday-en-cashments.component';
 import { UploadRetroValuesOTComponent } from './upload-retro-values-ot/upload-retro-values-ot.component';
 
 
@@ -73,6 +76,9 @@ import { UploadRetroValuesOTComponent } from './upload-retro-values-ot/upload-re
     ValidatedBasicPayValuesComponent,
     HolidaysComponent,
     ValidatedRetroBasicPayAdjustmentsComponent,
+    UploadGeneratedEncashmentsComponent,
+    RunHolidayEncashmentValidationComponent,
+    ValidatedHolidayEnCashmentsComponent,
     UploadRetroValuesOTComponent
   ],
   imports: [

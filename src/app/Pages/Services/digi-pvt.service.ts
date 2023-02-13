@@ -1,29 +1,43 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { interval } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
 export class DigiPVTService {
 
-  constructor(private http: HttpClient) { }
+
+  public host = sessionStorage.getItem('digiofficeapiurl');
+  // public basehost = 'http://localhost:1807/';
+  // public basehost1 = "http://localhost:4199/"
+//public basehost = "https://ali.digiofficeapp.com/ALIAPI"
+
+  
+  //  public host2 = "http://localhost:4199/";
+
 
   private url: string = '';
-  // public host = sessionStorage.getItem('digiofficeapiurl');
+  constructor(private http: HttpClient) {
+    interval(1000).subscribe(((_x: any) => {
+      //this.host = 'http://localhost:1807/';
+      this.host = sessionStorage.getItem('digiofficeapiurl');
+    }));
+  }
 
-  // public host = 'http://localhost:1807'
-  // public basehost = "https://103.12.1.76//AliLiveUATApi"
-  public host = sessionStorage.getItem('digiofficeapiurl');
-  // public GetNotification(UserID: any) {
-  //   return this.http.get<any[]>(
-  //     this.host + "/User/GetNotification?UserID=" + UserID
-  //   );
-  // }
 
 
   public InsertOTRates(json: any) {
     let APIURL = this.host + "/Master/InsertOTRates";
     return this.http.post<any>(APIURL, json);
   }
+
+  public InsertUploadedholidayEncashment(json: any) {
+    let APIURL = this.host + "/Master/InsertUploadedholidayEncashment";
+    return this.http.post<any>(APIURL, json);
+  }
+
+
+  
 
   public UpdateOTRates(json: any) {
     //debugger
@@ -1606,6 +1620,12 @@ export class DigiPVTService {
     );
   } 
 
+  public GetUploadedholidayEncashment() {
+    return this.http.get<any[]>(
+      this.host + "/Master/GetUploadedholidayEncashment"
+    );
+  } 
+  
 
   
   public GetValidatedBasicPayAllowances() {
@@ -1613,6 +1633,14 @@ export class DigiPVTService {
       this.host + "/Master/GetValidatedBasicPayAllowances"
     );
   } 
+
+  public GetValidatedHolidayEncashments() {
+    return this.http.get<any[]>(
+      this.host + "/Master/GetValidatedHolidayEncashments"
+    );
+  } 
+
+  
 
   public GetRetroValidatedBasicPayAllowances() {
     return this.http.get<any[]>(
@@ -1704,6 +1732,12 @@ export class DigiPVTService {
     return this.http.get<any[]>(this.host + "/Announcement/GetRunFMAValidation?EmployeeID=" + EmployeeID  + "&startdate=" + startdate + "&enddate=" + enddate);
   }
 
+  public GetRunHolidayEncashmentValidation(EmployeeID: any,  startdate: any, enddate: any) {
+    //debugger
+    return this.http.get<any[]>(this.host + "/Announcement/GetRunHolidayEncashmentValidation?EmployeeID=" + EmployeeID  + "&startdate=" + startdate + "&enddate=" + enddate);
+  }
+
+
   
 
 
@@ -1774,6 +1808,10 @@ export class DigiPVTService {
     return this.http.get<any[]>(
       this.host + "/Master/GetBonusValidation"
     );
+  }
+  public DeleteBonusValidation(ID : any){
+    return this.http.get<any[]>(
+      this.host + "/Master/DeleteBonusValidation?ID=" + ID);
   }
 
   
@@ -4235,6 +4273,29 @@ export class DigiPVTService {
   public DeleteOTRetroAdjustment(ID : any){
     return this.http.get<any[]>(
       this.host + "/Master/DeleteOTRetroAdjustment?ID=" + ID);
+  }
+
+  public GetValidationPassword(){
+    return this.http.get<any[]>(
+      this.host +"/Vendor/GetValidationPassword"
+    );
+  }
+
+  public InsertValidationPassword(data : any){
+    debugger;
+    this.url = this.host + '/Vendor/InsertValidationPassword';
+    return this.http.post(this.url, data);
+
+  }
+
+  public UpdateValidationPassword(data : any){
+    this.url =this.host + '/Vendor/UpdateValidationPassword'
+    return this.http.post(this.url,data)
+  }
+
+  public DeleteValidationPassword(ID :any){
+    return this.http.get<any[]>(
+      this.host + "/Vendor/DeleteValidationPassword?ID=" + ID);
   }
 
 

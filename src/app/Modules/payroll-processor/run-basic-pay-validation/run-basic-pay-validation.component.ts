@@ -733,7 +733,7 @@ export class RunBasicPayValidationComponent implements OnInit {
                                 )
                                 this.Payrollvis = true
                                 this.InsertNotification();
-                                location.href = '#/LwopValidationDetails'
+                                location.href = '#/PayrollProcessor/ValidatedBasicPayValues'
                               }
                             )
   
@@ -791,7 +791,7 @@ export class RunBasicPayValidationComponent implements OnInit {
                               )
                               this.Payrollvis = true
                               this.InsertNotification();
-                              location.href = '#/LwopValidationDetails'
+                              location.href = '#/PayrollProcessor/ValidatedBasicPayValues'
                             }
                           )
 

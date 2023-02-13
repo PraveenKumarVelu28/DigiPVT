@@ -6,18 +6,17 @@ import * as XLSX from 'xlsx';
 import { ExportToCsv } from 'export-to-csv';
 declare var JSZipUtils: any;
 @Component({
-  selector: 'app-validated-retro-basic-pay-adjustments',
-  templateUrl: './validated-retro-basic-pay-adjustments.component.html',
-  styleUrls: ['./validated-retro-basic-pay-adjustments.component.css']
+  selector: 'app-validated-holiday-en-cashments',
+  templateUrl: './validated-holiday-en-cashments.component.html',
+  styleUrls: ['./validated-holiday-en-cashments.component.css']
 })
-export class ValidatedRetroBasicPayAdjustmentsComponent implements OnInit {
+export class ValidatedHolidayEnCashmentsComponent implements OnInit {
 
-  
   constructor(public DigiofficeService: DigiPVTService, public router: Router) { }
 
   ngOnInit(): void {
 
-    this.GetRetroValidatedBasicPayAllowances();
+    this.GetValidatedHolidayEncashments();
   }
 
   timedetails:any;
@@ -27,9 +26,9 @@ export class ValidatedRetroBasicPayAdjustmentsComponent implements OnInit {
   p: any = 1;
   count1: any = 10;
 
-  public GetRetroValidatedBasicPayAllowances() {
+  public GetValidatedHolidayEncashments() {
     debugger
-    this.DigiofficeService.GetRetroValidatedBasicPayAllowances()
+    this.DigiofficeService.GetValidatedHolidayEncashments()
       .subscribe({
         next: data => {
           debugger
@@ -50,20 +49,6 @@ export class ValidatedRetroBasicPayAdjustmentsComponent implements OnInit {
           )
         }
       })
-  }
-  fileName = 'Basic Pay Validation Reports.xlsx';
-  exportexcel(): void {
-    /* table id is passed over here */
-    let element = document.getElementById('downloadaplication');
-    const ws: XLSX.WorkSheet = XLSX.utils.table_to_sheet(element);
-
-    /* generate workbook and add the worksheet */
-    const wb: XLSX.WorkBook = XLSX.utils.book_new();
-    XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
-
-    /* save to file */
-    XLSX.writeFile(wb, this.fileName);
-
   }
 
 

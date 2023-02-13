@@ -155,7 +155,7 @@ export class LoginComponent implements OnInit {
           }
           else if (this.roleid == 1 || this.roleid == 41) {
 
-            this.DigiPVTService.GetMyDetailsForLogin(this.username, this.password, 41).subscribe((data: any) => {
+            this.DigiPVTService.GetMyDetailsForLogin(this.username, this.password, 1).subscribe((data: any) => {
               debugger
               let temp: any = data;
               if (temp.length == 0) {

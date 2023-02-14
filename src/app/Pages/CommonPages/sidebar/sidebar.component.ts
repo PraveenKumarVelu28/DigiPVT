@@ -641,7 +641,15 @@ export class SidebarComponent implements OnInit {
         }
       }) 
   }
-  
+
+ public UploadCOLAValues (){
+    this.active='UploadBasicPayValues'
+    this.router.navigate(['/PayrollProcessor/UploadColaValues'])
+    }
+      
+
+
+
 
   public RunFMAValidation(){
     this.active='RunFMAValidation'
@@ -674,6 +682,14 @@ export class SidebarComponent implements OnInit {
      
   }
   
+
+  public COLAValidation(){
+    this.active=768
+       localStorage.setItem("clickname", "Component  Master")
+     
+  }
+  
+
 
 
   public ComponentMaster(){
@@ -805,6 +821,34 @@ export class SidebarComponent implements OnInit {
   
    
   }
+
+
+  public ValidatedColaAllowances() {
+    debugger
+    this.active = 2345;
+    localStorage.setItem('Pagename', 'Staff')
+    Swal.fire({
+      title: 'Access COLA Validation',
+      html: `<input type="text" id="login" class="swal2-input"  placeholder="Enter 4 Digit Pin">
+    `,
+      confirmButtonText: 'Submit',
+      focusConfirm: false,
+      preConfirm: () => {
+        debugger
+        const login: any = document.getElementById('login') as HTMLElement
+ 
+        if (login.value == 4567) {
+          this.router.navigate(['/PayrollProcessor/ValidatedColaValues']);
+        }
+        else {
+          Swal.showValidationMessage(`Please enter correct pin`)
+        }
+      }
+    }) 
+   
+  }
+
+
 
   public ValidatedBasicPayValues() {
     debugger

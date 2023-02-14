@@ -35,6 +35,9 @@ import { UploadGeneratedEncashmentsComponent } from './upload-generated-encashme
 import { ValidatedHolidayEnCashmentsComponent } from './validated-holiday-en-cashments/validated-holiday-en-cashments.component';
 import { RunHolidayEncashmentValidationComponent } from './run-holiday-encashment-validation/run-holiday-encashment-validation.component';
 import { UploadRetroValuesOTComponent } from './upload-retro-values-ot/upload-retro-values-ot.component';
+import { UploadColaValuesComponent } from './upload-cola-values/upload-cola-values.component';
+import { RunColAValidationComponent } from './run-col-avalidation/run-col-avalidation.component';
+import { ValidatedColaValuesComponent } from './validated-cola-values/validated-cola-values.component';
 const routes: Routes = [
   { path: '', component: PayrollProcessorComponent },
   { path: 'RunLwopValidation', component: RunLwopValidationComponent },
@@ -84,6 +87,11 @@ const routes: Routes = [
 
 
   { path: 'UploadRetroValuesOT', component: UploadRetroValuesOTComponent},
+    { path: 'UploadColaValues', component: UploadColaValuesComponent},
+    
+  { path: 'RunColAValidation', component: RunColAValidationComponent},
+  { path: 'ValidatedColaValues', component: ValidatedColaValuesComponent},
+
 
 ];
 

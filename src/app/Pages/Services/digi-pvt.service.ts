@@ -1583,6 +1583,15 @@ export class DigiPVTService {
     this.url = this.host + '/Vendor/InsertBasicpayAdjustments';
     return this.http.post(this.url, data);
   }
+
+  
+  public InsertUploadatcolavalidation(data: any) {
+    //debugger;
+    this.url = this.host + '/Vendor/InsertUploadatcolavalidation';
+    return this.http.post(this.url, data);
+  }
+
+  
   public DeleteBasicpayAdjustments(ID : any){
     return this.http.get<any[]>(
       this.host + "/Vendor/DeleteBasicpayAdjustments?ID=" + ID);
@@ -1620,6 +1629,13 @@ export class DigiPVTService {
     );
   } 
 
+   public GetUploadatcolavalidation() {
+    return this.http.get<any[]>(
+      this.host + "/Vendor/GetUploadatcolavalidation"
+    );
+  } 
+  
+
   public GetUploadedholidayEncashment() {
     return this.http.get<any[]>(
       this.host + "/Master/GetUploadedholidayEncashment"
@@ -1633,6 +1649,15 @@ export class DigiPVTService {
       this.host + "/Master/GetValidatedBasicPayAllowances"
     );
   } 
+
+  public GetValidatedColaDetails() {
+    return this.http.get<any[]>(
+      this.host + "/Master/GetValidatedColaDetails"
+    );
+  }
+  
+
+
 
   public GetValidatedHolidayEncashments() {
     return this.http.get<any[]>(
@@ -1711,8 +1736,13 @@ export class DigiPVTService {
     //debugger
     return this.http.get<any[]>(this.host + "/Announcement/GetRunBasicPayValidation?EmployeeID=" + EmployeeID  + "&startdate=" + startdate + "&enddate=" + enddate);
   }
-  
 
+  public GetRunCOLAValidation(EmployeeID: any,  startdate: any, enddate: any) {
+    //debugger
+    return this.http.get<any[]>(this.host + "/Announcement/GetRunCOLAValidation?EmployeeID=" + EmployeeID  + "&startdate=" + startdate + "&enddate=" + enddate);
+  }
+  
+  
 
   public Get_RunBonusValidation(EmployeeID: any,  startdate: any, enddate: any) {
     //debugger

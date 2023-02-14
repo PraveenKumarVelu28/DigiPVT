@@ -38,6 +38,9 @@ import { UploadGeneratedEncashmentsComponent } from './upload-generated-encashme
 import { RunHolidayEncashmentValidationComponent } from './run-holiday-encashment-validation/run-holiday-encashment-validation.component';
 import { ValidatedHolidayEnCashmentsComponent } from './validated-holiday-en-cashments/validated-holiday-en-cashments.component';
 import { UploadRetroValuesOTComponent } from './upload-retro-values-ot/upload-retro-values-ot.component';
+import { UploadColaValuesComponent } from './upload-cola-values/upload-cola-values.component';
+import { ValidatedColaValuesComponent } from './validated-cola-values/validated-cola-values.component';
+import { RunColAValidationComponent } from './run-col-avalidation/run-col-avalidation.component';
 
 
 
@@ -79,7 +82,10 @@ import { UploadRetroValuesOTComponent } from './upload-retro-values-ot/upload-re
     UploadGeneratedEncashmentsComponent,
     RunHolidayEncashmentValidationComponent,
     ValidatedHolidayEnCashmentsComponent,
-    UploadRetroValuesOTComponent
+    UploadRetroValuesOTComponent,
+    UploadColaValuesComponent,
+    ValidatedColaValuesComponent,
+    RunColAValidationComponent
   ],
   imports: [
     PayrollProcessorRoutingModule,

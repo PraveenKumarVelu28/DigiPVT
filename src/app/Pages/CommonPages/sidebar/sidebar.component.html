@@ -96,7 +96,9 @@
 
     </div>
 
-    <a data-toggle="collapse" data-target="#LwopValidation" *ngIf="login == 9 && companyid == 1001"
+
+    <a data-toggle="collapse" data-target="#LwopValidation" *ngIf="login == 9 && companyid == 1001|| companyid == 1006"
+
       (click)="LwopValidation()"
       [ngClass]="(active == 108 )&&!mini ? 'menu1' : (active == 108)&&mini?'menu-mini':'menu'">
       <img *ngIf="(active == 108&&!mini)" src="assets/Images/revamp/announcementwhite.png">
@@ -125,7 +127,7 @@
 
 
 
-    <a data-toggle="collapse" data-target="#BonusValidation" *ngIf="login == 9 && (companyid == 1001 || companyid == 1002)"
+    <a data-toggle="collapse" data-target="#BonusValidation" *ngIf="login == 9 && (companyid == 1001 || companyid == 1002|| companyid == 1006)"
       (click)="BonusValidation()"
       [ngClass]="(active == 988 )&&!mini ? 'menu1' : (active == 988)&&mini?'menu-mini':'menu'">
       <img *ngIf="(active == 988&&!mini)" src="assets/Images/revamp/announcementwhite.png">
@@ -234,9 +236,7 @@
     <span class="icon-text">Holiday Encashment </span></a>
 
   <div id="Holidays" class="collapse length ">
-    <!-- <a (click)="ValidatedBasicPayValues()" class="nonactive">
-      <span class="sub-request">Validated Basic Pay Details</span>
-    </a> -->
+   
     <a (click)="ValidatedHolidayEncashment()" class="nonactive">
       <span [ngClass]="active == '12321' ? 'Active1' : 'Active3'" class="sub-request">Validated Holiday Encashment
         </span>

@@ -46,6 +46,7 @@ export class SidebarComponent implements OnInit {
     this.DigiPVTService.GetValidationPassword().subscribe(data => {
       debugger
       this.validation = data;
+
       console.log("validation", this.validation);
     });
   }
@@ -719,8 +720,6 @@ export class SidebarComponent implements OnInit {
   public BasicPayValidation(){
     this.active=767
        localStorage.setItem("clickname", "Component  Master")
-       
-     
   }
   
 
@@ -859,6 +858,11 @@ export class SidebarComponent implements OnInit {
 
   public ValidatedBasicPayValues() {
     debugger
+    this.DigiPVTService.GetValidationPassword().subscribe(data => {
+      debugger
+      this.validation = data.filter(x=>x.menuName=='Validated Basic Pay Detail');
+      console.log("validation", this.validation);
+    });
     this.active = 2345;
     localStorage.setItem('Pagename', 'Staff')
     Swal.fire({
@@ -892,6 +896,12 @@ export class SidebarComponent implements OnInit {
 
   public ValidatedRetroBasicPayValues() {
     debugger
+    this.DigiPVTService.GetValidationPassword().subscribe(data => {
+      debugger
+      this.validation = data.filter(x=>x.menuName=='Validated Retro Basic Pay');
+      console.log("validation", this.validation);
+    });
+    
     this.active = 2345;
     localStorage.setItem('Pagename', 'Staff')
     Swal.fire({

@@ -119,30 +119,30 @@ export class LoginComponent implements OnInit {
           localStorage.setItem('Band', temp[0].band);
           sessionStorage.setItem('AttendanceEnable', temp[0].attendanceEnable)
           if (this.roleid == 2) {
-            if (this.companyid == 1002 || this.companyid == 1003) {
+            // if (this.companyid == 1002 || this.companyid == 1003) {
               this.router.navigate(['/Manager/ALIAVIDAManagerdashboard']).then(() => {
                 this.loader = false;
                 location.reload();
               });
-            }
-            else if (this.companyid == 1005) {
-              this.router.navigate(['/HR/AVIDAHRDashboard']).then(() => {
-                this.loader = false;
-                location.reload();
-              });
-            }
+            
+            // else if (this.companyid == 1005) {
+            //   this.router.navigate(['/HR/AVIDAHRDashboard']).then(() => {
+            //     this.loader = false;
+            //     location.reload();
+            //   });
+            // }
             // else {
             //   this.router.navigate(['/Manager/ALIAVIDAManagerdashboard']).then(() => {
             //     this.loader = false;
             //     location.reload();
             //   });
             // }
-            else {
-              this.router.navigate(['/Employee/StaffDashboard']).then(() => {
-                this.loader = false;
-                location.reload();
-              });
-            }
+            // else {
+            //   this.router.navigate(['/Employee/StaffDashboard']).then(() => {
+            //     this.loader = false;
+            //     location.reload();
+            //   });
+            // }
           }
           else if (this.roleid == 9) {
             this.router.navigate(['/Employee/StaffDashboard']).then(() => {

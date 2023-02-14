@@ -500,96 +500,104 @@ export class SidebarComponent implements OnInit {
   public UploadStaffLeaves(){
     this.active='UploadStaffLeaves'
     localStorage.setItem("clickname", "Upload Staff Leaves")
-    Swal.fire({
-      title: 'Access Basic Pay Validation',
-      html: `<input type="text" id="login" class="swal2-input"  placeholder="Enter 4 Digit Pin">
-    `,
-      confirmButtonText: 'Submit',
-      focusConfirm: false,
-      preConfirm: () => {
-        debugger
-        const login: any = document.getElementById('login') as HTMLElement
+    this.router.navigate(['/PayrollProcessor/StaffLeavesUpload'])
+
+    // Swal.fire({
+    //   title: 'Access Basic Pay Validation',
+    //   html: `<input type="text" id="login" class="swal2-input"  placeholder="Enter 4 Digit Pin">
+    // `,
+    //   confirmButtonText: 'Submit',
+    //   focusConfirm: false,
+    //   preConfirm: () => {
+    //     debugger
+    //     const login: any = document.getElementById('login') as HTMLElement
  
-        if (login.value == 4567) {
-          this.router.navigate(['/PayrollProcessor/StaffLeavesUpload'])
-        }
-        else {
-          Swal.showValidationMessage(`Please enter correct pin`)
-        }
-      }
-    }) 
+    //     if (login.value == 4567) {
+    //       this.router.navigate(['/PayrollProcessor/StaffLeavesUpload'])
+    //     }
+    //     else {
+    //       Swal.showValidationMessage(`Please enter correct pin`)
+    //     }
+    //   }
+    // }) 
   
   }
 
   public UploadSystemGeneratedLWOP(){
     this.active='UploadSystemGeneratedLWOP'
     localStorage.setItem("clickname", "Upload Staff Leaves")
-    Swal.fire({
-      title: 'Access Basic Pay Validation',
-      html: `<input type="text" id="login" class="swal2-input"  placeholder="Enter 4 Digit Pin">
-    `,
-      confirmButtonText: 'Submit',
-      focusConfirm: false,
-      preConfirm: () => {
-        debugger
-        const login: any = document.getElementById('login') as HTMLElement
+    this.router.navigate(['/PayrollProcessor/UploadGeneratedLwop'])
+
+    // Swal.fire({
+    //   title: 'Access Basic Pay Validation',
+    //   html: `<input type="text" id="login" class="swal2-input"  placeholder="Enter 4 Digit Pin">
+    // `,
+    //   confirmButtonText: 'Submit',
+    //   focusConfirm: false,
+    //   preConfirm: () => {
+    //     debugger
+    //     const login: any = document.getElementById('login') as HTMLElement
  
-        if (login.value == 4567) {
-          this.router.navigate(['/PayrollProcessor/UploadGeneratedLwop'])
-        }
-        else {
-          Swal.showValidationMessage(`Please enter correct pin`)
-        }
-      }
-    }) 
+    //     if (login.value == 4567) {
+    //       this.router.navigate(['/PayrollProcessor/UploadGeneratedLwop'])
+    //     }
+    //     else {
+    //       Swal.showValidationMessage(`Please enter correct pin`)
+    //     }
+    //   }
+    // }) 
    
   }
 
   public UploadAllowance(){
     this.active='uploadallowance'
     localStorage.setItem("clickname", "uploadallowance")
-    Swal.fire({
-      title: 'Access Basic Pay Validation',
-      html: `<input type="text" id="login" class="swal2-input"  placeholder="Enter 4 Digit Pin">
-    `,
-      confirmButtonText: 'Submit',
-      focusConfirm: false,
-      preConfirm: () => {
-        debugger
-        const login: any = document.getElementById('login') as HTMLElement
+    this.router.navigate(['/PayrollProcessor/UploadAllowance'])
+
+    // Swal.fire({
+    //   title: 'Access Basic Pay Validation',
+    //   html: `<input type="text" id="login" class="swal2-input"  placeholder="Enter 4 Digit Pin">
+    // `,
+    //   confirmButtonText: 'Submit',
+    //   focusConfirm: false,
+    //   preConfirm: () => {
+    //     debugger
+    //     const login: any = document.getElementById('login') as HTMLElement
  
-        if (login.value == 4567) {
-          this.router.navigate(['/PayrollProcessor/UploadAllowance'])
-        }
-        else {
-          Swal.showValidationMessage(`Please enter correct pin`)
-        }
-      }
-    }) 
+    //     if (login.value == 4567) {
+    //       this.router.navigate(['/PayrollProcessor/UploadAllowance'])
+    //     }
+    //     else {
+    //       Swal.showValidationMessage(`Please enter correct pin`)
+    //     }
+    //   }
+    // }) 
     
   }
 
   public UploadPayperiodAllowance(){
     this.active='UploadPayperiodAllowance'
     localStorage.setItem("clickname", "Upload Pay Period Allowance")
-    Swal.fire({
-      title: 'Access Basic Pay Validation',
-      html: `<input type="text" id="login" class="swal2-input"  placeholder="Enter 4 Digit Pin">
-    `,
-      confirmButtonText: 'Submit',
-      focusConfirm: false,
-      preConfirm: () => {
-        debugger
-        const login: any = document.getElementById('login') as HTMLElement
+    this.router.navigate(['/PayrollProcessor/UploadPayPeriodAllowance'])
+
+    // Swal.fire({
+    //   title: 'Access Basic Pay Validation',
+    //   html: `<input type="text" id="login" class="swal2-input"  placeholder="Enter 4 Digit Pin">
+    // `,
+    //   confirmButtonText: 'Submit',
+    //   focusConfirm: false,
+    //   preConfirm: () => {
+    //     debugger
+    //     const login: any = document.getElementById('login') as HTMLElement
  
-        if (login.value == 4567) {
-          this.router.navigate(['/PayrollProcessor/UploadPayPeriodAllowance'])
-        }
-        else {
-          Swal.showValidationMessage(`Please enter correct pin`)
-        }
-      }
-    }) 
+    //     if (login.value == 4567) {
+    //       this.router.navigate(['/PayrollProcessor/UploadPayPeriodAllowance'])
+    //     }
+    //     else {
+    //       Swal.showValidationMessage(`Please enter correct pin`)
+    //     }
+    //   }
+    // }) 
     
   }
 
@@ -632,24 +640,26 @@ export class SidebarComponent implements OnInit {
 
     this.active='UploadFMAAllowance'
        localStorage.setItem("clickname", "Component  Master")
-       Swal.fire({
-        title: 'Access Basic Pay Validation',
-        html: `<input type="text" id="login" class="swal2-input"  placeholder="Enter 4 Digit Pin">
-      `,
-        confirmButtonText: 'Submit',
-        focusConfirm: false,
-        preConfirm: () => {
-          debugger
-          const login: any = document.getElementById('login') as HTMLElement
+       this.router.navigate(['/PayrollProcessor/FMAValidation'])
+
+      //  Swal.fire({
+      //   title: 'Access Basic Pay Validation',
+      //   html: `<input type="text" id="login" class="swal2-input"  placeholder="Enter 4 Digit Pin">
+      // `,
+      //   confirmButtonText: 'Submit',
+      //   focusConfirm: false,
+      //   preConfirm: () => {
+      //     debugger
+      //     const login: any = document.getElementById('login') as HTMLElement
    
-          if (login.value == this.validation[0].password) {
-            this.router.navigate(['/PayrollProcessor/FMAValidation'])
-          }
-          else {
-            Swal.showValidationMessage(`Please enter correct pin`)
-          }
-        }
-      }) 
+      //     if (login.value == this.validation[0].password) {
+      //       this.router.navigate(['/PayrollProcessor/FMAValidation'])
+      //     }
+      //     else {
+      //       Swal.showValidationMessage(`Please enter correct pin`)
+      //     }
+      //   }
+      // }) 
      
 
   }

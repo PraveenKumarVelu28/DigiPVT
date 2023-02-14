@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
+import { DigiPVTService } from 'src/app/Pages/Services/digi-pvt.service';
 @Component({
   selector: 'app-sidebar',
   templateUrl: './sidebar.component.html',
@@ -9,7 +10,8 @@ import Swal from 'sweetalert2';
 export class SidebarComponent implements OnInit {
 
 
-  constructor(public router: Router) { }
+  
+  constructor(public DigiPVTService: DigiPVTService, public router: Router ) { }
   login: any;
   UserName: any;
   company_name: any;
@@ -25,6 +27,7 @@ export class SidebarComponent implements OnInit {
   AttendanceEnable: any
   companyid: any;
   roledid: any
+  validation:any
   ngOnInit(): void {
     debugger;
     (document.getElementById("main") as HTMLInputElement).style.marginLeft = "250px";
@@ -38,6 +41,13 @@ export class SidebarComponent implements OnInit {
     this.role = sessionStorage.getItem('role')
     this.roleid = sessionStorage.getItem('roledid')
     this.roledid = sessionStorage.getItem('roledid')
+
+
+    this.DigiPVTService.GetValidationPassword().subscribe(data => {
+      debugger
+      this.validation = data;
+      console.log("validation", this.validation);
+    });
   }
 
   toggleSidebar() {
@@ -93,24 +103,26 @@ export class SidebarComponent implements OnInit {
   public UploadHolidays(){
     this.active='12321'
     localStorage.setItem("clickname", "Holidays")
-    Swal.fire({
-      title: 'Access Basic Pay Validation',
-      html: `<input type="text" id="login" class="swal2-input"  placeholder="Enter 4 Digit Pin">
-    `,
-      confirmButtonText: 'Submit',
-      focusConfirm: false,
-      preConfirm: () => {
-        debugger
-        const login: any = document.getElementById('login') as HTMLElement
+    this.router.navigate(['/PayrollProcessor/Holidays'])
+
+    // Swal.fire({
+    //   title: 'Access Basic Pay Validation',
+    //   html: `<input type="text" id="login" class="swal2-input"  placeholder="Enter 4 Digit Pin">
+    // `,
+    //   confirmButtonText: 'Submit',
+    //   focusConfirm: false,
+    //   preConfirm: () => {
+    //     debugger
+    //     const login: any = document.getElementById('login') as HTMLElement
  
-        if (login.value == 4567) {
-          this.router.navigate(['/PayrollProcessor/Holidays'])
-        }
-        else {
-          Swal.showValidationMessage(`Please enter correct pin`)
-        }
-      }
-    }) 
+    //     if (login.value == 4567) {
+    //       this.router.navigate(['/PayrollProcessor/Holidays'])
+    //     }
+    //     else {
+    //       Swal.showValidationMessage(`Please enter correct pin`)
+    //     }
+    //   }
+    // }) 
   
   }
 
@@ -123,7 +135,26 @@ export class SidebarComponent implements OnInit {
   public ValidatedHolidayEncashment(){
     this.active='12321'
     localStorage.setItem("clickname", "Holidays")
-    this.router.navigate(['/PayrollProcessor/ValidatedHolidayEnCashments'])
+    //this.router.navigate(['/PayrollProcessor/ValidatedHolidayEnCashments'])
+     Swal.fire({
+      title: 'Access Basic Pay Validation',
+      html: `<input type="text" id="login" class="swal2-input"  placeholder="Enter 4 Digit Pin">
+    `,
+      confirmButtonText: 'Submit',
+      focusConfirm: false,
+      preConfirm: () => {
+        debugger
+        const login: any = document.getElementById('login') as HTMLElement
+ 
+        if (login.value == 4567) {
+          this.router.navigate(['/PayrollProcessor/ValidatedHolidayEnCashments'])
+        }
+        else {
+          Swal.showValidationMessage(`Please enter correct pin`)
+        }
+      }
+    }) 
+
   }
 
   
@@ -164,24 +195,26 @@ export class SidebarComponent implements OnInit {
     debugger
    
     localStorage.setItem('Pagename', 'Over Time');
-    Swal.fire({
-      title: 'Access Basic Pay Validation',
-      html: `<input type="text" id="login" class="swal2-input"  placeholder="Enter 4 Digit Pin">
-    `,
-      confirmButtonText: 'Submit',
-      focusConfirm: false,
-      preConfirm: () => {
-        debugger
-        const login: any = document.getElementById('login') as HTMLElement
+    this.router.navigate(['/PayrollProcessor/UploadRetroValuesOT']);
+
+    // Swal.fire({
+    //   title: 'Access Basic Pay Validation',
+    //   html: `<input type="text" id="login" class="swal2-input"  placeholder="Enter 4 Digit Pin">
+    // `,
+    //   confirmButtonText: 'Submit',
+    //   focusConfirm: false,
+    //   preConfirm: () => {
+    //     debugger
+    //     const login: any = document.getElementById('login') as HTMLElement
  
-        if (login.value == 4567) {
-          this.router.navigate(['/PayrollProcessor/UploadRetroValuesOT']);
-        }
-        else {
-          Swal.showValidationMessage(`Please enter correct pin`)
-        }
-      }
-    }) 
+    //     if (login.value == 4567) {
+    //       this.router.navigate(['/PayrollProcessor/UploadRetroValuesOT']);
+    //     }
+    //     else {
+    //       Swal.showValidationMessage(`Please enter correct pin`)
+    //     }
+    //   }
+    // }) 
   
   }
 
@@ -564,24 +597,25 @@ export class SidebarComponent implements OnInit {
   public UploadBonusValues(){
     this.active='UploadBonusValues'
     localStorage.setItem("clickname", "Upload Staff Leaves")
-    Swal.fire({
-      title: 'Access Basic Pay Validation',
-      html: `<input type="text" id="login" class="swal2-input"  placeholder="Enter 4 Digit Pin">
-    `,
-      confirmButtonText: 'Submit',
-      focusConfirm: false,
-      preConfirm: () => {
-        debugger
-        const login: any = document.getElementById('login') as HTMLElement
+    this.router.navigate(['/PayrollProcessor/UploadBonusValues'])
+    // Swal.fire({
+    //   title: 'Access Basic Pay Validation',
+    //   html: `<input type="text" id="login" class="swal2-input"  placeholder="Enter 4 Digit Pin">
+    // `,
+    //   confirmButtonText: 'Submit',
+    //   focusConfirm: false,
+    //   preConfirm: () => {
+    //     debugger
+    //     const login: any = document.getElementById('login') as HTMLElement
  
-        if (login.value == 4567) {
-          this.router.navigate(['/PayrollProcessor/UploadBonusValues'])
-        }
-        else {
-          Swal.showValidationMessage(`Please enter correct pin`)
-        }
-      }
-    }) 
+    //     if (login.value == 4567) {
+    //       this.router.navigate(['/PayrollProcessor/UploadBonusValues'])
+    //     }
+    //     else {
+    //       Swal.showValidationMessage(`Please enter correct pin`)
+    //     }
+    //   }
+    // }) 
     
   }
 
@@ -595,6 +629,7 @@ export class SidebarComponent implements OnInit {
 
 
   public UploadFMAAllowance(){
+
     this.active='UploadFMAAllowance'
        localStorage.setItem("clickname", "Component  Master")
        Swal.fire({
@@ -607,7 +642,7 @@ export class SidebarComponent implements OnInit {
           debugger
           const login: any = document.getElementById('login') as HTMLElement
    
-          if (login.value == 4567) {
+          if (login.value == this.validation[0].password) {
             this.router.navigate(['/PayrollProcessor/FMAValidation'])
           }
           else {
@@ -620,26 +655,29 @@ export class SidebarComponent implements OnInit {
   }
 
   public UploadBasicPayValues(){
+    debugger
     this.active='UploadBasicPayValues'
        localStorage.setItem("clickname", "Component  Master")
-       Swal.fire({
-        title: 'Access Basic Pay Validation',
-        html: `<input type="text" id="login" class="swal2-input"  placeholder="Enter 4 Digit Pin">
-      `,
-        confirmButtonText: 'Submit',
-        focusConfirm: false,
-        preConfirm: () => {
-          debugger
-          const login: any = document.getElementById('login') as HTMLElement
+       this.router.navigate(['/PayrollProcessor/UploadBasicPayValues'])
+
+      //  Swal.fire({
+      //   title: 'Access Basic Pay Validation',
+      //   html: `<input type="text" id="login" class="swal2-input"  placeholder="Enter 4 Digit Pin">
+      // `,
+      //   confirmButtonText: 'Submit',
+      //   focusConfirm: false,
+      //   preConfirm: () => {
+      //     debugger
+      //     const login: any = document.getElementById('login') as HTMLElement
    
-          if (login.value == 4567) {
-            this.router.navigate(['/PayrollProcessor/UploadBasicPayValues'])
-          }
-          else {
-            Swal.showValidationMessage(`Please enter correct pin`)
-          }
-        }
-      }) 
+      //     if (login.value == 4567) {
+      //       this.router.navigate(['/PayrollProcessor/UploadBasicPayValues'])
+      //     }
+      //     else {
+      //       Swal.showValidationMessage(`Please enter correct pin`)
+      //     }
+      //   }
+      // }) 
   }
   
 
@@ -671,6 +709,7 @@ export class SidebarComponent implements OnInit {
   public BasicPayValidation(){
     this.active=767
        localStorage.setItem("clickname", "Component  Master")
+       
      
   }
   
@@ -700,24 +739,26 @@ export class SidebarComponent implements OnInit {
     debugger
     // this.active = 9999;
     localStorage.setItem('Pagename', 'Over Time');
-    Swal.fire({
-      title: 'Access Basic Pay Validation',
-      html: `<input type="text" id="login" class="swal2-input"  placeholder="Enter 4 Digit Pin">
-    `,
-      confirmButtonText: 'Submit',
-      focusConfirm: false,
-      preConfirm: () => {
-        debugger
-        const login: any = document.getElementById('login') as HTMLElement
+      this.router.navigate(['/PayrollProcessor/MyTeamOverTimeDetails']);
+
+    // Swal.fire({
+    //   title: 'Access Basic Pay Validation',
+    //   html: `<input type="text" id="login" class="swal2-input"  placeholder="Enter 4 Digit Pin">
+    // `,
+    //   confirmButtonText: 'Submit',
+    //   focusConfirm: false,
+    //   preConfirm: () => {
+    //     debugger
+    //     const login: any = document.getElementById('login') as HTMLElement
  
-        if (login.value == 4567) {
-          this.router.navigate(['/PayrollProcessor/MyTeamOverTimeDetails']);
-        }
-        else {
-          Swal.showValidationMessage(`Please enter correct pin`)
-        }
-      }
-    }) 
+    //     if (login.value == 4567) {
+    //       this.router.navigate(['/PayrollProcessor/MyTeamOverTimeDetails']);
+    //     }
+    //     else {
+    //       Swal.showValidationMessage(`Please enter correct pin`)
+    //     }
+    //   }
+    // }) 
     
   }
   public InitialPayroll(){
@@ -820,7 +861,7 @@ export class SidebarComponent implements OnInit {
         debugger
         const login: any = document.getElementById('login') as HTMLElement
  
-        if (login.value == 4567) {
+        if (login.value == this.validation[0].password) {
           this.router.navigate(['/PayrollProcessor/ValidatedBasicPayValues']);
         }
         else {
@@ -830,13 +871,21 @@ export class SidebarComponent implements OnInit {
     }) 
    
   }
+  public GetValidationPassword(){
+    this.DigiPVTService.GetValidationPassword().subscribe(data => {
+      debugger
+      this.validation = data;
+      console.log("validation", this.validation);
+    });
+  }
+
 
   public ValidatedRetroBasicPayValues() {
     debugger
     this.active = 2345;
     localStorage.setItem('Pagename', 'Staff')
     Swal.fire({
-      title: 'Access Basic Pay Validation',
+      title: 'Access Retro Pay Validation',
       html: `<input type="text" id="login" class="swal2-input"  placeholder="Enter 4 Digit Pin">
     `,
       confirmButtonText: 'Submit',
@@ -845,7 +894,7 @@ export class SidebarComponent implements OnInit {
         debugger
         const login: any = document.getElementById('login') as HTMLElement
  
-        if (login.value == 4567) {
+        if (login.value == this.validation[0].password) {
           this.router.navigate(['/PayrollProcessor/ValidatedRetroBasicPayAdjustments']);
         }
         else {

@@ -199,6 +199,23 @@
 
     </div>
 
+    <a data-toggle="collapse" data-target="#LoanProceedValidation" *ngIf="login == 9 && (companyid == 1001 || companyid == 1002|| companyid == 1006)"
+    (click)="LoanProceeds()"
+    [ngClass]="(active == 8989 )&&!mini ? 'menu1' : (active == 8989)&&mini?'menu-mini':'menu'">
+    <img *ngIf="(active == 8989&&!mini)" src="assets/Images/revamp/announcementwhite.png">
+    <img *ngIf="active != 8989 " src="assets/Images/revamp/announcementnewgray-icon.png">
+    <img *ngIf="(active == 8989&&mini) " src="assets/Images/revamp/announcementnewblue-icon.png">
+
+    <span class="icon-text">Loan Proceeds Validation</span></a>
+
+  <div id="LoanProceedValidation" class="collapse length ">
+    <a (click)="ValidatedLoanProceedsDetails()" class="nonactive">
+      <span class="sub-request">Validated Loan Proceeds</span>
+    </a>
+   
+
+  </div>
+
     <a data-toggle="collapse" data-target="#FMAAllowance" (click)="FMAValidation() "
       *ngIf="login == 9 && companyid == 1001"
       [ngClass]="(active == 'fma')&&!mini ? 'menu1' :(active == 'fma')&&mini?'menu-mini' :'menu'">

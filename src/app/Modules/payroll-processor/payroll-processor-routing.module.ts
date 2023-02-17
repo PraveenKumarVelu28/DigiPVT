@@ -45,6 +45,8 @@ import { RunClothingAllowanceComponent } from './run-clothing-allowance/run-clot
 import { UploadPayrollSummaryReportComponent } from './upload-payroll-summary-report/upload-payroll-summary-report.component';
 import { RunPayrollSummaryValidationComponent } from './run-payroll-summary-validation/run-payroll-summary-validation.component';
 import { ValidatedPayrollSummaryReportComponent } from './validated-payroll-summary-report/validated-payroll-summary-report.component';
+import { RunLoanProceedsValidationComponent } from './run-loan-proceeds-validation/run-loan-proceeds-validation.component';
+import { ValidatedLoanProceedsComponent } from './validated-loan-proceeds/validated-loan-proceeds.component';
 const routes: Routes = [
   { path: '', component: PayrollProcessorComponent },
   { path: 'RunLwopValidation', component: RunLwopValidationComponent },
@@ -106,6 +108,8 @@ const routes: Routes = [
   { path: 'UploadPayrollSummaryReport', component: UploadPayrollSummaryReportComponent},
   { path: 'RunPayrollSummaryValidation', component: RunPayrollSummaryValidationComponent},
   { path: 'ValidatedPayrollSummaryReport', component: ValidatedPayrollSummaryReportComponent},
+  { path: 'RunLoanProceedsValidation', component: RunLoanProceedsValidationComponent},
+  { path: 'ValidatedLoanProceeds', component: ValidatedLoanProceedsComponent},
 
 
 ];

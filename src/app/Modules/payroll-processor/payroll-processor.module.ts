@@ -48,6 +48,8 @@ import { RetroValidatedClothingAllowancesComponent } from './retro-validated-clo
 import { UploadPayrollSummaryReportComponent } from './upload-payroll-summary-report/upload-payroll-summary-report.component';
 import { RunPayrollSummaryValidationComponent } from './run-payroll-summary-validation/run-payroll-summary-validation.component';
 import { ValidatedPayrollSummaryReportComponent } from './validated-payroll-summary-report/validated-payroll-summary-report.component';
+import { RunLoanProceedsValidationComponent } from './run-loan-proceeds-validation/run-loan-proceeds-validation.component';
+import { ValidatedLoanProceedsComponent } from './validated-loan-proceeds/validated-loan-proceeds.component';
 
 
 
@@ -99,7 +101,9 @@ import { ValidatedPayrollSummaryReportComponent } from './validated-payroll-summ
     RetroValidatedClothingAllowancesComponent,
     UploadPayrollSummaryReportComponent,
     RunPayrollSummaryValidationComponent,
-    ValidatedPayrollSummaryReportComponent
+    ValidatedPayrollSummaryReportComponent,
+    RunLoanProceedsValidationComponent,
+    ValidatedLoanProceedsComponent
   ],
   imports: [
     PayrollProcessorRoutingModule,

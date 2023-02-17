@@ -1689,6 +1689,12 @@ export class DigiPVTService {
   }
   
 
+  public GetValidatedLoanProceedsDetails() {
+    return this.http.get<any[]>(
+      this.host + "/Master/GetValidatedLoanProceedsDetails"
+    );
+  }
+  
 
   public GetRetroValidatedClothingAllowances() {
     return this.http.get<any[]>(
@@ -1777,6 +1783,13 @@ export class DigiPVTService {
     return this.http.get<any[]>(this.host + "/Announcement/Get_RunLwopValidation?EmployeeID=" + EmployeeID  + "&startdate=" + startdate + "&enddate=" + enddate);
   }
 
+  public GetRunLoanProceedsValidation(EmployeeID: any,  startdate: any, enddate: any) {
+    //debugger
+    return this.http.get<any[]>(this.host + "/Announcement/GetRunLoanProceedsValidation?EmployeeID=" + EmployeeID  + "&startdate=" + startdate + "&enddate=" + enddate);
+  }
+
+
+  
   public GetRunPayrollSummaryReportValidation(EmployeeID: any,  startdate: any, enddate: any) {
     //debugger
     return this.http.get<any[]>(this.host + "/Announcement/GetRunPayrollSummaryReportValidation?EmployeeID=" + EmployeeID  + "&startdate=" + startdate + "&enddate=" + enddate);

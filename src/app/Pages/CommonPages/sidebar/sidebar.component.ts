@@ -158,6 +158,32 @@ export class SidebarComponent implements OnInit {
 
   }
 
+
+  public ValidatedPayrollSummary(){
+    this.active='12321'
+    localStorage.setItem("clickname", "Holidays")
+    //this.router.navigate(['/PayrollProcessor/ValidatedHolidayEnCashments'])
+     Swal.fire({
+      title: 'Access Basic Pay Validation',
+      html: `<input type="text" id="login" class="swal2-input"  placeholder="Enter 4 Digit Pin">
+    `,
+      confirmButtonText: 'Submit',
+      focusConfirm: false,
+      preConfirm: () => {
+        debugger
+        const login: any = document.getElementById('login') as HTMLElement
+ 
+        if (login.value == 4567) {
+          this.router.navigate(['/PayrollProcessor/ValidatedPayrollSummaryReport'])
+        }
+        else {
+          Swal.showValidationMessage(`Please enter correct pin`)
+        }
+      }
+    }) 
+
+  }
+  
   
   
   public Holidays(){
@@ -179,6 +205,14 @@ export class SidebarComponent implements OnInit {
     this.active = 988;
     localStorage.setItem('Pagename', 'Announcements')
   }
+
+
+  PayrollSummaryValidation() {
+    debugger
+    this.active = 976;
+    localStorage.setItem('Pagename', 'Announcements')
+  }
+
 
   AllowanceValidation() {
     debugger
@@ -721,6 +755,11 @@ export class SidebarComponent implements OnInit {
   }
   
 
+  public CLothingValidation(){
+    this.active=7675
+       localStorage.setItem("clickname", "Component  Master")
+  }
+
   public COLAValidation(){
     this.active=768
        localStorage.setItem("clickname", "Component  Master")
@@ -734,6 +773,13 @@ export class SidebarComponent implements OnInit {
     this.active='ComponentMaster'
        localStorage.setItem("clickname", "Component  Master")
        this.router.navigate(['/PayrollProcessor/ComponentMaster'])
+
+  }
+
+  public   UploadClothingallowances(){
+    this.active='ComponentMaster'
+       localStorage.setItem("clickname", "Component  Master")
+       this.router.navigate(['/PayrollProcessor/UploadClothingAllowances'])
 
   }
 
@@ -889,6 +935,59 @@ export class SidebarComponent implements OnInit {
   }
 
 
+  
+  public ValidatedClothingAllowance() {
+    debugger
+    this.active = 2345;
+    localStorage.setItem('Pagename', 'Staff')
+    Swal.fire({
+      title: 'Access Clothing Validation',
+      html: `<input type="text" id="login" class="swal2-input"  placeholder="Enter 4 Digit Pin">
+    `,
+      confirmButtonText: 'Submit',
+      focusConfirm: false,
+      preConfirm: () => {
+        debugger
+        const login: any = document.getElementById('login') as HTMLElement
+ 
+        if (login.value == 4567) {
+          this.router.navigate(['/PayrollProcessor/ValidatedClothingAllowances']);
+        }
+        else {
+          Swal.showValidationMessage(`Please enter correct pin`)
+        }
+      }
+    }) 
+   
+  }
+
+
+  
+  public RetroValidatedClothingAllowance() {
+    debugger
+    this.active = 2345;
+    localStorage.setItem('Pagename', 'Staff')
+    Swal.fire({
+      title: 'Access Clothing Validation',
+      html: `<input type="text" id="login" class="swal2-input"  placeholder="Enter 4 Digit Pin">
+    `,
+      confirmButtonText: 'Submit',
+      focusConfirm: false,
+      preConfirm: () => {
+        debugger
+        const login: any = document.getElementById('login') as HTMLElement
+ 
+        if (login.value == 4567) {
+          this.router.navigate(['/PayrollProcessor/RetroValidatedClothingAllowances']);
+        }
+        else {
+          Swal.showValidationMessage(`Please enter correct pin`)
+        }
+      }
+    }) 
+   
+  }
+
 
   public ValidatedBasicPayValues() {
     debugger
@@ -909,7 +1008,7 @@ export class SidebarComponent implements OnInit {
         debugger
         const login: any = document.getElementById('login') as HTMLElement
  
-        if (login.value == this.validation[0].password) {
+        if (login.value == 4567) {
           this.router.navigate(['/PayrollProcessor/ValidatedBasicPayValues']);
         }
         else {
@@ -948,7 +1047,7 @@ export class SidebarComponent implements OnInit {
         debugger
         const login: any = document.getElementById('login') as HTMLElement
  
-        if (login.value == this.validation[0].password) {
+        if (login.value == 4567) {
           this.router.navigate(['/PayrollProcessor/ValidatedRetroBasicPayAdjustments']);
         }
         else {
@@ -966,6 +1065,12 @@ export class SidebarComponent implements OnInit {
 
   }
 
+
+  
+ public UploadPayrollSummaryReport (){
+  this.active='UploadBasicPayValues'
+  this.router.navigate(['/PayrollProcessor/UploadPayrollSummaryReport'])
+  }
 
   
 }

@@ -42,6 +42,31 @@
   </a>
 
 
+  <a data-toggle="collapse" data-target="#SummaryValidation" *ngIf="login == 9 && companyid == 1001|| companyid == 1006"
+
+  (click)="PayrollSummaryValidation()"
+  [ngClass]="(active == 976 )&&!mini ? 'menu1' : (active == 976)&&mini?'menu-mini':'menu'">
+  <img *ngIf="(active == 976&&!mini)" src="assets/Images/revamp/announcementwhite.png">
+  <img *ngIf="active != 976 " src="assets/Images/revamp/announcementnewgray-icon.png">
+  <img *ngIf="(active == 976&&mini) " src="assets/Images/revamp/announcementnewblue-icon.png">
+
+  <span class="icon-text">Payroll Summary Validation</span></a>
+
+
+
+<div id="SummaryValidation" class="collapse length ">
+  <a (click)="ValidatedPayrollSummary()" class="nonactive">
+    <span class="sub-request">Validated Payroll Summary </span>
+  </a>
+
+
+  <a (click)="UploadPayrollSummaryReport()" class="nonactive">
+    <span [ngClass]="active == 'UploadSystemGeneratedLWOP' ? 'Active1' : 'Active3'" class="sub-request">Upload
+      Payroll Summary Report</span>
+  </a>
+
+</div>
+
     <!-- <a (click)="Announcement()" [ngClass]="(active == 2 )&&!mini ? 'menu1' : (active == 2)&&mini?'menu-mini':'menu'">
       <img *ngIf="(active == 2&&!mini)" src="assets/Images/revamp/announcementwhite.png">
       <img *ngIf="active != 2 " src="assets/Images/revamp/announcementnewgray-icon.png">
@@ -95,6 +120,33 @@
       </a>
 
     </div>
+
+    <a data-toggle="collapse" data-target="#ClothingValidation"
+    *ngIf="login == 9 && companyid == 1006" (click)="CLothingValidation()"
+    [ngClass]="(active == 7675 )&&!mini ? 'menu1' : (active == 768)&&mini?'menu-mini':'menu'">
+    <img *ngIf="(active == 7675&&!mini)" src="assets/Images/revamp/announcementwhite.png">
+    <img *ngIf="active != 7675 " src="assets/Images/revamp/announcementnewgray-icon.png">
+    <img *ngIf="(active == 7675&&mini) " src="assets/Images/revamp/announcementnewblue-icon.png">
+
+    <span class="icon-text">Clothing Allowance Validation</span></a>
+
+  <div id= ClothingValidation class="collapse length ">
+    <a (click)="ValidatedClothingAllowance()" class="nonactive">
+      <span class="sub-request">Validated Clothing Details</span>
+    </a>
+
+    <a (click)="RetroValidatedClothingAllowance()" class="nonactive">
+      <span class="sub-request">Retro Validated Clothing </span>
+    </a>
+    <!-- <a (click)="ValidatedRetroBasicPayValues()" class="nonactive">
+      <span class="sub-request">Validated Retro Basic Pay </span>
+    </a> -->
+    <a (click)="UploadClothingallowances()" class="nonactive">
+      <span [ngClass]="active == 'UploadBonusValues' ? 'Active1' : 'Active3'" class="sub-request">Upload CLothing Allowance
+        </span>
+    </a>
+
+  </div>
 
 
     <a data-toggle="collapse" data-target="#LwopValidation" *ngIf="login == 9 && companyid == 1001|| companyid == 1006"

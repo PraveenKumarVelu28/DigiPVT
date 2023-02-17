@@ -667,6 +667,11 @@ export class DigiPVTService {
     this.url = 'http://localhost:1807/' + '/Master/UploadEmployeeData';
     return this.http.post(this.url, data);
   }
+  public UploadPayrollSummaryValidation(data: any) {
+    debugger;
+    this.url = 'http://localhost:1807/' + '/Master/UploadPayrollSummaryValidation';
+    return this.http.post(this.url, data);
+  }
 
 
 
@@ -1591,6 +1596,12 @@ export class DigiPVTService {
     return this.http.post(this.url, data);
   }
 
+  public InsertClothingAllowances(data: any) {
+    //debugger;
+    this.url = this.host + '/Vendor/InsertClothingAllowances';
+    return this.http.post(this.url, data);
+  }
+
   
   public DeleteBasicpayAdjustments(ID : any){
     return this.http.get<any[]>(
@@ -1634,6 +1645,14 @@ export class DigiPVTService {
       this.host + "/Vendor/GetUploadatcolavalidation"
     );
   } 
+
+
+  public GetUploadatClothingAllowances() {
+    return this.http.get<any[]>(
+      this.host + "/Vendor/GetUploadatClothingAllowances"
+    );
+  } 
+
   
 
   public GetUploadedholidayEncashment() {
@@ -1655,6 +1674,32 @@ export class DigiPVTService {
       this.host + "/Master/GetValidatedColaDetails"
     );
   }
+
+   public GetValidatedClothingAllowances() {
+    return this.http.get<any[]>(
+      this.host + "/Master/GetValidatedClothingAllowances"
+    );
+  }
+  
+
+  public   GetValidatedPayrollSummaryDetails() {
+    return this.http.get<any[]>(
+      this.host + "/Master/GetValidatedPayrollSummaryDetails"
+    );
+  }
+  
+
+
+  public GetRetroValidatedClothingAllowances() {
+    return this.http.get<any[]>(
+      this.host + "/Vendor/GetRetroValidatedClothingAllowances"
+    );
+  }
+  
+
+  
+  
+
   
 
 
@@ -1731,6 +1776,13 @@ export class DigiPVTService {
     //debugger
     return this.http.get<any[]>(this.host + "/Announcement/Get_RunLwopValidation?EmployeeID=" + EmployeeID  + "&startdate=" + startdate + "&enddate=" + enddate);
   }
+
+  public GetRunPayrollSummaryReportValidation(EmployeeID: any,  startdate: any, enddate: any) {
+    //debugger
+    return this.http.get<any[]>(this.host + "/Announcement/GetRunPayrollSummaryReportValidation?EmployeeID=" + EmployeeID  + "&startdate=" + startdate + "&enddate=" + enddate);
+  }
+
+
 
   public GetRunBasicPayValidation(EmployeeID: any,  startdate: any, enddate: any) {
     //debugger

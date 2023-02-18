@@ -410,7 +410,7 @@ export class SidebarComponent implements OnInit {
 
     this.DigiPVTService.GetValidationPassword().subscribe(data => {
       debugger
-      this.validation = data.filter(x=>x.menuName=='Validated Run Allowance');
+      this.validation = data.filter(x=>x.menuName=='Validated Allowance Details');
       console.log("validation", this.validation);
     });
 
@@ -572,6 +572,14 @@ export class SidebarComponent implements OnInit {
   public UploadAllowance() {
     this.active = 'uploadallowance'
     localStorage.setItem("clickname", "uploadallowance")
+
+    this.DigiPVTService.GetValidationPassword().subscribe(data => {
+      debugger
+      this.validation = data.filter(x=>x.menuName=='Upload Allowance');
+      console.log("validation", this.validation);
+    });
+
+
     Swal.fire({
       title: 'Access Basic Pay Validation',
       html: `<input type="text" id="login" class="swal2-input"  placeholder="Enter 4 Digit Pin">
@@ -582,7 +590,7 @@ export class SidebarComponent implements OnInit {
         debugger
         const login: any = document.getElementById('login') as HTMLElement
 
-        if (login.value == 4567) {
+        if (login.value == this.validation[0].password) {
           this.router.navigate(['/PayrollProcessor/UploadAllowance'])
         }
         else {
@@ -596,6 +604,14 @@ export class SidebarComponent implements OnInit {
   public UploadPayperiodAllowance() {
     this.active = 'UploadPayperiodAllowance'
     localStorage.setItem("clickname", "Upload Pay Period Allowance")
+
+    this.DigiPVTService.GetValidationPassword().subscribe(data => {
+      debugger
+      this.validation = data.filter(x=>x.menuName=='Upload Payperiod Allowance');
+      console.log("validation", this.validation);
+    });
+
+
     Swal.fire({
       title: 'Access Basic Pay Validation',
       html: `<input type="text" id="login" class="swal2-input"  placeholder="Enter 4 Digit Pin">
@@ -606,7 +622,7 @@ export class SidebarComponent implements OnInit {
         debugger
         const login: any = document.getElementById('login') as HTMLElement
 
-        if (login.value == 4567) {
+        if (login.value == this.validation[0].password) {
           this.router.navigate(['/PayrollProcessor/UploadPayPeriodAllowance'])
         }
         else {
@@ -663,6 +679,14 @@ export class SidebarComponent implements OnInit {
 
     this.active = 'UploadFMAAllowance'
     localStorage.setItem("clickname", "Component  Master")
+
+    this.DigiPVTService.GetValidationPassword().subscribe(data => {
+      debugger
+      this.validation = data.filter(x=>x.menuName=='Upload FMA Allowance');
+      console.log("validation", this.validation);
+    });
+
+
     Swal.fire({
       title: 'Access Basic Pay Validation',
       html: `<input type="text" id="login" class="swal2-input"  placeholder="Enter 4 Digit Pin">

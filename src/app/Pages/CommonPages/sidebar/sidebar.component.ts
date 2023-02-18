@@ -10,8 +10,8 @@ import { DigiPVTService } from 'src/app/Pages/Services/digi-pvt.service';
 export class SidebarComponent implements OnInit {
 
 
-  
-  constructor(public DigiPVTService: DigiPVTService, public router: Router ) { }
+
+  constructor(public DigiPVTService: DigiPVTService, public router: Router) { }
   login: any;
   UserName: any;
   company_name: any;
@@ -27,7 +27,7 @@ export class SidebarComponent implements OnInit {
   AttendanceEnable: any
   companyid: any;
   roledid: any
-  validation:any
+  validation: any
   ngOnInit(): void {
     debugger;
     (document.getElementById("main") as HTMLInputElement).style.marginLeft = "250px";
@@ -101,8 +101,8 @@ export class SidebarComponent implements OnInit {
   }
 
 
-  public UploadHolidays(){
-    this.active='12321'
+  public UploadHolidays() {
+    this.active = '12321'
     localStorage.setItem("clickname", "Holidays")
     this.router.navigate(['/PayrollProcessor/Holidays'])
 
@@ -115,7 +115,7 @@ export class SidebarComponent implements OnInit {
     //   preConfirm: () => {
     //     debugger
     //     const login: any = document.getElementById('login') as HTMLElement
- 
+
     //     if (login.value == 4567) {
     //       this.router.navigate(['/PayrollProcessor/Holidays'])
     //     }
@@ -124,20 +124,20 @@ export class SidebarComponent implements OnInit {
     //     }
     //   }
     // }) 
-  
+
   }
 
-  public UploadHolidaysEncashments(){
-    this.active='12321'
+  public UploadHolidaysEncashments() {
+    this.active = '12321'
     localStorage.setItem("clickname", "Holidays")
     this.router.navigate(['/PayrollProcessor/UploadGeneratedEncashments'])
   }
 
-  public ValidatedHolidayEncashment(){
-    this.active='12321'
+  public ValidatedHolidayEncashment() {
+    this.active = '12321'
     localStorage.setItem("clickname", "Holidays")
     //this.router.navigate(['/PayrollProcessor/ValidatedHolidayEnCashments'])
-     Swal.fire({
+    Swal.fire({
       title: 'Access Basic Pay Validation',
       html: `<input type="text" id="login" class="swal2-input"  placeholder="Enter 4 Digit Pin">
     `,
@@ -146,7 +146,7 @@ export class SidebarComponent implements OnInit {
       preConfirm: () => {
         debugger
         const login: any = document.getElementById('login') as HTMLElement
- 
+
         if (login.value == 4567) {
           this.router.navigate(['/PayrollProcessor/ValidatedHolidayEnCashments'])
         }
@@ -154,16 +154,16 @@ export class SidebarComponent implements OnInit {
           Swal.showValidationMessage(`Please enter correct pin`)
         }
       }
-    }) 
+    })
 
   }
 
 
-  public ValidatedPayrollSummary(){
-    this.active='12321'
+  public ValidatedPayrollSummary() {
+    this.active = '12321'
     localStorage.setItem("clickname", "Holidays")
     //this.router.navigate(['/PayrollProcessor/ValidatedHolidayEnCashments'])
-     Swal.fire({
+    Swal.fire({
       title: 'Access Basic Pay Validation',
       html: `<input type="text" id="login" class="swal2-input"  placeholder="Enter 4 Digit Pin">
     `,
@@ -172,7 +172,7 @@ export class SidebarComponent implements OnInit {
       preConfirm: () => {
         debugger
         const login: any = document.getElementById('login') as HTMLElement
- 
+
         if (login.value == 4567) {
           this.router.navigate(['/PayrollProcessor/ValidatedPayrollSummaryReport'])
         }
@@ -180,13 +180,13 @@ export class SidebarComponent implements OnInit {
           Swal.showValidationMessage(`Please enter correct pin`)
         }
       }
-    }) 
+    })
 
   }
-  
-  
-  
-  public Holidays(){
+
+
+
+  public Holidays() {
     debugger
     this.active = 'holi';
     localStorage.setItem('Pagename', 'Holidays')
@@ -226,9 +226,9 @@ export class SidebarComponent implements OnInit {
     localStorage.setItem('Pagename', 'Announcements')
   }
 
-  public uploadRetrovalues(){
+  public uploadRetrovalues() {
     debugger
-   
+
     localStorage.setItem('Pagename', 'Over Time');
     this.router.navigate(['/PayrollProcessor/UploadRetroValuesOT']);
 
@@ -241,7 +241,7 @@ export class SidebarComponent implements OnInit {
     //   preConfirm: () => {
     //     debugger
     //     const login: any = document.getElementById('login') as HTMLElement
- 
+
     //     if (login.value == 4567) {
     //       this.router.navigate(['/PayrollProcessor/UploadRetroValuesOT']);
     //     }
@@ -250,13 +250,13 @@ export class SidebarComponent implements OnInit {
     //     }
     //   }
     // }) 
-  
+
   }
 
 
-  public PayRoll(){
+  public PayRoll() {
     debugger
-    this.active='PayRoll'
+    this.active = 'PayRoll'
     localStorage.setItem('PayRoll', 'PayRoll')
 
   }
@@ -360,20 +360,20 @@ export class SidebarComponent implements OnInit {
   }
 
 
-  public Request(){
-    this.active=14
+  public Request() {
+    this.active = 14
   }
 
-  public Reports(){
-    this.active=11
+  public Reports() {
+    this.active = 11
   }
 
-  public Doccuments(){
-    this.active=12
+  public Doccuments() {
+    this.active = 12
   }
 
-  public Help(){
-    this.active=13
+  public Help() {
+    this.active = 13
     localStorage.setItem('Pagename', 'Help')
     this.router.navigate(['/Admin/Help']);
   }
@@ -404,7 +404,7 @@ export class SidebarComponent implements OnInit {
       preConfirm: () => {
         debugger
         const login: any = document.getElementById('login') as HTMLElement
- 
+
         if (login.value == 4567) {
           this.router.navigate(['/PayrollProcessor/ValidatedAllowanceDetails']);
         }
@@ -412,12 +412,12 @@ export class SidebarComponent implements OnInit {
           Swal.showValidationMessage(`Please enter correct pin`)
         }
       }
-    }) 
-   
+    })
+
 
   }
 
-  
+
 
 
   public TimesheetReports() {
@@ -532,25 +532,25 @@ export class SidebarComponent implements OnInit {
 
   }
 
-  public UploadStaffLeaves(){
-    this.active='UploadStaffLeaves'
-    
-          this.router.navigate(['/PayrollProcessor/StaffLeavesUpload'])
-       
-      }
-   
-  
-  
+  public UploadStaffLeaves() {
+    this.active = 'UploadStaffLeaves'
 
-  public UploadSystemGeneratedLWOP(){
-   
-          this.router.navigate(['/PayrollProcessor/UploadGeneratedLwop'])
-       
-   
+    this.router.navigate(['/PayrollProcessor/StaffLeavesUpload'])
+
   }
 
-  public UploadAllowance(){
-    this.active='uploadallowance'
+
+
+
+  public UploadSystemGeneratedLWOP() {
+
+    this.router.navigate(['/PayrollProcessor/UploadGeneratedLwop'])
+
+
+  }
+
+  public UploadAllowance() {
+    this.active = 'uploadallowance'
     localStorage.setItem("clickname", "uploadallowance")
     Swal.fire({
       title: 'Access Basic Pay Validation',
@@ -561,7 +561,7 @@ export class SidebarComponent implements OnInit {
       preConfirm: () => {
         debugger
         const login: any = document.getElementById('login') as HTMLElement
- 
+
         if (login.value == 4567) {
           this.router.navigate(['/PayrollProcessor/UploadAllowance'])
         }
@@ -569,12 +569,12 @@ export class SidebarComponent implements OnInit {
           Swal.showValidationMessage(`Please enter correct pin`)
         }
       }
-    }) 
-    
+    })
+
   }
 
-  public UploadPayperiodAllowance(){
-    this.active='UploadPayperiodAllowance'
+  public UploadPayperiodAllowance() {
+    this.active = 'UploadPayperiodAllowance'
     localStorage.setItem("clickname", "Upload Pay Period Allowance")
     Swal.fire({
       title: 'Access Basic Pay Validation',
@@ -585,7 +585,7 @@ export class SidebarComponent implements OnInit {
       preConfirm: () => {
         debugger
         const login: any = document.getElementById('login') as HTMLElement
- 
+
         if (login.value == 4567) {
           this.router.navigate(['/PayrollProcessor/UploadPayPeriodAllowance'])
         }
@@ -593,13 +593,13 @@ export class SidebarComponent implements OnInit {
           Swal.showValidationMessage(`Please enter correct pin`)
         }
       }
-    }) 
-    
+    })
+
   }
 
 
-  public UploadBonusValues(){
-    this.active='UploadBonusValues'
+  public UploadBonusValues() {
+    this.active = 'UploadBonusValues'
     localStorage.setItem("clickname", "Upload Staff Leaves")
     this.router.navigate(['/PayrollProcessor/UploadBonusValues'])
     // Swal.fire({
@@ -611,7 +611,7 @@ export class SidebarComponent implements OnInit {
     //   preConfirm: () => {
     //     debugger
     //     const login: any = document.getElementById('login') as HTMLElement
- 
+
     //     if (login.value == 4567) {
     //       this.router.navigate(['/PayrollProcessor/UploadBonusValues'])
     //     }
@@ -620,189 +620,189 @@ export class SidebarComponent implements OnInit {
     //     }
     //   }
     // }) 
-    
+
   }
 
 
 
-  public FMAValidation(){
-    this.active='fma'
+  public FMAValidation() {
+    this.active = 'fma'
     localStorage.setItem("clickname", "Upload Pay Period Allowance")
- 
+
   }
 
 
-  public   LoanProceeds(){
-    this.active=8989
+  public LoanProceeds() {
+    this.active = 8989
     localStorage.setItem("clickname", "Upload Pay Period Allowance")
- 
+
   }
 
 
-  public UploadFMAAllowance(){
+  public UploadFMAAllowance() {
 
-    this.active='UploadFMAAllowance'
-       localStorage.setItem("clickname", "Component  Master")
-       Swal.fire({
-        title: 'Access Basic Pay Validation',
-        html: `<input type="text" id="login" class="swal2-input"  placeholder="Enter 4 Digit Pin">
+    this.active = 'UploadFMAAllowance'
+    localStorage.setItem("clickname", "Component  Master")
+    Swal.fire({
+      title: 'Access Basic Pay Validation',
+      html: `<input type="text" id="login" class="swal2-input"  placeholder="Enter 4 Digit Pin">
       `,
-        confirmButtonText: 'Submit',
-        focusConfirm: false,
-        preConfirm: () => {
-          debugger
-          const login: any = document.getElementById('login') as HTMLElement
-   
-          if (login.value == this.validation[0].password) {
-            this.router.navigate(['/PayrollProcessor/FMAValidation'])
-          }
-          else {
-            Swal.showValidationMessage(`Please enter correct pin`)
-          }
+      confirmButtonText: 'Submit',
+      focusConfirm: false,
+      preConfirm: () => {
+        debugger
+        const login: any = document.getElementById('login') as HTMLElement
+
+        if (login.value == this.validation[0].password) {
+          this.router.navigate(['/PayrollProcessor/FMAValidation'])
         }
-      }) 
-     
+        else {
+          Swal.showValidationMessage(`Please enter correct pin`)
+        }
+      }
+    })
+
 
   }
 
-  public UploadBasicPayValues(){
+  public UploadBasicPayValues() {
     debugger
-    this.active='UploadBasicPayValues'
-       localStorage.setItem("clickname", "Component  Master")
-       this.router.navigate(['/PayrollProcessor/UploadBasicPayValues'])
+    this.active = 'UploadBasicPayValues'
+    localStorage.setItem("clickname", "Component  Master")
+    this.router.navigate(['/PayrollProcessor/UploadBasicPayValues'])
 
-      //  Swal.fire({
-      //   title: 'Access Basic Pay Validation',
-      //   html: `<input type="text" id="login" class="swal2-input"  placeholder="Enter 4 Digit Pin">
-      // `,
-      //   confirmButtonText: 'Submit',
-      //   focusConfirm: false,
-      //   preConfirm: () => {
-      //     debugger
-      //     const login: any = document.getElementById('login') as HTMLElement
-   
-      //     if (login.value == 4567) {
-      //       this.router.navigate(['/PayrollProcessor/UploadBasicPayValues'])
-      //     }
-      //     else {
-      //       Swal.showValidationMessage(`Please enter correct pin`)
-      //     }
-      //   }
-      // }) 
+    //  Swal.fire({
+    //   title: 'Access Basic Pay Validation',
+    //   html: `<input type="text" id="login" class="swal2-input"  placeholder="Enter 4 Digit Pin">
+    // `,
+    //   confirmButtonText: 'Submit',
+    //   focusConfirm: false,
+    //   preConfirm: () => {
+    //     debugger
+    //     const login: any = document.getElementById('login') as HTMLElement
+
+    //     if (login.value == 4567) {
+    //       this.router.navigate(['/PayrollProcessor/UploadBasicPayValues'])
+    //     }
+    //     else {
+    //       Swal.showValidationMessage(`Please enter correct pin`)
+    //     }
+    //   }
+    // }) 
   }
 
- public UploadCOLAValues (){
-    this.active='UploadBasicPayValues'
+  public UploadCOLAValues() {
+    this.active = 'UploadBasicPayValues'
     this.router.navigate(['/PayrollProcessor/UploadColaValues'])
-    }
-      
-
-    
+  }
 
 
-    
-  public ValidatedLoanProceedsDetails(){
-    this.active='ValidatedLoanProceedsDetails'
-       localStorage.setItem("clickname", "Component  Master")
-       Swal.fire({
-        title: 'Access Basic Pay Validation',
-        html: `<input type="text" id="login" class="swal2-input"  placeholder="Enter 4 Digit Pin">
+
+
+
+
+  public ValidatedLoanProceedsDetails() {
+    this.active = 'ValidatedLoanProceedsDetails'
+    localStorage.setItem("clickname", "Component  Master")
+    Swal.fire({
+      title: 'Access Basic Pay Validation',
+      html: `<input type="text" id="login" class="swal2-input"  placeholder="Enter 4 Digit Pin">
       `,
-        confirmButtonText: 'Submit',
-        focusConfirm: false,
-        preConfirm: () => {
-          debugger
-          const login: any = document.getElementById('login') as HTMLElement
-   
-          if (login.value == 4567) {
-            this.router.navigate(['/PayrollProcessor/ValidatedLoanProceeds'])
-          }
-          else {
-            Swal.showValidationMessage(`Please enter correct pin`)
-          }
+      confirmButtonText: 'Submit',
+      focusConfirm: false,
+      preConfirm: () => {
+        debugger
+        const login: any = document.getElementById('login') as HTMLElement
+
+        if (login.value == 4567) {
+          this.router.navigate(['/PayrollProcessor/ValidatedLoanProceeds'])
         }
-      }) 
-     
+        else {
+          Swal.showValidationMessage(`Please enter correct pin`)
+        }
+      }
+    })
+
 
   }
 
-  public RunFMAValidation(){
-    this.active='RunFMAValidation'
-       localStorage.setItem("clickname", "Component  Master")
-       Swal.fire({
-        title: 'Access Basic Pay Validation',
-        html: `<input type="text" id="login" class="swal2-input"  placeholder="Enter 4 Digit Pin">
+  public RunFMAValidation() {
+    this.active = 'RunFMAValidation'
+    localStorage.setItem("clickname", "Component  Master")
+    Swal.fire({
+      title: 'Access Basic Pay Validation',
+      html: `<input type="text" id="login" class="swal2-input"  placeholder="Enter 4 Digit Pin">
       `,
-        confirmButtonText: 'Submit',
-        focusConfirm: false,
-        preConfirm: () => {
-          debugger
-          const login: any = document.getElementById('login') as HTMLElement
-   
-          if (login.value == 4567) {
-            this.router.navigate(['/PayrollProcessor/ValidatedFMADetails'])
-          }
-          else {
-            Swal.showValidationMessage(`Please enter correct pin`)
-          }
+      confirmButtonText: 'Submit',
+      focusConfirm: false,
+      preConfirm: () => {
+        debugger
+        const login: any = document.getElementById('login') as HTMLElement
+
+        if (login.value == 4567) {
+          this.router.navigate(['/PayrollProcessor/ValidatedFMADetails'])
         }
-      }) 
-     
+        else {
+          Swal.showValidationMessage(`Please enter correct pin`)
+        }
+      }
+    })
+
 
   }
-  ShowBasicPayValidation:any
-  public BasicPayValidation(){
-    this.active=767
-       localStorage.setItem("clickname", "Component  Master")
-  }
-  
-
-  public CLothingValidation(){
-    this.active=7675
-       localStorage.setItem("clickname", "Component  Master")
+  ShowBasicPayValidation: any
+  public BasicPayValidation() {
+    this.active = 767
+    localStorage.setItem("clickname", "Component  Master")
   }
 
-  public COLAValidation(){
-    this.active=768
-       localStorage.setItem("clickname", "Component  Master")
-     
+
+  public CLothingValidation() {
+    this.active = 7675
+    localStorage.setItem("clickname", "Component  Master")
   }
-  
 
-
-
-  public ComponentMaster(){
-    this.active='ComponentMaster'
-       localStorage.setItem("clickname", "Component  Master")
-       this.router.navigate(['/PayrollProcessor/ComponentMaster'])
+  public COLAValidation() {
+    this.active = 768
+    localStorage.setItem("clickname", "Component  Master")
 
   }
 
-  public   UploadClothingallowances(){
-    this.active='ComponentMaster'
-       localStorage.setItem("clickname", "Component  Master")
-       this.router.navigate(['/PayrollProcessor/UploadClothingAllowances'])
+
+
+
+  public ComponentMaster() {
+    this.active = 'ComponentMaster'
+    localStorage.setItem("clickname", "Component  Master")
+    this.router.navigate(['/PayrollProcessor/ComponentMaster'])
 
   }
 
-  public ComponentMapping(){
+  public UploadClothingallowances() {
+    this.active = 'ComponentMaster'
+    localStorage.setItem("clickname", "Component  Master")
+    this.router.navigate(['/PayrollProcessor/UploadClothingAllowances'])
+
+  }
+
+  public ComponentMapping() {
     debugger
     this.active = 'PayrollLoanReport1';
     localStorage.setItem('Pagename', 'Component Mapping');
     this.router.navigate(['/PayrollProcessor/ComponentMappingDashboard']);
 
   }
-  public Componentbulkupload(){
+  public Componentbulkupload() {
     debugger
     this.active = 'bulk';
     localStorage.setItem('clickname', 'Component bulk upload')
     this.router.navigate(['/PayrollProcessor/PayrollComponentBulkUpload']);
 
-  }  public AttendanceUnits(){
+  } public AttendanceUnits() {
     debugger
     // this.active = 9999;
     localStorage.setItem('Pagename', 'Over Time');
-      this.router.navigate(['/PayrollProcessor/MyTeamOverTimeDetails']);
+    this.router.navigate(['/PayrollProcessor/MyTeamOverTimeDetails']);
 
     // Swal.fire({
     //   title: 'Access Basic Pay Validation',
@@ -813,7 +813,7 @@ export class SidebarComponent implements OnInit {
     //   preConfirm: () => {
     //     debugger
     //     const login: any = document.getElementById('login') as HTMLElement
- 
+
     //     if (login.value == 4567) {
     //       this.router.navigate(['/PayrollProcessor/MyTeamOverTimeDetails']);
     //     }
@@ -822,17 +822,17 @@ export class SidebarComponent implements OnInit {
     //     }
     //   }
     // }) 
-    
+
   }
-  public InitialPayroll(){
-    this.active='InitialPayrollDetails'
+  public InitialPayroll() {
+    this.active = 'InitialPayrollDetails'
     localStorage.setItem("clickname", "Priliminary Report")
     this.router.navigate(['/PayrollProcessor/ExecutedInitialPayrollRuns'])
   }
-  
-  public InitialPayrollDetails(){
-  this.active='InitialPayrollDetails'
-  localStorage.setItem("clickname", "InitialPayroll")
+
+  public InitialPayrollDetails() {
+    this.active = 'InitialPayrollDetails'
+    localStorage.setItem("clickname", "InitialPayroll")
     this.router.navigate(['/PayrollProcessor/InitialPayrollDash'])
   }
 
@@ -870,7 +870,7 @@ export class SidebarComponent implements OnInit {
       preConfirm: () => {
         debugger
         const login: any = document.getElementById('login') as HTMLElement
- 
+
         if (login.value == 4567) {
           this.router.navigate(['/PayrollProcessor/LwopValidationDetails']);
         }
@@ -878,16 +878,24 @@ export class SidebarComponent implements OnInit {
           Swal.showValidationMessage(`Please enter correct pin`)
         }
       }
-    }) 
+    })
   }
 
-  
-  
+
+
 
   public ValidatedBonusDetails() {
     debugger
     this.active = 2345;
     localStorage.setItem('Pagename', 'Staff')
+
+    this.DigiPVTService.GetValidationPassword().subscribe(data => {
+      debugger
+      this.validation = data.filter(x => x.menuName == 'Validated Bonus Details');
+      console.log("validation", this.validation);
+    });
+
+
     Swal.fire({
       title: 'Access Basic Pay Validation',
       html: `<input type="text" id="login" class="swal2-input"  placeholder="Enter 4 Digit Pin">
@@ -897,17 +905,17 @@ export class SidebarComponent implements OnInit {
       preConfirm: () => {
         debugger
         const login: any = document.getElementById('login') as HTMLElement
- 
-        if (login.value == 4567) {
+
+        if (login.value ==  this.validation[0].password) {
           this.router.navigate(['/PayrollProcessor/BonusValidationDetails']);
         }
         else {
           Swal.showValidationMessage(`Please enter correct pin`)
         }
       }
-    }) 
-  
-   
+    })
+
+
   }
 
 
@@ -924,7 +932,7 @@ export class SidebarComponent implements OnInit {
       preConfirm: () => {
         debugger
         const login: any = document.getElementById('login') as HTMLElement
- 
+
         if (login.value == 4567) {
           this.router.navigate(['/PayrollProcessor/ValidatedColaValues']);
         }
@@ -932,12 +940,12 @@ export class SidebarComponent implements OnInit {
           Swal.showValidationMessage(`Please enter correct pin`)
         }
       }
-    }) 
-   
+    })
+
   }
 
 
-  
+
   public ValidatedClothingAllowance() {
     debugger
     this.active = 2345;
@@ -951,7 +959,7 @@ export class SidebarComponent implements OnInit {
       preConfirm: () => {
         debugger
         const login: any = document.getElementById('login') as HTMLElement
- 
+
         if (login.value == 4567) {
           this.router.navigate(['/PayrollProcessor/ValidatedClothingAllowances']);
         }
@@ -959,12 +967,12 @@ export class SidebarComponent implements OnInit {
           Swal.showValidationMessage(`Please enter correct pin`)
         }
       }
-    }) 
-   
+    })
+
   }
 
 
-  
+
   public RetroValidatedClothingAllowance() {
     debugger
     this.active = 2345;
@@ -978,7 +986,7 @@ export class SidebarComponent implements OnInit {
       preConfirm: () => {
         debugger
         const login: any = document.getElementById('login') as HTMLElement
- 
+
         if (login.value == 4567) {
           this.router.navigate(['/PayrollProcessor/RetroValidatedClothingAllowances']);
         }
@@ -986,8 +994,8 @@ export class SidebarComponent implements OnInit {
           Swal.showValidationMessage(`Please enter correct pin`)
         }
       }
-    }) 
-   
+    })
+
   }
 
 
@@ -995,7 +1003,7 @@ export class SidebarComponent implements OnInit {
     debugger
     this.DigiPVTService.GetValidationPassword().subscribe(data => {
       debugger
-      this.validation = data.filter(x=>x.menuName=='Validated Basic Pay Detail');
+      this.validation = data.filter(x => x.menuName == 'Validated Basic Pay Detail');
       console.log("validation", this.validation);
     });
     this.active = 2345;
@@ -1009,7 +1017,7 @@ export class SidebarComponent implements OnInit {
       preConfirm: () => {
         debugger
         const login: any = document.getElementById('login') as HTMLElement
- 
+
         if (login.value == 4567) {
           this.router.navigate(['/PayrollProcessor/ValidatedBasicPayValues']);
         }
@@ -1017,10 +1025,10 @@ export class SidebarComponent implements OnInit {
           Swal.showValidationMessage(`Please enter correct pin`)
         }
       }
-    }) 
-   
+    })
+
   }
-  public GetValidationPassword(){
+  public GetValidationPassword() {
     this.DigiPVTService.GetValidationPassword().subscribe(data => {
       debugger
       this.validation = data;
@@ -1033,10 +1041,10 @@ export class SidebarComponent implements OnInit {
     debugger
     this.DigiPVTService.GetValidationPassword().subscribe(data => {
       debugger
-      this.validation = data.filter(x=>x.menuName=='Validated Retro Basic Pay');
+      this.validation = data.filter(x => x.menuName == 'Validated Retro Basic Pay');
       console.log("validation", this.validation);
     });
-    
+
     this.active = 2345;
     localStorage.setItem('Pagename', 'Staff')
     Swal.fire({
@@ -1048,7 +1056,7 @@ export class SidebarComponent implements OnInit {
       preConfirm: () => {
         debugger
         const login: any = document.getElementById('login') as HTMLElement
- 
+
         if (login.value == 4567) {
           this.router.navigate(['/PayrollProcessor/ValidatedRetroBasicPayAdjustments']);
         }
@@ -1056,23 +1064,23 @@ export class SidebarComponent implements OnInit {
           Swal.showValidationMessage(`Please enter correct pin`)
         }
       }
-    }) 
+    })
 
   }
 
-  ValidationPassword(){
-    this.active='ValidationPassword'
-    localStorage.setItem ('Pagename','Validation Password')
+  ValidationPassword() {
+    this.active = 'ValidationPassword'
+    localStorage.setItem('Pagename', 'Validation Password')
     this.router.navigate(['/PayrollAdmin/ValidationpasswordDashboard']);
 
   }
 
 
-  
- public UploadPayrollSummaryReport (){
-  this.active='UploadBasicPayValues'
-  this.router.navigate(['/PayrollProcessor/UploadPayrollSummaryReport'])
+
+  public UploadPayrollSummaryReport() {
+    this.active = 'UploadBasicPayValues'
+    this.router.navigate(['/PayrollProcessor/UploadPayrollSummaryReport'])
   }
 
-  
+
 }

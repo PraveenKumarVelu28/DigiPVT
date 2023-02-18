@@ -883,6 +883,38 @@ export class SidebarComponent implements OnInit {
 
 
 
+  // public ValidatedRetroBasicPayValues() {
+  //   debugger
+  //   this.DigiPVTService.GetValidationPassword().subscribe(data => {
+  //     debugger
+  //     this.validation = data.filter(x=>x.menuName=='Validated Retro Basic Pay');
+  //     console.log("validation", this.validation);
+  //   });
+    
+  //   this.active = 2345;
+  //   localStorage.setItem('Pagename', 'Staff')
+  //   Swal.fire({
+  //     title: 'Access Retro Pay Validation',
+  //     html: `<input type="text" id="login" class="swal2-input"  placeholder="Enter 4 Digit Pin">
+  //   `,
+  //     confirmButtonText: 'Submit',
+  //     focusConfirm: false,
+  //     preConfirm: () => {
+  //       debugger
+  //       const login: any = document.getElementById('login') as HTMLElement
+ 
+  //       if (login.value == this.validation[0].password) {
+  //         this.router.navigate(['/PayrollProcessor/ValidatedRetroBasicPayAdjustments']);
+  //       }
+  //       else {
+  //         Swal.showValidationMessage(`Please enter correct pin`)
+  //       }
+  //     }
+  //   }) 
+
+  // }
+
+  
 
   public ValidatedBonusDetails() {
     debugger
@@ -891,10 +923,9 @@ export class SidebarComponent implements OnInit {
 
     this.DigiPVTService.GetValidationPassword().subscribe(data => {
       debugger
-      this.validation = data.filter(x => x.menuName == 'Validated Bonus Details');
+      this.validation = data.filter(x=>x.menuName=='Validated Bonus Details');
       console.log("validation", this.validation);
     });
-
 
     Swal.fire({
       title: 'Access Basic Pay Validation',
@@ -905,8 +936,8 @@ export class SidebarComponent implements OnInit {
       preConfirm: () => {
         debugger
         const login: any = document.getElementById('login') as HTMLElement
-
-        if (login.value ==  this.validation[0].password) {
+ 
+        if (login.value == this.validation[0].password) {
           this.router.navigate(['/PayrollProcessor/BonusValidationDetails']);
         }
         else {

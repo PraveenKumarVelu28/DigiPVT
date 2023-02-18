@@ -137,6 +137,13 @@ export class SidebarComponent implements OnInit {
     this.active = '12321'
     localStorage.setItem("clickname", "Holidays")
     //this.router.navigate(['/PayrollProcessor/ValidatedHolidayEnCashments'])
+
+    this.DigiPVTService.GetValidationPassword().subscribe(data => {
+      debugger
+      this.validation = data.filter(x=>x.menuName=='Validated Holiday Encashment');
+      console.log("validation", this.validation);
+    });
+
     Swal.fire({
       title: 'Access Basic Pay Validation',
       html: `<input type="text" id="login" class="swal2-input"  placeholder="Enter 4 Digit Pin">
@@ -147,7 +154,7 @@ export class SidebarComponent implements OnInit {
         debugger
         const login: any = document.getElementById('login') as HTMLElement
 
-        if (login.value == 4567) {
+        if (login.value == this.validation[0].password) {
           this.router.navigate(['/PayrollProcessor/ValidatedHolidayEnCashments'])
         }
         else {
@@ -162,6 +169,11 @@ export class SidebarComponent implements OnInit {
   public ValidatedPayrollSummary() {
     this.active = '12321'
     localStorage.setItem("clickname", "Holidays")
+    this.DigiPVTService.GetValidationPassword().subscribe(data => {
+      debugger
+      this.validation = data.filter(x=>x.menuName=='Validated Payroll Summary');
+      console.log("validation", this.validation);
+    });
     //this.router.navigate(['/PayrollProcessor/ValidatedHolidayEnCashments'])
     Swal.fire({
       title: 'Access Basic Pay Validation',
@@ -173,7 +185,7 @@ export class SidebarComponent implements OnInit {
         debugger
         const login: any = document.getElementById('login') as HTMLElement
 
-        if (login.value == 4567) {
+        if (login.value == this.validation[0].password) {
           this.router.navigate(['/PayrollProcessor/ValidatedPayrollSummaryReport'])
         }
         else {
@@ -395,6 +407,14 @@ export class SidebarComponent implements OnInit {
   public RunAllowanceValidation() {
     this.active = 'RunAllowanceValidation';
     localStorage.setItem('Pagename', 'Exception Bulk Logs')
+
+    this.DigiPVTService.GetValidationPassword().subscribe(data => {
+      debugger
+      this.validation = data.filter(x=>x.menuName=='Validated Run Allowance');
+      console.log("validation", this.validation);
+    });
+
+
     Swal.fire({
       title: 'Access Basic Pay Validation',
       html: `<input type="text" id="login" class="swal2-input"  placeholder="Enter 4 Digit Pin">
@@ -405,7 +425,7 @@ export class SidebarComponent implements OnInit {
         debugger
         const login: any = document.getElementById('login') as HTMLElement
 
-        if (login.value == 4567) {
+        if (login.value == this.validation[0].password) {
           this.router.navigate(['/PayrollProcessor/ValidatedAllowanceDetails']);
         }
         else {
@@ -704,6 +724,14 @@ export class SidebarComponent implements OnInit {
   public ValidatedLoanProceedsDetails() {
     this.active = 'ValidatedLoanProceedsDetails'
     localStorage.setItem("clickname", "Component  Master")
+
+    this.DigiPVTService.GetValidationPassword().subscribe(data => {
+      debugger
+      this.validation = data.filter(x=>x.menuName=='Validated Loan Proceed Details');
+      console.log("validation", this.validation);
+    });
+
+
     Swal.fire({
       title: 'Access Basic Pay Validation',
       html: `<input type="text" id="login" class="swal2-input"  placeholder="Enter 4 Digit Pin">
@@ -714,7 +742,7 @@ export class SidebarComponent implements OnInit {
         debugger
         const login: any = document.getElementById('login') as HTMLElement
 
-        if (login.value == 4567) {
+        if (login.value == this.validation[0].password) {
           this.router.navigate(['/PayrollProcessor/ValidatedLoanProceeds'])
         }
         else {
@@ -729,6 +757,14 @@ export class SidebarComponent implements OnInit {
   public RunFMAValidation() {
     this.active = 'RunFMAValidation'
     localStorage.setItem("clickname", "Component  Master")
+
+    this.DigiPVTService.GetValidationPassword().subscribe(data => {
+      debugger
+      this.validation = data.filter(x=>x.menuName=='Validated Run FMA');
+      console.log("validation", this.validation);
+    });
+
+
     Swal.fire({
       title: 'Access Basic Pay Validation',
       html: `<input type="text" id="login" class="swal2-input"  placeholder="Enter 4 Digit Pin">
@@ -739,7 +775,7 @@ export class SidebarComponent implements OnInit {
         debugger
         const login: any = document.getElementById('login') as HTMLElement
 
-        if (login.value == 4567) {
+        if (login.value == this.validation[0].password) {
           this.router.navigate(['/PayrollProcessor/ValidatedFMADetails'])
         }
         else {
@@ -861,6 +897,14 @@ export class SidebarComponent implements OnInit {
     debugger
     this.active = 889;
     localStorage.setItem('Pagename', 'Staff')
+
+    this.DigiPVTService.GetValidationPassword().subscribe(data => {
+      debugger
+      this.validation = data.filter(x=>x.menuName=='Validated Run LWOP');
+      console.log("validation", this.validation);
+    });
+
+
     Swal.fire({
       title: 'Access Basic Pay Validation',
       html: `<input type="text" id="login" class="swal2-input"  placeholder="Enter 4 Digit Pin">
@@ -871,7 +915,7 @@ export class SidebarComponent implements OnInit {
         debugger
         const login: any = document.getElementById('login') as HTMLElement
 
-        if (login.value == 4567) {
+        if (login.value == this.validation[0].password) {
           this.router.navigate(['/PayrollProcessor/LwopValidationDetails']);
         }
         else {
@@ -954,6 +998,14 @@ export class SidebarComponent implements OnInit {
     debugger
     this.active = 2345;
     localStorage.setItem('Pagename', 'Staff')
+
+    this.DigiPVTService.GetValidationPassword().subscribe(data => {
+      debugger
+      this.validation = data.filter(x=>x.menuName=='Validated COLA Allowance');
+      console.log("validation", this.validation);
+    });
+
+
     Swal.fire({
       title: 'Access COLA Validation',
       html: `<input type="text" id="login" class="swal2-input"  placeholder="Enter 4 Digit Pin">
@@ -964,7 +1016,7 @@ export class SidebarComponent implements OnInit {
         debugger
         const login: any = document.getElementById('login') as HTMLElement
 
-        if (login.value == 4567) {
+        if (login.value == this.validation[0].password) {
           this.router.navigate(['/PayrollProcessor/ValidatedColaValues']);
         }
         else {
@@ -981,6 +1033,14 @@ export class SidebarComponent implements OnInit {
     debugger
     this.active = 2345;
     localStorage.setItem('Pagename', 'Staff')
+
+    this.DigiPVTService.GetValidationPassword().subscribe(data => {
+      debugger
+      this.validation = data.filter(x=>x.menuName=='Validated Clothing Allowance');
+      console.log("validation", this.validation);
+    });
+
+
     Swal.fire({
       title: 'Access Clothing Validation',
       html: `<input type="text" id="login" class="swal2-input"  placeholder="Enter 4 Digit Pin">
@@ -991,7 +1051,7 @@ export class SidebarComponent implements OnInit {
         debugger
         const login: any = document.getElementById('login') as HTMLElement
 
-        if (login.value == 4567) {
+        if (login.value == this.validation[0].password) {
           this.router.navigate(['/PayrollProcessor/ValidatedClothingAllowances']);
         }
         else {
@@ -1008,6 +1068,14 @@ export class SidebarComponent implements OnInit {
     debugger
     this.active = 2345;
     localStorage.setItem('Pagename', 'Staff')
+
+    this.DigiPVTService.GetValidationPassword().subscribe(data => {
+      debugger
+      this.validation = data.filter(x=>x.menuName=='Validated Retro Clothing Allowance');
+      console.log("validation", this.validation);
+    });
+
+
     Swal.fire({
       title: 'Access Clothing Validation',
       html: `<input type="text" id="login" class="swal2-input"  placeholder="Enter 4 Digit Pin">
@@ -1018,7 +1086,7 @@ export class SidebarComponent implements OnInit {
         debugger
         const login: any = document.getElementById('login') as HTMLElement
 
-        if (login.value == 4567) {
+        if (login.value == this.validation[0].password) {
           this.router.navigate(['/PayrollProcessor/RetroValidatedClothingAllowances']);
         }
         else {
@@ -1032,13 +1100,17 @@ export class SidebarComponent implements OnInit {
 
   public ValidatedBasicPayValues() {
     debugger
+   
+    this.active = 2345;
+    localStorage.setItem('Pagename', 'Staff')
+
     this.DigiPVTService.GetValidationPassword().subscribe(data => {
       debugger
       this.validation = data.filter(x => x.menuName == 'Validated Basic Pay Detail');
       console.log("validation", this.validation);
     });
-    this.active = 2345;
-    localStorage.setItem('Pagename', 'Staff')
+
+
     Swal.fire({
       title: 'Access Basic Pay Validation',
       html: `<input type="text" id="login" class="swal2-input"  placeholder="Enter 4 Digit Pin">
@@ -1049,7 +1121,7 @@ export class SidebarComponent implements OnInit {
         debugger
         const login: any = document.getElementById('login') as HTMLElement
 
-        if (login.value == 4567) {
+        if (login.value == this.validation[0].password) {
           this.router.navigate(['/PayrollProcessor/ValidatedBasicPayValues']);
         }
         else {
@@ -1070,14 +1142,18 @@ export class SidebarComponent implements OnInit {
 
   public ValidatedRetroBasicPayValues() {
     debugger
+  
+
+    this.active = 2345;
+    localStorage.setItem('Pagename', 'Staff')
+
     this.DigiPVTService.GetValidationPassword().subscribe(data => {
       debugger
       this.validation = data.filter(x => x.menuName == 'Validated Retro Basic Pay');
       console.log("validation", this.validation);
     });
 
-    this.active = 2345;
-    localStorage.setItem('Pagename', 'Staff')
+
     Swal.fire({
       title: 'Access Retro Pay Validation',
       html: `<input type="text" id="login" class="swal2-input"  placeholder="Enter 4 Digit Pin">
@@ -1088,7 +1164,7 @@ export class SidebarComponent implements OnInit {
         debugger
         const login: any = document.getElementById('login') as HTMLElement
 
-        if (login.value == 4567) {
+        if (login.value == this.validation[0].password) {
           this.router.navigate(['/PayrollProcessor/ValidatedRetroBasicPayAdjustments']);
         }
         else {

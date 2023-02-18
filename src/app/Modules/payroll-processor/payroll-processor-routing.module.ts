@@ -35,6 +35,18 @@ import { UploadGeneratedEncashmentsComponent } from './upload-generated-encashme
 import { ValidatedHolidayEnCashmentsComponent } from './validated-holiday-en-cashments/validated-holiday-en-cashments.component';
 import { RunHolidayEncashmentValidationComponent } from './run-holiday-encashment-validation/run-holiday-encashment-validation.component';
 import { UploadRetroValuesOTComponent } from './upload-retro-values-ot/upload-retro-values-ot.component';
+import { UploadColaValuesComponent } from './upload-cola-values/upload-cola-values.component';
+import { RunColAValidationComponent } from './run-col-avalidation/run-col-avalidation.component';
+import { ValidatedColaValuesComponent } from './validated-cola-values/validated-cola-values.component';
+import { UploadClothingAllowancesComponent } from './upload-clothing-allowances/upload-clothing-allowances.component';
+import { ValidatedClothingAllowancesComponent } from './validated-clothing-allowances/validated-clothing-allowances.component';
+import { RetroValidatedClothingAllowancesComponent } from './retro-validated-clothing-allowances/retro-validated-clothing-allowances.component';
+import { RunClothingAllowanceComponent } from './run-clothing-allowance/run-clothing-allowance.component';
+import { UploadPayrollSummaryReportComponent } from './upload-payroll-summary-report/upload-payroll-summary-report.component';
+import { RunPayrollSummaryValidationComponent } from './run-payroll-summary-validation/run-payroll-summary-validation.component';
+import { ValidatedPayrollSummaryReportComponent } from './validated-payroll-summary-report/validated-payroll-summary-report.component';
+import { RunLoanProceedsValidationComponent } from './run-loan-proceeds-validation/run-loan-proceeds-validation.component';
+import { ValidatedLoanProceedsComponent } from './validated-loan-proceeds/validated-loan-proceeds.component';
 const routes: Routes = [
   { path: '', component: PayrollProcessorComponent },
   { path: 'RunLwopValidation', component: RunLwopValidationComponent },
@@ -78,12 +90,27 @@ const routes: Routes = [
   { path: 'ValidatedRetroBasicPayAdjustments', component: ValidatedRetroBasicPayAdjustmentsComponent},
 
   { path: 'UploadGeneratedEncashments', component: UploadGeneratedEncashmentsComponent},
-  { path: 'ValidatedHolidayEnCashments', component: ValidatedHolidayEnCashmentsComponent},
+  { path: 'ValidatedClothingAllowances', component: ValidatedClothingAllowancesComponent},
   { path: 'RunHolidayEncashmentValidation', component: RunHolidayEncashmentValidationComponent},
 
 
 
   { path: 'UploadRetroValuesOT', component: UploadRetroValuesOTComponent},
+    { path: 'UploadColaValues', component: UploadColaValuesComponent},
+    
+  { path: 'RunColAValidation', component: RunColAValidationComponent},
+  { path: 'ValidatedColaValues', component: ValidatedColaValuesComponent},
+  { path: 'UploadClothingAllowances', component: UploadClothingAllowancesComponent},
+  { path: 'ValidatedClothingAllowances', component: ValidatedClothingAllowancesComponent},
+  { path: 'RetroValidatedClothingAllowances', component: RetroValidatedClothingAllowancesComponent},
+  { path: 'RunClothingAllowance', component: RunClothingAllowanceComponent},
+
+  { path: 'UploadPayrollSummaryReport', component: UploadPayrollSummaryReportComponent},
+  { path: 'RunPayrollSummaryValidation', component: RunPayrollSummaryValidationComponent},
+  { path: 'ValidatedPayrollSummaryReport', component: ValidatedPayrollSummaryReportComponent},
+  { path: 'RunLoanProceedsValidation', component: RunLoanProceedsValidationComponent},
+  { path: 'ValidatedLoanProceeds', component: ValidatedLoanProceedsComponent},
+
 
 ];
 

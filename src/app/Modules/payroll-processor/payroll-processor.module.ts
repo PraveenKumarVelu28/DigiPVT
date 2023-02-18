@@ -38,6 +38,18 @@ import { UploadGeneratedEncashmentsComponent } from './upload-generated-encashme
 import { RunHolidayEncashmentValidationComponent } from './run-holiday-encashment-validation/run-holiday-encashment-validation.component';
 import { ValidatedHolidayEnCashmentsComponent } from './validated-holiday-en-cashments/validated-holiday-en-cashments.component';
 import { UploadRetroValuesOTComponent } from './upload-retro-values-ot/upload-retro-values-ot.component';
+import { UploadColaValuesComponent } from './upload-cola-values/upload-cola-values.component';
+import { ValidatedColaValuesComponent } from './validated-cola-values/validated-cola-values.component';
+import { RunColAValidationComponent } from './run-col-avalidation/run-col-avalidation.component';
+import { UploadClothingAllowancesComponent } from './upload-clothing-allowances/upload-clothing-allowances.component';
+import { RunClothingAllowanceComponent } from './run-clothing-allowance/run-clothing-allowance.component';
+import { ValidatedClothingAllowancesComponent } from './validated-clothing-allowances/validated-clothing-allowances.component';
+import { RetroValidatedClothingAllowancesComponent } from './retro-validated-clothing-allowances/retro-validated-clothing-allowances.component';
+import { UploadPayrollSummaryReportComponent } from './upload-payroll-summary-report/upload-payroll-summary-report.component';
+import { RunPayrollSummaryValidationComponent } from './run-payroll-summary-validation/run-payroll-summary-validation.component';
+import { ValidatedPayrollSummaryReportComponent } from './validated-payroll-summary-report/validated-payroll-summary-report.component';
+import { RunLoanProceedsValidationComponent } from './run-loan-proceeds-validation/run-loan-proceeds-validation.component';
+import { ValidatedLoanProceedsComponent } from './validated-loan-proceeds/validated-loan-proceeds.component';
 
 
 
@@ -79,7 +91,19 @@ import { UploadRetroValuesOTComponent } from './upload-retro-values-ot/upload-re
     UploadGeneratedEncashmentsComponent,
     RunHolidayEncashmentValidationComponent,
     ValidatedHolidayEnCashmentsComponent,
-    UploadRetroValuesOTComponent
+    UploadRetroValuesOTComponent,
+    UploadColaValuesComponent,
+    ValidatedColaValuesComponent,
+    RunColAValidationComponent,
+    UploadClothingAllowancesComponent,
+    RunClothingAllowanceComponent,
+    ValidatedClothingAllowancesComponent,
+    RetroValidatedClothingAllowancesComponent,
+    UploadPayrollSummaryReportComponent,
+    RunPayrollSummaryValidationComponent,
+    ValidatedPayrollSummaryReportComponent,
+    RunLoanProceedsValidationComponent,
+    ValidatedLoanProceedsComponent
   ],
   imports: [
     PayrollProcessorRoutingModule,

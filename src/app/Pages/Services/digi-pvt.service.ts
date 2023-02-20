@@ -1654,6 +1654,13 @@ export class DigiPVTService {
   } 
 
   
+  public GetUploadPayrollSummaryReport() {
+    return this.http.get<any[]>(
+      this.host + "/Master/GetUploadPayrollSummaryReport"
+    );
+  } 
+
+  
 
   public GetUploadedholidayEncashment() {
     return this.http.get<any[]>(

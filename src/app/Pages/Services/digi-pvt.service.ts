@@ -669,7 +669,7 @@ export class DigiPVTService {
   }
   public UploadPayrollSummaryValidation(data: any) {
     debugger;
-    this.url = 'http://localhost:1807/' + '/Master/UploadPayrollSummaryValidation';
+    this.url = this.host + '/Master/UploadPayrollSummaryValidation';
     return this.http.post(this.url, data);
   }
 
@@ -1650,6 +1650,13 @@ export class DigiPVTService {
   public GetUploadatClothingAllowances() {
     return this.http.get<any[]>(
       this.host + "/Vendor/GetUploadatClothingAllowances"
+    );
+  } 
+
+  
+  public GetUploadPayrollSummaryReport() {
+    return this.http.get<any[]>(
+      this.host + "/Master/GetUploadPayrollSummaryReport"
     );
   } 
 

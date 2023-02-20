@@ -50,6 +50,8 @@ import { RunPayrollSummaryValidationComponent } from './run-payroll-summary-vali
 import { ValidatedPayrollSummaryReportComponent } from './validated-payroll-summary-report/validated-payroll-summary-report.component';
 import { RunLoanProceedsValidationComponent } from './run-loan-proceeds-validation/run-loan-proceeds-validation.component';
 import { ValidatedLoanProceedsComponent } from './validated-loan-proceeds/validated-loan-proceeds.component';
+import { UploadRegularCollegeSemValidationComponent } from './upload-regular-college-sem-validation/upload-regular-college-sem-validation.component';
+import { UploadSummerCollegeSemValidationComponent } from './upload-summer-college-sem-validation/upload-summer-college-sem-validation.component';
 
 
 
@@ -103,7 +105,9 @@ import { ValidatedLoanProceedsComponent } from './validated-loan-proceeds/valida
     RunPayrollSummaryValidationComponent,
     ValidatedPayrollSummaryReportComponent,
     RunLoanProceedsValidationComponent,
-    ValidatedLoanProceedsComponent
+    ValidatedLoanProceedsComponent,
+    UploadRegularCollegeSemValidationComponent,
+    UploadSummerCollegeSemValidationComponent
   ],
   imports: [
     PayrollProcessorRoutingModule,

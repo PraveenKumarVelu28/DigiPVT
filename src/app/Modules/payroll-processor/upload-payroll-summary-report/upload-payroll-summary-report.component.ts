@@ -38,7 +38,7 @@ export class UploadPayrollSummaryReportComponent implements OnInit {
 
   ngOnInit(): void {
     debugger
-    this.GetUploadatClothingAllowances();
+    this.GetUploadPayrollSummaryReport();
     this.DigiPVTService.GetAllStaffNew().
     subscribe({
       next: data => {
@@ -53,9 +53,9 @@ export class UploadPayrollSummaryReportComponent implements OnInit {
       });
   }
 
-  public GetUploadatClothingAllowances(){
+  public GetUploadPayrollSummaryReport(){
     debugger
-    this.DigiPVTService.GetUploadatClothingAllowances().subscribe(data => {
+    this.DigiPVTService.GetUploadPayrollSummaryReport().subscribe(data => {
       debugger
       this.componentmaster = data;
       console.log("componentmaster", this.componentmaster);

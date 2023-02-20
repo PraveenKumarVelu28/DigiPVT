@@ -669,7 +669,7 @@ export class DigiPVTService {
   }
   public UploadPayrollSummaryValidation(data: any) {
     debugger;
-    this.url = 'http://localhost:1807/' + '/Master/UploadPayrollSummaryValidation';
+    this.url = this.host + '/Master/UploadPayrollSummaryValidation';
     return this.http.post(this.url, data);
   }
 

@@ -31,7 +31,7 @@
       <span class="icon-text">Staff</span>
     </a>
 
-    <a (click)="ValidationPassword()" *ngIf="login == 9 && companyid != 1007"
+    <a (click)="ValidationPassword()" *ngIf="login == 1 && companyid != 1007"
     [ngClass]="(active == ValidationPassword)&&!mini ? 'menu1' :(active == ValidationPassword)&&mini?'menu-mini' :'menu'">
     <span>
       <img *ngIf="(active == ValidationPassword&&!mini)" src="assets/Images/revamp/dashboardwhite-icon.png">
@@ -91,8 +91,8 @@
         <span class="sub-request">Validated Retro Basic Pay </span>
       </a>
       <a (click)="UploadBasicPayValues()" class="nonactive">
-        <span [ngClass]="active == 'UploadBonusValues' ? 'Active1' : 'Active3'" class="sub-request">Upload Basic Pay
-          Values</span>
+        <span [ngClass]="active == 'UploadBonusValues' ? 'Active1' : 'Active3'" class="sub-request">
+          Upload Basic Pay Values</span>
       </a>
 
     </div>
@@ -163,7 +163,7 @@
 
     <div id="LwopValidation" class="collapse length ">
       <a (click)="RunLwopValidation()" class="nonactive">
-        <span class="sub-request">Lwop Validated Details</span>
+        <span class="sub-request">LWOP Validated Details</span>
       </a>
 
       <a (click)="UploadStaffLeaves()" class="nonactive">
@@ -229,13 +229,13 @@
 
     <div id="FMAAllowance" class="collapse length ">
       <a (click)="RunFMAValidation()" class="nonactive">
-        <span [ngClass]="active == 'RunAllowanceValidation' ? 'Active1' : 'Active3'" class="sub-request"> Validated FMA
-          Allowances</span>
+        <span [ngClass]="active == 'RunAllowanceValidation' ? 'Active1' : 'Active3'" class="sub-request"> 
+          Validated FMA Allowances</span>
       </a>
 
       <a (click)="UploadFMAAllowance()" class="nonactive">
-        <span [ngClass]="active == 'UploadFMAAllowance' ? 'Active1' : 'Active3'" class="sub-request">Upload FMA
-          Allowance</span>
+        <span [ngClass]="active == 'UploadFMAAllowance' ? 'Active1' : 'Active3'" class="sub-request">
+          Upload FMA Allowance</span>
       </a>
     </div>
 

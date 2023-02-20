@@ -715,24 +715,31 @@ export class SidebarComponent implements OnInit {
     localStorage.setItem("clickname", "Component  Master")
     this.router.navigate(['/PayrollProcessor/UploadBasicPayValues'])
 
-    //  Swal.fire({
-    //   title: 'Access Basic Pay Validation',
-    //   html: `<input type="text" id="login" class="swal2-input"  placeholder="Enter 4 Digit Pin">
-    // `,
-    //   confirmButtonText: 'Submit',
-    //   focusConfirm: false,
-    //   preConfirm: () => {
-    //     debugger
-    //     const login: any = document.getElementById('login') as HTMLElement
 
-    //     if (login.value == 4567) {
-    //       this.router.navigate(['/PayrollProcessor/UploadBasicPayValues'])
-    //     }
-    //     else {
-    //       Swal.showValidationMessage(`Please enter correct pin`)
-    //     }
-    //   }
-    // }) 
+    this.DigiPVTService.GetValidationPassword().subscribe(data => {
+    debugger
+    this.validation = data.filter(x=>x.menuName=='Upload Basic Pay Values');
+    console.log("validation", this.validation);});
+
+
+     Swal.fire({
+      title: 'Access Basic Pay Validation',
+      html: `<input type="text" id="login" class="swal2-input"  placeholder="Enter 4 Digit Pin">
+    `,
+      confirmButtonText: 'Submit',
+      focusConfirm: false,
+      preConfirm: () => {
+        debugger
+        const login: any = document.getElementById('login') as HTMLElement
+
+        if (login.value == this.validation[0].password) {
+          this.router.navigate(['/PayrollProcessor/UploadBasicPayValues'])
+        }
+        else {
+          Swal.showValidationMessage(`Please enter correct pin`)
+        }
+      }
+    }) 
   }
 
   public UploadCOLAValues() {
@@ -751,7 +758,7 @@ export class SidebarComponent implements OnInit {
 
     this.DigiPVTService.GetValidationPassword().subscribe(data => {
       debugger
-      this.validation = data.filter(x=>x.menuName=='Validated Loan Proceed Details');
+      this.validation = data.filter(x=>x.menuName=='Validated Loan Proceeds');
       console.log("validation", this.validation);
     });
 
@@ -784,7 +791,7 @@ export class SidebarComponent implements OnInit {
 
     this.DigiPVTService.GetValidationPassword().subscribe(data => {
       debugger
-      this.validation = data.filter(x=>x.menuName=='Validated Run FMA');
+      this.validation = data.filter(x=>x.menuName=='Validated FMA Allowances');
       console.log("validation", this.validation);
     });
 
@@ -924,7 +931,7 @@ export class SidebarComponent implements OnInit {
 
     this.DigiPVTService.GetValidationPassword().subscribe(data => {
       debugger
-      this.validation = data.filter(x=>x.menuName=='Validated Run LWOP');
+      this.validation = data.filter(x=>x.menuName=='LWOP Validated Details');
       console.log("validation", this.validation);
     });
 
@@ -1025,7 +1032,7 @@ export class SidebarComponent implements OnInit {
 
     this.DigiPVTService.GetValidationPassword().subscribe(data => {
       debugger
-      this.validation = data.filter(x=>x.menuName=='Validated COLA Allowance');
+      this.validation = data.filter(x=>x.menuName=='Validated COLA Details');
       console.log("validation", this.validation);
     });
 
@@ -1060,7 +1067,7 @@ export class SidebarComponent implements OnInit {
 
     this.DigiPVTService.GetValidationPassword().subscribe(data => {
       debugger
-      this.validation = data.filter(x=>x.menuName=='Validated Clothing Allowance');
+      this.validation = data.filter(x=>x.menuName=='Validated Clothing Details');
       console.log("validation", this.validation);
     });
 
@@ -1095,7 +1102,7 @@ export class SidebarComponent implements OnInit {
 
     this.DigiPVTService.GetValidationPassword().subscribe(data => {
       debugger
-      this.validation = data.filter(x=>x.menuName=='Validated Retro Clothing Allowance');
+      this.validation = data.filter(x=>x.menuName=='Retro Validated Clothing');
       console.log("validation", this.validation);
     });
 
@@ -1130,7 +1137,7 @@ export class SidebarComponent implements OnInit {
 
     this.DigiPVTService.GetValidationPassword().subscribe(data => {
       debugger
-      this.validation = data.filter(x => x.menuName == 'Validated Basic Pay Detail');
+      this.validation = data.filter(x => x.menuName == 'Validated Basic Pay Details');
       console.log("validation", this.validation);
     });
 

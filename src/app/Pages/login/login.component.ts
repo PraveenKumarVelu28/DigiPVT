@@ -175,7 +175,7 @@ export class LoginComponent implements OnInit {
                 localStorage.setItem('Band', temp[0].band)
                 sessionStorage.setItem('AttendanceEnable', temp[0].attendanceEnable)
 
-                this.router.navigate(['/Admin/Admindashbaord']).then(() => {
+                this.router.navigate(['/PayrollAdmin/AdminDashboard']).then(() => {
                   this.loader = false;
                   location.reload();
                 });

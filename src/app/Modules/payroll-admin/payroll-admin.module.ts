@@ -6,13 +6,15 @@ import { PayrollAdminComponent } from './payroll-admin.component';
 import { ValidationpasswordDashboardComponent } from './validationpassword-dashboard/validationpassword-dashboard.component';
 import { ValidationpasswordFormComponent } from './validationpassword-form/validationpassword-form.component';
 import { SharedModule } from '../shared/shared.module';
+import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 
 
 @NgModule({
   declarations: [
     PayrollAdminComponent,
     ValidationpasswordDashboardComponent,
-    ValidationpasswordFormComponent
+    ValidationpasswordFormComponent,
+    AdminDashboardComponent
   ],
   imports: [
    

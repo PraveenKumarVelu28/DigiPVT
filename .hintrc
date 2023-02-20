@@ -13,7 +13,23 @@
     "axe/forms": [
       "default",
       {
-        "select-name": "off"
+        "select-name": "off",
+        "label": "off"
+      }
+    ],
+    "disown-opener": "off",
+    "axe/name-role-value": [
+      "default",
+      {
+        "link-name": "off"
+      }
+    ],
+    "compat-api/css": [
+      "default",
+      {
+        "ignore": [
+          "backface-visibility"
+        ]
       }
     ]
   }

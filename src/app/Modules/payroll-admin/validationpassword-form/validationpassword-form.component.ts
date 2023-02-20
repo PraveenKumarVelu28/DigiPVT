@@ -40,8 +40,13 @@ export class ValidationpasswordFormComponent implements OnInit {
       'Password' : this.Password
     }
     this.DigiPVTService.InsertValidationPassword(eb).subscribe(data=>{
+      if(data==0){
+        Swal.fire('Validation Already Exists')
+      }
+      else{
       Swal.fire('Saved Successfully')
       location.href = "#/PayrollAdmin/ValidationpasswordDashboard";
+    }
     })
 
   }

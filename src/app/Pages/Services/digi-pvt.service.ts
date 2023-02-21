@@ -1660,6 +1660,12 @@ export class DigiPVTService {
     );
   } 
 
+  public GetPhilHealthValidation() {
+    return this.http.get<any[]>(
+      this.host + "/Master/GetPhilHealthValidation"
+    );
+  } 
+
   
 
   public GetUploadedholidayEncashment() {
@@ -4400,7 +4406,16 @@ export class DigiPVTService {
       this.host + "/Vendor/DeleteValidationPassword?ID=" + ID);
   }
 
+  public DeletePhilHealthValidation(ID : any){
+    return this.http.get<any[]>(
+      this.host + "/Master/DeletePhilHealthValidation?ID=" + ID);
+  }
 
+  public InsertPhilHealthValidation(data: any) {
+    //debugger;
+    this.url = this.host + '/Master/InsertPhilHealthValidation';
+    return this.http.post(this.url, data);
+  }
 
 
 }

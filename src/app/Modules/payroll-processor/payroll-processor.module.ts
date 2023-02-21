@@ -52,6 +52,7 @@ import { RunLoanProceedsValidationComponent } from './run-loan-proceeds-validati
 import { ValidatedLoanProceedsComponent } from './validated-loan-proceeds/validated-loan-proceeds.component';
 import { UploadRegularCollegeSemValidationComponent } from './upload-regular-college-sem-validation/upload-regular-college-sem-validation.component';
 import { UploadSummerCollegeSemValidationComponent } from './upload-summer-college-sem-validation/upload-summer-college-sem-validation.component';
+import { UploadPhilHealthSummaryReportComponent } from './upload-phil-health-summary-report/upload-phil-health-summary-report.component';
 
 
 
@@ -107,7 +108,8 @@ import { UploadSummerCollegeSemValidationComponent } from './upload-summer-colle
     RunLoanProceedsValidationComponent,
     ValidatedLoanProceedsComponent,
     UploadRegularCollegeSemValidationComponent,
-    UploadSummerCollegeSemValidationComponent
+    UploadSummerCollegeSemValidationComponent,
+    UploadPhilHealthSummaryReportComponent
   ],
   imports: [
     PayrollProcessorRoutingModule,

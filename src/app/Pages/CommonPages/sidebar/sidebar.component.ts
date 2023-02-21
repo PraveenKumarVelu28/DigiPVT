@@ -225,6 +225,11 @@ export class SidebarComponent implements OnInit {
     localStorage.setItem('Pagename', 'Announcements')
   }
 
+  PhilHealthValidation() {
+    debugger
+    this.active = 'PhilHealthValidation';
+    localStorage.setItem('Pagename', 'Announcements')
+  }
 
   AllowanceValidation() {
     debugger
@@ -1220,5 +1225,9 @@ export class SidebarComponent implements OnInit {
     this.router.navigate(['/PayrollProcessor/UploadPayrollSummaryReport'])
   }
 
+  public UploadPhilHealthSummaryReport() {
+    this.active = 'UploadBasicPayValues'
+    this.router.navigate(['/PayrollProcessor/UploadPhilHealthSummaryReport'])
+  }
 
 }

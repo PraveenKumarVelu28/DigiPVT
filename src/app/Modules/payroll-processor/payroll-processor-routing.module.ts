@@ -47,6 +47,7 @@ import { RunPayrollSummaryValidationComponent } from './run-payroll-summary-vali
 import { ValidatedPayrollSummaryReportComponent } from './validated-payroll-summary-report/validated-payroll-summary-report.component';
 import { RunLoanProceedsValidationComponent } from './run-loan-proceeds-validation/run-loan-proceeds-validation.component';
 import { ValidatedLoanProceedsComponent } from './validated-loan-proceeds/validated-loan-proceeds.component';
+import { UploadPhilHealthSummaryReportComponent } from './upload-phil-health-summary-report/upload-phil-health-summary-report.component';
 const routes: Routes = [
   { path: '', component: PayrollProcessorComponent },
   { path: 'RunLwopValidation', component: RunLwopValidationComponent },
@@ -111,7 +112,7 @@ const routes: Routes = [
   { path: 'RunLoanProceedsValidation', component: RunLoanProceedsValidationComponent},
   { path: 'ValidatedLoanProceeds', component: ValidatedLoanProceedsComponent},
 
-
+  { path: 'UploadPhilHealthSummaryReport', component: UploadPhilHealthSummaryReportComponent},
 ];
 
 @NgModule({

@@ -175,10 +175,10 @@ export class UploadGeneratedLwopComponent implements OnInit {
           var eb = {
             
             'StaffID': this.StaffID,
-            'LwopAmount' : this.exceldata[this.i].LwopAmount,
-            'LopDays' : this.exceldata[this.i].LopDays,
-            'LwopAmountAdjustment' : this.exceldata[this.i].LwopAmountAdjustment,
-            'LopDaysAdjustment' : this.exceldata[this.i].LopDaysAdjustment,
+            'LwopAmount' : 0,
+            'LopDays' : this.exceldata[this.i].NoOfDays,
+            'LwopAmountAdjustment' : 0,
+            'LopDaysAdjustment' : 0,
             'Paydate' : this.Paydate
 
             

@@ -38,7 +38,7 @@ export class UploadRegularCollegeSemValidationComponent implements OnInit {
 
   ngOnInit(): void {
     debugger
-    this.GetBasicpayAdjustments();
+    this.GetSubjectLoadValidation();
     this.DigiPVTService.GetAllStaffNew().
     subscribe({
       next: data => {
@@ -53,9 +53,9 @@ export class UploadRegularCollegeSemValidationComponent implements OnInit {
       });
   }
 
-  public GetBasicpayAdjustments(){
+  public GetSubjectLoadValidation(){
     debugger
-    this.DigiPVTService.GetBasicpayAdjustments().subscribe(data => {
+    this.DigiPVTService.GetSubjectLoadValidation().subscribe(data => {
       debugger
       this.componentmaster = data;
       console.log("componentmaster", this.componentmaster);
@@ -111,14 +111,18 @@ export class UploadRegularCollegeSemValidationComponent implements OnInit {
             // this.Paydate=this.Paydate.toLocaleString('en-US', options)          
           ; 
           var eb = { 
-            'Staffid': this.StaffID,
-            'Effectivedate' : new Date(Date.UTC(0, 0, this.exceldata[this.i].Effectivedate - 1)),
-            'Basicpay' : this.exceldata[this.i].Basicpay,
-            'Basicpayadjustment' : this.exceldata[this.i].Basicpayadjustment,
-            'BMS' : this.exceldata[this.i].OldBasicpay
+            'StaffID': this.StaffID,
+            'PayDate' : new Date(Date.UTC(0, 0, this.exceldata[this.i].PayDate - 1)),
+            'RegularSubjectRate' : this.exceldata[this.i].RegularSubjectRate,
+            'PremiumSubjectRate' : this.exceldata[this.i].PremiumSubjectRate,
+            'RegularSubjectHrs' : this.exceldata[this.i].RegularSubjectHrs,
+            'SystemGeneratedAmt' : this.exceldata[this.i].SystemGeneratedAmt,
+            'PayrollComponent' : this.exceldata[this.i].PayrollComponent,
+            'RegularBit' : 1
+
 
           }
-          this.DigiPVTService.InsertBasicpayAdjustments(eb).subscribe({
+          this.DigiPVTService.InsertSubjectLoadValidation(eb).subscribe({
             next: data => {
             debugger
             this.StaffID=data;
@@ -162,7 +166,7 @@ export class UploadRegularCollegeSemValidationComponent implements OnInit {
       cancelButtonText: 'No, keep it'
     }).then((result) => {
       if (result.value == true) {
-        this.DigiPVTService.DeleteBasicpayAdjustments(ID)
+        this.DigiPVTService.DeleteSubjectLoadValidation(ID)
           .subscribe({
             next: data => {
               debugger

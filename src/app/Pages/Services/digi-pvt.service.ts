@@ -140,6 +140,16 @@ export class DigiPVTService {
     return this.http.post(this.url, data);
   }
 
+
+
+  public InsertStaffLeaveEntitlement(data: any) {
+    //debugger;
+    this.url = this.host + '/Master/InsertStaffLeaveEntitlement';
+    return this.http.post(this.url, data);
+  }
+
+  
+
   public InsertStaffFromOnboarding(data: any) {
     //debugger;
     this.url = this.host + '/Master/InsertStaffFromOnboarding';
@@ -1589,6 +1599,14 @@ export class DigiPVTService {
     return this.http.post(this.url, data);
   }
 
+  public InsertSubjectLoadValidation(data: any) {
+    //debugger;
+    this.url = this.host + '/Master/InsertSubjectLoadValidation';
+    return this.http.post(this.url, data);
+  }
+
+
+  
   
   public InsertUploadatcolavalidation(data: any) {
     //debugger;
@@ -1608,6 +1626,14 @@ export class DigiPVTService {
       this.host + "/Vendor/DeleteBasicpayAdjustments?ID=" + ID);
   }
 
+  
+  public DeleteSubjectLoadValidation(ID : any){
+    return this.http.get<any[]>(
+      this.host + "/Master/DeleteSubjectLoadValidation?ID=" + ID);
+  }
+
+
+  
   
 
   public InsertDesignationMaster(data: any) {
@@ -1640,12 +1666,30 @@ export class DigiPVTService {
     );
   } 
 
+  
+  public GetSubjectLoadValidation() {
+    return this.http.get<any[]>(
+      this.host + "/Master/GetSubjectLoadValidation"
+    );
+  } 
+
+  
+
    public GetUploadatcolavalidation() {
     return this.http.get<any[]>(
       this.host + "/Vendor/GetUploadatcolavalidation"
     );
   } 
 
+
+  public GetPayrollYTD() {
+    return this.http.get<any[]>(
+      this.host + "/Master/GetPayrollYTD"
+    );
+  } 
+
+
+  
 
   public GetUploadatClothingAllowances() {
     return this.http.get<any[]>(
@@ -4286,6 +4330,13 @@ export class DigiPVTService {
     this.url =   this.host + '/Master/InsertPayrollComponentBulkUpload';
     return this.http.post(this.url, data);
   }
+
+    public InsertPayrollYTD(data: any) {
+    debugger;
+    this.url =   this.host + '/Master/InsertPayrollYTD';
+    return this.http.post(this.url, data);
+  }
+
 
   public DeletePayrollComponentBulkUpload(ID : any){
     return this.http.get<any[]>(

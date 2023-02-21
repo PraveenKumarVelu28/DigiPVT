@@ -47,6 +47,12 @@ import { RunPayrollSummaryValidationComponent } from './run-payroll-summary-vali
 import { ValidatedPayrollSummaryReportComponent } from './validated-payroll-summary-report/validated-payroll-summary-report.component';
 import { RunLoanProceedsValidationComponent } from './run-loan-proceeds-validation/run-loan-proceeds-validation.component';
 import { ValidatedLoanProceedsComponent } from './validated-loan-proceeds/validated-loan-proceeds.component';
+import { UploadRegularCollegeSemValidationComponent } from './upload-regular-college-sem-validation/upload-regular-college-sem-validation.component';
+import { UploadSummerCollegeSemValidationComponent } from './upload-summer-college-sem-validation/upload-summer-college-sem-validation.component';
+import { PayrollYTDUploadComponent } from './payroll-ytdupload/payroll-ytdupload.component';
+import { RunTaxValidationComponent } from './run-tax-validation/run-tax-validation.component'; 
+import { ValidatedTaxValuesComponent } from './validated-tax-values/validated-tax-values.component';
+
 const routes: Routes = [
   { path: '', component: PayrollProcessorComponent },
   { path: 'RunLwopValidation', component: RunLwopValidationComponent },
@@ -110,6 +116,15 @@ const routes: Routes = [
   { path: 'ValidatedPayrollSummaryReport', component: ValidatedPayrollSummaryReportComponent},
   { path: 'RunLoanProceedsValidation', component: RunLoanProceedsValidationComponent},
   { path: 'ValidatedLoanProceeds', component: ValidatedLoanProceedsComponent},
+  { path: 'UploadRegularCollegeSemValidation', component: UploadRegularCollegeSemValidationComponent},
+  { path: 'UploadSummerCollegeSemValidation', component: UploadSummerCollegeSemValidationComponent},
+
+
+  { path: 'PayrollYTDUpload', component: PayrollYTDUploadComponent},
+  { path: 'RunTaxValidation', component: RunTaxValidationComponent},
+  { path: 'ValidatedTaxValues', component: ValidatedTaxValuesComponent},
+
+
 
 
 ];

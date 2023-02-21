@@ -2,7 +2,7 @@
     <div class="col-md-12">
         <div class="row">
             <div class="col-lg-11">
-                <p class="Heading">Upload Regular Sem Details</p>
+                <p class="Heading">Upload YTD Details</p>
             </div>
         </div>
         <div class="row FilterClass">
@@ -28,7 +28,7 @@
                             <br />
     
                             <button class="form-control AddExpense3" 
-                              data-toggle="modal" data-target="#import">Upload Regular Sem Details
+                              data-toggle="modal" data-target="#import">Upload YTD
                                 
                             </button>
                         </div>
@@ -60,14 +60,11 @@
                             <tr>
                                 <th>EmployeID</th>
                                 <th>Name</th>
-                                <th>PayrollComponent</th>
-                                <th>Regular Subject Rate</th>
-                                <th>Premium Subject Rate</th>    
-                                <th>Regular Subject Hrs</th>  
-                                <th>System Generated Amt</th>
-                                <th>PayDate</th>  
-
-                                <th>Actions</th>  
+                                <th>Gross Income YTD</th>
+                                <th>Tax YTD</th>    
+                                <th>Taxable Bonus YTD</th>  
+                                <th>Non Taxable Bonus YTD</th> 
+                                <th>Actions</th>    
                                
                             </tr>
                         </thead>
@@ -75,13 +72,11 @@
                             <tr *ngFor="let list of componentmaster|filter:term |paginate: { itemsPerPage: count2, currentPage: p1}  "  >
                                 <td>{{list.employeID}}</td>
                                 <td>{{list.name}}</td>
-                                <td>{{list.payrollComponent}}</td>
-                                <td>{{list.regularSubjectRate}}</td>
-                                <td>{{list.premiumSubjectRate}}</td>
-                                <td>{{list.regularSubjectHrs}}</td>
-                                <td>{{list.systemGeneratedAmt}}</td>
+                                <td>{{list.nettaxableYTD}}</td>
+                                <td>{{list.taxYTD}}</td>
+                                <td>{{list.taxableBonusYTD}}</td>
+                                <td>{{list.nonTaxableBonusYTD}}</td>
 
-                                <td>{{list.payDate|date}}</td>
                                 <td>
                                     <button class="upload" (click)="delete(list.id)">Delete</button>
                                 </td>
@@ -102,7 +97,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title">Basic Pay Validation Details</h4>
+                <h4 class="modal-title">Payroll YTD Details</h4>
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
             <div class="modal-body">
@@ -112,14 +107,14 @@
                             (change)="incomingfile($event)" placeholder="Upload file" accept=".xlsx">
                     </div>
                     <div class="col-lg-4">
-                        <a href="https://103.12.1.76//DigiPVTAPI/Templates/Import_BasicPay_Data.xlsx" style="color:navy"><u>Template.XLSX</u></a>
+                        <a href="https://103.12.1.76//DigiPVTAPI/Templates/PayrollYTDTemplate.xlsx" style="color:navy"><u>Template.XLSX</u></a>
                     </div>
                 </div>
                 <br>
                 <div class="row">
                     <div class="col-lg-6">
                         <button type="button" class="form-control AddExpense" data-dismiss="modal"
-                      (click)="Upload_file()" >Upload Basicpay </button>
+                      (click)="Upload_file()" >Upload Payroll YTD </button>
                     </div>
                 </div>
             </div>

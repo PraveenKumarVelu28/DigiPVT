@@ -176,7 +176,7 @@ export class SidebarComponent implements OnInit {
     });
     //this.router.navigate(['/PayrollProcessor/ValidatedHolidayEnCashments'])
     Swal.fire({
-      title: 'Access Basic Pay Validation',
+      title: 'Access Payroll Summary Validation',
       html: `<input type="text" id="login" class="swal2-input"  placeholder="Enter 4 Digit Pin">
     `,
       confirmButtonText: 'Submit',
@@ -709,6 +709,41 @@ export class SidebarComponent implements OnInit {
 
   }
 
+  public ValidatedRunTaxValidation() {
+
+    this.active = 'RunTaxValidation'
+    localStorage.setItem("clickname", "Component  Master")
+
+    this.DigiPVTService.GetValidationPassword().subscribe(data => {
+      debugger
+      this.validation = data.filter(x=>x.menuName=='Upload FMA Allowance');
+      console.log("validation", this.validation);
+    });
+
+
+    Swal.fire({
+      title: 'Access Basic Pay Validation',
+      html: `<input type="text" id="login" class="swal2-input"  placeholder="Enter 4 Digit Pin">
+      `,
+      confirmButtonText: 'Submit',
+      focusConfirm: false,
+      preConfirm: () => {
+        debugger
+        const login: any = document.getElementById('login') as HTMLElement
+
+        if (login.value == 4567) {
+          this.router.navigate(['/PayrollProcessor/ValidatedTaxValues'])
+        }
+        else {
+          Swal.showValidationMessage(`Please enter correct pin`)
+        }
+      }
+    })
+
+
+  }
+
+
   public UploadBasicPayValues() {
     debugger
     this.active = 'UploadBasicPayValues'
@@ -739,6 +774,25 @@ export class SidebarComponent implements OnInit {
     this.active = 'UploadBasicPayValues'
     this.router.navigate(['/PayrollProcessor/UploadColaValues'])
   }
+
+  public TaxValidation() {
+    this.active = 'RunTaxValidation'
+    this.router.navigate(['/PayrollProcessor/UploadColaValues'])
+  }
+
+
+  
+  public UploadSubjectLoadValidation() {
+    this.active = 'UploadBasicPayValues'
+    this.router.navigate(['/PayrollProcessor/UploadRegularCollegeSemValidation'])
+  }
+
+    
+  public UploadPayrollYTD() {
+    this.active = 'UploadPayrollYTD'
+    this.router.navigate(['/PayrollProcessor/PayrollYTDUpload'])
+  }
+
 
 
 
@@ -824,6 +878,13 @@ export class SidebarComponent implements OnInit {
 
   public COLAValidation() {
     this.active = 768
+    localStorage.setItem("clickname", "Component  Master")
+
+  }
+
+  
+  public RegularSubjectLoadsValidation() {
+    this.active = 7690
     localStorage.setItem("clickname", "Component  Master")
 
   }
@@ -924,7 +985,7 @@ export class SidebarComponent implements OnInit {
 
     this.DigiPVTService.GetValidationPassword().subscribe(data => {
       debugger
-      this.validation = data.filter(x=>x.menuName=='Validated Run LWOP');
+      this.validation = data.filter(x=>x.menuName=='LWOP Validated Details');
       console.log("validation", this.validation);
     });
 

@@ -1,19 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import Swal from 'sweetalert2';
 import { DigiPVTService } from 'src/app/Pages/Services/digi-pvt.service';
+import Swal from 'sweetalert2';
 import * as XLSX from 'xlsx';
-import { ExportToCsv } from 'export-to-csv';
 declare var JSZipUtils: any;
 
 @Component({
-  selector: 'app-staff-leaves-upload',
-  templateUrl: './staff-leaves-upload.component.html',
-  styleUrls: ['./staff-leaves-upload.component.css']
+  selector: 'app-payroll-ytdupload',
+  templateUrl: './payroll-ytdupload.component.html',
+  styleUrls: ['./payroll-ytdupload.component.css']
 })
-export class StaffLeavesUploadComponent implements OnInit {
- 
+export class PayrollYTDUploadComponent implements OnInit {
 
+ 
   
   constructor(public DigiPVTService: DigiPVTService, public router: Router) { }
   componentmaster: any;
@@ -23,41 +22,46 @@ export class StaffLeavesUploadComponent implements OnInit {
   count2: any = 10;
   stafflist:any;
   PayPeriodSettingList:any;
-  roleid: any
-  p: any = 1;
-  count1: any = 10;
-
+  fromlogin: any;
+  exceldata: any;
+  arrayBuffer: any;
+  filetype: any;
+  file: any;
+  fileName = 'Payroll Summery Reports.xlsx';
+  i:any;
+  startdate:any;
+  Attachment:any;
+  stafflistcopy123:any;
+  EndDate:any;
+  StaffID:any;
+  Paydate:any;
+  public attachmentsurl: any = [];
 
   ngOnInit(): void {
     debugger
-
+    this.GetPayrollYTD();
     this.DigiPVTService.GetAllStaffNew().
     subscribe({
       next: data => {
         debugger
         this.stafflist = data;
-       
-       
       }
     })
 
     this.DigiPVTService.GetPayPeriodSetting().subscribe(data => {
         debugger
         this.PayPeriodSettingList = data;
-        
       });
-    
-    
   }
 
-
-
- 
-  fromlogin: any;
-  exceldata: any;
-  arrayBuffer: any;
-  filetype: any;
-  file: any;
+  public GetPayrollYTD(){
+    debugger
+    this.DigiPVTService.GetPayrollYTD().subscribe(data => {
+      debugger
+      this.componentmaster = data;
+      console.log("componentmaster", this.componentmaster);
+    });
+  }
 
   incomingfile(event: any) {
     debugger;
@@ -82,112 +86,45 @@ export class StaffLeavesUploadComponent implements OnInit {
         this.exceldata = XLSX.utils.sheet_to_json(worksheet, { raw: true });
       };
       fileReader.readAsArrayBuffer(this.file);
-
-
-
     } else {
       Swal.fire("Imported file format not supported.");
     }
   }
 
 
-  fileName = 'Attendance Report.xlsx';
-  exportexcel(): void {
-    /* table id is passed over here */
-    let element = document.getElementById('downloadaplication');
-    const ws: XLSX.WorkSheet = XLSX.utils.table_to_sheet(element);
-
-    /* generate workbook and add the worksheet */
-    const wb: XLSX.WorkBook = XLSX.utils.book_new();
-    XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
-
-    /* save to file */
-    XLSX.writeFile(wb, this.fileName);
-
-  }
-  
-  public delete(ID: any) {
-    debugger
-    Swal.fire({
-      title: 'Are you sure?',
-      text: 'You Want to delete it.',
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonText: 'Yes, Delete it!',
-      cancelButtonText: 'No, keep it'
-    }).then((result) => {
-      if (result.value == true) {
-        this.DigiPVTService.DeleteGeneratedLwopValues(ID)
-          .subscribe({
-            next: data => {
-              debugger
-              Swal.fire('Deleted Successfully')
-              location.reload();
-              
-            }
-          })
-      }
-    })
-  }
-
-  i:any;
-  startdate:any;
-  Attachment:any;
-  stafflistcopy123:any;
-  EndDate:any;
-  StaffID:any;
-  Paydate:any;
-  public attachmentsurl: any = [];
    public Upload_file() {
     debugger
     if (this.exceldata == undefined) {
       Swal.fire('Choose a File');
     } else {
       let apiarray = [];
-
-
       for (this.i = 0; this.i < this.exceldata.length; this.i++) {
-       
-            this.stafflistcopy123=this.stafflist.filter((x: { employeID: any; })=>x.employeID==this.exceldata[this.i].EmployeID)
-             
+            this.stafflistcopy123=this.stafflist.filter((x: { employeID: any; })=>x.employeID==this.exceldata[this.i].EmployeID)          
              if(this.stafflistcopy123.length!=0){
               this.StaffID = this.stafflistcopy123[0].id
              }
              else{
               this.StaffID = 0
-             }
-
-             
+             }           
           var options = { hour12: false };
-
-
             //  this.Paydate = new Date(Date.UTC(0, 0, this.exceldata[this.i].Paydate-1 )); 
             this.Paydate = new Date(Date.UTC(0, 0, this.exceldata[this.i].Paydate - 1));
-            // this.Paydate=this.Paydate.toLocaleString('en-US', options)
-            
+            // this.Paydate=this.Paydate.toLocaleString('en-US', options)          
           ; 
-           
+          var eb = { 
+            'Staffid': this.StaffID,
+            'NettaxableYTD' : this.exceldata[this.i].GrossTaxableIncome ,
+            'TaxYTD' : this.exceldata[this.i].TaxYTD,
+            'NonTaxableBonusYTD' : this.exceldata[this.i].NonTaxableBonusYTD,
+            'TaxableBonusYTD' : this.exceldata[this.i].TaxableBonusYTD
 
-          
-          var eb = {
-            
-            'StaffID': this.StaffID,
-            'sickleaveentitlement':  this.exceldata[this.i].Sick_leave_entitlement ,
-            'vacationleaveentitlement':this.exceldata[this.i].Vacation_leave_entitlement ,
-            'LeaveWithPayentitlement' : this.exceldata[this.i].LeaveWithPayentitlement 
-
-            
           }
-          this.DigiPVTService.InsertStaffLeaveEntitlement(eb).subscribe({
+          this.DigiPVTService.InsertPayrollYTD(eb).subscribe({
             next: data => {
-
             debugger
             this.StaffID=data;
-            
               Swal.fire('Saved Successfully')
-            
-             
-          
+              this.ngOnInit();
             // // this.SavePositionDetails();
             // var eb = {
             //   'EmergencyContactName': this.exceldata[this.i-(this.exceldata.length)].EmergencyContactName,
@@ -205,23 +142,54 @@ export class StaffLeavesUploadComponent implements OnInit {
       
             //   },
             // )
-           
-           
-           
-            
-           
+ 
           }, error: (err) => {
             Swal.fire('Issue in Inserting Attendance Units');
-            // Insert error in Db Here//
-          
+            // Insert error in Db Here//         
           }
         }
         )
       }
     }
-
+  }
+  delete(ID : any){
+    debugger
+    Swal.fire({
+      title: 'Are you sure?',
+      text: 'You Want to delete it.',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Yes, Delete it!',
+      cancelButtonText: 'No, keep it'
+    }).then((result) => {
+      if (result.value == true) {
+        this.DigiPVTService.DeleteBasicpayAdjustments(ID)
+          .subscribe({
+            next: data => {
+              debugger
+              Swal.fire('Deleted Successfully')
+              location.reload();
+              
+            }
+          })
+      }
+    })
 
   }
+  exportexcel(): void {
+    /* table id is passed over here */
+    let element = document.getElementById('downloadaplication');
+    const ws: XLSX.WorkSheet = XLSX.utils.table_to_sheet(element);
+
+    /* generate workbook and add the worksheet */
+    const wb: XLSX.WorkBook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
+
+    /* save to file */
+    XLSX.writeFile(wb, this.fileName);
+
+  }
+
 
 
 }

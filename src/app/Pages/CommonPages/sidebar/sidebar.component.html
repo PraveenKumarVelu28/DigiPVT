@@ -42,7 +42,7 @@
   </a>
 
 
-  <a data-toggle="collapse" data-target="#SummaryValidation" *ngIf="login == 9 && companyid == 1001|| companyid == 1006 || companyid == 10013"
+  <a data-toggle="collapse" data-target="#SummaryValidation" *ngIf="login == 9 && (companyid == 1001|| companyid == 1006 || companyid == 10013)"
 
   (click)="PayrollSummaryValidation()"
   [ngClass]="(active == 976 )&&!mini ? 'menu1' : (active == 976)&&mini?'menu-mini':'menu'">
@@ -75,7 +75,7 @@
       <span class="icon-text">Announcement</span></a> -->
 
     <a data-toggle="collapse" data-target="#BasicPayValidation"
-      *ngIf="login == 9 && companyid == 1001 || companyid == 1002 || companyid == 1006 || companyid == 10013  " (click)="BasicPayValidation()"
+      *ngIf="login == 9 && (companyid == 1001 || companyid == 1002 || companyid == 1006 || companyid == 10013)" (click)="BasicPayValidation()"
       [ngClass]="(active == 767 )&&!mini ? 'menu1' : (active == 767)&&mini?'menu-mini':'menu'">
       <img *ngIf="(active == 767&&!mini)" src="assets/Images/revamp/announcementwhite.png">
       <img *ngIf="active != 767 " src="assets/Images/revamp/announcementnewgray-icon.png">
@@ -149,7 +149,7 @@
   </div>
 
 
-    <a data-toggle="collapse" data-target="#LwopValidation" *ngIf="login == 9 && companyid == 1001|| companyid == 1006"
+    <a data-toggle="collapse" data-target="#LwopValidation" *ngIf="login == 9 && (companyid == 1001|| companyid == 1006)"
 
       (click)="LwopValidation()"
       [ngClass]="(active == 108 )&&!mini ? 'menu1' : (active == 108)&&mini?'menu-mini':'menu'">

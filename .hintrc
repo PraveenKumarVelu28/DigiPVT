@@ -31,6 +31,12 @@
           "backface-visibility"
         ]
       }
+    ],
+    "axe/structure": [
+      "default",
+      {
+        "list": "off"
+      }
     ]
   }
 }

@@ -716,30 +716,30 @@ export class SidebarComponent implements OnInit {
     this.router.navigate(['/PayrollProcessor/UploadBasicPayValues'])
 
 
-    this.DigiPVTService.GetValidationPassword().subscribe(data => {
-    debugger
-    this.validation = data.filter(x=>x.menuName=='Upload Basic Pay Values');
-    console.log("validation", this.validation);});
+    // this.DigiPVTService.GetValidationPassword().subscribe(data => {
+    // debugger
+    // this.validation = data.filter(x=>x.menuName=='Upload Basic Pay Values');
+    // console.log("validation", this.validation);});
 
 
-     Swal.fire({
-      title: 'Access Basic Pay Validation',
-      html: `<input type="text" id="login" class="swal2-input"  placeholder="Enter 4 Digit Pin">
-    `,
-      confirmButtonText: 'Submit',
-      focusConfirm: false,
-      preConfirm: () => {
-        debugger
-        const login: any = document.getElementById('login') as HTMLElement
+    //  Swal.fire({
+    //   title: 'Access Basic Pay Validation',
+    //   html: `<input type="text" id="login" class="swal2-input"  placeholder="Enter 4 Digit Pin">
+    // `,
+    //   confirmButtonText: 'Submit',
+    //   focusConfirm: false,
+    //   preConfirm: () => {
+    //     debugger
+    //     const login: any = document.getElementById('login') as HTMLElement
 
-        if (login.value == this.validation[0].password) {
-          this.router.navigate(['/PayrollProcessor/UploadBasicPayValues'])
-        }
-        else {
-          Swal.showValidationMessage(`Please enter correct pin`)
-        }
-      }
-    }) 
+    //     if (login.value == this.validation[0].password) {
+    //       this.router.navigate(['/PayrollProcessor/UploadBasicPayValues'])
+    //     }
+    //     else {
+    //       Swal.showValidationMessage(`Please enter correct pin`)
+    //     }
+    //   }
+    // }) 
   }
 
   public UploadCOLAValues() {

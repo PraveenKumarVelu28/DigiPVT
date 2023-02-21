@@ -31,7 +31,7 @@
       <span class="icon-text">Staff</span>
     </a>
 
-    <a (click)="ValidationPassword()" *ngIf="login == 9 && companyid != 1007"
+    <a (click)="ValidationPassword()" *ngIf="login == 1 && companyid != 1007"
     [ngClass]="(active == ValidationPassword)&&!mini ? 'menu1' :(active == ValidationPassword)&&mini?'menu-mini' :'menu'">
     <span>
       <img *ngIf="(active == ValidationPassword&&!mini)" src="assets/Images/revamp/dashboardwhite-icon.png">
@@ -42,7 +42,7 @@
   </a>
 
 
-  <a data-toggle="collapse" data-target="#SummaryValidation" *ngIf="login == 9 && companyid == 1001|| companyid == 1006 || companyid == 10013"
+  <a data-toggle="collapse" data-target="#SummaryValidation" *ngIf="login == 9 && (companyid == 1001|| companyid == 1006 || companyid == 10013)"
 
   (click)="PayrollSummaryValidation()"
   [ngClass]="(active == 976 )&&!mini ? 'menu1' : (active == 976)&&mini?'menu-mini':'menu'">
@@ -98,7 +98,7 @@
       <span class="icon-text">Announcement</span></a> -->
 
     <a data-toggle="collapse" data-target="#BasicPayValidation"
-      *ngIf="login == 9 && companyid == 1001 || companyid == 1002 || companyid == 1006 || companyid == 10013  " (click)="BasicPayValidation()"
+      *ngIf="login == 9 && (companyid == 1001 || companyid == 1002 || companyid == 1006 || companyid == 10013)" (click)="BasicPayValidation()"
       [ngClass]="(active == 767 )&&!mini ? 'menu1' : (active == 767)&&mini?'menu-mini':'menu'">
       <img *ngIf="(active == 767&&!mini)" src="assets/Images/revamp/announcementwhite.png">
       <img *ngIf="active != 767 " src="assets/Images/revamp/announcementnewgray-icon.png">
@@ -114,13 +114,35 @@
         <span class="sub-request">Validated Retro Basic Pay </span>
       </a>
       <a (click)="UploadBasicPayValues()" class="nonactive">
-        <span [ngClass]="active == 'UploadBonusValues' ? 'Active1' : 'Active3'" class="sub-request">Upload Basic Pay
-          Values</span>
+        <span [ngClass]="active == 'UploadBonusValues' ? 'Active1' : 'Active3'" class="sub-request">
+          Upload Basic Pay Values</span>
       </a>
 
     </div>
 
+<<<<<<< HEAD
     
+=======
+    <a data-toggle="collapse" data-target="#PhilHealthValidation" *ngIf="login == 9 && (companyid == 10013)"
+
+    (click)="PhilHealthValidation()"
+    [ngClass]="(active == 'PhilHealthValidation' ) && !mini ? 'menu1' : (active == 'PhilHealthValidation')&&mini?'menu-mini':'menu'">
+    <img *ngIf="(active == 'PhilHealthValidation' && !mini)" src="assets/Images/revamp/announcementwhite.png">
+    <img *ngIf="active != 'PhilHealthValidation' " src="assets/Images/revamp/announcementnewgray-icon.png">
+    <img *ngIf="(active == 'PhilHealthValidation' && mini) " src="assets/Images/revamp/announcementnewblue-icon.png">
+  
+    <span class="icon-text">PhilHealth Validation</span></a>
+  
+  
+  
+  <div id="PhilHealthValidation" class="collapse length ">
+    <a (click)="UploadPhilHealthSummaryReport()" class="nonactive">
+      <span [ngClass]="active == 'UploadSystemGeneratedLWOP' ? 'Active1' : 'Active3'" class="sub-request">Upload
+        PhilHealth Summary Report</span>
+    </a>
+  </div>
+
+>>>>>>> 0f072c2bfad1f21775bcc686537daa6e00349626
 
     <a data-toggle="collapse" data-target="#COLAValidation"
       *ngIf="login == 9 && companyid == 1006" (click)="COLAValidation()"
@@ -198,7 +220,7 @@
   </div>
 
 
-    <a data-toggle="collapse" data-target="#LwopValidation" *ngIf="login == 9 && companyid == 1001|| companyid == 1006"
+    <a data-toggle="collapse" data-target="#LwopValidation" *ngIf="login == 9 && (companyid == 1001|| companyid == 1006)"
 
       (click)="LwopValidation()"
       [ngClass]="(active == 108 )&&!mini ? 'menu1' : (active == 108)&&mini?'menu-mini':'menu'">
@@ -212,7 +234,7 @@
 
     <div id="LwopValidation" class="collapse length ">
       <a (click)="RunLwopValidation()" class="nonactive">
-        <span class="sub-request">Lwop Validated Details</span>
+        <span class="sub-request">LWOP Validated Details</span>
       </a>
 
       <a (click)="UploadStaffLeaves()" class="nonactive">
@@ -278,13 +300,13 @@
 
     <div id="FMAAllowance" class="collapse length ">
       <a (click)="RunFMAValidation()" class="nonactive">
-        <span [ngClass]="active == 'RunAllowanceValidation' ? 'Active1' : 'Active3'" class="sub-request"> Validated FMA
-          Allowances</span>
+        <span [ngClass]="active == 'RunAllowanceValidation' ? 'Active1' : 'Active3'" class="sub-request"> 
+          Validated FMA Allowances</span>
       </a>
 
       <a (click)="UploadFMAAllowance()" class="nonactive">
-        <span [ngClass]="active == 'UploadFMAAllowance' ? 'Active1' : 'Active3'" class="sub-request">Upload FMA
-          Allowance</span>
+        <span [ngClass]="active == 'UploadFMAAllowance' ? 'Active1' : 'Active3'" class="sub-request">
+          Upload FMA Allowance</span>
       </a>
     </div>
 

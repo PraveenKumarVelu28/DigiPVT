@@ -225,6 +225,11 @@ export class SidebarComponent implements OnInit {
     localStorage.setItem('Pagename', 'Announcements')
   }
 
+  PhilHealthValidation() {
+    debugger
+    this.active = 'PhilHealthValidation';
+    localStorage.setItem('Pagename', 'Announcements')
+  }
 
   AllowanceValidation() {
     debugger
@@ -750,6 +755,13 @@ export class SidebarComponent implements OnInit {
     localStorage.setItem("clickname", "Component  Master")
     this.router.navigate(['/PayrollProcessor/UploadBasicPayValues'])
 
+
+    // this.DigiPVTService.GetValidationPassword().subscribe(data => {
+    // debugger
+    // this.validation = data.filter(x=>x.menuName=='Upload Basic Pay Values');
+    // console.log("validation", this.validation);});
+
+
     //  Swal.fire({
     //   title: 'Access Basic Pay Validation',
     //   html: `<input type="text" id="login" class="swal2-input"  placeholder="Enter 4 Digit Pin">
@@ -760,7 +772,7 @@ export class SidebarComponent implements OnInit {
     //     debugger
     //     const login: any = document.getElementById('login') as HTMLElement
 
-    //     if (login.value == 4567) {
+    //     if (login.value == this.validation[0].password) {
     //       this.router.navigate(['/PayrollProcessor/UploadBasicPayValues'])
     //     }
     //     else {
@@ -805,7 +817,7 @@ export class SidebarComponent implements OnInit {
 
     this.DigiPVTService.GetValidationPassword().subscribe(data => {
       debugger
-      this.validation = data.filter(x=>x.menuName=='Validated Loan Proceed Details');
+      this.validation = data.filter(x=>x.menuName=='Validated Loan Proceeds');
       console.log("validation", this.validation);
     });
 
@@ -838,7 +850,7 @@ export class SidebarComponent implements OnInit {
 
     this.DigiPVTService.GetValidationPassword().subscribe(data => {
       debugger
-      this.validation = data.filter(x=>x.menuName=='Validated Run FMA');
+      this.validation = data.filter(x=>x.menuName=='Validated FMA Allowances');
       console.log("validation", this.validation);
     });
 
@@ -1086,7 +1098,7 @@ export class SidebarComponent implements OnInit {
 
     this.DigiPVTService.GetValidationPassword().subscribe(data => {
       debugger
-      this.validation = data.filter(x=>x.menuName=='Validated COLA Allowance');
+      this.validation = data.filter(x=>x.menuName=='Validated COLA Details');
       console.log("validation", this.validation);
     });
 
@@ -1121,7 +1133,7 @@ export class SidebarComponent implements OnInit {
 
     this.DigiPVTService.GetValidationPassword().subscribe(data => {
       debugger
-      this.validation = data.filter(x=>x.menuName=='Validated Clothing Allowance');
+      this.validation = data.filter(x=>x.menuName=='Validated Clothing Details');
       console.log("validation", this.validation);
     });
 
@@ -1156,7 +1168,7 @@ export class SidebarComponent implements OnInit {
 
     this.DigiPVTService.GetValidationPassword().subscribe(data => {
       debugger
-      this.validation = data.filter(x=>x.menuName=='Validated Retro Clothing Allowance');
+      this.validation = data.filter(x=>x.menuName=='Retro Validated Clothing');
       console.log("validation", this.validation);
     });
 
@@ -1191,7 +1203,7 @@ export class SidebarComponent implements OnInit {
 
     this.DigiPVTService.GetValidationPassword().subscribe(data => {
       debugger
-      this.validation = data.filter(x => x.menuName == 'Validated Basic Pay Detail');
+      this.validation = data.filter(x => x.menuName == 'Validated Basic Pay Details');
       console.log("validation", this.validation);
     });
 
@@ -1274,5 +1286,9 @@ export class SidebarComponent implements OnInit {
     this.router.navigate(['/PayrollProcessor/UploadPayrollSummaryReport'])
   }
 
+  public UploadPhilHealthSummaryReport() {
+    this.active = 'UploadBasicPayValues'
+    this.router.navigate(['/PayrollProcessor/UploadPhilHealthSummaryReport'])
+  }
 
 }

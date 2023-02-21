@@ -53,6 +53,7 @@ import { PayrollYTDUploadComponent } from './payroll-ytdupload/payroll-ytdupload
 import { RunTaxValidationComponent } from './run-tax-validation/run-tax-validation.component'; 
 import { ValidatedTaxValuesComponent } from './validated-tax-values/validated-tax-values.component';
 
+import { UploadPhilHealthSummaryReportComponent } from './upload-phil-health-summary-report/upload-phil-health-summary-report.component';
 const routes: Routes = [
   { path: '', component: PayrollProcessorComponent },
   { path: 'RunLwopValidation', component: RunLwopValidationComponent },
@@ -126,7 +127,7 @@ const routes: Routes = [
 
 
 
-
+  { path: 'UploadPhilHealthSummaryReport', component: UploadPhilHealthSummaryReportComponent},
 ];
 
 @NgModule({

@@ -11,10 +11,13 @@ import Swal from 'sweetalert2';
 export class ValidationpasswordFormComponent implements OnInit {
 
   constructor( public DigiPVTService: DigiPVTService,private ActivatedRoute: ActivatedRoute ) { }
-  MenuName : any
-  Password : any
-  id : any
+  MenuName : any ;
+  Password : any ;
+  id : any ;
+  companyid : any ;
   ngOnInit(): void {
+    this.MenuName = 0;
+    this.companyid = sessionStorage.getItem('companyid');
     this.ActivatedRoute.params.subscribe((params: { [x: string]: any; }) => {
       debugger;
      this.id = params['id'];

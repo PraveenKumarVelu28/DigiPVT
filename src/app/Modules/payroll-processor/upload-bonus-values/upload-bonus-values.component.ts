@@ -24,7 +24,7 @@ export class UploadBonusValuesComponent implements OnInit {
 
 
   ngOnInit(): void {
-    debugger
+    debugger;
     this.GetBonusValidation();
 
     this.DigiPVTService.GetAllStaffNew().

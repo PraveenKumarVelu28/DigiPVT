@@ -733,7 +733,7 @@ export class RunAllowanceValidationComponent implements OnInit {
                                 )
                                 this.Payrollvis = true
                                 this.InsertNotification();
-                                location.href = '#/LwopValidationDetails'
+                                location.href = '#/PayrollProcessor/ValidatedAllowanceDetails'
                               }
                             )
   
@@ -791,7 +791,7 @@ export class RunAllowanceValidationComponent implements OnInit {
                               )
                               this.Payrollvis = true
                               this.InsertNotification();
-                              location.href = '#/LwopValidationDetails'
+                              location.href = '#/PayrollProcessor/ValidatedAllowanceDetails'
                             }
                           )
 

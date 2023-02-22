@@ -52,13 +52,10 @@ import { RunLoanProceedsValidationComponent } from './run-loan-proceeds-validati
 import { ValidatedLoanProceedsComponent } from './validated-loan-proceeds/validated-loan-proceeds.component';
 import { UploadRegularCollegeSemValidationComponent } from './upload-regular-college-sem-validation/upload-regular-college-sem-validation.component';
 import { UploadSummerCollegeSemValidationComponent } from './upload-summer-college-sem-validation/upload-summer-college-sem-validation.component';
-<<<<<<< HEAD
 import { PayrollYTDUploadComponent } from './payroll-ytdupload/payroll-ytdupload.component';
 import { RunTaxValidationComponent } from './run-tax-validation/run-tax-validation.component';
 import { ValidatedTaxValuesComponent } from './validated-tax-values/validated-tax-values.component';
-=======
 import { UploadPhilHealthSummaryReportComponent } from './upload-phil-health-summary-report/upload-phil-health-summary-report.component';
->>>>>>> 0f072c2bfad1f21775bcc686537daa6e00349626
 
 
 
@@ -115,13 +112,10 @@ import { UploadPhilHealthSummaryReportComponent } from './upload-phil-health-sum
     ValidatedLoanProceedsComponent,
     UploadRegularCollegeSemValidationComponent,
     UploadSummerCollegeSemValidationComponent,
-<<<<<<< HEAD
     PayrollYTDUploadComponent,
     RunTaxValidationComponent,
-    ValidatedTaxValuesComponent
-=======
+    ValidatedTaxValuesComponent,
     UploadPhilHealthSummaryReportComponent
->>>>>>> 0f072c2bfad1f21775bcc686537daa6e00349626
   ],
   imports: [
     PayrollProcessorRoutingModule,

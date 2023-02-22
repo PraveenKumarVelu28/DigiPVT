@@ -11,14 +11,14 @@
       <img src="assets/Images/revamp/menuClose-image.png" style="    height: 1%;
       " (click)="toggleSidebar()" *ngIf="!mini">
     </div>
-    <a (click)="Home()" [ngClass]="(active == 1)&&!mini ? 'menu1' :(active == 1)&&mini?'menu-mini' :'menu'">
+    <!-- <a (click)="Home()" [ngClass]="(active == 1)&&!mini ? 'menu1' :(active == 1)&&mini?'menu-mini' :'menu'">
       <span>
         <img *ngIf="(active == 1&&!mini)" src="assets/Images/revamp/dashboardwhite-icon.png">
         <img *ngIf="active != 1" src="assets/Images/revamp/dashboardgray-icon.png">
         <img *ngIf="(active == 1&&mini)" src="assets/Images/revamp/dashboardnewblue-icon.png">
       </span>
       <span class="icon-text">Dashboard</span>
-    </a>
+    </a> -->
 
 
     <a (click)="Staff123()" *ngIf="login == 9 && companyid != 1007"
@@ -120,9 +120,7 @@
 
     </div>
 
-<<<<<<< HEAD
     
-=======
     <a data-toggle="collapse" data-target="#PhilHealthValidation" *ngIf="login == 9 && (companyid == 10013)"
 
     (click)="PhilHealthValidation()"
@@ -142,7 +140,6 @@
     </a>
   </div>
 
->>>>>>> 0f072c2bfad1f21775bcc686537daa6e00349626
 
     <a data-toggle="collapse" data-target="#COLAValidation"
       *ngIf="login == 9 && companyid == 1006" (click)="COLAValidation()"
@@ -394,7 +391,7 @@
 
 
 
-
+<!-- 
 
 
 
@@ -404,7 +401,7 @@
       <img *ngIf="active != 2 " src="assets/Images/revamp/announcementnewgray-icon.png">
       <img *ngIf="(active == 2&&mini) " src="assets/Images/revamp/announcementnewblue-icon.png">
 
-      <span class="icon-text">Settings</span></a>
+      <span class="icon-text">Settings</span></a> -->
 
     <div id="settings" class="collapse length ">
       <a (click)="ComponentMaster()" class="nonactive">
@@ -437,13 +434,13 @@
     </div>
 
 
-    <a data-toggle="collapse" data-target="#PayRoll" (click)="PayRoll()"
+    <!-- <a data-toggle="collapse" data-target="#PayRoll" (click)="PayRoll()"
       [ngClass]="(active == 'PayRoll' )&&!mini ? 'menu1' : (active == PayRoll)&&mini?'menu-mini':'menu'">
       <img *ngIf="(active == 'PayRoll'&&!mini)" src="assets/Images/revamp/announcementwhite.png">
       <img *ngIf="active != 'PayRoll' " src="assets/Images/revamp/announcementnewgray-icon.png">
       <img *ngIf="(active == 'PayRoll'&&mini) " src="assets/Images/revamp/announcementnewblue-icon.png">
 
-      <span class="icon-text">PayRoll</span></a>
+      <span class="icon-text">PayRoll</span></a> -->
 
     <div id="PayRoll" class="collapse length ">
       <a (click)="InitialPayroll()" class="nonactive">
@@ -456,14 +453,13 @@
     </div>
 
 
-    <a data-toggle="collapse" data-target="#Attendance" (click)="getAttendacmenu()"
+    <!-- <a data-toggle="collapse" data-target="#Attendance" (click)="getAttendacmenu()"
       [ngClass]="(active == 8 )&&!mini ? 'menu1' : (active == 9)&&mini?'menu-mini':'menu'">
-      <!-- <i class="material-icons">monetization_on</i> -->
       <img *ngIf="(active == 8&&!mini)" src="assets/Images/revamp/attendencewhite-icon.png">
       <img *ngIf="active != 8 " src="assets/Images/revamp/attendancenewgray-icon.png">
       <img *ngIf="(active == 8&&mini)  " src="assets/Images/revamp/attendancenewblue-icon.png">
       <span class="icon-text">Attendance</span>
-    </a>
+    </a> -->
 
 
     <div id="Attendance" class="collapse length ">
@@ -502,13 +498,13 @@
     </div>
 
 
-    <a class="togglebtn " data-target="#Requests" (click)="Request()"
+    <!-- <a class="togglebtn " data-target="#Requests" (click)="Request()"
       [ngClass]="(active == 14 )&&!mini ? 'menu1' : (active == 14)&&mini?'menu-mini':'menu'">
       <img *ngIf="(active == 14&&!mini)" src="assets/Images/revamp/requestwhite-icon.png">
       <img *ngIf="active != 14 " src="assets/Images/revamp/requetnewgray-icon.png">
       <img *ngIf="(active == 14&&mini)  " src="assets/Images/revamp/requestblue-icon.png">
       <span class="icon-text">Request</span>
-    </a>
+    </a> -->
 
 
     <div id="Requests" class="collapse length ">
@@ -594,7 +590,7 @@
 
     </div>
 
-
+<!-- 
 
     <a data-toggle="collapse" class="togglebtn " data-target="#Reports" (click)="Reports()"
       [ngClass]="(active == 11 )&&!mini ? 'menu1' : (active == 11)&&mini?'menu-mini':'menu'">
@@ -602,7 +598,7 @@
       <img *ngIf="active != 11 " src="/assets/Images/revamp/reportsnewgray-icon.png">
       <img *ngIf="(active == 11&&mini) " src="/assets/Images/revamp/reportsnewblue-icon.png">
       <span class="icon-text"> Reports</span>
-    </a>
+    </a> -->
 
     <div id="Reports" class="collapse length nonactive">
       <a (click)="Attendancereport()" class="nonactive">

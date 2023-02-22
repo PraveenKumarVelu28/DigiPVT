@@ -691,7 +691,7 @@ export class RunPayrollSummaryValidationComponent implements OnInit {
               if (result.value==true) {
                 Swal.fire({
                   title: 'Are you sure?',
-                  text: 'To Run COLA Validation In This Period',
+                  text: 'To Run Pay Sum Validation In This Period',
                  
                   showCancelButton: true,
                   confirmButtonText: 'Yes, Accept it!',
@@ -749,8 +749,7 @@ export class RunPayrollSummaryValidationComponent implements OnInit {
            
               Swal.fire({
                 title: 'Are you sure?',
-                text: 'To Run COLA Validation In This Period',
-               
+                text: 'To Run Pay Sum Validation In This Period',               
                 showCancelButton: true,
                 confirmButtonText: 'Yes, Accept it!',
                 cancelButtonText: 'No, keep it'

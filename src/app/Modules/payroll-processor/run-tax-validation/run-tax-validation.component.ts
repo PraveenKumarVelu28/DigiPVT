@@ -288,7 +288,7 @@ export class RunTaxValidationComponent implements OnInit {
   }
   Swal.fire({
     title: 'Are you sure?',
-    text: 'To Run Payroll For This Period!',
+    text: 'To Run Tax Validation In This Period',
     showCancelButton: true,
     confirmButtonText: 'Yes, Accept it!',
     cancelButtonText: 'No, keep it'
@@ -692,7 +692,7 @@ export class RunTaxValidationComponent implements OnInit {
               if (result.value==true) {
                 Swal.fire({
                   title: 'Are you sure?',
-                  text: 'To Run COLA Validation In This Period',
+                  text: 'To Run Tax Validation In This Period',
                  
                   showCancelButton: true,
                   confirmButtonText: 'Yes, Accept it!',
@@ -750,7 +750,7 @@ export class RunTaxValidationComponent implements OnInit {
            
               Swal.fire({
                 title: 'Are you sure?',
-                text: 'To Run COLA Validation In This Period',
+                text: 'To Run Tax Validation In This Period',
                
                 showCancelButton: true,
                 confirmButtonText: 'Yes, Accept it!',

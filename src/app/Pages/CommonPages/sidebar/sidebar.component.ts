@@ -421,7 +421,7 @@ export class SidebarComponent implements OnInit {
 
 
     Swal.fire({
-      title: 'Access Basic Pay Validation',
+      title: 'Access Allowance Validation',
       html: `<input type="text" id="login" class="swal2-input"  placeholder="Enter 4 Digit Pin">
     `,
       confirmButtonText: 'Submit',
@@ -575,66 +575,15 @@ export class SidebarComponent implements OnInit {
   }
 
   public UploadAllowance() {
-    this.active = 'uploadallowance'
-    localStorage.setItem("clickname", "uploadallowance")
-
-    this.DigiPVTService.GetValidationPassword().subscribe(data => {
-      debugger
-      this.validation = data.filter(x=>x.menuName=='Upload Allowance');
-      console.log("validation", this.validation);
-    });
-
-
-    Swal.fire({
-      title: 'Access Basic Pay Validation',
-      html: `<input type="text" id="login" class="swal2-input"  placeholder="Enter 4 Digit Pin">
-    `,
-      confirmButtonText: 'Submit',
-      focusConfirm: false,
-      preConfirm: () => {
-        debugger
-        const login: any = document.getElementById('login') as HTMLElement
-
-        if (login.value == this.validation[0].password) {
+    
           this.router.navigate(['/PayrollProcessor/UploadAllowance'])
-        }
-        else {
-          Swal.showValidationMessage(`Please enter correct pin`)
-        }
-      }
-    })
+      
 
   }
 
   public UploadPayperiodAllowance() {
-    this.active = 'UploadPayperiodAllowance'
-    localStorage.setItem("clickname", "Upload Pay Period Allowance")
-
-    this.DigiPVTService.GetValidationPassword().subscribe(data => {
-      debugger
-      this.validation = data.filter(x=>x.menuName=='Upload Payperiod Allowance');
-      console.log("validation", this.validation);
-    });
-
-
-    Swal.fire({
-      title: 'Access Basic Pay Validation',
-      html: `<input type="text" id="login" class="swal2-input"  placeholder="Enter 4 Digit Pin">
-    `,
-      confirmButtonText: 'Submit',
-      focusConfirm: false,
-      preConfirm: () => {
-        debugger
-        const login: any = document.getElementById('login') as HTMLElement
-
-        if (login.value == this.validation[0].password) {
           this.router.navigate(['/PayrollProcessor/UploadPayPeriodAllowance'])
-        }
-        else {
-          Swal.showValidationMessage(`Please enter correct pin`)
-        }
-      }
-    })
+       
 
   }
 
@@ -682,35 +631,11 @@ export class SidebarComponent implements OnInit {
 
   public UploadFMAAllowance() {
 
-    this.active = 'UploadFMAAllowance'
-    localStorage.setItem("clickname", "Component  Master")
+   
 
-    this.DigiPVTService.GetValidationPassword().subscribe(data => {
-      debugger
-      this.validation = data.filter(x=>x.menuName=='Upload FMA Allowance');
-      console.log("validation", this.validation);
-    });
-
-
-    Swal.fire({
-      title: 'Access Basic Pay Validation',
-      html: `<input type="text" id="login" class="swal2-input"  placeholder="Enter 4 Digit Pin">
-      `,
-      confirmButtonText: 'Submit',
-      focusConfirm: false,
-      preConfirm: () => {
-        debugger
-        const login: any = document.getElementById('login') as HTMLElement
-
-        if (login.value == this.validation[0].password) {
+   
           this.router.navigate(['/PayrollProcessor/FMAValidation'])
-        }
-        else {
-          Swal.showValidationMessage(`Please enter correct pin`)
-        }
-      }
-    })
-
+      
 
   }
 
@@ -727,7 +652,7 @@ export class SidebarComponent implements OnInit {
 
 
     Swal.fire({
-      title: 'Access Basic Pay Validation',
+      title: 'Access Tax Validation',
       html: `<input type="text" id="login" class="swal2-input"  placeholder="Enter 4 Digit Pin">
       `,
       confirmButtonText: 'Submit',
@@ -823,7 +748,7 @@ export class SidebarComponent implements OnInit {
 
 
     Swal.fire({
-      title: 'Access Basic Pay Validation',
+      title: 'Access Loan Proceeds Validation',
       html: `<input type="text" id="login" class="swal2-input"  placeholder="Enter 4 Digit Pin">
       `,
       confirmButtonText: 'Submit',
@@ -856,7 +781,7 @@ export class SidebarComponent implements OnInit {
 
 
     Swal.fire({
-      title: 'Access Basic Pay Validation',
+      title: 'Access FMA Validation',
       html: `<input type="text" id="login" class="swal2-input"  placeholder="Enter 4 Digit Pin">
       `,
       confirmButtonText: 'Submit',
@@ -1003,7 +928,7 @@ export class SidebarComponent implements OnInit {
 
 
     Swal.fire({
-      title: 'Access Basic Pay Validation',
+      title: 'Access Lwop Validation',
       html: `<input type="text" id="login" class="swal2-input"  placeholder="Enter 4 Digit Pin">
     `,
       confirmButtonText: 'Submit',
@@ -1069,7 +994,7 @@ export class SidebarComponent implements OnInit {
     });
 
     Swal.fire({
-      title: 'Access Basic Pay Validation',
+      title: 'Access Bonus Validation',
       html: `<input type="text" id="login" class="swal2-input"  placeholder="Enter 4 Digit Pin">
     `,
       confirmButtonText: 'Submit',

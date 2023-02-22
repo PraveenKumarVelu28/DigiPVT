@@ -171,7 +171,7 @@ export class StaffLeavesUploadComponent implements OnInit {
           
           var eb = {
             
-            'StaffID': this.StaffID,
+            'Staffid1': this.StaffID,
             'sickleaveentitlement':  this.exceldata[this.i].Sick_leave_entitlement ,
             'vacationleaveentitlement':this.exceldata[this.i].Vacation_leave_entitlement ,
             'LeaveWithPayentitlement' : this.exceldata[this.i].LeaveWithPayentitlement 

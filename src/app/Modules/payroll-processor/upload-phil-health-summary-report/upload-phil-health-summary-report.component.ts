@@ -175,7 +175,7 @@ export class UploadPhilHealthSummaryReportComponent implements OnInit {
             // this.Paydate=this.Paydate.toLocaleString('en-US', options)          
           ; 
           var eb = { 
-            'Staffid': this.StaffID,
+            'StaffID': this.StaffID,
             'SemiOneBasicSalary' : this.exceldata[this.i].SemiOneBasicSalary,
             'CollegeTeachingLoadsSemiOne' : this.exceldata[this.i].CollegeTeachingLoadsSemiOne,
             'SemiTwoBasicSalary' : this.exceldata[this.i].SemiTwoBasicSalary,
@@ -231,7 +231,7 @@ export class UploadPhilHealthSummaryReportComponent implements OnInit {
       cancelButtonText: 'No, keep it'
     }).then((result) => {
       if (result.value == true) {
-        this.DigiPVTService.DeleteBasicpayAdjustments(ID)
+        this.DigiPVTService.DeletePhilHealthValidation(ID)
           .subscribe({
             next: data => {
               debugger

@@ -52,10 +52,24 @@ import { UploadSummerCollegeSemValidationComponent } from './upload-summer-colle
 import { PayrollYTDUploadComponent } from './payroll-ytdupload/payroll-ytdupload.component';
 import { RunTaxValidationComponent } from './run-tax-validation/run-tax-validation.component'; 
 import { ValidatedTaxValuesComponent } from './validated-tax-values/validated-tax-values.component';
-
+import { RunSubjectLoadValidationComponent } from './run-subject-load-validation/run-subject-load-validation.component';
+import { ValidatedSubjectLoadDetailsComponent } from './validated-subject-load-details/validated-subject-load-details.component';
 import { UploadPhilHealthSummaryReportComponent } from './upload-phil-health-summary-report/upload-phil-health-summary-report.component';
+import { RunSummerSemValidationComponent } from './run-summer-sem-validation/run-summer-sem-validation.component';
+import { ValidatedSummerSemSubjectLoadsComponent } from './validated-summer-sem-subject-loads/validated-summer-sem-subject-loads.component';
 const routes: Routes = [
   { path: '', component: PayrollProcessorComponent },
+  { path: 'RunSummerSemValidation', component: RunSummerSemValidationComponent },
+
+  { path: 'ValidatedSummerSemSubjectLoads', component: ValidatedSummerSemSubjectLoadsComponent },
+
+
+  { path: 'UploadSummerCollegeSemValidation', component: UploadSummerCollegeSemValidationComponent },
+
+  { path: 'RunSubjectLoadValidation', component: RunSubjectLoadValidationComponent },
+  { path: 'ValidatedSubjectLoadDetails', component: ValidatedSubjectLoadDetailsComponent },
+
+
   { path: 'RunLwopValidation', component: RunLwopValidationComponent },
   { path: 'StaffLeavesUpload', component: StaffLeavesUploadComponent },
   { path: 'PayrollComponentBulkUpload', component: PayrollComponentBulkUploadComponent },

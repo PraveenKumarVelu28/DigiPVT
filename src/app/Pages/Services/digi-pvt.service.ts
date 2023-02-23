@@ -1781,6 +1781,15 @@ export class DigiPVTService {
     );
   } 
   
+
+  
+  public GetValidatedSubjectLoadValues() {
+    return this.http.get<any[]>(
+      this.host + "/Master/GetValidatedSubjectLoadValues"
+    );
+  } 
+
+  
   
   
 
@@ -1863,6 +1872,15 @@ export class DigiPVTService {
     //debugger
     return this.http.get<any[]>(this.host + "/Announcement/GetRunCOLAValidation?EmployeeID=" + EmployeeID  + "&startdate=" + startdate + "&enddate=" + enddate);
   }
+
+
+  public GetRunSubjectLoadValidation(EmployeeID: any,  startdate: any, enddate: any) {
+    //debugger
+    return this.http.get<any[]>(this.host + "/Announcement/GetRunSubjectLoadValidation?EmployeeID=" + EmployeeID  + "&startdate=" + startdate + "&enddate=" + enddate);
+  }
+  
+  
+
   
   
 

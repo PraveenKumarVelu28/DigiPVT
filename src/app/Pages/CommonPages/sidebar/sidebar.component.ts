@@ -725,6 +725,12 @@ export class SidebarComponent implements OnInit {
   }
 
     
+  public UploadsummerSubjectLoadValidation() {
+    this.active = 'UploadBasicPayValues'
+    this.router.navigate(['/PayrollProcessor/UploadSummerCollegeSemValidation'])
+  }
+
+    
   public UploadPayrollYTD() {
     this.active = 'UploadPayrollYTD'
     this.router.navigate(['/PayrollProcessor/PayrollYTDUpload'])
@@ -1015,6 +1021,21 @@ export class SidebarComponent implements OnInit {
 
   }
 
+  public ValidatedSubjectLoadsValidation() {
+    debugger
+    this.active = 2345;
+    this.router.navigate(['/PayrollProcessor/ValidatedSubjectLoadDetails']);
+
+
+  }
+
+  public ValidatedSummerSemSubjectLoadsValidation() {
+    debugger
+    this.active = 2345;
+    this.router.navigate(['/PayrollProcessor/ValidatedSummerSemSubjectLoads']);
+
+
+  }
 
   public ValidatedColaAllowances() {
     debugger

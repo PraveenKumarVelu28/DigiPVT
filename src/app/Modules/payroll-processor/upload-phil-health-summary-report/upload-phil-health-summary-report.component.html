@@ -59,6 +59,7 @@
                         <thead>
                             <tr>
                                 <th>Employee ID</th>
+                                <th>Name</th>
                                 <th>Semi One Basic Salary</th>
                                 <th>College Teaching Loads Semi One</th>
                                 <th>Semi Two Basic Salary</th>    
@@ -67,12 +68,14 @@
                                 <th>System Generated PHIC EE</th>  
                                 <th>System Generated PHIC ER</th>
                                 <th>Payroll Date</th>   
+                                <th>Action</th>
                                
                             </tr>
                         </thead>
                         <tbody>
                             <tr *ngFor="let list of philhealthlist|filter:term |paginate: { itemsPerPage: count2, currentPage: p1}  "  >
                                 <td>{{list.employeID}}</td>
+                                <td>{{list.name}}</td>
                                 <td>{{list.semiOneBasicSalary}}</td>
                                 <td>{{list.collegeTeachingLoadsSemiOne}}</td>
                                 <td>{{list.semiTwoBasicSalary}}</td>
@@ -80,7 +83,7 @@
                                 <td>{{list.systemGenerated_PHIC_Total}}</td>
                                 <td>{{list.systemGenerated_PHIC_EE}}</td>
                                 <td>{{list.systemGenerated_PHIC_ER}}</td>
-                                <td>{{list.paydate|date}}</td>
+                                <td>{{list.payDate|date}}</td>
                                 <td>
                                     <button class="upload" (click)="delete(list.id)">Delete</button>
                                 </td>

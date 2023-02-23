@@ -38,7 +38,6 @@ export class UploadRegularCollegeSemValidationComponent implements OnInit {
 
   ngOnInit(): void {
     debugger
-    this.GetSubjectLoadValidation();
     this.DigiPVTService.GetAllStaffNew().
     subscribe({
       next: data => {
@@ -46,6 +45,8 @@ export class UploadRegularCollegeSemValidationComponent implements OnInit {
         this.stafflist = data;
       }
     })
+
+    this.GetSubjectLoadValidation();
 
     this.DigiPVTService.GetPayPeriodSetting().subscribe(data => {
         debugger
@@ -57,7 +58,7 @@ export class UploadRegularCollegeSemValidationComponent implements OnInit {
     debugger
     this.DigiPVTService.GetSubjectLoadValidation().subscribe(data => {
       debugger
-      this.componentmaster = data;
+      this.componentmaster = data.filter(x=>x.regularBit==1);
       console.log("componentmaster", this.componentmaster);
     });
   }

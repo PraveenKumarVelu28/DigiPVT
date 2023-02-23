@@ -176,17 +176,29 @@
       <span class="icon-text">Subject Loads Validation</span></a>
 
     <div id= RegularSubjectLoadsValidation class="collapse length ">
-      <a (click)="ValidatedColaAllowances()" class="nonactive">
-        <span class="sub-request">Validated COLA  Details</span>
+      <a (click)="ValidatedSubjectLoadsValidation()" class="nonactive">
+        <span class="sub-request">Validated Regular Sem Subject Loads</span>
+      </a>
+
+      <a (click)="ValidatedSummerSemSubjectLoadsValidation()" class="nonactive">
+        <span class="sub-request">Validated Summer Sem Subject Loads</span>
       </a>
       <!-- <a (click)="ValidatedRetroBasicPayValues()" class="nonactive">
         <span class="sub-request">Validated Retro Basic Pay </span>
       </a> -->
       <a (click)="UploadSubjectLoadValidation()" class="nonactive">
-        <span [ngClass]="active == 'UploadBonusValues' ? 'Active1' : 'Active3'" class="sub-request">Upload Subject Loads
+        <span [ngClass]="active == 'UploadBonusValues' ? 'Active1' : 'Active3'" class="sub-request">Upload Regular Sem Subject Loads
           Values</span>
       </a>
 
+     
+
+      
+
+      <a (click)="UploadsummerSubjectLoadValidation()" class="nonactive">
+        <span [ngClass]="active == 'UploadBonusValues' ? 'Active1' : 'Active3'" class="sub-request">Upload Summer Sem Subject Loads
+          Values</span>
+      </a>
     </div>
 
     <a data-toggle="collapse" data-target="#ClothingValidation"

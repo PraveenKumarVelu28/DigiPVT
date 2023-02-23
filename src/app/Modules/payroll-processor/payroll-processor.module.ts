@@ -56,6 +56,12 @@ import { PayrollYTDUploadComponent } from './payroll-ytdupload/payroll-ytdupload
 import { RunTaxValidationComponent } from './run-tax-validation/run-tax-validation.component';
 import { ValidatedTaxValuesComponent } from './validated-tax-values/validated-tax-values.component';
 import { UploadPhilHealthSummaryReportComponent } from './upload-phil-health-summary-report/upload-phil-health-summary-report.component';
+import { RunPhilhealthValidationComponent } from './run-philhealth-validation/run-philhealth-validation.component';
+import { ValidatedPhilhealthDetailsComponent } from './validated-philhealth-details/validated-philhealth-details.component';
+import { RunSubjectLoadValidationComponent } from './run-subject-load-validation/run-subject-load-validation.component';
+import { ValidatedSubjectLoadDetailsComponent } from './validated-subject-load-details/validated-subject-load-details.component';
+import { ValidatedSummerSemSubjectLoadsComponent } from './validated-summer-sem-subject-loads/validated-summer-sem-subject-loads.component';
+import { RunSummerSemValidationComponent } from './run-summer-sem-validation/run-summer-sem-validation.component';
 
 
 
@@ -115,7 +121,13 @@ import { UploadPhilHealthSummaryReportComponent } from './upload-phil-health-sum
     PayrollYTDUploadComponent,
     RunTaxValidationComponent,
     ValidatedTaxValuesComponent,
-    UploadPhilHealthSummaryReportComponent
+    UploadPhilHealthSummaryReportComponent,
+    RunPhilhealthValidationComponent,
+    ValidatedPhilhealthDetailsComponent,
+    RunSubjectLoadValidationComponent,
+    ValidatedSubjectLoadDetailsComponent,
+    ValidatedSummerSemSubjectLoadsComponent,
+    RunSummerSemValidationComponent
   ],
   imports: [
     PayrollProcessorRoutingModule,

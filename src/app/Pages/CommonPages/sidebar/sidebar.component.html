@@ -134,6 +134,12 @@
   
   
   <div id="PhilHealthValidation" class="collapse length ">
+
+    <a (click)="ValidatedPhilHealthDetails()" class="nonactive">
+      <span class="sub-request">Validated PhilHealth Details</span>
+    </a>
+
+
     <a (click)="UploadPhilHealthSummaryReport()" class="nonactive">
       <span [ngClass]="active == 'UploadSystemGeneratedLWOP' ? 'Active1' : 'Active3'" class="sub-request">Upload
         PhilHealth Summary Report</span>

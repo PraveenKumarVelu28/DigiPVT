@@ -57,8 +57,17 @@ import { ValidatedSubjectLoadDetailsComponent } from './validated-subject-load-d
 import { UploadPhilHealthSummaryReportComponent } from './upload-phil-health-summary-report/upload-phil-health-summary-report.component';
 import { RunSummerSemValidationComponent } from './run-summer-sem-validation/run-summer-sem-validation.component';
 import { ValidatedSummerSemSubjectLoadsComponent } from './validated-summer-sem-subject-loads/validated-summer-sem-subject-loads.component';
+import { RunPhilhealthValidationComponent } from './run-philhealth-validation/run-philhealth-validation.component';
+import { ValidatedPhilhealthDetailsComponent } from './validated-philhealth-details/validated-philhealth-details.component';
+
 const routes: Routes = [
   { path: '', component: PayrollProcessorComponent },
+
+  { path: 'RunPhilhealthValidation', component: RunPhilhealthValidationComponent },
+
+  { path: 'ValidatedPhilhealthDetails', component: ValidatedPhilhealthDetailsComponent },
+
+
   { path: 'RunSummerSemValidation', component: RunSummerSemValidationComponent },
 
   { path: 'ValidatedSummerSemSubjectLoads', component: ValidatedSummerSemSubjectLoadsComponent },

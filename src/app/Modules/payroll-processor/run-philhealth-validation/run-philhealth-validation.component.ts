@@ -723,7 +723,7 @@ export class RunPhilhealthValidationComponent implements OnInit {
                           debugger;
                          
                             this.LOPDays = 0;
-                            this.DigiofficeService.GetRunCOLAValidation(this.ID[i],  this.startdate, this.enddate).subscribe(
+                            this.DigiofficeService.GetRunPhilHealthValidation(this.ID[i],  this.startdate, this.enddate).subscribe(
                               res => {
                                 debugger;
                                 this.StaffSalaryReports = res;
@@ -781,7 +781,7 @@ export class RunPhilhealthValidationComponent implements OnInit {
                         debugger;
                        
                           this.LOPDays = 0;
-                          this.DigiofficeService.GetRunCOLAValidation(this.ID[i],  this.startdate, this.enddate).subscribe(
+                          this.DigiofficeService.GetRunPhilHealthValidation(this.ID[i],  this.startdate, this.enddate).subscribe(
                             res => {
                               debugger;
                               this.StaffSalaryReports = res;

@@ -1789,6 +1789,14 @@ export class DigiPVTService {
     );
   } 
 
+  public GetValidatedPhilHealthDetails() {
+    return this.http.get<any[]>(
+      this.host + "/Master/GetValidatedPhilHealthDetails"
+    );
+  } 
+
+  
+
   
   
   
@@ -1873,6 +1881,14 @@ export class DigiPVTService {
     return this.http.get<any[]>(this.host + "/Announcement/GetRunCOLAValidation?EmployeeID=" + EmployeeID  + "&startdate=" + startdate + "&enddate=" + enddate);
   }
 
+
+  public GetRunPhilHealthValidation(EmployeeID: any,  startdate: any, enddate: any) {
+    //debugger
+    return this.http.get<any[]>(this.host + "/Announcement/GetRunPhilHealthValidation?EmployeeID=" + EmployeeID  + "&startdate=" + startdate + "&enddate=" + enddate);
+  }
+
+
+  
 
   public GetRunSubjectLoadValidation(EmployeeID: any,  startdate: any, enddate: any) {
     //debugger

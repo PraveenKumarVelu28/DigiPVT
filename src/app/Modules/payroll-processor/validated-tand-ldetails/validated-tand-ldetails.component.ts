@@ -7,30 +7,30 @@ import { ExportToCsv } from 'export-to-csv';
 declare var JSZipUtils: any;
 
 @Component({
-  selector: 'app-bonus-validation-details',
-  templateUrl: './bonus-validation-details.component.html',
-  styleUrls: ['./bonus-validation-details.component.css']
+  selector: 'app-validated-tand-ldetails',
+  templateUrl: './validated-tand-ldetails.component.html',
+  styleUrls: ['./validated-tand-ldetails.component.css']
 })
-export class BonusValidationDetailsComponent implements OnInit {
+export class ValidatedTandLDetailsComponent implements OnInit {
 
+   
   constructor(public DigiofficeService: DigiPVTService, public router: Router) { }
+
+  ngOnInit(): void {
+
+    this.GetValidatedPayrollElementsForPayperiod();
+  }
+
   timedetails:any;
   count:any;
   currentUrl:any;
   term:any;
   p: any = 1;
   count1: any = 10;
-  companyid:any;
-  ngOnInit(): void {
-    this.companyid = sessionStorage.getItem('companyid');
 
-    this.GetBonusValidation();
-  }
-
-
-  public GetBonusValidation() {
+  public GetValidatedPayrollElementsForPayperiod() {
     debugger
-    this.DigiofficeService.GetValidatedBonusDetails()
+    this.DigiofficeService.GetValidatedPayrollElementsForPayperiod()
       .subscribe({
         next: data => {
           debugger
@@ -52,9 +52,8 @@ export class BonusValidationDetailsComponent implements OnInit {
         }
       })
   }
-  fileName = ' Bonus Validation Details Reports.xlsx';
+  fileName = 'Basic Pay Validation Reports.xlsx';
   exportexcel(): void {
-    debugger
     /* table id is passed over here */
     let element = document.getElementById('downloadaplication');
     const ws: XLSX.WorkSheet = XLSX.utils.table_to_sheet(element);
@@ -67,5 +66,6 @@ export class BonusValidationDetailsComponent implements OnInit {
     XLSX.writeFile(wb, this.fileName);
 
   }
+
 
 }

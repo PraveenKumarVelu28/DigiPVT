@@ -59,10 +59,24 @@ import { RunSummerSemValidationComponent } from './run-summer-sem-validation/run
 import { ValidatedSummerSemSubjectLoadsComponent } from './validated-summer-sem-subject-loads/validated-summer-sem-subject-loads.component';
 import { RunPhilhealthValidationComponent } from './run-philhealth-validation/run-philhealth-validation.component';
 import { ValidatedPhilhealthDetailsComponent } from './validated-philhealth-details/validated-philhealth-details.component';
-
+import { UploadPayrollInputsComponent } from './upload-payroll-inputs/upload-payroll-inputs.component';
+import { RunTandLValidationComponent } from './run-tand-lvalidation/run-tand-lvalidation.component';
+import { ValidatedTandLDetailsComponent } from './validated-tand-ldetails/validated-tand-ldetails.component';
+import { UploadTandLValuesComponent } from './upload-tand-lvalues/upload-tand-lvalues.component';
+import { ValidatedPayrollSummaryReportForUNCComponent } from './validated-payroll-summary-report-for-unc/validated-payroll-summary-report-for-unc.component';
+import { UploadPayrollSummaryReprtValuesComponent } from './upload-payroll-summary-reprt-values/upload-payroll-summary-reprt-values.component';
 const routes: Routes = [
   { path: '', component: PayrollProcessorComponent },
+  { path: 'ValidatedPayrollSummaryReportForUNC', component: ValidatedPayrollSummaryReportForUNCComponent },
+  { path: 'UploadPayrollSummaryReprtValues', component: UploadPayrollSummaryReprtValuesComponent },
 
+  { path: 'RunTandLValidation', component: RunTandLValidationComponent },
+  { path: 'ValidatedTandLDetails', component: ValidatedTandLDetailsComponent },
+  { path: 'UploadTandLValues', component: UploadTandLValuesComponent },
+
+
+
+  { path: 'UploadPayrollInputs', component: UploadPayrollInputsComponent },
   { path: 'RunPhilhealthValidation', component: RunPhilhealthValidationComponent },
 
   { path: 'ValidatedPhilhealthDetails', component: ValidatedPhilhealthDetailsComponent },

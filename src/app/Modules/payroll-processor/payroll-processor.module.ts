@@ -62,6 +62,12 @@ import { RunSubjectLoadValidationComponent } from './run-subject-load-validation
 import { ValidatedSubjectLoadDetailsComponent } from './validated-subject-load-details/validated-subject-load-details.component';
 import { ValidatedSummerSemSubjectLoadsComponent } from './validated-summer-sem-subject-loads/validated-summer-sem-subject-loads.component';
 import { RunSummerSemValidationComponent } from './run-summer-sem-validation/run-summer-sem-validation.component';
+import { UploadPayrollInputsComponent } from './upload-payroll-inputs/upload-payroll-inputs.component';
+import { UploadTandLValuesComponent } from './upload-tand-lvalues/upload-tand-lvalues.component';
+import { RunTandLValidationComponent } from './run-tand-lvalidation/run-tand-lvalidation.component';
+import { ValidatedTandLDetailsComponent } from './validated-tand-ldetails/validated-tand-ldetails.component';
+import { ValidatedPayrollSummaryReportForUNCComponent } from './validated-payroll-summary-report-for-unc/validated-payroll-summary-report-for-unc.component';
+import { UploadPayrollSummaryReprtValuesComponent } from './upload-payroll-summary-reprt-values/upload-payroll-summary-reprt-values.component';
 
 
 
@@ -127,7 +133,13 @@ import { RunSummerSemValidationComponent } from './run-summer-sem-validation/run
     RunSubjectLoadValidationComponent,
     ValidatedSubjectLoadDetailsComponent,
     ValidatedSummerSemSubjectLoadsComponent,
-    RunSummerSemValidationComponent
+    RunSummerSemValidationComponent,
+    UploadPayrollInputsComponent,
+    UploadTandLValuesComponent,
+    RunTandLValidationComponent,
+    ValidatedTandLDetailsComponent,
+    ValidatedPayrollSummaryReportForUNCComponent,
+    UploadPayrollSummaryReprtValuesComponent
   ],
   imports: [
     PayrollProcessorRoutingModule,

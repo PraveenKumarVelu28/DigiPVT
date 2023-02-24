@@ -185,8 +185,11 @@ export class SidebarComponent implements OnInit {
         debugger
         const login: any = document.getElementById('login') as HTMLElement
 
-        if (login.value == this.validation[0].password) {
+        if (login.value == this.validation[0].password && this.companyid!=10013) {
           this.router.navigate(['/PayrollProcessor/ValidatedPayrollSummaryReport'])
+        }
+        else   if (login.value == this.validation[0].password && this.companyid==10013) {
+          this.router.navigate(['/PayrollProcessor/ValidatedPayrollSummaryReportForUNC'])
         }
         else {
           Swal.showValidationMessage(`Please enter correct pin`)
@@ -714,9 +717,12 @@ export class SidebarComponent implements OnInit {
 
   public TaxValidation() {
     this.active = 'RunTaxValidation'
-    this.router.navigate(['/PayrollProcessor/UploadColaValues'])
   }
 
+  
+  public TandLValidation() {
+    this.active = 'TandLValidation'
+  }
 
   
   public UploadSubjectLoadValidation() {
@@ -724,6 +730,7 @@ export class SidebarComponent implements OnInit {
     this.router.navigate(['/PayrollProcessor/UploadRegularCollegeSemValidation'])
   }
 
+  
     
   public UploadsummerSubjectLoadValidation() {
     this.active = 'UploadBasicPayValues'
@@ -1209,6 +1216,43 @@ export class SidebarComponent implements OnInit {
 
   }
 
+
+  public ValidatedTandLDetails() {
+    debugger
+   
+    this.active = 2345;
+    localStorage.setItem('Pagename', 'Staff')
+
+    this.DigiPVTService.GetValidationPassword().subscribe(data => {
+      debugger
+      this.validation = data.filter(x => x.menuName == 'Validated Basic Pay Details');
+      console.log("validation", this.validation);
+    });
+
+
+    Swal.fire({
+      title: 'Access T and L  Validation',
+      html: `<input type="text" id="login" class="swal2-input"  placeholder="Enter 4 Digit Pin">
+    `,
+      confirmButtonText: 'Submit',
+      focusConfirm: false,
+      preConfirm: () => {
+        debugger
+        const login: any = document.getElementById('login') as HTMLElement
+
+        if (login.value == 2345) {
+          this.router.navigate(['/PayrollProcessor/ValidatedTandLDetails']);
+        }
+        else {
+          Swal.showValidationMessage(`Please enter correct pin`)
+        }
+      }
+    })
+
+  }
+
+
+
   public GetValidationPassword() {
     this.DigiPVTService.GetValidationPassword().subscribe(data => {
       debugger
@@ -1260,12 +1304,45 @@ export class SidebarComponent implements OnInit {
 
   }
 
+  
+  
+
+  public ComponentMap() {
+    this.active = 'ComponentMap'
+  }
 
 
   public UploadPayrollSummaryReport() {
     this.active = 'UploadBasicPayValues'
-    this.router.navigate(['/PayrollProcessor/UploadPayrollSummaryReport'])
+
+    if(this.companyid==10013){
+      this.router.navigate(['/PayrollProcessor/UploadPayrollSummaryReprtValues'])
+
+    }
+    else{
+      this.router.navigate(['/PayrollProcessor/UploadPayrollSummaryReport'])
+
+    }
   }
+
+  public UploadedTandLDetails() {
+    this.active = 'UploadedTandLDetails'
+    this.router.navigate(['/PayrollProcessor/UploadTandLValues'])
+  }
+
+
+
+   public UploadPayrollInputs() {
+    this.active = 'UploadBasicPayValues'
+
+ 
+      this.router.navigate(['/PayrollProcessor/UploadPayrollInputs'])
+
+    
+  }
+
+
+  
 
   public UploadPhilHealthSummaryReport() {
     this.active = 'UploadBasicPayValues'

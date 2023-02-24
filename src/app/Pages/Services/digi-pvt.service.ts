@@ -539,6 +539,7 @@ export class DigiPVTService {
   }
 
 
+
   // public GetPayrollVariance(EmployeeID: any, Month: any, Year: any, Payperiod: any, EndMonth: any, EndYear: any, EndPayperiod: any) {
   //   //debugger
   //   return this.http.get<any[]>(this.basehost + "/Announcement/GetPayrollVariance?EmployeeID=" + EmployeeID + "&StartMonth=" + Month + "&StartYear=" + Year + "&StartPayperiod=" + Payperiod + "&EndMonth=" + EndMonth + "&EndYear=" + EndYear + "&EndPayperiod=" + EndPayperiod);
@@ -683,8 +684,31 @@ export class DigiPVTService {
     return this.http.post(this.url, data);
   }
 
+  public UploadPayrollSummaryValidationForUnc(data: any) {
+    debugger;
+    this.url = this.host + '/Master/UploadPayrollSummaryValidationForUnc';
+    return this.http.post(this.url, data);
+  }
 
 
+
+  
+  public InsertUploadedPayrollElementsForPayperiod(data: any) {
+    debugger;
+    this.url = this.host + '/Master/InsertUploadedPayrollElementsForPayperiod';
+    return this.http.post(this.url, data);
+  }
+
+  
+
+  public InsertUploadedPayrollInputs(data: any) {
+    debugger;
+    this.url = this.host + '/Master/InsertUploadedPayrollInputs';
+    return this.http.post(this.url, data);
+  }
+
+
+  
 
 
   public InsertTransportRequestType(data: any) {
@@ -1673,6 +1697,22 @@ export class DigiPVTService {
     );
   } 
 
+  public GetValidatedPayrollElementsForPayperiod() {
+    return this.http.get<any[]>(
+      this.host + "/Master/GetValidatedPayrollElementsForPayperiod"
+    );
+  } 
+
+
+
+  
+
+  public GetUploadedPayrollElementsForPayperiod() {
+    return this.http.get<any[]>(
+      this.host + "/Master/GetUploadedPayrollElementsForPayperiod"
+    );
+  } 
+  
   
 
    public GetUploadatcolavalidation() {
@@ -1703,6 +1743,15 @@ export class DigiPVTService {
       this.host + "/Master/GetUploadPayrollSummaryReport"
     );
   } 
+
+
+    public GetUploadedPayrollInputs() {
+    return this.http.get<any[]>(
+      this.host + "/Master/GetUploadedPayrollInputs"
+    );
+  } 
+
+  
 
   public GetPhilHealthValidation() {
     return this.http.get<any[]>(
@@ -1856,6 +1905,14 @@ export class DigiPVTService {
     //debugger
     return this.http.get<any[]>(this.host + "/Announcement/Get_RunLwopValidation?EmployeeID=" + EmployeeID  + "&startdate=" + startdate + "&enddate=" + enddate);
   }
+
+  public GetRunUploadedPayrollElementsForPayperiodValidation(EmployeeID: any,  startdate: any, enddate: any) {
+    //debugger
+    return this.http.get<any[]>(this.host + "/Announcement/GetRunUploadedPayrollElementsForPayperiodValidation?EmployeeID=" + EmployeeID  + "&startdate=" + startdate + "&enddate=" + enddate);
+  }
+
+  
+
 
   public GetRunLoanProceedsValidation(EmployeeID: any,  startdate: any, enddate: any) {
     //debugger

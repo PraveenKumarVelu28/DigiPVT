@@ -106,7 +106,7 @@
             <br>
             <div class="col-md-12 listscroll">
                 <div class="container-fluid">
-                    <table class="table" id="downloadaplication">
+                    <table class="table" id="downloadaplication" *ngIf="companyid!=10013">
                         <thead>
                             <tr class="thwidth">
                                 <th>Employee ID</th>
@@ -172,6 +172,50 @@
                                     [ngClass]="{'bgviolet':time.bNonTaxcolor=='1' }">
                                     {{time.nonTaxableBonusdescrepencyValue}}</td>
 
+
+
+                            </tr>
+                        </thead>
+                    </table>
+                    <table class="table" id="downloadaplication" *ngIf="companyid==10013">
+                        <thead>
+                            <tr class="thwidth">
+                                <th>Employee ID</th>
+                                <th>Employee Name</th>
+
+                                <th class="thwidth">Pay Date</th>
+
+                                <th class="thwidth">Uploaded 13th Month Bonus</th>
+                                <th class="thwidth">90k Exemption Taxable Bonus</th>
+                                <th class="thwidth">Uploaded 13th Month Bonus Tax</th>
+                                <th class="thwidth">Validated 13th Month Bonus Tax</th>
+                                <th class="thwidth">Descrepency 13th Month Bonus Tax</th>
+                               
+                               
+                            </tr>
+                            <tr
+                                *ngFor="let time of timedetails| filter:term |paginate: { itemsPerPage: count1, currentPage: p}">
+                                <td >{{time.employeID}}</td>
+                                <td >{{time.name}}</td>
+                                <td >{{time.paydate|date}}</td>
+                                <td  [ngClass]="{'bgyellow':time.bTaxcolor=='1' }">{{time.thirteenthMonthBonus}}</td>
+                              
+                                <td 
+                                [ngClass]="{'bgyellow':time.bTaxcolor=='1' }" >{{time.validatedNonTaxableBonus}}
+                                </td>
+                                <td 
+                                    [ngClass]="{'bgyellow':time.bTaxcolor=='1' }"
+                                   >{{time.taxableBonus}}</td>
+                                <td 
+                                    [ngClass]="{'bgyellow':time.bTaxcolor=='1' }"
+                                    >{{time.validatedTaxableBonus}}</td>
+                                <td 
+                                    [ngClass]="{'bgyellow':time.bTaxcolor=='1' }"
+                                    >
+                                    {{time.taxableBonusdescrepencyValue}}</td>
+
+
+                               
 
 
                             </tr>

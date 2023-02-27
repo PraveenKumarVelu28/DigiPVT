@@ -96,12 +96,10 @@
                                                 <th>Employee Name</th>
     
                                                 <th class="thwidth">Pay Date</th>
-    
-                                                <th class="thwidth">Uploaded Lwop Days</th>
-                                                <th class="thwidth">System Generated Lwop Days</th>
-                                                <th class="thwidth">Uploaded Lwop Amount</th>
-                                                <th class="thwidth">System Generated Lwop Amount</th>
-                                                <th class="thwidth">Descrepency Percentage</th>
+                                                <th class="thwidth">No Of Days Available</th>
+                                                <th class="thwidth">Uploaded Leave Days</th>
+                                                <th class="thwidth">Lwop Days</th>
+                                                
     
     
     
@@ -117,12 +115,10 @@
                                                 <td [ngClass]="{'bgred':time.bcolor=='1' }">{{time.employeID}}</td>
                                                 <td [ngClass]="{'bgred':time.bcolor=='1' }">{{time.name}}</td>
                                                 <td [ngClass]="{'bgred':time.bcolor=='1' }">{{time.enddate|date}}</td>
+                                                <td [ngClass]="{'bgred':time.bcolor=='1' }">{{time.validatedLWOPDays}}</td>
                                                 <td [ngClass]="{'bgred':time.bcolor=='1' }">{{time.uploadedLwopDays}}</td>
                                                 <td [ngClass]="{'bgred':time.bcolor=='1' }">{{time.systemGeneratedLwopDays}}</td>
-                                                <td [ngClass]="{'bgred':time.bcolor=='1' }">{{time.uploadedLwopAmount}}</td>
-                                                <td [ngClass]="{'bgred':time.bcolor=='1' }">{{time.systemGeneratedLwopAmount}}</td>
-    
-                                                <td [ngClass]="{'bgred':time.bcolor=='1' }">{{time.descrepencypercentage }}%</td>
+                                                
     
     
                                             </tr>

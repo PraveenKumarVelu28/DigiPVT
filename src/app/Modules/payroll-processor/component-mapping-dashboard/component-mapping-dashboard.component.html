@@ -27,9 +27,14 @@
   </div><br>
     <div class="row">
       <div class="col-lg-8"> </div>
-      <div class="col-lg-4">
-        <button routerLink="/PayrollProcessor/ComponentMappingForm" class="button">Add New</button>
-      </div>
+      <div class="col-md-3">
+        <br />
+
+        <button class="form-control AddExpense3" 
+          data-toggle="modal" data-target="#import">Upload Components
+            
+        </button>
+    </div>
     </div>
     <br />
     <div class="row" >
@@ -37,10 +42,11 @@
         <div>
           <table class="table">
             <tr>
-              <th>PayrollComponentType</th>
+              <th>Payroll Component Type</th>
               <th>Code</th>
               <th>Component Name</th>
-              <th>Enable</th>
+              <th>Taxable</th>
+              <th>Pay Period</th>
               <th>Actions</th>
             </tr>
             <tr></tr>
@@ -50,14 +56,14 @@
               <td>{{ list.code }}</td>
               <td>{{ list.componentName }}</td>
               <td>
-                <p *ngIf="list.enable==true">Yes</p>
-                <p *ngIf="list.enable==false">No</p>
+                <p *ngIf="list.taxFlag==true">Yes</p>
+                <p *ngIf="list.taxFlag==false">No</p>
                </td>
+               <td>{{ list.payrollPeriod }}</td>
+
               <td>
-                <button class="upload"
-                [routerLink]="['/PayrollProcessor/ComponentMappingForm',list.id]">Edit</button>
-                <br />
-                <br />
+
+              
                 <button (click)="delete(list.id)" class="upload">Delete</button>
               </td>
             </tr>
@@ -73,3 +79,33 @@
       nextLabel="" class="poppinns"></pagination-controls>    
     </div>
   </div>
+
+
+  <div id="import" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Payroll Inputs </h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-lg-8">
+                        <input type="file" accept=".xls,.xlsx" style="display: inline-block;"
+                            (change)="incomingfile($event)" placeholder="Upload file" accept=".xlsx">
+                    </div>
+                    <div class="col-lg-4">
+                        <a href="https://103.12.1.76//DigiPVTAPI/Templates/Import_PayrollSummaryReport.xlsx" style="color:navy"><u>Template.XLSX</u></a>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <button type="button" class="form-control AddExpense" data-dismiss="modal"
+                      (click)="Upload_file()" >Upload Payroll Summary </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

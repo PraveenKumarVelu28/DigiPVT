@@ -34,7 +34,7 @@
                     </div> -->
                 <div class="col-md-3">
 
-                    <button class="form-control AddExpense" routerLink="/PayrollProcessor/RunLwopValidation"
+                    <button class="form-control AddExpense" routerLink="/PayrollProcessor/RunAllowanceValidation"
                         style="width: 80%;">Run New Validation
                     </button>
                 </div>
@@ -146,59 +146,41 @@
                         </tr>
                         <tr
                             *ngFor="let time of timedetails| filter:term |paginate: { itemsPerPage: count1, currentPage: p}">
-                            <td [ngClass]="{'bgred':time.bcolor=='1' }" [ngClass]="{'bgblue':time.bfourcolor=='1' }"
-                                [ngClass]="{'bgyellow':time.bTaxcolor=='1' }"
-                                [ngClass]="{'bgviolet':time.bNonTaxcolor=='1' }">{{time.employeID}}</td>
-                            <td [ngClass]="{'bgred':time.bcolor=='1' }" [ngClass]="{'bgblue':time.bfourcolor=='1' }"
-                                [ngClass]="{'bgyellow':time.bTaxcolor=='1' }"
-                                [ngClass]="{'bgviolet':time.bNonTaxcolor=='1' }">{{time.name}}</td>
-                            <td [ngClass]="{'bgred':time.bcolor=='1' }" [ngClass]="{'bgblue':time.bfourcolor=='1' }"
-                                [ngClass]="{'bgyellow':time.bTaxcolor=='1' }"
-                                [ngClass]="{'bgviolet':time.bNonTaxcolor=='1' }">{{time.enddate|date}}</td>
-                            <td [ngClass]="{'bgred':time.bcolor=='1' }" [ngClass]="{'bgblue':time.bfourcolor=='1' }"
-                                [ngClass]="{'bgyellow':time.bTaxcolor=='1' }"
-                                [ngClass]="{'bgviolet':time.bNonTaxcolor=='1' }">{{time.uploadedSixthDayAllowance}}</td>
-                            <td [ngClass]="{'bgred':time.bcolor=='1' }" [ngClass]="{'bgblue':time.bfourcolor=='1' }"
-                                [ngClass]="{'bgyellow':time.bTaxcolor=='1' }"
-                                [ngClass]="{'bgviolet':time.bNonTaxcolor=='1' }">{{time.sixthDayAllowance}}</td>
-                            <td [ngClass]="{'bgred':time.bcolor=='1' }" [ngClass]="{'bgblue':time.bfourcolor=='1' }"
-                                [ngClass]="{'bgyellow':time.bTaxcolor=='1' }"
-                                [ngClass]="{'bgviolet':time.bNonTaxcolor=='1' }">
+                            <td [ngClass]="{'bgred':time.bcolor=='1' }">{{time.employeid}}</td>
+                            <td [ngClass]="{'bgred':time.bcolor=='1' }" >{{time.name}}</td>
+                            <td [ngClass]="{'bgred':time.bcolor=='1' }" >{{time.paydate|date}}</td>
+                            <td [ngClass]="{'bgred':time.bcolor=='1' }">{{time.uploadedSixthDayAllowance}}</td>
+                            <td [ngClass]="{'bgred':time.bcolor=='1' }" >{{time.sixthDayAllowance}}</td>
+                            <td [ngClass]="{'bgred':time.bcolor=='1' }">
                                 {{time.sixthDayAllowancedescrepencyValue}}</td>
-                            <td [ngClass]="{'bgred':time.bcolor=='1' }" [ngClass]="{'bgblue':time.bfourcolor=='1' }"
-                                [ngClass]="{'bgyellow':time.bTaxcolor=='1' }"
-                                [ngClass]="{'bgviolet':time.bNonTaxcolor=='1' }">{{time.uploadedSeventhDayAllowance}}
+                            <td  [ngClass]="{'bgblue':time.bfourcolor=='1' }"
+                               >{{time.uploadedSeventhDayAllowance}}
                             </td>
-                            <td [ngClass]="{'bgred':time.bcolor=='1' }" [ngClass]="{'bgblue':time.bfourcolor=='1' }"
-                                [ngClass]="{'bgyellow':time.bTaxcolor=='1' }"
-                                [ngClass]="{'bgviolet':time.bNonTaxcolor=='1' }">{{time.seventhDayAllowance}}</td>
-                            <td [ngClass]="{'bgred':time.bcolor=='1' }" [ngClass]="{'bgblue':time.bfourcolor=='1' }"
-                                [ngClass]="{'bgyellow':time.bTaxcolor=='1' }"
-                                [ngClass]="{'bgviolet':time.bNonTaxcolor=='1' }">
+                            <td  [ngClass]="{'bgblue':time.bfourcolor=='1' }"
+                               >{{time.seventhDayAllowance}}</td>
+                            <td  [ngClass]="{'bgblue':time.bfourcolor=='1' }"
+                               >
                                 {{time.seventhDayAllowancedescrepencyValue}}</td>
-                            <td [ngClass]="{'bgred':time.bcolor=='1' }" [ngClass]="{'bgblue':time.bfourcolor=='1' }"
+                            <td 
                                 [ngClass]="{'bgyellow':time.bTaxcolor=='1' }"
-                                [ngClass]="{'bgviolet':time.bNonTaxcolor=='1' }">{{time.uploadedHolidayAllowance}}</td>
+                                >{{time.uploadedHolidayAllowance}}</td>
 
-                            <td [ngClass]="{'bgred':time.bcolor=='1' }" [ngClass]="{'bgblue':time.bfourcolor=='1' }"
+                            <td
                                 [ngClass]="{'bgyellow':time.bTaxcolor=='1' }"
-                                [ngClass]="{'bgviolet':time.bNonTaxcolor=='1' }">{{time.holidayAllowance}}</td>
-                            <td [ngClass]="{'bgred':time.bcolor=='1' }" [ngClass]="{'bgblue':time.bfourcolor=='1' }"
+                                >{{time.holidayAllowance}}</td>
+                            <td 
                                 [ngClass]="{'bgyellow':time.bTaxcolor=='1' }"
-                                [ngClass]="{'bgviolet':time.bNonTaxcolor=='1' }">
+                               >
                                 {{time.holidayAllowancedescrepencyValue}}</td>
-                            <td [ngClass]="{'bgred':time.bcolor=='1' }" [ngClass]="{'bgblue':time.bfourcolor=='1' }"
-                                [ngClass]="{'bgyellow':time.bTaxcolor=='1' }"
+                            <td 
                                 [ngClass]="{'bgviolet':time.bNonTaxcolor=='1' }">
                                 {{time.uploadedNightDifferentialAllowance}}</td>
 
 
-                            <td [ngClass]="{'bgred':time.bcolor=='1' }" [ngClass]="{'bgblue':time.bfourcolor=='1' }"
-                                [ngClass]="{'bgyellow':time.bTaxcolor=='1' }"
+                            <td 
                                 [ngClass]="{'bgviolet':time.bNonTaxcolor=='1' }">{{time.nightDifferentialAllowance}}
                             </td>
-                            <td [ngClass]="{'bgred':time.bcolor=='1' }" [ngClass]="{'bgblue':time.bfourcolor=='1' }"
-                                [ngClass]="{'bgyellow':time.bTaxcolor=='1' }"
+                            <td 
                                 [ngClass]="{'bgviolet':time.bNonTaxcolor=='1' }">
                                 {{time.nightDifferentialAllowancedescrepencyValue}}</td>
 

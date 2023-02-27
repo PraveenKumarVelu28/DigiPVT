@@ -38,6 +38,36 @@ import { UploadGeneratedEncashmentsComponent } from './upload-generated-encashme
 import { RunHolidayEncashmentValidationComponent } from './run-holiday-encashment-validation/run-holiday-encashment-validation.component';
 import { ValidatedHolidayEnCashmentsComponent } from './validated-holiday-en-cashments/validated-holiday-en-cashments.component';
 import { UploadRetroValuesOTComponent } from './upload-retro-values-ot/upload-retro-values-ot.component';
+import { UploadColaValuesComponent } from './upload-cola-values/upload-cola-values.component';
+import { ValidatedColaValuesComponent } from './validated-cola-values/validated-cola-values.component';
+import { RunColAValidationComponent } from './run-col-avalidation/run-col-avalidation.component';
+import { UploadClothingAllowancesComponent } from './upload-clothing-allowances/upload-clothing-allowances.component';
+import { RunClothingAllowanceComponent } from './run-clothing-allowance/run-clothing-allowance.component';
+import { ValidatedClothingAllowancesComponent } from './validated-clothing-allowances/validated-clothing-allowances.component';
+import { RetroValidatedClothingAllowancesComponent } from './retro-validated-clothing-allowances/retro-validated-clothing-allowances.component';
+import { UploadPayrollSummaryReportComponent } from './upload-payroll-summary-report/upload-payroll-summary-report.component';
+import { RunPayrollSummaryValidationComponent } from './run-payroll-summary-validation/run-payroll-summary-validation.component';
+import { ValidatedPayrollSummaryReportComponent } from './validated-payroll-summary-report/validated-payroll-summary-report.component';
+import { RunLoanProceedsValidationComponent } from './run-loan-proceeds-validation/run-loan-proceeds-validation.component';
+import { ValidatedLoanProceedsComponent } from './validated-loan-proceeds/validated-loan-proceeds.component';
+import { UploadRegularCollegeSemValidationComponent } from './upload-regular-college-sem-validation/upload-regular-college-sem-validation.component';
+import { UploadSummerCollegeSemValidationComponent } from './upload-summer-college-sem-validation/upload-summer-college-sem-validation.component';
+import { PayrollYTDUploadComponent } from './payroll-ytdupload/payroll-ytdupload.component';
+import { RunTaxValidationComponent } from './run-tax-validation/run-tax-validation.component';
+import { ValidatedTaxValuesComponent } from './validated-tax-values/validated-tax-values.component';
+import { UploadPhilHealthSummaryReportComponent } from './upload-phil-health-summary-report/upload-phil-health-summary-report.component';
+import { RunPhilhealthValidationComponent } from './run-philhealth-validation/run-philhealth-validation.component';
+import { ValidatedPhilhealthDetailsComponent } from './validated-philhealth-details/validated-philhealth-details.component';
+import { RunSubjectLoadValidationComponent } from './run-subject-load-validation/run-subject-load-validation.component';
+import { ValidatedSubjectLoadDetailsComponent } from './validated-subject-load-details/validated-subject-load-details.component';
+import { ValidatedSummerSemSubjectLoadsComponent } from './validated-summer-sem-subject-loads/validated-summer-sem-subject-loads.component';
+import { RunSummerSemValidationComponent } from './run-summer-sem-validation/run-summer-sem-validation.component';
+import { UploadPayrollInputsComponent } from './upload-payroll-inputs/upload-payroll-inputs.component';
+import { UploadTandLValuesComponent } from './upload-tand-lvalues/upload-tand-lvalues.component';
+import { RunTandLValidationComponent } from './run-tand-lvalidation/run-tand-lvalidation.component';
+import { ValidatedTandLDetailsComponent } from './validated-tand-ldetails/validated-tand-ldetails.component';
+import { ValidatedPayrollSummaryReportForUNCComponent } from './validated-payroll-summary-report-for-unc/validated-payroll-summary-report-for-unc.component';
+import { UploadPayrollSummaryReprtValuesComponent } from './upload-payroll-summary-reprt-values/upload-payroll-summary-reprt-values.component';
 
 
 
@@ -79,7 +109,37 @@ import { UploadRetroValuesOTComponent } from './upload-retro-values-ot/upload-re
     UploadGeneratedEncashmentsComponent,
     RunHolidayEncashmentValidationComponent,
     ValidatedHolidayEnCashmentsComponent,
-    UploadRetroValuesOTComponent
+    UploadRetroValuesOTComponent,
+    UploadColaValuesComponent,
+    ValidatedColaValuesComponent,
+    RunColAValidationComponent,
+    UploadClothingAllowancesComponent,
+    RunClothingAllowanceComponent,
+    ValidatedClothingAllowancesComponent,
+    RetroValidatedClothingAllowancesComponent,
+    UploadPayrollSummaryReportComponent,
+    RunPayrollSummaryValidationComponent,
+    ValidatedPayrollSummaryReportComponent,
+    RunLoanProceedsValidationComponent,
+    ValidatedLoanProceedsComponent,
+    UploadRegularCollegeSemValidationComponent,
+    UploadSummerCollegeSemValidationComponent,
+    PayrollYTDUploadComponent,
+    RunTaxValidationComponent,
+    ValidatedTaxValuesComponent,
+    UploadPhilHealthSummaryReportComponent,
+    RunPhilhealthValidationComponent,
+    ValidatedPhilhealthDetailsComponent,
+    RunSubjectLoadValidationComponent,
+    ValidatedSubjectLoadDetailsComponent,
+    ValidatedSummerSemSubjectLoadsComponent,
+    RunSummerSemValidationComponent,
+    UploadPayrollInputsComponent,
+    UploadTandLValuesComponent,
+    RunTandLValidationComponent,
+    ValidatedTandLDetailsComponent,
+    ValidatedPayrollSummaryReportForUNCComponent,
+    UploadPayrollSummaryReprtValuesComponent
   ],
   imports: [
     PayrollProcessorRoutingModule,

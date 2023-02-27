@@ -21,10 +21,13 @@ export class UploadBonusValuesComponent implements OnInit {
   count2: any = 10;
   stafflist:any;
   PayPeriodSettingList:any;
+  companyid:any;
 
 
   ngOnInit(): void {
-    debugger
+    debugger;
+    this.companyid = sessionStorage.getItem('companyid');
+
     this.GetBonusValidation();
 
     this.DigiPVTService.GetAllStaffNew().
@@ -172,58 +175,111 @@ export class UploadBonusValuesComponent implements OnInit {
           ; 
            
 
-          
-          var eb = {
+          if(this.companyid==10013){
+            var eb = {
             
-            'StaffID': this.StaffID,
-            'ThirteenthMonthBonus' : this.exceldata[this.i].ThirteenthMonthBonus,
-            'ForteenthMonthBonus' : this.exceldata[this.i].ForteenthMonthBonus,
-            'PerformanceBonus' : this.exceldata[this.i].PerformanceBonus,
-            'TaxableBonus' : this.exceldata[this.i].TaxableBonus,
-            'NonTaxableBonus' : this.exceldata[this.i].NonTaxableBonus,
-            'PayDate' : this.Paydate
-
-            
-          }
-          this.DigiPVTService.InsertBonusValidation(eb).subscribe({
-            next: data => {
-
-            debugger
-            this.StaffID=data;
-            
-              Swal.fire('Saved Successfully')
-            
-             
-          
-            // // this.SavePositionDetails();
-            // var eb = {
-            //   'EmergencyContactName': this.exceldata[this.i-(this.exceldata.length)].EmergencyContactName,
-            //   'EmergencyContactRelationship': this.exceldata[this.i-(this.exceldata.length)].EmergencyContactRelationship,
-            //   'EmergencyContactMobileNumber': this.exceldata[this.i-(this.exceldata.length)].EmergencyContactMobileNumber,
-            //   'StaffID':  this.StaffID
-            // }
-            // this.i++;
-            // this.AliprojectService.InsertMyAddressDetails(eb).subscribe(
+              'StaffID': this.StaffID,
+              'ThirteenthMonthBonus' : this.exceldata[this.i].ThirteenthMonthBonus,
+              'TaxableBonus' : this.exceldata[this.i].ThirteenthMonthBonusTax,
+              'PayDate' : this.Paydate
+  
               
-            //   data => {
-            //     debugger
-            //     Swal.fire('Staffs Added Successfully');
-            //     // this.router.navigate(['/EmployeeDashboard']);
-      
-            //   },
-            // )
-           
-           
-           
+            }
+            this.DigiPVTService.InsertBonusValidation(eb).subscribe({
+              next: data => {
+  
+              debugger
+              this.StaffID=data;
+              
+                Swal.fire('Saved Successfully')
+              
+               
             
-           
-          }, error: (err) => {
-            Swal.fire('Issue in Inserting Attendance Units');
-            // Insert error in Db Here//
-          
+              // // this.SavePositionDetails();
+              // var eb = {
+              //   'EmergencyContactName': this.exceldata[this.i-(this.exceldata.length)].EmergencyContactName,
+              //   'EmergencyContactRelationship': this.exceldata[this.i-(this.exceldata.length)].EmergencyContactRelationship,
+              //   'EmergencyContactMobileNumber': this.exceldata[this.i-(this.exceldata.length)].EmergencyContactMobileNumber,
+              //   'StaffID':  this.StaffID
+              // }
+              // this.i++;
+              // this.AliprojectService.InsertMyAddressDetails(eb).subscribe(
+                
+              //   data => {
+              //     debugger
+              //     Swal.fire('Staffs Added Successfully');
+              //     // this.router.navigate(['/EmployeeDashboard']);
+        
+              //   },
+              // )
+             
+             
+             
+              
+             
+            }, error: (err) => {
+              Swal.fire('Issue in Inserting Attendance Units');
+              // Insert error in Db Here//
+            
+            }
           }
-        }
-        )
+          )
+          }
+          else{
+            var eb1 = {
+            
+              'StaffID': this.StaffID,
+              'ThirteenthMonthBonus' : this.exceldata[this.i].ThirteenthMonthBonus,
+              'ForteenthMonthBonus' : this.exceldata[this.i].ForteenthMonthBonus,
+              'PerformanceBonus' : this.exceldata[this.i].PerformanceBonus,
+              'TaxableBonus' : this.exceldata[this.i].TaxableBonus,
+              'NonTaxableBonus' : this.exceldata[this.i].NonTaxableBonus,
+              'PayDate' : this.Paydate
+  
+              
+            }
+            this.DigiPVTService.InsertBonusValidation(eb1).subscribe({
+              next: data => {
+  
+              debugger
+              this.StaffID=data;
+              
+                Swal.fire('Saved Successfully')
+              
+               
+            
+              // // this.SavePositionDetails();
+              // var eb = {
+              //   'EmergencyContactName': this.exceldata[this.i-(this.exceldata.length)].EmergencyContactName,
+              //   'EmergencyContactRelationship': this.exceldata[this.i-(this.exceldata.length)].EmergencyContactRelationship,
+              //   'EmergencyContactMobileNumber': this.exceldata[this.i-(this.exceldata.length)].EmergencyContactMobileNumber,
+              //   'StaffID':  this.StaffID
+              // }
+              // this.i++;
+              // this.AliprojectService.InsertMyAddressDetails(eb).subscribe(
+                
+              //   data => {
+              //     debugger
+              //     Swal.fire('Staffs Added Successfully');
+              //     // this.router.navigate(['/EmployeeDashboard']);
+        
+              //   },
+              // )
+             
+             
+             
+              
+             
+            }, error: (err) => {
+              Swal.fire('Issue in Inserting Attendance Units');
+              // Insert error in Db Here//
+            
+            }
+          }
+          )
+          }
+          
+        
       }
     }
 

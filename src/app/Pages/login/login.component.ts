@@ -175,7 +175,7 @@ export class LoginComponent implements OnInit {
                 localStorage.setItem('Band', temp[0].band)
                 sessionStorage.setItem('AttendanceEnable', temp[0].attendanceEnable)
 
-                this.router.navigate(['/Admin/Admindashbaord']).then(() => {
+                this.router.navigate(['/PayrollAdmin/ValidationpasswordDashboard']).then(() => {
                   this.loader = false;
                   location.reload();
                 });
@@ -183,32 +183,7 @@ export class LoginComponent implements OnInit {
             });
           }
 
-          else {
-            if (this.companyid == 1002 || this.companyid == 1003) {
-              this.router.navigate(['/Employee/ALIAVIDAEmployeedashboard']).then(() => {
-                this.loader = false;
-                location.reload();
-              });
-            }
-            else if (this.companyid == 1005) {
-              this.router.navigate(['/Employee/AVIDAEmployeeDashboard']).then(() => {
-                this.loader = false;
-                location.reload();
-              });
-            }
-            // else {
-            //   this.router.navigate(['/Employee/ALIAVIDAEmployeedashboard']).then(() => {
-            //     this.loader = false;
-            //     location.reload();
-            //   });
-            // }
-            else {
-              this.router.navigate(['/Employee/StaffDashboard']).then(() => {
-                this.loader = false;
-                location.reload();
-              });
-            }
-          }
+        
         }
 
       });

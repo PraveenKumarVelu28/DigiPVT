@@ -20,8 +20,9 @@ export class BonusValidationDetailsComponent implements OnInit {
   term:any;
   p: any = 1;
   count1: any = 10;
-
+  companyid:any;
   ngOnInit(): void {
+    this.companyid = sessionStorage.getItem('companyid');
 
     this.GetBonusValidation();
   }

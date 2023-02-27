@@ -42,7 +42,7 @@
   </a>
 
 
-  <a data-toggle="collapse" data-target="#SummaryValidation1" *ngIf="login == 9 && ( companyid == 10013)"
+  <a data-toggle="collapse" data-target="#SummaryValidation1" *ngIf="login == 9 && ( companyid == 10013 || companyid==1008)"
 
   (click)="PayrollSummaryValidation()"
   [ngClass]="(active == 976 )&&!mini ? 'menu1' : (active == 976)&&mini?'menu-mini':'menu'">
@@ -102,7 +102,7 @@
 </div>
 
 <a data-toggle="collapse" data-target="#TaxValidation"
-*ngIf="login == 9 && (companyid == 1001 || companyid == 10013)" (click)="TaxValidation()"
+*ngIf="login == 9 && (companyid == 1001 || companyid == 10013 || companyid == 1008)" (click)="TaxValidation()"
 [ngClass]="(active == 'RunTaxValidation' )&&!mini ? 'menu1' : (active == 768)&&mini?'menu-mini':'menu'">
 <img *ngIf="(active == 'RunTaxValidation'&&!mini)" src="assets/Images/revamp/announcementwhite.png">
 <img *ngIf="active != 'RunTaxValidation' " src="assets/Images/revamp/announcementnewgray-icon.png">
@@ -181,7 +181,7 @@
   </div>
 
 
-  <a data-toggle="collapse" data-target="#TandLValidation" *ngIf="login == 9 && (companyid == 10013)"
+  <a data-toggle="collapse" data-target="#TandLValidation" *ngIf="login == 9 && (companyid == 10013 || companyid == 1008)"
   (click)="TandLValidation()"
    
     [ngClass]="(active == 'TandLValidation' ) && !mini ? 'menu1' : (active == 'TandLValidation')&&mini?'menu-mini':'menu'">
@@ -325,7 +325,7 @@
 
 
 
-    <a data-toggle="collapse" data-target="#BonusValidation" *ngIf="login == 9 && (companyid == 1001 || companyid == 1002|| companyid == 1006 || companyid == 10013)"
+    <a data-toggle="collapse" data-target="#BonusValidation" *ngIf="login == 9 && (companyid == 1001 || companyid == 1002|| companyid == 1006 || companyid == 10013 || companyid==1008)"
       (click)="BonusValidation()"
       [ngClass]="(active == 988 )&&!mini ? 'menu1' : (active == 988)&&mini?'menu-mini':'menu'">
       <img *ngIf="(active == 988&&!mini)" src="assets/Images/revamp/announcementwhite.png">

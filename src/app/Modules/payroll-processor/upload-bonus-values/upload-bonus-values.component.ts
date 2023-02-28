@@ -234,7 +234,8 @@ export class UploadBonusValuesComponent implements OnInit {
               'PerformanceBonus' : this.exceldata[this.i].PerformanceBonus,
               'TaxableBonus' : this.exceldata[this.i].TaxableBonus,
               'NonTaxableBonus' : this.exceldata[this.i].NonTaxableBonus,
-              'PayDate' : this.Paydate
+              'PayDate' : this.Paydate,
+              'LopDays' : this.exceldata[this.i].LopDays
   
               
             }
@@ -279,7 +280,7 @@ export class UploadBonusValuesComponent implements OnInit {
           )
           }
           else{
-            var eb1 = {
+            var eb2 = {
             
               'StaffID': this.StaffID,
               'ThirteenthMonthBonus' : this.exceldata[this.i].ThirteenthMonthBonus,
@@ -287,11 +288,12 @@ export class UploadBonusValuesComponent implements OnInit {
               'PerformanceBonus' : this.exceldata[this.i].PerformanceBonus,
               'TaxableBonus' : this.exceldata[this.i].TaxableBonus,
               'NonTaxableBonus' : this.exceldata[this.i].NonTaxableBonus,
-              'PayDate' : this.Paydate
+              'PayDate' : this.Paydate,
+              'LopDays' : 0
   
               
             }
-            this.DigiPVTService.InsertBonusValidation(eb1).subscribe({
+            this.DigiPVTService.InsertBonusValidation(eb2).subscribe({
               next: data => {
   
               debugger

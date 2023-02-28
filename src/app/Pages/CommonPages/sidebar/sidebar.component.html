@@ -241,7 +241,7 @@
   </div>
 
 
-  <a data-toggle="collapse" data-target="#TandLValidation" *ngIf="login == 9 && (companyid == 10013 || companyid == 1008)"
+  <a data-toggle="collapse" data-target="#TandLValidation" *ngIf="login == 9 && (companyid == 10013 )"
   (click)="TandLValidation()"
    
     [ngClass]="(active == 'TandLValidation' ) && !mini ? 'menu1' : (active == 'TandLValidation')&&mini?'menu-mini':'menu'">
@@ -262,6 +262,30 @@
 
     <a (click)="UploadedTandLDetails()" class="nonactive">
       <span [ngClass]="active == 'UploadSystemGeneratedLWOP' ? 'Active1' : 'Active3'" class="sub-request">Upload T and L Values</span>
+    </a>
+  </div>
+
+  <a data-toggle="collapse" data-target="#a3overtime" *ngIf="login == 9 && ( companyid == 1008)"
+  (click)="TandLValidation()"
+   
+    [ngClass]="(active == 'TandLValidation' ) && !mini ? 'menu1' : (active == 'TandLValidation')&&mini?'menu-mini':'menu'">
+    <img *ngIf="(active == 'TandLValidation' && !mini)" src="assets/Images/revamp/announcementwhite.png">
+    <img *ngIf="active != 'TandLValidation' " src="assets/Images/revamp/announcementnewgray-icon.png">
+    <img *ngIf="(active == 'TandLValidation' && mini) " src="assets/Images/revamp/announcementnewblue-icon.png">
+  
+    <span class="icon-text">A3 Overtime Validation</span></a>
+  
+  
+  
+  <div id="a3overtime" class="collapse length ">
+
+    <a (click)="ValidatedTandLDetails()" class="nonactive">
+      <span class="sub-request">Validated A3 OT Validation</span>
+    </a>
+
+
+    <a (click)="UploadedTandLDetails()" class="nonactive">
+      <span [ngClass]="active == 'UploadSystemGeneratedLWOP' ? 'Active1' : 'Active3'" class="sub-request">Upload A3 OT Values</span>
     </a>
   </div>
 

@@ -225,6 +225,59 @@ export class UploadBonusValuesComponent implements OnInit {
           }
           )
           }
+          else if(this.companyid==1008){
+            var eb1 = {
+            
+              'StaffID': this.StaffID,
+              'ThirteenthMonthBonus' : this.exceldata[this.i].ThirteenthMonthBonus,
+              'ForteenthMonthBonus' : this.exceldata[this.i].MidYearBonus,
+              'PerformanceBonus' : this.exceldata[this.i].PerformanceBonus,
+              'TaxableBonus' : this.exceldata[this.i].TaxableBonus,
+              'NonTaxableBonus' : this.exceldata[this.i].NonTaxableBonus,
+              'PayDate' : this.Paydate
+  
+              
+            }
+            this.DigiPVTService.InsertBonusValidation(eb1).subscribe({
+              next: data => {
+  
+              debugger
+              this.StaffID=data;
+              
+                Swal.fire('Saved Successfully')
+              
+               
+            
+              // // this.SavePositionDetails();
+              // var eb = {
+              //   'EmergencyContactName': this.exceldata[this.i-(this.exceldata.length)].EmergencyContactName,
+              //   'EmergencyContactRelationship': this.exceldata[this.i-(this.exceldata.length)].EmergencyContactRelationship,
+              //   'EmergencyContactMobileNumber': this.exceldata[this.i-(this.exceldata.length)].EmergencyContactMobileNumber,
+              //   'StaffID':  this.StaffID
+              // }
+              // this.i++;
+              // this.AliprojectService.InsertMyAddressDetails(eb).subscribe(
+                
+              //   data => {
+              //     debugger
+              //     Swal.fire('Staffs Added Successfully');
+              //     // this.router.navigate(['/EmployeeDashboard']);
+        
+              //   },
+              // )
+             
+             
+             
+              
+             
+            }, error: (err) => {
+              Swal.fire('Issue in Inserting Attendance Units');
+              // Insert error in Db Here//
+            
+            }
+          }
+          )
+          }
           else{
             var eb1 = {
             

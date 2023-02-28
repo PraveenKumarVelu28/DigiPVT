@@ -68,6 +68,12 @@ import { RunTandLValidationComponent } from './run-tand-lvalidation/run-tand-lva
 import { ValidatedTandLDetailsComponent } from './validated-tand-ldetails/validated-tand-ldetails.component';
 import { ValidatedPayrollSummaryReportForUNCComponent } from './validated-payroll-summary-report-for-unc/validated-payroll-summary-report-for-unc.component';
 import { UploadPayrollSummaryReprtValuesComponent } from './upload-payroll-summary-reprt-values/upload-payroll-summary-reprt-values.component';
+import { UploadMasterListComponent } from './upload-master-list/upload-master-list.component';
+import { RunNewHireAndRetireesValidationComponent } from './run-new-hire-and-retirees-validation/run-new-hire-and-retirees-validation.component';
+import { ValidatedNewHiresDetailsComponent } from './validated-new-hires-details/validated-new-hires-details.component';
+import { UploadAttendanceDaysCountComponent } from './upload-attendance-days-count/upload-attendance-days-count.component';
+import { ValidatedBlanKStatsComponent } from './validated-blan-kstats/validated-blan-kstats.component';
+import { RunBlankStatsValidationComponent } from './run-blank-stats-validation/run-blank-stats-validation.component';
 
 
 
@@ -139,7 +145,13 @@ import { UploadPayrollSummaryReprtValuesComponent } from './upload-payroll-summa
     RunTandLValidationComponent,
     ValidatedTandLDetailsComponent,
     ValidatedPayrollSummaryReportForUNCComponent,
-    UploadPayrollSummaryReprtValuesComponent
+    UploadPayrollSummaryReprtValuesComponent,
+    UploadMasterListComponent,
+    RunNewHireAndRetireesValidationComponent,
+    ValidatedNewHiresDetailsComponent,
+    UploadAttendanceDaysCountComponent,
+    ValidatedBlanKStatsComponent,
+    RunBlankStatsValidationComponent
   ],
   imports: [
     PayrollProcessorRoutingModule,

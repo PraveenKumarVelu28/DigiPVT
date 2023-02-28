@@ -54,7 +54,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="container-fluid">
-                    <table class="table" id="downloadaplication" *ngIf="companyid!=10013">
+                    <table class="table" id="downloadaplication" *ngIf="companyid!=10013 && companyid!=1008">
                         <thead>
                             <tr>
                                 <th>Name</th>
@@ -62,6 +62,42 @@
                                 <th>Pay Date</th>
                                 <th>13th Month Bonus</th>
                                 <th>14th Month Bonus</th>
+                                <th>Performance Bonus</th>
+                                <th>Taxable Bonus</th>
+                                <th>NonTaxable Bonus</th>
+                                <th>Actions</th>
+                                
+                                <!-- <th>Attachment</th>
+                                <th *ngIf="roleid=='1'">Actions</th> -->
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let list of componentmaster|filter:term |paginate: { itemsPerPage: count2, currentPage: p1}  "  >
+                                <td>{{list.name}}</td>
+                                <td>{{list.employeID}}</td>
+                                <td>{{list.payDate|date}}</td>
+                                <td>{{list.thirteenthMonthBonus}}</td>
+                                <td>{{list.forteenthMonthBonus}}</td>
+                                <td>{{list.performanceBonus}}</td>
+                                <td>{{list.taxableBonus}}</td>
+                                <td>{{list.nonTaxableBonus}}</td>
+
+                                
+                                <td > 
+                                    <button class="upload"  (click)="delete(list.id)">Delete</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <table class="table" id="downloadaplication" *ngIf="companyid==1008">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>EmployeeID</th>
+                                <th>Pay Date</th>
+                                <th>13th Month Bonus</th>
+                                <th>Mid Year Bonus</th>
                                 <th>Performance Bonus</th>
                                 <th>Taxable Bonus</th>
                                 <th>NonTaxable Bonus</th>

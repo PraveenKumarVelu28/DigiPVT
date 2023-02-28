@@ -65,8 +65,26 @@ import { ValidatedTandLDetailsComponent } from './validated-tand-ldetails/valida
 import { UploadTandLValuesComponent } from './upload-tand-lvalues/upload-tand-lvalues.component';
 import { ValidatedPayrollSummaryReportForUNCComponent } from './validated-payroll-summary-report-for-unc/validated-payroll-summary-report-for-unc.component';
 import { UploadPayrollSummaryReprtValuesComponent } from './upload-payroll-summary-reprt-values/upload-payroll-summary-reprt-values.component';
+import { RunNewHireAndRetireesValidationComponent } from './run-new-hire-and-retirees-validation/run-new-hire-and-retirees-validation.component';
+import { UploadMasterListComponent } from './upload-master-list/upload-master-list.component';
+import { ValidatedNewHiresDetailsComponent } from './validated-new-hires-details/validated-new-hires-details.component';
+import { RunBlankStatsValidationComponent } from './run-blank-stats-validation/run-blank-stats-validation.component';
+import { ValidatedBlanKStatsComponent } from './validated-blan-kstats/validated-blan-kstats.component';
+import { UploadAttendanceDaysCountComponent } from './upload-attendance-days-count/upload-attendance-days-count.component';
 const routes: Routes = [
   { path: '', component: PayrollProcessorComponent },
+
+  { path: 'RunBlankStatsValidation', component: RunBlankStatsValidationComponent },
+  { path: 'ValidatedBlanKStats', component: ValidatedBlanKStatsComponent },
+  { path: 'UploadAttendanceDaysCount', component: UploadAttendanceDaysCountComponent },
+
+
+  { path: 'ValidatedNewHiresDetails', component: ValidatedNewHiresDetailsComponent },
+
+  { path: 'RunNewHireAndRetireesValidation', component: RunNewHireAndRetireesValidationComponent },
+  { path: 'UploadMasterList', component: UploadMasterListComponent },
+
+
   { path: 'ValidatedPayrollSummaryReportForUNC', component: ValidatedPayrollSummaryReportForUNCComponent },
   { path: 'UploadPayrollSummaryReprtValues', component: UploadPayrollSummaryReprtValuesComponent },
 

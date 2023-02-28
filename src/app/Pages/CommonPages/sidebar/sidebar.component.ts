@@ -185,10 +185,10 @@ export class SidebarComponent implements OnInit {
         debugger
         const login: any = document.getElementById('login') as HTMLElement
 
-        if (login.value == this.validation[0].password && this.companyid!=10013) {
+        if (login.value == 2345 && this.companyid!=10013 && this.companyid!='1008' ) {
           this.router.navigate(['/PayrollProcessor/ValidatedPayrollSummaryReport'])
         }
-        else   if (login.value == this.validation[0].password && this.companyid==10013) {
+        else   if (login.value == 2345 && (this.companyid==10013 || this.companyid==1008)) {
           this.router.navigate(['/PayrollProcessor/ValidatedPayrollSummaryReportForUNC'])
         }
         else {
@@ -214,6 +214,15 @@ export class SidebarComponent implements OnInit {
     this.router.navigate(['/Admin/AnnouncementDashboard']);
   }
 
+  NHANDRValidation() {
+    debugger
+    this.active = 108;
+    localStorage.setItem('Pagename', 'Announcements')
+    this.router.navigate(['/PayrollProcessor/ValidatedNewHiresDetails']);
+  }
+
+
+  
 
   BonusValidation() {
     debugger
@@ -1036,10 +1045,57 @@ export class SidebarComponent implements OnInit {
 
   }
 
+  public ValidatedNewHandR() {
+    debugger
+    this.active = 2345;
+    this.router.navigate(['/PayrollProcessor/ValidatedNewHiresDetails']);
+
+
+  }
+
+  
+  public UploadMasterFile() {
+    debugger
+    this.active = 2345;
+    this.router.navigate(['/PayrollProcessor/UploadMasterList']);
+
+
+  }
+
+    
+  public UploadAttendanceCounts() {
+    debugger
+    this.active = 2345;
+    this.router.navigate(['/PayrollProcessor/UploadAttendanceDaysCount']);
+
+
+  }
+
+
+
+  
+
   public ValidatedSummerSemSubjectLoadsValidation() {
     debugger
     this.active = 2345;
     this.router.navigate(['/PayrollProcessor/ValidatedSummerSemSubjectLoads']);
+
+
+  }
+
+  
+  public ValidatedBankstats() {
+    debugger
+    this.active = 2345;
+    this.router.navigate(['/PayrollProcessor/ValidatedBlanKStats']);
+
+
+  }
+
+  public BlankStatsValidation() {
+    debugger
+    this.active = 432;
+   
 
 
   }

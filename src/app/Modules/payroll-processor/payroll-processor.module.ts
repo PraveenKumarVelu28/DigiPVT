@@ -74,6 +74,9 @@ import { ValidatedNewHiresDetailsComponent } from './validated-new-hires-details
 import { UploadAttendanceDaysCountComponent } from './upload-attendance-days-count/upload-attendance-days-count.component';
 import { ValidatedBlanKStatsComponent } from './validated-blan-kstats/validated-blan-kstats.component';
 import { RunBlankStatsValidationComponent } from './run-blank-stats-validation/run-blank-stats-validation.component';
+import { UploadHeadCountValuesComponent } from './upload-head-count-values/upload-head-count-values.component';
+import { ValidatedHeadCountDetailsComponent } from './validated-head-count-details/validated-head-count-details.component';
+import { RunHeadCountValidationComponent } from './run-head-count-validation/run-head-count-validation.component';
 
 
 
@@ -151,7 +154,10 @@ import { RunBlankStatsValidationComponent } from './run-blank-stats-validation/r
     ValidatedNewHiresDetailsComponent,
     UploadAttendanceDaysCountComponent,
     ValidatedBlanKStatsComponent,
-    RunBlankStatsValidationComponent
+    RunBlankStatsValidationComponent,
+    UploadHeadCountValuesComponent,
+    ValidatedHeadCountDetailsComponent,
+    RunHeadCountValidationComponent
   ],
   imports: [
     PayrollProcessorRoutingModule,

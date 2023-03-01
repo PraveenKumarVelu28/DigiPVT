@@ -71,8 +71,16 @@ import { ValidatedNewHiresDetailsComponent } from './validated-new-hires-details
 import { RunBlankStatsValidationComponent } from './run-blank-stats-validation/run-blank-stats-validation.component';
 import { ValidatedBlanKStatsComponent } from './validated-blan-kstats/validated-blan-kstats.component';
 import { UploadAttendanceDaysCountComponent } from './upload-attendance-days-count/upload-attendance-days-count.component';
+import { UploadHeadCountValuesComponent } from './upload-head-count-values/upload-head-count-values.component';
+import { ValidatedHeadCountDetailsComponent } from './validated-head-count-details/validated-head-count-details.component';
+import { RunHeadCountValidationComponent } from './run-head-count-validation/run-head-count-validation.component';
 const routes: Routes = [
   { path: '', component: PayrollProcessorComponent },
+  { path: 'UploadHeadCountValues', component: UploadHeadCountValuesComponent },
+  { path: 'ValidatedHeadCountDetails', component: ValidatedHeadCountDetailsComponent },
+
+  { path: 'RunHeadCountValidation', component: RunHeadCountValidationComponent },
+
 
   { path: 'RunBlankStatsValidation', component: RunBlankStatsValidationComponent },
   { path: 'ValidatedBlanKStats', component: ValidatedBlanKStatsComponent },

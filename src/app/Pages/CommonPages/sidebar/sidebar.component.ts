@@ -1092,6 +1092,28 @@ export class SidebarComponent implements OnInit {
 
   }
 
+
+  
+  
+  public ValidatedHeadCount() {
+    debugger
+    this.active = 2345;
+    this.router.navigate(['/PayrollProcessor/ValidatedHeadCountDetails']);
+
+
+  }
+
+    
+  public UploadHeadCount() {
+    debugger
+    this.active = 2345;
+    this.router.navigate(['/PayrollProcessor/UploadHeadCountValues']);
+
+
+  }
+
+
+
   public BlankStatsValidation() {
     debugger
     this.active = 432;
@@ -1099,6 +1121,16 @@ export class SidebarComponent implements OnInit {
 
 
   }
+
+  
+  public HeadCountValidation() {
+    debugger
+    this.active = 472;
+   
+
+
+  }
+
 
   public ValidatedColaAllowances() {
     debugger

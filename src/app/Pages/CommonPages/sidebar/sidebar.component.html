@@ -21,7 +21,7 @@
     </a> -->
 
 
-    <a (click)="Staff123()" *ngIf="login == 9 && companyid != 1007"
+    <a (click)="Staff123()" *ngIf="login == 9 "
       [ngClass]="(active == 312)&&!mini ? 'menu1' :(active == 312)&&mini?'menu-mini' :'menu'">
       <span>
         <img *ngIf="(active == 312&&!mini)" src="assets/Images/revamp/dashboardwhite-icon.png">
@@ -161,6 +161,36 @@
 
 
 
+
+<a data-toggle="collapse" data-target="#HeadCountValidation" *ngIf="login == 9 && (companyid == 1001|| companyid == 1006 || companyid == 1008  )"
+
+(click)="HeadCountValidation()"
+[ngClass]="(active == 472 )&&!mini ? 'menu1' : (active == 472)&&mini?'menu-mini':'menu'">
+<img *ngIf="(active == 472&&!mini)" src="assets/Images/revamp/announcementwhite.png">
+<img *ngIf="active != 472 " src="assets/Images/revamp/announcementnewgray-icon.png">
+<img *ngIf="(active == 472&&mini) " src="assets/Images/revamp/announcementnewblue-icon.png">
+
+<span class="icon-text">Head Count Validation</span></a>
+
+
+
+<div id="HeadCountValidation" class="collapse length ">
+<a (click)="ValidatedHeadCount()" class="nonactive">
+  <span class="sub-request">Validated Head Count </span>
+</a>
+
+
+<a (click)="UploadHeadCount()" class="nonactive">
+  <span [ngClass]="active == 'UploadSystemGeneratedLWOP' ? 'Active1' : 'Active3'" class="sub-request">Upload
+ Head Count</span>
+</a>
+
+
+
+</div>
+
+
+
 <a data-toggle="collapse" data-target="#TaxValidation"
 *ngIf="login == 9 && (companyid == 1001 || companyid == 10013 || companyid == 1008)" (click)="TaxValidation()"
 [ngClass]="(active == 'RunTaxValidation' )&&!mini ? 'menu1' : (active == 768)&&mini?'menu-mini':'menu'">
@@ -192,7 +222,7 @@
       <span class="icon-text">Announcement</span></a> -->
 
     <a data-toggle="collapse" data-target="#BasicPayValidation"
-      *ngIf="login == 9 && (companyid == 1001 || companyid == 1002 || companyid == 1006 || companyid == 10013)" (click)="BasicPayValidation()"
+      *ngIf="login == 9 && (companyid == 1001 || companyid == 1002 || companyid == 1006 || companyid == 10013 || companyid==1007)" (click)="BasicPayValidation()"
       [ngClass]="(active == 767 )&&!mini ? 'menu1' : (active == 767)&&mini?'menu-mini':'menu'">
       <img *ngIf="(active == 767&&!mini)" src="assets/Images/revamp/announcementwhite.png">
       <img *ngIf="active != 767 " src="assets/Images/revamp/announcementnewgray-icon.png">
@@ -213,6 +243,8 @@
       </a>
 
     </div>
+
+    
 
     
     <a data-toggle="collapse" data-target="#PhilHealthValidation" *ngIf="login == 9 && (companyid == 10013)"

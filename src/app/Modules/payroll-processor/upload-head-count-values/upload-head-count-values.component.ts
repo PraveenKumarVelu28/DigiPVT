@@ -4,13 +4,15 @@ import { DigiPVTService } from 'src/app/Pages/Services/digi-pvt.service';
 import Swal from 'sweetalert2';
 import * as XLSX from 'xlsx';
 declare var JSZipUtils: any;
-@Component({
-  selector: 'app-upload-attendance-days-count',
-  templateUrl: './upload-attendance-days-count.component.html',
-  styleUrls: ['./upload-attendance-days-count.component.css']
-})
-export class UploadAttendanceDaysCountComponent implements OnInit {
 
+@Component({
+  selector: 'app-upload-head-count-values',
+  templateUrl: './upload-head-count-values.component.html',
+  styleUrls: ['./upload-head-count-values.component.css']
+})
+export class UploadHeadCountValuesComponent implements OnInit {
+
+  
   constructor(public DigiPVTService: DigiPVTService, public router: Router) { }
   componentmaster: any;
   id : any;
@@ -36,7 +38,7 @@ export class UploadAttendanceDaysCountComponent implements OnInit {
 
   ngOnInit(): void {
     debugger
-    this.GetUploadedAttendanceCounts();
+    this.GetUploadedHeadCountDetails();
     this.DigiPVTService.GetAllStaffNew().
     subscribe({
       next: data => {
@@ -51,9 +53,9 @@ export class UploadAttendanceDaysCountComponent implements OnInit {
       });
   }
 
-  public GetUploadedAttendanceCounts(){
+  public GetUploadedHeadCountDetails(){
     debugger
-    this.DigiPVTService.GetUploadedAttendanceCounts().subscribe(data => {
+    this.DigiPVTService.GetUploadedHeadCountDetails().subscribe(data => {
       debugger
       this.componentmaster = data;
       console.log("componentmaster", this.componentmaster);
@@ -129,7 +131,7 @@ export class UploadAttendanceDaysCountComponent implements OnInit {
         var obj={
           attachmenturlforexport:this.exceldata
         }
-        this.DigiPVTService.InsertAttendanceCounts(obj)
+        this.DigiPVTService.InsertUploadedHeadCountDetails(obj)
           .subscribe({
             next: data => {
               debugger
@@ -179,4 +181,5 @@ export class UploadAttendanceDaysCountComponent implements OnInit {
     XLSX.writeFile(wb, this.fileName);
 
 }
+
 }

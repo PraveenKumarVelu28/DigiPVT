@@ -6,13 +6,12 @@ import * as XLSX from 'xlsx';
 import { ExportToCsv } from 'export-to-csv';
 import { DatePipe, formatDate } from '@angular/common';
 declare var JSZipUtils: any;
-
 @Component({
-  selector: 'app-run-blank-stats-validation',
-  templateUrl: './run-blank-stats-validation.component.html',
-  styleUrls: ['./run-blank-stats-validation.component.css']
+  selector: 'app-run-head-count-validation',
+  templateUrl: './run-head-count-validation.component.html',
+  styleUrls: ['./run-head-count-validation.component.css']
 })
-export class RunBlankStatsValidationComponent implements OnInit {
+export class RunHeadCountValidationComponent implements OnInit {
 
   viewMode = 'tab1';
 
@@ -327,7 +326,7 @@ export class RunBlankStatsValidationComponent implements OnInit {
                         debugger;
                         this.StaffSalaryReports = res;
                         this.ID1 = [];
-                        location.href = '#/PayrollProcessor/ValidatedBlanKStats'
+                        location.href = '#/PayrollProcessor/ValidatedHeadCountDetails'
                       }
                     )
 
@@ -717,7 +716,7 @@ export class RunBlankStatsValidationComponent implements OnInit {
                                 )
                                 this.Payrollvis = true
                                 this.InsertNotification();
-                                location.href = '#/PayrollProcessor/ValidatedBlanKStats'
+                                location.href = '#/PayrollProcessor/ValidatedHeadCountDetails'
                               }
                             )
   
@@ -775,7 +774,7 @@ export class RunBlankStatsValidationComponent implements OnInit {
                               )
                               this.Payrollvis = true
                               this.InsertNotification();
-                              location.href = '#/PayrollProcessor/ValidatedBlanKStats'
+                              location.href = '#/PayrollProcessor/ValidatedHeadCountDetails'
                             }
                           )
 
@@ -879,5 +878,4 @@ export class RunBlankStatsValidationComponent implements OnInit {
   hdmfsalaryloan: any;
   benefits: any;
  
-
 }

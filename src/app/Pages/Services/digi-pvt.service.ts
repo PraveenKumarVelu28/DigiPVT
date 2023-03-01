@@ -684,6 +684,21 @@ export class DigiPVTService {
     return this.http.post(this.url, data);
   }
 
+  public InsertAttendanceCounts(data: any) {
+    debugger;
+    this.url = this.host + '/Master/InsertAttendanceCounts';
+    return this.http.post(this.url, data);
+  }
+
+  public InsertUploadedHeadCountDetails(data: any) {
+    debugger;
+    this.url = this.host + '/Master/InsertUploadedHeadCountDetails';
+    return this.http.post(this.url, data);
+  }
+
+  
+  
+
   public UploadPayrollSummaryValidationForUnc(data: any) {
     debugger;
     this.url = this.host + '/Master/UploadPayrollSummaryValidationForUnc';
@@ -1800,6 +1815,12 @@ export class DigiPVTService {
   public GetBlankStatsValiation() {
     return this.http.get<any[]>(
       this.host + "/Master/GetBlankStatsValiation"
+    );
+  } 
+
+  public GetValidatedHeadCount() {
+    return this.http.get<any[]>(
+      this.host + "/Master/GetValidatedHeadCount"
     );
   } 
 
@@ -4517,16 +4538,30 @@ export class DigiPVTService {
       
   public GetUploadedAttendanceCounts(){
     return this.http.get<any[]>(
-      this.host +"/Vendor/GetUploadedAttendanceCounts"
+      this.host +"/Master/GetUploadedAttendanceCounts"
     );
   }
 
+  public GetUploadedHeadCountDetails(){
+    return this.http.get<any[]>(
+      this.host +"/Master/GetUploadedHeadCountDetails"
+    );
+  }
+
+  
   
 
   public DeleteAllowancesvalidation(ID : any){
     return this.http.get<any[]>(
       this.host + "/Vendor/DeleteAllowancesvalidation?ID=" + ID);
   }
+
+  public DeleteUploadedHeadCountDetails(ID : any){
+    return this.http.get<any[]>(
+      this.host + "/Vendor/DeleteUploadedHeadCountDetails?ID=" + ID);
+  }
+
+  
 
   public InsertAllowancevalidation(data: any) {
     debugger;

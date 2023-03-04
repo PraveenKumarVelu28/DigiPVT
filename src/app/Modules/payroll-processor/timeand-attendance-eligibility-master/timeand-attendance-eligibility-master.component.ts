@@ -5,15 +5,14 @@ import Swal from 'sweetalert2';
 import * as XLSX from 'xlsx';
 declare var JSZipUtils: any;
 
-
 @Component({
-  selector: 'app-upload-master-list',
-  templateUrl: './upload-master-list.component.html',
-  styleUrls: ['./upload-master-list.component.css']
+  selector: 'app-timeand-attendance-eligibility-master',
+  templateUrl: './timeand-attendance-eligibility-master.component.html',
+  styleUrls: ['./timeand-attendance-eligibility-master.component.css']
 })
-export class UploadMasterListComponent implements OnInit {
+export class TimeandAttendanceEligibilityMasterComponent implements OnInit {
 
- 
+  
   constructor(public DigiPVTService: DigiPVTService, public router: Router) { }
   componentmaster: any;
   id : any;
@@ -35,13 +34,11 @@ export class UploadMasterListComponent implements OnInit {
   EndDate:any;
   StaffID:any;
   Paydate:any;
-  companyid:any;
   public attachmentsurl: any = [];
 
   ngOnInit(): void {
     debugger
-    this.companyid = sessionStorage.getItem('companyid');
-    this.GetUploadedMasterFile();
+    this.GetTimeAndAttendanceEligibilities();
     this.DigiPVTService.GetAllStaffNew().
     subscribe({
       next: data => {
@@ -56,22 +53,13 @@ export class UploadMasterListComponent implements OnInit {
       });
   }
 
-  public GetUploadedMasterFile(){
+  public GetTimeAndAttendanceEligibilities(){
     debugger
-    if(this.companyid==1007){
-      this.DigiPVTService.GetUploadedMasterFileForAffinity().subscribe(data => {
-        debugger
-        this.componentmaster = data;
-        console.log("componentmaster", this.componentmaster);
-      });
-    }
-  else{
-    this.DigiPVTService.GetUploadedMasterFile().subscribe(data => {
+    this.DigiPVTService.GetTimeAndAttendanceEligibilities().subscribe(data => {
       debugger
       this.componentmaster = data;
       console.log("componentmaster", this.componentmaster);
     });
-  }
   }
 
   incomingfile(event: any) {
@@ -203,32 +191,18 @@ export class UploadMasterListComponent implements OnInit {
 
       //   }
         // this.AliprojectService.InsertRoleType(eb1)
-if(this.companyid==1007){
-  var obj={
-    attachmenturlforexport:this.exceldata
-  }
-  this.DigiPVTService.InsertUploadedMasterFileForAffinitiy(obj)
-    .subscribe({
-      next: data => {
-        debugger
-        Swal.fire('Updated Successfully')
-        this.ngOnInit();
-      }
-    })
-}
- else{
-  var obj={
-    attachmenturlforexport:this.exceldata
-  }
-  this.DigiPVTService.InsertUploadedMasterFile(obj)
-    .subscribe({
-      next: data => {
-        debugger
-        Swal.fire('Updated Successfully')
-        this.ngOnInit();
-      }
-    })
- }      
+
+        var obj={
+          attachmenturlforexport:this.exceldata
+        }
+        this.DigiPVTService.InsertTimeAndAttendanceEligibilities(obj)
+          .subscribe({
+            next: data => {
+              debugger
+              Swal.fire('Updated Successfully')
+              this.ngOnInit();
+            }
+          })
       }
     // }
   }
@@ -243,7 +217,7 @@ if(this.companyid==1007){
       cancelButtonText: 'No, keep it'
     }).then((result) => {
       if (result.value == true) {
-        this.DigiPVTService.DeleteUploadedMasterFile(ID)
+        this.DigiPVTService.DeleteBasicpayAdjustments(ID)
           .subscribe({
             next: data => {
               debugger
@@ -269,6 +243,7 @@ if(this.companyid==1007){
     XLSX.writeFile(wb, this.fileName);
 
   }
+
 
 
 }

@@ -77,6 +77,8 @@ import { RunBlankStatsValidationComponent } from './run-blank-stats-validation/r
 import { UploadHeadCountValuesComponent } from './upload-head-count-values/upload-head-count-values.component';
 import { ValidatedHeadCountDetailsComponent } from './validated-head-count-details/validated-head-count-details.component';
 import { RunHeadCountValidationComponent } from './run-head-count-validation/run-head-count-validation.component';
+import { TimeandAttendanceEligibilityMasterComponent } from './timeand-attendance-eligibility-master/timeand-attendance-eligibility-master.component';
+import { EmployeeBatchMasterComponent } from './employee-batch-master/employee-batch-master.component';
 
 
 
@@ -157,7 +159,9 @@ import { RunHeadCountValidationComponent } from './run-head-count-validation/run
     RunBlankStatsValidationComponent,
     UploadHeadCountValuesComponent,
     ValidatedHeadCountDetailsComponent,
-    RunHeadCountValidationComponent
+    RunHeadCountValidationComponent,
+    TimeandAttendanceEligibilityMasterComponent,
+    EmployeeBatchMasterComponent
   ],
   imports: [
     PayrollProcessorRoutingModule,

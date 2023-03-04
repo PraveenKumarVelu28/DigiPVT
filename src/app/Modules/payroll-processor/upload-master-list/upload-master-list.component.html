@@ -55,7 +55,55 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="container-fluid">
-                    <table class="table" id="downloadaplication">
+                    <table class="table" id="downloadaplication" *ngIf="companyid==1007">
+                        <thead>
+                            <tr>
+                                <th>EmployeID</th>
+                                <th>Employee Name</th>
+                                
+                                <th>Joining Date</th>    
+                                <th>Job Status</th>   
+                                <th>Cost Center</th>   
+                                <th>Employee Status</th>         
+                                <th>Transportation Allowance</th>  
+                                <th>Time and Attendance Eligibilities</th>
+                                <th>Employee Batch</th>
+                                <th>Bank Acc No</th>
+                                <th>BMS</th>
+                                <th>PayDate</th>  
+                              
+                               
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let list of componentmaster|filter:term |paginate: { itemsPerPage: count2, currentPage: p1}  "  >
+                                <td>{{list.employeeNo}}</td>
+                                <td>{{list.employeeName}}</td>
+                                <td>{{list.joiningDate|date}}</td>
+                                <td>{{list.jobStatus}}</td>
+                                <td>{{list.costCenter}}</td>
+                                <td>{{list.employmentStatus}}</td>
+                              
+                                
+                                <!-- <td>{{list.employeeStatus}}</td> -->
+                                <td>{{list.transportationAllowance}}</td>
+                                <td>{{list.timeandAttendanceEligibilities}}</td>
+                                <td>{{list.employeeBatch}}</td>
+                                <td>{{list.bankAccNo}}</td>
+
+                                <td>{{list.bms}}</td>
+                                <td>{{list.paydate|date}}</td>
+                               
+                               
+                                <td>
+                                    <button class="upload" (click)="delete(list.id)">Delete</button>
+                                </td>
+                                
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <table class="table" id="downloadaplication" *ngIf="companyid!=1007">
                         <thead>
                             <tr>
                                 <th>EmployeID</th>

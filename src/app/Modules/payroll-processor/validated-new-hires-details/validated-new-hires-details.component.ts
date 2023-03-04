@@ -16,9 +16,9 @@ export class ValidatedNewHiresDetailsComponent implements OnInit {
  
  
   constructor(public DigiofficeService: DigiPVTService, public router: Router) { }
-
+  companyid:any;
   ngOnInit(): void {
-
+    this.companyid = sessionStorage.getItem('companyid');
     this.GetValidatedMasterFile();
   }
 

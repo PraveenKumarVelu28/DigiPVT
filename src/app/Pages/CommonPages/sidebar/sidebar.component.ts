@@ -185,10 +185,10 @@ export class SidebarComponent implements OnInit {
         debugger
         const login: any = document.getElementById('login') as HTMLElement
 
-        if (login.value == 2345 && this.companyid!=10013 && this.companyid!='1008' ) {
+        if (login.value == 2345 && this.companyid!=10013 && this.companyid!='1008'  && this.companyid!='1007') {
           this.router.navigate(['/PayrollProcessor/ValidatedPayrollSummaryReport'])
         }
-        else   if (login.value == 2345 && (this.companyid==10013 || this.companyid==1008)) {
+        else   if (login.value == 2345 && (this.companyid==10013 || this.companyid==1008 || this.companyid==1007)) {
           this.router.navigate(['/PayrollProcessor/ValidatedPayrollSummaryReportForUNC'])
         }
         else {
@@ -1062,6 +1062,26 @@ export class SidebarComponent implements OnInit {
 
   }
 
+  
+  
+  public UploadEmployeeBatch() {
+    debugger
+    this.active = 2345;
+    this.router.navigate(['/PayrollProcessor/EmployeeBatchMaster']);
+
+
+  }
+
+
+    
+  public TimeandAttendanceEligibilityMaster() {
+    debugger
+    this.active = 2345;
+    this.router.navigate(['/PayrollProcessor/TimeandAttendanceEligibilityMaster']);
+
+
+  }
+  
     
   public UploadAttendanceCounts() {
     debugger
@@ -1403,7 +1423,7 @@ export class SidebarComponent implements OnInit {
   public UploadPayrollSummaryReport() {
     this.active = 'UploadBasicPayValues'
 
-    if(this.companyid==10013){
+    if(this.companyid==10013 || this.companyid==1007){
       this.router.navigate(['/PayrollProcessor/UploadPayrollSummaryReprtValues'])
 
     }

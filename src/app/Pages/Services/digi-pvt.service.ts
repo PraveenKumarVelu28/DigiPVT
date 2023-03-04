@@ -722,12 +722,36 @@ export class DigiPVTService {
     return this.http.post(this.url, data);
   }
 
+
+  public InsertEmployeeBatchMaster(data: any) {
+    debugger;
+    this.url = this.host + '/Master/InsertEmployeeBatchMaster';
+    return this.http.post(this.url, data);
+  }
+
+
+  public InsertTimeAndAttendanceEligibilities(data: any) {
+    debugger;
+    this.url = this.host + '/Master/InsertTimeAndAttendanceEligibilities';
+    return this.http.post(this.url, data);
+  }
+
+
+
+  
   
   public InsertUploadedMasterFile(data: any) {
     debugger;
     this.url = this.host + '/Master/InsertUploadedMasterFile';
     return this.http.post(this.url, data);
   }
+
+  public InsertUploadedMasterFileForAffinitiy(data: any) {
+    debugger;
+    this.url = 'http://localhost:1807/' + '/Master/InsertUploadedMasterFileForAffinitiy';
+    return this.http.post(this.url, data);
+  }
+  
   
   
 
@@ -1779,12 +1803,38 @@ export class DigiPVTService {
     );
   } 
 
+
+  public GetEmployeeBatchMaster() {
+    return this.http.get<any[]>(
+      this.host + "/Master/GetEmployeeBatchMaster"
+    );
+  } 
+
+  public GetTimeAndAttendanceEligibilities() {
+    return this.http.get<any[]>(
+      this.host + "/Master/GetTimeAndAttendanceEligibilities"
+    );
+  } 
+
+
+  
+
+
+  
   
   public GetUploadedMasterFile() {
     return this.http.get<any[]>(
       this.host + "/Master/GetUploadedMasterFile"
     );
   } 
+
+    
+  public GetUploadedMasterFileForAffinity() {
+    return this.http.get<any[]>(
+      this.host + "/Master/GetUploadedMasterFileForAffinity"
+    );
+  } 
+
 
   
   

@@ -42,7 +42,7 @@
   </a>
 
 
-  <a data-toggle="collapse" data-target="#SummaryValidation1" *ngIf="login == 9 && ( companyid == 10013 || companyid==1008)"
+  <a data-toggle="collapse" data-target="#SummaryValidation1" *ngIf="login == 9 && ( companyid == 10013 || companyid==1008 || companyid==1007)"
 
   (click)="PayrollSummaryValidation()"
   [ngClass]="(active == 976 )&&!mini ? 'menu1' : (active == 976)&&mini?'menu-mini':'menu'">
@@ -103,7 +103,7 @@
 
 
 
-<a data-toggle="collapse" data-target="#NHValidation" *ngIf="login == 9 && (companyid == 1001|| companyid == 1006 || companyid == 1008  )"
+<a data-toggle="collapse" data-target="#NHValidation" *ngIf="login == 9 && (companyid == 1001|| companyid == 1006 || companyid == 1008   )"
 
 (click)="NHANDRValidation()"
 [ngClass]="(active == 108 )&&!mini ? 'menu1' : (active == 108)&&mini?'menu-mini':'menu'">
@@ -124,6 +124,61 @@
 <a (click)="UploadMasterFile()" class="nonactive">
   <span [ngClass]="active == 'UploadSystemGeneratedLWOP' ? 'Active1' : 'Active3'" class="sub-request">Upload
    Master File</span>
+</a>
+
+
+
+<a (click)="UploadEmployeeBatch()" class="nonactive">
+  <span [ngClass]="active == 'UploadSystemGeneratedLWOP' ? 'Active1' : 'Active3'" class="sub-request">Upload
+   Employee Batch</span>
+</a>
+
+
+<a (click)="TimeandAttendanceEligibilityMaster()" class="nonactive">
+  <span [ngClass]="active == 'UploadSystemGeneratedLWOP' ? 'Active1' : 'Active3'" class="sub-request">Upload
+   Time and Attendance Eligibility</span>
+</a>
+
+
+
+</div>
+
+
+
+<a data-toggle="collapse" data-target="#masterfile" *ngIf="login == 9 && ( companyid == 1007 )"
+
+(click)="NHANDRValidation()"
+[ngClass]="(active == 108 )&&!mini ? 'menu1' : (active == 108)&&mini?'menu-mini':'menu'">
+<img *ngIf="(active == 108&&!mini)" src="assets/Images/revamp/announcementwhite.png">
+<img *ngIf="active != 108 " src="assets/Images/revamp/announcementnewgray-icon.png">
+<img *ngIf="(active == 108&&mini) " src="assets/Images/revamp/announcementnewblue-icon.png">
+
+<span class="icon-text">Master File Validation</span></a>
+
+
+
+<div id="masterfile" class="collapse length ">
+<a (click)="ValidatedNewHandR()" class="nonactive">
+  <span class="sub-request">Validated Master File  </span>
+</a>
+
+
+<a (click)="UploadMasterFile()" class="nonactive">
+  <span [ngClass]="active == 'UploadSystemGeneratedLWOP' ? 'Active1' : 'Active3'" class="sub-request">Upload
+   Master File</span>
+</a>
+
+
+
+<a (click)="UploadEmployeeBatch()" class="nonactive">
+  <span [ngClass]="active == 'UploadSystemGeneratedLWOP' ? 'Active1' : 'Active3'" class="sub-request">Upload
+   Employee Batch</span>
+</a>
+
+
+<a (click)="TimeandAttendanceEligibilityMaster()" class="nonactive">
+  <span [ngClass]="active == 'UploadSystemGeneratedLWOP' ? 'Active1' : 'Active3'" class="sub-request">Upload
+   Time and Attendance Eligibility</span>
 </a>
 
 

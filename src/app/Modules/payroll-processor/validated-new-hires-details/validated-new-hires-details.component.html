@@ -57,7 +57,7 @@
             </div>
             <br>
             <div class="row listscroll ">
-                <table class="table" id="downloadaplication">
+                <table class="table" id="downloadaplication" *ngIf="companyid!=1007">
                     <thead>
                         <tr class="thwidth">
                             <th>Employee ID</th>
@@ -89,6 +89,56 @@
 
                             <td [ngClass]="{'bgred':time.bcolor=='1 ', 'bgreen':time.bcolor=='0 ' }">{{time.tag}}</td>
                             <td [ngClass]="{'bgred':time.bcolor=='1 ', 'bgreen':time.bcolor=='0 ' }">{{time.paydate|date}}</td>
+
+                        </tr>
+                    </thead>
+                </table>
+
+                <table class="table" id="downloadaplication" *ngIf="companyid==1007">
+                    <thead>
+                        <tr class="thwidth">
+                            <th>Employee No</th>
+                            <th>Employee Name</th>
+                            <th>Joining Date</th>
+                            <th class="thwidth">Employment Status</th>
+                            <th class="thwidth">Job Status</th>
+                            <th class="thwidth">Cost Center</th>
+                            <th class="thwidth">Employee Status</th>
+                            <th class="thwidth">Transportation Allowance</th>
+                            <th class="thwidth">Time and Attendance Eligibilities</th>
+                            <th class="thwidth">Time and Attendance Eligibilities Desc</th>
+                            <th class="thwidth">Employee Batch</th>
+                            <th class="thwidth">Employee Batch Description</th>
+                            <th>Bank Acc No </th>
+                            <th>BMS</th>
+                            <th class="thwidth">PayDate</th>
+                            <th>Remarks</th>
+
+                            
+                           
+                        </tr>
+                        <tr
+                            *ngFor="let time of timedetails| filter:term |paginate: { itemsPerPage: count1, currentPage: p}">
+                            <td [ngClass]="{'bgred':time.bcolor=='1 ', 'bgreen':time.bcolor=='0 ' }">{{time.employeeNo}}</td>
+                            <td [ngClass]="{'bgred':time.bcolor=='1 ', 'bgreen':time.bcolor=='0 ' }">{{time.employeeName}}</td>
+
+                            <td [ngClass]="{'bgred':time.bcolor=='1 ', 'bgreen':time.bcolor=='0 ' }">{{time.joiningDate|date}}</td>
+                            <td [ngClass]="{'bgred':time.bcolor=='1 ', 'bgreen':time.bcolor=='0 ' }">{{time.employmentStatus}}</td>
+                            <td [ngClass]="{'bgred':time.bcolor=='1 ', 'bgreen':time.bcolor=='0 ' }">{{time.jobStatus}}</td>
+
+
+                            <td [ngClass]="{'bgred':time.bcolor=='1 ', 'bgreen':time.bcolor=='0 ' }">{{time.costCenter}}</td>
+
+                            <td [ngClass]="{'bgred':time.bcolor=='1 ', 'bgreen':time.bcolor=='0 ' }">{{time.employeeStatus}}</td>
+                            <td [ngClass]="{'bgred':time.bcolor=='1 ', 'bgreen':time.bcolor=='0 ' }">{{time.transportationAllowance}}</td>
+                            <td [ngClass]="{'bgred':time.bcolor=='1 ', 'bgreen':time.bcolor=='0 ' }">{{time.timeandAttendanceEligibilities}}</td>
+                            <td [ngClass]="{'bgred':time.bcolor=='1 ', 'bgreen':time.bcolor=='0 ' }">{{time.timeandAttendanceEligibilitiesdesc}}</td>
+                            <td [ngClass]="{'bgred':time.bcolor=='1 ', 'bgreen':time.bcolor=='0 ' }">{{time.employeeBatch}}</td>
+                            <td [ngClass]="{'bgred':time.bcolor=='1 ', 'bgreen':time.bcolor=='0 ' }">{{time.employeeBatchdesc}}</td>
+                            <td [ngClass]="{'bgred':time.bcolor=='1 ', 'bgreen':time.bcolor=='0 ' }">{{time.bankAccNo}}</td>
+                            <td [ngClass]="{'bgred':time.bcolor=='1 ', 'bgreen':time.bcolor=='0 ' }">{{time.bms}}</td>
+                            <td [ngClass]="{'bgred':time.bcolor=='1 ', 'bgreen':time.bcolor=='0 ' }">{{time.paydate|date}}</td>
+                            <td [ngClass]="{'bgred':time.bcolor=='1 ', 'bgreen':time.bcolor=='0 ' }">{{time.tag}}</td>
 
                         </tr>
                     </thead>

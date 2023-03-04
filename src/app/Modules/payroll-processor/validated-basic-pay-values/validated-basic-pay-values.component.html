@@ -65,7 +65,7 @@
                             <th>Basic Pay</th>
                             <th class="thwidth">Effective Date</th>
                             <th class="thwidth">No Of Working Days</th>
-                            <th class="thwidth">No Of Incomplete Days</th>
+                            <th  *ngIf="companyid!=1007" class="thwidth">No Of Incomplete Days</th>
 
                             <th class="thwidth">Uploaded Basic Pay Adjustment</th>
                             <th class="thwidth">Validated Basic Pay Adjustment</th>
@@ -79,7 +79,7 @@
                             <td [ngClass]="{'bgred':time.bcolor=='1' }">{{time.basicPay}}</td>
                             <td [ngClass]="{'bgred':time.bcolor=='1' }">{{time.paydate|date}}</td>
                             <td [ngClass]="{'bgred':time.bcolor=='1' }">{{time.noofworkingdays}}</td>
-                            <td [ngClass]="{'bgred':time.bcolor=='1' }">{{time.noofIncompleteDays}}</td>
+                            <td *ngIf="companyid!=1007"  [ngClass]="{'bgred':time.bcolor=='1' }">{{time.noofIncompleteDays}}</td>
 
                             
                             <td [ngClass]="{'bgred':time.bcolor=='1' }">{{time.uploadedBasicPayAdjustment}}</td>

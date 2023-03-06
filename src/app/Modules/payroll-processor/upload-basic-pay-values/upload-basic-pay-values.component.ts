@@ -34,16 +34,28 @@ export class UploadBasicPayValuesComponent implements OnInit {
   EndDate:any;
   StaffID:any;
   Paydate:any;
+  stafflistdetails:any;
+  companyid:any;
   public attachmentsurl: any = [];
 
   ngOnInit(): void {
     debugger
+    this.companyid = sessionStorage.getItem('companyid');
     this.GetBasicpayAdjustments();
     this.DigiPVTService.GetAllStaffNew().
     subscribe({
       next: data => {
         debugger
         this.stafflist = data;
+      }
+    })
+
+
+    this.DigiPVTService.GetMyDetails().
+    subscribe({
+      next: data => {
+        debugger
+        this.stafflistdetails = data;
       }
     })
 
@@ -93,10 +105,14 @@ export class UploadBasicPayValuesComponent implements OnInit {
 
    public Upload_file() {
     debugger
+
     if (this.exceldata == undefined) {
       Swal.fire('Choose a File');
     } else {
       let apiarray = [];
+      if(this.companyid==1007){
+       this.stafflist= this.stafflistdetails
+      }
       for (this.i = 0; this.i < this.exceldata.length; this.i++) {
             this.stafflistcopy123=this.stafflist.filter((x: { employeID: any; })=>x.employeID==this.exceldata[this.i].EmployeID)          
              if(this.stafflistcopy123.length!=0){

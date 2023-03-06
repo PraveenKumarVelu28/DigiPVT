@@ -5,19 +5,19 @@ import { DigiPVTService } from 'src/app/Pages/Services/digi-pvt.service';
 import * as XLSX from 'xlsx';
 import { ExportToCsv } from 'export-to-csv';
 declare var JSZipUtils: any;
-@Component({
-  selector: 'app-validated-retro-basic-pay-adjustments',
-  templateUrl: './validated-retro-basic-pay-adjustments.component.html',
-  styleUrls: ['./validated-retro-basic-pay-adjustments.component.css']
-})
-export class ValidatedRetroBasicPayAdjustmentsComponent implements OnInit {
 
-  
+@Component({
+  selector: 'app-validated-head-count-details',
+  templateUrl: './validated-head-count-details.component.html',
+  styleUrls: ['./validated-head-count-details.component.css']
+})
+export class ValidatedHeadCountDetailsComponent implements OnInit {
+
   constructor(public DigiofficeService: DigiPVTService, public router: Router) { }
-  companyid:any;
+
   ngOnInit(): void {
-    this.companyid = sessionStorage.getItem('companyid');
-    this.GetRetroValidatedBasicPayAllowances();
+
+    this.GetValidatedHeadCount();
   }
 
   timedetails:any;
@@ -27,9 +27,9 @@ export class ValidatedRetroBasicPayAdjustmentsComponent implements OnInit {
   p: any = 1;
   count1: any = 10;
 
-  public GetRetroValidatedBasicPayAllowances() {
+  public GetValidatedHeadCount() {
     debugger
-    this.DigiofficeService.GetRetroValidatedBasicPayAllowances()
+    this.DigiofficeService.GetValidatedHeadCount()
       .subscribe({
         next: data => {
           debugger
@@ -51,7 +51,8 @@ export class ValidatedRetroBasicPayAdjustmentsComponent implements OnInit {
         }
       })
   }
-  fileName = 'Basic Pay Validation Reports.xlsx';
+
+  fileName = 'Basic Pay Validation Details Reports.xlsx';
   exportexcel(): void {
     /* table id is passed over here */
     let element = document.getElementById('downloadaplication');

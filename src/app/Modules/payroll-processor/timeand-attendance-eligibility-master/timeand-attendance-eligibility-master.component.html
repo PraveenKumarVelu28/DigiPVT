@@ -2,7 +2,7 @@
     <div class="col-md-12">
         <div class="row">
             <div class="col-lg-11">
-                <p class="Heading">Upload Payroll Inputs</p>
+                <p class="Heading">Upload Time Attendance Eligibility Master</p>
             </div>
         </div>
         <div class="row FilterClass">
@@ -28,7 +28,7 @@
                             <br />
     
                             <button class="form-control AddExpense3" 
-                              data-toggle="modal" data-target="#import">Upload Payroll Inputs
+                              data-toggle="modal" data-target="#import">Upload Time and Attendance 
                                 
                             </button>
                         </div>
@@ -58,12 +58,11 @@
                     <table class="table" id="downloadaplication">
                         <thead>
                             <tr>
-                                <th>EmployeID</th>
-                                <th>Name</th>
+                                <th>Code</th>
+                                <th>Short</th>
                                 
-                                <th>Component Name</th>    
-                                <th>Component Value</th>   
-                                <th>Paydate</th>  
+                                <th>Description</th>    
+                               
                                 
                               
                                
@@ -71,12 +70,10 @@
                         </thead>
                         <tbody>
                             <tr *ngFor="let list of componentmaster|filter:term |paginate: { itemsPerPage: count2, currentPage: p1}  "  >
-                                <td>{{list.employeID}}</td>
-                                <td>{{list.name}}</td>
-                                <td>{{list.elementName}}</td>
-                                <td>{{list.currentPayrollValue}}</td>
+                                <td>{{list.code}}</td>
+                                <td>{{list.short}}</td>
+                                <td>{{list.desciption}}</td>
                                 
-                                <td>{{list.paydate|date}}</td>
                                
                                
                                 <td>
@@ -103,7 +100,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title">Payroll Inputs </h4>
+                <h4 class="modal-title">Time and Attendance Eligibility Master </h4>
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
             <div class="modal-body">
@@ -120,7 +117,7 @@
                 <div class="row">
                     <div class="col-lg-6">
                         <button type="button" class="form-control AddExpense" data-dismiss="modal"
-                      (click)="Upload_file()" >Upload Payroll Summary </button>
+                      (click)="Upload_file()" >Upload Time and Attendance Master </button>
                     </div>
                 </div>
             </div>

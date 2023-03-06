@@ -13,8 +13,9 @@ declare var JSZipUtils: any;
 export class ValidatedBasicPayValuesComponent implements OnInit {
 
   constructor(public DigiofficeService: DigiPVTService, public router: Router) { }
-
+  companyid:any;
   ngOnInit(): void {
+    this.companyid = sessionStorage.getItem('companyid');
 
     this.GetValidatedBasicPayAllowances();
   }

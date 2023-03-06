@@ -68,6 +68,17 @@ import { RunTandLValidationComponent } from './run-tand-lvalidation/run-tand-lva
 import { ValidatedTandLDetailsComponent } from './validated-tand-ldetails/validated-tand-ldetails.component';
 import { ValidatedPayrollSummaryReportForUNCComponent } from './validated-payroll-summary-report-for-unc/validated-payroll-summary-report-for-unc.component';
 import { UploadPayrollSummaryReprtValuesComponent } from './upload-payroll-summary-reprt-values/upload-payroll-summary-reprt-values.component';
+import { UploadMasterListComponent } from './upload-master-list/upload-master-list.component';
+import { RunNewHireAndRetireesValidationComponent } from './run-new-hire-and-retirees-validation/run-new-hire-and-retirees-validation.component';
+import { ValidatedNewHiresDetailsComponent } from './validated-new-hires-details/validated-new-hires-details.component';
+import { UploadAttendanceDaysCountComponent } from './upload-attendance-days-count/upload-attendance-days-count.component';
+import { ValidatedBlanKStatsComponent } from './validated-blan-kstats/validated-blan-kstats.component';
+import { RunBlankStatsValidationComponent } from './run-blank-stats-validation/run-blank-stats-validation.component';
+import { UploadHeadCountValuesComponent } from './upload-head-count-values/upload-head-count-values.component';
+import { ValidatedHeadCountDetailsComponent } from './validated-head-count-details/validated-head-count-details.component';
+import { RunHeadCountValidationComponent } from './run-head-count-validation/run-head-count-validation.component';
+import { TimeandAttendanceEligibilityMasterComponent } from './timeand-attendance-eligibility-master/timeand-attendance-eligibility-master.component';
+import { EmployeeBatchMasterComponent } from './employee-batch-master/employee-batch-master.component';
 
 
 
@@ -139,7 +150,18 @@ import { UploadPayrollSummaryReprtValuesComponent } from './upload-payroll-summa
     RunTandLValidationComponent,
     ValidatedTandLDetailsComponent,
     ValidatedPayrollSummaryReportForUNCComponent,
-    UploadPayrollSummaryReprtValuesComponent
+    UploadPayrollSummaryReprtValuesComponent,
+    UploadMasterListComponent,
+    RunNewHireAndRetireesValidationComponent,
+    ValidatedNewHiresDetailsComponent,
+    UploadAttendanceDaysCountComponent,
+    ValidatedBlanKStatsComponent,
+    RunBlankStatsValidationComponent,
+    UploadHeadCountValuesComponent,
+    ValidatedHeadCountDetailsComponent,
+    RunHeadCountValidationComponent,
+    TimeandAttendanceEligibilityMasterComponent,
+    EmployeeBatchMasterComponent
   ],
   imports: [
     PayrollProcessorRoutingModule,

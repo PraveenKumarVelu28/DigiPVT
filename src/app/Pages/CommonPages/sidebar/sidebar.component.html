@@ -328,6 +328,35 @@
   </div>
 
 
+  
+  <a data-toggle="collapse" data-target="#Statutory" *ngIf="login == 9 && (companyid == 1007)"
+
+  (click)="PhilHealthValidation()"
+  [ngClass]="(active == 'PhilHealthValidation' ) && !mini ? 'menu1' : (active == 'PhilHealthValidation')&&mini?'menu-mini':'menu'">
+  <img *ngIf="(active == 'PhilHealthValidation' && !mini)" src="assets/Images/revamp/announcementwhite.png">
+  <img *ngIf="active != 'PhilHealthValidation' " src="assets/Images/revamp/announcementnewgray-icon.png">
+  <img *ngIf="(active == 'PhilHealthValidation' && mini) " src="assets/Images/revamp/announcementnewblue-icon.png">
+
+  <span class="icon-text">Statutory Validation</span></a>
+
+
+
+<div id="Statutory" class="collapse length ">
+
+  <a (click)="ValidatedPhilHealthDetails()" class="nonactive">
+    <span class="sub-request">Validated Statutory Details</span>
+  </a>
+
+
+  <a (click)="UploadPhilHealthSummaryReport()" class="nonactive">
+    <span [ngClass]="active == 'UploadSystemGeneratedLWOP' ? 'Active1' : 'Active3'" class="sub-request">Upload
+     Statutories</span>
+  </a>
+</div>
+
+
+
+
   <a data-toggle="collapse" data-target="#TandLValidation" *ngIf="login == 9 && (companyid == 10013 )"
   (click)="TandLValidation()"
    

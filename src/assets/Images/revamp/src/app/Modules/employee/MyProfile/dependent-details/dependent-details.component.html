@@ -1,0 +1,150 @@
+<br>
+    <div class="card card-padding">
+        <div class="row">
+            <div class="col-lg-12">
+                <label class="label">Dependent Details </label>
+            </div>
+        </div>
+        <br><br>
+
+        <div class="row Details">
+            <div class="col-lg-2">
+                <p>Dependent Name </p>
+                <input [disabled]="roledid!=9 && roledid!=11 && roledid!=6 && roledid!=2" class="form-control"
+                    id="DependentName" name="DependentName" [(ngModel)]="DependentName"
+                    placeholder="Dependent Name" onkeypress="return /[A-Za-z0-9/\s/]/i.test(event.key)">
+            </div>
+            <div class="col-lg-2">
+                <p>Relationship </p>
+                <select [disabled]="roledid!=9 && roledid!=11 && roledid!=6 && roledid!=2" class="form-control select"
+                    id="Relationship1" name="Relationship1" [(ngModel)]="Relationship1"
+                    placeholder="Relationship1">
+                    <option value="Select One">Select Relationship</option>
+                    <option value="Brother">Brother</option>
+                    <option value="aughter">Daughter</option>
+                    <option value="Father">Father </option>
+                    <option value="Grand Parent">Grand Parent</option>
+                    <option value="Grand Child">Grand Child</option>
+                    <option value="Grand father">Grand father</option>
+                    <option value="Mother">Mother</option>
+                    <option value="Sister">Sister</option>
+                    <option value="Son">Son</option>
+                    <option value="Wife">Wife</option>
+                    <option value="Husband">Husband</option>
+                </select>
+            </div>
+            <div class="col-lg-2">
+                <p>Gender </p>
+                <select [disabled]="roledid!=9 && roledid!=11 && roledid!=6 && roledid!=2" class="form-control select" id="Gender1"
+                    name="Gender1" [(ngModel)]="Gender1" placeholder="Gender1">
+                    <option value="">Select Gender</option>
+                    <option value="Do Not Disclose">Do Not Disclose</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female </option>
+                </select>
+            </div>
+            <div class="col-lg-2">
+                <p>Date Of Birth <span style="color: red;"></span> </p>
+                <input [disabled]="roledid!=9 && roledid!=11 && roledid!=6 && roledid!=2" class="form-control" type="date"
+                    id="DateOfBirth" name="DateOfBirth" [(ngModel)]="DateOfBirth" placeholder="DateOfBirth">
+            </div>
+            <div class="col-lg-2">
+                <p>Address </p>
+                <input [disabled]="roledid!=9 && roledid!=11 && roledid!=6 && roledid!=2" class="form-control" id="Address"
+                    name="Address" [(ngModel)]="Address" placeholder="Address">
+            </div>
+        </div><br>
+        <div class="row Details">
+            <div class="col-lg-2">
+                <p>Mobile Number</p>
+                <input [disabled]="roledid!=9 && roledid!=11 && roledid!=6 && roledid!=2" type="text" class="form-control"
+                    id="Mobile" name="Mobile" maxlength="11" [(ngModel)]="Mobile"
+                    onkeypress="return /[0-9]/i.test(event.key)" placeholder="Mobile">
+
+            </div>
+            <div class="col-lg-2">
+                <p>Is Dependent</p>
+                <input [disabled]="roledid!=9 && roledid!=11 && roledid!=6 && roledid!=2" type="checkbox" id="Is_Dependent"
+                    name="Is_Dependent">
+            </div>
+            <div class="col-lg-2">
+                <p>ID Number </p>
+                <input [disabled]="roledid!=9 && roledid!=11 && roledid!=6 && roledid!=2" class="form-control"
+                    placeholder="ID Number" id="Id_Number" name="Id_Number" [(ngModel)]="Id_Number">
+            </div>
+            <div class="col-lg-2">
+                <p>IS Child Adopted </p>
+                <input [disabled]="roledid!=9 && roledid!=11 && roledid!=6 && roledid!=2" type="checkbox"
+                    id="Is_Child_Adopted" name="Is_Child_Adopted">
+            </div>
+            <div class="col-lg-2">
+                <p>Race </p>
+                <select [disabled]="roledid!=9 && roledid!=11 && roledid!=6 && roledid!=2" class="form-control select" id="Race"
+                    name="Race" [(ngModel)]="Race">
+                    <option value="Race">Select Race</option>
+                    <option value="Caucasian">Caucasian</option>
+                    <option value="Chinese">Chinese</option>
+                    <option value="Indian">Indian </option>
+                </select>
+            </div>
+        </div>
+        <div class="row Details">
+
+        </div> <br>
+        <div class="row Details">
+            <div class="col-lg-2">
+                <p>Citizenship </p>
+                <input [disabled]="roledid!=9 && roledid!=11 && roledid!=6 && roledid!=2" type="text" class="form-control"
+                    id="CitizenShip" name="CitizenShip" [(ngModel)]="CitizenShip" placeholder="CitizenShip">
+            </div>
+            <div class="col-lg-2">
+                <p>Country of Birth </p>
+                <select [disabled]="roledid!=9 && roledid!=11 && roledid!=6 && roledid!=2" class="form-control inputfield select"
+                    id="cb" name="cb" [(ngModel)]="cb">
+                    <option value="">Select Country </option>
+                    <option *ngFor="let role of Countrylist" value="{{role.id}}">{{role.short}}
+                    </option>
+
+                </select>
+
+            </div>
+            <div class="col-lg-2">
+                <p>Religion </p>
+                <select [disabled]="roledid!=9 && roledid!=11 && roledid!=6 && roledid!=2" class="form-control select"
+                    id="Religion1" name="Religion1" [(ngModel)]="Religion1">
+                    <option value="">Select Religion</option>
+                    <option value="Hindu">Hindu</option>
+                    <option value="Agnostic">Agnostic</option>
+                    <option value="Buddhism">Buddhism</option>
+                    <option value="Christianity">Christianity</option>
+                    <option value="Islam">Islam</option>
+                    <option value="Non-Religious">Non-Religious</option>
+                </select>
+            </div>
+            <!-- <div class="col-lg-2">
+                    <p>Reside in Singapore </p>
+                   <input type="checkbox">
+                </div> -->
+            <div class="col-lg-2">
+                <p>Working Status </p>
+                <select [disabled]="roledid!=9 && roledid!=11 && roledid!=6 && roledid!=2" class="form-control select"
+                    id="Working_Status" name="Working_Status" [(ngModel)]="Working_Status">
+                    <option value="Select One">Select Working </option>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                </select>
+            </div>
+        </div> <br>
+    </div><br>
+    <div class="row">
+        <div class="col-lg-5"></div>
+        <div class="col-lg-4">
+            <button type="button" class="form-control butn-sadow" *ngIf="ID!=undefined && roledid!=10"
+                (click)="UpdateDependentDetails()">Save Changes</button>
+            <button class="form-control butn-sadow" (click)="SaveDependantDetails()"
+                *ngIf="ID==undefined">Submit</button> &nbsp;&nbsp;
+
+        </div>
+        <div class="col-lg-5"></div>
+    </div><br>
+  

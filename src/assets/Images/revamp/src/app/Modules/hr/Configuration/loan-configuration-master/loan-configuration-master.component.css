@@ -1,0 +1,21 @@
+.span {
+    color: red;
+}
+
+.requestbtn {
+    background-color: #3247d5;
+    color: white;
+ 
+    font-weight: bold;
+    border-left: solid 1px #f5f5f5;
+    font-size: 15px;
+    line-height: 12px;
+    text-align: center;
+    white-space: nowrap;
+}
+
+  
+  .butn-sadow{
+    left: -100px;
+    position: relative;
+  }

@@ -1,0 +1,122 @@
+<app-commonalertpage [messageId]="messageId" *ngIf="showPopup==1"></app-commonalertpage>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-lg-11">
+                    <p class="Heading1">Salary Deductions</p>
+                </div>
+            </div>
+            <div class="card">
+                <br />
+                <div class="row leavereq">
+                    <div class="col-md-3">
+                        <label>Department<span class="span">*</span></label>
+                    </div>
+                    <div class="col-md-3">
+                        <label>Position<span class="span">*</span></label>
+                    </div>
+                    <div class="col-md-3">
+                        <label>Employee<span class="span">*</span></label>
+                    </div>
+                    <div class="col-md-3">
+                        <p>Type<span class="span">*</span></p>
+                    </div>
+                </div>
+                <div class="row leavereq">
+                    <div class="col-md-3">
+                        <select class="form-control" id="Department" name="Department" [(ngModel)]="Department"
+                            (change)="GetRoleID($event)">
+                            <option value="">Select Department</option>
+                            <option *ngFor="let item of Departmentlist" value="{{item.id}}">
+                                {{item.department_name}}
+                            </option>
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <select class="form-control" id="RoleID" name="RoleID" [(ngModel)]="RoleID"
+                            (change)="Getemployee($event)">
+                            <option value="">Select Position</option>
+                            <option *ngFor="let item of RoleTypeList" value="{{item.id}}">{{item.short}}
+                            </option>
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <ng-multiselect-dropdown [placeholder]="'Select Staff'" [settings]="dropdownSettings"
+                            [data]="dropdownList2" [(ngModel)]="selectedItems" (onSelect)="onItemSelect($event)"
+                            (onSelectAll)="onItemSelect($event)">
+                        </ng-multiselect-dropdown>
+                    </div>
+                    <div class="col-md-3">
+                        <select class="form-control" id="Type" name="Type" [(ngModel)]="Type">
+                            <option value="">Select Type</option>
+                            <option value="WFH">WFH</option>
+                            <option value="ATD">ATD</option>
+                            <option value="HMGO">HMGO</option>
+                        </select>
+                    </div>
+                </div>
+                <br />
+                <br />
+                <div class="row leavereq">
+                    <div class="col-md-3">
+                        <label>Amount<span class="span">*</span></label>
+                    </div>
+                    <div class="col-md-3">
+                        <p>Deduction Type<span class="span">*</span></p>
+                    </div>
+
+                    <div class="col-md-3" *ngIf="Deduction=='Tenure Based'">
+                        <label>Tenure<span class="span">*</span></label>
+                    </div>
+                    <div class="col-md-3">
+                        <label>Comments<span class="span">*</span></label>
+                    </div>
+                </div>
+                <div class="row leavereq">
+                    <div class="col-md-3">
+                        <input type="number" id="Amount" name="Amount" [(ngModel)]="Amount" class="form-control"
+                            placeholder="Amount">
+                    </div>
+                    <div class="col-md-3">
+                        <select class="form-control" id="Deduction" name="Deduction" [(ngModel)]="Deduction">
+                            <option value="0">Select Deduction Type</option>
+                            <option value="onetime">One Time</option>
+                            <option value="Tenure Based">Tenure Based</option>
+                            <option value="No End">No End</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3" *ngIf="Deduction=='Tenure Based'">
+                        <input type="text" id="Tenure" name="Tenure" [(ngModel)]="Tenure" class="form-control"
+                            placeholder="Tenure">
+                    </div>
+                    <div class="col-md-3">
+                        <textarea type="text" id="Comments" name="Comments" [(ngModel)]="Comments" class="form-control"
+                            placeholder="Comments"></textarea>
+                    </div>
+                </div>
+                <br />
+                <br />
+                <div class="row">
+                    <div class="col-lg-10"></div>
+                    <div class="col-lg-1">
+                        <button class="button submitbtn form-control" routerLink="/HR/ATDRequestsDash">Cancel</button>
+                    </div>
+                    <div class="col-lg-1">
+                        <button class="button submitbtn form-control" *ngIf="ID==undefined"
+                            (click)="Save()">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<app-spinner *ngIf="loader"></app-spinner>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>

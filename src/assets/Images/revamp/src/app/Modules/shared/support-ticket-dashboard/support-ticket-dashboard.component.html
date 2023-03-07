@@ -1,0 +1,294 @@
+<app-commonalertpage [messageId]="messageId" *ngIf="showPopup==1"></app-commonalertpage>
+<app-loader *ngIf="loader"></app-loader>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-11">
+            <p class="Heading1">Support Tickets</p>
+        </div>
+    </div>
+    <div class="row">
+        <br />
+        <div class="col-lg-10 dashbutton bttn">
+            <div class="tab-slider--nav">
+                <ul class="tab-slider--tabs">
+                    <li class="tab-slider--trigger" [class.active]="viewMode == 'tab1'" rel="tab1"
+                        (click)="viewMode ='tab1'">
+                        Open </li>
+                    <li class="tab-slider--trigger" [class.active]="viewMode == 'tab2'" rel="tab2"
+                        (click)="viewMode ='tab2'">Resolved</li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-lg-2">
+            <button class="Addbutton" routerLink="/Shared/SupportTickets"><img src="assets/Images/plus.svg"
+                    class="plus-icon">Add Ticket</button>
+        </div>
+    </div><br>
+
+
+    <div class="row">
+        <div class="tab-slider--container" [ngSwitch]="viewMode">
+            <div *ngSwitchCase="'tab1'" id="tab1">
+                <div class="row">
+                    <div class="col-md-10">
+                        <p class="show3res">SHOWING <span> {{ticketlist1?.length}} </span>RESULTS </p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Time</th>
+                                    <th>Application Issues</th>
+                                    <th>Related Attachment</th>
+                                    <th>Comments</th>
+                                   
+                                    <th>Priority</th>
+                                    <th>Status</th>
+                                    <th *ngIf="login!=1">Actions</th>
+                                </tr>
+                                <tr *ngFor="let details of ticketlist1|filter:search">
+                                    <td>{{details.date}}</td>
+                                    <td>{{details.time}}</td>
+                                    <td>{{details.typeOfApplicationIssues}}</td>
+                                    <td>
+                                        <img src="assets/Images/image.png" style="width:20px; height:20px"
+                                            (click)="image(details.id)" data-toggle="modal"
+                                            data-target="#exampleModal1">
+                                    </td>
+                                    <td>{{details.comment}}</td>
+                                    <td>{{details.priority}}</td>
+                                    <td>{{details.status}}</td>
+                                    <td *ngIf="login!=1">
+                                        <img src="assets/Images/Edit_ICON.png" alt="Edit_ICON"
+                                            style="width:20px; height:auto"
+                                            [routerLink]="['/SupportTickets', details.id]"
+                                            *ngIf="details.status=='Open'"> &nbsp;&nbsp;
+
+                                        <img src="assets/Images/Delete_ICON.png" alt="Delete_ICON"
+                                            style="width:20px; height:auto" (click)="DeleteSupportTickets(details.id)">
+                                    </td>
+                                </tr>
+                            </thead>
+                        </table>
+                        <ng-template #noResults>
+                            <p class="NoResultShow"> No results found for "" </p>
+                        </ng-template>
+                    </div>
+                </div>
+            </div>
+            <div *ngSwitchCase="'tab2'" id="tab2">
+                <div class="row">
+                    <div class="col-md-10">
+                        <p class="show3res">SHOWING <span> {{ticketlist2?.length}} </span>RESULTS</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Time</th>
+                                    <th>Application Issues</th>
+                                    <th>Related Attachment</th>
+                                    <th>Comments</th>
+                                    <th>Support Comments</th>
+                                    <th>Priority</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                                <tr *ngFor="let details of ticketlist2|filter:search">
+                                    <td>{{details.date}}</td>
+                                    <td>{{details.time}}</td>
+                                    <td>{{details.typeOfApplicationIssues}}</td>
+                                    <td>
+                                        <img src="assets/Images/image.png" style="width:20px; height:20px"
+                                            (click)="image(details.id)" data-toggle="modal"
+                                            data-target="#exampleModal1">
+                                    </td>
+
+
+                                    <!-- <td>{{details.comment}}</td>
+                                    <td>{{details.closeComments}}</td> -->
+
+                                    <td>
+
+                                        <span style="color:#3247D5;
+                                 " data-toggle="modal" data-target="#exampleModal4"
+                                            (click)="viewUserComments(details.comment)">View</span>
+                                    </td>
+
+                                    <td>
+                                        <!-- <span [innerHTML]="details.chapterdescription"></span> -->
+                                        <span style="color:#3247D5;
+                                 " data-toggle="modal" data-target="#exampleModal3"
+                                            (click)="view(details.closeComments)">View</span>
+                                    </td>
+                                    <td>{{details.priority}}</td>
+                                    <td>{{details.status}}</td>
+                                    <td>
+                                        <img src="assets/Images/Edit_ICON.png" alt="Edit_ICON"
+                                            style="width:20px; height:auto"
+                                            [routerLink]="['/Shared/SupportTickets', details.id]"
+                                            *ngIf="details.status=='Open'"> &nbsp;&nbsp;
+
+                                        <!-- <img src="assets/Images/Delete_ICON.png" alt="Delete_ICON"
+                                            style="width:20px; height:auto" (click)="DeleteSupportTickets(details.id)"> -->
+                                    </td>
+                                </tr>
+                            </thead>
+                        </table>
+                        <ng-template #noResults>
+                            <p class="NoResultShow"> No results found for "" </p>
+                        </ng-template>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel1"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Related Attachments</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-lg-4" *ngFor="let details of attachmentlist">
+                        <div class="row">
+                            <div class="col-lg-10">
+                                <a href="{{details.attachment}}" target="_blank">
+                                    <img style="width:100%;height:auto;" src="{{details.attachment}}">
+                                </a>
+
+                            </div>
+                        </div>
+                        <div class="col-lg-2">
+                            <button style="margin-top: 15px;" class="upload" data-toggle="modal"
+                                data-target="#exampleModal12" (click)="UpdateAttachment(details.id)">Update</button>
+                        </div>
+
+                    </div>
+                    <br>
+                </div>
+                <br>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="cancel" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="exampleModal12" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel12"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Update Attachments</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-lg-1">
+
+                    </div>
+                    <div class="col-lg-5">
+                        <ngx-dropzone (change)="onSelect($event)" [(ngModel)]="screenShot"
+                            style="width:100% ;height: auto; text-align: center;">
+                            <ngx-dropzone-label>Please Attach Photo!</ngx-dropzone-label>
+                            <ngx-dropzone-preview *ngFor="let f of files1" [removable]="true" (removed)="onRemove(f)">
+                                <ngx-dropzone-label>{{ f.name }} ({{ f.type }})</ngx-dropzone-label>
+                            </ngx-dropzone-preview>
+                        </ngx-dropzone>
+                    </div>
+                    <br>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-lg-4"></div>
+                    <div class="col-lg-4">
+                        <button style="margin-top: 15px;" class="upload" (click)="Update()">Update</button>
+                    </div>
+                    <div class="col-lg-4"></div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="cancel" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="exampleModal4" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel" style="font-size: 19px;color:#3247D5"> Comments</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-lg-12" style="color:#0C275A ;font-size: 13px;">
+                        <p *ngIf="Usercomment!=null" [innerHTML]="Usercomment"></p>
+                        <p *ngIf="Usercomment==null">NA</p>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="col-lg-9"></div>
+                <!-- <div class="col-lg-3">
+                    <button type="button" class="btn btn-secondary button" data-dismiss="modal">Close</button>
+                </div> -->
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="exampleModal3" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel" style="font-size: 19px;color:#3247D5">Comments</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-lg-12" style="color:#0C275A ;font-size: 13px;">
+                        <p [innerHTML]="comments"></p>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="col-lg-9"></div>
+                <!-- <div class="col-lg-3">
+                    <button type="button" class="btn btn-secondary button" data-dismiss="modal">Close</button>
+                </div> -->
+
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,61 @@
+<app-commonalertpage [messageId]="messageId" *ngIf="showPopup==1"></app-commonalertpage>
+<app-loader *ngIf="loader"></app-loader>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-lg-5">
+                    <h3 class="Heading">De-minimis Master</h3>
+                </div>
+                <div class="col-lg-5"></div>
+                <div class="col-lg-2">
+
+                </div>
+            </div>
+            <!--     <div class="row">
+                <div class="col-lg-10"></div>
+            </div> -->
+            <br>
+            <div class="card">
+                <div class="row leavereq">
+                    <div class="col-md-2">
+                        <label>Item<span class="span">*</span></label>
+                    </div>
+                    <div class="col-md-2">
+                        <label>Amount<span class="span">*</span></label>
+                    </div>
+                </div>
+                <div class="row leavereq">
+                    <div class="col-md-2">
+                        <input type="text" class="form-control leavereq" placeholder="Item" placeholder="Item"
+                            [(ngModel)]="Item" name="Item" id="Item">
+                    </div>
+                    <div class="col-md-2">
+                        <input type="number" class="form-control leavereq" placeholder="Amount" placeholder="Amount"
+                            [(ngModel)]="Amount" name="Amount" id="Amount">
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-lg-10"></div>
+                    <div class="col-lg-1">
+                        <button class="clo-btn" (click)="Cancel()">CANCEL</button>
+                    </div>
+                    <div class="col-lg-1">
+                        <button type="button" class="Addbutton" *ngIf="ID!=undefined"
+                            (click)="UpdateCountryType()">UPDATE</button>
+                        <button class="Addbutton" *ngIf="ID==undefined" (click)="InsertCountryType()">SUBMIT</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>

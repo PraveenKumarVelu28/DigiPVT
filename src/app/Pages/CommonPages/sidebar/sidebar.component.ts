@@ -30,12 +30,12 @@ export class SidebarComponent implements OnInit {
   validation: any
   ngOnInit(): void {
     debugger;
-    (document.getElementById("main") as HTMLInputElement).style.marginLeft = "250px";
+  //  (document.getElementById("main") as HTMLInputElement).style.marginLeft = "250px";
     this.login = sessionStorage.getItem('roledid');
     this.temp1 = sessionStorage.getItem('temp');
     this.companyid = sessionStorage.getItem('companyid');
     this.AttendanceEnable = sessionStorage.getItem('AttendanceEnable');
-    this.active = 0;
+    //this.active = 0;
 
     this.UserName = sessionStorage.getItem('UserName');
     this.role = sessionStorage.getItem('role')
@@ -197,6 +197,13 @@ export class SidebarComponent implements OnInit {
       }
     })
 
+  }
+
+  public ValidatedMaster(){
+    debugger
+    this.active = 'ValidatedMaster';
+    localStorage.setItem('Pagename', 'Announcements')
+    this.router.navigate(['/PayrollAdmin/ValidationMasterDashboard']);
   }
 
 
@@ -923,6 +930,13 @@ export class SidebarComponent implements OnInit {
     this.router.navigate(['/Employee/StaffDashboard']);
   }
 
+  public Master() {
+    debugger
+    this.active = 'Master';
+    
+  }
+
+
   public PayperiodSetting() {
     debugger
     this.active = 3;
@@ -1499,6 +1513,11 @@ export class SidebarComponent implements OnInit {
   public UploadPhilHealthSummaryReport() {
     this.active = 'UploadBasicPayValues'
     this.router.navigate(['/PayrollProcessor/UploadPhilHealthSummaryReport'])
+  }
+  
+  public getvalues(val: any) {
+    debugger
+    this.mini = val;
   }
 
 }

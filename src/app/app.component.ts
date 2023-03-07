@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
+import { SidebarComponent } from './Pages/CommonPages/sidebar/sidebar.component';
 import { DigiPVTService } from './Pages/Services/digi-pvt.service';
 @Component({
   selector: 'app-root',
@@ -13,7 +14,10 @@ export class AppComponent {
   hasNetworkConnection: boolean = false;
   hasInternetAccess: boolean = false;
   status: string | undefined;
+  showNotification: boolean | undefined
+  dispyList: any = [];
 
+  @ViewChild(SidebarComponent, { static: false }) SidebarComponent: SidebarComponent | undefined;
   constructor(public router: Router, public DigiPVTService: DigiPVTService,) {
     // this.connectionService.updateOptions({
     //   heartbeatExecutor: options => new Observable<any>(subscriber => {
@@ -53,6 +57,12 @@ export class AppComponent {
   CompanyConfiguration: any;
   temp1: any;
   ngOnInit(): void {
+
+    this.DigiPVTService.dataString$.subscribe(
+      data => {
+        debugger
+        this.pagename = localStorage.getItem('Pagename');
+      });
 
 
 
@@ -210,4 +220,67 @@ export class AppComponent {
     sessionStorage.setItem('temp', '0');
     location.reload();
   }
+
+  sidenav = true;
+  getless(sidenav: any) {
+    if (sidenav == true) {
+      (document.getElementById("mySidebar") as HTMLInputElement).style.width = "71px";
+      //  (document.getElementById("mySidebar") as HTMLInputElement).style.paddingLeft = "15px";
+      this.sidenav = false
+    }
+    else {
+      (document.getElementById("mySidebar") as HTMLInputElement).style.width = "94%";
+      this.sidenav = true;
+    }
+    this.SidebarComponent?.getvalues(sidenav)
+  }
+
+  getHeaderLabel(sasa: any) {
+    debugger
+    this.pagename = localStorage.getItem('Pagename');
+  }
+
+  Profile(){
+
+  }
+  Helpcentre(){
+
+  }
+
+  changeicon: any
+  hover : any
+  highlight(value: any) {
+    this.changeicon = value
+  }
+  hoverFunction(e: any) {
+    this.hover = e;
+  }
+
+  public GetNotification() {
+    debugger
+
+    this.DigiPVTService.GetNotification(this.staffID).subscribe((data: any) => {
+      debugger
+      this.notificationslist = data;
+
+      for (let i = 0; i <= this.notificationslist.length; i++) {
+        if (this.dispyList.length < 3) {
+          this.dispyList.push(this.notificationslist[i]);
+        }
+        else {
+
+        } 
+
+      }
+      this.notificationslist1 = data.filter((x: { seen: number; }) => x.seen == null)
+      this.showNotification = true;
+      this.notificationCount1 = this.notificationslist1.length;
+
+    })
+  }
+
+
+
+ 
+
 }

@@ -1,0 +1,255 @@
+<app-commonalertpage [messageId]="messageId" *ngIf="showPopup==1"></app-commonalertpage>
+<app-loader *ngIf="loader"></app-loader>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-3">
+                    <ul>
+                        <span class="Heading" routerLink="/Employee/TimeSheet">My Timesheet Details
+                            <hr class="line-border listForm">
+                        </span>&nbsp;&nbsp;
+                        <span *ngIf="roleid==2"><a class="Heading" routerLink="/Manager/MyTeamTimesheet">My Team
+                                Timesheet
+                                Details
+                            </a></span>
+                        <span *ngIf="roleid==1||roleid==9||roleid==11||roleid==10"><a class="Heading"
+                                routerLink="/Manager/MyTeamTimesheet">Company
+                                Timesheet
+                                Details
+                            </a></span>
+                    </ul>
+                 
+                </div>
+            </div>
+            <div class="card filtercard">
+                <div class="row">
+                    <div class="col-md-1">
+                        <img src="assets/Images/filter.svg" class="filter-img">
+                        <p class="filter">Filter By:</p>
+                    </div>
+                    <div class="col-md-2">
+                   <!--      From Date -->
+                        <input class="form-control" id="startdate" name="startdate" [(ngModel)]="startdate" type="date"
+                            placeholder="Duration">
+                    </div>
+                    <div class="col-md-2">
+                      <!--   To Date -->
+                        <input class="form-control" id="enddate" name="enddate" [(ngModel)]="enddate"
+                            (change)="getdate()" type="date" placeholder="Duration">
+                    </div>
+                   
+                    <div  class="col-md-2">
+                        <button class="Addbutton" (click)="newlevae()"><img src="assets/Images/plus.svg"
+                                class="plus-icon">add new timesheet</button>
+                    </div>
+                    <!--   <div class="col-md-6">
+                        <br>
+                        <input class="form-control" type="search" placeholder="Search for Start Time,Status" id="term"
+                            name="term" [(ngModel)]="term">
+                    </div> -->
+                </div>
+            </div>
+            <br />
+           <!--  <div class="row" *ngIf="roleid !=1">
+                <div class="col-md-5">
+                </div> UI COMM
+                <div class="col-md-5">
+                </div>
+                <div class="col-md-2">
+                    <button class="Addbutton" (click)="newlevae()"><img src="assets/Images/plus.svg"
+                            class="plus-icon">add new timesheet</button>
+                </div>
+            </div> -->
+            <br />
+            <div class="row">
+                <br />
+                <div class="col-lg-8 dashbutton bttn">
+                    <div class="tab-slider--nav">
+                        <ul class="tab-slider--tabs">
+                            <li class="tab-slider--trigger" [class.active]="viewMode == 'tab1'" rel="tab1"
+                                (click)="viewMode ='tab1'">
+                                Pending</li>
+                            <li class="tab-slider--trigger" [class.active]="viewMode == 'tab2'" rel="tab2"
+                                (click)="viewMode ='tab2'">Approved</li>
+                            <li class="tab-slider--trigger" [class.active]="viewMode == 'tab3'" rel="tab3"
+                                (click)="viewMode ='tab3'">Rejected</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="tab-slider--container" [ngSwitch]="viewMode">
+                    <div *ngSwitchCase="'tab1'" id="tab1">
+                        <div class="row">
+                            <div class="col-md-10">
+                                <p class="show3res">SHOWING <span>{{timesheets1?.length}}</span> RESULTS</p>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <table class="table" *ngIf="(timesheets1| paginate: { itemsPerPage: count1, currentPage: p})?.length > 0; else noResults">
+                                <thead>
+                                    <tr>
+                                        <th>Date</th>
+                                        <th>Start Time</th>
+                                        <th>End Time</th>
+                                        <th>No Of Hours</th>
+                                        <th>Task</th>
+                                        <th>Attachment</th>
+                                        <th>Comments</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr
+                                        *ngFor="let item of timesheets1|filter: term|paginate: { itemsPerPage: count1, currentPage: p}">
+                                        <td>{{item.date|date}}</td>
+                                        <td>{{item.startTime}}</td>
+                                        <td>{{item.endTime}}</td>
+                                        <td>{{item.noOfHrs|date:"HH:mm"}}</td>
+                                        <td>{{item.task}}</td>
+                                        <td>
+                                            <p *ngIf="item.excelURL==null">No Attachment</p>
+                                            <p *ngIf="item.excelURL=='0'">No Attachment</p>
+                                            <a href="{{item.excelURL}}" target="_blank"> <img
+                                                    *ngIf="item.excelURL!=null" src="assets/Images/attachment (1).png"
+                                                    class="attachmentimg"></a>
+                                        </td>
+                                        <td>
+                                            <p *ngIf="item.comments==null">No Comments</p>
+                                            <p *ngIf="item.comments!=null">{{item.comments}}</p>
+
+                                        </td>
+                                        <td>
+                                            <p *ngIf="item.status==null">Not Approved</p>
+                                            {{item.status}}
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <ng-template #noResults>
+                                <p class="NoResultShow"> No results found</p>
+                            </ng-template>
+                            <div class="text-left" *ngIf="timesheets1?.length>count1">
+                                <pagination-controls (pageChange)="p = $event"  previousLabel=""
+                                nextLabel="" class="poppinns"></pagination-controls> 
+                            </div>
+                            <!-- <div class="text-left">
+                                <br>
+                                <pagination-controls (pageChange)="p = $event" class="poppinns"></pagination-controls>
+                            </div> -->
+                        </div>
+                    </div>
+                    <div *ngSwitchCase="'tab2'" id="tab2">
+                        <div class="row">
+                            <div class="col-md-10">
+                              
+                                <p class="show3res">SHOWING <span>{{timesheets2?.length}}</span> RESULTS</p>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <table class="table"  *ngIf="(timesheets2| paginate: { itemsPerPage: count1, currentPage: p})?.length > 0; else noResults1">
+                                <thead>
+                                    <tr>
+                                        <th>Date</th>
+                                        <th>Start Time</th>
+                                        <th>End Time</th>
+                                        <th>No Of Hours</th>
+                                        <th>Attachment</th>
+                                        <th>Task</th>
+                                        <th>Comments</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr
+                                        *ngFor="let item of timesheets2|filter: term|paginate: { itemsPerPage: count1, currentPage: p}">
+                                        <td>{{item.date|date}}</td>
+                                        <td>{{item.startTime}}</td>
+                                        <td>{{item.endTime}}</td>
+                                        <td>{{item.noOfHrs|date:"HH:mm"}}</td>
+                                        <td>
+                                            <p *ngIf="item.excelURL==null">No Attachment</p>
+                                            <a href="{{item.excelURL}}" target="blank"> <img *ngIf="item.excelURL!=null"
+                                                    src="assets/Images/attachment (1).png" class="attachmentimg"></a>
+                                        </td>
+                                        <td>{{item.task}}</td>
+                                        <td>{{item.comments}}</td>
+                                        <td>
+                                            <p *ngIf="item.status==null">Not Approved</p>
+                                            {{item.status}}
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <ng-template #noResults1>
+                                <p class="NoResultShow"> No results found</p>
+                            </ng-template>
+                            <div class="text-left" *ngIf="timesheets2?.length>count1">
+                                <pagination-controls (pageChange)="p = $event"  previousLabel=""
+                                nextLabel="" class="poppinns"></pagination-controls> 
+                            </div>
+                            <!-- <div class="text-left">
+                                <br>
+                                <pagination-controls (pageChange)="p = $event" class="poppinns"></pagination-controls>
+                            </div> -->
+                        </div>
+                    </div>
+                    <div *ngSwitchCase="'tab3'" id="tab3">
+                        <div class="row">
+                            <div class="col-md-10">
+                                <p class="show3res">SHOWING <span>{{timesheets3?.length}}</span> RESULTS</p>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <table class="table" *ngIf="(timesheets2| paginate: { itemsPerPage: count1, currentPage: p})?.length > 0; else noResults2">
+                                <thead>
+                                    <tr>
+                                        <th>Date</th>
+                                        <th>Start Time</th>
+                                        <th>End Time</th>
+                                        <th>No Of Hours</th>
+                                        <th>Task</th>
+                                        <th>Comments</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr
+                                        *ngFor="let item of timesheets3|filter: term|paginate: { itemsPerPage: count1, currentPage: p}">
+                                        <td>{{item.date|date}}</td>
+                                        <td>{{item.startTime}}</td>
+                                        <td>{{item.endTime}}</td>
+                                        <td>{{item.noOfHrs|date:"HH:mm"}}</td>
+                                        <td>{{item.task}}</td>
+                                        <td>{{item.comments}}</td>
+                                        <td>
+                                            <p *ngIf="item.status==null">Not Approved</p>
+                                            {{item.status}}
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <ng-template #noResults2>
+                                <p class="NoResultShow"> No results found</p>
+                            </ng-template>
+                            <div class="text-left" *ngIf="timesheets3?.length>count1">
+                                <pagination-controls (pageChange)="p = $event"  previousLabel=""
+                                nextLabel="" class="poppinns"></pagination-controls> 
+                            </div>
+                            <!-- <div class="text-left">
+                                <br>
+                                <pagination-controls (pageChange)="p = $event" class="poppinns"></pagination-controls>
+                            </div> -->
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-1"></div>
+            </div>
+            <div class="col-md-1"></div>
+        </div>
+    </div>
+    <br />
+    <br />

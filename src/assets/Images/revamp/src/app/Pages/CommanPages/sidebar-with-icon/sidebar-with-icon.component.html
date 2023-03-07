@@ -1,0 +1,755 @@
+<div class="row">
+  <div id="mySidebar" class="sidebar">
+
+    <!--  <i *ngIf="!mini"class="material-icons" style="margin-left: 235px;digi-icon.png
+    position:absolute;right:0;top:-15px" (click)="toggleSidebar()">info</i> -->
+
+
+    <!-- <div class="menu-icon"> <img *ngIf="mini" class="digi-icon" src="assets/Images/revamp/digi-icon.png">
+      <img *ngIf="!mini" class="digi-icon" src="assets/Images/revamp/Logo_digiOffice.png">
+      <img src="assets/Images/revamp/menuClose-image.png" style="    height: 1%;
+      " (click)="toggleSidebar()" *ngIf="!mini">
+    </div> -->
+    <a (click)="Home()" [ngClass]="(active == 1)&&!mini ? 'menu1' :(active == 1)&&mini?'menu-mini' :'menu'">
+      <div class="test_case">
+        <div>
+          <img *ngIf="(active == 1&&!mini)" src="assets/Images/revamp/dashboardwhite-icon.png">
+          <img *ngIf="active != 1" src="assets/Images/revamp/dashboardgray-icon.png">
+          <img *ngIf="(active == 1&&mini)" src="assets/Images/revamp/dashboardnewblue-icon.png">
+        </div>&nbsp;&nbsp;&nbsp;
+        <div *ngIf="!mini">
+          <span class="icon-text">Dashboard</span>
+        </div>
+      </div>
+    </a>
+
+
+    <a *ngIf="login==9||login==11 || login==10 || login==1 " (click)="Staff123()"
+      [ngClass]="(active == 3)&&!mini ? 'menu1' :(active == 3)&&mini?'menu-mini' :'menu'">
+      <div class="test_case">
+        <div>
+          <img *ngIf="(active == 3&&!mini)" src="assets/Images/revamp/dashboardwhite-icon.png">
+          <img *ngIf="active != 3" src="assets/Images/revamp/dashboardgray-icon.png">
+          <img *ngIf="(active == 3&&mini)" src="assets/Images/revamp/dashboardnewblue-icon.png">
+        </div>&nbsp;&nbsp;&nbsp;
+        <div *ngIf="!mini">
+          <span class="icon-text">Staff</span>
+        </div>
+      </div>
+    </a>
+
+
+    <a *ngIf="login==11 ||login==9 " (click)="LicenceDetails()"
+      [ngClass]="(active == 90)&&!mini ? 'menu1' :(active == 90)&&mini?'menu-mini' :'menu'">
+      <div class="test_case">
+        <div>
+          <img *ngIf="(active == 90&&!mini)" src="assets/Images/revamp/dashboardwhite-icon.png">
+          <img *ngIf="active != 90" src="assets/Images/revamp/dashboardgray-icon.png">
+          <img *ngIf="(active == 90&&mini)" src="assets/Images/revamp/dashboardnewblue-icon.png">
+        </div>&nbsp;&nbsp;&nbsp;
+        <div *ngIf="!mini">
+          <span class="icon-text">Licence Details</span>
+        </div>
+      </div>
+    </a>
+
+    <a *ngIf="login==11||login==9 " (click)="InactivestaffDetails()"
+      [ngClass]="(active == 80)&&!mini ? 'menu1' :(active == 80)&&mini?'menu-mini' :'menu'">
+      <div class="test_case">
+        <div>
+          <img *ngIf="(active == 80&&!mini)" src="assets/Images/revamp/dashboardwhite-icon.png">
+          <img *ngIf="active != 80" src="assets/Images/revamp/dashboardgray-icon.png">
+          <img *ngIf="(active == 80&&mini)" src="assets/Images/revamp/dashboardnewblue-icon.png">
+        </div>&nbsp;&nbsp;&nbsp;
+        <div *ngIf="!mini">
+          <span class="icon-text">Inactive Staff Details</span>
+        </div>
+      </div>
+    </a>
+
+
+
+
+
+
+
+
+
+    <a (click)="Announcement()" [ngClass]="(active == 2 )&&!mini ? 'menu1' : (active == 2)&&mini?'menu-mini':'menu'">
+      <div class="test_case">
+        <div>
+          <img *ngIf="(active == 2&&!mini)" src="assets/Images/revamp/announcementwhite.png">
+          <img *ngIf="active != 2 " src="assets/Images/revamp/announcementnewgray-icon.png">
+          <img *ngIf="(active == 2&&mini) " src="assets/Images/revamp/announcementnewblue-icon.png">
+        </div>&nbsp;&nbsp;&nbsp;
+        <div *ngIf="!mini">
+          <span class="icon-text">Announcement</span>
+        </div>
+      </div>
+    </a>
+
+    <a data-toggle="collapse" data-target="#Attendance" (click)="getAttendacmenu()"
+      [ngClass]="(active == 8 )&&!mini ? 'menu1' : (active == 8)&&mini?'menu-mini':'menu'">
+      <!-- <i class="material-icons">monetization_on</i> -->
+      <div class="test_case">
+        <div>
+          <img *ngIf="(active == 8&&!mini)" src="assets/Images/revamp/attendencewhite-icon.png">
+          <img *ngIf="active != 8 " src="assets/Images/revamp/attendance-icon.png">
+          <img *ngIf="(active == 8&&mini)  " src="assets/Images/revamp/attendanceblue.png">
+        </div>&nbsp;&nbsp;&nbsp;
+        <div *ngIf="!mini">
+          <span class="icon-text">Attendance</span>
+        </div>
+      </div>
+    </a>
+
+
+    <div id="Attendance" class="collapse length ">
+      <a (click)="AttendenceDetails()"
+        [ngClass]="(active == 9 )&&!mini ? 'menu1' : (active == 9)&&mini?'menu-mini':'menu'" class="nonactive">
+        <div class="test_case">
+          <div>
+            <img *ngIf="(active == 9&&!mini)" src="assets/Images/revamp/attendancedetailwhite-icon (2).png"
+              class="sub-image">
+            <img *ngIf="active != 9" src="assets/Images/revamp/attendancedetailgray-icon.png" class="sub-image">
+            <img *ngIf="(active == 9&&mini)" src="assets/Images/revamp/attendancedetails-icon.png" class="sub-image">
+          </div>&nbsp;&nbsp;&nbsp;
+          <div *ngIf="!mini">
+            <span class="icon-textsub">Attendance Details</span>
+          </div>
+        </div>
+      </a>
+
+      <a (click)="MyTeamWeeklyShift()"
+        [ngClass]="(active == 'myTeamWeeklyShift' )&&!mini ? 'menu1' : (active == 'myTeamWeeklyShift')&&mini?'menu-mini':'menu'"
+        class="nonactive">
+        <div class="test_case">
+          <div>
+            <img *ngIf="(active == 'myTeamWeeklyShift'&&!mini)" src="assets/Images/revamp/shiftdetailswhite-icon.png"
+              class="sub-image">
+            <img *ngIf="active != 'myTeamWeeklyShift'" src="assets/Images/revamp/shiftdetailsgry-icon.png"
+              class="sub-image">
+            <img *ngIf="(active == 'myTeamWeeklyShift'&&mini)" src="assets/Images/revamp/shiftdetailsblue-icon.png"
+              class="sub-image">
+          </div>&nbsp;&nbsp;&nbsp;
+          <div *ngIf="!mini">
+            <span class="icon-textsub">Shift Details</span>
+          </div>
+        </div>
+      </a>
+      <a (click)="MyOverTimeDetails()"
+        [ngClass]="(active == 10 )&&!mini ? 'menu1' : (active == 10)&&mini?'menu-mini':'menu'" class="nonactive">
+        <div class="test_case">
+          <div>
+            <img *ngIf="(active == 10&&!mini)" src="assets/Images/revamp/overtimedetailswhite-icon.png"
+              class="sub-image">
+            <img *ngIf="active != 10" src="assets/Images/revamp/overtimegray-icon.png" class="sub-image">
+            <img *ngIf="(active == 10&&mini)" src="assets/Images/revamp/overtimedetailsbliue-icon.png"
+              class="sub-image">
+          </div>&nbsp;&nbsp;&nbsp;
+          <div *ngIf="!mini">
+            <span class="icon-textsub">Over TimeDetails</span>
+          </div>
+        </div>
+      </a>
+
+      <a (click)="AttendanceCorrection()"
+        [ngClass]="(active == 'attendancecorrection' )&&!mini ? 'menu1' : (active == 'attendancecorrection')&&mini?'menu-mini':'menu'"
+        class="nonactive">
+        <div class="test_case">
+          <div>
+            <img *ngIf="(active == 'attendancecorrection'&&!mini)"
+              src="assets/Images/revamp/attendancecorrectionwhite-icon.png" class="sub-image">
+            <img *ngIf="active != 'attendancecorrection'" src="assets/Images/revamp/attendancecorrectiongray-icon.png"
+              class="sub-image">
+            <img *ngIf="(active == 'attendancecorrection'&&mini)"
+              src="assets/Images/revamp/attendancecorrectionblue-icon.png" class="sub-image">
+          </div>&nbsp;&nbsp;&nbsp;
+          <div *ngIf="!mini">
+            <span class="icon-textsub">Attendance Correction</span>
+          </div>
+        </div>
+      </a>
+
+    </div>
+
+    <a data-toggle="collapse" data-target="#Payroll" *ngIf="login==9||login==11||login==10" (click)="Requests23()"
+      [ngClass]="(active == 890 )&&!mini ? 'menu1' : (active == 9)&&mini?'menu-mini':'menu'">
+      <div class="test_case">
+        <div>
+          <!-- <i class="material-icons">monetization_on</i> -->
+          <img *ngIf="(active == 890&&!mini)" src="assets/Images/revamp/attendencewhite-icon.png">
+          <img *ngIf="active != 890 " src="assets/Images/revamp/attendance-icon.png">
+          <img *ngIf="(active == 890&&mini)  " src="assets/Images/revamp/attendanceblue.png">
+        </div>&nbsp;&nbsp;&nbsp;
+        <div *ngIf="!mini">
+          <span class="icon-text"> payroll</span>
+        </div>
+      </div>
+    </a>
+
+    <div id="Payroll" class="collapse length " style="padding-left: 7%;">
+
+      <a (click)="PreiminaryReport()" class="nonactive" *ngIf="login==9 || login==10 || login==11">
+        <div class="test_case">
+          <div>
+
+
+          </div>&nbsp;&nbsp;&nbsp;
+          <div *ngIf="!mini">
+            <span [ngClass]="active == 'PreiminaryReport' ? 'Active1' : 'Active3'" class="icon-textsub">Preliminary
+              Report</span>
+          </div>
+        </div>
+      </a>
+
+      <a (click)="PayrollReport()" class="nonactive" *ngIf="login==9 || login==10 || login==11">
+        <div class="test_case">
+          <div>
+
+
+          </div>&nbsp;&nbsp;&nbsp;
+          <div *ngIf="!mini">
+            <span [ngClass]="active == 'PayrollReport' ? 'Active1' : 'Active3'" class="icon-textsub">Payroll
+              Report</span>
+          </div>
+        </div>
+      </a>
+
+
+    </div>
+
+
+    <a data-toggle="collapse" class="togglebtn " data-target="#Requests" (click)="Request()"
+      [ngClass]="(active == 14 )&&!mini ? 'menu1' : (active == 14)&&mini?'menu-mini':'menu'">
+      <div class="test_case">
+        <div>
+          <img *ngIf="(active == 14&&!mini)" src="assets/Images/revamp/requestwhite-icon.png">
+          <img *ngIf="active != 14 " src="assets/Images/revamp/requetnewgray-icon.png">
+          <img *ngIf="(active == 14&&mini)  " src="assets/Images/revamp/requestblue-icon.png">
+        </div>&nbsp;&nbsp;&nbsp;
+        <div *ngIf="!mini">
+          <span class="icon-text"> Request</span>
+        </div>
+      </div>
+    </a>
+
+
+    <div id="Requests" class="collapse length ">
+      <a (click)="Leaves()" [ngClass]="(active == 7 )&&!mini ? 'menu1' : (active == 7)&&mini?'menu-mini':'menu'">
+        <div class="test_case">
+          <div>
+            <img *ngIf="(active == 7&&!mini)" src="assets/Images/revamp/leaverequestwhitw-icon.png" class="sub-image">
+            <img *ngIf="active != 7" src="assets/Images/revamp/leavegray-icon.png" class="sub-image">
+            <img *ngIf="(active == 7&&mini)" src="assets/Images/revamp/leaverequestblue-icon.png" class="sub-image">
+          </div>&nbsp;&nbsp;&nbsp;
+          <div *ngIf="!mini">
+            <span class="icon-textsub"> Leave Request</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- <a (click)="ExpenseRequest()" class="nonactive" (click)="openCity($event)">
+          <img [ngClass]="active == 13 ? 'Active1' : 'Active2'" src="assets/64/ATTENDANCE/Report/Locator.png"
+              class="admin" />
+          <img [ngClass]="active != 13 ? 'Active1' : 'Active2'"
+              src="assets/Images/64_GREY/64/ATTENDANCE/Report/Locator  Reports.png" class="admin">
+          &nbsp; <span [ngClass]="active == 13 ? 'Active1' : 'Active3'"> Allowance Request</span>
+
+      </a> -->
+      <a *ngIf=" login==6|| login==2|| login==11" (click)="Timesheet()"
+        [ngClass]="(active == 'timesheet' )&&!mini ? 'menu1' : (active == 'timesheet')&&mini?'menu-mini':'menu'"
+        class="nonactive">
+        <div class="test_case">
+          <div>
+            <img *ngIf="(active == 'timesheet'&&!mini)" src="assets/Images/revamp/timesheetwhite-icon.png"
+              class="sub-image">
+            <img *ngIf="active != 'timesheet'" src="assets/Images/revamp/timesheetgray-icon.png" class="sub-image">
+            <img *ngIf="(active == 'timesheet'&&mini)" src="assets/Images/revamp/timesheetrequestblue-icon (2).png"
+              class="sub-image">
+          </div>&nbsp;&nbsp;&nbsp;
+          <div *ngIf="!mini">
+            <span class="icon-textsub"> Timesheet Request</span>
+          </div>
+        </div>
+      </a>
+
+
+      <a *ngIf=" login==6|| login==2|| login==11" (click)="LocatorRequest()"
+        [ngClass]="(active == 15)&&!mini ? 'menu1' : (active == 15)&&mini?'menu-mini':'menu'" class="nonactive">
+        <div class="test_case">
+          <div>
+            <img *ngIf="(active == 15&&!mini)" src="assets/Images/revamp/locatorwhite-icon.png" class="sub-image">
+            <img *ngIf="active != 15" src="assets/Images/revamp/locatorrequest-icon.png" class="sub-image">
+            <img *ngIf="(active == 15&&mini)" src="assets/Images/revamp/locatorrequestblue-icon.png" class="sub-image">
+          </div>&nbsp;&nbsp;&nbsp;
+          <div *ngIf="!mini">
+            <span class="icon-textsub"> Locator
+              Request</span>
+          </div>
+        </div>
+      </a>
+
+      <a (click)="LoanRequest()" [ngClass]="(active == 17)&&!mini ? 'menu1' : (active == 17)&&mini?'menu-mini':'menu'"
+        class="nonactive">
+        <div class="test_case">
+          <div>
+            <img *ngIf="(active == 17&&!mini)" src="assets/Images/revamp/loanrequestwhite-icon.png" class="sub-image">
+            <img *ngIf="active != 17" src="assets/Images/revamp/lonerequestgry-icon.png" class="sub-image">
+            <img *ngIf="(active == 17&&mini)" src="assets/Images/revamp/loanrequesrlue-icon.png" class="sub-image">
+          </div>&nbsp;&nbsp;&nbsp;
+          <div *ngIf="!mini">
+            <span class="icon-textsub"> LoanRequest</span>
+            <!-- <img src="assets/Images/Vector.png" style="width: 20px;    margin-right: 17px;" /> &nbsp;Loan Request -->
+          </div>
+        </div>
+      </a>
+      <a *ngIf="login==11||login==2||login==6 ||login==9" (click)="EmployeeResignation()"
+        [ngClass]="(active == 'Resignation')&&!mini ? 'menu1' : (active == 'Resignation')&&mini?'menu-mini':'menu'"
+        class="nonactive">
+        <div class="test_case">
+          <div>
+            <img *ngIf="(active == 'Resignation'&&!mini)" src="assets/Images/revamp/employeeresignationwhite-icon.png"
+              class="sub-image">
+            <img *ngIf="active != 'Resignation'" src="assets/Images/revamp/employeeresignationgray-icon.png"
+              class="sub-image">
+            <img *ngIf="(active == 'Resignation'&&mini)" src="assets/Images/revamp/employeeresignationblue-icon.png"
+              class="sub-image">
+          </div>&nbsp;&nbsp;&nbsp;
+          <div *ngIf="!mini">
+            <span class="icon-textsub">Employee Resignation</span>
+          </div>
+        </div>
+      </a>
+
+
+
+
+    </div>
+
+    <a *ngIf="login==11|| login==9 ||login==10 || login==1 || login==6" (click)="Holidays()" class="nonactive"
+      [ngClass]="(active == 4 )&&!mini ? 'menu1' : (active == 14)&&mini?'menu-mini':'menu'">
+      <div class="test_case">
+        <div>
+          <img *ngIf="(active == 4&&!mini)" src="assets/Images/revamp/requestwhite-icon.png">
+          <img *ngIf="active != 4 " src="assets/Images/revamp/requetnewgray-icon.png">
+          <img *ngIf="(active == 4&&mini)  " src="assets/Images/revamp/requestblue-icon.png">
+        </div>&nbsp;&nbsp;&nbsp;
+        <div *ngIf="!mini">
+          <span class="icon-text"> Holidays</span>
+        </div>
+      </div>
+    </a>
+
+
+
+
+
+    <a data-toggle="collapse" class="togglebtn " data-target="#Reports" (click)="Reports()"
+      [ngClass]="(active == 11 )&&!mini ? 'menu1' : (active == 11)&&mini?'menu-mini':'menu'">
+      <div class="test_case">
+        <div>
+          <img *ngIf="(active == 11&&!mini)" src="assets/Images/revamp/reportswhite-icon.png">
+          <img *ngIf="active != 11 " src="assets/Images/revamp/reportsnewgray-icon.png">
+          <img *ngIf="(active == 11&&mini) " src="assets/Images/revamp/reportsnewblue-icon.png">
+        </div>&nbsp;&nbsp;&nbsp;
+        <div *ngIf="!mini">
+          <span class="icon-text"> Reports</span>
+        </div>
+      </div>
+    </a>
+
+    <div id="Reports" class="collapse length nonactive">
+      <a (click)="Attendancereport()" class="nonactive">
+        <div class="test_case">
+          <div>
+          </div>&nbsp;&nbsp;&nbsp;
+          <div *ngIf="!mini">
+            <span [ngClass]="active == 24 ? 'Active1' : 'Active3'" class="icon-textsub"> Attendance Report
+            </span>
+          </div>
+        </div>
+      </a>
+
+      <a *ngIf="login==9||login==11 ||login==10" (click)="EmployeeAttendanceReport()" class="nonactive">
+        <div class="test_case">
+          <div>
+          </div>&nbsp;&nbsp;&nbsp;
+          <div *ngIf="!mini">
+            <span [ngClass]="active == 100 ? 'Active1' : 'Active3'" class="icon-textsub"> Employee Attendance Report
+            </span>
+          </div>
+        </div>
+      </a>
+
+
+
+      <a *ngIf="login==9||login==11||login==10" (click)="EmployeeOvertimeReport()" class="nonactive">
+        <div class="test_case">
+          <div>
+          </div>&nbsp;&nbsp;&nbsp;
+          <div *ngIf="!mini">
+            <span [ngClass]="active == 101 ? 'Active1' : 'Active3'" class="icon-textsub"> Employee Overtime Report
+            </span>
+          </div>
+        </div>
+      </a>
+
+
+
+      <a (click)="AttendanceCorrectionReport()" class="nonactive">
+        <div class="test_case">
+          <div>
+          </div>&nbsp;&nbsp;&nbsp;
+          <div *ngIf="!mini">
+            <span [ngClass]="active == 'AttendanceCorrectionReport' ? 'Active1' : 'Active3'"
+              class="icon-textsub">Attendance
+              Correction Report
+            </span>
+          </div>
+        </div>
+      </a>
+
+
+      <a (click)="Leavereport()" class="nonactive">
+        <div class="test_case">
+          <div>
+          </div>&nbsp;&nbsp;&nbsp;
+          <div *ngIf="!mini">
+            <span [ngClass]="active == 25 ? 'Active1' : 'Active3'" class="icon-textsub"> Leave Report
+            </span>
+          </div>
+        </div>
+
+      </a>
+      <a *ngIf="login!=11" (click)="TimesheetReports()" class="nonactive">
+        <div class="test_case">
+          <div>
+          </div>&nbsp;&nbsp;&nbsp;
+          <div *ngIf="!mini">
+            <span [ngClass]="active == 26 ? 'Active1' : 'Active3'" class="icon-textsub"> Timesheet Report
+            </span>
+
+          </div>
+        </div>
+      </a>
+
+      <a *ngIf="login==9" (click)="ExceptionBulkLogs()" class="nonactive">
+        <div class="test_case">
+          <div>
+          </div>&nbsp;&nbsp;&nbsp;
+          <div *ngIf="!mini">
+            <span [ngClass]="active == 'ExceptionBulkLogs' ? 'Active1' : 'Active3'" class="icon-textsub"> Exception Bulk
+              Logs</span>
+
+          </div>
+        </div>
+      </a>
+    </div>
+
+
+
+    <a data-toggle="collapse" *ngIf="login==9||login==11 || login==1 || login==10" class="togglebtn"
+      data-target="#userapplications" (click)="Masters()"
+      [ngClass]="(active == 32 )&&!mini ? 'menu1' : (active == 32)&&mini?'menu-mini':'menu'">
+      <div class="test_case">
+        <div>
+          <img *ngIf="(active == 32&&!mini)" src="assets/Images/revamp/reportswhite-icon.png">
+          <img *ngIf="active != 32 " src="assets/Images/revamp/reportsnewgray-icon.png">
+          <img *ngIf="(active == 32&&mini) " src="assets/Images/revamp/reportsnewblue-icon.png">
+        </div>&nbsp;&nbsp;&nbsp;
+        <div *ngIf="!mini">
+          <span class="icon-text">Masters</span>
+        </div>
+      </div>
+    </a>
+
+    <div id="userapplications" class="collapse length" style="padding-left: 7%;background-color: white;">
+
+      <a (click)="Leavetype()" *ngIf="login==9||login==11 || login==1 ||login==10" class="insidea nonactive"
+        class="nonactive">
+        <div class="test_case">
+          <div>
+          </div>&nbsp;&nbsp;&nbsp;
+          <div *ngIf="!mini">
+            <span [ngClass]="active == 33 ? 'Active1' : 'Active3'" class="icon-textsub"> Leave Type
+            </span>
+          </div>
+        </div>
+      </a>
+      <a (click)="LoanType()" *ngIf="login==9||login==11 || login==1||login==10" class="insidea nonactive"
+        class="nonactive">
+        <div class="test_case">
+          <div>
+          </div>&nbsp;&nbsp;&nbsp;
+          <div *ngIf="!mini">
+            <span [ngClass]="active == 'LoanType' ? 'Active1' : 'Active3'" class="icon-textsub"> Loan Type
+            </span>
+          </div>
+        </div>
+      </a>
+
+      <a *ngIf="login==9||login==11 || login==1||login==10" class="nonactive" (click)="TransportationType()">
+        <div class="test_case">
+          <div>
+          </div>&nbsp;&nbsp;&nbsp;
+          <div *ngIf="!mini">
+            <span [ngClass]="active == 36 ? 'Active1' : 'Active3'" class="icon-textsub">Transportation
+            </span>
+          </div>
+        </div>
+      </a>
+
+      <a class="nonactive" (click)="ShiftMaster()">
+        <div class="test_case">
+          <div>
+          </div>&nbsp;&nbsp;&nbsp;
+          <div *ngIf="!mini">
+            <span [ngClass]="active == 37 ? 'Active1' : 'Active3'" class="icon-textsub">Shift Master
+            </span>
+          </div>
+        </div>
+      </a>
+
+      <a class="nonactive" (click)="CountryMaster()">
+        <div class="test_case">
+          <div>
+          </div>&nbsp;&nbsp;&nbsp;
+          <div *ngIf="!mini">
+            <span [ngClass]="active == 39 ? 'Active1' : 'Active3'" class="icon-textsub">Country Master
+            </span>
+          </div>
+        </div>
+      </a>
+      <a class="nonactive" (click)="RegionMaster()">
+        <div class="test_case">
+          <div>
+          </div>&nbsp;&nbsp;&nbsp;
+          <div *ngIf="!mini">
+            <span [ngClass]="active == 'RegionMaster' ? 'Active1' : 'Active3'" class="icon-textsub">Region Master
+            </span>
+          </div>
+        </div>
+      </a>
+
+      <a class="nonactive" (click)="Province()">
+        <div class="test_case">
+          <div>
+          </div>&nbsp;&nbsp;&nbsp;
+          <div *ngIf="!mini">
+            <span [ngClass]="active == 40 ? 'Active1' : 'Active3'" class="icon-textsub">Province Master
+            </span>
+          </div>
+        </div>
+      </a>
+      <a class="nonactive" (click)="City()">
+        <div class="test_case">
+          <div>
+          </div>&nbsp;&nbsp;&nbsp;
+          <div *ngIf="!mini">
+            <span [ngClass]="active == 41 ? 'Active1' : 'Active3'" class="icon-textsub">City Master
+            </span>
+          </div>
+        </div>
+      </a>
+      <a class="nonactive" (click)="Barangaymaster()">
+        <div class="test_case">
+          <div>
+          </div>&nbsp;&nbsp;&nbsp;
+          <div *ngIf="!mini">
+            <span [ngClass]="active == 'Barangaymaster' ? 'Active1' : 'Active3'" class="icon-textsub">Barangay Master
+            </span>
+          </div>
+        </div>
+      </a>
+
+      <a class="nonactive" (click)="Department()">
+        <div class="test_case">
+          <div>
+          </div>&nbsp;&nbsp;&nbsp;
+          <div *ngIf="!mini">
+            <span [ngClass]="active == 42 ? 'Active1' : 'Active3'" class="icon-textsub">Department Master
+            </span>
+          </div>
+        </div>
+      </a>
+      <a class="nonactive" (click)="ot_master()" *ngIf="login==9||login==11 || login==1||login==10">
+        <div class="test_case">
+          <div>
+          </div>&nbsp;&nbsp;&nbsp;
+          <div *ngIf="!mini">
+            <span [ngClass]="active == 38 ? 'Active1' : 'Active3'" class="icon-textsub">OT Master
+            </span>
+          </div>
+        </div>
+      </a>
+
+      <a class="nonactive" (click)="Deniminis()" *ngIf="login==9||login==11 || login==1||login==10">
+        <div class="test_case">
+          <div>
+          </div>&nbsp;&nbsp;&nbsp;
+          <div *ngIf="!mini">
+            <span [ngClass]="active == 43 ? 'Active1' : 'Active3'" class="icon-textsub">Allowance Master
+            </span>
+          </div>
+        </div>
+      </a>
+
+      <a class="nonactive" *ngIf="login==9||login==11 || login==1||login==10" (click)="rolemaster()">
+        <div class="test_case">
+          <div>
+          </div>&nbsp;&nbsp;&nbsp;
+          <div *ngIf="!mini">
+            <span [ngClass]="active == 'role' ? 'Active1' : 'Active3'" class="icon-textsub">Position Master
+            </span>
+          </div>
+        </div>
+      </a>
+      <a class="nonactive" (click)="level()" *ngIf="login==9||login==11 || login==1||login==10">
+        <div class="test_case">
+          <div>
+          </div>&nbsp;&nbsp;&nbsp;
+          <div *ngIf="!mini">
+            <span [ngClass]="active == 'level' ? 'Active1' : 'Active3'" class="icon-textsub">Job Level Type
+            </span>
+          </div>
+        </div>
+      </a>
+
+      <a class="nonactive" (click)="GrievanceMaster()" *ngIf="login==9||login==11 || login==1||login==10">
+        <div class="test_case">
+          <div>
+          </div>&nbsp;&nbsp;&nbsp;
+          <div *ngIf="!mini">
+            <span [ngClass]="active == 49 ? 'Active1' : 'Active3'" class="icon-textsub">Grievance Master
+            </span>
+          </div>
+        </div>
+      </a>
+
+
+    </div>
+
+    <a data-toggle="collapse" *ngIf="login==9||login==11 || login==1 || login==10" class="togglebtn"
+      data-target="#userapplications1" (click)="Configuration()"
+      [ngClass]="(active == 'Configuration' )&&!mini ? 'menu1' : (active == 'Configuration')&&mini?'menu-mini':'menu'">
+      <div class="test_case">
+        <div>
+          <img *ngIf="(active == 'Configuration'&&!mini)" src="assets/Images/revamp/reportswhite-icon.png">
+          <img *ngIf="active != 'Configuration' " src="assets/Images/revamp/reportsnewgray-icon.png">
+          <img *ngIf="(active == 'Configuration'&&mini) " src="assets/Images/revamp/reportsnewblue-icon.png">
+        </div>&nbsp;&nbsp;&nbsp;
+        <div *ngIf="!mini">
+          <span class="icon-text">Configuration</span>
+        </div>
+      </div>
+    </a>
+    <div id="userapplications1" class="collapse length">
+      <a (click)="LeaveConfiguration()" *ngIf="login==9||login==11||login==10 || login==1" class="nonactive">
+        <div class="test_case">
+          <div>
+          </div>&nbsp;&nbsp;&nbsp;
+          <div *ngIf="!mini">
+            <span [ngClass]="active == 'LeaveConfiguration' ? 'Active1' : 'Active3'" class="icon-textsub"> Leave
+              Configuration
+            </span>
+          </div>
+        </div>
+      </a>
+
+      <a (click)="Loanconfiguration()" *ngIf="login==9||login==11||login==10 || login==1" class="nonactive">
+        <div class="test_case">
+          <div>
+          </div>&nbsp;&nbsp;&nbsp;
+          <div *ngIf="!mini">
+            <span [ngClass]="active == 'Loanconfiguration' ? 'Active1' : 'Active3'" class="icon-textsub"> Loan
+              configuration
+            </span>
+          </div>
+        </div>
+      </a>
+
+      <a (click)="missingstaff()" *ngIf="login==9||login==11||login==10 || login==1" class="nonactive">
+        <div class="test_case">
+          <div>
+          </div>&nbsp;&nbsp;&nbsp;
+          <div *ngIf="!mini">
+            <span [ngClass]="active == 'missingstaf' ? 'Active1' : 'Active3'" class="icon-textsub"> Bulk Upload missing
+              staff
+            </span>
+          </div>
+        </div>
+      </a>
+
+      <a (click)="Loadattedance()" *ngIf="login==9||login==11||login==10 || login==1" class="nonactive">
+        <div class="test_case">
+          <div>
+          </div>&nbsp;&nbsp;&nbsp;
+          <div *ngIf="!mini">
+            <span [ngClass]="active == 'Loadattedance' ? 'Active1' : 'Active3'" class="icon-textsub"> Upload Attendance
+            </span>
+          </div>
+        </div>
+      </a>
+
+      <a (click)="UploadStaffLeaves()" class="nonactive">
+        <div class="test_case">
+          <div>
+          </div>&nbsp;&nbsp;&nbsp;
+          <div *ngIf="!mini">
+            <span [ngClass]="active == 'uploadleaves' ? 'Active1' : 'Active3'" class="icon-textsub"> Leave Upload</span>
+          </div>
+        </div>
+      </a>
+
+    </div>
+    <!-- 
+    <a (click)="Doccuments()" [ngClass]="(active == 12 )&&!mini ? 'menu1' : (active == 12)&&mini?'menu-mini':'menu'">
+      <img *ngIf="(active == 12&&!mini)" src="/assets/Images/revamp/doccumentswhite-icon.png">
+      <img *ngIf="active != 12  " src="assets/Images/revamp/doccumentsnewgray-icon.png">
+      <img *ngIf="(active == 12&&mini) " src="assets/Images/revamp/doccumentsnewblue-icon.png">
+      <span class="icon-text"> Doccuments</span>
+    </a> -->
+    <a (click)="Help()" [ngClass]="(active == 13 )&&!mini ? 'menu1' : (active == 13)&&mini?'menu-mini':'menu'">
+      <div class="test_case">
+        <div>
+          <img *ngIf="(active == 13&&!mini)" src="assets/Images/revamp/helpwhite-icon.png">
+          <img *ngIf="active != 13 " src="assets/Images/revamp/helpnewgray-icon.png">
+          <img *ngIf="(active == 13&&mini) " src="assets/Images/revamp/helpnewblue-icon.png">
+        </div>&nbsp;&nbsp;&nbsp;
+        <div *ngIf="!mini">
+          <span class="icon-text"> Help</span>
+        </div>
+      </div>
+    </a>
+    <div *ngIf="!mini">
+      <img src="assets/Images/revamp/siderbar-icon.png" class="sidebar-image">
+      <br>
+      <p class="icon-text1">Can’t find what you
+        <br>
+        are looking for?
+      </p>
+    </div>
+
+    <div *ngIf="!mini">
+      <button routerLink="/Shared/SupportTicketDashboard" class="icon-text2">Raise Ticket</button>
+    </div>
+
+
+
+    <!-- <a (click)="Leaves()">
+      <i class="material-icons">email</i>
+      <span class="icon-text"> LEAVE REQUEST</span></a>
+    <a (click)="Timesheet()">
+      <i class="material-icons">email</i>
+      <span class="icon-text"> Timesheet REQUEST</span></a>
+    <a (click)="LocatorRequest()">
+      <i class="material-icons">email</i>
+      <span class="icon-text">Locator Request</span></a>
+    <a (click)="LoanRequest()">
+      <i class="material-icons">email</i>
+      <span class="icon-text"> LOAN REQUEST</span></a> -->
+  </div>
+
+
+</div>

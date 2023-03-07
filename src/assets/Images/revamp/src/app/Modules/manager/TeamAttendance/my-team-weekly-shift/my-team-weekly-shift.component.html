@@ -1,0 +1,229 @@
+<app-commonalertpage [messageId]="messageId" *ngIf="showPopup==1"></app-commonalertpage>
+<app-loader *ngIf="loader"></app-loader>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div>
+                <div>
+                    <ul>
+                        <li><a class="active" routerLink="/Employee/WeeklyShift"> My Weekly Shift</a></li>
+                        <li *ngIf="roleid==2"><a class="leavelist" routerLink="/Manager/MyTeamWeeklyShift"
+                                class="ulalign">My Team Weekly Shift
+
+                            </a>
+                            <hr _ngcontent-uti-c145="" class="line-border listForm">
+                        </li>
+                        <li *ngIf="roleid==1||roleid==9||roleid==11||roleid==10"><a class="leavelist"
+                                routerLink="/Manager/MyTeamWeeklyShift" class="ulalign">Company Weekly Shift
+
+                            </a>
+                            <hr _ngcontent-uti-c145="" class="line-border listForm">
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <br>
+            <div class="card filtercard">
+                <div class="row">
+                    <div class="col-md-1">
+                        <img src="assets/Images/filter.svg" class="filter-img">
+                        <p class="filter">Filter By:</p>
+                    </div>
+                    <div class="col-md-2">
+                        Start Date
+                        <input class="form-control" type="date" placeholder="Duration" id="date" name="date"
+                            [(ngModel)]="date">
+                    </div>
+                    <div class="col-md-2">
+                        End Date
+                        <input class="form-control" type="date" placeholder="Duration" id="edate" name="edate"
+                            [(ngModel)]="edate" (change)="filterdate()">
+                    </div>
+                    <div class="col-md-4">
+                        <br>
+                        <input class="form-control search-icon" type="search" id="term" name="term" [(ngModel)]="term"
+                            placeholder="Search  ">
+                    </div>
+                    <div class="col-md-2" *ngIf="roleid!=1">
+                        <br>
+                        <button class="Addbutton" (click)="showDialog()"><img src="assets/Images/plus.svg"
+                                class="plus-icon">Add
+                            Shift</button>
+
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-md-10">
+                    <p class="show3res">SHOWING <span> {{(workplaceList|filter:term)?.length}}
+                        </span>RESULTS</p>
+                </div>
+
+            </div><br>
+            <div class="row">
+                <div class="col-md-12">
+                    <table class="table" *ngIf="(workplaceList | filter:term)">
+                        <thead>
+                            <tr>
+                                <th>Employee ID</th>
+                                <th>First Name</th>
+                                <th>Last Name</th>
+                                <th>Start Date</th>
+                                <th>End Date</th>
+                                <th>Submit Date</th>
+                                <th>Approved Date</th>
+                                <th>Shift Name</th>
+                                <th>Start Time</th>
+                                <th>End Time</th>
+                                <th>Rest Days</th>
+                                <th *ngIf="roleid!=1">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr
+                                *ngFor="let project of workplaceList|filter:term|paginate: { itemsPerPage: count1, currentPage: p }">
+                                <td>{{project.employeID}}</td>
+                                <td>{{project.name}}</td>
+                                <td>{{project.last_Name}}</td>
+                                <td>{{project.shiftDate|date}}</td>
+                                <td>{{project.endDate|date}}</td>
+                                <td>{{project.modifieddate|date}}</td>
+                                <td>{{project.approveddate|date}}</td>
+                                <td>{{project.shiftName}}</td>
+                                <!-- <td>{{project.startTime|date:'hh:mm'}}</td>
+                                <td>{{project.endTime|date:'hh:mm'}}</td> -->
+                                <td>{{project.startTime}}</td>
+                                <td>{{project.endTime}}</td>
+                                <td>{{project.restdays}}</td>
+                                <td *ngIf="roleid!=1">
+                                    <p *ngIf="roleid==2 && project.approve==0">
+                                        <!--    <img class="img" (click)="ApproveTimeSheet(project)" data-toggle="modal"
+                                            data-target="#UploadShiftForm" src="assets/Images/check-mark.png">
+                                        <img class="imgcancel" data-toggle="modal" data-target="#Reject"
+                                            (click)="getid(project.id)" src="assets/Images/cancel (1).png"> -->
+                                        <button (click)="ApproveTimeSheet(project)" data-toggle="modal"
+                                            data-target="#UploadShiftForm" class="apro-btn">Approve</button><br><br>
+                                        <button class="imgcancel" data-toggle="modal" data-target="#Reject"
+                                            (click)="getid(project.id)" class="edit-btn">Cancel</button>
+
+                                    </p>
+                                    <p *ngIf="project.approve==0||project.approve==null">Pending</p>
+                                    <p *ngIf="project.approve==1">Approved</p>
+                                    <p *ngIf="project.approve==2">Rejected</p>
+                                    <!-- <button [routerLink]="['/Admin/Addcompany',company.id]"
+                                        class="upload">Edit</button><br><br> -->
+                                    <!-- <button *ngIf="roleid==2" [routerLink]="['/Manager/StaffShiftMaster',project.id]"
+                                        class="button">Edit</button><br><br> -->
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <span *ngIf="workplaceList?.length == 0"> No Data found</span>
+                    <div class="text-left">
+                        <br>
+                        <pagination-controls (pageChange)="p = $event" class="poppinns"></pagination-controls>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-md-1">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="Reject" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content ">
+            <div class="modal-header">
+                <div class="row">
+                    <div class="col-lg-8">
+                        <h5>Reject Notes</h5>
+                    </div>
+                </div>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body ">
+                <div class="container-fluid">
+                    <div class="row notes">
+                        <div class="col-lg-3">
+                            Notes
+                        </div>
+                        <div class="col-lg-7">
+                            <textarea rows="3" type="text" [(ngModel)]="Notes" id="Notes" name="Notes"
+                                class="form-control" placeholder="Notes"></textarea>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="row centeralign">
+                        <div class="col-lg-4">
+                        </div>
+                        <div class="col-lg-5">
+                            <button class="upload" (click)="RejectShiftCoorection()">Submit</button>
+                        </div>
+                    </div>
+                    <br />
+                </div>
+                <div class="modal-footer">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- <div id="UploadShiftForm" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Shift Correction Details</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="card">
+                <div class="row leavereq">
+                    <div class="col-md-3">
+                        <p>Start Date<span class="span">*</span></p>
+                    </div>
+                    <div class="col-md-3">
+                        <p>End Date<span class="span">*</span></p>
+                    </div>
+                    <div class="col-md-2">
+                        <p>Start Time<span class="span">*</span></p>
+                    </div>
+                    <div class="col-md-2">
+                        <p>End Time<span class="span">*</span></p>
+                    </div>
+
+                </div>
+                <div class="row leavereq">
+                    <div class="col-md-3">
+                        <input type="date" id="StartDate" name="StartDate" [(ngModel)]="date" class="form-control">
+                    </div>
+                    <div class="col-md-3">
+                        <input type="date" id="EndDate" name="EndDate" [(ngModel)]="edate" class="form-control">
+                    </div>
+                    <div class="col-md-2">
+                        <input type="time" class="form-control" id="StartTime" name="StartTime" [(ngModel)]="StartTime">
+                    </div>
+                    <div class="col-md-2">
+                        <input type="time" class="form-control" id="EndTime" name="EndTime" [(ngModel)]="EndTime">
+                    </div>
+                </div>
+
+                <br>
+                <div class="row">
+                    <div class="col-lg-8"></div>
+                    <div class="col-lg-2">
+                        <button class="button btn form-control" (click)="cancel()">Cancel</button>
+                    </div>
+                    <div class="col-lg-2">
+                        <button class="button btn form-control" (click)="Save()">Submit</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div> -->

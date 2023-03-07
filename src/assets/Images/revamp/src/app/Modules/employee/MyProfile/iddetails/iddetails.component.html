@@ -1,0 +1,98 @@
+<br>
+<div class="card">
+    <div class="row">
+        <div class="col-lg-12">
+            <label class="label">ID Details <span style="font-weight: 100;">
+                </span></label>
+        </div>
+    </div>
+    <br><br>
+    <div class="row leavereq">
+
+        <div class="col-md-2">
+            <p>ID Type </p>
+        </div>
+        <div class="col-md-2">
+            <p>Number </p>
+        </div>
+        <div class="col-md-3">
+            <p>Name on Document </p>
+        </div>
+        <div class="col-md-2">
+            <p>Issue Date <span style="color: red;">*</span></p>
+        </div>
+        <div class="col-md-2">
+            <p>Expiry Date <span style="color: red;">*</span></p>
+        </div>
+
+    </div>
+    <div class="row leavereq">
+
+        <div class="col-md-2">
+            <div class="dropdown">
+                <select class="form-control inputfield select" id="IDType" name="IDType" [(ngModel)]="IDType"
+                    [disabled]="roledid!=9 && roledid!=11 && roledid!=6 && roledid!=2">
+                    <option value="Select">Select One</option>
+                    <option value="AMFI">AMFI</option>
+                    <option value="Driving License">Driving License</option>
+                    <option value="HKID Number">HKID Number</option>
+                    <option value="Others">Others</option>
+                    <option value="Passport Number">Passport Number</option>
+                </select>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <input type="text" class="form-control" placeholder="Number" id="Number" name="Number"
+                onkeypress="return /[0-9/\s/]/i.test(event.key)" [(ngModel)]="Number"
+                [disabled]="roledid!=9 && roledid!=11 && roledid!=6 && roledid!=2">
+        </div>
+        <div class="col-md-3">
+            <input type="text" class="form-control" id="NameOnDocument" name="NameOnDocument"
+                placeholder="Name On Document" [(ngModel)]="NameOnDocument"
+                [disabled]="roledid!=9 && roledid!=11 && roledid!=6 && roledid!=2">
+        </div>
+        <div class="col-md-2">
+            <input type="date" class="form-control" id="IssueDate" name="IssueDate" [(ngModel)]="IssueDate"
+                placeholder="Issue Date" [disabled]="roledid!=9 && roledid!=11 && roledid!=6 && roledid!=2">
+        </div>
+        <div class="col-md-2">
+            <input type="date" class="form-control" id="ExpiryDate" name="ExpiryDate" [(ngModel)]="ExpiryDate"
+                placeholder="Expiry Date" [disabled]="roledid!=9 && roledid!=11 && roledid!=6 && roledid!=2">
+        </div>
+    </div>
+    <br>
+    <div class="row leavereq">
+
+        <div class="col-md-2">
+            <p>Issuing Authority </p>
+        </div>
+        <div class="col-md-2">
+            <p>Place of Issue </p>
+        </div>
+
+    </div>
+    <div class="row leavereq">
+
+        <div class="col-md-2">
+            <input [disabled]="roledid!=9 && roledid!=11 && roledid!=6 && roledid!=2" type="text" class="form-control"
+                placeholder="Issuing Authority" id="IssuingAuthority" name="IssuingAuthority"
+                [(ngModel)]="IssuingAuthority">
+        </div>
+        <div class="col-md-2">
+            <input [disabled]="roledid!=9 && roledid!=11 && roledid!=6 && roledid!=2" type="text" class="form-control"
+                id="PlaceOfIssue" name="PlaceOfIssue" [(ngModel)]="PlaceOfIssue" placeholder="Place Of Issue">
+        </div>
+    </div>
+    <br>
+</div><br>
+<div class="row">
+    <div class="col-lg-5"></div>
+    <div class="col-lg-4">
+        <button type="button" class="form-control butn-sadow" *ngIf="ID!=undefined && roledid!=10"
+            (click)="UpdateID_Details()">Save Changes</button>&nbsp;&nbsp;
+        <button class="form-control butn-sadow" (click)="SaveIdDetails()" *ngIf="ID==undefined">Submit</button>
+        &nbsp;&nbsp;
+        <!-- <button  class="form-control butn-sadow">Cancel</button> -->
+    </div>
+    <div class="col-lg-5"></div>
+</div><br>

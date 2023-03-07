@@ -1,0 +1,129 @@
+<app-commonalertpage [messageId]="messageId" *ngIf="showPopup==1"></app-commonalertpage>
+<app-loader *ngIf="loader"></app-loader>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div>
+                <ul>
+                    <li *ngIf="roleid!=11"><a routerLink="/Employee/WeeklyShift">My Weekly Shift
+                            <hr _ngcontent-uti-c145="" class="line-border listForm">
+                        </a></li>
+                    <li *ngIf="roleid==2" class="listForm"><a class="leavelist"
+                            routerLink="/Manager/MyTeamWeeklyShift">My Team Weekly
+                            Shift</a>
+                    </li>
+                    <li *ngIf="roleid==1||roleid==9||roleid==11||roleid==10" class="listForm"><a class="leavelist"
+                            routerLink="/Manager/MyTeamWeeklyShift">Company Weekly
+                            Shift</a>
+                    </li>
+                </ul>
+            </div>
+            <br>
+            <div class="card filtercard">
+                <div class="row leavereq">
+                    <div class="col-md-3">
+                        <p>Start Date<span class="span">*</span></p>
+                    </div>
+                    <div class="col-md-3">
+                        <p>End Date<span class="span">*</span></p>
+                    </div>
+                </div>
+                <div class="row leavereq">
+                    <div class="col-md-3">
+                        <input class="form-control" type="date" placeholder="Duration" id="sdate" name="sdate"
+                            [(ngModel)]="sdate">
+                    </div>
+                    <div class="col-md-3">
+                        <input class="form-control" type="date" placeholder="Duration" id="edate" name="edate"
+                            [(ngModel)]="edate" (change)="filterdate()">
+                    </div>
+                    <div class="col-md-2" *ngIf="roleid!=1">
+                        <!-- <a routerLink="/Manager/StaffShiftMaster">
+                            <button class="Addbutton"><img src="assets/Images/plus.svg" class="plus-icon">Add
+                                Shift</button>
+                        </a> -->
+                   
+                        <button class="Addbutton" (click)="showDialog()"><img src="assets/Images/plus.svg"
+                                class="plus-icon">Add
+                            Shift</button>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-md-10">
+                    <p class="show3res">SHOWING <span> {{(workplaceList|filter:term)?.length}}
+                        </span>RESULTS</p>
+                </div>
+
+            </div><br>
+            <div class="row">
+                <div class="col-md-12">
+                    <table class="table" *ngIf="(workplaceList|filter:term)?.length > 0; else noResults">
+                        <thead>
+                            <tr>
+                                <th>Employee ID</th>
+                                <th>Start Date</th>
+                                <th>End Date</th>
+                                <th>Submit Date</th>
+                                <th>Approved Date</th>
+                                <th>Shift Name</th>
+                                <th>Start Time</th>
+                                <th>Eend Time</th>
+                                <th>Rest Days</th>
+                                <th>Status</th>
+                                <th *ngIf="login!=1">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr
+                                *ngFor="let project of workplaceList|filter:term |paginate: { itemsPerPage: count1, currentPage: p}">
+
+                                <td>{{project.employeID}}</td>
+                                <td>{{project.shiftDate|date}}</td>
+                                <td>{{project.endDate|date}}</td>
+                                <td>{{project.modifieddate|date}}</td>
+                                <td>{{project.approveddate|date}}</td>
+                                <td>{{project.shiftName}}</td>
+                                <td>{{project.startTime}}</td>
+                                <td>{{project.endTime}}</td>
+                                <td>{{project.restdays}}</td>
+                                <td>
+                                    <p *ngIf="project.approve==0||project.approve==null">Pending</p>
+                                    <p *ngIf="project.approve==1">Approved</p>
+                                    <p *ngIf="project.approve==2">Rejected</p>
+                                </td>
+                                <td *ngIf="login!=1">
+                                    <div class="" *ngIf="project.approve==0">
+                                        <button class="edit-btn"
+                                            (click)="DeleteStaffShiftDetails(project.id)">Cancel</button>
+                                        <button *ngIf="roleid==6 &&project.approve==null "
+                                            [routerLink]="['/Manager/StaffShiftMaster',project.id]"
+                                            class="edit-btn">Edit</button>
+
+
+                                    </div>
+
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="text-left" *ngIf="workplaceList?.length>count1">
+                    <pagination-controls (pageChange)="p = $event"  previousLabel=""
+                    nextLabel="" class="poppinns"></pagination-controls> 
+                </div>
+                <!-- <div class="text-left">
+                    <br>
+                    <pagination-controls (pageChange)="p = $event" class="poppinns"></pagination-controls>
+                </div> -->
+                <ng-template #noResults>
+                    <p class="NoResultShow"> No Data found </p>
+                </ng-template>
+            </div>
+            <div class="col-md-1">
+            </div>
+        </div>
+    </div>
+</div>

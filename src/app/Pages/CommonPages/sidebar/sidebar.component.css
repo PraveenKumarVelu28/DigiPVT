@@ -3,9 +3,10 @@ body {
 }
 
 .sidebar {
-  height: 100%;
-  width: 85px;
-  position: fixed;
+  overflow-y: auto;
+  height: 90vh;
+  width:94%;
+  position: relative;
   z-index: 1;
   top: 0;
   left: 0;
@@ -17,10 +18,10 @@ body {
 
 
 .sidebar a {
-  padding: 11px 11px 11px 26px;
+  padding: 11px 11px 11px 40px;
   text-decoration: none;
   font-size: 25px;
-  color: #818181;
+  color: #737373;
   display: block;
 }
 
@@ -42,13 +43,28 @@ main .sidebar {
   vertical-align: middle;
 }
 
+.test_case {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  align-items: center;
+}
+
 .icon-text {
   vertical-align: middle;
   font-weight: 600;
   font-size: 14px;
-  margin-left: 33px;
-  
 }
+
+.icon-textsub {
+  vertical-align: middle;
+  font-weight: 600;
+  font-size: 14px;
+  margin-left: 11px;
+
+
+}
+
 /* .icon-text{
   display: flex;
 flex-direction: column;
@@ -85,50 +101,75 @@ background: #3247D5;
   margin-left: 70px;
   transition: margin-left 0.5s;
   width: 178px;
-  background-color:#F3F8FF;
+  background-color: #F3F8FF;
 }
-.menu{
+
+.menu {
   padding: 10px;
-  background-color:#FFFFFF;
+  background-color: #FFFFFF;
 }
-.menu-mini{
+
+.menu-mini {
   padding: 10px;
-  background-color:#F3F8FF;
+  background-color: #F3F8FF;
 }
-.menu1{
+
+.menu1 {
   background-color: #3247D5;
   color: #F3F8FF !important;
 }
 
-.image{
+.image {
   padding: 7px;
 }
 
-.sub-request{
+.sub-request {
   font-size: 14px;
   margin-left: 13px;
   line-height: 13px;
   letter-spacing: 0.5px;
 }
-.image-blue{
+
+.image-blue {
   padding: 14px;
 }
-.sidebar-image{
+
+.sidebar-image {
   width: 177px;
-    padding-left: 28px;
-    height: 151px;
-    margin-top: 19px;
+  padding-left: 28px;
+  height: 146px;
+  margin-top: 15px;
 }
-.icon-text1{
+
+.icon-text1 {
   vertical-align: middle;
   font-weight: 600;
   font-size: 14px;
   margin-left: 40px;
   color: blue;
 }
-.sub-image{
+
+.icon-text2 {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  /* padding: 15px 30px; */
+  margin-left: 40px;
+  gap: 10px;
+  width: 151px;
+  height: 38px;
+  color: #FFFFFF;
+  background: #3247D5;
+  border-radius: 11px;
+
+}
+
+.sub-image {
   padding: 9px;
 }
+
+
 
 @media screen and (max-height: 450px) {
   /*  .sidebar {

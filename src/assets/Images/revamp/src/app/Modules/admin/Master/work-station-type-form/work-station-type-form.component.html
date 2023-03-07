@@ -1,0 +1,74 @@
+<app-commonalertpage [messageId]="messageId" *ngIf="showPopup==1"></app-commonalertpage>
+<app-loader *ngIf="loader"></app-loader>
+<div class="container-fluid">
+    <div class="row ">
+        <div class="col-lg-4">
+            <p class="Heading1">Room Master</p>
+        </div>
+        <div class="col-lg-6"></div>
+        <div class="col-lg-2">
+        </div>
+    </div><br>
+    <div class="card">
+        <div class="row ">
+            <div class="col-md-2">
+                <label class="text">Building<span class="span">*</span></label>
+            </div>
+            <div class="col-md-2">
+                <label class="text">Floor<span class="span">*</span></label>
+            </div>
+            <div class="col-md-3">
+                <label class="text">Room Name<span clas="span">*</span></label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-2">
+                <div class="dropdown">
+                    <select class="form-control inputfield" (change)="GetFloorType()" [(ngModel)]="BuildingID"
+                        id="BuildingID" name="BuildingID">
+                        <option value="">Select Building</option>
+                        <option *ngFor="let project of buildinglist" value="{{project.id}}">{{project.name}}
+                        </option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="dropdown">
+                    <select class="form-control inputfield" [(ngModel)]="FloorID" placeholder="FloorID" name="FloorID"
+                        (change)="GetFloorID($event)" id="FloorID">
+                        <option value="">Select Floor</option>
+                        <option *ngFor="let floor of floorlist" value="{{floor.id}}">{{floor.floor}}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <textarea type="text" rows="2" class="form-control" placeholder="Leave Description"
+                    placeholder="Room Name" [(ngModel)]="Description" name="Description" id="Description"></textarea>
+            </div>
+        </div> <br>
+        <div class="row">
+            <div class="col-lg-10">
+            </div>
+            <div class="col-lg-1">
+                <button class="button" routerLink="/Admin/WorkStationTypeDash">Cancel</button>
+            </div>
+            <div class="col-lg-1">
+                <button type="button" class="button" *ngIf="ID!=undefined"
+                    (click)="UpdateWorkStationType_Master()">Update</button>
+                <button class="button" *ngIf="ID==undefined" (click)="InsertWorkStationType_Master()">Submit</button>
+            </div>
+        </div>
+        <br>
+    </div>
+</div>
+<div class="col-lg-1">
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>

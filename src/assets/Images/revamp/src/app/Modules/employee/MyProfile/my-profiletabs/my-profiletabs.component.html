@@ -1,0 +1,59 @@
+<div class="row">
+    <div class="col-md-12">
+        <div class="row">
+            <div class="col-lg-11">
+                <p class="Heading announcementForm">My Profile</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="tab">
+    <button class="tablinks" (click)="showED()" [ngClass]="{'bgred':EmpDetails==true}">Employee Details</button>
+    <button class="tablinks" (click)="showPD()" [ngClass]="{'bgred':PosDetails==true}">Position Details</button>
+    <button class="tablinks" (click)="showCD()" [ngClass]="{'bgred':ConDetails==true}">Contact Details</button>
+    <button class="tablinks" (click)="showDD()" [ngClass]="{'bgred':DepDetails==true}">Dependent Details</button>
+    <!-- <button class="tablinks" (click)="showEMD()" [ngClass]="{'bgred':EmploymentDetails==true}">Employement
+        Details</button> -->
+    <button class="tablinks" (click)="showND()" [ngClass]="{'bgred':NomDetails==true}">Nomination Details</button>
+    <button class="tablinks" (click)="showEduD()" [ngClass]="{'bgred':EduDetails==true}">Education Details</button>
+    <button class="tablinks" (click)="showBD()" [ngClass]="{'bgred':BankDetails==true}">Bank Details</button>
+    <button class="tablinks" (click)="showID()" [ngClass]="{'bgred':IDDetails==true}">ID Details</button>
+</div>
+
+<div *ngIf="BankDetails==true">
+    <app-bank-details></app-bank-details>
+</div>
+<div *ngIf="ConDetails==true">
+    <app-contact-details></app-contact-details>
+</div>
+<div *ngIf="DepDetails==true">
+    <app-dependent-details></app-dependent-details>
+</div>
+<div *ngIf="EduDetails==true">
+    <app-education-details></app-education-details>
+</div>
+<div *ngIf="EmpDetails==true">
+    <app-employee-information></app-employee-information>
+</div>
+<div *ngIf="EmploymentDetails==true">
+    <app-employement-details></app-employement-details>
+</div>
+<div *ngIf="IDDetails==true">
+    <app-iddetails></app-iddetails>
+</div>
+<div *ngIf="NomDetails==true">
+    <app-nomination></app-nomination>
+</div>
+<div *ngIf="PosDetails==true">
+    <app-position-details></app-position-details>
+</div>
+
+
+<div class="row">
+    <div class="col-lg-10"></div>
+   
+    <div class="col-lg-2">
+        <button type="button" class="butn-sadow form-control" *ngIf="IDDetails==false" (click)="gotonextTab()">Next</button>&nbsp;&nbsp;
+    </div>
+</div>

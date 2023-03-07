@@ -1,0 +1,108 @@
+<app-commonalertpage [messageId]="messageId"  *ngIf="showPopup==1"></app-commonalertpage><app-loader *ngIf="loader"></app-loader>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div>
+                <div>
+                    <ul>
+                        <li *ngIf="roleid!=11"><span class="active Heading" routerLink="/AttendanceReports">
+                         My Attendance Report
+                         <hr class="line-border listForm">
+                        </span>
+                        </li>
+                        <li *ngIf="roleid==2"> <a class="leavelist Heading"
+                                routerLink="/Manager/TeamAttendanceReports"> Team
+                                Attendance Report
+                            </a></li>
+                        <li *ngIf="roleid==9|| roleid==11 ||  roleid==10"> <span class="leavelist Heading"
+                                routerLink="/Manager/TeamAttendanceReports"> All Company
+                                Attendance Report
+                        </span></li>
+                    </ul>
+                </div>
+            </div>
+            <br>
+            <div class="card">
+
+                <div class="row leavereq">
+                    <div class="col-md-3">
+                        <p>Start Date:</p>
+                    </div>
+                    <div class="col-md-3">
+                        <p>End Date:</p>
+                    </div>
+                </div>
+                <div class="row leavereq">
+                    <div class="col-md-3">
+                        <input type="date" id="startdate" name="startdate" [(ngModel)]="startdate" class="form-control">
+                    </div>
+                    <div class="col-md-3">
+                        <input type="date" id="enddate" name="enddate" [(ngModel)]="enddate"
+                            (change)="getenddate($event)" class="form-control">
+                    </div>
+                    <!--  <div class="col-md-3">
+                    </div> -->
+                    <div class="col-md-2">
+                        <button class="butn-sadow" type="button" (click)="exportexcel1()">Download Excel</button>
+                    </div>
+                </div>
+
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-lg-12">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <table class="table" id="lvs">
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Sign In Type</th>
+                                <th>Expected In Time</th>
+                                <th>Punch In Time</th>
+                                <th>Punch In Location/IP Address</th>
+                                <th>Expected Out Time</th>
+                                <th>Punch Out Time</th>
+                                <th>Punch Out Location/IP Address</th>
+                                <th>Work Hours</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let attendance of attendancelist">
+                                <td>{{attendance.signinDate|date}}</td>
+                                <td>{{attendance.signInType}}</td>
+                                <td>
+                                    <p *ngIf="attendance.expectedIn!=null"> {{attendance.expectedIn|date:'HH:mm'}}</p>
+                                    <p *ngIf="attendance.expectedIn==null">NA</p>
+                                </td>
+                                <td class="numberblue">{{attendance.signinDate|date:'HH:mm'}}</td>
+                                <td>
+                                    <p *ngIf="attendance.signInType=='Web Application'">{{attendance.punchinip}}</p>
+                                    <p *ngIf="attendance.signInType!='Web Application'">{{attendance.signinLocation}}
+                                    </p>
+                                </td>
+                                <td>
+                                    <p *ngIf="attendance.expectedOut!=null"> {{attendance.expectedOut|date:'HH:mm'}}</p>
+                                    <p *ngIf="attendance.expectedOut==null">NA</p>
+                                </td>
+
+                                <td class="numberblue">{{attendance.signoutDate|date:'HH:mm'}}</td>
+                                <td>
+                                    <p *ngIf="attendance.signInType=='Web Application'">{{attendance.punchoutip}}</p>
+                                    <p *ngIf="attendance.signInType!='Web Application'">{{attendance.signoutLocation}}
+                                    </p>
+                                </td>
+                                <td>{{attendance.hr1}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br />
+<br />
+<br />

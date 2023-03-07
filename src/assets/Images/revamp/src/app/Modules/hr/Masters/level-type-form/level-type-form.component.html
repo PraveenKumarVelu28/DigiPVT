@@ -1,0 +1,69 @@
+<app-commonalertpage [messageId]="messageId" *ngIf="showPopup==1"></app-commonalertpage>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-3">
+            <p class="Heading">Job Level Type Details</p>
+        </div>
+        <div class="col-lg-8"></div>
+        <div class="col-lg-2">
+
+        </div>
+    </div>
+    <div class="card">
+        <div class="row leavereq">
+            <div class="col-md-2">
+                <label>Level type<span class="span">*</span></label>
+            </div>
+            <div class="col-md-2">
+                <label>Description<span class="span">*</span></label>
+            </div>
+
+
+        </div>
+        <div class="row leavereq">
+            <div class="col-md-2">
+                <input type="text" class="form-control" placeholder="Level Type" placeholder="Level Type"
+                    [(ngModel)]="Short" name="Short" id="Short">
+                <!-- <div class="dropdown">
+                    <select class="form-control inputfield" id="Short" name="Short" [(ngModel)]="Short">
+                        <option value="">Select Shift Name </option>
+                        <option *ngFor="let name of shiftmasterlist" value="{{name.id}}">{{name.short}}</option>
+
+                    </select>
+                </div> -->
+            </div>
+            <div class="col-md-4">
+                <textarea type="text" class="form-control" placeholder="Enter Rules" placeholder="Description"
+                    [(ngModel)]="Description" name="Description" id="Description" rows="4"></textarea>
+                <!-- <div class="dropdown">
+                        <select class="form-control inputfield" id="Description" name="Description" [(ngModel)]="Description">
+                            <option value="Select">Enter Rules </option>
+                            <option *ngFor="let name of shiftmasterlist" value="{{name.id}}">{{name.description}}</option>
+    
+                        </select>
+                    </div> -->
+            </div>
+
+        </div>
+        <br>
+
+        <div class="row">
+            <div class="col-lg-10"></div>
+            <div class="col-lg-1">
+                <button class="clo-btn" (click)="Cancel()">CANCEL</button>
+            </div>
+            <div class="col-lg-1">
+                <button type="button" class="Addbutton" *ngIf="ID!=undefined"
+                    (click)="UpdateLevelType()">UPDATE</button>
+                <button class="Addbutton" *ngIf="ID==undefined" (click)="InsertLevelType()">SUBMIT</button>
+            </div>
+        </div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>

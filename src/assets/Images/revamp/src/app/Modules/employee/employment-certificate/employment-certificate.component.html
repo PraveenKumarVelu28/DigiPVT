@@ -1,0 +1,139 @@
+<app-spinner *ngIf="loader"></app-spinner>
+<div class="container-fluid">
+    <div class="card">
+        <div class="row">
+            <div class="col-lg-12">
+                <p class="Heading1" style="text-align: center;">Employee Certificate</p>
+                <hr class="HrLine">
+            </div>
+        </div>
+        <!-- <div class="row">
+            <div class="col-lg-2"></div>
+            <div class="col-lg-3">
+                <p style="text-align: center;"> Select Start Month & Year</p>
+            </div>
+            <div class="col-lg-2">
+                <select name="cars" id="Month" class="form-control" [(ngModel)]="month">
+                    <option value="0">Select</option>
+                    <option value="1">January</option>
+                    <option value="2">February</option>
+                    <option value="3">March</option>
+                    <option value="4">April</option>
+                    <option value="5">May</option>
+                    <option value="6">June</option>
+                    <option value="7">July</option>
+                    <option value="8">August</option>
+                    <option value="9">September</option>
+                    <option value="10">October</option>
+                    <option value="11">November</option>
+                    <option value="12">December</option>
+                </select>
+            </div>
+            <div class="col-lg-2">
+                <select name="cars" id="Month" class="form-control" [(ngModel)]="year">
+                    <option value="0">Select</option>
+                    <option value="2022">2022</option>
+                    <option value="2021">2021</option>
+                    <option value="2020">2020</option>
+                </select>
+            </div>
+        </div><br> -->
+        <div class="row FilterClass fontheading">
+            <div class="col-lg-3"></div>
+            <div class="col-lg-2">
+                <!-- <p style="text-align: center;">Signatory Person</p> -->
+            </div>
+            <div class="col-lg-2">
+                <!-- <select name="cars" id="Month" class="form-control" [(ngModel)]="sign" (change)="getsign()">
+                    <option value="0">Select</option>
+                    <option value="HR">HR</option>
+                </select> -->
+            </div>
+        </div>
+        <br />
+        <br />
+        <div class="row">
+            <div class="col-lg-3"></div>
+            <div class="col-lg-4">
+                <!-- <button class="generate" (click)="showpdf()">GENERATE</button> -->
+                <button class="butn-sadow" data-toggle="modal" data-target="#exampleModalCenter"
+                    (click)="getempcert()">Fetch</button>
+            </div>
+        </div>
+    </div><br>
+
+
+    <br />
+    <br />
+    <br />
+    <br />
+
+
+
+    <div class="modal fade" id="exampleModalCenter" role="dialog">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content" style="height: 600px;overflow-y: scroll;">
+                <div class="modal-header">
+                    <h4 class="modal-title">Employee Certificate</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div><br>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-lg-6">
+                        </div>
+                        <div class="col-lg-6">
+                            <button class="CertifyEmploButn" (click)="convetToPDF1()">Export to PDF
+                                <i class="fa fa-download" aria-hidden="true"></i></button>
+                        </div>
+                    </div>
+                    <br>
+                    <div id="downloadaplication" *ngFor="let item of stafflist"
+                    style="position:absolute;left:50%;margin-left:-306px;top:0px;width:612px;height:792px;border-style:outset;overflow:hidden;margin-top: 60px;background-color: white;">
+                    <div class="container-fluid padding"  >
+                        <div class="row">
+                            <div class="col-lg-2">
+                                <br><br>
+                                <img src="assets/Images/asticom.jfif" alt="" class="image">
+                            </div>
+                            <br><br>
+                            <div class="col-lg-10">
+                                <br><br>
+                                <h4 class="certificate">CERTIFICATE OF EMPLOYEMENT</h4>
+                            </div>
+                        </div><br><br>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <p class="cert">This is to certify that <span class="bol">{{ username|uppercase}}</span> is
+                                    currently at <span class="bol"> Asticom </span> since <span
+                                        class="bol">{{item.joiningDate|date}}</span> with a position title of <span
+                                        class="bol">{{item.role}}</span>
+                                    <br>
+                                    
+                                <p class="cert"> Futhermore, <span class="bol">{{ username|uppercase}}</span> is receiving an
+                                    annual salary of <span class="bol">{{item.currentBMS}} </span>with 13th month pay.</p>
+                       
+
+                                <p class="cert">This is certification was issued on <span class="bol">{{todaydate}}</span> for <span class="bol">CERTIFICATE OF EMPLOYEMENT</span></p>
+                                <br>
+                                <br>
+                                <br>
+                                <p class="certi">Jim Tulay</p>
+                                <P class="certi">Human Resources Head</P>
+                                <P class="certi">Asticom Technology Inc</P>
+                                <p class="cert">No signature and dry seal required</p>
+                                <P class="cert">Serial Code:*|Serial Code|*</P>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                   
+                    <div class="col-lg-1">
+                    </div>
+
+                </div>
+                <br>
+            </div>
+        </div>
+    </div>
+</div>

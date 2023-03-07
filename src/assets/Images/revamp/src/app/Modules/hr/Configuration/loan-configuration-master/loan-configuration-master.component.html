@@ -1,0 +1,54 @@
+<app-commonalertpage [messageId]="messageId" *ngIf="showPopup==1"></app-commonalertpage>
+<div class="container-fluid">
+  
+ 
+            <div class="row dialogboxHeader">
+             
+                    <p class="Heading1">Loan Configuration</p>
+                    <img src="assets/Images/revamp/cancle-icon.png" (click)="cancel()" class="closeicon">
+                
+            </div>
+         
+          
+          
+                    <div class="row leavereq">
+                        <div class="col-md-2">
+                            <p>Loan Category<span class="span">*</span></p>
+                            <select class="form-control inputfield" id="LeaveCategory" name="LeaveCategory"
+                                [(ngModel)]="LoanCategory">
+                                <option value="Select">Select</option>
+                                <option value="{{leavetype.id}}" *ngFor="let leavetype of leavelist">
+                                    {{leavetype.type}} </option>
+                            </select>
+                        </div>
+                        <div class="col-lg-3">
+                            <p>Applied Amount Capital-Employee:</p>
+                            <input type="text" class="form-control inputfield" id="EmployeeApply" name="EmployeeApply"
+                                [(ngModel)]="EmployeeApply" value="EmployeeApply">
+                        </div>
+                        <div class="col-lg-3">
+                            <p>Applied Amount Capital-Manager:</p>
+                            <input type="text" class="form-control inputfield" id="ManagerApply" name="ManagerApply"
+                                [(ngModel)]="ManagerApply" value="ManagerApply">
+                        </div>
+                        <div class="col-lg-4">
+                            <p>Applied Amount Capital-OtherPosition:</p>
+                            <input type="text" class="form-control inputfield" id="OtherRolesApply"
+                                name="OtherRolesApply" [(ngModel)]="OtherRolesApply" value="Other Position Apply">
+                        </div>
+                    </div>
+                    <br />
+
+      
+   
+                <div class="row dialogboxContect">
+                        <button class="clo-btn"  (click)="cancel()">Cancel</button>
+                        <button class="Addbutton" *ngIf="ID==undefined"
+                        &nbsp;  &nbsp;  
+                            (click)="InsertLoanConfiguration()">Save</button>
+                        <button class="Addbutton" *ngIf="ID!=undefined"
+                        &nbsp;  &nbsp;  
+                            (click)="UpdateLoanConfiguration()">Update</button>
+
+                </div>
+   

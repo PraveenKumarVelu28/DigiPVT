@@ -1,0 +1,85 @@
+<app-commonalertpage [messageId]="messageId" *ngIf="showPopup==1"></app-commonalertpage>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-4">
+            <p class="Heading">Contra Deductions</p>
+        </div>
+        <div class="col-lg-4"></div>
+        <div class="col-lg-2">
+        </div>
+    </div>
+    <div class="card">
+        <br>
+        <div class="row">
+            <div class="col-lg-1">
+                <p class="filter">Filter By</p>
+            </div>
+            <div class="col-lg-5 searchfilter">
+                <input type="text" placeholder="Search" id="term" [(ngModel)]="term" class="form-control">
+            </div>
+            <div class="col-lg-3 centeralign">
+            </div>
+        </div> <br>
+    </div><br>
+    <div class="row">
+        <div class="col-md-10">
+            <p class="show3res">SHOWING <span>{{leavelist?.length}} </span>RESULTS</p>
+        </div>
+        <div class="col-md-2">
+            <button class=" form-control btn" routerLink="/HR/Contradiction">Add New</button>
+        </div>
+    </div>
+    <br>
+    <div class="row profilerow">
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="container-fluid">
+                <table class="table  text">
+                    <thead class="head">
+                        <tr>
+                            <th>Employee Name</th>
+                            <th>Position</th>
+                            <th>Department</th>
+                            <th>Amount</th>
+                            <th>Deduction Type</th>
+                            <th>Tenure</th>
+                            <th>Comments</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr
+                            *ngFor="let holiday of leavelist|filter:term| paginate: { itemsPerPage: count1, currentPage: p}">
+                            <td class="tdtext">{{holiday.staffname}}</td>
+                            <td>{{holiday.role}}</td>
+                            <td>{{holiday.department_name}}</td>
+                            <td class="tdtext">{{holiday.amount}}</td>
+                            <td class="tdtext">{{holiday.deductionType}}</td>
+                            <td class="tdtext">
+                                <p *ngIf="holiday.tenure==null">NA</p>
+                                <p *ngIf="holiday.tenure!=null">{{holiday.tenure}}</p>
+                            </td>
+                            <td class="tdtext">{{holiday.comments}}</td>
+                            <td>
+                                <button class="upload" (click)="delete(holiday.id)">Delete</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="text-left">
+                    <br>
+                    <pagination-controls (pageChange)="p = $event" class="poppinns"></pagination-controls>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-1"></div>
+    </div>
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <app-spinner *ngIf="loader"></app-spinner>

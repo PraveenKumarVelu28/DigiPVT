@@ -1,0 +1,105 @@
+<app-commonalertpage [messageId]="messageId" *ngIf="showPopup==1"></app-commonalertpage>
+<app-loader *ngIf="loader"></app-loader>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-4">
+            <p class="Heading">Grievance Request</p>
+        </div>
+        <div class="col-lg-5"></div>
+        <div class="col-lg-3">
+        </div>
+    </div>
+    <div class="card">
+        <div class="row leavereq">
+            <div class="col-md-2">
+                <p> Date<span class="span">*</span></p>
+            </div>
+            <div class="col-md-2">
+                <label>Grievance Type<span class="span">*</span></label>
+            </div>
+            <div class="col-md-2">
+                <label>Severity Type<span class="span">*</span></label>
+            </div>
+            <div class="col-md-4">
+                <label>Notes<span class="span">*</span></label>
+            </div>
+        </div>
+        <div class="row leavereq">
+            <div class="col-md-2">
+                <input type="date" class="form-control" id="Date" name="Date" (change)="endingdatealert($event)"
+                    [(ngModel)]="Date" max={{maxdate}}>
+            </div>
+            <!-- <div class="col-md-2">
+                <div class="dropdown">
+                    <select class="dropdown form-control" [(ngModel)]="type" id="type" name="type">
+                        <option value="0">Select Type</option>
+                        <option value="2">Harassment</option>
+                        <option value="3">Abuse</option>
+                    </select>
+                </div>
+            </div> -->
+            <div class="col-md-2">
+                <div class="dropdown">
+                    <select class="dropdown form-control" id="type" name="type" [(ngModel)]="type"
+                        placeholder="Select Type">
+                        <option class="textcolor" value="0">Select Type </option>
+                        <option class="textcolor" *ngFor="let role of Grievancetype" value="{{role.id}}">{{role.short}}
+                        </option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="dropdown">
+                    <select class="dropdown form-control" [(ngModel)]="severity" id="severity" name="severity">
+                        <option value="0">Select Type</option>
+                        <option value="1">Low</option>
+                        <option value="2">Medium</option>
+                        <option value="3">High</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <textarea rows="3" type="text" class="form-control" [(ngModel)]="Notes" name="Notes" id="Notes"
+                    placeholder="Notes"></textarea>
+            </div>
+        </div>
+        <br>
+        <div class="row leavereq">
+            <div class="col-md-3">
+                <p>Attachment<span class="span"></span></p>
+            </div>
+            <div class="col-md-3">
+                <p>Anonymous <span class="span"></span></p>
+            </div>
+        </div>
+        <div class="row leavereq">
+            <div class="col-md-3">
+                <ngx-dropzone (change)="onSelect21($event)" class="dropfile">
+                    <ngx-dropzone-label>Drop files here!</ngx-dropzone-label>
+                    <ngx-dropzone-preview *ngFor="let f of attachments21" [removable]="true" (removed)="onRemove21(f)">
+                        <ngx-dropzone-label>{{ f.name }} ({{ f.type }})</ngx-dropzone-label>
+                    </ngx-dropzone-preview>
+                </ngx-dropzone>
+            </div>
+            <div class="col-md-3">
+                <input type="checkbox" id="Anonymous" name="Anonymous" [(ngModel)]="Anonymous">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-7"></div>
+            <div class="col-lg-2">
+                <button class="form-control newrequest" (click)="Save()">SUBMIT</button>
+            </div>
+            <div class="col-lg-2">
+                <button class="form-control butn-sadow" (click)="Cancel()">CANCEL</button>
+            </div>
+        </div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>

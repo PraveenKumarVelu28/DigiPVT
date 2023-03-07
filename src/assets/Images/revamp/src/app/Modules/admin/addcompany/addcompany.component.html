@@ -1,0 +1,94 @@
+<app-commonalertpage [messageId]="messageId" *ngIf="showPopup==1"></app-commonalertpage>
+<app-loader *ngIf="loader"></app-loader>
+<div class="row">
+    <div class="col-md-12">
+        <div class="row">
+            <div class="col-lg-11">
+                <p class="Heading companyDetails">Company Details</p>
+            </div>
+        </div>
+        <div class="card">
+            <div class="row leavereq">
+                <div class="col-md-2">
+                    <label>Company Name<span class="mandatoryField">*</span></label>
+                </div>
+                <div class="col-md-2">
+                    <label>Address<span class="mandatoryField">*</span></label>
+                </div>
+                <div class="col-md-2">
+                    <p>Phone No.<span class="mandatoryField">*</span></p>
+                </div>
+                <div class="col-md-2">
+                    <p>Email<span class="mandatoryField">*</span></p>
+                </div>
+                <div class="col-md-2">
+                    <label>Contact Person Name<span class="mandatoryField">*</span></label>
+                </div>
+                <div class="col-md-2">
+                    <label>Reg. Date<span class="mandatoryField">*</span></label>
+                </div>
+            </div>
+            <div class="row leavereq">
+                <div class="col-md-2">
+                    <input type="text" class="form-control" placeholder="Company Name" [(ngModel)]="CompanyName"
+                        name="CompanyName" id="CompanyName">
+                </div>
+                <div class="col-md-2">
+                    <textarea rows="3" type="text" class="form-control" placeholder="Address" [(ngModel)]="Address"
+                        placeholder="Address" name="Address" id="Address"></textarea>
+                </div>
+                <div class="col-md-2">
+                    <input type="text" class="form-control" placeholder="Phone No." [(ngModel)]="MobileNumber"
+                        onkeypress="return /[0-9]/i.test(event.key)" placeholder="MobileNumber" name="MobileNumber"
+                        maxlength="12" id="MobileNumber">
+                </div>
+                <div class="col-md-2">
+                    <input type="text" class="form-control" placeholder="Email" [(ngModel)]="EmailID"
+                        placeholder="EmailID" name="EmailID" id="EmailID">
+                </div>
+                <div class="col-md-2">
+                    <input type="text" class="form-control" placeholder="Contact Person Name"
+                        [(ngModel)]="ContactPerson" placeholder="ContactPerson" name="ContactPerson" id="ContactPerson">
+                </div>
+                <div class="col-md-2">
+                    <input type="date" class="form-control" [(ngModel)]="RegDate" placeholder="RegDate" name="RegDate"
+                        id="RegDate">
+                </div>
+            </div>
+            <br>
+            <div class="row leavereq">
+                <div class="col-md-2 ">
+                    <p>No. Of Employees<span class="mandatoryField">*</span></p>
+                </div>
+            </div>
+            <div class="row leavereq">
+                <div class="col-md-2">
+                    <input type="text" class="form-control" placeholder="No. Of Employees" [(ngModel)]="No_Of_Employees"
+                        name="No_Of_Employees" id="No_Of_Employees">
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-lg-10"></div>
+                <div class="col-lg-1">
+                    <button class="form-control Edit" (click)="Cancel()">Cancel</button>
+                </div>
+                <div class="col-lg-1">
+                    <button *ngIf="ID==undefined" class="form-control Edit"
+                        (click)="InsertCompanyDetails()">Submit</button>
+                    <button *ngIf="ID!=undefined" class="form-control Edit"
+                        (click)="UpdateCompanyDetails()">Update</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-1"></div>
+    </div>
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>

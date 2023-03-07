@@ -1,0 +1,26 @@
+.search {
+  text-align: center;
+}
+
+.alignform {
+  margin-left: -99px;
+}
+
+.butn-sadow {
+  left: 6px;
+  width: 185px;
+}
+
+.delete {
+  width: 6%;
+  position: relative;
+  top: -3px;
+}
+
+@media (min-width: 1920px) and (max-width: 2560px) {
+  .butn-sadow[_ngcontent-waw-c171] {
+
+    left: 60px;
+    width: 185px;
+  }
+}

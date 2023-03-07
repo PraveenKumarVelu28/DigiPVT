@@ -1,0 +1,193 @@
+<app-commonalertpage [messageId]="messageId" *ngIf="showPopup==1"></app-commonalertpage>
+<app-loader *ngIf="loader"></app-loader>
+<div class="row">
+    <div class="col-md-12">
+        <div class="col-lg-3">
+
+            <span class="Heading">Announcement Dashboard</span>
+            <hr class="line-border listForm">
+
+        </div>
+        <div class="row FilterClass">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="row">
+                        <div class="col-lg-1 ">
+                            <img src="assets/Images/filter.svg" class="filter-img">
+                            <p class="filter">Filter By</p>
+                        </div>
+                        <div class="col-lg-2">
+                            <input class="form-control" type="date" placeholder="Duration" [(ngModel)]="date" id="date"
+                                name="date" [(ngModel)]="date">
+                            <!-- <input type="text" placeholder="Select Date" class="form-control" bsDaterangepicker
+                                [(ngModel)]="bsRangeValue"(ngModelChange)="selectDate(bsRangeValue)"
+                                > -->
+                        </div>
+                        <div class="col-lg-4 searchAnnouncement">
+                            <input class="form-control search-icon " type="search" [(ngModel)]="term"
+                                placeholder="Search for Announcements..">
+                        </div>
+
+                        <div class="col-md-1"></div>
+                        <div class="col-md-2" *ngIf="roleid==9|| roleid==11">
+
+
+                            <button class="Addbutton" (click)="showDialog()"><img src="assets/Images/plus.svg"
+                                    class="plus-icon">Add Announcement</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><br>
+        <div class="row">
+            <div class="col-md-10">
+            </div>
+
+        </div>
+        <br>
+        <div class="row">
+            <br />
+            <div class="col-lg-8 dashbutton bttn">
+                <div class="tab-slider--nav">
+                    <ul class="tab-slider--tabs">
+                        <li class="tab-slider--trigger" [class.active]="viewMode == 'tab1'" rel="tab1"
+                            (click)="viewMode ='tab1'">
+                            Upcoming</li>
+                        <li class="tab-slider--trigger" [class.active]="viewMode == 'tab2'" rel="tab2"
+                            (click)="viewMode ='tab2'">Completed</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="row tableWidth">
+            <div class="tab-slider--container" [ngSwitch]="viewMode">
+                <div *ngSwitchCase="'tab1'" id="tab1">
+                    <div class="row">
+                        <div class="">
+                            <p class="show3res">SHOWING <span> {{(annnounecemnetlist |
+                                    filter:term|filter:date)?.length}}
+                                </span>RESULTS</p>
+                        </div>
+                        <div class="col-md-4">
+
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <table class="table "
+                            *ngIf="(annnounecemnetlist | filter:term|filter:date)?.length > 0; else noResults">
+                            <thead>
+                                <tr>
+                                    <th class="headerDtWidth">StartDate</th>
+                                    <th class="headerDtWidth">EndDate</th>
+                                    <!-- <th>Announcement Time</th> -->
+                                    <th>Announcement</th>
+                                    <th>Announcement Description</th>
+                                    <th>Attachment</th>
+                                    <th>Link</th>
+                                    <th>Venue</th>
+
+                                    <th class="headerActnWidth" *ngIf="roleid==9|| roleid==11">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let list of annnounecemnetlist|filter:term|filter:date">
+                                    <td>{{list.dateTime|date}}</td>
+                                    <td>{{list.time|date}}</td>
+                                    <td>{{list.name}} </td>
+                                    <td>{{list.description}} </td>
+                                    <td>
+                                        <a href="{{list.attachment}}" target="_blank">
+                                            <img src="{{list.attachment}}" style="width:50px">
+                                        </a>
+
+
+                                    </td>
+                                    <td> <a href={{list.reason}} target="_blank"><button class="edit-btn"
+                                                *ngIf="list.reason!=null">Link</button></a>
+                                        <p *ngIf="list.reason==null">NA</p>
+                                    </td>
+
+                                    <!-- (click)="redirect(list)" -->
+                                    <td>{{list.venue}}<br>
+                                    <td *ngIf="roleid==9|| roleid==11"> <button class="edit-btn"
+                                            [routerLink]="['/Admin/AnnouncementForm',list.id]">Edit</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        <!--     <button class="upload" (click)="delete(list.id)">Delete</button> -->
+                                        <img class="delete" src="assets/Images/delete.svg" (click)="delete(list.id)">
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="row">
+                            
+                                <ng-template #noResults>
+                                    <p class="NoResultShow"> No results found </p>
+                                </ng-template>
+                         
+                        </div>
+                    </div>
+                
+                </div>
+            </div>
+            <div class="tab-slider--container" [ngSwitch]="viewMode">
+                <div *ngSwitchCase="'tab2'" id="tab2">
+                    <div class="row">
+                        <div class="">
+                            <p class="show3res">SHOWING <span>{{annnounecemnetlist1?.length}} </span>RESULTS</p>
+                        </div>
+                        <div class="col-md-4">
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <table class="table tableWidth"
+                            *ngIf="(annnounecemnetlist1 | filter:term)?.length > 0; else noResults1">
+                            <thead>
+                                <tr>
+                                    <th class="headerDtWidth">Announcement Date</th>
+                                    <th class="headerDtWidth">Announcement Time</th>
+                                    <th class="headerDtWidth">Announcement</th>
+                                    <th class="headerDtWidth">Announcement Description</th>
+                                    <th class="headerDtWidth">Attachment</th>
+                                    <th class="headerVenueWidth">Venue</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let list of annnounecemnetlist1|filter:term|filter:date">
+                                    <td>{{list.dateTime|date}}</td>
+                                    <td>{{list.time}}</td>
+                                    <td>{{list.name}} </td>
+                                    <td>{{list.description}} </td>
+                                    <td>
+                                        <a href="{{list.attachment}}" target="_blank">
+                                            <img src="{{list.attachment}}" style="width:50px">
+                                        </a>
+
+
+                                    </td>
+                                    <td>{{list.venue}}<br>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="align-no-data-found">
+                        <ng-template #noResults1>
+                            <p class="NoResultShow"> No results found </p>
+                        </ng-template>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />

@@ -1,0 +1,50 @@
+<app-commonalertpage [messageId]="messageId" *ngIf="showPopup==1"></app-commonalertpage>
+    <div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-lg-11">
+                    <p class="Heading1">OT Approvals</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-11">
+                    <div class="row leavereq">
+                        <div class="col-lg-2">
+                            <p>Can Apply Manually:</p>
+                            <input type="checkbox" id="IsCashable" name="IsCashable" value="0"
+                                [(ngModel)]="ManualApply">
+                        </div>
+                        <div class="col-lg-2">
+                            <p>Auto Approval:</p>
+                            <input type="radio" id="AutoApproval" name="AutoApproval" [(ngModel)]="AutoApproval"
+                                value="Auto Approval">
+                        </div>
+                        <div class="col-lg-2">
+                            <p>Manager Approval:</p>
+                            <input type="radio" id="AutoApproval" name="AutoApproval" [(ngModel)]="AutoApproval"
+                                value="Manager Approval">
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-lg-3"></div>
+                    <div class="col-lg-2">
+                        <button class=" form-control requestbtn" *ngIf="ID==undefined"
+                            (click)="UpdateOtConfiguration()">Update</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>

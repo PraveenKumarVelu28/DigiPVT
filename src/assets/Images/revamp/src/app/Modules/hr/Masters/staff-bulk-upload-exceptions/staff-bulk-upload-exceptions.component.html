@@ -1,0 +1,103 @@
+<app-spinner *ngIf="loader"></app-spinner>
+<div class="row">
+    <div class="col-md-12">
+        <div class="row">
+            <div class="col-lg-4">
+                <span class="Heading">
+                    Bulk Upload Exception Log report
+                    <hr class="line-border listForm">
+                </span>
+            </div>
+        </div>
+        <div class="row FilterClass">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="row">
+                        <div class="col-lg-1">
+                            <img src="assets/Images/filter.svg" class="filter-img">
+                            <p class="filter">Filter By</p>
+                        </div>
+                        <div class="col-lg-4 fontstyle">
+                            <input class="form-control search-icon " type="search" placeholder="Search.." [(ngModel)]="term"
+                                name="term">
+                        </div>
+                        <div class="col-lg-5"></div>
+                        <div class="col-md-2">
+                            <button class="butn-sadow" type="button" (click)="exportexcel()">Download Excel</button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div><br>
+        <!-- <div class="row">
+            <div class="col-lg-10">
+                <p class="show3res">SHOWING <span> {{(exceptionlist|filter:term)?.length}}
+                    </span>RESULTS</p>
+
+            </div>
+            <div class="col-lg-2">
+                <a routerLink="/HR/StaffBulkUploadExceptionsForm"><button
+                        class="Addbutton"><img src="assets/Images/plus.svg" class="plus-icon">Add Exceptions</button> </a>
+            </div>
+        </div><br> -->
+        <div class="row">
+            <div class="col-md-12">
+                <div class="container-fluid">
+                    <table class="table" id="lvs">
+                        <thead>
+                            <tr>
+                                <th>Sr.No</th>
+                                <th>Date</th>
+                                <th>Time</th>
+                                <th>Employee ID</th>
+                                <th>Employee Name</th>
+                                <!-- <th>Employee Count</th> -->
+                                <th>PageName</th>
+                                <th>Error Message</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr
+                                *ngFor="let exception of exceptionlist|filter:term|paginate: { itemsPerPage: count1, currentPage: p}">
+                                <td>{{exception.id}}</td>
+                                <td>{{exception.modifiedDate}}</td>
+                                <td>{{exception.timee}}</td>
+                                <td>{{exception.employeeID}}</td>
+                                <td>{{exception.name}}</td>
+                                <!-- <td>{{exception.employeeCount}}</td> -->
+                                <td>{{exception.pageName}}</td>
+                                <td>{{exception.errorMessage}}</td>
+                                <!-- <button class="edit-btn"
+                                        [routerLink]="['/HR/StaffBulkUploadExceptionsForm',exception.id]">Edit</button> -->
+                                <td>
+                                    <button class="edit-btn"  (click)="DeleteStaffBulkUploadExceptions(exception.id)">  
+                                        
+                                         Delete
+                                    </button>
+                                      
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="text-left">
+                        <br>
+                        <pagination-controls (pageChange)="p = $event" class="poppinns"></pagination-controls>
+                    </div>
+                    <ng-template #noResults>
+                        <p class="NoResultShow"> No results found </p>
+                    </ng-template>
+                </div>
+            </div>
+            <div class="col-md-1"></div>
+        </div>
+    </div>
+</div>
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />

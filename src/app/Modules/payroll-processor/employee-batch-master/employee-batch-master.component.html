@@ -84,7 +84,7 @@
                         </tbody>
                     </table>
                 </div>
-                <div class="text-right">
+                <div class="text-right" *ngIf="componentmaster.length >count2">
                     <pagination-controls (pageChange)="p1 = $event"  previousLabel=""
                     nextLabel="" class="poppinns"></pagination-controls>               
                 </div>

@@ -1,208 +1,167 @@
-<!-- <div class="container-fluid" style="height: 10svh;">
-  <div class="row">
-      <div class="col-lg-12 negative-padding">
-          <app-header></app-header>
-      </div>
-  </div>
- 
-  <div class="row">
-      <div class="col-lg-2 ">
-          <app-sidebar></app-sidebar>
-      </div>
-      <div class="col-lg-10 " style="overflow-y: hidden;height:  83vh; background-color: #e5f3f5;overflow-y: scroll;">
-    
-          <router-outlet></router-outlet>
-      </div>
-    
-      <div class="col-lg-10"  >
-          <app-footer></app-footer>
-      </div>
-  </div>
-</div> -->
+
 
 <div class="container-fluid">
-  <div id="dynamiccss" class="row dynamiccss">
-      <div class="col-lg-12 d-flex justify-content-between">
-          <div class="col-lg-2">
-              <!-- <img src="{{officelogo}}" style="height: 52px;margin-top: 3px;"> -->
-              <!-- <img src="assets/Logo_digiOffice_White.png" style="height: 52px;margin-top: 3px;"> -->
-          </div>
-          <div class="col-lg-3 time-cla">
-              <div class="time">
-                  <p class="time1">{{hh}} <span class="time_spc">:</span></p>
-              </div>
-              <div class="time">
-                  <p class="time1">{{mm}}<span class="mm_spc">:</span></p>
-              </div>
-              <div class="time">
-                  <p class="time1">{{ampm}}</p>
-              </div>
-          </div>
-          <div class="col-lg-3">
-              <div class="centerlabel">{{pagename}}</div>
-          </div>
-          <div class="col-lg-4" style="display: flex;
-        /* align-content: stretch; */
-        justify-content: flex-end;">
-              <div class="d-flex align-items-center" style="margin-right:10px">
-                  <a data-toggle="dropdown">
-                      <img src="assets/Images/notification.png" style="width: 25px;margin-right: 0px;">
-                  </a>
-                  <span style="color: red;padding-bottom: 30px;padding-right: 40px;">
-                      <div class="noti-card"><b>{{notificationCount1}}</b></div>
-                  </span>
-                  <ul class="dropdown dropdown-menu" style="overflow-y: auto;
-            width: 330px;
-            height: 304px;
-            margin-top: 20px;
-            margin-left: -40px;
-            position: absolute;
-            will-change: transform;
-            top: 0px;
-            left: 0px;
-            transform: translate3d(15px, -5px, 0px);">
-                      <br>
-                      <button style="margin-left: 235px;" (click)="ClearNotification()" type="button"
-                          class="btn-sm btn-danger ">Clear All</button>
-
-                      <div class="container-fluid contain" style="font-family: 'Poppins';">
-                          <!-- <h6>No Notification Today !</h6> -->
-                          <div class="row" *ngFor="let item of notificationslist1">
-                              <div class="col-lg-12">
-                                  {{item.date|date}} {{item.time|date:'hh:mm'}}<br><br><br>
-
-                              </div>
-                              <div class="col-lg-12">
-                                  <!-- <h6>{{item.message}}</h6> -->
-
-                                  <h5 (click)="changecolor(item.id)">
-
-                                      <!-- <p *ngIf="item.seen!=null">{{item.message}}</p>
-                                      <p *ngIf="item.seen==null">
-                                          {{item.message}}</p> -->
-                                      <span *ngIf="item.seen!=null">{{item.message}}</span>
-                                      <span *ngIf="item.seen==null">
-                                          {{item.message}}</span>
-                                  </h5>
-
-                              </div>
-                          </div>
-
-                          <div class="row">
-                              <div class="col-lg-12" style="overflow: auto;">
-
-
-
-                              </div>
-                          </div>
-
-                          <li class="divider"></li>
-                      </div>
-                  </ul>
-                  <div class="profile-block">
-                      <div class="profile-img mobile-profile-img pointer">
-                          <span class="initial ng-star-inserted">{{initail}}</span>
-                          <!-- <span *ngIf="login==2" class="initial ng-star-inserted">M</span>
-                    <span *ngIf="login==6" class="initial ng-star-inserted">E</span>
-                    <span *ngIf="login==8" class="initial ng-star-inserted">F</span>
-                    <span *ngIf="login==9" class="initial ng-star-inserted">H</span> -->
-                          <!---->
-
-                      </div>
-                      <span class="mdi mdi-chevron-down"></span>
+    <div class="row" style="background-color: #F2F2F2;;overflow: hidden;">
+        <div id="dynamiccss" class="col-lg-12 dynamiccss">
+          <div class="row">
+            <div class="col-lg-6">
+              <div class="row">
+                <div class="col-md-2 resimg" *ngIf="!sidenav">
+                  <div> <img *ngIf="!sidenav"  src="../assets/Images/revamp/open-header (2).png"   (click)="getless(sidenav)">
                   </div>
-                  <p class="welcomename">Hi {{username}} !</p>
-
+                </div>
+                <div class="col-md-4 resimg" *ngIf="sidenav">
                   <div>
-                      <a data-toggle="dropdown">
-                          <i class="fa fa-caret-down" style="color:white;margin-left: 5px;"></i>
-                      </a>
-                      <ul class="dropdown dropdown-menu" style="width: 250px;margin-top: 1%;">
-                          <div class="container-fluid contain">
-
-                              <div class="row link1">
-                                  <div class="col-lg-2"></div>
-                                  <div class="col-lg-4">
-                                      <img src="assets/Images/mt-pro.svg" class="img-set">
-                                  </div>
-                                  <div class="col-lg-2"></div>
-                                  <div class="col-lg-4">
-                                      <h6 [routerLink]="['/HR/AddressDetailsWizard', staffID]">
-                                          My Profile
-                                      </h6>
-                                  </div>
-                              </div>
-                              <!-- <div class="row link1">
-                                  <div class="col-lg-2"></div>
-                                  <div class="col-lg-4">
-                                      <img src="assets/Images/setting.svg" class="img-set">
-                                  </div>
-                                  <div class="col-lg-2"></div>
-                                  <div class="col-lg-4">
-                                      <h6 (click)="accountsetting()">My Account Settings</h6>
-                                  </div>
-                              </div> -->
-                              <div class="row link1">
-                                  <div class="col-lg-2"></div>
-                                  <div class="col-lg-4">
-                                      <img src="assets/Images/exit.svg" class="img-set">
-                                  </div>
-                                  <div class="col-lg-2"></div>
-                                  <div class="col-lg-4">
-                                      <h6 class="red" (click)="logout()">Logout</h6>
-                                  </div>
-                              </div>
-
-
-                              <div class="row">
-                                  <div class="col-lg-12" style="overflow: auto"></div>
-                              </div>
-
-                              <li class="divider"></li>
-                          </div>
-
-                      </ul>
+                    <img *ngIf="sidenav" src="assets/Images/revamp/close-header (2).png" class="hr-img"
+                      (click)="getless(sidenav)">
                   </div>
-                  <button *ngIf="temp1==1" (click)="Clearstorge()" type="button" class="btn-sm btn-danger "
-                      style="margin-left: 20px;">Side View
-                  </button>
+                </div>
+                <div class="col-md-6">
+                  <div class="align-head">
+                    <span class="dash-heading">{{pagename}}</span>
+                    <span class="welcomename" > Welcome back, {{username}}<img class="hai"
+                        src="../assets/Images/revamp/hai.png"></span>
+                    <!-- <span class="dash-heading">{{pagename}}</span><br> -->
+    
+                  </div>
+                </div>
               </div>
-          </div>
+            </div>
 
-
-      </div>
-
-  </div>
-
-
-  <div class="row" >
-      <div class="col-lg-2" *ngIf="showsidebar!=0">
-          <app-sidebar (activate)="onActivate($event)"></app-sidebar>
-      </div>
-
-      <div class="col-lg-10" id="main" style="height: 83vh;overflow-y: auto;background-color: #e5f3f5;"
-          *ngIf="temp1==0||temp1==undefined">
+            <div class="col-md-6">
+              <div class="row">
+                <div class="header-class">
+                  <div class="sub-card" *ngIf="showNotification"><b>{{notificationCount1}}</b></div>
+                  <!-- <img src="assets/Images/revamp/1200px-Eo_circle_red_number-5.svg.png" class="icon-number" /> -->
+                  <div ngbDropdown container="body">
+                    <img src="assets/Images/revamp/notif.png" class="icon-alignment" id="dropdownConfig1" ngbDropdownToggle />
+                    <!-- <button type="button" class="btn btn-outline-primary">Toggle</button> -->
+      
+                  </div>
+      
+                  <div ngbDropdown container="body">
+                    <!-- <img src="{{ProfilePhoto}}" class="icon-alignment1" id="dropdownConfig" *ngIf="ProfilePhoto!=null" 
+                                  ngbDropdownToggle />-->
+                    <img src="../assets/Images/revamp/profile.png" class="icon-alignment1" id="dropdownConfig "
+                      ngbDropdownToggle />
+                    <!-- <button type="button" class="btn btn-outline-primary">Toggle</button> -->
+                    <div ngbDropdownMenu aria-labelledby="dropdownConfig" id="dropdownConfig" class="content"
+                      (mouseout)="highlight('none')">
+                      <div class="d-flex flex-column">
+                        <div class="d-flex " (mouseover)="highlight('Profile')"
+                          [ngClass]="changeicon == 'Profile' ? 'highlightxt' : ''">
+                          <div class="d-flex align-test1" (click)="Profile()">
+      
+                            <img
+                              [src]="changeicon == 'Profile' ? 'assets/Images/revamp/666.png':'assets/Images/revamp/Group.png'"
+                              class="dot1">
+                            <div class="d-flex flex-column text">
+                              <p class="status-txt1" [ngClass]="changeicon == 'Profile' ? 'highlightxt' : ''">
+                                My Profile
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                        <!-- <div class="d-flex " (mouseover)="highlight('settings')" (click)="settings()">
+                                                      <div class="d-flex align-test1">
+                                                        <img [src]="changeicon == 'settings' ? 'assets/Images/revamp/Settings_Blue.png':'assets/Images/revamp/Group1.png'" class="dot1" >
+                                                        <div class="d-flex flex-column text">
+                                                          <p class="status-txt1" [ngClass]="changeicon == 'settings' ? 'highlightxt' : ''">
+                                                           Settings
+                                                          </p>                     
+                                                        </div>
+                                                      </div>
+                                                    </div> -->
+                        <hr />
+                        <!-- <div class="d-flex " (mouseover)="highlight('Guide')">
+                                                      <div class="d-flex align-test1">
+                                                        <img [src]="changeicon == 'Guide' ? 'assets/Images/revamp/Guide_blue.png':'assets/Images/revamp/Guide.png'" class="dot1" >
+                                                        <div class="d-flex flex-column text">
+                                                          <p class="status-txt1"  [ngClass]="changeicon == 'Guide' ? 'highlightxt' : ''">
+                                                         Guide
+                                                          </p>                     
+                                                        </div>
+                                                      </div>
+                                                    </div> -->
+                        <div class="d-flex " (mouseover)="highlight('helpcenter')"
+                          [ngClass]="changeicon == 'helpcenter' ? 'highlightxt' : ''">
+                          <div class="d-flex align-test1" (click)="Helpcentre()">
+                            <img
+                              [src]="changeicon == 'helpcenter' ? 'assets/Images/revamp/8888gg.png':'assets/Images/revamp/Group 2493.png'"
+                              class="dot1">
+                            <div class="d-flex flex-column text">
+                              <p class="status-txt1" [ngClass]="changeicon == 'helpcenter' ? 'highlightxt' : ''">
+                                Help Center
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                        <hr />
+                        <!-- <br> -->
+                        <div class="d-flex " (mouseover)="highlight('Logout')" (click)="logout()"
+                          [ngClass]="changeicon == 'Logout' ? 'highlightxt' : ''">
+                          <div class="d-flex align-test1">
+                            <img
+                              [src]="changeicon == 'Logout' ? 'assets/Images/revamp/5fgg.png':'assets/Images/revamp/Group 2495f.png'"
+                              class="dot1">
+                            <!-- <img src="assets/Images/revamp/dot-icon.png"  /> -->
+                            <div class="d-flex flex-column text">
+                              <p class="status-txt1" [ngClass]="changeicon == 'Logout' ? 'highlightxt' : ''">
+                                Logout
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+      
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+             
+              </div>
        
-          <br>
-          <router-outlet (activate)="onActivate($event)"></router-outlet>
-          <br>
+            <!-- <div class="col-lg-6">
+                        <div class="header-class">
+                            <img src="assets/Images/revamp/notif.png">
+                            <img src="assets/Images/revamp/profile.png" (click)="link()">
+                        </div> -->
+         
+    
+    
+            <!-- </div> -->
+          </div>
+        </div>
+    
       </div>
-      <!-- <div class="col-lg-12" style="height: 83vh;overflow-y: auto;background-color: #e5f3f5;" *ngIf="temp1==1">
-        <br>
-        <router-outlet (activate)="onActivate($event)"></router-outlet>
-        <br>
-    </div> -->
-  </div>
-  <!-- <div class="row" style="background-color: #f2f2f2;" *ngIf="login!=0">
-    <div class="col-lg-12" style="height: auto;">
-        <br>
-        <app-footer (activate)="onActivate($event)"></app-footer>
-        <br>
+
+
+  <div class="row" style="background-color: #F2F2F2; ">
+    <div style="padding: 0px;" [ngClass]="!sidenav ? 'col-lg-1' : 'col-lg-2'" *ngIf="showsidebar!=0">
+
+      <app-sidebar (activate)="onActivate($event)" (data11)="getHeaderLabel($event)"></app-sidebar>
+
     </div>
-</div> -->
-  <div *ngIf="login!=1">
-      <app-footer (activate)="onActivate($event)"></app-footer>
+    <div [ngClass]="!sidenav ? 'col-lg-11' : 'col-lg-10'">
+      <div style="height: 83vh;overflow-y: auto;background-color: #F2F2F2;;overflow-x: hidden;padding-right: 10px;"
+        *ngIf="temp1==0||temp1==undefined">
+
+        <router-outlet (activate)="onActivate($event)"></router-outlet>
+
+      </div>
+      <!--   <div class="col-lg-10" *ngIf="login!=1">
+                <app-footer></app-footer>
+            </div> -->
+    </div>
   </div>
 
-</div>
-<app-loader *ngIf="loader"></app-loader>
+
+  <div class="row">
+    <!-- <div [ngClass]="!sidenav ? 'col-lg-1' : 'col-lg-2'" *ngIf="showsidebar!=0"></div> -->
+    <div [ngClass]="!sidenav ? 'col-lg-12' : 'col-lg-12'" *ngIf="showsidebar!=0" style="background: #E4EBF4;">
+
+      <app-footer (activate)="onActivate($event)"></app-footer>
+    </div>
+  </div>
+
+  <app-loader *ngIf="loader"></app-loader>

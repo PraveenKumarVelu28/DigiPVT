@@ -1,0 +1,77 @@
+<app-commonalertpage [messageId]="messageId" *ngIf="showPopup==1"></app-commonalertpage>
+<app-loader *ngIf="loader"></app-loader>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="row dialogboxContect1">
+
+
+                <!-- <li><button class="active form-control"><i class="fa fa-clock-o"
+                                    aria-hidden="true"></i></button></li> -->
+
+                <p class="Heading1">Attendance Correction Request
+                </p>
+                <img src="assets/Images/revamp/cancle-icon.png" (click)="Cancel()" class="closeicon">
+
+
+
+
+            </div>
+            <br>
+            <div class="">
+                <div class="row leavereq">
+                    <div class="col-md-2">
+                        <p>Date<span class="span">*</span></p>
+                    </div>
+                    <div class="col-md-2">
+                        <p> Start Time<span class="span">*</span></p>
+                    </div>
+                    <div class="col-md-2">
+                        <p> End Time<span class="span">*</span></p>
+                    </div>
+                    <div class="col-md-4">
+                        <p>Comments<span class="span">*</span></p>
+                    </div>
+                </div>
+                <div class="row leavereq">
+                    <div class="col-md-2">
+                        <input type="date" class="form-control" id="SDate" name="SDate" [(ngModel)]="SDate"
+                            max="{{maxdate}}">
+                    </div>
+                    <div class="col-md-2">
+                        <timepicker [(ngModel)]="StartTime" [showMeridian]="false" [showSpinners]="showSpinners"
+                            name="StartTime" id="StartTime"></timepicker>
+                        <!-- <input type="time" class="form-control" id="StartTime" name="StartTime" [(ngModel)]="StartTime" (change)="changedate()"> -->
+                    </div>
+                    <div class="col-md-2">
+                        <timepicker [showMeridian]="false" [showSpinners]="showSpinners" name="EndTime"
+                            [(ngModel)]="EndTime" id="EndTime"></timepicker>
+                        <!-- <input type="time" class="form-control" id="EndTime" name="EndTime" [(ngModel)]="EndTime" (change)="changedate()"> -->
+                    </div>
+                    <div class="col-md-4">
+                        <textarea class="form-control" id="Comments" name="Comments" [(ngModel)]="Comments" rows="4"
+                            placeholder="Comments"></textarea>
+                    </div>
+                </div>
+                <br>
+                <br>
+                <div class="row dialogboxContect">
+                    <!-- <div class="col-md-10"></div>
+                    <div class="col-md-1"> -->
+                    <button class="clo-btn" (click)="Cancel()">Cancel</button>&nbsp; &nbsp; &nbsp; &nbsp;
+                    <!--  </div>
+                    <div class="col-md-1"> -->
+                    <!-- <button class="button" (click)="save()">Save</button> -->
+                    <button type="button" class="Addbutton" *ngIf="ID!=undefined && submitbtn==0"
+                        (click)="UpdateAttendanceCorrection()">UPDATE</button>
+                    <button class="Addbutton" *ngIf="ID==undefined && submitbtn==0" (click)="save()">SAVE</button>
+                    <!--  </div> -->
+                </div>
+
+
+            </div>
+            <div class="col-md-1">
+            </div>
+        </div>
+    </div>
+</div>

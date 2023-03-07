@@ -1,0 +1,206 @@
+<app-commonalertpage [messageId]="messageId" *ngIf="showPopup==1"></app-commonalertpage>
+<app-loader *ngIf="loader"></app-loader>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="row dialogboxContect1">
+                <label class="leavebalance">Leave Request</label>
+                <img src="assets/Images/revamp/cancle-icon.png" (click)="Cancel()" class="closeicon">
+
+            </div>
+            <br>
+            <!-- <div class="row">
+                <div class="col-md-4">
+                    <ul>
+                        <li><button class="active form-control">
+                                <a routerLink="/LeaveListDashboard" class="BackEnt"><span
+                                        class="BACK">&#8592;</span></a>
+                            </button></li> 
+                        <li><a class="Heading">Apply Leave</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-8"></div>
+            </div> -->
+
+            <div class="">
+
+                <div class="row leavereq">
+                    <div class="col-md-2">
+                        <p>Leave Type<span class="span">*</span></p>
+                    </div>
+                    <div class="col-md-2">
+                        <p>Leave Reason<span class="span">*</span></p>
+                    </div>
+                    <div class="col-md-2">
+                        <p>Start Date<span class="span">*</span></p>
+                    </div>
+                    <div class="col-md-2">
+                        <p>End Date<span class="span">*</span></p>
+                    </div>
+                    <div class="col-md-2">
+                        <p>Covering Staff <span class="span">*</span></p>
+                    </div>
+                    <div class="col-md-1"></div>
+                </div>
+                <div class="row leavereq">
+                    <div class="col-md-2">
+                        <select class="form-control inputfield" id="LeaveType" name="LeaveType" [(ngModel)]="LeaveType">
+                            <option value="">Select Leave type</option>
+                            <option value="{{leavetype.id}}" *ngFor="let leavetype of newLeaveTypeList">
+                                {{leavetype.short}} </option>
+                        </select>
+                    </div>
+                    <div class="col-md-2">
+                        <textarea rows="3" type="text" id="LeaveReason" name="LeaveReason" [(ngModel)]="LeaveReason"
+                            class="form-control inputfield" placeholder="Leave Reason"></textarea>
+                    </div>
+                    <div class="col-md-2">
+                        <input type="date" id="SDateOfLeave" name="SDateOfLeave" [(ngModel)]="SDateOfLeave"
+                            class="form-control inputfield" placeholder="Start Date">
+                    </div>
+                    <div class="col-md-2">
+                        <input type="date" id="EDateOfLeave" name="EDateOfLeave" [(ngModel)]="EDateOfLeave"
+                            (change)="Getenddate()" class="form-control inputfield" placeholder="End Date">
+                    </div>
+                    <div class="col-md-2">
+                        <input type="text" id="CoveringStaff" name="CoveringStaff" [(ngModel)]="CoveringStaff"
+                            class="form-control inputfield" placeholder="Covering Staff">
+                    </div>
+                    <div class="col-md-2">
+                        <div class="form-check" *ngIf="totaldays==1">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"
+                                id="HalfDayBit" name="HalfDayBit" [(ngModel)]="HalfDayBit"
+                                onkeypress="return /[A-Z]/i.test(event.key)">
+                            <label class="form-check-label" for="flexCheckDefault">
+                                Half Day
+                            </label>
+                        </div>
+                        <div class="form-check"><span></span>
+                            <select class="form-control inputfield" id="halfDayType" name="halfDayType"
+                                *ngIf="HalfDayBit==true" [(ngModel)]="halfDayType">
+                                <option value=0 disabled selected>Select type</option>
+                                <option value="First Half">First Half</option>
+                                <option value="Second Half">Second Half</option>
+                            </select>
+                        </div>
+                    </div>
+
+                </div>
+                <br>
+                <div class="row leavereq">
+
+                    <div class="col-md-3">
+                        <p>Attachment</p>
+                        <ngx-dropzone accept="image/jpeg,image/jpg,image/png, .pdf" (change)="onSelect21($event)"
+                            class="dropFile">
+                            <div class="dropfileDiv"> <img src="assets/Images/MicrosoftTeams-image.png"
+                                    *ngIf="attachments21.length==0" class="dropdowning">
+                                <ngx-dropzone-label>Drop files here!</ngx-dropzone-label>
+                            </div>
+                            <ngx-dropzone-preview *ngFor="let f of attachments21" [removable]="true"
+                                (removed)="onRemove21(f)">
+                                <ngx-dropzone-label>{{ f.name }} ({{ f.type }})</ngx-dropzone-label>
+                            </ngx-dropzone-preview>
+                        </ngx-dropzone>
+                    </div>
+                    <div class="col-md-5"></div>
+                </div>
+                <div class="row dialogboxContect">
+
+                    <button class="clo-btn" (click)="Cancel()">Cancel</button>
+                    &nbsp; &nbsp; &nbsp; &nbsp;
+                    <button class="Addbutton" (click)="Save()">Save</button>
+
+                </div>
+
+            </div>
+            <br>
+            <div class="card">
+                <div>
+                    <p class="leavebalance">Leave Balance</p>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="container-fluid">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Leave Type</th>
+                                        <th>Annual Quota</th>
+                                        <th>Availed Till Date</th>
+                                        <th>Current Balance</th>
+                                    </tr>
+                                </thead>
+                                <tbody *ngFor="let item of Staffleaveenitilment; let i=index">
+                                    <tr>
+                                        <td>Vacation Leave</td>
+                                        <td>{{item.vacation_LeaveEntitlement}}</td>
+                                        <td>{{item.vacation_LeaveBalance}}</td>
+                                        <td>{{item.vacation_Leaveremaining}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Sick Leave</td>
+                                        <td>{{item.sick_LeaveEntitlement}}</td>
+                                        <td>{{item.sick_LeaveBalance}}</td>
+                                        <td>{{item.sick_Leaveremaining}}</td>
+                                    </tr>
+                                    <tr *ngIf="item.awardname != 'No Award'">
+                                        <td>Service Incentive Leave</td>
+                                        <td>{{item.service_Incentive_LeaveEntitlement}}</td>
+                                        <td>{{item.service_Incentive_LeaveBalance}}</td>
+                                        <td>{{item.service_Incentive_Leaveremaining}}
+                                        </td>
+                                    </tr>
+                                    <tr *ngIf="item.awardname != 'No Award'">
+                                        <td>Leave with Pay</td>
+                                        <td>{{item.leave_with_PayEntitlement}}</td>
+                                        <td>{{item.leave_with_PayBalance}}</td>
+                                        <td>{{item.leave_with_Payremaining}}</td>
+                                    </tr>
+                                    <tr *ngIf="item.gender == 'Female'">
+                                        <td>Maternity Leave</td>
+                                        <td>{{item.maternitityLeaveEntitlement}}</td>
+                                        <td>{{item.maternitityLeaveBalance}}</td>
+                                        <td>{{item.maternitityLeaveremaining}}</td>
+                                    </tr>
+                                    <tr *ngIf="item.gender == 'Male'">
+                                        <td>Paternity Leave</td>
+                                        <td>{{item.paternitityLeaveEntitlement}}</td>
+                                        <td>{{item.paternitityLeaveBalance}}</td>
+                                        <td>{{item.paternitityLeaveremaining}}</td>
+                                    </tr>
+                                    <tr *ngIf="item.is_Solo_Parent ==1">
+                                        <td>Solo Parent Leave</td>
+                                        <td>{{item.solo_Parent_LeaveEntitlement}}</td>
+                                        <td>{{item.solo_Parent_LeaveBalance}}</td>
+                                        <td>{{item.solo_Parent_Leaveremaining}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Leave without Pay - SL</td>
+                                        <td>{{item.leave_without_PaySLEntitlement}}</td>
+                                        <td>{{item.leave_without_PaySLBalance}}</td>
+                                        <td>{{item.leave_without_PaySLremaining}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Leave without Pay - VL</td>
+                                        <td>{{item.leave_without_PayVLEntitlement}}</td>
+                                        <td>{{item.leave_without_PayVLBalance}}</td>
+                                        <td>{{item.leave_without_PayVLremaining}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-md-9"></div>
+                <div class="col-md-3">
+                </div>
+            </div>
+            <div class="col-md-1">
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,53 @@
+<app-commonalertpage [messageId]="messageId" *ngIf="showPopup==1"></app-commonalertpage>
+<app-loader *ngIf="loader"></app-loader>
+<div class="row">
+    <div class="col-md-12">
+        <div class="row">
+            <div class="col-lg-11">
+                <p class="Heading">Create Folder</p>
+            </div>
+        </div>
+        <div class="card">
+            <div class="row leavereq">
+                <div class="col-md-3">
+                    <label>Folder Name<span class="span">*</span></label>
+                </div>
+                <div class="col-md-3">
+                    <label>Department<span class="span">*</span></label>
+                </div>
+            </div>
+            <div class="row leavereq">
+                <div class="col-md-3">
+                    <input type="text" class="form-control" placeholder="Folder Name" [(ngModel)]="FolderName"
+                        name="FolderName" id="FolderName">
+                </div>
+                <div class="col-md-3">
+                    <select class="form-control" id="Department" name="Department" [(ngModel)]="Department">
+                        <option value="0">Select Department</option>
+                        <option value="{{item.id}}" *ngFor="let item of Departmentlist">
+                            {{item.department_name}}
+                        </option>
+                    </select>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-lg-9"></div>
+                <div class="col-lg-2">
+                    <button class="edit-btn" (click)="Cancel()">Cancel</button>
+                </div>
+                <div class="col-lg-1">
+                    <button class="butn-sadow" (click)="Save()">Create</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>

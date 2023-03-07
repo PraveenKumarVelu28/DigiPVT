@@ -1,0 +1,300 @@
+<app-commonalertpage [messageId]="messageId" *ngIf="showPopup==1"></app-commonalertpage>
+<app-loader *ngIf="loader"></app-loader>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-8">
+            <ul>
+                <li><span class="active Heading" routerLink="/Employee/LocatorDashboard">My Locator Details
+                    <hr class="line-border listForm">
+                </span></li>
+                <li *ngIf="roleid==2"><a class="leavelist Heading" routerLink="/Manager/ManagerLocatorDetails">My Team
+                        Locator
+                        Details</a></li>
+                <li *ngIf="roleid==9 || roleid==1  ||roleid==10"><a class="leavelist Heading"
+                        routerLink="/Manager/ManagerLocatorDetails">Company
+                        Locator
+                        Details</a></li>
+            </ul>
+        </div>
+        <div class="col-md-4"></div>
+    </div>
+    <br>
+    <div class="card">
+        <div class="row">
+            <div class="col-md-1">
+                <img src="assets/Images/filter.svg" class="filter-img">
+                <p class="filter">Filter By:</p>
+            </div>
+            <div class="col-md-2">
+                From Date
+                <input class="form-control" type="date" id="date" name="date" [(ngModel)]="date" placeholder="Duration">
+            </div>
+            <div class="col-md-2">
+                To Date
+                <input class="form-control" type="date" id="edate" name="edate" [(ngModel)]="edate" (change)="getdate()"
+                    placeholder="Duration">
+            </div>
+            <div class="col-md-3">
+              <br>
+                <input class="form-control  search-icon" type="search" [(ngModel)]="search"
+                    placeholder="Search for date, or Purpose">
+            </div>
+            <div class="col-md-3">
+                <br>
+                <button class="Addbutton" (click)="showDialog()"><img src="assets/Images/plus.svg"
+                        class="plus-icon">add locator request</button></div>
+        </div>
+    </div>
+</div> <br>
+<div class="row">
+</div> <br>
+<div class="row rowcol">
+    <div class="col-lg-1"></div>
+</div>
+<div class="row">
+    <br />
+    <div class="col-lg-10 dashbutton bttn">
+        <div class="tab-slider--nav">
+            <ul class="tab-slider--tabs">
+                <li class="tab-slider--trigger" [class.active]="viewMode == 'tab1'" rel="tab1"
+                    (click)="viewMode ='tab1'">
+                    Pending</li>
+                <li class="tab-slider--trigger" [class.active]="viewMode == 'tab2'" rel="tab2"
+                    (click)="viewMode ='tab2'">Approved</li>
+                <li class="tab-slider--trigger" [class.active]="viewMode == 'tab3'" rel="tab3"
+                    (click)="viewMode ='tab3'">Rejected</li>
+            </ul>
+        </div>
+    </div>
+    <!--  <div class="col-md-2" *ngIf="roleid !=1"> UI comn
+            <button class="Addbutton" routerLink="/Employee/LocatorRequestForm"><img src="assets/Images/plus.svg"
+                    class="plus-icon">add locator request</button>
+        </div> -->
+</div>
+<br>
+<div class="row">
+    <div class="tab-slider--container" [ngSwitch]="viewMode">
+        <div *ngSwitchCase="'tab1'" id="tab1">
+            <div class="row">
+                <div class="col-md-10">
+                    <p class="show3res">SHOWING <span>{{locatorlist1?.length}}</span> RESULTS</p>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="container-fluid">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Destination</th>
+                                <th>Time of Departure</th>
+                                <th>Time of Return</th>
+                                <th>Purpose</th>
+                                <th>No of Hours(HH:MM)</th>
+                                <th>Attachment</th>
+                                <th>Status</th>
+                                <th *ngIf="roleid!=1">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr
+                                *ngFor="let locator of locatorlist1|filter:search|paginate: { itemsPerPage: count1, currentPage: p}">
+                                <td>{{locator.date|date}}</td>
+                                <td>{{locator.destination}}</td>
+                                <td>{{locator.timeOfDeparture}}</td>
+                                <td>{{locator.timeOfReturn}}</td>
+                                <td>{{locator.purpose}}</td>
+                                <td>{{locator.hourDiff|date:"HH:mm"}}</td>
+                                <td>
+                                    <img src="assets/Images/image.png" style="width:20px; height:20px"
+                                        (click)="image(locator.id)" data-toggle="modal" data-target="#exampleModal1">
+                                    <!-- <p *ngIf="locator.attachment==null">No Attachment</p>
+                                        <a href="{{locator.attachment}}" target="blank"> <img
+                                                *ngIf="locator.attachment!=null" src="assets/Images/attachment (1).png"
+                                                class="attachment"></a> -->
+                                </td>
+                                <td>
+                                    <p *ngIf="locator.statusID==0">Manager Pending</p>
+                                    <p *ngIf="locator.statusID==1">Manager Approved</p>
+                                </td>
+                                <td *ngIf="roleid!=1">
+                                    <button *ngIf="locator.statusID==0" class="upload"
+                                        (click)="CancelLeave(locator)">Cancel</button>&nbsp;&nbsp;
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="text-left" *ngIf="locatorlist1?.length>count1">
+                        <pagination-controls (pageChange)="p = $event"  previousLabel=""
+                        nextLabel="" class="poppinns"></pagination-controls> 
+                    </div>
+
+                    <!-- <div class="text-left">
+                        <br>
+                        <pagination-controls (pageChange)="p = $event" class="poppinns"></pagination-controls>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+        <div *ngSwitchCase="'tab2'" id="tab2">
+            <div class="row">
+                <div class="col-md-10">
+
+                    <p class="show3res">SHOWING <span>{{locatorlist2?.length}}</span> RESULTS</p>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="container-fluid">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Destination</th>
+                                <th>Time of Departure</th>
+                                <th>Time of Return</th>
+                                <th>Purpose</th>
+                                <th>No of Hours</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr
+                                *ngFor="let locator of locatorlist2|filter:search|paginate: { itemsPerPage: count1, currentPage: p}">
+                                <td>{{locator.date|date}}</td>
+                                <td>{{locator.destination}}</td>
+                                <td>{{locator.timeOfDeparture}}</td>
+                                <td>{{locator.timeOfReturn}}</td>
+                                <td>{{locator.purpose}}</td>
+                                <td>{{locator.hourDiff|date:"HH:mm"}}</td>
+                                <td>
+                                    <p *ngIf="locator.statusID==0">Manager Pending</p>
+                                    <p *ngIf="locator.statusID==1">Manager Approved</p>
+                                </td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+
+                    <div class="text-left" *ngIf="locatorlist2?.length>count1">
+                        <pagination-controls (pageChange)="p = $event"  previousLabel=""
+                        nextLabel="" class="poppinns"></pagination-controls> 
+                    </div>
+
+                    <!-- <div class="text-left">
+                        <br>
+                        <pagination-controls (pageChange)="p = $event" class="poppinns"></pagination-controls>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+        <div *ngSwitchCase="'tab3'" id="tab3">
+            <div class="row">
+                <div class="col-md-10">
+                    <p class="show3res">SHOWING <span>{{locatorlist3?.length}}</span> RESULTS</p>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="container-fluid">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Destination</th>
+                                <th>Time of Departure</th>
+                                <th>Time of Return</th>
+                                <th>Purpose</th>
+                                <th>No of Hours</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr
+                                *ngFor="let locator of locatorlist3|filter:search|paginate: { itemsPerPage: count1, currentPage: p}">
+                                <td>{{locator.date|date}}</td>
+                                <td>{{locator.destination}}</td>
+                                <td>{{locator.timeOfDeparture}}</td>
+                                <td>{{locator.timeOfReturn}}</td>
+                                <td>{{locator.purpose}}</td>
+                                <td>{{locator.hourDiff|date:"HH:mm"}}</td>
+                                <td>
+                                    <p *ngIf="locator.statusID==0">Manager Pending</p>
+                                    <p *ngIf="locator.statusID==1 && locator.approveStatus!='Rejected'">Manager
+                                        Approved</p>
+                                    <p *ngIf="locator.statusID==1 && locator.approveStatus=='Rejected'">Manager
+                                        Rejected</p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="text-left" *ngIf="locatorlist3?.length>count1">
+                        <pagination-controls (pageChange)="p = $event"  previousLabel=""
+                        nextLabel="" class="poppinns"></pagination-controls> 
+                    </div>
+
+                    <!-- <div class="text-left">
+                        <br>
+                        <pagination-controls (pageChange)="p = $event" class="poppinns"></pagination-controls>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-1"></div>
+</div>
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+
+<div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel1"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Related Attachments</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-lg-4" *ngFor="let details of multipleattachmentlist">
+                        <div class="row">
+                            <div class="col-lg-10">
+                                <!-- <a href="{{details.attachment}}" target="_blank">
+                                    <img style="width:100%;height:auto;" src="{{details.attachment}}">
+                                  </a> -->
+
+                                <img src="{{details.attachment}}" *ngIf="details.filetype=='Image'"
+                                    (click)="openAttchments(details.attachment)" style="width: 171px; height: 117px;">
+
+                                <img src="assets/Images/pdf.png" *ngIf="details.filetype=='Pdf'"
+                                    (click)="openAttchments(details.attachment)" style="width: 171px; height: 117px;">
+                                <img src="assets/Images/word.png" *ngIf="details.filetype=='Document'"
+                                    (click)="openAttchments(details.attachment)" style="width: 171px; height: 117px;">
+                                <img src="assets/Images/files.png" *ngIf="details.filetype=='Ppt'"
+                                    (click)="openAttchments(details.attachment)" style="width: 171px; height: 117px;">
+                                <!-- <img src="assets/Images/files.png" *ngIf="details.filetype=='Document'"
+                                  (click)="openAttchments(details.attachment)" style="width: 171px; height: 117px;"> -->
+
+                                <p *ngIf="details.attachment==null">No Attachment</p>
+
+
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                </div>
+                <br>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="cancel" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>

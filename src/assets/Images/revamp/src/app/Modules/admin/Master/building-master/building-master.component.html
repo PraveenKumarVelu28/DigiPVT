@@ -1,0 +1,86 @@
+<app-loader *ngIf="loader"></app-loader>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-lg-2">
+                    <h3 class="Heading">Building Master</h3>
+                </div>
+            </div>
+            <br>
+            <div class="card">
+                <div class="row leavereq">
+                    <div class="col-md-2">
+                        <label>Country<span class="span">*</span></label>
+                    </div>
+                    <div class="col-md-2">
+                        <label>Building Name<span class="span">*</span></label>
+                    </div>
+                    <div class="col-md-2">
+                        <label>Address<span class="span">*</span></label>
+                    </div>
+                    <div class="col-md-2">
+                        <label>PhoneNo<span class="span">*</span></label>
+                    </div>
+                    <div class="col-md-2">
+                        <label>No Of Floors<span class="span">*</span></label>
+                    </div>
+                </div>
+                <div class="row leavereq">
+                    <div class="col-md-2">
+                        <div class="dropdown">
+                            <select class="form-control inputfield" id="CountryID" name="CountryID"
+                                [(ngModel)]="CountryID">
+                                <option value="Select">Select Country </option>
+                                <option *ngFor="let role of leavelist1" value="{{role.id}}">{{role.short}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <input type="text" class="form-control" [(ngModel)]="Name" name="Name" id="Name"
+                            placeholder="Building Name">
+                    </div>
+                    <div class="col-md-2">
+                        <input type="text" class="form-control" [(ngModel)]="Address" name="Address" id="Address"
+                            placeholder="Address">
+                    </div>
+                    <div class="col-md-2">
+                        <input type="text" class="form-control" [(ngModel)]="PhoneNo" name="PhoneNo" id="PhoneNo"
+                            onkeypress="return /[0-9]/i.test(event.key)" maxlength="11" placeholder="Phone No">
+                    </div>
+                    <div class="col-md-2" *ngIf="ID!=undefined">
+                        <input type="text" class="form-control" [(ngModel)]="NoOfFloors" name="NoOfFloors"
+                            disabled="ID!=undefined" placeholder="No. Of Floors" id="NoOfFloors">
+                    </div>
+                    <div class="col-md-2" *ngIf="ID==undefined">
+                        <input type="text" class="form-control" [(ngModel)]="NoOfFloors" name="NoOfFloors"
+                            placeholder="No. Of Floors" id="NoOfFloors">
+                    </div>
+                </div>
+                <br>
+                <br>
+                <div class="row">
+                    <div class="col-lg-10"></div>
+                    <div class="col-lg-1">
+                        <button class="form-control upload" (click)="Cancel()">Cancel</button>
+                    </div>
+                    <div class="col-lg-1">
+                        <button type="button" class="form-control upload" *ngIf="ID!=undefined"
+                            (click)="UpdateBuilding()">Update</button>
+                        <button class="form-control upload" *ngIf="ID==undefined"
+                            (click)="InsertBuilding()">Submit</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-1"></div>
+        </div>
+    </div>
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>

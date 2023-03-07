@@ -1,0 +1,85 @@
+<app-commonalertpage [messageId]="messageId" *ngIf="showPopup==1"></app-commonalertpage>
+<app-loader *ngIf="loader"></app-loader>
+<div class="row">
+    <div class="col-md-12">
+        <div class="row">
+            <div class="col-lg-11">
+                <p *ngIf="pagename=='ORIENTATION DOCS'" class="Heading">Orientation Dashboard</p>
+                <p *ngIf="pagename!='ORIENTATION DOCS'" class="Heading">Policy Dashboard</p>
+            </div>
+        </div>
+        <div class="row FilterClass">
+            <div class="col-lg-12">
+                <div class="card">
+                    <br>
+                    <div class="row">
+                        <div class="col-lg-1" class="filter">
+                            Filter By
+                        </div>
+                        <div class="col-lg-2">
+                            <input class="form-control" (change)="getdate()" id="date" name="date" [(ngModel)]="date"
+                                type="date" placeholder="Duration">
+                        </div>
+                        <div class="col-lg-4 searchtxt">
+                            <input class="form-control" type="search" id="term" name="term" [(ngModel)]="term"
+                                placeholder="Search Policy..">
+                        </div>
+                    </div>
+                    <br>
+                </div>
+            </div>
+        </div><br>
+        <div class="row">
+            <div class="col-md-10">
+                <p class="show3res">SHOWING <span> {{policylist?.length}}
+                    </span> RESULTS</p>
+            </div>
+            <div class="col-md-2" *ngIf="pagename=='ORIENTATION DOCS'">
+                <a *ngIf="login==1||login==9"><button class="button" (click)="addpolicy()">Add
+                        Orientation</button> </a>
+            </div>
+            <div class="col-md-2" *ngIf="pagename!='ORIENTATION DOCS'">
+                <a *ngIf="login==1||login==9"><button class="button" (click)="addpolicy()">Add
+                        Policy</button> </a>
+            </div>
+        </div>
+        <img class="cursor" title="back" src="assets/Images/goback.png" class="imgwidth" (click)="goback()">
+        <br>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="container-fluid">
+                    <table class="table">m
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th *ngIf="pagename!='ORIENTATION DOCS'">Policy Name</th>
+                                <th *ngIf="pagename=='ORIENTATION DOCS'">Orientation Name</th>
+                                <th>Document Version</th>
+                                <th>Description</th>
+                                <th>Attachment</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let policy of policylist|filter:term">
+                                <td class="policydate">{{policy.filterdate}}</td>
+                                <td>{{policy.documnet_Name}}</td>
+                                <td>{{policy.version}}</td>
+                                <td>{{policy.documnet_Description}}</td>
+                                <td>
+                                    <a href="{{policy.attachment}}" target="_blank"> <img
+                                            src="assets/Images/attachment (1).png" alt="policy.img"
+                                            class="policyimg"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                </td>
+                                <td>
+                                    <button *ngIf="login==1||login==9" class="upload"
+                                        (click)="DeleteHolidays(policy.id)">Delete</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

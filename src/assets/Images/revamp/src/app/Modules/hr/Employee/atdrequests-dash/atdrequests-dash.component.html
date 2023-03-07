@@ -1,0 +1,109 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-11">
+            <p class="Heading">Salary Deductions Dashboard</p>
+        </div>
+    </div>
+    <div class="card">
+        <div class="row">
+            <div class="col-lg-1 space">
+                <p class="filterbytxt">Filter By</p>
+            </div>
+            <div class="col-lg-2">
+                <p>Position
+                    <!-- <br> <select class="form-control" id="RoleType" name="RoleType" (change)='getRoleType($event)'
+                        [(ngModel)]="RoleType" (change)="FilterRoleType()">
+                        <option value="">Select Position</option>
+                        <option *ngFor="let item of RoleTypeList" value="{{item.short}}">{{item.short}}
+                        </option>
+                    </select> -->
+
+                    <ng-multiselect-dropdown [placeholder]="'Select Position'" [settings]="roledropdownSettings"
+                    [data]="dropdownRoleList" 
+                      (onSelect)="roleonItemSelect($event)">
+                  </ng-multiselect-dropdown>
+                </p>
+            </div>
+            <div class="col-lg-3">
+                <!-- <p>Department
+                    <select class="form-control" id="Department" name="Department" [(ngModel)]="Department"
+                        (change)="filterByDepartment()">
+                        <option value="0">Select Department</option>
+                        <option value="{{item.department_name}}" *ngFor="let item of Departmentlist">
+                            {{item.department_name}}
+                        </option>
+                    </select>
+                </p> -->
+                <p>Department
+                <ng-multiselect-dropdown [placeholder]="'Select Department'"
+                [settings]="deptdropdownSettings"  [data]="dropdownDeptList" 
+                [(ngModel)]="deptselectedItems" (onSelect)="deptonItemSelect($event)">
+            </ng-multiselect-dropdown>
+                
+            </div>
+            <div class="col-lg-4">
+                <p>Search
+                    <input class="form-control" type="search" [(ngModel)]="term" 
+                        (ngModelChange)="Filterstaff()" placeholder="Search for Staff...">
+            </div>
+            <div class="col-lg-2 space">
+                <p class="count">Count:{{count}}</p>
+            </div>
+        </div>
+    </div>
+    <br>
+    <br>
+    <div class="row">
+        <div class="col-md-10">
+        </div>
+        <div class="col-md-2">
+            <button class="button" routerLink="/HR/ATDRequests">Add New</button>
+        </div>
+    </div>
+    <br>
+    <br>
+    <div class="row ">
+        <div class="col-md-12">
+            <table class="table" id="lvs"
+                *ngIf="(stafflist |paginate: { itemsPerPage: count1, currentPage: p})?.length > 0; else noResults">
+                <thead>
+                    <tr>
+                        <th>Employee Name</th>
+                        <th>Position</th>
+                        <th>Department</th>
+                        <th>Type</th>
+                        <th>Amount</th>
+                        <th>Deduction Type</th>
+                        <th>Tenure</th>
+                        <th>Comments</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of stafflist|paginate: { itemsPerPage: count1, currentPage: p}">
+                        <td style="color:#0C275A">{{item.name}}</td>
+                        <td style="color:#0C275A">{{item.role}}</td>
+                        <td style="color:#0C275A">{{item.department_name}}</td>
+                        <td style="color:#0C275A">{{item.type}}</td>
+                        <td style="color:#0C275A">{{item.amount}}</td>
+                        <td style="color:#0C275A">{{item.deductiontype}}</td>
+                        <td style="color:#0C275A">
+                            <p *ngIf="item.tenure!=null">{{item.tenure}}</p>
+                            <p>NA</p>
+                        </td>
+                        <td style="color:#0C275A">{{item.comments}}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <ng-template #noResults>
+                <div class="card">
+                    <p class="NoResultShow"> No results found !! </p>
+                </div>
+            </ng-template>
+            <div class="text-right">
+                <br>
+                <pagination-controls (pageChange)="p = $event" class="poppinns"></pagination-controls>
+            </div>
+        </div>
+    </div>
+</div>
+<app-spinner *ngIf="loader"></app-spinner>

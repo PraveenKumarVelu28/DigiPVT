@@ -1,12 +1,19 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { interval } from 'rxjs';
+import { BehaviorSubject, interval } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
 export class DigiPVTService {
+  private dataStringSource = new BehaviorSubject<string>('dddd');
+  sharingData = { name: " " };
 
-
+  dataString$ = this.dataStringSource.asObservable();
+  public saveData(value: string){
+     console.log("save data function called " + value + this.sharingData.name);
+     this.sharingData.name = value;
+     this.dataStringSource.next(this.sharingData.name);
+   }
   public host = sessionStorage.getItem('digiofficeapiurl');
   // public basehost = 'http://localhost:1807/';
   // public basehost1 = "http://localhost:4199/"
@@ -4728,6 +4735,30 @@ export class DigiPVTService {
     return this.http.post(this.url, data);
   }
 
+
+
+  public GetValidationMaster(){
+    return this.http.get<any[]>(
+      this.host +"/Vendor/GetValidationMaster"
+    );
+  }
+  
+  public InsertValidationMaster(data : any){
+    debugger;
+    this.url = this.host + '/Vendor/InsertValidationMaster';
+    return this.http.post(this.url, data);
+
+  }
+
+  public UpdateValidationMaster(data : any){
+    this.url =this.host + '/Vendor/UpdateValidationMaster'
+    return this.http.post(this.url,data)
+  }
+
+  public DeleteValidationMaster(ID : any){
+    return this.http.get<any[]>(
+      this.host + "/Vendor/DeleteValidationMaster?ID=" + ID);
+  }
 
 }
 

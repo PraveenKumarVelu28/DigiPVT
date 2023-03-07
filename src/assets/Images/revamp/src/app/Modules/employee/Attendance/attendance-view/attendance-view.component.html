@@ -1,0 +1,106 @@
+<app-loader *ngIf="loader"></app-loader>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-12">
+            <ul>
+                <li><a class="active Heading" routerLink="/Employee/AttendanceView"><u>My Regularization list</u></a>
+                </li>
+                <li *ngIf="roleid==2"><a class="gap Heading" routerLink="/Manager/MyTeamAttendenceRegularisation">My
+                        Team
+                        Regularization</a></li>
+                <li *ngIf="roleid==9"><a class="gap Heading"
+                        routerLink="/Manager/MyTeamAttendenceRegularisation">Company
+                        Regularization List</a></li>
+            </ul>
+        </div>
+    </div>
+    <br>
+    <div class="card">
+        <div class="row leavereq">
+            <div class="col-md-3">
+                <p>Start Date</p>
+            </div>
+            <div class="col-md-3">
+                <p>End Date</p>
+            </div>
+        </div>
+        <div class="row leavereq">
+            <div class="col-md-3">
+                <input type="date" id="startdate" name="startdate" [(ngModel)]="startdate" class="form-control">
+            </div>
+            <div class="col-md-3">
+                <input type="date" id="enddate" name="enddate" [(ngModel)]="enddate" (change)="getenddate($event)"
+                    class="form-control">
+            </div>
+            <div class="col-md-2">
+                <button type="button" class="btn" (click)="currentweek()">Current
+                    Week</button>
+            </div>
+            <div class="col-md-2">
+                <button type="button" class="btn" (click)="currentmonth()">Current Month
+                </button>
+            </div>
+            <div class="col-md-2">
+                <button class="button" type="button" (click)="exportexcel()">Download</button>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table" id="lvs">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Shift</th>
+                        <th>Expected In Time</th>
+                        <th>Punch In Time</th>
+                        <th>Expected Out Time</th>
+                        <th>Punch Out Time</th>
+                        <th>Work Hours(HH:MM)</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let attendance of attendancelist|paginate: { itemsPerPage: count1, currentPage: p }">
+                        <td>{{attendance.signinDate|date}}</td>
+                        <td>General Shift</td>
+                        <td>
+                            <p *ngIf="attendance.expectedIn!=null">{{attendance.expectedIn|date:'hh:mm'}}</p>
+                            <p *ngIf="attendance.expectedIn==null">Shift not Added</p>
+                        </td>
+
+                        <td ng-if="attendance.signinDate|date:'hh:mm' > attendance.signinDate|date:'10:00'"
+                            class="numberblue">{{attendance.signinDate|date:'hh:mm'}}</td>
+
+                        <td>
+                            <p *ngIf="attendance.expectedOut!=null">{{attendance.expectedOut|date:'hh:mm'}}</p>
+                            <p *ngIf="attendance.expectedOut==null">Shift not Added</p>
+                        </td>
+                        <td ng-if="attendance.signoutDate|date:'06:00' > attendance.signoutDate|date:'hh:mm'"
+                            class="numberblue">{{attendance.signoutDate|date:'hh:mm'}}</td>
+                        <td>{{attendance.hr1}}</td>
+                        <td>
+                            <p *ngIf="attendance.approve==null">Pending</p>
+                            <p *ngIf="attendance.approve==1">Approved</p>
+                            <p *ngIf="attendance.approve==0">Rejected</p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="text-left">
+                <br>
+                <pagination-controls (pageChange)="p = $event" class="poppinns"></pagination-controls>
+            </div>
+            <span *ngIf="attendancelist?.length==0"><b>No Data Found</b></span>
+        </div>
+    </div>
+    <br>
+</div>
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />

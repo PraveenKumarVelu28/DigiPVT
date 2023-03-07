@@ -1,0 +1,109 @@
+<app-loader *ngIf="loader"></app-loader>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-8">
+                    <ul>
+                        <span class="Heading" routerLink="/Employee/AttendanceCorrectionReport">My Attendance
+                                Correction Report</span>&nbsp;&nbsp;
+                        <span *ngIf="roleid==2"><a class="Heading"
+                                routerLink="/Manager/TeamAttendanceCorrectionReports"><u>My Team
+                                    Attendance Correction Report</u></a></span>
+
+                        <span *ngIf="roleid==10||roleid==9||roleid==11"><span class="Heading"
+                                routerLink="/Manager/TeamAttendanceCorrectionReports">All Company
+                                    Attendance Correction Report
+                                    <hr class="line-border listForm">
+                                </span></span>
+                    </ul>
+                </div>
+            </div>
+            <br>
+            <div class="card filtercard">
+                <div class="row">
+                    <div class="col-md-1">
+                        <img src="assets/Images/filter.svg" class="filter-img">
+                        <p class="filter">Filter By:</p>
+                    </div>
+                    <div class="col-md-2">
+                        From Date
+                        <input class="form-control" type="date" id="date" name="date" [(ngModel)]="date"
+                            placeholder="Duration">
+                    </div>
+                    <div class="col-md-2">
+                        To Date
+                        <input class="form-control" type="date" id="edate" name="edate" [(ngModel)]="edate"
+                            (change)="getdate()" placeholder="Duration">
+                    </div>
+                    <div class="col-md-2">
+                        Select Staff
+                        <ng-multiselect-dropdown [placeholder]="'Select Staff'" [settings]="dropdownSettings"
+                            [data]="dropdownList" [(ngModel)]="selectedItems" (onSelect)="onItemSelect($event)">
+                        </ng-multiselect-dropdown>
+                    </div>
+                    <div class="col-md-3">
+                        <br>
+                        <input class="form-control search-icon" type="search" id="term" name="term" [(ngModel)]="term"
+                            placeholder="Search for Time">
+                    </div>
+                    <div class="col-md-2">
+                        <br>
+                        <button class="Addbutton" type="button" (click)="exportexcel()">Download
+                            Excel</button>
+                    </div>
+                </div>
+            </div>
+            <br />
+            <div class="row">
+                <div class="col-md-10">
+                </div>
+                <!--   <div class="col-md-4">
+                </div> -->
+
+               
+
+            </div><br>
+            <div class="row">
+                <div>
+
+                    <div class="col-md-12">
+                        <table class="table" id="lvs">
+                            <thead>
+                                <tr>
+                                    <th>Employee Name</th>
+                                    <th>Date</th>
+                                    <th>Start Time</th>
+                                    <th>End Time</th>
+                                    <th>Comments</th>
+                                    <th>Manager Corrected Date</th>
+                                    <th>Manager Corrected Time</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr
+                                    *ngFor="let item of correctionlist1|filter:term|paginate: { itemsPerPage: count1, currentPage: p}">
+                                    <td>{{item.staffname}}</td>
+                                    <td>{{item.date|date}}</td>
+                                    <td>{{item.startTime}}</td>
+                                    <td>{{item.endTime}}</td>
+                                    <td>{{item.comments}}</td>
+                                    <td>{{item.modifiedDate|date}}</td>
+                                    <td>{{item.modifiedDate|date:'hh:mm'}}</td>
+                                    <td>{{item.status}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="text-left">
+                            <br>
+                            <pagination-controls (pageChange)="p = $event" class="poppinns"></pagination-controls>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-1"></div>
+            </div>
+            <div class="col-md-1"></div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,78 @@
+<app-commonalertpage [messageId]="messageId" *ngIf="showPopup==1"></app-commonalertpage>
+<app-loader *ngIf="loader"></app-loader>
+<div class="row">
+    <div class="col-md-12">
+        <div class="row">
+            <div class="col-lg-11">
+                <p *ngIf="pagename=='ORIENTATION DOCS'" class="Heading pagetext">Add Orientation</p>
+                <p *ngIf="pagename!='ORIENTATION DOCS'" class="Heading pagetext">Add Policy</p>
+            </div>
+        </div>
+        <div class="card">
+            <div class="row leavereq">
+                <div class="col-md-2">
+                    <p>Date<span class="span">*</span></p>
+                </div>
+                <div class="col-md-2">
+                    <label>Document Name<span class="span">*</span></label>
+                </div>
+                <div class="col-md-3">
+                    <label>Document Description<span class="span">*</span></label>
+                </div>
+                <div class="col-md-2">
+                    <label>Version<span class="span">*</span></label>
+                </div>
+                <div class="col-md-2">
+                    <p>Attachment<span class="span">*</span></p>
+                </div>
+            </div>
+            <div class="row leavereq">
+                <div class="col-md-2">
+                    <input type="date" class="form-control" placeholder="Date" name="Date" id="Date" [(ngModel)]="Date">
+                </div>
+                <div class="col-md-2">
+                    <input type="text" class="form-control" placeholder="Document Name" name="Documnet_Name"
+                        id="Documnet_Name" [(ngModel)]="Documnet_Name">
+                </div>
+                <div class="col-md-3">
+                    <textarea rows="3" type="text" class="form-control" placeholder="Document Description"
+                        name="Document_Description" id="Documnet_Description"
+                        [(ngModel)]="Documnet_Description"></textarea>
+                </div>
+                <div class="col-md-2">
+                    <input type="text" class="form-control" placeholder="Version Number" name="Version" id="Version"
+                        [(ngModel)]="Version">
+                </div>
+                <div class="col-md-2">
+                    <ngx-dropzone (change)="onSelect21($event)" class="dropfile">
+                        <ngx-dropzone-label>Drop files here!</ngx-dropzone-label>
+                        <ngx-dropzone-preview *ngFor="let f of attachments21" [removable]="true"
+                            (removed)="onRemove21(f)">
+                            <ngx-dropzone-label>{{ f.name }} ({{ f.type }})</ngx-dropzone-label>
+                        </ngx-dropzone-preview>
+                    </ngx-dropzone>
+                    <span class="spanattachment">Attachment should be below 10MB and only PDF files are
+                        Acceptable</span>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-lg-10"></div>
+                <div class="col-lg-1">
+                    <button class="form-control Edit" (click)="Cancel()">Cancel</button>
+                </div>
+                <div class="col-lg-1">
+                    <button class="form-control Edit" (click)="Save()">Submit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>

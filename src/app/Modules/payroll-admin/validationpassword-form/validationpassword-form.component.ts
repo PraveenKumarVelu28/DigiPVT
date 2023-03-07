@@ -16,6 +16,7 @@ export class ValidationpasswordFormComponent implements OnInit {
   id : any ;
   companyid : any ;
   ngOnInit(): void {
+    this.GetValidationMaster();
     this.MenuName = 0;
     this.companyid = sessionStorage.getItem('companyid');
     this.ActivatedRoute.params.subscribe((params: { [x: string]: any; }) => {
@@ -67,6 +68,15 @@ export class ValidationpasswordFormComponent implements OnInit {
     })
 
 
+  }
+  Short : any
+  validation : any
+  public GetValidationMaster(){
+    this.DigiPVTService.GetValidationMaster().subscribe(data => {
+      debugger
+      this.validation = data;
+      console.log("validation", this.validation);
+    });
   }
 
 }

@@ -1,0 +1,21 @@
+.search {
+    margin-left: 15px;
+}
+
+.alignForm {
+    text-align: center;
+}
+
+.FormAlignment {
+    margin-left: -99px;
+}
+
+.butn-sadow {
+    left: 6px;
+}
+
+@media (min-width: 1920px) and (max-width: 2560px) {
+    .butn-sadow {
+        left: 75px;
+    }
+}

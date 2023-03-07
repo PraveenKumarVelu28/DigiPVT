@@ -1,0 +1,132 @@
+<app-commonalertpage [messageId]="messageId" *ngIf="showPopup==1"></app-commonalertpage>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div>
+                <div>
+                    <ul>
+                        <li *ngIf="roledid!=11"><span class="active Heading" routerLink="/Employee/AttendanceReports"
+                                style="color:#3247d5 ;">
+                                My
+                                Attendance Report</span></li>
+                        <li *ngIf="roledid==2"><a class="leavelist Heading ulclr"
+                                routerLink="/Manager/TeamAttendanceReports" style="color:#3247d5 ;"><u>My Team
+                                    Attendance Report</u></a></li>
+
+                        <li *ngIf="roledid==9|| roledid==11 ||  roledid==10 ||  roledid==1"><span class="leavelist Heading ulclr"
+                                routerLink="/Manager/TeamAttendanceReports" style="color:#3247d5 ;">All Company
+                                    Attendance Report
+                                    <hr class="line-border listForm">
+                        </span></li>
+                    </ul>
+                </div>
+            </div>
+            <br>
+            <div class="card">
+
+                <div class="row leavereq">
+                    <div class="col-md-3">
+                        <p>Start Date:</p>
+                    </div>
+                    <div class="col-md-3">
+                        <p>End Date:</p>
+                    </div>
+                </div>
+                <div class="row leavereq">
+                    <div class="col-md-3">
+                        <input type="date" id="startdate" name="startdate" [(ngModel)]="startdate" class="form-control">
+                    </div>
+                    <div class="col-md-3">
+                        <input type="date" id="enddate" name="enddate" [(ngModel)]="enddate"
+                            (change)="getenddate($event)" class="form-control">
+                    </div>
+                    <div class="col-md-2">
+                        <ng-multiselect-dropdown [placeholder]="'Select Staff'" [settings]="dropdownSettings"
+                            [data]="dropdownList" [(ngModel)]="selectedItems" (onSelect)="onItemSelect($event)">
+                        </ng-multiselect-dropdown>
+                    </div>
+                    <div class="col-md-2">
+                        <button class="butn-sadow" type="button" (click)="exportexcel()">Download Excel</button>
+                    </div>
+                </div>
+
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-lg-12">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <table class="table" id="lvs">
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Staff Name</th>
+                                <th>Sign In Type</th>
+                                <th>Expected In Time</th>
+                                <th>Punch In Time</th>
+                                <th>Punch In Location/IP Address</th>
+                                <th>Expected Out Time</th>
+                                <th>Punch Out Time</th>
+                                <th>Punch Out Location/IP Address</th>
+                                <th>Work Hours(HH:MM) </th>
+                                <th>UnderTime </th>
+                                <th>Late </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let attendance of attendancelist">
+                                <td [ngClass]="{'bgred':attendance.undertime=='Yes'||attendance.latepunchin=='Yes'  }">
+                                    {{attendance.signinDate|date}}
+                                </td>
+                                <td [ngClass]="{'bgred':attendance.undertime=='Yes'||attendance.latepunchin=='Yes'  }">
+                                    {{attendance.staffname}}
+                                </td>
+                                <td [ngClass]="{'bgred':attendance.undertime=='Yes'||attendance.latepunchin=='Yes'  }">
+                                    {{attendance.signInType}}</td>
+                                <td [ngClass]="{'bgred':attendance.undertime=='Yes'||attendance.latepunchin=='Yes'  }">
+                                    <p *ngIf="attendance.expectedIn!=null"> {{attendance.expectedIn|date:'HH:mm'}}</p>
+                                    <p *ngIf="attendance.expectedIn==null">10:00</p>
+                                </td>
+                                <td class="span"
+                                    [ngClass]="{'bgred':attendance.undertime=='Yes'||attendance.latepunchin=='Yes'  }">
+                                    {{attendance.signinDate|date:'HH:mm'}}</td>
+                                <td [ngClass]="{'bgred':attendance.undertime=='Yes'||attendance.latepunchin=='Yes'  }">
+                                    <p *ngIf="attendance.signInType=='Web Application'">{{attendance.punchinip}}</p>
+                                    <p *ngIf="attendance.signInType!='Web Application'">{{attendance.signinLocation}}
+                                    </p>
+                                </td>
+                                <!-- <td class="texttd"
+                                    [ngClass]="{'bgred':attendance.undertime=='Yes'||attendance.latepunchin=='Yes'  }">
+                                    5:00</td> -->
+                                <td class="texttd"
+                                    [ngClass]="{'bgred':attendance.undertime=='Yes'||attendance.latepunchin=='Yes'  }">
+                                    <p *ngIf="attendance.expectedOut!=null"> {{attendance.expectedOut|date:'HH:mm'}}</p>
+                                    <p *ngIf="attendance.expectedOut==null">19:00</p>
+
+                                </td>
+                                <td [ngClass]="{'bgred':attendance.undertime=='Yes'||attendance.latepunchin=='Yes'  }">
+                                    {{attendance.signoutDate|date:'HH:mm'}}</td>
+                                <td [ngClass]="{'bgred':attendance.undertime=='Yes'||attendance.latepunchin=='Yes'  }">
+                                    <p *ngIf="attendance.signInType=='Web Application'">{{attendance.punchoutip}}</p>
+                                    <p *ngIf="attendance.signInType!='Web Application'">{{attendance.signoutLocation}}
+                                    </p>
+                                </td>
+                                <td [ngClass]="{'bgred':attendance.undertime=='Yes'||attendance.latepunchin=='Yes'  }">
+                                    {{attendance.hr1|date:'HH:mm'}}</td>
+                                <td [ngClass]="{'bgred':attendance.undertime=='Yes'||attendance.latepunchin=='Yes'  }">
+                                    {{attendance.undertime}}</td>
+                                <td [ngClass]="{'bgred':attendance.undertime=='Yes'||attendance.latepunchin=='Yes'  }">
+                                    {{attendance.latepunchin}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<br>
+<br>

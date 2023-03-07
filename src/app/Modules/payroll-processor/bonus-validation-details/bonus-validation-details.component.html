@@ -226,6 +226,11 @@
                 </div>
             </div>
 
+            <div class="text-right" *ngIf="timedetails.length>count1">
+                <pagination-controls (pageChange)="p = $event"  previousLabel=""
+                nextLabel="" class="poppinns"></pagination-controls>                        
+            </div>
+
             <!-- <div *ngSwitchCase="'tab333'" id="tab333">
                             <br />
                             <br />

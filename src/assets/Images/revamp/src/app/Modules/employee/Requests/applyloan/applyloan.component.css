@@ -1,0 +1,65 @@
+.span {
+    color: red;
+}
+
+.attachmentalign {
+    text-align: left
+}
+
+.dropfile {
+    height: 130px;
+    box-sizing: border-box;
+    /* position: absolute; */
+    width: 310px;
+    left: 190px;
+    top: 455px;
+    background: #E2DEFF;
+    border: 1px dashed #3247D5;
+    border-radius: 5px;
+    color: #3247D5;
+}
+
+.butn-sadow {
+    top: -35px;
+}
+
+.can-sadow {
+    box-sizing: border-box;
+    position: absolute;
+    width: 200px;
+    height: 40px;
+    left: 29px;
+    top: -35px;
+    border-radius: 5px;
+    font-family: 'Poppins';
+    font-style: normal;
+    letter-spacing: 0.658333px;
+    color: #ffffff;
+    background: #3247D5;
+    box-shadow: 1px 1px 17px 1px rgb(50 71 213 / 60%);
+    border-radius: 5px solid #3247D5;
+    border: 5px solid #3247D5;
+    text-transform: uppercase;
+}
+
+.close-btn {
+    bottom: -3px;
+    left: 30px;
+}
+
+.dropdowning {
+    position: absolute;
+    top: 10px;
+    left: 160px;
+}
+
+p {
+    margin-bottom: 0rem !important;
+}
+
+@media (min-width: 1920px) and (max-width: 2560px) {
+    .close-btn {
+        bottom: -3px;
+        left: 100px;
+    }
+}

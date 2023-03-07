@@ -1,0 +1,211 @@
+<div class="container-fluid  fullscreen">
+    <div class="row">
+        <div class="col-lg-1"></div>
+        <div class="col-lg-10">
+            <div class="maindiv">
+                <div class="inndercard">
+                    <img src="assets/Images/Logo_digiOffice_Colored.png" class="digi-logo">
+                    <div class="input-group ">
+
+                        <select class="inputclass padp-20" (change)="getCompanyDetails($event)">
+                            <option selected disabled>Select Company</option>
+                            <option value="1001">Ayala Property Management Corporation</option>
+                            <option value="1002">Ayala Corporation</option>
+                            <option value="1003">Bank of Philippines Island</option>
+                            <option value="1004">BPI MS</option>
+                            <option value="1005">Manila Water Corporation Incorporated</option>
+                            <option value="1006">Mitsubishi UFJ Financial Group</option>
+                            <option value="1007">Affinity Express Philippines,Inc.</option>
+                            <option value="1008">Ayala Land Incorporated</option>
+                            <option value="1009">Makati Developement Corporation-MCI/MDBI</option>
+                            <option value="10010">Makati Developement Corporation-MDC Monthlies/Dailies</option>
+                            <option value="10011">Makati Developement Corporation-MDC Reg Staff/MT</option>
+                            <option value="10012">Makati Developement Corporation-MEQ/MBP</option>
+                            <option value="10013">Univercity of Nueva(UNC)</option>
+                            
+                        </select>
+                        <img class="imgview" src="assets/Images/dropdown.svg">
+
+                    </div>
+
+                    <!-- <div class="input-group ">
+
+                        <select class="inputclass padp-20" (change)="getroleid($event)">
+                            <option selected>Select Position</option>
+                            <option value="1">Admin</option>
+                            <option value="2">Manager</option>
+                            <option value="6">Employee</option>
+                            <option value="9">HR</option>
+                            <option value="17">Payroll Manager</option>
+                            <!- <option value="8">Finance</option>-->
+                            <!-- <option value="10">SBU</option>
+                            <option value="11">IT Team</option>
+                            <option value="12">HR HEAD</option>
+                        </select>
+                        <img class="imgview" src="assets/Images/dropdown.svg">
+                    </div>  -->
+
+                    <div class="input-group ">
+
+                        <input type="text" class="inputclass" [(ngModel)]="username" name="username">
+                        <span class="highlight"></span>
+
+                        <span class="bar"></span>
+
+                        <label>Username</label>
+
+                    </div>
+                    <div class="input-group ">
+
+                        <input *ngIf="showpassword==0" type="password" class="inputclass" [(ngModel)]="password"
+                            name="password" />
+                        <input *ngIf="showpassword==1" type="text" class="inputclass" [(ngModel)]="password"
+                            name="password" />
+                        <img class="paswordview" (click)="Showhidepassword()" src="assets/Images/view.svg">
+
+
+                        <span class="highlight"></span>
+
+                        <span class="bar"></span>
+                    
+
+                        <label >Password</label>
+
+                    </div>
+
+                    
+
+                    <div class="btnalign">
+                        <a class="forg-ps" target="_blank" href="https://itassist.ayalaland.com.ph/ChangePassword/">
+                            Forgot
+                            Password</a>
+                        <button type="button" class="butn-sadow" (click)="login()">Sign with 365</button>
+                    </div>
+                    <div class="copy-right">
+                        <label><b>Copyright © 2022 AMAZE ONE. All Rights Reserved</b></label>
+                    </div>
+                </div>
+                <div class="imgdiv">
+                    <img src="assets/Images/Mask Group.png">
+                    <div><span class="secure">Secured and</span></div>
+                    <div><span class="easy">Easy to Use</span></div>
+                    <div><span class="smart">Smart all-in-one software for HR operations</span></div>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-lg-1"></div>
+    </div>
+</div>
+<div id="changepassword" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content" style="margin-top: 100px;">
+            <div class="modal-header">
+                <h4><b>Forgot Password</b></h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-lg-1">
+                    </div>
+                    <div class="col-lg-3 ">
+                        <p style="padding:3px"> Subsidiary
+                            <span class="starspan">*</span>
+                        </p>
+
+
+                    </div>
+                    <div class="col-lg-8 ">
+                        <select class="form-control">
+                            <option value="1001">Asticom Main</option>
+                            <option value="1002">Asticom ABSI (ABSI)</option>
+                            <option value="1005">Asticom FINSI</option>
+                            <option value="1003">Asticom BRAD</option>
+                            <option value="1004">Asticom HCX</option>
+
+                        </select>
+                    </div>
+
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-1">
+                    </div>
+                    <div class="col-lg-3 ">
+                        <p style="padding:3px">Enter Email
+                            <span class="starspan">*</span>
+                        </p>
+                    </div>
+                    <div class="col-lg-8 ">
+                        <input type="text" [(ngModel)]="email" class="form-control" name="email" id="email"
+                            (ngModelChange)="getpassword()" required placeholder="Enter Email" class="form-control">
+                    </div>
+                </div>
+                <!-- <p *ngIf="showotp==1"> 6-digit verification code was just sent to your email. Please verify </p>
+                <div *ngIf="showotp==1" class="row">
+                    <div class="col-lg-1">
+                    </div>
+                    <div class="col-lg-3 ">
+                        <p style="padding:5px">Enter OTP
+                            <span class="starspan">*</span>
+
+                        </p>
+                    </div>
+                    <div class="col-lg-8 ">
+                        <input type="text" [(ngModel)]="Otp" maxlength="6" onkeypress="return /[0-9]/i.test(event.key)"
+                            class="form-control" name="Otp" id="Otp" required placeholder="Enter OTP"
+                            class="form-control">
+                        
+                    </div>
+                </div>
+                <div *ngIf="showotp==2" class="row">
+                    <div class="col-lg-1">
+                    </div>
+                    <div class="col-lg-3 ">
+                        <p style="padding:5px">New Password
+                            <span class="starspan">*</span>
+                        </p>
+                    </div>
+                    <div class="col-lg-8 ">
+                        <input type="text" [(ngModel)]="newpassword" class="form-control" name="newpassword"
+                            id="newpassword" required placeholder="New Password" class="form-control">
+                    </div>
+                </div>
+                <div *ngIf="showotp==0" class="row">
+                    <div class="col-lg-4">
+                    </div>
+                    <div class="col-lg-2">
+                        <button style="width: auto;" [disabled]="email === ''" class="btn btn-success form-control"
+                            type="button" (click)="SendOTP()">Submit</button>
+                    </div>
+                </div>
+                <div *ngIf="showotp==1" class="row">
+                    <div class="col-lg-4">
+                    </div>
+                    <div class="col-lg-2">
+                        <button style="width: auto;" class="btn btn-success form-control" type="button"
+                            (click)="VerifyOTP()">Verify</button>
+                    </div>
+                </div> -->
+                <div class="row">
+                    <div class="col-lg-4">
+                    </div>
+                    <div class="col-lg-2">
+                        <button style="width: auto;" [disabled]="email==undefined ||email==''"
+                            class="btn btn-success form-control" data-dismiss="modal" type="button"
+                            (click)="Save()">Send</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<app-loader *ngIf="loader"></app-loader>
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />

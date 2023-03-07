@@ -1,0 +1,104 @@
+<!-- <app-loader *ngIf="loader"></app-loader> -->
+<div class="container-fluid adminDashboard">
+    <br>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="row">
+                <div class="col-lg-3">
+                    <div class="card1 card2">
+                        <div class="front">
+                            <div class="row adminAnnouncement">
+                                <div class="col-lg-2">
+                                    <br />
+                                    <img src="assets/Images/announcement.png" class="announcementAttachment">
+                                </div>
+                                <div class="col-lg-10">
+                                    <br />
+                                    <h1 class="cardlabel">Announcements</h1>
+                                </div>
+                                <br /> <br />
+                            </div>
+                            <br>
+                            <div class="row" *ngIf="count==0">
+                                <h4 class="noAnnouncement">No Announcements Today !</h4>
+                            </div>
+                            <div class="announcementImage">
+                                <div class="row">
+                                    <div class="col-lg-4">
+
+                                     <a  href="{{Attachment}}" target="_blank">
+                                            <i *ngIf="Attachment!=null" data-toggle="modal" class="fa fa-files-o" aria-hidden="true"  style="font-size: 30px;"></i> 
+
+                                            <!-- <img   data-toggle="modal" data-target="#Allocate" width="220" height="250" border="0" align="center" src="" /> -->
+                                        </a>
+                                        <!-- <img class="attachmentWidth" src="{{Attachment}}"> -->
+                                    </div>
+                                    <div class="col-lg-8">
+                                        <div class="name1"> {{announcementname}}</div>
+                                    </div>
+                                    <hr class="new4">
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="card1 card2">
+                        <div class="front">
+                            <div class="row holidayBackground">
+                                <div class="col-lg-2">
+                                    <br />
+                                    <img src="assets/Images/holiday.png" class="announcementAttachment">
+                                </div>
+                                <div class="col-lg-10">
+                                    <br />
+                                    <h1 class="cardlabel">Holidays</h1>
+                                </div>
+                                <br /> <br />
+                            </div>
+                            <br>
+
+                            <div class="announcementImage">
+                                <div class="row">
+                                    <div class="col-lg-4">
+                                        <img src="{{HAttachment}}" class="attachmentWidth">
+                                    </div>
+                                    <div class="col-lg-8">
+                                        <div class="name1"> {{HolidayName}}</div>
+                                        <div class="name1"> {{HolidayDate}}</div>
+                                    </div>
+                                    <hr class="new4">
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-4">
+                                        <img src="{{HAttachment1}}" class="attachmentWidth">
+                                    </div>
+                                    <div class="col-lg-8">
+                                        <div class="name1"> {{HolidayName1}}</div>
+                                        <div class="name1"> {{HolidayDate1}}</div>
+                                    </div>
+                                    <hr class="new4">
+                                </div>
+                            </div>
+                            <!-- <div class="announcementImage">
+                                <div class="row" *ngFor="let holiday of holidaylist">
+                                    <div class="col-lg-4">
+                                        <img src="{{holiday.attachment}}" class="attachmentWidth">
+                                    </div>
+                                    <div class="col-lg-8">
+                                        <div class="name1"> {{holiday.holiday}}</div>
+                                        <div class="name1"> {{holiday.holidayDate}}</div>
+                                    </div>
+                                    <hr class="new4">
+                                </div>
+                            </div> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-1"></div>
+    </div>
+    <br>
+</div>

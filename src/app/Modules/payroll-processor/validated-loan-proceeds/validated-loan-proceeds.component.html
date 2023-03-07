@@ -1,0 +1,206 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-12">
+                    <ul>
+
+
+                        <a class="active Heading underlineclr" routerLink="/PayrollProcessor/MyTeamOverTimeDetails">
+                            Loan Proceeds Validation Details</a>
+
+                    </ul>
+                </div>
+            </div>
+            <br>
+            <div class="card ">
+                <div class="row">
+                    <div class="col-lg-1">
+                        <img src="assets/Images/filter.svg" class="filter-img">
+                        <p class="filter">Filter By</p>
+                    </div>
+                    <div class="col-lg-3">
+                        <input class="form-control" type="text" placeholder="Search  BasicPayValidation....">
+                    </div>
+                    <!-- <div class="col-md-2">
+                        <p>Pay Date
+                            <input class="form-control input-date  " type="date" onkeydown="return false"
+                                placeholder="Duration" id="sdate" name="sdate" [(ngModel)]="sdate"
+                                >
+                    </div> -->
+
+                    <!-- <div class="col-md-4">
+                        <p><br>
+                            <input class="form-control" id="term" name="term" [(ngModel)]="term" type="search"
+                                (ngModelChange)="FilterAttendence()" placeholder="Search for staff.. ">
+                    </div> -->
+                    <div class="col-md-3">
+                        <br />
+
+                        <button class="form-control AddExpense1" routerLink="/PayrollProcessor/RunLoanProceedsValidation"
+                            style="width: 80%;">Run New Validation
+                        </button>
+                    </div>
+                    <div class="col-md-3">
+                        <button class="form-control AddExpense2" style="width: 80%;" (click)="exportexcel()">Export to
+                            Excel</button>
+                    </div>
+
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-lg-10"></div>
+                <div class="col-lg-2">
+                    <!-- <Button class="AddButton" (click)="ExporttoExcel()">Export to Excel</Button> -->
+                </div>
+            </div>
+            <br>
+            <div class="row listscroll ">
+                <table class="table" id="downloadaplication">
+                    <thead>
+                        <tr class="thwidth">
+                            <th>Employee ID</th>
+                            <th>Employee Name</th>
+                            <th>Element Name</th>
+                            <th class="thwidth">Element Desciption</th>
+                            <th class="thwidth">Element Type</th>
+                            <th class="thwidth">Previous Payperiod Value</th>
+                            <th class="thwidth">Current Payperiod Value</th>
+                            <th class="thwidth">Payperiod Value Descrepency</th>
+                            <th class="thwidth">PayDate</th>
+                            <th class="thwidth">Remarks</th>
+                           
+                        </tr>
+                        <tr
+                            *ngFor="let time of timedetails| filter:term |paginate: { itemsPerPage: count1, currentPage: p}">
+                            <td [ngClass]="{'bgred':time.bcolor=='1 ', 'bgreen':time.bcolor=='0 ' }">{{time.employeID}}</td>
+                            <td [ngClass]="{'bgred':time.bcolor=='1 ', 'bgreen':time.bcolor=='0 ' }">{{time.name}}</td>
+
+                            <td [ngClass]="{'bgred':time.bcolor=='1 ', 'bgreen':time.bcolor=='0 ' }">{{time.elementName}}</td>
+                            <td [ngClass]="{'bgred':time.bcolor=='1 ', 'bgreen':time.bcolor=='0 ' }">{{time.elementDescription}}</td>
+                            <td [ngClass]="{'bgred':time.bcolor=='1 ', 'bgreen':time.bcolor=='0 ' }">{{time.elementType}}</td>
+
+
+                            <td [ngClass]="{'bgred':time.bcolor=='1 ', 'bgreen':time.bcolor=='0 ' }">{{time.previousPayrollValue}}</td>
+
+                            <td [ngClass]="{'bgred':time.bcolor=='1 ', 'bgreen':time.bcolor=='0 ' }">{{time.currentPayrollValue}}</td>
+
+                            <td [ngClass]="{'bgred':time.bcolor=='1 ', 'bgreen':time.bcolor=='0 ' }">{{time.payValueDescrepency}}</td>
+                            <td [ngClass]="{'bgred':time.bcolor=='1 ', 'bgreen':time.bcolor=='0 ' }">{{time.paydate|date}}</td>
+                            <td [ngClass]="{'bgred':time.bcolor=='1 ', 'bgreen':time.bcolor=='0 ' }">{{time.remarks}}</td>
+
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+            <div class="text-right">
+                <pagination-controls (pageChange)="p = $event"  previousLabel=""
+                nextLabel="" class="poppinns"></pagination-controls>               
+            </div>
+
+            <!-- <span *ngIf="preapprovaldetails1.length==0"><b>No Results Found</b></span> -->
+
+
+
+            <!-- <div *ngSwitchCase="'tab333'" id="tab333">
+                            <br />
+                            <br />
+                            <div class="row">
+                                <div class="col-md-10">
+                                    <p class="show3res">SHOWING <span>{{timedetails3.length}}</span> RESULTS
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="btn-group" role="group" aria-label="Basic example">
+                                <button type="button" class="btn btn-secondary" value="0"
+                                    (click)="preapprove()">PreApprovals</button>
+                                <button type="button" class="btn btn-secondary" value="0" (click)="applyot()"> OT
+                                    Requests</button>
+
+                            </div>
+                            <br />
+                            <br />
+                            <div class="col-md-12">
+                                <div class="container-fluid">
+                                    <table class="table" *ngIf="applyot1==1">
+                                        <thead>
+                                            <tr class="thwidth">
+                                                <th>Employee Name</th>
+                                                <th class="thwidth">Date</th>
+                                                <th class="thwidth">Start Time</th>
+                                                <th class="thwidth">End Time</th>
+                                                <th class="thwidth">OT Details</th>
+                                                <th class="thwidth">Attachment</th>
+                                                <th class="thwidth">Comments</th>
+                                                <th class="thwidth">Status</th>
+                                            </tr>
+                                            <tr
+                                                *ngFor="let time of timedetails3|paginate: { itemsPerPage: count1, currentPage: p}">
+                                                <td>{{time.staffname}}</td>
+                                                <td>{{time.date|date}}</td>
+                                                <td>{{time.startTime|date:'HH:mm'}}</td>
+                                                <td>{{time.endTime|date:'HH:mm'}}</td>
+                                              
+                                                <td>
+                                                    <button class="edit-btn" data-toggle="modal"
+                                                        (click)="GetOTDetails(time)"
+                                                        data-target="#CheckListStatusform">Details
+                                                    </button>
+                                                </td>
+                                                <td><a href="{{time.attachment}}" target="blank"> <img
+                                                            *ngIf="time.attachment!=null"
+                                                            src="assets/Images/attachment (1).png"
+                                                            class="attachmentimg"></a> </td>
+                                                <td>{{time.comments}}</td>
+                                                <td>{{time.status}}</td>
+                                            </tr>
+                                        </thead>
+                                    </table>
+                                    <table class="table" *ngIf="preapprove1==1">
+                                        <thead>
+                                            <tr class="thwidth">
+                                                <th>Employee Name</th>
+                                                <th class="thwidth">Date</th>
+                                                <th class="thwidth">Start Time</th>
+                                                <th class="thwidth">End Time</th>
+                                                <th class="thwidth"> OT Details</th>
+                                                <th class="thwidth">Attachment</th>
+                                                <th class="thwidth">Comments</th>
+                                                <th class="thwidth">Status</th>
+                                            </tr>
+                                            <tr
+                                                *ngFor="let time of preapprovaldetails3|paginate: { itemsPerPage: count1, currentPage: p}">
+                                                <td>{{time.staffname}}</td>
+                                                <td>{{time.date|date}}</td>
+                                                <td>{{time.startTime|date:'HH:mm'}}</td>
+                                                <td>{{time.endTime|date:'HH:mm'}}</td>
+                                                <td>
+                                                    <button class="edit-btn" data-toggle="modal"
+                                                        (click)="GetOTDetails1(time)"
+                                                        data-target="#CheckListStatusform">Details
+                                                    </button>
+                                                </td>
+                                                <td><a href="{{time.attachment}}" target="blank"> <img
+                                                            *ngIf="time.attachment!=null"
+                                                            src="assets/Images/attachment (1).png"
+                                                            class="attachmentimg"></a> </td>
+                                                <td>{{time.comments}}</td>
+                                                <td>{{time.status}}</td>
+                                            </tr>
+                                        </thead>
+                                    </table>
+                                   
+                                </div>
+                  
+                                <div class="text-left">
+                                    <br>
+                                    <pagination-controls (pageChange)="p = $event" class="poppinns">
+                                    </pagination-controls>
+                                </div>
+                            </div>
+                        </div> -->
+        </div>
+    </div>
+    <div class="col-md-1"></div>
+</div>

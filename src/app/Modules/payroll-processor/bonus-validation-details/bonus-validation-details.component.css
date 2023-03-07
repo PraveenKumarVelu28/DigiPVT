@@ -1,0 +1,33 @@
+.listscroll{
+    overflow-x: scroll;
+}
+
+.bgred {
+    background-color: #FFD7D7;
+    color: black;
+  }
+
+  .bgblue {
+    background-color: #ADD8E6;
+    color: black;
+  }
+
+  .bgyellow {
+    background-color: #FFFF8F;
+    color: black;
+  }
+
+  .bgviolet {
+    background-color: #E6E6FA;
+    color: black;
+  }
+  .text{
+    margin-top: -27px;
+    margin-left: 58px;
+    font-size: 10px;
+   white-space: nowrap;
+  }
+  .content{
+    margin-right: 10px;
+  }
+

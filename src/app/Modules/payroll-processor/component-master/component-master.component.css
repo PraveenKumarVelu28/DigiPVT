@@ -1,0 +1,52 @@
+
+  
+  
+  
+  table tbody {
+    font-family: 'Poppins';
+  }
+  
+  table thead {
+    font-family: 'Poppins';
+  }
+  
+  th {
+    white-space: nowrap;
+  }
+  
+  table {
+  
+    border-radius: 6px;
+  }
+  
+  .table th {
+    background: #E4EBF4 !important;
+    color: #737373;
+    /* background-color: #02cfff !important; */
+    /* color: #ffffff; */
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 17px;
+    font-family: 'Poppins';
+    font-style: normal;
+  }
+
+  table,
+  tr,
+  td {
+    border: none !important;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 17px;
+    /* identical to box height, or 131% */
+    color: #0C275A;
+  }
+  
+  
+
+  .tablepadding {
+    padding: 0px;
+    margin: 0px;
+  }

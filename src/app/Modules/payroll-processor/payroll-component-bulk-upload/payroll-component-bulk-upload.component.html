@@ -1,0 +1,156 @@
+<!-- <app-loader *ngIf="loader==true"></app-loader> -->
+<div class="Container-fluid">
+    <div class="row">
+        <div class="col-lg-11">
+            <p class="Heading">Payroll Components</p>
+        </div>
+    </div>
+  
+    <div class="card">
+        <div class="row FilterClass">
+          
+            <br/>
+            <!-- <div class="col-lg-3">
+                <input class="form-control" placeholder="search Name" filter="">
+            </div> -->
+            <div class="col-lg-1">
+                <p>Filter By:</p>
+            </div>
+            <div class="col-lg-3">
+                <p>Search</p>
+                <input class="form-control" type="search" [(ngModel)]="term"  
+                                placeholder="Search for Staff">
+            </div>
+            <div class="col-lg-2">
+                <p>PayDate</p>
+                <input class="form-control search" type="date" [(ngModel)]="PayDate"  (change)="filteremployee()"
+                    placeholder="PayDate">
+                <!-- <select name="Month" id="Month" class="form-control" (change)="filteremployee()" [(ngModel)]="Duration">
+                    <option value="" disabled selected>Select Month </option>
+                    <option value="1">January </option>
+                    <option value="2">February </option>
+                    <option value="3">March </option>
+                    <option value="4">April </option>
+                    <option value="5">May </option>
+                    <option value="6">June </option>
+                    <option value="7">July</option>
+                    <option value="8">August </option>
+                    <option value="9">September </option>
+                    <option value="10">October </option>
+                    <option value="11">November </option>
+                    <option value="12">December </option>
+                </select> -->
+                <!-- <input style="color:#0C275A" class="form-control" type="date" placeholder="Duration"
+                    [(ngModel)]="Duration" (ngModelChange)="filteremployee()"> -->
+            </div>
+            <div class="col-md-3">
+                <p>Component Code</p>
+                <select class="form-control" id="Code" name="Code" [(ngModel)]="Code"
+                (change)="filterByPayCode()">
+                <option value="" disabled selected>Select Code</option>
+                <option value="{{ list.code }}" *ngFor="let list of componentmapping">
+                    {{ list.code }}
+                </option>
+            </select>
+            </div>
+            <div class="col-md-2">
+                <br/>
+                <br/>
+                <button class="button" data-toggle="modal" data-target="#import" >Upload</button>
+            </div>
+        </div>
+    </div>
+</div>
+<br><br><br>
+
+<div class="Container-fluid" *ngIf="show==1">
+    <div class="row tablehead">
+        <div class="col-lg-8"></div>
+        <div class="col-lg-4">
+           
+            <td>
+                <button class="upload" style="width: 182px;margin-top: 1px;height: 40px;" (click)="delete()">Delete</button>
+                <button class="AddButton" style="width: 182px;margin-top: 1px;height: 40px;;margin-left: 10px;" (click)="exportexcel()">Export to Excel</button>
+           <br/>
+            </td>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-8">
+            <p class="active Heading1" style="text-align: center;">Employees in selected Period</p>
+            <a class="active fontheading" (click)="selectALL(true)" >Select ALL</a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="container-fluid">
+                <table class="table" id="downloadaplication">
+                    <thead>
+                        <tr>
+                            <th>Select</th> 
+                            <th>Employee ID</th>
+                            <TH>Name</TH>
+                            <th>Component Code</th>
+                            
+                            <th>Amount</th>
+                            <th>PayDate</th>
+                            <th>Modified Date</th>
+                            <!-- <th>Actions</th> -->
+                         
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let list of PayrollComponentBulkUploadList|filter:term" >
+                         
+                            <td>
+                                <input type="checkbox" 
+                                    [(ngModel)]="list.checked"   [value]="list.value" (click)="getCheckbocdetails(list,$event)"
+                                    >&nbsp;
+                            </td>
+                            <td>{{list.employeID}}</td>
+                            <td>{{list.name}}   {{list.last_Name}}</td>
+                            <td>{{list.payrollComponentName}}</td>
+                            <td>{{list.amount}}</td>
+                            <td>{{list.payDate|date}}</td>
+                            <td>{{list.modifiedDate|date}}</td>
+                            <!-- <td> 
+                                <button class="upload"  (click)="delete(list.id)">Delete</button>
+                            </td> -->
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="col-md-1"></div>
+    </div>
+</div>
+
+<div id="import" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Upload Payroll Components</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <input type="file" accept=".xls,.xlsx" style="display: inline-block;"
+                            (change)="incomingfile($event)" placeholder="Upload file" accept=".xlsx">
+                    </div>
+                    <div class="col-lg-4">
+                        <a href="https://ali.digiofficeapp.com/ALIAPI/Images/PayrollComponentsUpload.xlsx" style="color:navy"><u>Template.XLSX</u></a>
+                    </div>
+                </div>
+                <br><br>
+                <div class="row">
+                    <div class="col-lg-10">
+                        <button type="button" class="button" style="width: 70%;" data-dismiss="modal"
+                            (click)="Upload_file()">Upload</button>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>

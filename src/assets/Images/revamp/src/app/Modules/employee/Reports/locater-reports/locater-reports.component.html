@@ -1,0 +1,85 @@
+<app-commonalertpage [messageId]="messageId" *ngIf="showPopup==1"></app-commonalertpage>
+<app-loader *ngIf="loader"></app-loader>
+<div class="row">
+    <div class="col-md-12">
+        <div class="row">
+            <div class="col-md-8">
+                <ul>
+                    <li *ngIf="roleid!=11"><a class="active Heading" routerLink="/Employee/LocaterReports"><u> My
+                                Locator Report</u></a>
+                    </li>
+                    <li *ngIf="roleid==2"><a class="leavelist Heading" routerLink="/Manager/TeamLocatorReports">My Team
+                            Locator Report</a></li>
+                    <li *ngIf="roleid==9||roleid==11"><a class="leavelist Heading"
+                            routerLink="/Manager/TeamLocatorReports">Company
+                            Locator Report</a></li>
+                </ul>
+            </div>
+            <div class="col-md-4"></div>
+        </div>
+        <br>
+        <div class="card">
+            <br>
+            <div class="row leavereq">
+                <div class="col-md-3">
+                    <p>START DATE:</p>
+                </div>
+                <div class="col-md-3">
+                    <p>END DATE:</p>
+                </div>
+            </div>
+            <div class="row leavereq">
+                <div class="col-md-3">
+                    <input type="date" id="startdate" name="startdate" [(ngModel)]="startdate" class="form-control">
+                </div>
+                <div class="col-md-3">
+                    <input type="date" (change)="Getenddate()" id="enddate" name="enddate" [(ngModel)]="enddate"
+                        class="form-control">
+                </div>
+                <div class="col-md-2">
+                </div>
+                <div class="col-md-3">
+                    <button class="butn-sadow" type="button" (click)="exportexcel()">Download</button>
+                </div>
+            </div>
+            <br>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="container-fluid">
+                    <table class="table table-bordered" id="lvs">
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Destination</th>
+                                <th>Time of Departure</th>
+                                <th>Time of Return</th>
+                                <th>Purpose</th>
+                                <th>No of Hours</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let locator of locatorlist">
+                                <td>{{locator.date|date}}</td>
+                                <td>{{locator.destination}}</td>
+                                <td>{{locator.timeOfDeparture}}</td>
+                                <td>{{locator.timeOfReturn}}</td>
+                                <td>{{locator.purpose}}</td>
+                                <td class="numberblue">{{locator.hourDiff|date:"HH:mm"}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="col-md-1"></div>
+        </div>
+    </div>
+</div>
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />

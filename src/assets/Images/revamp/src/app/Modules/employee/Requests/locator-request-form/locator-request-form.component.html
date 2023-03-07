@@ -1,0 +1,109 @@
+<app-commonalertpage [messageId]="messageId" *ngIf="showPopup==1"></app-commonalertpage>
+<app-loader *ngIf="loader"></app-loader>
+<div class="container-fluid">
+    <div class="row dialogboxContect1">
+
+        <p class="Heading">Locator</p>
+        <img src="assets/Images/revamp/cancle-icon.png" (click)="Cancel()" class="closeicon">
+    </div>
+    <br>
+    <div class="">
+        <div class="row leavereq">
+            <div class="col-md-2">
+                <p>Transportation Type<span class="span">*</span></p>
+            </div>
+            <div class="col-md-2">
+                <label>Start Date<span class="span">*</span></label>
+            </div>
+            <div class="col-md-2">
+                <label>Return Date<span class="span">*</span></label>
+            </div>
+            <div class="col-md-2">
+                <label>Destination<span class="span">*</span></label>
+            </div>
+            <div class="col-md-2">
+                <label>Purpose<span class="span">*</span></label>
+            </div>
+            <div class="col-md-2 ">
+                <p>Time Of Departure<span class="span">*</span></p>
+            </div>
+        </div>
+        <div class="row leavereq">
+            <div class="col-md-2">
+                <div class="dropdown">
+                    <select class="form-control inputfield" id="TransportationType" name="TransportationType"
+                        [(ngModel)]="TransportationType">
+                        <option value="">Select Transportation Type</option>
+                        <!-- <option value="Flight">Flight</option>
+                        <option value="Bus">Bus</option>
+                        <option value="Train">Train</option>
+                        <option value="Car">Car</option> -->
+                        <option *ngFor="let travel of travellist" value="{{travel.name}}">
+                            {{travel.name}}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <input type="date" id="Date" name="Date" min="{{mindate}}" [(ngModel)]="Date" class="form-control">
+            </div>
+            <div class="col-md-2">
+                <input type="date" id="returnDate" name="returnDate" min="{{mindate}}" [(ngModel)]="returnDate"
+                    class="form-control" (change)="getendate()">
+            </div>
+            <div class="col-md-2">
+                <input type="text" class="form-control" id="Destination" name="Destination" [(ngModel)]="Destination"
+                    placeholder="Destination">
+            </div>
+            <div class="col-md-2">
+                <input type="text" class="form-control" id="Purpose" name="Purpose" [(ngModel)]="Purpose"
+                    placeholder="Purpose">
+            </div>
+            <div class="col-md-2">
+                <input type="time" id="TimeOfDeparture" name="TimeOfDeparture" min="{{mintime}}"
+                    [(ngModel)]="TimeOfDeparture" class="form-control">
+            </div>
+        </div>
+        <br>
+        <div class="row leavereq">
+            <div class="col-md-2">
+                <label>Time Of Return<span class="span">*</span></label>
+            </div>
+            <div class="col-md-2">
+                <p>Attachment<span class="span"></span></p>
+            </div>
+        </div>
+        <div class="row leavereq">
+            <div class="col-md-2">
+                <input type="time" id="TimeOfReturn" name="TimeOfReturn" [(ngModel)]="TimeOfReturn"
+                    (change)="checktime()" class="form-control">
+            </div>
+            <div class="col-md-3">
+                <ngx-dropzone accept="image/jpeg,image/jpg,image/png,application/pdf" (change)="onSelect21($event)"
+                    class="dropFile">
+                    <div class="dropfileDiv">
+                        <img *ngIf="attachments21.length==0" src="assets/Images/MicrosoftTeams-image.png"
+                            class="img-set">
+                        <ngx-dropzone-label>Drop files here!</ngx-dropzone-label>
+                    </div>
+                    <ngx-dropzone-preview *ngFor="let f of attachments21" [removable]="true" (removed)="onRemove21(f)">
+                        <ngx-dropzone-label>{{ f.name }} ({{ f.type }})</ngx-dropzone-label>
+                    </ngx-dropzone-preview>
+                </ngx-dropzone>
+            </div>
+
+        </div>
+
+
+        <br><br>
+
+
+
+        <div class="row dialogboxContect">
+
+            <button class="clo-btn" (click)="Cancel()">Cancel</button>
+            &nbsp; &nbsp; &nbsp; &nbsp;
+            <button class="Addbutton" (click)="InsertLocatorRequest()">Submit</button>
+
+        </div>
+    </div>
+</div>

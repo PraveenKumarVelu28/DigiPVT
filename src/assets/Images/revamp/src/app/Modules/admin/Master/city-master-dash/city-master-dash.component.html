@@ -1,0 +1,91 @@
+<app-commonalertpage [messageId]="messageId" *ngIf="showPopup==1"></app-commonalertpage>
+<app-loader *ngIf="loader"></app-loader>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-6">
+            <p class="Heading">City Master</p>
+        </div>
+        <div class="col-lg-4"></div>
+        <div class="col-lg-2">
+        </div>
+    </div>
+    <div class="card">
+        <div class="row">
+            <div class="col-lg-1">
+                <img src="assets/Images/filter.svg" class="filter-img">
+                <p class="filter">Filter By</p>
+            </div>
+            <div class="col-lg-5">
+                <input type="text" placeholder="Search" id="term" [(ngModel)]="term" class="form-control">
+            </div>
+            <div class="col-lg-3">
+                <div class="dropdown">
+                    <select class="form-control inputfield" id="stateID" name="stateID" [(ngModel)]="stateID"
+                        (ngModelChange)="GetFilteredCitiesBystateID()">
+                        <option value="Select">Select Province </option>
+                        <option *ngFor="let role of leavelist1" value="{{role.id}}">{{role.short}}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-lg-3" class="search">
+            </div>
+        </div>
+    </div> <br>
+    <div class="row">
+        <div class="col-md-10">
+            <p class="show3res">SHOWING <span> {{(leavelist | filter:term)?.length}}
+                </span>RESULTS</p>
+
+        </div>
+        <div class="col-md-2" *ngIf="login !=1">
+            <button class="Addbutton" routerLink="/Admin/CityMasterForm"><img src="assets/Images/plus.svg"
+                    class="plus-icon">Add City</button>
+        </div>
+    </div>
+    <br>
+    <div class="row" class="alignForm">
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="container-fluid">
+                <table class="table" *ngIf="(leavelist | filter: term)?.length > 0; else noResults">
+                    <thead>
+                        <tr>
+                            <th>Country Name</th>
+                            <th>Province Name</th>
+                            <th>City Name</th>
+                            <th>Description</th>
+                            <th *ngIf="login!=1">Action</th>
+                        </tr>
+                    </thead>
+                    <tr
+                        *ngFor="let holiday of leavelist | filter:term|paginate: { itemsPerPage: count1, currentPage: p}">
+                        <td>{{holiday.country}}</td>
+                        <td>{{holiday.state}}</td>
+                        <td>{{holiday.short}}</td>
+                        <td>{{holiday.description}}</td>
+                        <td *ngIf="login!=1"> <button class="edit-btn"
+                                [routerLink]="['/Admin/CityMasterForm',holiday.id]">Edit</button>&nbsp;&nbsp;
+                            <!--  <button class="button" (click)="DeleteCityType(holiday.id)">Delete</button> -->
+                            <img class="delete" src="/assets/Images/delete.svg" (click)="DeleteCityType(holiday.id)"
+                                class="delete">
+                        </td>
+                    </tr>
+                </table>
+                <div class="text-left">
+                    <br>
+                    <pagination-controls (pageChange)="p = $event" class="poppinns"></pagination-controls>
+                </div>
+                <ng-template #noResults>
+                    <p class="NoResultShow"> No results found </p>
+                </ng-template>
+            </div>
+        </div>
+    </div>
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />

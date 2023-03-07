@@ -1,0 +1,16 @@
+.butn-sadow {
+  left: 6px;
+}
+
+.delete {
+  width: 4%;
+  position: relative;
+  top: -3px;
+}
+
+@media (min-width: 1920px) and (max-width: 2560px) {
+  .butn-sadow {
+    left:
+      70px;
+  }
+}

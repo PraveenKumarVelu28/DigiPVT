@@ -1,0 +1,169 @@
+.card {
+  padding: 20px;
+}
+
+th {
+  background-color: #e4e5e6;
+}
+
+.dropdown-toggle {
+  text-align: left;
+}
+
+.LocDashboard {
+  padding-top: 10px;
+  margin: 0px;
+  background-color: #e4e5e6;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: #494949;
+  text-align: center;
+  text-decoration: none;
+}
+
+li a:hover {
+  text-decoration: 3px solid rgb(28, 32, 94) underline;
+}
+
+.requestbtn {
+  background-color: #4282be;
+  color: white;
+  font-family: 'Poppins';
+  font-weight: bold;
+  border-left: solid 1px #f5f5f5;
+  font-size: 15px;
+  line-height: 12px;
+  text-align: center;
+  white-space: nowrap;
+}
+
+input,
+textarea {
+  font-size: 12px;
+}
+
+.leavelist {
+  padding: 0px 20px;
+}
+
+.applyleavetxt {
+  font-family: 'Poppins';
+  font-size: 20px;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.container-fluid {
+  font-family: 'Poppins';
+  padding: 0px;
+  margin: 0px;
+}
+
+th {
+  background-color: #e4e5e6;
+}
+
+td {
+  background-color: rgb(247, 242, 242);
+  color: #494949;
+}
+
+.show3res {
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: 0.5;
+  color: #777;
+  text-transform: uppercase;
+  padding: 10px 0 5px;
+}
+
+.leavebalance {
+  padding-top: 10px;
+  font-weight: bold;
+  color: #404040;
+  font-size: 20px;
+}
+
+.inputfield {
+  background-color: rgb(238, 234, 234);
+  ;
+}
+
+.table {
+  border-color: black;
+}
+
+.BackEnt {
+  margin-top: -10px;
+  font-size: x-large;
+  font-weight: 900;
+  text-decoration: none;
+}
+
+.BACK {
+  margin-top: 10px;
+  text-decoration: none;
+}
+
+.submitbtn {
+  background-color: #2F87CC;
+  color: white;
+}
+
+.announcementForm {
+  color: #3247D5;
+  font-family: 'Poppins';
+}
+
+.mandatoryField {
+  color: red;
+}
+
+.dropFile {
+  height: 130px;
+}
+
+.butn-sadow {
+  position: relative;
+  left: -100px;
+}
+
+.attachment {
+  height: 130px;
+  box-sizing: border-box;
+  position: relative;
+  width: 310px;
+  left: -1px;
+  top: -21px;
+  background: #E2DEFF;
+  border: 1px dashed #3247D5;
+  border-radius: 5px;
+  color: #3247D5;
+}
+
+.dropdowning {
+  left: 150px;
+}
+
+.align-clsndicon{
+  display: flex;
+  justify-content: space-between;
+}
+.icon-close{
+
+  height: 25px;
+  width: 25px;
+}

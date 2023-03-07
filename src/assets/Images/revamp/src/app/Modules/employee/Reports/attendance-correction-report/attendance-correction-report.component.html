@@ -1,0 +1,104 @@
+<app-commonalertpage [messageId]="messageId" *ngIf="showPopup==1"></app-commonalertpage>
+<app-loader *ngIf="loader"></app-loader>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-8 align-component-txt">
+                  
+                        <span class="Heading" routerLink="/Employee/AttendanceCorrectionReport">My Attendance
+                                    Correction Report
+                                    <hr class="line-border listForm">
+                        </span>&nbsp;&nbsp;
+                        <span *ngIf="roleid==2"><a class="Heading"
+                                routerLink="/Manager/TeamAttendanceCorrectionReports">My
+                                Team
+                                Attendance Correction Report
+                            </a></span>
+
+                        <span *ngIf="roleid==10||roleid==9||roleid==11"><span class="Heading"
+                                routerLink="/Manager/TeamAttendanceCorrectionReports">All Company
+                                Attendance Correction Report</span></span>
+
+                   
+                    <br>
+                </div>
+            </div>
+            <div class="card filtercard">
+                <div class="row">
+                    <div class="col-md-1">
+                        <img src="assets/Images/filter.svg" class="filter-img">
+                        <p class="filter">Filter By:</p>
+                    </div>
+                    <div class="col-md-2">
+                        From Date
+                        <input class="form-control" id="startdate" name="startdate" [(ngModel)]="startdate" type="date"
+                            placeholder="Duration">
+                    </div>
+                    <div class="col-md-2">
+                        To Date
+                        <input class="form-control" id="enddate" name="enddate" [(ngModel)]="enddate" type="date"
+                            (change)="getdate()" placeholder="Duration">
+                    </div>
+                    <div class="col-md-4">
+                        <br>
+                        <input class="form-control search-icon" type="search" placeholder="Search for Start Time" id="term"
+                            name="term" [(ngModel)]="term">
+                    </div>
+                    <div class="col-md-2">
+                        <br>
+                        <button class="Addbutton" type="button" (click)="exportexcel()">Download Excel</button>
+                    </div>
+                </div>
+            </div>
+            <br />
+
+            <br />
+
+
+            <div class="row">
+                <div>
+                    <div class="col-md-12">
+                        <table class="table" id="lvs">
+                            <thead>
+                                <tr>
+
+                                    <th>Date</th>
+                                    <th>Start Time</th>
+                                    <th>End Time</th>
+                                    <th>Comments</th>
+                                    <th>Manager Corrected Date</th>
+                                    <th>Manager Corrected Time</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr
+                                    *ngFor="let item of correctionlist1|filter: term|paginate: { itemsPerPage: count1, currentPage: p}">
+                                    <td>{{item.date|date}}</td>
+                                    <td>{{item.startTime}}</td>
+                                    <td>{{item.endTime}}</td>
+                                    <td>
+                                        <p *ngIf="item.comment==null">No Comments</p>
+                                        <p *ngIf="item.comment!=null">{{item.comment}}</p>
+                                    </td>
+                                    <td>{{item.modifiedDate|date}}</td>
+                                    <td>{{item.modifiedDate|date:'hh:mm'}}</td>
+                                    <td>{{item.status}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="text-left">
+                            <br>
+                            <pagination-controls (pageChange)="p = $event" class="poppinns"></pagination-controls>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-1"></div>
+            </div>
+            <div class="col-md-1"></div>
+        </div>
+    </div>
+    <br />
+    <br />

@@ -1,0 +1,191 @@
+<app-commonalertpage [messageId]="messageId" *ngIf="showPopup==1"></app-commonalertpage>
+<app-spinner *ngIf="loader"></app-spinner>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div>
+                <div>
+                    <ul>
+                        <li><a class="" routerLink="/Employee/AttendenceDetails"> My Attendance
+                                Details</a></li>
+                        <li *ngIf="roleid==2"><a class="leavelist" routerLink="/Manager/MyTeamAttendence">My Team
+                                    Attendance
+                                    Details<hr _ngcontent-uti-c145="" class="line-border listForm"></a>
+                        </li>
+                        <li *ngIf="roleid==1||roleid==9||roleid==11||roleid==10"><a class="leavelist"
+                                routerLink="/Manager/MyTeamAttendence">Company
+                                    Attendance
+                                    Details<hr _ngcontent-uti-c145="" class="line-border listForm"></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <br>
+            <div class="card">
+                <div class="row leavereq">
+                    <div class="col-md-2">
+                        <p>Start Date
+                            <input type="date" id="startdate" name="startdate" [(ngModel)]="startdate"
+                                class="form-control">
+                        </p>
+                    </div>
+                    <div class="col-md-2">
+                        <p>End Date
+                            <input type="date" id="enddate" name="enddate" [(ngModel)]="enddate" class="form-control">
+                            <!-- (change)="getenddate($event)" -->
+                        </p>
+                    </div>
+                    <div class="col-md-2" style="margin-top: 17px;">
+                        <button class="Addbutton" type="button" (click)="getenddate()">Search</button>
+                    </div>
+                    <div class="col-lg-2">
+                        <p>Position
+                            <!-- <br> <select class="form-control" id="RoleType" name="RoleType" [(ngModel)]="RoleType"
+                                (change)="FilterRoleType()">
+                                <option value="">Select Position</option>
+                                <option *ngFor="let item of RoleTypeList" value="{{item.id}}">{{item.short}}
+                                </option>
+                            </select> -->
+
+                            <ng-multiselect-dropdown [placeholder]="'Select Position'" [settings]="roledropdownSettings"
+                                [data]="dropdownRoleList" [(ngModel)]="roleselectedItems"
+                                (onSelect)="roleonItemSelect($event)">
+                            </ng-multiselect-dropdown>
+                        </p>
+                    </div>
+                    <div class="col-md-2">
+                        <p>Staff
+                            <ng-multiselect-dropdown [placeholder]="'Select Staff'" [settings]="dropdownSettings"
+                                [data]="dropdownList" [(ngModel)]="selectedItems" (onSelect)="onItemSelect($event)">
+                            </ng-multiselect-dropdown>
+                    </div>
+                    <div class="col-lg-2" style="font-family: 'Poppins';">
+                        <p>Search
+                            <input type="search" class="form-control  search-icon " [(ngModel)]="term" id="term" name="term"
+                                placeholder="Search for EmployeID">
+
+                        </p>
+                        <!-- (ngModelChange)="filterTeamAttendance()" -->
+                    </div>
+                    <div class="col-md-2">
+                       
+                        <p class="active">Count : {{(attendancelist|filter:term)?.length}}</p>
+                    </div>
+                  
+                    <div class="col-md-10">
+                        <br>
+                        <button class="Addbutton" type="button" (click)="exportexcel1()">Download Report</button>
+                    </div>
+                </div>
+            </div>
+            <br>
+
+            <div class="row FilterClass">
+                <div class="col-lg-12">
+                    <div class="row">
+                        <div class="col-md-10">
+                        </div>
+                   
+                    </div>
+                </div>
+            </div>
+            <br>
+
+            <div class="row listscroll">
+                <div class="col-md-12">
+                    <table class="table" id="lvs">
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Employee ID</th>
+                                <th>Staff Name</th>
+                                <th>Position</th>
+                                <th>Department</th>
+                                <!-- <th>Sign In Type</th> -->
+                                <th>Expected In Time</th>
+                                <th>Punch In Time</th>
+                                <!-- <th>Punch In Location/IP Address</th> -->
+                                <!-- <th>Sign Out Type</th> -->
+                                <th>Expected Out Time</th>
+                                <th>Punch Out Time</th>
+                                <!-- <th>Punch Out Location/IP Address</th> -->
+                                <th>Work Hours(HH:MM) </th>
+                                <th>UnderTime </th>
+                                <th>Late </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- | paginate: { itemsPerPage: count1, currentPage: p } -->
+                            <tr *ngFor="let attendance of attendancelist|filter:term ">
+                                <td>
+                                    {{attendance.signinDate|date}}
+                                </td>
+                                <td>
+                                    {{attendance.employeID}}
+                                </td>
+                                <td>
+                                    {{attendance.name1}}
+                                </td>
+
+                                <td>
+                                    {{attendance.role}}
+                                </td>
+                                <td>
+                                    {{attendance.department_name}}
+                                </td>
+                                <!-- <td>
+                                    {{attendance.signInType}}</td> -->
+                                <td>
+                                    {{attendance.expectedIn}}
+                                </td>
+                                <td>
+                                    {{attendance.stime}}</td>
+                                <!-- <td>
+                                    <p *ngIf="attendance.signInType=='Web Application'">{{attendance.punchinip}}</p>
+                                    <p *ngIf="attendance.signInType!='Web Application'">{{attendance.signinLocation}}
+                                    </p>
+                                </td> -->
+                                <!-- <td>
+                                    <p *ngIf="attendance.signOutTypeID==2">Web Application</p>
+                                    <p *ngIf="attendance.signOutTypeID==1">Mobile</p>
+                                </td> -->
+                                <td>
+                                    {{attendance.expectedOut}}
+                                    <!-- <p *ngIf="attendance.expectedOut!=null"> </p>
+                                    <p *ngIf="attendance.expectedOut==null">NA</p> -->
+                                </td>
+                                <td>
+                                    {{attendance.etime}}</td>
+                                <!-- <td>
+                                    <p *ngIf="attendance.signOutTypeID==2">{{attendance.punchoutip}}</p>
+                                    <p *ngIf="attendance.signOutTypeID==1">{{attendance.signoutLocation}}
+                                    </p>
+                                </td> -->
+                                <td>
+                                    {{attendance.hr1}}</td>
+                                <td>
+                                    {{attendance.undertime}}
+                                </td>
+                                <td>
+                                    {{attendance.latepunchin}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <!-- <div class="text-right">
+                    <br>
+                    <pagination-controls (pageChange)="p = $event" class="poppinns"></pagination-controls>
+                </div>
+                <ng-template #noResults>
+                    <p class="NoResultShow"> No Data found </p>
+                </ng-template> -->
+                <br>
+            </div>
+            <div class="col-md-1">
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<br>
+<br>

@@ -1,0 +1,146 @@
+.card {
+  padding: 20px;
+}
+
+th {
+  background-color: #e4e5e6;
+}
+
+.dropdown-toggle {
+  text-align: left;
+}
+
+.LocDashboard {
+  padding-top: 10px;
+  margin: 0px;
+  background-color: #e4e5e6;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: #494949;
+  text-align: center;
+  text-decoration: none;
+}
+
+li a:hover {
+  text-decoration: 3px solid rgb(28, 32, 94) underline;
+}
+
+.requestbtn {
+  background-color: #4282be;
+  color: white;
+  font-weight: bold;
+  border-left: solid 1px #f5f5f5;
+  font-size: 15px;
+  line-height: 12px;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.leavelist {
+  padding: 0px 20px;
+}
+
+.applyleavetxt {
+  font-size: 20px;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.container-fluid {
+  padding: 0px;
+  margin: 0px;
+}
+
+th {
+  background-color: #e4e5e6;
+}
+
+td {
+  background-color: rgb(247, 242, 242);
+  color: #494949;
+}
+
+.show3res {
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: 0.5;
+  color: #777;
+  text-transform: uppercase;
+  padding: 10px 0 5px;
+}
+
+.leavebalance {
+  padding-top: 10px;
+
+  font-weight: bold;
+  color: #404040;
+  font-size: 20px;
+}
+
+.inputfield {
+  background-color: rgb(238, 234, 234);
+  ;
+}
+
+.table {
+  border-color: black;
+}
+
+.BackEnt {
+  margin-top: -10px;
+  font-size: x-large;
+  font-weight: 900;
+  text-decoration: none;
+}
+
+.BACK {
+  margin-top: 10px;
+  text-decoration: none;
+}
+
+.submitbtn {
+  background-color: #2F87CC;
+  color: white;
+}
+
+.Edit {
+  text-transform: uppercase;
+  font-weight: initial;
+  text-shadow: initial;
+  letter-spacing: 0.5px;
+  background-color: #3247d5;
+  color: #ffffff;
+  border-radius: 5px;
+  border: none;
+  padding: 5px;
+  width: 90%;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+input,
+textarea {
+  font-size: 12px;
+}
+
+.companyDetails {
+  color: #3247D5;
+  font-family: 'Poppins';
+}
+
+.mandatoryField {
+  color: red;
+}

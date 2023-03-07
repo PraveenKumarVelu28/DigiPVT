@@ -1,0 +1,258 @@
+<br>
+    <div class="card card-padding">
+        <div class="row">
+            <div class="col-lg-12">
+                <label class="label">Position Details </label>
+             
+            </div>
+        </div>
+        <br><br>
+
+        <div class="row Details">
+            <div class="col-lg-2">
+                <p>Employee Code <span style="color: red;">*</span></p>
+                <input class="form-control" id="EmployeeCode" name="EmployeeCode" [(ngModel)]="EmployeeCode"
+                    [disabled]="roledid!=9 && roledid!=11" placeholder="Employee Code">
+            </div>
+            <div class="col-lg-2">
+                <p>Official Email <span style="color: red;">*</span></p>
+                <input class="form-control" id="OfficialEmail" name="OfficialEmail" [(ngModel)]="OfficialEmail"
+                    [disabled]="roledid!=9 && roledid!=11" placeholder="Official Email">
+            </div>
+            <!-- <div class="col-lg-2">
+                <p>Level <span style="color: red;">*</span></p>
+                <select class="form-control" id="Band" name="Band" [(ngModel)]="Band" placeholder="Band"
+                    [disabled]="roledid!=9 && roledid!=11">
+                    <option value="">Select Level</option>
+                    <option value="1">L1</option>
+                    <option value="2">L2</option>
+                    <option value="3">L3</option>
+                    <option value="4">L4</option>
+                    <option value="5">L5</option>
+                    <option value="6">L6</option>
+                    <option value="7">L7</option>
+                    <option value="8">L8</option>
+                </select>
+            </div> -->
+            <!-- <div class="col-lg-2">
+                <p>Grade: <span style="color: red;">*</span></p>
+                <input class="form-control" id="Grade2" name="Grade2" [(ngModel)]="Grade2" placeholder="Grade2">
+            </div> -->
+            <div class="col-lg-2">
+                <p>Job Position <span style="color: red;">*</span></p>
+                <input class="form-control" id="JobRole" name="JobRole" [(ngModel)]="JobRole"
+                    [disabled]="roledid!=9 && roledid!=11" placeholder="Job Position">
+            </div>
+            <div class="col-lg-2">
+                <p>Employment Status <span style="color: red;">*</span></p>
+
+                <select class="form-control select" id="EmployeeStatus" name="EmployeeStatus"
+                    [disabled]="roledid!=9 && roledid!=11" [(ngModel)]="EmployeeStatus"
+                    placeholder="Employee Status">
+                    <option value="">Select Status</option>
+                    <option value="Project">Project</option>
+                    <option value="Probationary">Probationary</option>
+                    <option value="Regular">Regular</option>
+                </select>
+
+                <!-- <input class="form-control" placeholder="Employee Status" id="EmployeeStatus"
+                    name="EmployeeStatus" [(ngModel)]="EmployeeStatus"> -->
+            </div>
+        </div><br>
+        <div class="row Details">
+            <!-- <div class="col-lg-2">
+                <p>Manager:</p>
+                <input class="form-control" id="Manager" name="Manager" [(ngModel)]="Manager"
+                    placeholder="Manager">
+            </div> -->
+            <!-- <div class="col-lg-2">
+                <p>Employment Type:</p>
+                <input class="form-control" placeholder="Employee Type" id="EmployeeType" name="EmployeeType"
+                    [(ngModel)]="EmployeeType" placeholder="EmployeeType">
+            </div> -->
+
+
+            <div class="col-lg-2">
+                <p>Notice Period <span style="color: red;">*</span></p>
+                <!-- <select class="form-control" placeholder="Notice Period" id="NoticePeriod" name="NoticePeriod"
+                    [disabled]="roledid!=9 && roledid!=11" [(ngModel)]="NoticePeriod">
+                    <option value="">Notice Period</option>
+                    <option value="15">15</option>
+                    <option value="30">30</option>
+                    <option value="45">45</option>
+                    <option value="60">60</option>
+                    <option value="90">90</option>
+                </select> -->
+                <textarea rows="1" type="text" class="form-control" placeholder="Notice Period"
+                    [(ngModel)]="NoticePeriod" name="NoticePeriod" id="NoticePeriod"
+                    [disabled]="roledid!=9 && roledid!=11"></textarea>
+                <!-- <input class="form-control" placeholder="Notice Period" id="NoticePeriod" name="NoticePeriod"
+                    [(ngModel)]="NoticePeriod"> -->
+            </div>
+            <div class="col-lg-2">
+                <p>Probation Period <span style="color: red;">*</span></p>
+                <input class="form-control" placeholder="Probation Period" id="ProbationPeriod"
+                    [disabled]="roledid!=9 && roledid!=11" onkeypress="return /[0-9]/i.test(event.key)"
+                    name="ProbationPeriod" [(ngModel)]="ProbationPeriod">
+            </div>
+            <div class="col-lg-2">
+                <p>Probation Start Date <span style="color: red;">*</span></p>
+                <input type="date" class="form-control" placeholder="Probation Period" id="ProbationStartDate"
+                    [disabled]="roledid!=9 && roledid!=11" onkeypress="return /[0-9]/i.test(event.key)"
+                    name="ProbationStartDate" [(ngModel)]="ProbationStartDate">
+            </div>
+            <div class="col-lg-2">
+                <p>Probation End Date <span style="color: red;">*</span></p>
+                <input type="date" class="form-control" placeholder="Probation Period" id="ProbationEndDate"
+                    [disabled]="roledid!=9 && roledid!=11" onkeypress="return /[0-9]/i.test(event.key)"
+                    name="ProbationEndDate" [(ngModel)]="ProbationEndDate">
+            </div>
+            <!-- <div class="col-lg-2">
+                <p>Confirmation Status:</p>
+                <input class="form-control" placeholder="Confirmation Status" id="ConfirmationStatus"
+                    name="ConfirmationStatus" [(ngModel)]="ConfirmationStatus">
+            </div> -->
+            <div class="col-lg-3">
+                <p>Regularization Date <span style="color: red;">*</span></p>
+                <input type="date" class="form-control" placeholder="Regularization Date"
+                    [disabled]="roledid!=9 && roledid!=11" id="ConfirmationDueDate" name="ConfirmationDueDate"
+                    [(ngModel)]="ConfirmationDueDate" min={{myDate}}>
+            </div>
+        </div>
+        <br>
+        <div class="row Details">
+
+            <div class="col-lg-2">
+                <p>Extension End date<span style="color: red;">*</span></p>
+                <input type="date" class="form-control" placeholder=" Extension EndDate" id="ExtensionEndDate"
+                    [disabled]="roledid!=9 && roledid!=11" name="ExtensionEndDate"
+                    [(ngModel)]="ExtensionEndDate" min={{myDate}}>
+            </div>
+
+            <div class="col-lg-2">
+                <p>Talent Segment <span style="color: red;">*</span></p>
+                <select class="form-control select" placeholder="Notice Period" id="NoticePeriod" name="NoticePeriod"
+                    [disabled]="roledid!=9 && roledid!=11" [(ngModel)]="NoticePeriod">
+                    <option value="">Talent Segment</option>
+                    <option value="15">SALES & RETAIL</option>, ,
+                    <option value="30">IT</option>
+                    <option value="45">BPO/SHARED SERVICES & ENGINEERING</option>
+
+                </select>
+                <!-- <input class="form-control" placeholder="Notice Period" id="NoticePeriod" name="NoticePeriod"
+                    [(ngModel)]="NoticePeriod"> -->
+            </div>
+            <!-- <div class="col-lg-2">
+                <p>Internal Cost Center <span style="color: red;">*</span></p>
+                <input type="text" class="form-control" placeholder="Internal Cost Center " id="ProbationPeriod"
+                    onkeypress="return /[0-9]/i.test(event.key)" name="ProbationPeriod"
+                    [(ngModel)]="ProbationPeriod">
+            </div>
+            <div class="col-lg-2">
+                <p>Area of Deployment <span style="color: red;">*</span></p>
+                <input type="text" class="form-control" placeholder="Area of Deployment" id="ProbationPeriod"
+                    onkeypress="return /[0-9]/i.test(event.key)" name="ProbationPeriod"
+                    [(ngModel)]="ProbationPeriod">
+            </div>
+            <div class="col-lg-2">
+                <p>TS AM<span style="color: red;">*</span></p>
+                <select class="form-control" placeholder="Notice Period" id="NoticePeriod" name="NoticePeriod"
+                    [(ngModel)]="NoticePeriod">
+                    <option value="">Internal Cost Center</option>
+                    <option value="15">Ged</option>
+                    <option value="30">Lai</option>
+                    <option value="45">Leah</option>
+                    <option value="60">Marc</option>
+                    <option value="90">Billie</option>
+                </select>
+            </div> -->
+            <!-- <div class="col-lg-2">
+                <p>Confirmation Status:</p>
+                <input class="form-control" placeholder="Confirmation Status" id="ConfirmationStatus"
+                    name="ConfirmationStatus" [(ngModel)]="ConfirmationStatus">
+            </div> -->
+            <div class="col-lg-2">
+                <p>Start Date<span style="color: red;">*</span></p>
+                <input type="date" class="form-control" id="StartDate" name="StartDate" [(ngModel)]="StartDate"
+                    [disabled]="roledid!=9 && roledid!=11">
+            </div>
+            <div class="col-lg-2">
+                <p>End Date <span style="color: red;">*</span></p>
+
+                <input type="date" class="form-control" id="EndDate" name="EndDate" [(ngModel)]="EndDate"
+                    [disabled]="roledid!=9 && roledid!=11">
+            </div>
+            <div class="col-lg-2">
+                <p>Resignation Date</p>
+                <input type="date" class="form-control" id="ResignationDate" name="ResignationDate"
+                    [(ngModel)]="ResignationDate">
+            </div>
+        </div>
+        <br>
+        <div class="row Details">
+            <div class="col-lg-2">
+                <p>Billing Address
+                </p>
+                <!-- <input type="text" class="form-control" placeholder="Billing Address" placeholder="Billing Address" id="AddressLine4" name="AddressLine4"
+    [(ngModel)]="AddressLine4"> -->
+                <!-- <input type="text" class="form-control" placeholder="Billing Address"
+     [(ngModel)]="AddressLine4"> -->
+                <input [disabled]="roledid!=9 && roledid!=11 && roledid!=6 " class="form-control"
+                    placeholder="Billing Address" placeholder="Billing Address" [(ngModel)]="BillingAddress"
+                    id="BillingAddress" name="BillingAddress">
+                <!-- <input type="number" id="Height" name="Height" [(ngModel)]="Height"
+     class="form-control " placeholder="Height"> -->
+            </div>
+            <div class="col-lg-3">
+                <p>Email Address
+                </p>
+                <input [disabled]="roledid!=9 && roledid!=11 && roledid!=6" class="form-control"
+                    placeholder="Email Address" id="EmailAddress" name="EmailAddress"
+                    [(ngModel)]="EmailAddress">
+            </div>
+            <div class="col-lg-2">
+                <p>Cost Center
+                    <span style="color: red;">*</span>
+                </p>
+                <input [disabled]="roledid!=9 && roledid!=11" class="form-control" placeholder="Cost Center"
+                    id="CostCenter" name="CostCenter" [(ngModel)]="CostCenter">
+            </div>
+            <div class="col-lg-2">
+                <p>GL Code
+                </p>
+                <input [disabled]="roledid!=9 && roledid!=11" class="form-control" placeholder="GL Code"
+                    id="GLCode" name="GLCode" [(ngModel)]="GLCode">
+            </div>
+        </div>
+        <br>
+
+        <div class="row Details">
+
+        </div> <br>
+        <div class="row Details">
+        </div> <br>
+       
+        <!-- <div class="row">
+            <div class="col-lg-10"></div>
+            <div class="col-lg-2">
+                <button type="button" class="butn-sadow form-control" 
+                    (click)="nextContactDetails()">Next</button>&nbsp;&nbsp;
+             
+            </div>
+        </div>
+        <br> -->
+    </div><br>
+    <div class="row">
+        <div class="col-lg-5"></div>
+        <div class="col-lg-4">
+            <button type="button" class="form-control butn-sadow"
+                *ngIf="ID!=undefined && (roledid==11 || roledid==9)"
+                (click)="UpdatePositionDetails()">Save Changes</button>
+            <button class="form-control butn-sadow" (click)="SavePositionDetails()"
+                *ngIf="ID==undefined && (roledid==11 || roledid==9)">Submit</button> &nbsp;&nbsp;
+
+        </div>
+        <div class="col-lg-5"></div>
+    </div><br>
+
+

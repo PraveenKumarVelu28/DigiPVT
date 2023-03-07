@@ -89,6 +89,7 @@
                             </tr>
                         </tbody>
                     </table>
+                  
 
                     <table class="table" id="downloadaplication" *ngIf="companyid==1008">
                         <thead>
@@ -127,6 +128,7 @@
                             </tr>
                         </tbody>
                     </table>
+                 
 
                     <table class="table" id="downloadaplication" *ngIf="companyid==10013">
                         <thead>
@@ -158,6 +160,7 @@
                             </tr>
                         </tbody>
                     </table>
+                  
                     <!-- <div class="text-left">
                         <br>
                         <pagination-controls (pageChange)="p = $event" class="poppinns"></pagination-controls>
@@ -172,7 +175,19 @@
                     
                 </div>
             </div>
-            <div class="col-md-1"></div>
+            <div class="text-right" *ngIf="companyid!=10013 && companyid!=1008 && componentmaster.length>count2 ">
+                <pagination-controls (pageChange)="p1 = $event"  previousLabel=""
+                nextLabel="" class="poppinns"></pagination-controls>                        
+            </div>
+            <div class="text-right" *ngIf="companyid==1008 && componentmaster.length>count2 ">
+                <pagination-controls (pageChange)="p1 = $event"  previousLabel=""
+                nextLabel="" class="poppinns"></pagination-controls>                        
+            </div>
+            <div class="text-right" *ngIf="companyid==10013 && componentmaster.length>count2 " >
+                <pagination-controls (pageChange)="p1 = $event"  previousLabel=""
+                nextLabel="" class="poppinns"></pagination-controls>                        
+            </div>
+        
         </div>
     </div>
 </div>

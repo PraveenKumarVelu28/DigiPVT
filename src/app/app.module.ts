@@ -9,6 +9,7 @@ import { HeaderComponent } from './Pages/CommonPages/header/header.component';
 import { LoaderComponent } from './Pages/CommonPages/loader/loader.component';
 import { SidebarComponent } from './Pages/CommonPages/sidebar/sidebar.component';
 import { SharedModule } from './Modules/shared/shared.module';
+
 //import { Ng2SearchPipeModule } from 'ng2-search-filter/src/ng2-filter.module';
 
 @NgModule({
@@ -25,7 +26,8 @@ import { SharedModule } from './Modules/shared/shared.module';
     AppRoutingModule,
    // Ng2SearchPipeModule,
    HttpClientModule,
-   SharedModule
+   SharedModule,
+  
   ],
   providers: [],
   bootstrap: [AppComponent]

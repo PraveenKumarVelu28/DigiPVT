@@ -1,0 +1,60 @@
+<app-commonalertpage [messageId]="messageId" *ngIf="showPopup==1"></app-commonalertpage>
+<app-loader *ngIf="loader"></app-loader>
+<div class="row">
+    <div class="col-md-12">
+        <div class="row dialogboxContect1">
+            <p class="Heading">Resignation Details</p>
+            <img src="assets/Images/revamp/cancle-icon.png"  (click)="cancel()" class="closeicon">
+        </div>
+        <br>
+        <div class="">
+            <div class="row leavereq">
+                <div class="col-md-2">
+                    <p>Resignation Date<span class="span">*</span></p>
+                </div>
+                <div class="col-md-3">
+                    <label>Reason <span class="span">*</span></label>
+                </div>
+                <div class="col-md-3">
+                    <label>Comments <span class="span">*</span></label>
+                </div>
+                <div class="col-md-2">
+                    <p>Attachment<span class="span"></span></p>
+                </div>
+            </div>
+            <div class="row leavereq">
+                <div class="col-md-2">
+                    <input type="date" class="form-control" [(ngModel)]="date">
+                </div>
+                <div class="col-md-3">
+                    <textarea class="form-control" [(ngModel)]="reason" placeholder="Reason"></textarea>
+                </div>
+                <div class="col-md-3">
+                    <textarea class="form-control" [(ngModel)]="comments" placeholder="Comments"></textarea>
+                </div>
+                <div class="col-md-3">
+                    <ngx-dropzone accept="image/jpeg,image/jpg,image/png,application/pdf" (change)="onSelect21($event)"
+                        class="dropFile">
+                        <div class="dropfileDiv"> <img src="assets/Images/MicrosoftTeams-image.png"
+                                *ngIf="attachments21.length==0" class="img-set">
+                            <ngx-dropzone-label>Drop files here!</ngx-dropzone-label>
+                        </div>
+                        <ngx-dropzone-preview *ngFor="let f of attachments21" [removable]="true"
+                            (removed)="onRemove21(f)">
+                            <ngx-dropzone-label>{{ f.name }} ({{ f.type }})</ngx-dropzone-label>
+                        </ngx-dropzone-preview>
+                    </ngx-dropzone>
+                </div>
+            </div>
+            <br>
+            <div class="row dialogboxContect">
+
+                <button class="clo-btn" (click)="cancel()">Cancel</button>
+
+                &nbsp; &nbsp; &nbsp; &nbsp;
+                <button class="Addbutton" (click)="save()">Submit</button>
+
+            </div>
+        </div>
+    </div>
+</div>

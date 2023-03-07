@@ -17,8 +17,8 @@ export class UploadBasicPayValuesComponent implements OnInit {
   componentmaster: any;
   id : any;
   term:any;
-  p1: any = 1;
-  count2: any = 10;
+  p: any = 1;
+  count1: any = 10;
   stafflist:any;
   PayPeriodSettingList:any;
   fromlogin: any;

@@ -1,0 +1,64 @@
+<app-spinner *ngIf="loader"></app-spinner>
+<div class="row">
+    <div class="col-md-12">
+        <div class="row">
+            <div class="col-lg-11">
+                <p class="Heading headingcolor">Bulk Exception Form</p>
+            </div>
+        </div>
+        <div class="card">
+            <div class="row leavereq">
+                <div class="col-md-2">
+                    <label>Employee Name<span class="span">*</span></label>
+                </div>
+                <div class="col-md-2">
+                    <label>Employee Count<span class="span">*</span></label>
+                </div>
+                <div class="col-md-2">
+                    <label>Page Name<span class="span">*</span></label>
+                </div>
+                <div class="col-md-2">
+                    <p>Error Message<span class="span">*</span></p>
+                </div>
+            </div>
+            <br>
+            <div class="row leavereq">
+                <div class="col-md-2">
+                    <input type="text" class="form-control" placeholder="Employee Name" placeholder="Employee Name"
+                        [(ngModel)]="Name" name="Name" id="Name">
+                </div>
+                <div class="col-md-2">
+                    <input type="text" class="form-control" placeholder="Employee Count" placeholder="Employee Count"
+                        [(ngModel)]="EmployeeCount" name="EmployeeCount" id="EmployeeCount">
+                </div>
+                <div class="col-md-2">
+                    <input type="text" class="form-control" placeholder="Page Name" placeholder="Page Name"
+                        [(ngModel)]="PageName" name="PageName" id="PageName">
+                </div>
+                <div class="col-md-2">
+                    <input type="text" class="form-control" placeholder="Error Message" placeholder="Error Message"
+                        [(ngModel)]="ErrorMessage" name="ErrorMessage" id="ErrorMessage">
+                </div>
+            </div>
+            <br>
+            <br>
+            <div class="row">
+                <div class="col-lg-8"></div>
+                <div class="col-lg-3">
+                    <button class="form-control close-btn" routerLink='/HR/StaffBulkUploadExceptions'>Cancel</button>
+                </div>
+                <div class="col-lg-1">
+                    <button class="form-control butn-sadow" *ngIf="ID==undefined" (click)="Save()">Submit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>

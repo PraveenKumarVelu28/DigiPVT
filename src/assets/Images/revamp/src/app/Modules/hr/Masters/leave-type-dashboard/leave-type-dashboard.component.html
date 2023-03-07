@@ -1,0 +1,88 @@
+<app-commonalertpage [messageId]="messageId" *ngIf="showPopup==1"></app-commonalertpage><app-loader
+    *ngIf="loader"></app-loader>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-2">
+            <span class="Heading">
+                Leave Type 
+                <hr class="line-border listForm">
+            </span>
+        </div>
+        <div class="col-lg-4"></div>
+        <div class="col-lg-2">
+
+        </div>
+    </div>
+    <div class="card">
+
+        <div class="row">
+            <div class="col-lg-1">
+                <img src="assets/Images/filter.svg" class="filter-img">
+                <p class="filter">Filter By:</p>
+            </div>
+            <!-- <div class="col-lg-2">
+                <input type="date" class="form-control">
+            </div> -->
+            <div class="col-lg-5" style="margin-left: 15px;">
+                <input type="text" placeholder="Search" id="term" [(ngModel)]="term" class="form-control search-icon ">
+            </div>
+            <div class="col-md-2" *ngIf="login!=1">
+                <button class="Addbutton" (click)="addleavetype()"><img src="assets/Images/plus.svg" class="plus-icon">Add
+                    Leave</button>
+            </div>
+            <div class="col-lg-3" style="text-align: center;">
+
+            </div>
+
+        </div>
+    </div><br>
+
+    <div class="row">
+        <div class="col-md-10">
+            <p class="show3res">SHOWING <span>{{leavelist?.length}} </span>RESULTS</p>
+        </div>
+     
+    </div>
+    <br>
+    <div class="row" style="margin-left: -99px;">
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="container-fluid">
+                <table class="table  text">
+                    <thead class="head">
+                        <tr>
+                            <th>Leave Type</th>
+                            <th>Description</th>
+                            <!-- <th>Entitlement Per Year</th> -->
+                            <th *ngIf="login!=1">Action</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let holiday of leavelist|filter:term">
+                            <td class="tdtext">{{holiday.short}}</td>
+                            <td class="tdtext">{{holiday.description}}</td>
+                            <!-- <td style="color:#0C275A ">{{holiday.entitlement_Per_Year}}</td> -->
+                            <td *ngIf="login!=1"> <button class="edit-btn"
+                                (click)="Edit(holiday.id)"
+                                    >Edit</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <button class="edit-btn" (click)="delete(holiday.id)">Delete</button>
+                            </td>
+
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+
+        <div class="col-md-1"></div>
+    </div>
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />

@@ -1,0 +1,73 @@
+<app-commonalertpage [messageId]="messageId" *ngIf="showPopup==1"></app-commonalertpage>
+<div class="container-fluid">
+    <div class="row">
+
+        <div class="col-md-12">
+
+            <div class="row">
+                <div class="col-lg-2">
+                    <h3 class="Heading">Grievance Master</h3>
+                </div>
+                <div class="col-lg-8"></div>
+                <div class="col-lg-2">
+
+                </div>
+            </div>
+
+            <!-- <div class="row">
+                <div class="col-lg-10"></div>
+            </div>
+            <br>
+            <div class="row LocDashboard">
+                <div class="col-lg-12">
+                    <label style="padding-left: 10px;">Grievance Master</label>
+                </div>
+            </div> -->
+            <div class="card">
+                <div class="row leavereq">
+                    <div class="col-md-2">
+                        <label>Name<span style="color: red;">*</span></label>
+                    </div>
+                    <div class="col-md-4">
+                        <label> Description<span style="color: red;">*</span></label>
+                    </div>
+
+                </div>
+                <div class="row leavereq">
+                    <div class="col-md-2">
+                        <input type="text" class="form-control" placeholder="Name" [(ngModel)]="Short" name="Short"
+                            id="Short">
+                    </div>
+                    <div class="col-md-4">
+                        <textarea type="text" class="form-control" placeholder="Country Description"
+                            placeholder="Description" [(ngModel)]="Description" name="Description"
+                            id="Description"></textarea>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-lg-10"></div>
+                    <div class="col-lg-1">
+                        <button class="clo-btn" routerLink="/HR/Grivelnecemasterdash">CANCEL</button>
+                    </div>
+                    <div class="col-lg-1">
+
+                        <button type="button" class="Addbutton" *ngIf="ID!=undefined"
+                            (click)="UpdateGrivenceMaster()">UPDATE</button>
+                        <button class="Addbutton" *ngIf="ID==undefined" (click)="InsertGrivenceMaster()">SUBMIT</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- <app-spinner *ngIf="loader"></app-spinner> -->
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>

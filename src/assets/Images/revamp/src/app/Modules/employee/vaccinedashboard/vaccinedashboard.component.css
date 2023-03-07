@@ -1,0 +1,114 @@
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: #494949;
+  text-align: center;
+  text-decoration: none;
+}
+
+li a:hover {
+  text-decoration: 3px solid rgb(28, 32, 94) underline;
+}
+
+.requestbtn {
+  background-color: #4282be;
+  color: white;
+  font-family: 'Poppins';
+  font-weight: bold;
+  border-left: solid 1px #f5f5f5;
+  font-size: 15px;
+  line-height: 12px;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.leavelist {
+  padding: 0px 20px;
+}
+
+.applyleavetxt {
+  padding: 0px 10px;
+  font-family: 'Poppins';
+  font-size: 20px;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.container-fluid {
+  font-family: 'Poppins';
+  padding: 0px;
+  margin: 0px;
+}
+
+.leavebalance {
+  padding-top: 10px;
+  padding-left: 10px;
+  font-weight: bold;
+  color: #404040;
+  font-size: 20px;
+}
+
+.leavereq {
+  padding-left: 10px;
+}
+
+.inputfield {
+  background-color: rgb(238, 234, 234);
+  ;
+}
+
+.table {
+  border-color: black;
+}
+
+.BackEnt {
+  margin-top: -10px;
+  font-size: x-large;
+  font-weight: 900;
+  text-decoration: none;
+}
+
+.BACK {
+  margin-top: 10px;
+  text-decoration: none;
+}
+
+.submitbtn {
+  background-color: #2F87CC;
+  color: white;
+}
+
+.txt {
+  color: red;
+}
+
+tr:nth-child(even) {
+  background-color: Lightgreen;
+}
+
+.filterby {
+  color: #0C275A;
+  font-family: 'Poppins';
+  margin-top: 5px;
+  font-size: 15px;
+  margin-left: 15px;
+  font-weight: bold;
+}
+
+.searchtxt {
+  font-family: 'Poppins';
+}
+
+.certificateimg {
+  width: 40px;
+}

@@ -1,0 +1,93 @@
+<app-commonalertpage [messageId]="messageId" *ngIf="showPopup==1"></app-commonalertpage>
+<app-loader *ngIf="loader"></app-loader>
+<div class="container-fluid">
+    <div class="row">
+    </div>
+    <div class="col-md-12">
+        <div class="row">
+            <div class="col-lg-6">
+                <h3 class="Heading">Retirement List</h3>
+            </div>
+            <div class="col-lg-4"></div>
+            <div class="col-lg-2">
+            </div>
+        </div><br>
+        <div class="card filtercard">
+            <div class="row">
+                <div class="col-md-1">
+                    <img src="assets/Images/filter.svg" class="filter-img">
+                    <p class="filter">Filter By:</p>
+                </div>
+                <div class="col-md-2">
+                    <input class="form-control" type="date" placeholder="Duration" id="date" name="date"
+                        [(ngModel)]="date" (change)="getdate($event)">
+                </div>
+                <div class="col-md-4">
+                    <input class="form-control" type="search" [(ngModel)]="term" placeholder="Search for Employee..">
+                </div>
+                <div class="col-md-3">
+                    <select class="form-control" id="RoleID" name="RoleID" [(ngModel)]="RetiredAge">
+                        <option value="">Select Retirement Age</option>
+                        <option value="60">60</option>
+                        <option value="80">80</option>
+                        <option value="85">85</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-md-10">
+                <p class="show3res">SHOWING <span>{{stafflist?.length}}</span>&nbsp;RESULTS
+                </p>
+            </div>
+            <div class="col-md-2">
+                <button class="Addbutton" (click)="exportexcel()">Export to Excel</button>
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-lg-12">
+            </div>
+        </div>
+        <div class="row" id="lvs">
+            <div class="col-md-12">
+                <table class="table table-bordered text"
+                    *ngIf="(stafflist | filter:term|filter:RetiredAge|filter:date)?.length > 0; else noResults">
+                    <thead>
+                        <tr>
+                            <th>Employee Name</th>
+                            <th>Department</th>
+                            <th>Position</th>
+                            <th>Date of Birth</th>
+                            <th>Age</th>
+                            <th>Retirement Age</th>
+                            <th>Date of Join</th>
+                            <th>Year of Service</th>
+                            <th>Last Working Day</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of stafflist|filter:term|filter:RetiredAge|filter:date">
+                            <td>{{item.name}}</td>
+                            <td>{{item.department_name}}</td>
+                            <td>{{item.role}}</td>
+                            <td>{{item.dob|date}}</td>
+                            <td>{{item.age}} Years</td>
+                            <td>{{item.retirementAge}} Years</td>
+                            <td>{{item.joiningDate|date}}</td>
+                            <td>{{item.yearofservice}}</td>
+                            <td>{{item.lastworkingday|date}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <ng-template #noResults>
+                    <p class="NoResultShow"> No results found </p>
+                </ng-template>
+            </div>
+        </div>
+    </div>
+</div>
+<br />
+<br />
+<br />

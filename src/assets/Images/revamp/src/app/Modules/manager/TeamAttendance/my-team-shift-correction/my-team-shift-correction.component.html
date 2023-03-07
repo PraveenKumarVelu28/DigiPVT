@@ -1,0 +1,302 @@
+<app-commonalertpage [messageId]="messageId" *ngIf="showPopup==1"></app-commonalertpage>
+<app-loader *ngIf="loader"></app-loader>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-8">
+                    <ul>
+                        <span><a class="Heading" routerLink="/Employee/ShiftCorrection">Shift
+                                Correction</a></span>&nbsp;&nbsp;
+                        <span *ngIf="roleid==2"><a class="Heading" routerLink="/Manager/MyTeamShiftCorrection"><u>My
+                                    Team
+                                    Shift Correction</u></a></span>
+                    </ul>
+                </div>
+            </div>
+            <br>
+            <div class="card filtercard">
+                <div class="row">
+                    <div class="col-md-1">
+                        Filter By
+                    </div>
+                    <div class="col-md-2">
+                        From Date
+                        <input class="form-control" type="date" id="date" name="date" [(ngModel)]="date"
+                            placeholder="Duration">
+                    </div>
+                    <div class="col-md-2">
+                        To Date
+                        <input class="form-control" type="date" id="edate" name="edate" [(ngModel)]="edate"
+                            (change)="getdate()" placeholder="Duration">
+                    </div>
+                    <div class="col-md-6">
+                        <br>
+                        <input class="form-control" type="search" id="term" name="term" [(ngModel)]="term"
+                            placeholder="Search for date , Employee">
+                    </div>
+                </div>
+            </div>
+            <br />
+            <div class="row">
+                <div class="col-md-5">
+                </div>
+                <div class="col-md-4">
+                </div>
+                <div class="col-md-3">
+
+                </div>
+            </div><br>
+            <div class="row">
+                <br />
+                <div class="col-lg-12 dashbutton bttn">
+                    <div class="tab-slider--nav">
+                        <ul class="tab-slider--tabs">
+                            <li class="tab-slider--trigger" [class.active]="viewMode == 'tab1'" rel="tab1"
+                                (click)="viewMode ='tab1'">
+                                Pending</li>
+                            <li class="tab-slider--trigger" [class.active]="viewMode == 'tab2'" rel="tab2"
+                                (click)="viewMode ='tab2'">Approved</li>
+                            <li class="tab-slider--trigger" [class.active]="viewMode == 'tab3'" rel="tab3"
+                                (click)="viewMode ='tab3'">Rejected</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="tab-slider--container" [ngSwitch]="viewMode">
+                    <div *ngSwitchCase="'tab1'" id="tab1">
+                        <div class="row">
+                            <div class="col-md-10">
+                                <p class="show3res">SHOWING <span>{{correctionlist1?.length}}</span> RESULTS</p>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Employee Name</th>
+                                        <th>Start Date</th>
+
+                                        <th>End Date</th>
+                                        <th>Shift Name</th>
+                                        <th>Start Time</th>
+                                        <th>End Time</th>
+                                        <th>Rest Days</th>
+                                        <!-- <th>Attachment</th> -->
+                                        <th>Comments</th>
+                                        <th *ngIf="roleid==2">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr
+                                        *ngFor="let item of correctionlist1|filter:term|paginate: { itemsPerPage: count1, currentPage: p}">
+                                        <td>{{item.staffname}}</td>
+                                        <td>{{item.sDate|date}}</td>
+                                        <td>{{item.attendanceDate|date}}</td>
+                                        <td>{{item.shiftName}}</td>
+                                        <td>{{item.startTime}}</td>
+                                        <td>{{item.endTime}}</td>
+                                        <!-- <td>{{item.attachment}}</td> -->
+                                        <td>{{item.comments}}</td>
+                                        <td *ngIf="roleid==2">
+                                            <p *ngIf="item.status==null">
+                                                <img class="img" (click)="ApproveTimeSheet(item)" data-toggle="modal"
+                                                    data-target="#UploadAttendanceForm"
+                                                    src="assets/Images/check-mark.png">
+                                                <img class="imgcancel" data-toggle="modal" data-target="#Reject"
+                                                    (click)="getid(item.id)" src="assets/Images/cancel (1).png">
+                                            </p>
+                                            <p *ngIf="item.status!=null">
+                                                {{item.status}}
+                                            </p>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div class="text-left">
+                                <br>
+                                <pagination-controls (pageChange)="p = $event" class="poppinns"></pagination-controls>
+                            </div>
+                        </div>
+                    </div>
+                    <div *ngSwitchCase="'tab2'" id="tab2">
+                        <div class="row">
+                            <div class="col-md-10">
+                                <br>
+                                <p class="show3res">SHOWING <span>{{correctionlist2?.length}}</span> RESULTS</p>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Employee Name</th>
+                                        <th>Start Date</th>
+                                        <th>End Date</th>
+                                        <th>Shift Name</th>
+                                        <th>Start Time</th>
+                                        <th>End Time</th>
+                                        <th>Rest Days</th>
+                                        <!-- <th>Attachment</th> -->
+                                        <th>Comments</th>
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let item of correctionlist2|filter:term">
+                                        <td>{{item.staffname}}</td>
+                                        <td>{{item.sDate|date}}</td>
+                                        <td>{{item.attendanceDate|date}}</td>
+                                        <td>{{item.shiftName}}</td>
+                                        <td>{{item.startTime}}</td>
+                                        <td>{{item.endTime}}</td>
+                                        <td>{{item.restdays}}</td>
+                                        <!-- <td>{{item.attachment}}</td> -->
+                                        <td>{{item.comments}}</td>
+
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div *ngSwitchCase="'tab3'" id="tab3">
+                        <div class="row">
+                            <div class="col-md-10">
+                                <p class="show3res">SHOWING <span>{{correctionlist3?.length}}</span> RESULTS</p>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <table class="table ">
+                                <thead>
+                                    <tr>
+                                        <th>Employee Name</th>
+                                        <th>Start Date</th>
+                                        <th>End Date</th>
+                                        <th>Shift Name</th>
+                                        <th>Start Time</th>
+                                        <th>End Time</th>
+                                        <th>Rest Days</th>
+                                        <!-- <th>Attachment</th> -->
+                                        <th>Comments</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let item of correctionlist3|filter:term">
+                                        <td>{{item.staffname}}</td>
+                                        <!-- <td>{{item.date|date}}</td> -->
+                                        <td>{{item.sDate|date}}</td>
+                                        <td>{{item.attendanceDate|date}}</td>
+                                        <td>{{item.shiftName}}</td>
+                                        <td>{{item.startTime}}</td>
+                                        <td>{{item.endTime}}</td>
+                                        <td>{{item.restdays}}</td>
+                                        <!-- <td>{{item.attachment}}</td> -->
+                                        <td>{{item.comments}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-1"></div>
+            </div>
+            <div class="col-md-1"></div>
+        </div>
+    </div>
+</div>
+<div id="Reject" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content ">
+            <div class="modal-header">
+                <div class="row">
+                    <div class="col-lg-8">
+                        <h5>Reject Notes</h5>
+                    </div>
+                </div>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body ">
+                <div class="container-fluid">
+                    <div class="row notes">
+                        <div class="col-lg-3">
+                            Notes
+                        </div>
+                        <div class="col-lg-7">
+                            <textarea rows="3" type="text" [(ngModel)]="Notes" id="Notes" name="Notes"
+                                class="form-control" placeholder="Notes"></textarea>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="row centeralign">
+                        <div class="col-lg-4">
+                        </div>
+                        <div class="col-lg-5">
+                            <button class="upload" (click)="RejectAttedanceCoorection()">Submit</button>
+                        </div>
+                    </div>
+                    <br />
+                </div>
+                <div class="modal-footer">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- <div id="UploadAttendanceForm" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Attendance Correction Details</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="card">
+                <div class="row leavereq">
+                    <div class="col-md-3">
+                        <p>Start Date<span class="span">*</span></p>
+                    </div>
+                    <div class="col-md-3">
+                        <p>End Date<span class="span">*</span></p>
+                    </div>
+                    <div class="col-md-2">
+                        <p>Start Time<span class="span">*</span></p>
+                    </div>
+                    <div class="col-md-2">
+                        <p>End Time<span class="span">*</span></p>
+                    </div>
+
+                </div>
+                <div class="row leavereq">
+                    <div class="col-md-3">
+                        <input type="date" id="StartDate" name="StartDate" [(ngModel)]="StartDate" class="form-control">
+                    </div>
+                    <div class="col-md-3">
+                        <input type="date" id="EndDate" name="EndDate" [(ngModel)]="EndDate" class="form-control">
+                    </div>
+                    <div class="col-md-2">
+                        <input type="time" class="form-control" id="StartTime" name="StartTime" [(ngModel)]="StartTime">
+                    </div>
+                    <div class="col-md-2">
+                        <input type="time" class="form-control" id="EndTime" name="EndTime" [(ngModel)]="EndTime">
+                    </div>
+                </div>
+
+                <br>
+                <div class="row">
+                    <div class="col-lg-8"></div>
+                    <div class="col-lg-2">
+                        <button class="button btn form-control" (click)="cancel()">Cancel</button>
+                    </div>
+                    <div class="col-lg-2">
+                        <button class="button btn form-control" (click)="Save()">Submit</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div> -->

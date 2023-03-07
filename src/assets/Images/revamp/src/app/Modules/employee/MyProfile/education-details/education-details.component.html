@@ -1,0 +1,144 @@
+<br>
+    <div class="card">
+        <div class="row">
+            <div class="col-lg-12">
+                <label class="label">Education Details : <span style="font-weight: 100;">
+
+                    </span></label>
+            </div>
+        </div>
+        <br><br>
+        <div class="row leavereq">
+
+            <div class="col-md-2">
+                <p>Education Type </p>
+
+            </div>
+            <div class="col-md-2">
+                <p>Qualification </p>
+            </div>
+            <div class="col-md-2">
+                <p>Name of Qualification </p>
+            </div>
+            <div class="col-md-3">
+                <p>Branch </p>
+            </div>
+            <div class="col-md-3">
+                <p>Institution Name </p>
+            </div>
+
+        </div>
+        <div class="row leavereq">
+            <div class="col-md-2">
+                <div class="dropdown">
+                    <select [disabled]="roledid!=9 && roledid!=11 && roledid!=6 && roledid!=2"
+                        class="form-control inputfield select" placeholder="" id="EducationType" name="EducationType"
+                        [(ngModel)]="EducationType">
+                        <option value="Select">Select One</option>
+                        <option value="Diploma">Diploma</option>
+                        <option value="Diploma & Certificate">Diploma & Certificate</option>
+                        <option value="Equivalent Course">Graduation/Equivalent Course</option>
+                        <option value="Others">Others</option>
+                        <option value="Post Graduation">Post Graduation</option>
+                        <option value="Pre-Matriculation">Pre-Matriculation</option>
+                        <option value="Under Graduation">Under Graduation</option>
+                        <option value="X/Equivalent">X/Equivalent</option>
+                        <option value="XII/Equivalent course">XII/Equivalent course</option>
+                        <option value="Xth Class">Xth Class</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <input [disabled]="roledid!=9 && roledid!=11 && roledid!=6 && roledid!=2" type="text" class="form-control"
+                    placeholder="Qualification" id="Qualification" name="Qualification"
+                    [(ngModel)]="Qualification">
+            </div>
+            <div class="col-md-2">
+                <input [disabled]="roledid!=9 && roledid!=11 && roledid!=6 && roledid!=2" type="text" class="form-control"
+                    placeholder="Name Of Qualification" id="NameOfQualification" name="NameOfQualification"
+                    [(ngModel)]="NameOfQualification">
+            </div>
+            <div class="col-md-3">
+                <input [disabled]="roledid!=9 && roledid!=11 && roledid!=6 && roledid!=2" type="text" class="form-control"
+                    placeholder="Branch" id="Branch" name="Branch" [(ngModel)]="Branch">
+            </div>
+            <div class="col-md-3">
+                <input [disabled]="roledid!=9 && roledid!=11 && roledid!=6 && roledid!=2" type="text" class="form-control"
+                    placeholder="Institution Name" id="InstitutionName" name="InstitutionName"
+                    [(ngModel)]="InstitutionName">
+            </div>
+        </div>
+        <br>
+        <div class="row leavereq">
+
+            <div class="col-md-2">
+                <p>Country </p>
+            </div>
+            <div class="col-md-2">
+                <p>Score Type </p>
+            </div>
+            <div class="col-md-2">
+                <p>Grade </p>
+            </div>
+            <div class="col-md-3">
+                <p>Start Date <span style="color: red;">*</span></p>
+            </div>
+            <div class="col-md-3">
+                <p>End Date <span style="color: red;">*</span></p>
+            </div>
+
+        </div>
+        <div class="row leavereq">
+
+            <div class="col-md-2">
+                <select [disabled]="roledid!=9 && roledid!=11 && roledid!=6 && roledid!=2" class="form-control inputfield select"
+                    id="Country" name="Country" (change)="GetCountryID($event)" [(ngModel)]="Country">
+                    <option value="0" selected>Select Country </option>
+                    <option *ngFor="let role of Countrylist" value="{{role.id}}">{{role.short}}</option>
+
+                </select>
+                <!-- <input [disabled]="roledid!=9 && roledid!=11 && roledid!=6" type="text" class="form-control" placeholder="Country" id="Country" name="Country"
+                    [(ngModel)]="Country" onkeypress="return /[A-Za-z0-9/\s/g]/i.test(event.key)"> -->
+            </div>
+            <div class="col-md-2">
+                <div class="dropdown">
+                    <select [disabled]="roledid!=9 && roledid!=11 && roledid!=6 && roledid!=2"
+                        class="form-control inputfield select" id="ScoreType" name="ScoreType" [(ngModel)]="ScoreType">
+                        <option value="Select">Select One</option>
+                        <option value="GPA">GPA</option>
+                        <option value="Grade">Grade</option>
+                        <option value="Percentage">Percentage</option>
+                        <option value="Result Awaited">Result Awaited</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <input [disabled]="roledid!=9 && roledid!=11 && roledid!=6 && roledid!=2" type="text" class="form-control"
+                    id="EducationGrade" name="EducationGrade" [(ngModel)]="EducationGrade"
+                    placeholder="Education Grade">
+            </div>
+            <div class="col-md-3">
+                <input [disabled]="roledid!=9 && roledid!=11 && roledid!=6 && roledid!=2" type="Date" class="form-control"
+                    id="StartDateMonth" name="StartDateMonth" [(ngModel)]="StartDateMonth"
+                    placeholder="Start Date Month">
+            </div>
+            <div class="col-md-3">
+                <input [disabled]="roledid!=9 && roledid!=11 && roledid!=6 && roledid!=2" type="Date" class="form-control"
+                    id="EndDateMonth" name="EndDateMonth" [(ngModel)]="EndDateMonth"
+                    placeholder="End Date Month">
+
+            </div>
+        </div><br>
+    </div>    <br>
+    <div class="row">
+        <div class="col-lg-5"></div>
+        <div class="col-lg-4">
+            <button type="button" class="form-control butn-sadow" *ngIf="ID!=undefined && roledid!=10"
+                (click)="UpdateEducationDetails()">Save Changes</button>&nbsp;&nbsp;
+            <button class="form-control butn-sadow" (click)="SaveEducation()"
+                *ngIf="ID==undefined">Submit</button> &nbsp;&nbsp;
+
+        </div>
+        <div class="col-lg-5"></div>
+    </div><br>
+

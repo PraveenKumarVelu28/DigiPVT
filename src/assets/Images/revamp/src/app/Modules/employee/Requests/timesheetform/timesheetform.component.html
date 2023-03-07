@@ -1,0 +1,133 @@
+<app-commonalertpage [messageId]="messageId" *ngIf="showPopup==1"></app-commonalertpage>
+<app-loader *ngIf="loader"></app-loader>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="row dialogboxContect1">
+
+
+                <p class="Heading1">Timesheet</p>
+                <img src="assets/Images/revamp/cancle-icon.png" (click)="Cancel()" class="closeicon">
+
+
+
+            </div>
+            <br>
+            <div class="">
+                <div class="row leavereq">
+                    <div class="col-md-2">
+                        <p>Date<span class="span">*</span></p>
+                    </div>
+                    <div class="col-md-2">
+                        <p>Task<span class="span">*</span></p>
+                    </div>
+                    <div class="col-md-2">
+                        <p>Start Time<span class="span">*</span></p>
+                    </div>
+                    <div class="col-md-2">
+                        <p>End Time<span class="span">*</span></p>
+                    </div>
+                    <div class="col-md-4">
+                        <p>Comments<span class="span"></span></p>
+                    </div>
+                </div>
+                <div class="row leavereq">
+                    <div class="col-md-2">
+                        <input type="date" class="form-control" id="Date" name="Date" [(ngModel)]="Date"
+                            max="{{maxdate}}" (change)="endingdatealert($event)">
+                    </div>
+                    <div class="col-md-2">
+                        <input class="form-control" id="Task" name="Task" [(ngModel)]="Task" placeholder="Task">
+                    </div>
+                    <div class="col-md-2">
+                        <input type="time" class="form-control" id="StartTime" name="StartTime" [(ngModel)]="StartTime">
+                    </div>
+                    <div class="col-md-2">
+                        <input type="time" class="form-control" id="EndTime" name="EndTime" [(ngModel)]="EndTime">
+                    </div>
+                    <div class="col-md-3">
+                        <textarea class="form-control" id="Comments" name="Comments" [(ngModel)]="Comments" rows="4"
+                            placeholder="Comments"></textarea>
+                    </div>
+                </div>
+                <br>
+                <div class="row leavereq">
+                    <div class="col-md-2">
+                        <p>Attachment</p>
+                    </div>
+                </div>
+                <div class="row leavereq">
+                    <div class="col-md-3">
+                        <ngx-dropzone accept="image/jpeg,image/jpg,image/png,application/pdf"
+                            (change)="onSelect21($event)" class="dropFile">
+                            <div class="dropfileDiv"> <img *ngIf="attachments21.length==0"
+                                    src="assets/Images/MicrosoftTeams-image.png" class="img-set">
+                                <ngx-dropzone-label>Drop files here!</ngx-dropzone-label>
+                            </div>
+                            <ngx-dropzone-preview *ngFor="let f of attachments21" [removable]="true"
+                                (removed)="onRemove21(f)">
+                                <ngx-dropzone-label>{{ f.name }} ({{ f.type }})</ngx-dropzone-label>
+                            </ngx-dropzone-preview>
+                        </ngx-dropzone>
+                    </div>
+                </div>
+                <br>
+                <div class="row dialogboxContect">
+
+                    <button class="clo-btn" (click)="Cancel()">Cancel</button>
+                    &nbsp; &nbsp; &nbsp; &nbsp;
+
+                    <button class="Addbutton" (click)="Add()">Save</button>
+
+                </div>
+
+
+                <div class="row" *ngIf="showtable">
+                    <div class="col-md-12">
+                        <div class="container-fluid">
+                            <table class="table" id="lvs">
+                                <thead>
+                                    <tr>
+                                        <th>Date</th>
+                                        <th>Task</th>
+                                        <th>Start Time</th>
+                                        <th>End Time</th>
+                                        <th>Comments</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let timelist of newarray">
+                                        <td>{{timelist.Date}}</td>
+                                        <td>{{timelist.Task}}</td>
+                                        <td>{{timelist.StartTime}}</td>
+                                        <td>{{timelist.EndTime}}</td>
+                                        <td>{{timelist.Comments}}</td>
+                                        <td>
+                                            <div>
+                                                <button class="upload"
+                                                    (click)="DeleteTimesheet(timelist.Comments)">Remove</button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row dialogboxContect" *ngIf="showtable">
+                    <div class="col-md-9"></div>
+                    <div class="col-md-1">
+                        <button class="button" (click)="save()">Save</button>
+                    </div>
+                    <div class="col-md-2">
+                        <button class="button" (click)="Cancel()">Cancel</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-1">
+            </div>
+        </div>
+    </div>
+</div>

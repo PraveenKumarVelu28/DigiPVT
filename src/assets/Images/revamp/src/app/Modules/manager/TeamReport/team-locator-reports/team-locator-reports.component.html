@@ -1,0 +1,91 @@
+<app-commonalertpage [messageId]="messageId" *ngIf="showPopup==1"></app-commonalertpage>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-8">
+                    <ul>
+                        <li *ngIf="roledid!=11"><a class="active Heading" routerLink="/Employee/LocaterReports"> My
+                                Locator Report</a></li>
+                        <li *ngIf="roledid==2"><a class="leavelist Heading"
+                                routerLink="/Manager/TeamLocatorReports"><u>My Team Locator
+                                    Report</u></a>
+                        </li>
+                        <li *ngIf="roledid==9||roledid==11"><a class="leavelist Heading"
+                                routerLink="/Manager/TeamLocatorReports"><u>Company Locator
+                                    Report </u></a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-md-4"></div>
+            </div>
+            <br>
+            <div class="card filtercard">
+                <div class="row leavereq">
+                    <div class="col-md-3">
+                        <p>START DATE:</p>
+                    </div>
+                    <div class="col-md-3">
+                        <p>END DATE:</p>
+                    </div>
+                </div>
+                <div class="row leavereq">
+                    <div class="col-md-3">
+                        <input type="date" id="startdate" name="startdate" [(ngModel)]="startdate" class="form-control">
+                    </div>
+                    <div class="col-md-3">
+                        <input type="date" id="enddate" name="enddate" [(ngModel)]="enddate" (change)="getdate()"
+                            class="form-control">
+                    </div>
+                    <div class="col-md-2">
+                        <ng-multiselect-dropdown [placeholder]="'Select Staff'" [settings]="dropdownSettings"
+                            [data]="dropdownList" [(ngModel)]="selectedItems" (onSelect)="onItemSelect($event)">
+                        </ng-multiselect-dropdown>
+                    </div>
+                    <div class="col-md-1">
+                    </div>
+                    <div class="col-md-2">
+                        <button class=" form-control butn-sadow" type="button" (click)="exportexcel()">Download</button>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="container-fluid">
+                        <table class="table table-bordered" id="lvs">
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Staff Name</th>
+                                    <th>Destination</th>
+                                    <th>Time of Departure</th>
+                                    <th>Time of Return</th>
+                                    <th>Purpose</th>
+                                    <th>No of Hours(HH:MM)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let locator of locatorlist">
+                                    <td>{{locator.date|date}}</td>
+                                    <td>{{locator.staffname}}</td>
+                                    <td>{{locator.destination}}</td>
+                                    <td>{{locator.timeOfDeparture}}</td>
+                                    <td>{{locator.timeOfReturn}}</td>
+                                    <td>{{locator.purpose}}</td>
+                                    <td class="numberblue">{{locator.hourDiff|date:"HH:mm"}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="col-md-1"></div>
+            </div>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+        </div>

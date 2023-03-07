@@ -1,0 +1,15 @@
+.butn-sadow {
+  left: -10px;
+  position: relative;
+}
+
+.upload {
+  width: 90px;
+}
+
+.delete {
+  width: 12%;
+  position: relative;
+  left: 12px;
+  top: -3px;
+}

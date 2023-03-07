@@ -1,0 +1,90 @@
+<app-commonalertpage [messageId]="messageId" *ngIf="showPopup==1"></app-commonalertpage>
+<app-loader *ngIf="loader"></app-loader>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-6">
+            <p class="Heading">Shift Master</p>
+        </div>
+        <div class="col-lg-4"></div>
+        <div class="col-lg-2">
+        </div>
+    </div>
+    <div class="card">
+        <div class="row">
+            <div class="col-lg-1">
+                <img src="assets/Images/filter.svg" class="filter-img">
+                <p class="filter">Filter By</p>
+            </div>
+            <div class="col-lg-5">
+                <input class="form-control" placeholder="search" id="term" name="term" [(ngModel)]="term">
+            </div>
+        </div>
+    </div> <br>
+    <div class="row">
+        <div class="col-md-10">
+
+            <p class="show3res">SHOWING <span> {{(shiftmasterlist | filter:term)?.length}}
+                </span>RESULTS</p>
+
+        </div>
+        <div class="col-md-2" *ngIf="login !=1">
+            <button class="Addbutton" routerLink="/Admin/ShiftMasterForm"><img src="assets/Images/plus.svg"
+                    class="plus-icon">Add shift</button>
+        </div>
+    </div>
+    <br>
+    <div class="row row1">
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="container-fluid">
+                <table class="table" *ngIf="(shiftmasterlist | filter:term)?.length > 0; else noResults">
+                    <thead>
+                        <tr>
+                            <th>Shift Type</th>
+                            <th>Shift Name</th>
+                            <th>Shift Description</th>
+                            <th>Shift Timings</th>
+                            <th>Grace Period</th>
+                            <th>Start Time</th>
+                            <th>End Time</th>
+                            <th *ngIf="login!=1">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr
+                            *ngFor="let shifting of shiftmasterlist|filter:term| paginate: { itemsPerPage: count1, currentPage: p}">
+                            <td>{{shifting.shiftType}}</td>
+                            <td>{{shifting.short}}</td>
+                            <td>{{shifting.description}}</td>
+                            <td>{{shifting.shiftTimeings}}</td>
+                            <td>{{shifting.grace}}</td>
+                            <td>{{shifting.starttime}}</td>
+                            <td>{{shifting.endtime}}</td>
+                            <td *ngIf="login!=1">
+                                <button class="edit-btn"
+                                    [routerLink]="['/Admin/ShiftMasterForm',shifting.id]">Edit</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <!--  <button class="upload" (click)="delete(shifting.id)">Delete</button> -->
+                                <img class="delete" src="assets/Images/delete.svg" class="delete"
+                                    (click)="delete(shifting.id)">
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="text-left">
+                    <br>
+                    <pagination-controls (pageChange)="p = $event" class="poppinns"></pagination-controls>
+                </div>
+                <ng-template #noResults>
+                    <p class="NoResultShow"> No results found </p>
+                </ng-template>
+            </div>
+        </div>
+    </div>
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />

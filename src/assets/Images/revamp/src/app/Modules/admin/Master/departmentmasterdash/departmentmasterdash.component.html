@@ -1,0 +1,77 @@
+<app-commonalertpage [messageId]="messageId" *ngIf="showPopup==1"></app-commonalertpage>
+<app-loader *ngIf="loader"></app-loader>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-lg-6">
+                    <h3 class="Heading">Department Master</h3>
+                </div>
+            </div>
+            <div class="card">
+                <div class="row">
+                    <div class="col-lg-1">
+
+                        <img src="assets/Images/filter.svg" class="filter-img">
+                        <p class="filter">Filter By</p>
+                    </div>
+                    <div class="col-lg-5">
+                        <input type="text" placeholder="Search" id="term" [(ngModel)]="term" class="form-control text">
+                    </div>
+                </div>
+            </div><br>
+            <div class="row">
+                <div class="col-md-10">
+                    <p class="show3res">SHOWING <span>{{leavelist?.length}} </span>RESULTS</p>
+                </div>
+                <div class="col-md-2" *ngIf="login !=1">
+                    <button class="Addbutton" routerLink="/Admin/Departmentmasteradd"><img src="assets/Images/plus.svg"
+                            class="plus-icon">Add Department</button>
+                </div>
+            </div>
+            <br>
+            <div class="row" class="alignForm">
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="container-fluid">
+                        <table class="table table-bordered text">
+                            <thead>
+                                <tr class="head">
+                                    <th>Department Name</th>
+                                    <th>Department Description</th>
+                                    <th *ngIf="login!=1">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr
+                                    *ngFor="let holiday of leavelist|filter:term|paginate: { itemsPerPage: count1, currentPage: p}">
+                                    <td>{{holiday.department_name}}</td>
+                                    <td>{{holiday.department_Desc}}</td>
+                                    <td *ngIf="login!=1">
+                                        <button class="edit-btn"
+                                            [routerLink]="['/Admin/Departmentmasteradd',holiday.id]">Edit</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                                        <!--   <button class="upload" (click)="DeleteCountryType(holiday.id)">Delete</button> -->
+                                        <img class="delete" src="assets/Images/delete.svg" class="delete"
+                                            (click)="DeleteCountryType(holiday.id)">
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="text-left">
+                            <br>
+                            <pagination-controls (pageChange)="p = $event" class="poppinns"></pagination-controls>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />

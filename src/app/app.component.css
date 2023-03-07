@@ -440,8 +440,7 @@ span {
   flex-direction: row;
   justify-content: flex-end;
   padding: 8px;
-  position: relative;
-  left: 75%;
+
   margin-top: 5px;
 }
 
@@ -585,8 +584,8 @@ span {
 }
 
 .highlightxt {
-  color: #3EAC6C;
-  background-color: #E9FDF1;
+  color: #3247D5;
+ 
  
   /* text-align: center; */
   border-radius: 5px;

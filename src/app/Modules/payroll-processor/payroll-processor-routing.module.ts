@@ -76,8 +76,15 @@ import { ValidatedHeadCountDetailsComponent } from './validated-head-count-detai
 import { RunHeadCountValidationComponent } from './run-head-count-validation/run-head-count-validation.component';
 import { EmployeeBatchMasterComponent } from './employee-batch-master/employee-batch-master.component';
 import { TimeandAttendanceEligibilityMasterComponent } from './timeand-attendance-eligibility-master/timeand-attendance-eligibility-master.component';
+import { ValidatedStatutoryDeductionsComponent } from './validated-statutory-deductions/validated-statutory-deductions.component';
+import { UploadLoanReportComponent } from './upload-loan-report/upload-loan-report.component';
 const routes: Routes = [
   { path: '', component: PayrollProcessorComponent },
+
+  { path: 'UploadLoanReport', component: UploadLoanReportComponent },
+
+  { path: 'ValidatedStatutoryDeductions', component: ValidatedStatutoryDeductionsComponent },
+
   { path: 'TimeandAttendanceEligibilityMaster', component: TimeandAttendanceEligibilityMasterComponent },
 
   { path: 'EmployeeBatchMaster', component: EmployeeBatchMasterComponent },

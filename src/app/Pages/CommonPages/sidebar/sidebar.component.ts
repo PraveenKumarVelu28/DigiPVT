@@ -1338,6 +1338,40 @@ export class SidebarComponent implements OnInit {
 
   }
 
+  public StatutoryDeductions() {
+    debugger
+   
+    this.active = 2345;
+    localStorage.setItem('Pagename', 'Staff')
+
+    this.DigiPVTService.GetValidationPassword().subscribe(data => {
+      debugger
+      this.validation = data.filter(x => x.menuName == 'Validated Basic Pay Details');
+      console.log("validation", this.validation);
+    });
+
+
+    Swal.fire({
+      title: 'Access Statutory  Validation',
+      html: `<input type="text" id="login" class="swal2-input"  placeholder="Enter 4 Digit Pin">
+    `,
+      confirmButtonText: 'Submit',
+      focusConfirm: false,
+      preConfirm: () => {
+        debugger
+        const login: any = document.getElementById('login') as HTMLElement
+
+        if (login.value == 2345) {
+          this.router.navigate(['/PayrollProcessor/ValidatedStatutoryDeductions']);
+        }
+        else {
+          Swal.showValidationMessage(`Please enter correct pin`)
+        }
+      }
+    })
+
+  }
+
 
   public ValidatedTandLDetails() {
     debugger
@@ -1437,7 +1471,7 @@ export class SidebarComponent implements OnInit {
   public UploadPayrollSummaryReport() {
     this.active = 'UploadBasicPayValues'
 
-    if(this.companyid==10013 || this.companyid==1007){
+    if(this.companyid==10013 ){
       this.router.navigate(['/PayrollProcessor/UploadPayrollSummaryReprtValues'])
 
     }
@@ -1463,7 +1497,17 @@ export class SidebarComponent implements OnInit {
     
   }
 
+  public UploadedLoanReport() {
+    this.active = 'UploadBasicPayValues'
 
+ 
+      this.router.navigate(['/PayrollProcessor/UploadLoanReport'])
+
+    
+  }
+
+
+  
   
 
   public UploadPhilHealthSummaryReport() {

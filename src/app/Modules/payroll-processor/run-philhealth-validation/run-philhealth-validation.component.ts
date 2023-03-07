@@ -17,11 +17,13 @@ export class RunPhilhealthValidationComponent implements OnInit {
  
   
   viewMode = 'tab1';
-
+  companyid:any;
   constructor(public DigiofficeService: DigiPVTService, public router: Router, private datePipe: DatePipe) {
     this.minDate.setDate(this.minDate.getDate() - 1);
     this.maxDate.setDate(this.maxDate.getDate() + 7);
     this.bsRangeValue = [this.bsValue, this.maxDate];
+    this.companyid = sessionStorage.getItem('companyid');
+
   }
   loader:any;
   Role: any;
@@ -708,7 +710,7 @@ export class RunPhilhealthValidationComponent implements OnInit {
               if (result.value==true) {
                 Swal.fire({
                   title: 'Are you sure?',
-                  text: 'To Run COLA Validation In This Period',
+                  text: 'To Run Statutory Validation In This Period',
                  
                   showCancelButton: true,
                   confirmButtonText: 'Yes, Accept it!',
@@ -734,7 +736,15 @@ export class RunPhilhealthValidationComponent implements OnInit {
                                 )
                                 this.Payrollvis = true
                                 this.InsertNotification();
-                                location.href = '#/PayrollProcessor/ValidatedColaValues'
+                                if(this.companyid!=1007){
+                                  location.href = '#/PayrollProcessor/ValidatedColaValues'
+                                }
+                                else{
+                                  location.href = '#/PayrollProcessor/ValidatedStatutoryDeductions'
+
+                                }
+                                
+                                
                               }
                             )
   
@@ -766,7 +776,7 @@ export class RunPhilhealthValidationComponent implements OnInit {
            
               Swal.fire({
                 title: 'Are you sure?',
-                text: 'To Run COLA Validation In This Period',
+                text: 'To Run Statutory Validation In This Period',
                
                 showCancelButton: true,
                 confirmButtonText: 'Yes, Accept it!',
@@ -792,7 +802,13 @@ export class RunPhilhealthValidationComponent implements OnInit {
                               )
                               this.Payrollvis = true
                               this.InsertNotification();
-                              location.href = '#/PayrollProcessor/ValidatedColaValues'
+                              if(this.companyid!=1007){
+                                location.href = '#/PayrollProcessor/ValidatedColaValues'
+                              }
+                              else{
+                                location.href = '#/PayrollProcessor/ValidatedStatutoryDeductions'
+
+                              }
                             }
                           )
 

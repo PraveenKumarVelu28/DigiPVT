@@ -736,6 +736,13 @@ export class DigiPVTService {
     return this.http.post(this.url, data);
   }
 
+  public InsertUploadLoanAmount(data: any) {
+    debugger;
+    this.url = this.host + '/Master/InsertUploadLoanAmount';
+    return this.http.post(this.url, data);
+  }
+
+  
 
   public InsertTimeAndAttendanceEligibilities(data: any) {
     debugger;
@@ -1781,6 +1788,16 @@ export class DigiPVTService {
   } 
 
 
+  
+  public GetUploadedLoanReport() {
+    return this.http.get<any[]>(
+      this.host + "/Master/GetUploadedLoanReport"
+    );
+  } 
+
+
+  
+
   public GetPayrollYTD() {
     return this.http.get<any[]>(
       this.host + "/Master/GetPayrollYTD"
@@ -1955,6 +1972,12 @@ export class DigiPVTService {
   public GetValidatedPhilHealthDetails() {
     return this.http.get<any[]>(
       this.host + "/Master/GetValidatedPhilHealthDetails"
+    );
+  } 
+
+  public GetValidatedStatutory() {
+    return this.http.get<any[]>(
+      this.host + "/Master/GetValidatedStatutory"
     );
   } 
 

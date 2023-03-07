@@ -343,15 +343,10 @@
 
 <div id="Statutory" class="collapse length ">
 
-  <a (click)="ValidatedPhilHealthDetails()" class="nonactive">
+  <a (click)="StatutoryDeductions()" class="nonactive">
     <span class="sub-request">Validated Statutory Details</span>
   </a>
 
-
-  <a (click)="UploadPhilHealthSummaryReport()" class="nonactive">
-    <span [ngClass]="active == 'UploadSystemGeneratedLWOP' ? 'Active1' : 'Active3'" class="sub-request">Upload
-     Statutories</span>
-  </a>
 </div>
 
 
@@ -567,7 +562,7 @@
     </div>
 
 
-    <a data-toggle="collapse" data-target="#LoanProceedValidation" *ngIf="login == 9 && (companyid == 1001 || companyid == 1002|| companyid == 1006 || companyid == 10013)"
+    <a data-toggle="collapse" data-target="#LoanProceedValidation" *ngIf="login == 9 && (companyid == 1001 || companyid == 1002|| companyid == 1006 || companyid == 10013 || companyid == 1007)"
     (click)="LoanProceeds()"
     [ngClass]="(active == 8989 )&&!mini ? 'menu1' : (active == 8989)&&mini?'menu-mini':'menu'">
     <img *ngIf="(active == 8989&&!mini)" src="assets/Images/revamp/announcementwhite.png">
@@ -579,6 +574,10 @@
   <div id="LoanProceedValidation" class="collapse length ">
     <a (click)="ValidatedLoanProceedsDetails()" class="nonactive">
       <span class="sub-request">Validated Loan Proceeds</span>
+    </a>
+   
+    <a (click)="UploadedLoanReport()" class="nonactive">
+      <span class="sub-request">Upload  Loan Report</span>
     </a>
    
 

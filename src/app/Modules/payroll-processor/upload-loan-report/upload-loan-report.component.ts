@@ -5,14 +5,14 @@ import Swal from 'sweetalert2';
 import * as XLSX from 'xlsx';
 declare var JSZipUtils: any;
 
-
 @Component({
-  selector: 'app-upload-payroll-inputs',
-  templateUrl: './upload-payroll-inputs.component.html',
-  styleUrls: ['./upload-payroll-inputs.component.css']
+  selector: 'app-upload-loan-report',
+  templateUrl: './upload-loan-report.component.html',
+  styleUrls: ['./upload-loan-report.component.css']
 })
-export class UploadPayrollInputsComponent implements OnInit {
+export class UploadLoanReportComponent implements OnInit {
 
+ 
   
   constructor(public DigiPVTService: DigiPVTService, public router: Router) { }
   componentmaster: any;
@@ -35,12 +35,11 @@ export class UploadPayrollInputsComponent implements OnInit {
   EndDate:any;
   StaffID:any;
   Paydate:any;
-  stafflistdetails:any;
   public attachmentsurl: any = [];
 
   ngOnInit(): void {
     debugger
-    this.GetUploadedPayrollInputs();
+    this.GetUploadedLoanReport();
     this.DigiPVTService.GetAllStaffNew().
     subscribe({
       next: data => {
@@ -49,25 +48,15 @@ export class UploadPayrollInputsComponent implements OnInit {
       }
     })
 
-
-    this.DigiPVTService.GetMyDetails().
-    subscribe({
-      next: data => {
-        debugger
-        this.stafflistdetails = data;
-      }
-    })
-
-
     this.DigiPVTService.GetPayPeriodSetting().subscribe(data => {
         debugger
         this.PayPeriodSettingList = data;
       });
   }
 
-  public GetUploadedPayrollInputs(){
+  public GetUploadedLoanReport(){
     debugger
-    this.DigiPVTService.GetUploadedPayrollInputs().subscribe(data => {
+    this.DigiPVTService.GetUploadedLoanReport().subscribe(data => {
       debugger
       this.componentmaster = data;
       console.log("componentmaster", this.componentmaster);
@@ -101,71 +90,6 @@ export class UploadPayrollInputsComponent implements OnInit {
       Swal.fire("Imported file format not supported.");
     }
   }
-
-
-  //  public Upload_file() {
-  //   debugger
-  //   if (this.exceldata == undefined) {
-  //     Swal.fire('Choose a File');
-  //   } else {
-  //     let apiarray = [];
-  //     for (this.i = 0; this.i < this.exceldata.length; this.i++) {
-  //           this.stafflistcopy123=this.stafflist.filter((x: { employeID: any; })=>x.employeID==this.exceldata[this.i].EmployeID)          
-  //            if(this.stafflistcopy123.length!=0){
-  //             this.StaffID = this.stafflistcopy123[0].id
-  //            }
-  //            else{
-  //             this.StaffID = 0
-  //            }           
-  //         var options = { hour12: false };
-  //           //  this.Paydate = new Date(Date.UTC(0, 0, this.exceldata[this.i].Paydate-1 )); 
-  //           this.Paydate = new Date(Date.UTC(0, 0, this.exceldata[this.i].Paydate - 1));
-  //           // this.Paydate=this.Paydate.toLocaleString('en-US', options)          
-  //         ; 
-  //         var eb = { 
-  //           'Staffid': this.StaffID,
-  //           'ElementType' : this.exceldata[this.i].ClothingAllowance,
-  //           'ElementName' : this.exceldata[this.i].ClothingAllowanceAdjustment,
-  //           'ElementDescription' : this.exceldata[this.i].OldClothingAllowance,
-  //           'PreviousPayrollValue' : this.exceldata[this.i].PreviousPayrollValue,
-  //           'CurrentPayrollValue' : this.exceldata[this.i].CurrentPayrollValue,
-  //           'Paydate' : new Date(Date.UTC(0, 0, this.exceldata[this.i].Paydate - 1)),
-
-            
-  //         }
-  //         this.DigiPVTService.InsertUploadPayrollSummaryValidation(eb).subscribe({
-  //           next: data => {
-  //           debugger
-  //           this.StaffID=data;
-  //             Swal.fire('Saved Successfully')
-  //             this.ngOnInit();
-  //           // // this.SavePositionDetails();
-  //           // var eb = {
-  //           //   'EmergencyContactName': this.exceldata[this.i-(this.exceldata.length)].EmergencyContactName,
-  //           //   'EmergencyContactRelationship': this.exceldata[this.i-(this.exceldata.length)].EmergencyContactRelationship,
-  //           //   'EmergencyContactMobileNumber': this.exceldata[this.i-(this.exceldata.length)].EmergencyContactMobileNumber,
-  //           //   'StaffID':  this.StaffID
-  //           // }
-  //           // this.i++;
-  //           // this.AliprojectService.InsertMyAddressDetails(eb).subscribe(
-              
-  //           //   data => {
-  //           //     debugger
-  //           //     Swal.fire('Staffs Added Successfully');
-  //           //     // this.router.navigate(['/EmployeeDashboard']);
-      
-  //           //   },
-  //           // )
- 
-  //         }, error: (err) => {
-  //           Swal.fire('Issue in Inserting Attendance Units');
-  //           // Insert error in Db Here//         
-  //         }
-  //       }
-  //       )
-  //     }
-  //   }
-  // }
 
 
   public Upload_file() {
@@ -207,7 +131,7 @@ export class UploadPayrollInputsComponent implements OnInit {
         var obj={
           attachmenturlforexport:this.exceldata
         }
-        this.DigiPVTService.InsertUploadedPayrollInputs(obj)
+        this.DigiPVTService.InsertUploadLoanAmount(obj)
           .subscribe({
             next: data => {
               debugger
@@ -218,6 +142,8 @@ export class UploadPayrollInputsComponent implements OnInit {
       }
     // }
   }
+
+  
   delete(ID : any){
     debugger
     Swal.fire({
@@ -255,7 +181,6 @@ export class UploadPayrollInputsComponent implements OnInit {
     XLSX.writeFile(wb, this.fileName);
 
   }
-
 
 
 }

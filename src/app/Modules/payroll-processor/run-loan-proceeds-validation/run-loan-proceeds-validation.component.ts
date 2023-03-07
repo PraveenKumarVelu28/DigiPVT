@@ -43,7 +43,9 @@ export class RunLoanProceedsValidationComponent implements OnInit {
   cutofflist:any;
   PaycodeID:any;
   PayPeriodSettingList:any;
+  companyid:any;
   ngOnInit(): void {
+    this.companyid = sessionStorage.getItem('companyid');
     this.PaycodeID = "";
     this.myDate = new Date();
     this.latestdate= this.datePipe.transform( this.myDate , 'yyyy-MM-dd');

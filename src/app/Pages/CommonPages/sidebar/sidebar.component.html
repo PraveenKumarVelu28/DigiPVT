@@ -587,6 +587,8 @@
     </a>
   </div>
 
+
+  
   <a data-toggle="collapse" data-target="#BonusValidation" *ngIf="login == 9 && (companyid == 1001 || companyid == 1002|| companyid == 1006 || companyid == 10013)"
   (click)="BonusValidation()"
   [ngClass]="(active == 988 )&&!mini ? 'menu1' : (active == 988)&&mini?'menu-mini':'menu'">
@@ -634,6 +636,31 @@
   </a>
 </div>
 
+<a data-toggle="collapse" data-target="#Holidays"
+*ngIf="login == 9 && companyid == 1002 " (click)="Holidays()"
+[ngClass]="(active == 'holi' )&&!mini ? 'menu1' : (active == 'holi')&&mini?'menu-mini':'menu'">
+<img *ngIf="(active == 'holi'&&!mini)" src="assets/Images/revamp/announcementwhite.png">
+<img *ngIf="active != 'holi' " src="assets/Images/revamp/announcementnewgray-icon.png">
+<img *ngIf="(active == 'holi'&&mini) " src="assets/Images/revamp/announcementnewblue-icon.png">
+&nbsp;&nbsp;
+<span class="icon-text">Holiday Encashment </span></a>
+
+<div id="Holidays" class="collapse length ">
+
+<a (click)="ValidatedHolidayEncashment()" class="nonactive">
+  <span [ngClass]="active == '12321' ? 'Active1' : 'Active3'" class="sub-request">Validated Holiday Encashment
+    </span>
+</a>
+<a (click)="UploadHolidaysEncashments()" class="nonactive">
+  <span [ngClass]="active == '12321' ? 'Active1' : 'Active3'" class="sub-request">Upload Generated Encashment
+    </span>
+</a>
+<a (click)="UploadHolidays()" class="nonactive">
+  <span [ngClass]="active == '12321' ? 'Active1' : 'Active3'" class="sub-request">Upload Holidays
+    </span>
+</a>
+
+</div>
 <a data-toggle="collapse" data-target="#ComponentMapping" *ngIf="login == 9 && (companyid == 1001 || companyid == 1002|| companyid == 1006 || companyid == 10013)"
 (click)="ComponentMap()"
 [ngClass]="(active == 'ComponentMap' )&&!mini ? 'menu1' : (active == 988)&&mini?'menu-mini':'menu'">
@@ -668,7 +695,7 @@
 </div>
 
 
-<a data-toggle="collapse" data-target="#LoanProceedValidation" *ngIf="login == 9 && (companyid == 1001 || companyid == 1002|| companyid == 1006 || companyid == 10013)"
+<a data-toggle="collapse" data-target="#LoanProceedValidation" *ngIf="login == 9 && (companyid == 1001 || companyid == 1006 || companyid == 10013)"
 (click)="LoanProceeds()"
 [ngClass]="(active == 8989 )&&!mini ? 'menu1' : (active == 8989)&&mini?'menu-mini':'menu'">
 <div class="test_case">
@@ -693,6 +720,51 @@
 
 </div>
 
+
+<a data-toggle="collapse" data-target="#OvertimeValidation"
+*ngIf="login == 9 && companyid == 1002 " (click)="OvertimeValidation()"
+[ngClass]="(active == 'ot' )&&!mini ? 'menu1' : (active == 'ot')&&mini?'menu-mini':'menu'">
+<img *ngIf="(active == 'ot'&&!mini)" src="assets/Images/revamp/announcementwhite.png">
+<img *ngIf="active != 'ot' " src="assets/Images/revamp/announcementnewgray-icon.png">
+<img *ngIf="(active == 'ot'&&mini) " src="assets/Images/revamp/announcementnewblue-icon.png">
+
+<span class="icon-text"> &nbsp;&nbsp;Overtime Validation</span></a>
+
+<div id="OvertimeValidation" class="collapse length ">
+
+  <a (click)="ValidatedTandLDetails()" class="nonactive"
+[ngClass]="(active == 'ValidatedTandLDetails' ) && !mini ? 'menu1' : (active == 'ValidatedTandLDetails')&&mini?'menu-mini':'menu'">
+<div class="test_case">
+  <div>
+    <img *ngIf="(active == 'ValidatedTandLDetails' && !mini)" src="assets/Images/revamp/announcementwhite.png">
+    <img *ngIf="active != 'ValidatedTandLDetails' " src="assets/Images/revamp/announcementnewgray-icon.png">
+    <img *ngIf="(active == 'ValidatedTandLDetails' && mini) " src="assets/Images/revamp/announcementnewblue-icon.png">
+  </div>&nbsp;&nbsp;&nbsp;
+  <div >
+    <span class="icon-text">Validated Overtime Details</span>
+  </div>
+</div>
+</a>
+
+  <a (click)="UploadedTandLDetails()" class="nonactive"
+  [ngClass]="(active == 'UploadedTandLDetails' ) && !mini ? 'menu1' : (active == 'UploadedTandLDetails')&&mini?'menu-mini':'menu'">
+    <div class="test_case">
+      <div>
+        <img *ngIf="(active == 'UploadedTandLDetails' && !mini)" src="assets/Images/revamp/announcementwhite.png">
+        <img *ngIf="active != 'UploadedTandLDetails' " src="assets/Images/revamp/announcementnewgray-icon.png">
+        <img *ngIf="(active == 'UploadedTandLDetails' && mini) " src="assets/Images/revamp/announcementnewblue-icon.png">
+          </div>&nbsp;&nbsp;&nbsp;
+      <div >
+        <span class="icon-text">Upload Overtime Values</span>
+      </div>
+    </div>
+  </a>
+
+<a (click)="uploadRetrovalues()" class="nonactive">
+  <span class="sub-request">Upload Retro Values</span>
+</a>
+
+</div>
 
 
 </div>

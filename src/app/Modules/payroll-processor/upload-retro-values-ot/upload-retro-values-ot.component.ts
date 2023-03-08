@@ -113,7 +113,9 @@ export class UploadRetroValuesOTComponent implements OnInit {
             'PayDate' : this.Paydate,
             'OTAdjAmount' : this.exceldata[this.i].OTAdjAmount,
             'CreditedAmt' : this.exceldata[this.i].CreditedAmt,
-            'OTElement' : this.exceldata[this.i].OTElement
+            'OTElement' : this.exceldata[this.i].OTElement,
+            'Units' : this.exceldata[this.i].Units
+            
 
           }
           this.DigiPVTService.InsertOTRetroAdjustment(eb).subscribe({

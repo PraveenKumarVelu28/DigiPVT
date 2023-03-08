@@ -80,6 +80,7 @@ import { ValidatedStatutoryDeductionsComponent } from './validated-statutory-ded
 import { UploadLoanReportComponent } from './upload-loan-report/upload-loan-report.component';
 const routes: Routes = [
   { path: '', component: PayrollProcessorComponent },
+  { path: 'ValidatedHolidayEnCashments', component: ValidatedHolidayEnCashmentsComponent },
 
   { path: 'UploadLoanReport', component: UploadLoanReportComponent },
 

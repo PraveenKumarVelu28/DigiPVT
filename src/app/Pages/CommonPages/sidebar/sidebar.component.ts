@@ -30,6 +30,7 @@ export class SidebarComponent implements OnInit {
   validation: any
   ngOnInit(): void {
     debugger;
+    this.mini=false;
   //  (document.getElementById("main") as HTMLInputElement).style.marginLeft = "250px";
     this.login = sessionStorage.getItem('roledid');
     this.temp1 = sessionStorage.getItem('temp');
@@ -155,6 +156,7 @@ export class SidebarComponent implements OnInit {
         const login: any = document.getElementById('login') as HTMLElement
 
         if (login.value == this.validation[0].password) {
+          
           this.router.navigate(['/PayrollProcessor/ValidatedHolidayEnCashments'])
         }
         else {

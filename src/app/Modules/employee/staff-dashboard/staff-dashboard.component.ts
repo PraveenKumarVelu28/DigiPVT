@@ -1406,14 +1406,6 @@ export class StaffDashboardComponent implements OnInit {
   //   this.loader = true;
   //   for (let i = 0; i < this.exceldata.length; i++) {
    
-  //     this.stafflistcopy123=this.stafflist.filter((x: { employeID: any; })=>x.employeID==this.exceldata[i].EmployeeID
-  //     )
-  //     if(this.stafflistcopy123.length!=0){
-  //      this.StaffID = this.stafflistcopy123[0].id
-  //     }
-  //     else{
-  //      this.StaffID = 0
-  //     }
 
   //   /*  else if (this.Number != null && this.Number != undefined && this.Number != "") {
   //     var pattern = new RegExp('^(?=.*[0-9])(?=.*[a-zA-Z])([a-zA-Z0-9]+)$');
@@ -1562,61 +1554,8 @@ export class StaffDashboardComponent implements OnInit {
 
   
 
-  role:any;
-  roleid:any;
-  public Upload_file() {
-    debugger
-    if (this.exceldata == undefined) {
-      Swal.fire('Choose a File');
-    } else {
-      let apiarray = [];
-
-      // for (let i = 0; i < this.exceldata.length; i++) {
-      //   this.RoleTypeList2=this.RoleTypeList.filter((x: { short: any; })=>x.short==this.exceldata[i].PositionTitle,
-
-
-      //        )
-    
-      //        if(this.RoleTypeList2.length!=0){
-      //         this.roletypeid = this.RoleTypeList2[0].id
-      //        }
-      //        else{
-      //         this.roletypeid = 0
-      //        }
-    
-      //         var eb1 = {
-
-
-          
-      //     // 'Short': this.exceldata[i].PositionTitle,
-      //     // 'Description': this.exceldata[i].PositionTitle,
-
-      //     'ID':this.exceldata[i].CurrentVacationLeaveBalance,
-      //     'Short': this.exceldata[i].EmployeeNo,
-      //     'Description': this.exceldata[i].EmployeeNo
-
-
-
-      //   }
-        // this.AliprojectService.InsertRoleType(eb1)
-
-        var obj={
-          attachmenturlforexport:this.exceldata
-        }
-        this.AliprojectService.UploadEmployeeData(obj)
-          .subscribe({
-            next: data => {
-              debugger
-              Swal.fire('Updated Successfully')
-              this.loader=false;
-              this.ngOnInit();
-            }
-          })
-      }
-    // }
-  }
-
-  // PayDate:any;
+  // role:any;
+  // roleid:any;
   // public Upload_file() {
   //   debugger
   //   if (this.exceldata == undefined) {
@@ -1624,10 +1563,10 @@ export class StaffDashboardComponent implements OnInit {
   //   } else {
   //     let apiarray = [];
 
-  //      for (let i = 0; i < this.exceldata.length; i++) {
+  //     // for (let i = 0; i < this.exceldata.length; i++) {
   //     //   this.RoleTypeList2=this.RoleTypeList.filter((x: { short: any; })=>x.short==this.exceldata[i].PositionTitle,
 
-  //     this.PayDate = new Date(Date.UTC(0, 0, this.exceldata[i].EmploymentStartDate-1 ));
+
   //     //        )
     
   //     //        if(this.RoleTypeList2.length!=0){
@@ -1637,29 +1576,26 @@ export class StaffDashboardComponent implements OnInit {
   //     //         this.roletypeid = 0
   //     //        }
     
-  //           var eb1 = {
+  //     //         var eb1 = {
 
 
           
-  //         // 'Short': this.exceldata[i].PositionTitle,
-  //         // 'Description': this.exceldata[i].PositionTitle,
+  //     //     // 'Short': this.exceldata[i].PositionTitle,
+  //     //     // 'Description': this.exceldata[i].PositionTitle,
 
-  //         'ID':this.exceldata[i].CurrentVacationLeaveBalance,
-  //         'Short': this.exceldata[i].NextLevelManager,
-  //         'Description': this.exceldata[i].CompanyEmailAddress
-
-
+  //     //     'ID':this.exceldata[i].CurrentVacationLeaveBalance,
+  //     //     'Short': this.exceldata[i].EmployeeNo,
+  //     //     'Description': this.exceldata[i].EmployeeNo
 
 
 
-
-  //       }
+  //     //   }
   //       // this.AliprojectService.InsertRoleType(eb1)
 
-  //       //var obj={
-  //       //   attachmenturlforexport:this.exceldata
-  //       // }
-  //       this.AliprojectService.UpdateRoleType(eb1)
+  //       var obj={
+  //         attachmenturlforexport:this.exceldata
+  //       }
+  //       this.AliprojectService.UploadEmployeeData(obj)
   //         .subscribe({
   //           next: data => {
   //             debugger
@@ -1669,8 +1605,73 @@ export class StaffDashboardComponent implements OnInit {
   //           }
   //         })
   //     }
-  //    }
+  //   // }
   // }
+
+  PayDate:any;
+  public Upload_file() {
+    debugger
+    if (this.exceldata == undefined) {
+      Swal.fire('Choose a File');
+    } else {
+      let apiarray = [];
+
+       for (let i = 0; i < this.exceldata.length; i++) {
+      //   this.RoleTypeList2=this.RoleTypeList.filter((x: { short: any; })=>x.short==this.exceldata[i].PositionTitle,
+
+      this.PayDate = new Date(Date.UTC(0, 0, this.exceldata[i].EmploymentStartDate-1 ));
+      //        )
+    
+      this.stafflistcopy123=this.stafflist.filter((x: { employeID: any; })=>x.employeID==this.exceldata[i].EmployeeID
+      )
+      if(this.stafflistcopy123.length!=0){
+       this.StaffID = this.stafflistcopy123[0].id
+      }
+      else{
+       this.StaffID = 0
+      }
+
+      //        if(this.RoleTypeList2.length!=0){
+      //         this.roletypeid = this.RoleTypeList2[0].id
+      //        }
+      //        else{
+      //         this.roletypeid = 0
+      //        }
+    
+            var eb1 = {
+
+
+          
+          // 'Short': this.exceldata[i].PositionTitle,
+          // 'Description': this.exceldata[i].PositionTitle,
+
+          'ID':this.StaffID,
+          'Short': this.exceldata[i].Level,
+          'Description': this.exceldata[i].Level
+
+
+
+
+
+
+        }
+        // this.AliprojectService.InsertRoleType(eb1)
+
+        //var obj={
+        //   attachmenturlforexport:this.exceldata
+        // }
+        this.AliprojectService.UpdateRoleType(eb1)
+          .subscribe({
+            next: data => {
+              debugger
+              Swal.fire('Updated Successfully')
+              this.loader=false;
+              this.ngOnInit();
+            }
+          })
+      }
+     }
+  }
 
   AssignedCompany: any;
 

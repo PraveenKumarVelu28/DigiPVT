@@ -229,7 +229,7 @@ export class AppComponent {
       this.sidenav = false
     }
     else {
-      (document.getElementById("mySidebar") as HTMLInputElement).style.width = "94%";
+      (document.getElementById("mySidebar") as HTMLInputElement).style.width = "96%";
       this.sidenav = true;
     }
     this.SidebarComponent?.getvalues(sidenav)

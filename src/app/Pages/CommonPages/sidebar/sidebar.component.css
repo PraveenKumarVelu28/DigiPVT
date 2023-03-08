@@ -4,7 +4,7 @@ body {
 
 .sidebar {
   overflow-y: auto;
-  height: 90vh;
+  height: 87vh;
   width:94%;
   position: relative;
   z-index: 1;
@@ -178,6 +178,7 @@ background: #3247D5;
 
   .sidebar a {
     font-size: 18px;
+    padding-left: 30px;
   }
 }
 
@@ -188,4 +189,14 @@ background: #3247D5;
 
 .digi-icon {
   padding: 10px 10px 10px 13px;
+}
+
+a {
+  white-space: break-spaces;
+  display: flex !important;
+  align-items: center;
+}
+
+.sub-collapse {
+  padding-left: 20px;
 }

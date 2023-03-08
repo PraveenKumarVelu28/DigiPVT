@@ -169,8 +169,8 @@ export class SidebarComponent implements OnInit {
 
 
   public ValidatedPayrollSummary() {
-    this.active = '12321'
-    localStorage.setItem("clickname", "Holidays")
+    this.active = 'ValidatedPayrollSummary'
+    localStorage.setItem("pagename", "ValidatedPayrollSummary")
     this.DigiPVTService.GetValidationPassword().subscribe(data => {
       debugger
       this.validation = data.filter(x=>x.menuName=='Validated Payroll Summary');
@@ -242,8 +242,8 @@ export class SidebarComponent implements OnInit {
 
   PayrollSummaryValidation() {
     debugger
-    this.active = 976;
-    localStorage.setItem('Pagename', 'Announcements')
+    this.active = 'PayrollSummaryValidation';
+    localStorage.setItem('Pagename', 'PayrollSummaryValidation')
   }
 
   PhilHealthValidation() {
@@ -589,6 +589,7 @@ export class SidebarComponent implements OnInit {
 
 
   public UploadSystemGeneratedLWOP() {
+    this.active='UploadSystemGeneratedLWOP'
 
     this.router.navigate(['/PayrollProcessor/UploadGeneratedLwop'])
 
@@ -662,7 +663,7 @@ export class SidebarComponent implements OnInit {
 
   public ValidatedRunTaxValidation() {
 
-    this.active = 'RunTaxValidation'
+    this.active = 'ValidatedRunTaxValidation'
     localStorage.setItem("clickname", "Component  Master")
 
     this.DigiPVTService.GetValidationPassword().subscribe(data => {
@@ -834,8 +835,8 @@ export class SidebarComponent implements OnInit {
   }
   ShowBasicPayValidation: any
   public BasicPayValidation() {
-    this.active = 767
-    localStorage.setItem("clickname", "Component  Master")
+    this.active = 'BasicPayValidation'
+    localStorage.setItem("pagename", "BasicPayValidation")
   }
 
 
@@ -955,7 +956,7 @@ export class SidebarComponent implements OnInit {
 
   public RunLwopValidation() {
     debugger
-    this.active = 889;
+    this.active = 'RunLwopValidation';
     localStorage.setItem('Pagename', 'Staff')
 
     this.DigiPVTService.GetValidationPassword().subscribe(data => {
@@ -1275,7 +1276,7 @@ export class SidebarComponent implements OnInit {
   public ValidatedBasicPayValues() {
     debugger
    
-    this.active = 2345;
+    this.active = 'ValidatedBasicPayValues';
     localStorage.setItem('Pagename', 'Staff')
 
     this.DigiPVTService.GetValidationPassword().subscribe(data => {
@@ -1424,7 +1425,7 @@ export class SidebarComponent implements OnInit {
     debugger
   
 
-    this.active = 2345;
+    this.active = 'ValidatedRetroBasicPayValues';
     localStorage.setItem('Pagename', 'Staff')
 
     this.DigiPVTService.GetValidationPassword().subscribe(data => {
@@ -1471,7 +1472,7 @@ export class SidebarComponent implements OnInit {
 
 
   public UploadPayrollSummaryReport() {
-    this.active = 'UploadBasicPayValues'
+    this.active = 'UploadPayrollSummaryReport'
 
     if(this.companyid==10013 ){
       this.router.navigate(['/PayrollProcessor/UploadPayrollSummaryReprtValues'])

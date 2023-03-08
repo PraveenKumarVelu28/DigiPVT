@@ -66,11 +66,7 @@ body {
     border: none;
     border-radius: 5px;
     font-size: 12px;
-<<<<<<< HEAD
-    background-color: #2b6777;
-=======
     background-color: #3247d5;
->>>>>>> 6c8b4167bb3cae604e3d7829e4f70f64eba3d676
     font-weight: white;
     color: white;
   }
@@ -391,15 +387,10 @@ body {
     margin-left: -19px;
     border-radius: 6px;
     height: 28px;
-<<<<<<< HEAD
+
     background-color: #2b6777;
-=======
-    background-color: #3247d5;
->>>>>>> 6c8b4167bb3cae604e3d7829e4f70f64eba3d676
-    color: white;
-    border: none;
+
   }
-  
   .din-regular23 {
     font-family: 'Poppins';
     font-size: 11px;

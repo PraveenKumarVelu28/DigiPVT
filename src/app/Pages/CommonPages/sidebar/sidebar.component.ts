@@ -169,7 +169,7 @@ export class SidebarComponent implements OnInit {
 
 
   public ValidatedPayrollSummary() {
-    this.active = '12321'
+    this.active = 'ValidatedPayrollSummary'
     localStorage.setItem("clickname", "Holidays")
     this.DigiPVTService.GetValidationPassword().subscribe(data => {
       debugger
@@ -225,7 +225,7 @@ export class SidebarComponent implements OnInit {
 
   NHANDRValidation() {
     debugger
-    this.active = 108;
+    this.active = 'NHANDRValidation';
     localStorage.setItem('Pagename', 'Announcements')
     this.router.navigate(['/PayrollProcessor/ValidatedNewHiresDetails']);
   }
@@ -242,7 +242,7 @@ export class SidebarComponent implements OnInit {
 
   PayrollSummaryValidation() {
     debugger
-    this.active = 976;
+    this.active = 'PayrollSummaryValidation';
     localStorage.setItem('Pagename', 'Announcements')
   }
 
@@ -662,8 +662,8 @@ export class SidebarComponent implements OnInit {
 
   public ValidatedRunTaxValidation() {
 
-    this.active = 'RunTaxValidation'
-    localStorage.setItem("clickname", "Component  Master")
+    this.active = 'ValidatedRunTaxValidation'
+    localStorage.setItem("pagename", "Validated Run TaxValidation")
 
     this.DigiPVTService.GetValidationPassword().subscribe(data => {
       debugger
@@ -734,7 +734,7 @@ export class SidebarComponent implements OnInit {
   }
 
   public TaxValidation() {
-    this.active = 'RunTaxValidation'
+    this.active = 'TaxValidation'
   }
 
   
@@ -1063,7 +1063,7 @@ export class SidebarComponent implements OnInit {
 
   public ValidatedNewHandR() {
     debugger
-    this.active = 2345;
+    this.active = 'ValidatedNewHandR';
     this.router.navigate(['/PayrollProcessor/ValidatedNewHiresDetails']);
 
 
@@ -1072,7 +1072,7 @@ export class SidebarComponent implements OnInit {
   
   public UploadMasterFile() {
     debugger
-    this.active = 2345;
+    this.active = 'UploadMasterFile';
     this.router.navigate(['/PayrollProcessor/UploadMasterList']);
 
 
@@ -1101,7 +1101,7 @@ export class SidebarComponent implements OnInit {
     
   public UploadAttendanceCounts() {
     debugger
-    this.active = 2345;
+    this.active = 'UploadAttendanceCounts';
     this.router.navigate(['/PayrollProcessor/UploadAttendanceDaysCount']);
 
 
@@ -1122,7 +1122,7 @@ export class SidebarComponent implements OnInit {
   
   public ValidatedBankstats() {
     debugger
-    this.active = 2345;
+    this.active = 'ValidatedBankstats';
     this.router.navigate(['/PayrollProcessor/ValidatedBlanKStats']);
 
 
@@ -1133,7 +1133,7 @@ export class SidebarComponent implements OnInit {
   
   public ValidatedHeadCount() {
     debugger
-    this.active = 2345;
+    this.active = 'ValidatedHeadCount';
     this.router.navigate(['/PayrollProcessor/ValidatedHeadCountDetails']);
 
 
@@ -1142,7 +1142,7 @@ export class SidebarComponent implements OnInit {
     
   public UploadHeadCount() {
     debugger
-    this.active = 2345;
+    this.active = 'UploadHeadCount';
     this.router.navigate(['/PayrollProcessor/UploadHeadCountValues']);
 
 
@@ -1152,7 +1152,7 @@ export class SidebarComponent implements OnInit {
 
   public BlankStatsValidation() {
     debugger
-    this.active = 432;
+    this.active = 'BlankStatsValidation';
    
 
 
@@ -1378,7 +1378,7 @@ export class SidebarComponent implements OnInit {
   public ValidatedTandLDetails() {
     debugger
    
-    this.active = 2345;
+    this.active = 'ValidatedTandLDetails';
     localStorage.setItem('Pagename', 'Staff')
 
     this.DigiPVTService.GetValidationPassword().subscribe(data => {
@@ -1471,7 +1471,7 @@ export class SidebarComponent implements OnInit {
 
 
   public UploadPayrollSummaryReport() {
-    this.active = 'UploadBasicPayValues'
+    this.active = 'UploadPayrollSummaryReport'
 
     if(this.companyid==10013 ){
       this.router.navigate(['/PayrollProcessor/UploadPayrollSummaryReprtValues'])
@@ -1491,7 +1491,7 @@ export class SidebarComponent implements OnInit {
 
 
    public UploadPayrollInputs() {
-    this.active = 'UploadBasicPayValues'
+    this.active = 'UploadPayrollInputs'
 
  
       this.router.navigate(['/PayrollProcessor/UploadPayrollInputs'])

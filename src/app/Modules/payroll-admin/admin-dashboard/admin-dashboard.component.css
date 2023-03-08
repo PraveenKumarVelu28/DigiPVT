@@ -387,9 +387,9 @@ body {
     margin-left: -19px;
     border-radius: 6px;
     height: 28px;
-
-    background-color: #2b6777;
-
+    background-color: #3247d5;
+    color: white;
+    border: none;
   }
   .din-regular23 {
     font-family: 'Poppins';

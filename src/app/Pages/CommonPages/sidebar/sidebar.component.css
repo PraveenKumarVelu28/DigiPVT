@@ -173,12 +173,15 @@ background: #3247D5;
 
 @media screen and (max-height: 450px) {
   /*  .sidebar {
-    padding-top: 15px;
-  } */
+      padding-top: 15px;
+    } */
 
   .sidebar a {
     font-size: 18px;
-    padding-left: 30px;
+  }
+}
+
+.menu-icon {
   display: flex;
   justify-content: space-between;
 }
@@ -191,9 +194,8 @@ a {
   white-space: break-spaces;
   display: flex !important;
   align-items: center;
-
 }
+
 .sub-collapse {
   padding-left: 20px;
 }
-

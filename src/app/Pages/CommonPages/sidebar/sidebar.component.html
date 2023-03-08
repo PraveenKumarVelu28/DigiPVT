@@ -146,12 +146,12 @@
 
 <a data-toggle="collapse" data-target="#TaxValidation"
 *ngIf="login == 9 && (companyid == 1001 || companyid == 10013 || companyid == 1008)" (click)="TaxValidation()"
-[ngClass]="(active == 'RunTaxValidation' )&&!mini ? 'menu1' : (active == 768)&&mini?'menu-mini':'menu'">
+[ngClass]="(active == 'TaxValidation' )&&!mini ? 'menu1' : (active == 'TaxValidation')&&mini?'menu-mini':'menu'">
 <div class="test_case">
 <div>
-  <img *ngIf="(active == 'RunTaxValidation'&&!mini)" src="assets/Images/revamp/announcementwhite.png">
-  <img *ngIf="active != 'RunTaxValidation' " src="assets/Images/revamp/announcementnewgray-icon.png">
-  <img *ngIf="(active == 'RunTaxValidation'&&mini) " src="assets/Images/revamp/announcementnewblue-icon.png">
+  <img *ngIf="(active == 'TaxValidation'&&!mini)" src="assets/Images/revamp/announcementwhite.png">
+  <img *ngIf="active != 'TaxValidation' " src="assets/Images/revamp/announcementnewgray-icon.png">
+  <img *ngIf="(active == 'TaxValidation'&&mini) " src="assets/Images/revamp/announcementnewblue-icon.png">
 </div>&nbsp;&nbsp;&nbsp;
 <div *ngIf="!mini">
   <span class="icon-text d-flex">Tax Validation</span>
@@ -256,12 +256,12 @@
 <a data-toggle="collapse" data-target="#BlankStats" *ngIf="login == 9 && (companyid == 1008)"
 
 (click)="BlankStatsValidation()"
-[ngClass]="(active == 'PhilHealthValidation' ) && !mini ? 'menu1' : (active == 'PhilHealthValidation')&&mini?'menu-mini':'menu'">
+[ngClass]="(active == 'BlankStatsValidation' ) && !mini ? 'menu1' : (active == 'BlankStatsValidation')&&mini?'menu-mini':'menu'">
 <div class="test_case">
 <div>
-  <img *ngIf="(active == 'PhilHealthValidation' && !mini)" src="assets/Images/revamp/announcementwhite.png">
-  <img *ngIf="active != 'PhilHealthValidation' " src="assets/Images/revamp/announcementnewgray-icon.png">
-  <img *ngIf="(active == 'PhilHealthValidation' && mini) " src="assets/Images/revamp/announcementnewblue-icon.png">
+  <img *ngIf="(active == 'BlankStatsValidation' && !mini)" src="assets/Images/revamp/announcementwhite.png">
+  <img *ngIf="active != 'BlankStatsValidation' " src="assets/Images/revamp/announcementnewgray-icon.png">
+  <img *ngIf="(active == 'BlankStatsValidation' && mini) " src="assets/Images/revamp/announcementnewblue-icon.png">
 </div>&nbsp;&nbsp;&nbsp;
 <div *ngIf="!mini">
   <span class="icon-text d-flex">Blank Stats Validation</span>
@@ -271,12 +271,12 @@
 
 <div id="BlankStats" class="collapse" [ngClass]="mini?'':' sub-collapse'" >
 <a (click)="ValidatedBankstats()" class="nonactive"
-[ngClass]="(active == 'ValidatedPhilHealthDetails' ) && !mini ? 'menu1' : (active == 'ValidatedPhilHealthDetails')&&mini?'menu-mini':'menu'">
+[ngClass]="(active == 'ValidatedBankstats' ) && !mini ? 'menu1' : (active == 'ValidatedBankstats')&&mini?'menu-mini':'menu'">
 <div class="test_case">
 <div>
-  <img *ngIf="(active == 'PhilHealthValidation' && !mini)" src="assets/Images/revamp/announcementwhite.png">
-  <img *ngIf="active != 'PhilHealthValidation' " src="assets/Images/revamp/announcementnewgray-icon.png">
-  <img *ngIf="(active == 'PhilHealthValidation' && mini) " src="assets/Images/revamp/announcementnewblue-icon.png">
+  <img *ngIf="(active == 'ValidatedBankstats' && !mini)" src="assets/Images/revamp/announcementwhite.png">
+  <img *ngIf="active != 'ValidatedBankstats' " src="assets/Images/revamp/announcementnewgray-icon.png">
+  <img *ngIf="(active == 'ValidatedBankstats' && mini) " src="assets/Images/revamp/announcementnewblue-icon.png">
 </div>&nbsp;&nbsp;&nbsp;
 <div *ngIf="!mini">
   <span class="icon-text d-flex">Validated Blank Stats</span>
@@ -285,12 +285,12 @@
 </a>
 
 <a (click)="UploadAttendanceCounts()" class="nonactive"
-[ngClass]="(active == 'UploadPhilHealthSummaryReport' ) && !mini ? 'menu1' : (active == 'UploadPhilHealthSummaryReport')&&mini?'menu-mini':'menu'">
+[ngClass]="(active == 'UploadAttendanceCounts' ) && !mini ? 'menu1' : (active == 'UploadAttendanceCounts')&&mini?'menu-mini':'menu'">
 <div class="test_case">
 <div>
-  <img *ngIf="(active == 'UploadPhilHealthSummaryReport' && !mini)" src="assets/Images/revamp/announcementwhite.png">
-  <img *ngIf="active != 'UploadPhilHealthSummaryReport' " src="assets/Images/revamp/announcementnewgray-icon.png">
-  <img *ngIf="(active == 'UploadPhilHealthSummaryReport' && mini) " src="assets/Images/revamp/announcementnewblue-icon.png">
+  <img *ngIf="(active == 'UploadAttendanceCounts' && !mini)" src="assets/Images/revamp/announcementwhite.png">
+  <img *ngIf="active != 'UploadAttendanceCounts' " src="assets/Images/revamp/announcementnewgray-icon.png">
+  <img *ngIf="(active == 'UploadAttendanceCounts' && mini) " src="assets/Images/revamp/announcementnewblue-icon.png">
 </div>&nbsp;&nbsp;&nbsp;
 <div *ngIf="!mini">
   <span class="icon-text d-flex">Upload Attendance Counts</span>
@@ -305,12 +305,12 @@
 <a data-toggle="collapse" data-target="#NHANDRValidation" *ngIf="login == 9 && (companyid == 1008)"
 
 (click)="NHANDRValidation()"
-[ngClass]="(active == 'PhilHealthValidation' ) && !mini ? 'menu1' : (active == 'PhilHealthValidation')&&mini?'menu-mini':'menu'">
+[ngClass]="(active == 'NHANDRValidation' ) && !mini ? 'menu1' : (active == 'NHANDRValidation ')&&mini?'menu-mini':'menu'">
 <div class="test_case">
 <div>
-  <img *ngIf="(active == 'PhilHealthValidation' && !mini)" src="assets/Images/revamp/announcementwhite.png">
-  <img *ngIf="active != 'PhilHealthValidation' " src="assets/Images/revamp/announcementnewgray-icon.png">
-  <img *ngIf="(active == 'PhilHealthValidation' && mini) " src="assets/Images/revamp/announcementnewblue-icon.png">
+  <img *ngIf="(active == 'NHANDRValidation' && !mini)" src="assets/Images/revamp/announcementwhite.png">
+  <img *ngIf="active != 'NHANDRValidation' " src="assets/Images/revamp/announcementnewgray-icon.png">
+  <img *ngIf="(active == 'NHANDRValidation' && mini) " src="assets/Images/revamp/announcementnewblue-icon.png">
 </div>&nbsp;&nbsp;&nbsp;
 <div *ngIf="!mini">
   <span class="icon-text d-flex">NH and Terminated Validation</span>
@@ -320,12 +320,12 @@
 
 <div id="NHANDRValidation" class="collapse" [ngClass]="mini?'':' sub-collapse'" >
 <a (click)="ValidatedNewHandR()" class="nonactive"
-[ngClass]="(active == 'ValidatedPhilHealthDetails' ) && !mini ? 'menu1' : (active == 'ValidatedPhilHealthDetails')&&mini?'menu-mini':'menu'">
+[ngClass]="(active == 'ValidatedNewHandR' ) && !mini ? 'menu1' : (active == 'ValidatedNewHandR')&&mini?'menu-mini':'menu'">
 <div class="test_case">
 <div>
-  <img *ngIf="(active == 'PhilHealthValidation' && !mini)" src="assets/Images/revamp/announcementwhite.png">
-  <img *ngIf="active != 'PhilHealthValidation' " src="assets/Images/revamp/announcementnewgray-icon.png">
-  <img *ngIf="(active == 'PhilHealthValidation' && mini) " src="assets/Images/revamp/announcementnewblue-icon.png">
+  <img *ngIf="(active == 'ValidatedNewHandR' && !mini)" src="assets/Images/revamp/announcementwhite.png">
+  <img *ngIf="active != 'ValidatedNewHandR' " src="assets/Images/revamp/announcementnewgray-icon.png">
+  <img *ngIf="(active == 'ValidatedNewHandR' && mini) " src="assets/Images/revamp/announcementnewblue-icon.png">
 </div>&nbsp;&nbsp;&nbsp;
 <div *ngIf="!mini">
   <span class="icon-text d-flex">Validated NH and R</span>
@@ -334,12 +334,12 @@
 </a>
 
 <a (click)="UploadMasterFile()" class="nonactive"
-[ngClass]="(active == 'UploadPhilHealthSummaryReport' ) && !mini ? 'menu1' : (active == 'UploadPhilHealthSummaryReport')&&mini?'menu-mini':'menu'">
+[ngClass]="(active == 'UploadMasterFile' ) && !mini ? 'menu1' : (active == 'UploadMasterFile')&&mini?'menu-mini':'menu'">
 <div class="test_case">
 <div>
-  <img *ngIf="(active == 'UploadPhilHealthSummaryReport' && !mini)" src="assets/Images/revamp/announcementwhite.png">
-  <img *ngIf="active != 'UploadPhilHealthSummaryReport' " src="assets/Images/revamp/announcementnewgray-icon.png">
-  <img *ngIf="(active == 'UploadPhilHealthSummaryReport' && mini) " src="assets/Images/revamp/announcementnewblue-icon.png">
+  <img *ngIf="(active == 'UploadMasterFile' && !mini)" src="assets/Images/revamp/announcementwhite.png">
+  <img *ngIf="active != 'UploadMasterFile' " src="assets/Images/revamp/announcementnewgray-icon.png">
+  <img *ngIf="(active == 'UploadMasterFile' && mini) " src="assets/Images/revamp/announcementnewblue-icon.png">
 </div>&nbsp;&nbsp;&nbsp;
 <div *ngIf="!mini">
   <span class="icon-text d-flex">Upload Master File</span>
@@ -729,12 +729,12 @@
     [ngClass]="(active == 'UploadBonusValues' )&&!mini ? 'menu1' : (active == 'UploadBonusValues')&&mini?'menu-mini':'menu'">
     <div class="test_case">
       <div>
-        <img *ngIf="(active == 2345&&!mini)" src="assets/Images/revamp/announcementwhite.png">
-        <img *ngIf="active != 2345 " src="assets/Images/revamp/announcementnewgray-icon.png">
-        <img *ngIf="(active == 2345&&mini) " src="assets/Images/revamp/announcementnewblue-icon.png">
+        <img *ngIf="(active == 'UploadBonusValues'&&!mini)" src="assets/Images/revamp/announcementwhite.png">
+        <img *ngIf="active != 'UploadBonusValues' " src="assets/Images/revamp/announcementnewgray-icon.png">
+        <img *ngIf="(active == 'UploadBonusValues'&&mini) " src="assets/Images/revamp/announcementnewblue-icon.png">
       </div>&nbsp;&nbsp;&nbsp;
       <div *ngIf="!mini">
-        <span class="icon-text d-flex">Upload Bonus  Values</span>
+        <span class="icon-text d-flex">Upload Bonus Values</span>
       </div>
     </div>
   </a>
@@ -770,21 +770,47 @@
 <a data-toggle="collapse" data-target="#HeadCount"
 *ngIf="login == 9 && companyid == 1008 " (click)="HeadCountValidation()"
 [ngClass]="(active == 'holi' )&&!mini ? 'menu1' : (active == 'holi')&&mini?'menu-mini':'menu'">
-<img *ngIf="(active == 'holi'&&!mini)" src="assets/Images/revamp/announcementwhite.png">
-<img *ngIf="active != 'holi' " src="assets/Images/revamp/announcementnewgray-icon.png">
-<img *ngIf="(active == 'holi'&&mini) " src="assets/Images/revamp/announcementnewblue-icon.png">
-&nbsp;&nbsp;
-<span class="icon-text">Head Count Validation </span></a>
-
-<div id="HeadCount" class="collapse length ">
-
-<a (click)="ValidatedHeadCount()" class="nonactive">
-  <span [ngClass]="active == '12321' ? 'Active1' : 'Active3'" class="sub-request">Validated Head Count
-    </span>
+<div class="test_case">
+  <div>
+    <img *ngIf="(active == 312&&!mini)" src="assets/Images/revamp/dashboardwhite-icon.png">
+    <img *ngIf="active != 312" src="assets/Images/revamp/dashboardgray-icon.png">
+    <img *ngIf="(active == 312&&mini)" src="assets/Images/revamp/dashboardnewblue-icon.png">
+  </div>&nbsp;&nbsp;&nbsp;
+  <div *ngIf="!mini">
+    <span class="icon-text d-flex">Head Count Validation</span>
+  </div>
+</div>
 </a>
-<a (click)="UploadHeadCount()" class="nonactive">
-  <span [ngClass]="active == '12321' ? 'Active1' : 'Active3'" class="sub-request">Upload Head Count
-    </span>
+
+
+
+<div id="HeadCount" class="collapse" [ngClass]="mini?'':' sub-collapse'" >
+<a (click)="ValidatedHeadCount()" class="nonactive"
+  [ngClass]="(active == 'ValidatedHeadCount' )&&!mini ? 'menu1' : (active == 'ValidatedHeadCount')&&mini?'menu-mini':'menu'">
+<div class="test_case">
+  <div>
+    <img *ngIf="(active == 'ValidatedHeadCount'&&!mini)" src="assets/Images/revamp/dashboardwhite-icon.png">
+    <img *ngIf="active != 'ValidatedHeadCount'" src="assets/Images/revamp/dashboardgray-icon.png">
+    <img *ngIf="(active == 'ValidatedHeadCount'&&mini)" src="assets/Images/revamp/dashboardnewblue-icon.png">
+  </div>&nbsp;&nbsp;&nbsp;
+  <div *ngIf="!mini">
+    <span class="icon-text d-flex">Validated Head Count</span>
+  </div>
+</div>
+</a>
+
+<a (click)="UploadHeadCount()" class="nonactive"
+  [ngClass]="(active == 'UploadHeadCount' )&&!mini ? 'menu1' : (active == 'UploadHeadCount')&&mini?'menu-mini':'menu'">
+<div class="test_case">
+  <div>
+    <img *ngIf="(active == 'UploadHeadCount'&&!mini)" src="assets/Images/revamp/dashboardwhite-icon.png">
+    <img *ngIf="active != 'UploadHeadCount'" src="assets/Images/revamp/dashboardgray-icon.png">
+    <img *ngIf="(active == 'UploadHeadCount'&&mini)" src="assets/Images/revamp/dashboardnewblue-icon.png">
+  </div>&nbsp;&nbsp;&nbsp;
+  <div *ngIf="!mini">
+    <span class="icon-text d-flex">Upload Head Count</span>
+  </div>
+</div>
 </a>
 
 
@@ -840,9 +866,19 @@
 
 
 
-<div id="LoanProceedValidation" class="collapse length ">
-<a (click)="ValidatedLoanProceedsDetails()" class="nonactive">
-<span class="sub-request">Validated Loan Proceeds</span>
+<div id="LoanProceedValidation" class="collapse " [ngClass]="mini?'':' sub-collapse'" >
+<a (click)="ValidatedLoanProceedsDetails()" class="nonactive"
+  [ngClass]="(active == 'ValidatedLoanProceedsDetails' )&&!mini ? 'menu1' : (active == 'ValidatedLoanProceedsDetails')&&mini?'menu-mini':'menu'">
+<div class="test_case">
+<div>
+  <img *ngIf="(active == 'ValidatedLoanProceedsDetails'&&!mini)" src="assets/Images/revamp/announcementwhite.png">
+  <img *ngIf="active != 'ValidatedLoanProceedsDetails' " src="assets/Images/revamp/announcementnewgray-icon.png">
+  <img *ngIf="(active == 'ValidatedLoanProceedsDetails'&&mini) " src="assets/Images/revamp/announcementnewblue-icon.png">
+</div>&nbsp;&nbsp;&nbsp;
+<div *ngIf="!mini">
+  <span class="icon-text d-flex">Validated Loan Proceeds</span>
+</div>
+</div>
 </a>
 
 
@@ -852,13 +888,19 @@
 <a data-toggle="collapse" data-target="#OvertimeValidation"
 *ngIf="login == 9 && (companyid == 1002 ||  companyid == 1008 ) " (click)="OvertimeValidation()"
 [ngClass]="(active == 'ot' )&&!mini ? 'menu1' : (active == 'ot')&&mini?'menu-mini':'menu'">
-<img *ngIf="(active == 'ot'&&!mini)" src="assets/Images/revamp/announcementwhite.png">
-<img *ngIf="active != 'ot' " src="assets/Images/revamp/announcementnewgray-icon.png">
-<img *ngIf="(active == 'ot'&&mini) " src="assets/Images/revamp/announcementnewblue-icon.png">
+<div class="test_case">
+<div>
+  <img *ngIf="(active == 'ot'&&!mini)" src="assets/Images/revamp/announcementwhite.png">
+  <img *ngIf="active != 'ot' " src="assets/Images/revamp/announcementnewgray-icon.png">
+  <img *ngIf="(active == 'ot'&&mini) " src="assets/Images/revamp/announcementnewblue-icon.png">
+</div>&nbsp;&nbsp;&nbsp;
+<div *ngIf="!mini">
+  <span class="icon-text d-flex">Overtime Validation</span>
+</div>
+</div>
+</a>
 
-<span class="icon-text"> &nbsp;&nbsp;Overtime Validation</span></a>
-
-<div id="OvertimeValidation" class="collapse length ">
+<div id="OvertimeValidation" class="collapse" [ngClass]="mini?'':' sub-collapse'" >
 
   <a (click)="ValidatedTandLDetails()" class="nonactive"
 [ngClass]="(active == 'ValidatedTandLDetails' ) && !mini ? 'menu1' : (active == 'ValidatedTandLDetails')&&mini?'menu-mini':'menu'">
@@ -868,8 +910,8 @@
     <img *ngIf="active != 'ValidatedTandLDetails' " src="assets/Images/revamp/announcementnewgray-icon.png">
     <img *ngIf="(active == 'ValidatedTandLDetails' && mini) " src="assets/Images/revamp/announcementnewblue-icon.png">
   </div>&nbsp;&nbsp;&nbsp;
-  <div >
-    <span class="icon-text">Validated Overtime Details</span>
+  <div *ngIf="!mini">
+    <span class="icon-text d-flex">Validated Overtime Details</span>
   </div>
 </div>
 </a>
@@ -882,8 +924,8 @@
         <img *ngIf="active != 'UploadedTandLDetails' " src="assets/Images/revamp/announcementnewgray-icon.png">
         <img *ngIf="(active == 'UploadedTandLDetails' && mini) " src="assets/Images/revamp/announcementnewblue-icon.png">
           </div>&nbsp;&nbsp;&nbsp;
-      <div >
-        <span class="icon-text">Upload Overtime Values</span>
+      <div *ngIf="!mini">
+        <span class="icon-text d-flex">Upload Overtime Values</span>
       </div>
     </div>
   </a>

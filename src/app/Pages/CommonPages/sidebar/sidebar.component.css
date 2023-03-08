@@ -4,11 +4,7 @@ body {
 
 .sidebar {
   overflow-y: auto;
-<<<<<<< HEAD
-  height: 90vh;
-=======
   height: 87vh;
->>>>>>> 6c8b4167bb3cae604e3d7829e4f70f64eba3d676
   width:94%;
   position: relative;
   z-index: 1;
@@ -182,31 +178,23 @@ background: #3247D5;
 
   .sidebar a {
     font-size: 18px;
-<<<<<<< HEAD
-=======
     padding-left: 30px;
->>>>>>> 6c8b4167bb3cae604e3d7829e4f70f64eba3d676
-  }
-}
-
-.menu-icon {
   display: flex;
   justify-content: space-between;
 }
 
 .digi-icon {
   padding: 10px 10px 10px 13px;
-<<<<<<< HEAD
-=======
 }
 
 a {
   white-space: break-spaces;
   display: flex !important;
   align-items: center;
-}
 
+}
 .sub-collapse {
   padding-left: 20px;
->>>>>>> 6c8b4167bb3cae604e3d7829e4f70f64eba3d676
+}
+
 }

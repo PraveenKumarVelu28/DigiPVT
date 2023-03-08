@@ -1,0 +1,138 @@
+<div class="row">
+    <div class="col-md-12">
+        <div class="row">
+            <div class="col-lg-11">
+                <p class="Heading">Upload Leave Entitlement</p>
+            </div>
+        </div>
+        <div class="row FilterClass">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="row">
+                        <div class="col-lg-1">
+                            <img src="assets/Images/filter.svg" class="filter-img">
+                              <p class="filter">Filter By</p>
+                          </div>
+                        <div class="col-lg-3 fontstyle">
+                            <input class="form-control" type="search" placeholder="Search.." 
+                            id="term" [(ngModel)]="term">
+                        </div>
+                        <div class="col-lg-4">
+                            <br/>
+                                <button class="AddButton"  (click)="exportexcel()">Export to Excel</button>
+                         </div>
+                         <div class="col-lg-3">
+                            <button class="form-control AddExpense" data-toggle="modal" data-target="#import" >Upload
+                                LWOP</button>
+            
+                         </div>
+                    </div>
+                </div>
+            </div>
+        </div><br>
+        <div class="row">
+            <div class="col-lg-3"></div>
+            <div class="col-lg-2"></div>
+            <!-- <div class="col-lg-4">
+                <br/>
+                    <button class="AddButton"  (click)="exportexcel()">Export to Excel</button>
+             </div>
+             <div class="col-lg-3">
+                
+                <button class="form-control AddExpense" data-toggle="modal" data-target="#import" >Upload
+                    LWOP</button>
+
+             </div> -->
+            <!-- <div class="col-lg-3">
+                
+                
+
+            </div> -->
+            
+        </div><br>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="container-fluid">
+                    <table class="table" id="downloadaplication">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>EmployeeID</th>
+                                <th>Sick Leave Entitlement</th>
+                                <th>Vacation Leave Entitlement</th>
+                                <th>Leave With Pay Entitlement</th>
+                                
+                                
+                                
+                                <!-- <th>Attachment</th> -->
+                               
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let list of stafflist|filter:term |paginate: { itemsPerPage: count1, currentPage: p}"  >
+                                <td>{{list.name}}</td>
+                                <td>{{list.employeID}}</td>
+                               
+                                <td>{{list.sick_LeaveEntitlement}}</td>
+                                <td>{{list.vacation_LeaveEntitlement}}</td>
+                                <td>{{list.leave_with_PayEntitlement}}</td>
+                               
+                             
+                               
+                            </tr>
+                        </tbody>
+                    </table>
+                    <!-- <div class="text-left">
+                        <br>
+                        <pagination-controls (pageChange)="p = $event" class="poppinns"></pagination-controls>
+                    </div> -->
+                    <!-- <ng-template #noResults>
+                        <p class="NoResultShow"> No results found </p>
+                    </ng-template> -->
+                    <!-- <div class="text-left">
+                        <br>
+                        <pagination-controls (pageChange)="p1 = $event" class="poppinns"></pagination-controls>
+                    </div> -->
+                    
+                </div>
+            </div>
+            <div class="col-md-1"></div>
+        </div>
+    </div>
+</div>
+<div class="text-right">
+    <pagination-controls (pageChange)="p = $event"  previousLabel=""
+    nextLabel="" class="poppinns"></pagination-controls>               
+</div>
+
+
+
+<div id="import" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Upload Leaves</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-lg-8">
+                        <input type="file" accept=".xls,.xlsx" style="display: inline-block;"
+                            (change)="incomingfile($event)" placeholder="Upload file" accept=".xlsx">
+                    </div>
+                    <div class="col-lg-4">
+                        <a href="https://103.12.1.76//DigiPVTAPI/Templates/Import_Leave_Entitlement.xlsx" style="color:navy"><u>Template.XLSX</u></a>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <button type="button" class="save-btn" style="width: 70%;" data-dismiss="modal"
+                      (click)="Upload_file()"     >Upload
+                            Leaves</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,40 @@
+.addnew{
+    width: 116px;
+    height: 37px;
+    font-size: 14px;
+    font-weight: bold;
+    background: #3247D5;
+    border-radius: 5px;
+    color: white;
+    text-align: center;
+    border: none;
+    float: right;
+   
+  }
+
+  table,
+  tr,
+  td {
+    border: none !important;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 17px;
+    /* identical to box height, or 131% */
+    color: #0C275A;
+  }
+  
+  
+  tr:nth-child(odd) {
+    background-color: #FFFFFF !important
+  }
+  
+  tr:nth-child(even) {
+    background-color: #F2F2F2 !important
+  }
+  
+  .tablepadding {
+    padding: 0px;
+    margin: 0px;
+  }

@@ -1,0 +1,874 @@
+<!-- <app-loader *ngIf="loader"></app-loader> -->
+<div class="row">
+    <div class="col-md-12">
+        <div class="row">
+            <p class="Heading">Staff Dashboard</p>
+                
+        </div>
+        <br>
+        <div class="row FilterClass">
+            <div class="col-lg-12">
+                <div class="card">
+
+                    <div class="row">
+                        <div class="col-lg-1">
+                            <!-- <img src="assets/Images/filter.svg" class="filter-img"> -->
+                            <p>Filter By</p>
+                        </div>
+                        <!-- <div class="col-lg-2">
+                            <select class="form-control" id="Department" name="Department" [(ngModel)]="Department"
+                                (change)="getDepartment()">
+                                <option value="0">Select Department</option>
+                                <option value="{{item.id}}" *ngFor="let item of Departmentlist">
+                                    {{item.department_name}}
+                                </option>
+                            </select>
+                        </div> -->
+                        <div class="col-lg-3">
+                            <!-- <ng-multiselect-dropdown style="height: 30px;" [placeholder]="'Select Department'"
+                                [settings]="DepartmentdropdownSetting" [data]="Departmentlist" [(ngModel)]="Department"
+                                (onSelect)="DepartmentonItemSelect($event)">
+                            </ng-multiselect-dropdown> -->
+                            <select class="dropdown form-control" [(ngModel)]="Department" id="Department" name="Department">
+                                <option value="">Select Department</option>
+                                <option *ngFor="let Staff of Departmentlist" value="{{Staff.id}}">{{Staff.department_name}}
+                                </option>
+                            </select>
+                        </div>
+                        <div class="col-lg-2">
+                            <select class="form-control" id="level" name="level" [(ngModel)]="level"
+                                (change)="geLevel()">
+                                <option value="0">Select Level</option>
+                                <option *ngFor="let levels of leveltypeList" value="{{levels.id}}">{{levels.short}}
+                                </option>
+                            </select>
+                        </div>
+                        <div class="col-lg-2">
+                            <select class="form-control" id="RoleType" name="RoleType" (change)='PositiononItemSelect($event)'
+                                [(ngModel)]="RoleType">
+                                <option value="0">Select Position</option>
+                                <option *ngFor="let item of RoleTypeList" value="{{item.id}}">{{item.short}}
+                                </option>
+                            </select>
+                            <!-- <ng-multiselect-dropdown style="height: 30px;" [placeholder]="'Select Position'"
+                                [settings]="PositiondropdownSetting" [data]="RoleTypeList" [(ngModel)]="RoleType"
+                                (onSelect)="PositiononItemSelect($event)">
+                            </ng-multiselect-dropdown> -->
+                        </div>
+                        <div class="col-lg-3" style="font-family: 'Poppins';">
+                            <input class="form-control" type="search" [(ngModel)]="term"  (ngModelChange)="Filterstaff()"
+                                placeholder="Search for Staff">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><br>
+
+        <div class="row ">
+            <div class="col-lg-12">
+                <div class="row">
+                    <div class="col-md-8">
+                        <!-- <p class="show3res">SHOWING <span>{{(stafflist).length}} </span>RESULTS</p> -->
+                        <!-- <p class="show3res">SHOWING <span>{{(stafflist | filter:term).length}}
+                            </span>RESULTS</p> -->
+                    </div>
+                    <div class="col-md-4">
+                        <a routerLink="/Employee/StaffDetailsWizard"><button class="butn-sadow"><img
+                                    src="assets/Images/plus.svg" class="plus-icon">Add Staff</button> </a>
+                        <button class="save-btn" data-toggle="modal" data-target="#import" style="width: 40%;">Upload
+                            Staff</button>
+                    </div>
+                </div>
+            </div>
+        </div><br>
+
+        <div class="row" >
+            <div class="col-md-12">
+                <table class="table" id="lvs"
+                    *ngIf="(stafflist  | paginate: { itemsPerPage: count1, currentPage: p})?.length > 0; else noResults">
+                    <thead>
+                        <tr >
+                            <!-- <th>Check Box</th> -->
+                            <th>Employee Id</th>
+                            <th>Employee Name</th>
+                            <!-- <th>Parent Subsidiary</th>
+                            <th>Assigned Subsidiary</th> -->
+                            <th>Department</th>
+                            <th>Level</th>
+                            <th>Gender</th>
+                            <th>Position</th>
+                            <!-- <th>Phone Number</th> -->
+                            <th>Email</th>
+                            <th>Date Of Joining</th>
+                            <th>Manager</th>
+                            <th>Attendance Enable</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr
+                            *ngFor="let item of stafflist | paginate: { itemsPerPage: count1, currentPage: p}">
+
+                            <td>{{item.employeID}}</td>
+                            <td>{{item.fullname}}</td>
+                            <!-- <td>{{item.parentCompany}}</td>
+                            <td>{{item.assignedCompany}}</td> -->
+                            <td>{{item.department_name}}</td>
+                            <td>{{item.level}}</td>
+                            <td>{{item.gender}}</td>
+                            <td>{{item.role}}</td>
+                            <!-- <td>{{item.staffmobile}}</td> -->
+                            <td>{{item.emailID}}</td>
+                            <td>{{item.joiningDate|date}}</td>
+                            <td>
+                                <p *ngIf="item.manager==null">
+                                    NA
+                                </p>
+                                <p *ngIf="item.manager!=null">
+                                    {{item.manager}}
+                                </p>
+                            </td>
+                            <td>
+                                <button *ngIf="item.attendanceEnable==1" class="redbutton"
+                                    (click)="DisableAttendance(item)">Disable </button>
+                                <button *ngIf="item.attendanceEnable==null||item.attendanceEnable==0" class="redbutton"
+                                    (click)="EnableAttendance(item)">Enable </button>
+                            </td>
+                            <td>
+
+                                <i class="fa fa-pencil-square-o icon" (click)="showbttn(item)"></i>
+
+                                <!-- <i class="fa fa-pencil-square-o icon" [routerLink]="['/AddressDetailsWizard',item.id]"
+                                    title="Edit"></i>&nbsp;&nbsp;&nbsp;&nbsp;
+
+                                <i class="  fa fa-file icon" [routerLink]="['/UploadEmployeeDocumets',item.id]"
+                                    title="Upload Documents"></i>&nbsp;&nbsp;&nbsp;&nbsp;
+
+                                <i class="fa fa-trash-o icon" (click)="DeleteStaff(item)"
+                                    title="Delete"></i>&nbsp;&nbsp;&nbsp;&nbsp;
+
+
+                                <i class="  fa fa-folder-open icon" (click)="downloadzip(item)"
+                                    title="Download Documents"></i> -->
+                                <div *ngIf="showbtn && item.id==clikedid" class="card"
+                                    style="margin-left: -128px;width: fit-content;">
+                                    <button class="button" (click)="Edit()" [disabled]="item.enableDisable==1">Edit
+                                    </button><br>
+                                    <!-- <button class="button" (click)="Upload()">Upload </button><br>
+                                    <button class="button" (click)="convetToPDF20()">Download </button><br> -->
+                                    <button class="redbutton" (click)="DeleteStaff(item)">Delete </button><br>
+                                    <button *ngIf="item.enableDisable!=1" class="redbutton"
+                                        (click)="DisableStaff(item)">Disable </button><br>
+                                    <button *ngIf="item.enableDisable==1" class="redbutton"
+                                        (click)="EnableStaff(item)">Enable </button>
+                                    <!-- <p *ngIf="item.enableDisable==1">Disabled</p> -->
+                                    <!-- <button class="redbutton" *ngif="item.enableDisable==1"(click)="EnableStaff(item)">Enable </button> -->
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <ng-template #noResults>
+                <p class="NoResultShow"> No results found !! </p>
+            </ng-template>
+           
+        </div>
+        <div class="text-right">
+            <pagination-controls (pageChange)="p = $event"  previousLabel=""
+            nextLabel="" class="poppinns"></pagination-controls>               
+        </div>
+    </div>
+</div>
+
+
+<div id="Report" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content" style="width: 1000px;height:800px;overflow: auto;">
+            <div class="modal-body " id="contentToConvert456">
+                <div class="container-fluid">
+                    <br>
+                    <div class="row">
+                        <div class="col-lg-1">
+                        </div>
+                        <div class="col-lg-4">
+                            <h5 class="modal-title">Employee 201 File Report</h5>
+                        </div>
+                        <div class="col-lg-4">
+
+                        </div>
+                    </div>
+                    <hr>
+                    <br>
+                    <div class="row">
+                        <div class="col-lg-1"></div>
+                        <div class="col-lg-2">
+                            <h6>Company Name:</h6>
+                        </div>
+                        <div class="col-lg-2">
+                            <label>Amaze Inc</label>
+                        </div>
+                        <div class="col-lg-1"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-1"></div>
+                        <div class="col-lg-2">
+                            <h6>Employee No. :</h6>
+                        </div>
+                        <div class="col-lg-2">
+                            <label>0000{{employeeid}}</label>
+                        </div>
+                        <div class="col-lg-1"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-1"></div>
+                        <div class="col-lg-2">
+                            <h6>Employee Name :</h6>
+                        </div>
+                        <div class="col-lg-6">
+                            <label>{{ename}}</label>
+                        </div>
+                        <div class="col-lg-1"></div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-lg-1"></div>
+                        <div class="col-lg-2">
+                            <p><u>Basic Information</u></p>
+
+                        </div>
+                        <div class="col-lg-6">
+
+                        </div>
+                        <div class="col-lg-1"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-1"></div>
+                        <div class="col-lg-2">
+                            <h6>Date Of Birth :</h6>
+                        </div>
+                        <div class="col-lg-2">
+                            <label>{{dob}}</label>
+                        </div>
+                        <div class="col-lg-1"></div>
+                        <div class="col-lg-2">
+                            <h6>TIN :</h6>
+                        </div>
+                        <div class="col-lg-2">
+                            <label>{{TINNo}}</label>
+                        </div>
+                        <div class="col-lg-1"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-1"></div>
+                        <div class="col-lg-2">
+                            <h6>Gender :</h6>
+                        </div>
+                        <div class="col-lg-2">
+                            <label>{{Gender}}</label>
+                        </div>
+                        <div class="col-lg-1"></div>
+                        <div class="col-lg-2">
+                            <h6>SSS ID :</h6>
+                        </div>
+                        <div class="col-lg-2">
+                            <label>67-6331231-1
+                            </label>
+                        </div>
+                        <div class="col-lg-1"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-1"></div>
+                        <div class="col-lg-2">
+                            <h6>Marital Status :</h6>
+                        </div>
+                        <div class="col-lg-2">
+                            <label>Single</label>
+                        </div>
+                        <div class="col-lg-1"></div>
+                        <div class="col-lg-2">
+                            <h6>BP No :</h6>
+                        </div>
+                        <div class="col-lg-2">
+                            <label>
+                            </label>
+                        </div>
+                        <div class="col-lg-1"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-1"></div>
+                        <div class="col-lg-2">
+                            <h6>Address :</h6>
+                        </div>
+                        <div class="col-lg-2">
+                            <label>{{Address}}
+                            </label>
+                        </div>
+                        <div class="col-lg-1"></div>
+                        <div class="col-lg-2">
+                            <h6>HDMF :</h6>
+                        </div>
+                        <div class="col-lg-2">
+                            <label>12-789174873-7
+                            </label>
+                        </div>
+                        <div class="col-lg-1"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-1"></div>
+                        <div class="col-lg-2">
+                            <h6>Contact No :</h6>
+                        </div>
+                        <div class="col-lg-2">
+                            <label>{{mobile}}
+                            </label>
+                        </div>
+                        <div class="col-lg-1"></div>
+                        <div class="col-lg-2">
+                            <h6>Philhealth :</h6>
+                        </div>
+                        <div class="col-lg-2">
+                            <label>12-789174873-7
+                            </label>
+                        </div>
+                        <div class="col-lg-1"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-1"></div>
+                        <div class="col-lg-2">
+                            <h6>Email :</h6>
+                        </div>
+                        <div class="col-lg-2">
+                            <label>{{EmailID}}
+                            </label>
+                        </div>
+                        <div class="col-lg-1"></div>
+                        <div class="col-lg-2">
+                            <h6>Employment Status :</h6>
+                        </div>
+                        <div class="col-lg-2">
+                            <label>ACTIVE
+                            </label>
+                        </div>
+                        <div class="col-lg-1"></div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-lg-1"></div>
+                        <div class="col-lg-2">
+                            <p><u>Payroll Information</u></p>
+
+                        </div>
+                        <div class="col-lg-6">
+
+                        </div>
+                        <div class="col-lg-1"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-1"></div>
+                        <div class="col-lg-2">
+                            <h6>Department :</h6>
+                        </div>
+                        <div class="col-lg-2">
+                            <label>{{department_name}}
+                            </label>
+                        </div>
+                        <div class="col-lg-1"></div>
+                        <div class="col-lg-2">
+                            <h6></h6>
+                        </div>
+                        <div class="col-lg-2">
+                            <label>
+                            </label>
+                        </div>
+                        <div class="col-lg-1"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-1"></div>
+                        <div class="col-lg-2">
+                            <h6>Sub Departmen :</h6>
+                        </div>
+                        <div class="col-lg-2">
+                            <label>{{department_name}}
+                            </label>
+                        </div>
+                        <div class="col-lg-1"></div>
+                        <div class="col-lg-2">
+                            <h6></h6>
+                        </div>
+                        <div class="col-lg-2">
+                            <label>
+                            </label>
+                        </div>
+                        <div class="col-lg-1"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-1"></div>
+                        <div class="col-lg-2">
+                            <h6>Employment Type :</h6>
+                        </div>
+                        <div class="col-lg-2">
+                            <label>Regular / Fixed
+                            </label>
+                        </div>
+                        <div class="col-lg-1"></div>
+                        <div class="col-lg-2">
+                            <h6></h6>
+                        </div>
+                        <div class="col-lg-2">
+                            <label>
+                            </label>
+                        </div>
+                        <div class="col-lg-1"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-1"></div>
+                        <div class="col-lg-2">
+                            <h6>Rank</h6>
+                        </div>
+                        <div class="col-lg-2">
+                            <label>
+                            </label>
+                        </div>
+                        <div class="col-lg-1"></div>
+                        <div class="col-lg-2">
+                            <h6></h6>
+                        </div>
+                        <div class="col-lg-2">
+                            <label>
+                            </label>
+                        </div>
+                        <div class="col-lg-1"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-1"></div>
+                        <div class="col-lg-2">
+                            <h6>Position</h6>
+                        </div>
+                        <div class="col-lg-2">
+                            <label>{{Role}}
+                            </label>
+                        </div>
+                        <div class="col-lg-1"></div>
+                        <div class="col-lg-2">
+                            <h6></h6>
+                        </div>
+                        <div class="col-lg-2">
+                            <label>
+                            </label>
+                        </div>
+                        <div class="col-lg-1"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-1"></div>
+                        <div class="col-lg-2">
+                            <h6>Date Hired :</h6>
+                        </div>
+                        <div class="col-lg-2">
+                            <label>{{doh}}
+                            </label>
+                        </div>
+                        <div class="col-lg-1"></div>
+                        <div class="col-lg-2">
+                            <h6></h6>
+                        </div>
+                        <div class="col-lg-2">
+                            <label>
+                            </label>
+                        </div>
+                        <div class="col-lg-1"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-1"></div>
+                        <div class="col-lg-2">
+                            <h6>Last Date :</h6>
+                        </div>
+                        <div class="col-lg-2">
+                            <label>
+                            </label>
+                        </div>
+                        <div class="col-lg-1"></div>
+                        <div class="col-lg-2">
+                            <h6></h6>
+                        </div>
+                        <div class="col-lg-2">
+                            <label>
+                            </label>
+                        </div>
+                        <div class="col-lg-1"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-1"></div>
+                        <div class="col-lg-2">
+                            <h6>Tax Status :</h6>
+                        </div>
+                        <div class="col-lg-2">
+                            <label>Z
+                            </label>
+                        </div>
+                        <div class="col-lg-1"></div>
+                        <div class="col-lg-3">
+                            <h6>Deduct For SSS Contribution</h6>
+                        </div>
+                        <div class="col-lg-2">
+                            <label>Y
+                            </label>
+                        </div>
+                        <div class="col-lg-1"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-1"></div>
+                        <div class="col-lg-2">
+                            <h6>Basic Pay Amount :</h6>
+                        </div>
+                        <div class="col-lg-2">
+                            <label>{{BaseSal}}
+                            </label>
+                        </div>
+                        <div class="col-lg-1"></div>
+                        <div class="col-lg-3">
+                            <h6>Fixed Contribution Amount :</h6>
+                        </div>
+                        <div class="col-lg-2">
+                            <label>0.00
+                            </label>
+                        </div>
+                        <div class="col-lg-1"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-1"></div>
+                        <div class="col-lg-2">
+                            <h6>Pay Rate Type :</h6>
+                        </div>
+                        <div class="col-lg-2">
+                            <label>Monthly
+                            </label>
+                        </div>
+                        <div class="col-lg-1"></div>
+                        <div class="col-lg-3">
+                            <h6>Fixed Contribution Rate :</h6>
+                        </div>
+                        <div class="col-lg-2">
+                            <label>0.00
+                            </label>
+                        </div>
+                        <div class="col-lg-1"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-1"></div>
+                        <div class="col-lg-2">
+                            <h6>Payment Method :</h6>
+                        </div>
+                        <div class="col-lg-2">
+                            <label>Bank
+                            </label>
+                        </div>
+                        <div class="col-lg-1"></div>
+                        <div class="col-lg-3">
+                            <h6>Deduct HDMF Contribution :</h6>
+                        </div>
+                        <div class="col-lg-2">
+                            <label>0.00
+                            </label>
+                        </div>
+                        <div class="col-lg-1"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-1"></div>
+                        <div class="col-lg-2">
+                            <h6>Bank Route :</h6>
+                        </div>
+                        <div class="col-lg-2">
+                            <label>Bank
+                            </label>
+                        </div>
+                        <div class="col-lg-1"></div>
+                        <div class="col-lg-3">
+                            <h6>Fixed Contribution Amount :</h6>
+                        </div>
+                        <div class="col-lg-2">
+                            <label>0.00
+                            </label>
+                        </div>
+                        <div class="col-lg-1"></div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-1"></div>
+                        <div class="col-lg-2">
+                            <h6>Account Type :
+                            </h6>
+                        </div>
+                        <div class="col-lg-2">
+                            <label>Bank
+                            </label>
+                        </div>
+                        <div class="col-lg-1"></div>
+                        <div class="col-lg-3">
+                            <h6>Fixed Contribution Rate :</h6>
+                        </div>
+                        <div class="col-lg-2">
+                            <label>0.00
+                            </label>
+                        </div>
+                        <div class="col-lg-1"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-1"></div>
+                        <div class="col-lg-2">
+                            <h6>Payroll Group :
+                            </h6>
+                        </div>
+                        <div class="col-lg-2">
+                            <label>Regular
+                            </label>
+                        </div>
+                        <div class="col-lg-1"></div>
+                        <div class="col-lg-3">
+                            <h6>Deduct Philhealth Contribution :</h6>
+                        </div>
+                        <div class="col-lg-2">
+                            <label>Y
+                            </label>
+                        </div>
+                        <div class="col-lg-1"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-1"></div>
+                        <div class="col-lg-2">
+                            <h6>Default Project:
+                            </h6>
+                        </div>
+                        <div class="col-lg-2">
+                            <label>Default
+                            </label>
+                        </div>
+                        <div class="col-lg-1"></div>
+                        <div class="col-lg-3">
+                            <h6>Fixed Contribution Amount :</h6>
+                        </div>
+                        <div class="col-lg-2">
+                            <label>Y
+                            </label>
+                        </div>
+                        <div class="col-lg-1"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-1"></div>
+                        <div class="col-lg-2">
+                            <h6>Time Sheet Approval :
+                            </h6>
+                        </div>
+                        <div class="col-lg-2">
+                            <label>Default
+                            </label>
+                        </div>
+                        <div class="col-lg-1"></div>
+                        <div class="col-lg-3">
+                            <h6>Fixed Contribution Rate :</h6>
+                        </div>
+                        <div class="col-lg-2">
+                            <label>Y
+                            </label>
+                        </div>
+                        <div class="col-lg-1"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-1"></div>
+                        <div class="col-lg-2">
+                            <h6>Overtime Approval:
+                            </h6>
+                        </div>
+                        <div class="col-lg-2">
+                            <label>Default
+                            </label>
+                        </div>
+                        <div class="col-lg-1"></div>
+                        <div class="col-lg-3">
+                            <h6>Deduct Withholding Tax :</h6>
+                        </div>
+                        <div class="col-lg-2">
+                            <label>Y
+                            </label>
+                        </div>
+                        <div class="col-lg-1"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-1"></div>
+                        <div class="col-lg-2">
+                            <h6>COS Approval Group:
+                            </h6>
+                        </div>
+                        <div class="col-lg-2">
+                            <label>Default
+                            </label>
+                        </div>
+                        <div class="col-lg-1"></div>
+                        <div class="col-lg-3">
+                            <h6>Cost Center :</h6>
+                        </div>
+                        <div class="col-lg-2">
+                            <label>Y
+                            </label>
+                        </div>
+                        <div class="col-lg-1"></div>
+                    </div>
+                    <br>
+                    <br>
+                    <div class="row">
+                        <div class="col-lg-1"></div>
+                        <div class="col-lg-3">
+                            <p><u>Qualified Dependents</u></p>
+
+                        </div>
+                        <div class="col-lg-6">
+
+                        </div>
+                        <div class="col-lg-1"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-1"></div>
+                        <div class="col-lg-2">
+                            <h6>Dependent's Name
+                            </h6>
+                        </div>
+                        <div class="col-lg-2">
+                            <label>
+                            </label>
+                        </div>
+                        <div class="col-lg-1"></div>
+                        <div class="col-lg-2">
+                            <h6>Date of Birth:</h6>
+                        </div>
+                        <div class="col-lg-2">
+                            <label>
+                            </label>
+                        </div>
+                        <div class="col-lg-1"></div>
+                    </div>
+                    <div class="row" *ngFor="let item of dependentdetails">
+                        <div class="col-lg-1"></div>
+                        <div class="col-lg-2">
+                            <h6>{{item.dependentName}}
+                            </h6>
+                        </div>
+                        <div class="col-lg-2">
+                            <label>
+                            </label>
+                        </div>
+                        <div class="col-lg-1"></div>
+                        <div class="col-lg-2">
+                            <h6>{{item.dateOfBirth}}</h6>
+                        </div>
+                        <div class="col-lg-2">
+                            <label>
+                            </label>
+                        </div>
+                        <div class="col-lg-1"></div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-lg-1"></div>
+                        <div class="col-lg-2">
+                            <p><u>Training Details</u></p>
+
+                        </div>
+                        <div class="col-lg-6">
+
+                        </div>
+                        <div class="col-lg-1"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-1"></div>
+                        <div class="col-lg-2">
+                            <h6>Course Name
+                            </h6>
+                        </div>
+                        <div class="col-lg-2">
+                            <label>Date From
+                            </label>
+                        </div>
+                        <div class="col-lg-1"></div>
+                        <div class="col-lg-2">
+                            <h6>Date From</h6>
+                        </div>
+                        <div class="col-lg-2">
+                            <label>
+                            </label>
+                        </div>
+                        <div class="col-lg-1"></div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-lg-1"></div>
+                        <div class="col-lg-2">
+                            <p><u>Employee Fixed</u></p>
+
+                        </div>
+                        <div class="col-lg-6">
+
+                        </div>
+                        <div class="col-lg-1"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-1"></div>
+                        <div class="col-lg-2">
+                            <h6>Allowance Type
+                            </h6>
+                        </div>
+                        <div class="col-lg-2">
+                            <label>Amount
+                            </label>
+                        </div>
+                        <div class="col-lg-1"></div>
+                        <div class="col-lg-2">
+                            <h6>Taxable</h6>
+                        </div>
+                        <div class="col-lg-2">
+                            <label>
+                            </label>
+                        </div>
+                        <div class="col-lg-1"></div>
+                    </div>
+                    <br>
+
+
+                </div>
+            </div>
+
+            <div class="modal-footer">
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<div id="import" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Upload Staff</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <input type="file" accept=".xls,.xlsx" style="display: inline-block;"
+                            (change)="incomingfile($event)" placeholder="Upload file" accept=".xlsx">
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <button type="button" class="save-btn" style="width: 70%;" data-dismiss="modal"
+                            (click)="Upload_file()">Upload
+                            Staff</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

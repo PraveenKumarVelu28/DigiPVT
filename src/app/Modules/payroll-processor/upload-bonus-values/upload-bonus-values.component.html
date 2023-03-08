@@ -1,0 +1,224 @@
+<div class="row">
+    <div class="col-md-12">
+        <div class="row">
+            <div class="col-lg-11">
+                <p class="Heading">Upload Bonus Values</p>
+            </div>
+        </div>
+        <div class="row FilterClass">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="row">
+                        <div class="col-lg-1">
+                            <img src="assets/Images/filter.svg" class="filter-img">
+                              <p class="filter">Filter By</p>
+                          </div>
+                        <div class="col-lg-3">
+                            <input class="form-control" type="search" placeholder="Search.." 
+                            id="term" [(ngModel)]="term">
+                        </div>
+                        <div class="col-lg-4">
+                            <br/>
+                                <button class="AddButton"  (click)="exportexcel()">Export to Excel</button>
+                         </div>
+                         <div class="col-lg-3">
+                            
+                            <button class="form-control AddExpense" data-toggle="modal" data-target="#import" >Upload
+                                Bonus</button>
+            
+                         </div>
+                    </div>
+                </div>
+            </div>
+        </div><br>
+        <div class="row">
+            <div class="col-lg-3"></div>
+            <div class="col-lg-2"></div>
+            <!-- <div class="col-lg-4">
+                <br/>
+                    <button class="AddButton"  (click)="exportexcel()">Export to Excel</button>
+             </div>
+             <div class="col-lg-3">
+                
+                <button class="form-control AddExpense" data-toggle="modal" data-target="#import" >Upload
+                    Bonus</button>
+
+             </div> -->
+            <!-- <div class="col-lg-3">
+                
+                
+
+            </div> -->
+            
+        </div><br>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="container-fluid">
+                    <table class="table" id="downloadaplication" *ngIf="companyid!=10013 && companyid!=1008">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>EmployeeID</th>
+                                <th>Pay Date</th>
+                                <th>13th Month Bonus</th>
+                                <th>14th Month Bonus</th>
+                                <th>Performance Bonus</th>
+                                <th>Taxable Bonus</th>
+                                <th>NonTaxable Bonus</th>
+                                <th>Actions</th>
+                                
+                                <!-- <th>Attachment</th>
+                                <th *ngIf="roleid=='1'">Actions</th> -->
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let list of componentmaster|filter:term |paginate: { itemsPerPage: count2, currentPage: p1}  "  >
+                                <td>{{list.name}}</td>
+                                <td>{{list.employeID}}</td>
+                                <td>{{list.payDate|date}}</td>
+                                <td>{{list.thirteenthMonthBonus}}</td>
+                                <td>{{list.forteenthMonthBonus}}</td>
+                                <td>{{list.performanceBonus}}</td>
+                                <td>{{list.taxableBonus}}</td>
+                                <td>{{list.nonTaxableBonus}}</td>
+
+                                
+                                <td > 
+                                    <button class="upload"  (click)="delete(list.id)">Delete</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                  
+
+                    <table class="table" id="downloadaplication" *ngIf="companyid==1008">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>EmployeeID</th>
+                                <th>Pay Date</th>
+                                <th>13th Month Bonus</th>
+                                <th>Mid Year Bonus</th>
+                                <th>Performance Bonus</th>
+                                <th>Lop Days</th>
+                                <th>Taxable Bonus</th>
+                                <th>NonTaxable Bonus</th>
+                                <th>Actions</th>
+                                
+                                <!-- <th>Attachment</th>
+                                <th *ngIf="roleid=='1'">Actions</th> -->
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let list of componentmaster|filter:term |paginate: { itemsPerPage: count2, currentPage: p1}  "  >
+                                <td>{{list.name}}</td>
+                                <td>{{list.employeID}}</td>
+                                <td>{{list.payDate|date}}</td>
+                                <td>{{list.thirteenthMonthBonus}}</td>
+                                <td>{{list.forteenthMonthBonus}}</td>
+                                <td>{{list.performanceBonus}}</td>
+                                <td>{{list.lopdays}}</td>
+                                <td>{{list.taxableBonus}}</td>
+                                <td>{{list.nonTaxableBonus}}</td>
+
+                                
+                                <td > 
+                                    <button class="upload"  (click)="delete(list.id)">Delete</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                 
+
+                    <table class="table" id="downloadaplication" *ngIf="companyid==10013">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>EmployeeID</th>
+                                <th>Pay Date</th>
+                                <th>13th Month Bonus</th>
+                                <th>13th Month Bonus Tax</th>
+                                <th>Actions</th>
+                                
+                                <!-- <th>Attachment</th>
+                                <th *ngIf="roleid=='1'">Actions</th> -->
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let list of componentmaster|filter:term |paginate: { itemsPerPage: count2, currentPage: p1}  "  >
+                                <td>{{list.name}}</td>
+                                <td>{{list.employeID}}</td>
+                                <td>{{list.payDate|date}}</td>
+                                <td>{{list.thirteenthMonthBonus}}</td>
+                                <td>{{list.taxableBonus}}</td>
+                               
+
+                                
+                                <td > 
+                                    <button class="upload"  (click)="delete(list.id)">Delete</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                  
+                    <!-- <div class="text-left">
+                        <br>
+                        <pagination-controls (pageChange)="p = $event" class="poppinns"></pagination-controls>
+                    </div> -->
+                    <!-- <ng-template #noResults>
+                        <p class="NoResultShow"> No results found </p>
+                    </ng-template> -->
+                    <!-- <div class="text-left">
+                        <br>
+                        <pagination-controls (pageChange)="p1 = $event" class="poppinns"></pagination-controls>
+                    </div> -->
+                    
+                </div>
+            </div>
+            <div class="text-right" *ngIf="companyid!=10013 && companyid!=1008 && componentmaster.length>count2 ">
+                <pagination-controls (pageChange)="p1 = $event"  previousLabel=""
+                nextLabel="" class="poppinns"></pagination-controls>                        
+            </div>
+            <div class="text-right" *ngIf="companyid==1008 && componentmaster.length>count2 ">
+                <pagination-controls (pageChange)="p1 = $event"  previousLabel=""
+                nextLabel="" class="poppinns"></pagination-controls>                        
+            </div>
+            <div class="text-right" *ngIf="companyid==10013 && componentmaster.length>count2 " >
+                <pagination-controls (pageChange)="p1 = $event"  previousLabel=""
+                nextLabel="" class="poppinns"></pagination-controls>                        
+            </div>
+        
+        </div>
+    </div>
+</div>
+
+
+
+<div id="import" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Upload Bonus Values</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-lg-8">
+                        <input type="file" accept=".xls,.xlsx" style="display: inline-block;"
+                            (change)="incomingfile($event)" placeholder="Upload file" accept=".xlsx">
+                    </div>
+                    <div class="col-lg-4">
+                        <a href="https://103.12.1.76//DigiPVTAPI/Templates/UploadBonusValues.xlsx" style="color:navy"><u>Template.XLSX</u></a>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <button type="button" class="save-btn" data-dismiss="modal"
+                      (click)="Upload_file()">Upload Bonuses</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

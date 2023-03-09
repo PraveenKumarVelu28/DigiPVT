@@ -187,10 +187,10 @@ export class SidebarComponent implements OnInit {
         debugger
         const login: any = document.getElementById('login') as HTMLElement
 
-        if (login.value == 2345 && this.companyid!=10013 && this.companyid!='1008'  && this.companyid!='1007') {
+        if (login.value == this.validation[0].password && this.companyid!=10013 && this.companyid!='1008'  && this.companyid!='1007') {
           this.router.navigate(['/PayrollProcessor/ValidatedPayrollSummaryReport'])
         }
-        else   if (login.value == 2345 && (this.companyid==10013 || this.companyid==1008 || this.companyid==1007)) {
+        else   if (login.value == this.validation[0].password && (this.companyid==10013 || this.companyid==1008 || this.companyid==1007)) {
           this.router.navigate(['/PayrollProcessor/ValidatedPayrollSummaryReportForUNC'])
         }
         else {
@@ -200,6 +200,49 @@ export class SidebarComponent implements OnInit {
     })
 
   }
+
+
+  public NHANDRValidation() {
+    this.active = 'NHANDRValidation'
+    localStorage.setItem("clickname", "Holidays")
+    this.DigiPVTService.GetValidationPassword().subscribe(data => {
+      debugger
+      this.validation = data.filter(x=>x.menuName=='Validated NH and R');
+      console.log("validation", this.validation);
+    });
+    //this.router.navigate(['/PayrollProcessor/ValidatedHolidayEnCashments'])
+    Swal.fire({
+      title: 'Access NH and R Validation',
+      html: `<input type="text" id="login" class="swal2-input"  placeholder="Enter 4 Digit Pin">
+    `,
+      confirmButtonText: 'Submit',
+      focusConfirm: false,
+      preConfirm: () => {
+        debugger
+        const login: any = document.getElementById('login') as HTMLElement
+
+        if (login.value == this.validation[0].password && this.companyid!=10013 && this.companyid!='1008'  && this.companyid!='1007') {
+          this.router.navigate(['/PayrollProcessor/ValidatedNewHiresDetails'])
+        }
+        else   if (login.value == this.validation[0].password && (this.companyid==10013 || this.companyid==1008 || this.companyid==1007)) {
+          this.router.navigate(['/PayrollProcessor/ValidatedNewHiresDetails'])
+        }
+        else {
+          Swal.showValidationMessage(`Please enter correct pin`)
+        }
+      }
+    })
+
+  }
+
+
+  // NHANDRValidation() {
+  //   debugger
+  //   this.active = 'NHANDRValidation';
+  //   localStorage.setItem('Pagename', 'Announcements')
+  //   this.router.navigate(['/PayrollProcessor/ValidatedNewHiresDetails']);
+  // }
+
 
   public ValidatedMaster(){
     debugger
@@ -223,12 +266,6 @@ export class SidebarComponent implements OnInit {
     this.router.navigate(['/Admin/AnnouncementDashboard']);
   }
 
-  NHANDRValidation() {
-    debugger
-    this.active = 'NHANDRValidation';
-    localStorage.setItem('Pagename', 'Announcements')
-    this.router.navigate(['/PayrollProcessor/ValidatedNewHiresDetails']);
-  }
 
 
   
@@ -668,7 +705,7 @@ export class SidebarComponent implements OnInit {
 
     this.DigiPVTService.GetValidationPassword().subscribe(data => {
       debugger
-      this.validation = data.filter(x=>x.menuName=='Upload FMA Allowance');
+      this.validation = data.filter(x=>x.menuName=='Validated Run TaxValidation');
       console.log("validation", this.validation);
     });
 
@@ -683,7 +720,7 @@ export class SidebarComponent implements OnInit {
         debugger
         const login: any = document.getElementById('login') as HTMLElement
 
-        if (login.value == 4567) {
+        if (login.value == this.validation[0].password) {
           this.router.navigate(['/PayrollProcessor/ValidatedTaxValues'])
         }
         else {
@@ -1054,6 +1091,42 @@ export class SidebarComponent implements OnInit {
 
   }
 
+  public ValidatedBankstats() {
+    debugger
+    this.active = 2345;
+    localStorage.setItem('Pagename', 'Staff')
+
+    this.DigiPVTService.GetValidationPassword().subscribe(data => {
+      debugger
+      this.validation = data.filter(x=>x.menuName=='Validated Blank stats');
+      console.log("validation", this.validation);
+    });
+
+    Swal.fire({
+      title: 'Access Blank Stats Validation',
+      html: `<input type="text" id="login" class="swal2-input"  placeholder="Enter 4 Digit Pin">
+    `,
+      confirmButtonText: 'Submit',
+      focusConfirm: false,
+      preConfirm: () => {
+        debugger
+        const login: any = document.getElementById('login') as HTMLElement
+ 
+        if (login.value == this.validation[0].password) {
+          this.router.navigate(['/PayrollProcessor/ValidatedBlanKStats']);
+        }
+        else {
+          Swal.showValidationMessage(`Please enter correct pin`)
+        }
+      }
+    })
+
+
+  }
+
+ 
+
+
   public ValidatedSubjectLoadsValidation() {
     debugger
     this.active = 2345;
@@ -1121,22 +1194,46 @@ export class SidebarComponent implements OnInit {
   }
 
   
-  public ValidatedBankstats() {
-    debugger
-    this.active = 'ValidatedBankstats';
-    this.router.navigate(['/PayrollProcessor/ValidatedBlanKStats']);
-
-
-  }
 
 
   
   
+  // public ValidatedHeadCount() {
+  //   debugger
+  //   this.active = 'ValidatedHeadCount';
+  //   this.router.navigate(['/PayrollProcessor/ValidatedHeadCountDetails']);
+
+
+  // }
+
   public ValidatedHeadCount() {
-    debugger
-    this.active = 'ValidatedHeadCount';
-    this.router.navigate(['/PayrollProcessor/ValidatedHeadCountDetails']);
+    this.active = 'ValidatedHeadCount'
+    localStorage.setItem("clickname", "Holidays")
+    this.DigiPVTService.GetValidationPassword().subscribe(data => {
+      debugger
+      this.validation = data.filter(x=>x.menuName=='Validated Head Count');
+      console.log("validation", this.validation);
+    });
+    //this.router.navigate(['/PayrollProcessor/ValidatedHolidayEnCashments'])
+    Swal.fire({
+      title: 'Access Head Count Validation',
+      html: `<input type="text" id="login" class="swal2-input"  placeholder="Enter 4 Digit Pin">
+    `,
+      confirmButtonText: 'Submit',
+      focusConfirm: false,
+      preConfirm: () => {
+        debugger
+        const login: any = document.getElementById('login') as HTMLElement
 
+        if (login.value == this.validation[0].password ) {
+          this.router.navigate(['/PayrollProcessor/ValidatedHeadCountDetails']);
+        }
+       
+        else {
+          Swal.showValidationMessage(`Please enter correct pin`)
+        }
+      }
+    })
 
   }
 
@@ -1341,6 +1438,7 @@ export class SidebarComponent implements OnInit {
 
   }
 
+
   public StatutoryDeductions() {
     debugger
    
@@ -1384,13 +1482,13 @@ export class SidebarComponent implements OnInit {
 
     this.DigiPVTService.GetValidationPassword().subscribe(data => {
       debugger
-      this.validation = data.filter(x => x.menuName == 'Validated Basic Pay Details');
+      this.validation = data.filter(x => x.menuName == 'Validated Overtime Details');
       console.log("validation", this.validation);
     });
 
 
     Swal.fire({
-      title: 'Access T and L  Validation',
+      title: 'Access Overtime Validation',
       html: `<input type="text" id="login" class="swal2-input"  placeholder="Enter 4 Digit Pin">
     `,
       confirmButtonText: 'Submit',
@@ -1399,7 +1497,7 @@ export class SidebarComponent implements OnInit {
         debugger
         const login: any = document.getElementById('login') as HTMLElement
 
-        if (login.value == 2345) {
+        if (login.value == this.validation[0].password) {
           this.router.navigate(['/PayrollProcessor/ValidatedTandLDetails']);
         }
         else {

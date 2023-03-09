@@ -589,6 +589,7 @@ export class SidebarComponent implements OnInit {
 
 
   public UploadSystemGeneratedLWOP() {
+    this.active='UploadSystemGeneratedLWOP'
 
     this.router.navigate(['/PayrollProcessor/UploadGeneratedLwop'])
 
@@ -834,7 +835,7 @@ export class SidebarComponent implements OnInit {
   }
   ShowBasicPayValidation: any
   public BasicPayValidation() {
-    this.active = 767
+    this.active = 'BasicPayValidation'
     localStorage.setItem("clickname", "Component  Master")
   }
 
@@ -955,7 +956,7 @@ export class SidebarComponent implements OnInit {
 
   public RunLwopValidation() {
     debugger
-    this.active = 889;
+    this.active = 'RunLwopValidation';
     localStorage.setItem('Pagename', 'Staff')
 
     this.DigiPVTService.GetValidationPassword().subscribe(data => {
@@ -1275,7 +1276,7 @@ export class SidebarComponent implements OnInit {
   public ValidatedBasicPayValues() {
     debugger
    
-    this.active = 2345;
+    this.active = 'ValidatedBasicPayValues';
     localStorage.setItem('Pagename', 'Staff')
 
     this.DigiPVTService.GetValidationPassword().subscribe(data => {
@@ -1424,7 +1425,7 @@ export class SidebarComponent implements OnInit {
     debugger
   
 
-    this.active = 2345;
+    this.active = 'ValidatedRetroBasicPayValues';
     localStorage.setItem('Pagename', 'Staff')
 
     this.DigiPVTService.GetValidationPassword().subscribe(data => {

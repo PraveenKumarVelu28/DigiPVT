@@ -29,9 +29,9 @@
                                 [settings]="DepartmentdropdownSetting" [data]="Departmentlist" [(ngModel)]="Department"
                                 (onSelect)="DepartmentonItemSelect($event)">
                             </ng-multiselect-dropdown> -->
-                            <select class="dropdown form-control" [(ngModel)]="Department" id="Department" name="Department">
+                            <select class="dropdown form-control" [(ngModel)]="Department" id="Department" name="Department" (change)="getDepartment()">
                                 <option value="">Select Department</option>
-                                <option *ngFor="let Staff of Departmentlist" value="{{Staff.id}}">{{Staff.department_name}}
+                                <option *ngFor="let Staff of Departmentlist" value="{{Staff.department_name}}">{{Staff.department_name}}
                                 </option>
                             </select>
                         </div>
@@ -44,7 +44,7 @@
                             </select>
                         </div>
                         <div class="col-lg-2">
-                            <select class="form-control" id="RoleType" name="RoleType" (change)='PositiononItemSelect($event)'
+                            <select class="form-control" id="RoleType" name="RoleType" (change)='getRoleType()'
                                 [(ngModel)]="RoleType">
                                 <option value="0">Select Position</option>
                                 <option *ngFor="let item of RoleTypeList" value="{{item.id}}">{{item.short}}
@@ -101,7 +101,7 @@
                             <th>Email</th>
                             <th>Date Of Joining</th>
                             <th>Manager</th>
-                            <th>Attendance Enable</th>
+                           
                             <th>Actions</th>
                         </tr>
                     </thead>
@@ -128,12 +128,7 @@
                                     {{item.manager}}
                                 </p>
                             </td>
-                            <td>
-                                <button *ngIf="item.attendanceEnable==1" class="redbutton"
-                                    (click)="DisableAttendance(item)">Disable </button>
-                                <button *ngIf="item.attendanceEnable==null||item.attendanceEnable==0" class="redbutton"
-                                    (click)="EnableAttendance(item)">Enable </button>
-                            </td>
+                           
                             <td>
 
                                 <i class="fa fa-pencil-square-o icon" (click)="showbttn(item)"></i>

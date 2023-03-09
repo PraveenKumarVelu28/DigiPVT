@@ -62,9 +62,7 @@
                         <tr class="thwidth">
                             <th>Employee ID</th>
                             <th>Employee Name</th>
-                            <th>Element Name</th>
                             <th class="thwidth">Grade</th>
-                            <th class="thwidth">Cost Centre</th>
                             <th class="thwidth">Joining Date</th>
                             <th class="thwidth">Terminate Date</th>
                             <th class="thwidth">Salary Effective Date</th>
@@ -79,13 +77,12 @@
                             <td [ngClass]="{'bgred':time.bcolor=='1 ', 'bgreen':time.bcolor=='0 ' }">{{time.name}}</td>
 
                             <td [ngClass]="{'bgred':time.bcolor=='1 ', 'bgreen':time.bcolor=='0 ' }">{{time.grade}}</td>
-                            <td [ngClass]="{'bgred':time.bcolor=='1 ', 'bgreen':time.bcolor=='0 ' }">{{time.costcentre}}</td>
-                            <td [ngClass]="{'bgred':time.bcolor=='1 ', 'bgreen':time.bcolor=='0 ' }">{{time.joiningDate}}</td>
+                            <td [ngClass]="{'bgred':time.bcolor=='1 ', 'bgreen':time.bcolor=='0 ' }">{{time.joiningDate|date}}</td>
 
 
-                            <td [ngClass]="{'bgred':time.bcolor=='1 ', 'bgreen':time.bcolor=='0 ' }">{{time.retiredDate}}</td>
+                            <td [ngClass]="{'bgred':time.bcolor=='1 ', 'bgreen':time.bcolor=='0 ' }">{{time.retiredDate|date}}</td>
 
-                            <td [ngClass]="{'bgred':time.bcolor=='1 ', 'bgreen':time.bcolor=='0 ' }">{{time.salaryEffectiveDate}}</td>
+                            <td [ngClass]="{'bgred':time.bcolor=='1 ', 'bgreen':time.bcolor=='0 ' }">{{time.salaryEffectiveDate|date}}</td>
 
                             <td [ngClass]="{'bgred':time.bcolor=='1 ', 'bgreen':time.bcolor=='0 ' }">{{time.tag}}</td>
                             <td [ngClass]="{'bgred':time.bcolor=='1 ', 'bgreen':time.bcolor=='0 ' }">{{time.paydate|date}}</td>

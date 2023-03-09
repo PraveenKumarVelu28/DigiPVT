@@ -219,6 +219,14 @@ export class SidebarComponent implements OnInit {
   LwopValidation() {
     debugger
     this.active = 108;
+    
+ document.getElementById('SummaryValidation1')?.setAttribute("class", "sub-collapse collapse hide");
+    document.getElementById('TaxValidation')?.setAttribute("class", "sub-collapse collapse hide");
+    document.getElementById('BasicPayValidation')?.setAttribute("class", "sub-collapse collapse hide");
+    document.getElementById('BonusValidation')?.setAttribute("class", "sub-collapse collapse hide");
+    document.getElementById('ComponentMapping')?.setAttribute("class", "sub-collapse collapse hide");
+    document.getElementById('LoanProceedValidation')?.setAttribute("class", "sub-collapse collapse hide");
+
     localStorage.setItem('Pagename', 'Announcements')
     this.router.navigate(['/Admin/AnnouncementDashboard']);
   }
@@ -236,6 +244,19 @@ export class SidebarComponent implements OnInit {
   BonusValidation() {
     debugger
     this.active = 988;
+    
+ document.getElementById('SummaryValidation1')?.setAttribute("class", "sub-collapse collapse hide");
+    document.getElementById('TaxValidation')?.setAttribute("class", "sub-collapse collapse hide");
+    document.getElementById('BasicPayValidation')?.setAttribute("class", "sub-collapse collapse hide");
+    document.getElementById('LwopValidation')?.setAttribute("class", "sub-collapse collapse hide");
+    document.getElementById('ComponentMapping')?.setAttribute("class", "sub-collapse collapse hide");
+    document.getElementById('LoanProceedValidation')?.setAttribute("class", "sub-collapse collapse hide");
+    document.getElementById('BlankStats')?.setAttribute("class", "sub-collapse collapse hide");
+    document.getElementById('NHANDRValidation')?.setAttribute("class", "sub-collapse collapse hide");
+    document.getElementById('HeadCount')?.setAttribute("class", "sub-collapse collapse hide");
+    document.getElementById('OvertimeValidation')?.setAttribute("class", "sub-collapse collapse hide");
+
+
     localStorage.setItem('Pagename', 'Announcements')
   }
 
@@ -243,6 +264,17 @@ export class SidebarComponent implements OnInit {
   PayrollSummaryValidation() {
     debugger
     this.active = 'PayrollSummaryValidation';
+    document.getElementById('TaxValidation')?.setAttribute("class", "sub-collapse collapse hide");
+    document.getElementById('BasicPayValidation')?.setAttribute("class", "sub-collapse collapse hide");
+    document.getElementById('LwopValidation')?.setAttribute("class", "sub-collapse collapse hide");
+    document.getElementById('BonusValidation')?.setAttribute("class", "sub-collapse collapse hide");
+    document.getElementById('ComponentMapping')?.setAttribute("class", "sub-collapse collapse hide");
+    document.getElementById('LoanProceedValidation')?.setAttribute("class", "sub-collapse collapse hide");
+    document.getElementById('BlankStats')?.setAttribute("class", "sub-collapse collapse hide");
+    document.getElementById('NHANDRValidation')?.setAttribute("class", "sub-collapse collapse hide");
+    document.getElementById('HeadCount')?.setAttribute("class", "sub-collapse collapse hide");
+    document.getElementById('OvertimeValidation')?.setAttribute("class", "sub-collapse collapse hide");
+    // document.getElementById('staff')?.setAttribute("class", "sub-collapse collapse hide");
     localStorage.setItem('Pagename', 'Announcements')
   }
 
@@ -646,6 +678,18 @@ export class SidebarComponent implements OnInit {
 
   public LoanProceeds() {
     this.active = 8989
+    document.getElementById('SummaryValidation1')?.setAttribute("class", "sub-collapse collapse hide");
+    document.getElementById('TaxValidation')?.setAttribute("class", "sub-collapse collapse hide");
+    document.getElementById('BasicPayValidation')?.setAttribute("class", "sub-collapse collapse hide");
+    document.getElementById('LwopValidation')?.setAttribute("class", "sub-collapse collapse hide");
+    document.getElementById('BonusValidation')?.setAttribute("class", "sub-collapse collapse hide");
+    document.getElementById('ComponentMapping')?.setAttribute("class", "sub-collapse collapse hide");
+    document.getElementById('BlankStats')?.setAttribute("class", "sub-collapse collapse hide");
+    document.getElementById('NHANDRValidation')?.setAttribute("class", "sub-collapse collapse hide");
+    document.getElementById('HeadCount')?.setAttribute("class", "sub-collapse collapse hide");
+    document.getElementById('OvertimeValidation')?.setAttribute("class", "sub-collapse collapse hide");
+
+    
     localStorage.setItem("clickname", "Upload Pay Period Allowance")
 
   }
@@ -736,6 +780,19 @@ export class SidebarComponent implements OnInit {
 
   public TaxValidation() {
     this.active = 'TaxValidation'
+    document.getElementById('SummaryValidation1')?.setAttribute("class", "sub-collapse collapse hide");
+    document.getElementById('BasicPayValidation')?.setAttribute("class", "sub-collapse collapse hide");
+    document.getElementById('LwopValidation')?.setAttribute("class", "sub-collapse collapse hide");
+    document.getElementById('BonusValidation')?.setAttribute("class", "sub-collapse collapse hide");
+    document.getElementById('ComponentMapping')?.setAttribute("class", "sub-collapse collapse hide");
+    document.getElementById('LoanProceedValidation')?.setAttribute("class", "sub-collapse collapse hide");
+    document.getElementById('BlankStats')?.setAttribute("class", "sub-collapse collapse hide");
+    document.getElementById('NHANDRValidation')?.setAttribute("class", "sub-collapse collapse hide");
+    document.getElementById('HeadCount')?.setAttribute("class", "sub-collapse collapse hide");
+    document.getElementById('OvertimeValidation')?.setAttribute("class", "sub-collapse collapse hide");
+
+
+
   }
 
   
@@ -836,6 +893,12 @@ export class SidebarComponent implements OnInit {
   ShowBasicPayValidation: any
   public BasicPayValidation() {
     this.active = 'BasicPayValidation'
+    document.getElementById('SummaryValidation1')?.setAttribute("class", "sub-collapse collapse hide");
+    document.getElementById('TaxValidation')?.setAttribute("class", "sub-collapse collapse hide");
+    document.getElementById('LwopValidation')?.setAttribute("class", "sub-collapse collapse hide");
+    document.getElementById('BonusValidation')?.setAttribute("class", "sub-collapse collapse hide");
+    document.getElementById('ComponentMapping')?.setAttribute("class", "sub-collapse collapse hide");
+    document.getElementById('LoanProceedValidation')?.setAttribute("class", "sub-collapse collapse hide");
     localStorage.setItem("clickname", "Component  Master")
   }
 
@@ -878,6 +941,11 @@ export class SidebarComponent implements OnInit {
   public ComponentMapping() {
     debugger
     this.active = 'PayrollLoanReport1';
+    document.getElementById('TaxValidation')?.setAttribute("class", "sub-collapse collapse hide");
+    document.getElementById('BasicPayValidation')?.setAttribute("class", "sub-collapse collapse hide");
+    document.getElementById('LwopValidation')?.setAttribute("class", "sub-collapse collapse hide");
+    document.getElementById('BonusValidation')?.setAttribute("class", "sub-collapse collapse hide");
+    document.getElementById('LoanProceedValidation')?.setAttribute("class", "sub-collapse collapse hide");
     localStorage.setItem('Pagename', 'Component Mapping');
     this.router.navigate(['/PayrollProcessor/ComponentMappingDashboard']);
 
@@ -1468,6 +1536,13 @@ export class SidebarComponent implements OnInit {
 
   public ComponentMap() {
     this.active = 'ComponentMap'
+    
+ document.getElementById('SummaryValidation1')?.setAttribute("class", "sub-collapse collapse hide");
+    document.getElementById('TaxValidation')?.setAttribute("class", "sub-collapse collapse hide");
+    document.getElementById('BasicPayValidation')?.setAttribute("class", "sub-collapse collapse hide");
+    document.getElementById('LwopValidation')?.setAttribute("class", "sub-collapse collapse hide");
+    document.getElementById('BonusValidation')?.setAttribute("class", "sub-collapse collapse hide");
+    document.getElementById('LoanProceedValidation')?.setAttribute("class", "sub-collapse collapse hide");
   }
 
 

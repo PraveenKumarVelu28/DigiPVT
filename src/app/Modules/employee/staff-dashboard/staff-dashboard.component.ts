@@ -1999,10 +1999,12 @@ export class StaffDashboardComponent implements OnInit {
 
   filename:any;
   
+
+
+  fileName = 'Staff Reports.xlsx';
   exportexcel(): void {
-debugger;
     /* table id is passed over here */
-    let element = document.getElementById('lvs');
+    let element = document.getElementById('downloadaplication');
     const ws: XLSX.WorkSheet = XLSX.utils.table_to_sheet(element);
 
     /* generate workbook and add the worksheet */
@@ -2010,8 +2012,10 @@ debugger;
     XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
 
     /* save to file */
-    XLSX.writeFile(wb, this.filename);
+    XLSX.writeFile(wb, this.fileName);
+
   }
+
 
 
 }

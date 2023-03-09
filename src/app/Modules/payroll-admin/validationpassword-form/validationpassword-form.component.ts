@@ -17,7 +17,7 @@ export class ValidationpasswordFormComponent implements OnInit {
   companyid : any ;
   ngOnInit(): void {
     this.GetValidationMaster();
-    this.MenuName = 0;
+    
     this.companyid = sessionStorage.getItem('companyid');
     this.ActivatedRoute.params.subscribe((params: { [x: string]: any; }) => {
       debugger;

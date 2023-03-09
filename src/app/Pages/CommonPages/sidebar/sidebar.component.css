@@ -10,7 +10,7 @@ body {
   z-index: 1;
   top: 0;
   left: 0;
-  background-color: #FFFFFF;
+  background-color: #FFFFFF !important;
   transition: 0.5s;
   overflow-x: hidden;
   white-space: nowrap;
@@ -23,6 +23,7 @@ body {
   font-size: 25px;
   color: #737373;
   display: block;
+  border-bottom: 1px solid #EAECF1;
 }
 
 .sidebar1 {
@@ -93,7 +94,7 @@ background: #3247D5;
   padding: 16px;
   margin-left: 85px;
   transition: margin-left 0.5s;
-  width: 250px;
+  width: 245px;
 }
 
 #main1 {
@@ -198,4 +199,16 @@ a {
 
 .sub-collapse {
   padding-left: 20px;
+}
+
+@media (min-width: 1280px) and (max-width: 1900px){
+  .test_case{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    align-items: center;
+    margin-left: -10px;
+  }
+
+
 }

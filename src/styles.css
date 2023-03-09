@@ -173,7 +173,7 @@ textarea {
   color: #ffffff;
   font-size: 12px;
   font-weight: bold;
-  width: 100px;
+  width: 84px;
 }
 
 /* u {
@@ -250,7 +250,7 @@ textarea {
 .card {
   padding: 20px;
   background: #ffffff;
-  box-shadow: 1px 1px 15px 3px rgba(0, 0, 0, 0.12);
+  /* box-shadow: 1px 1px 15px 3px rgba(0, 0, 0, 0.12); */
   border-radius: 12px;
   width: 100%;
   border: none !important

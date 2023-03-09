@@ -62,7 +62,7 @@
                                 <td>{{list.name}}</td>
                                 <!-- <td>{{list.employeID}}</td> -->
                                 <td>{{list.paydate|date}}</td>
-                                <td>{{list.noofdays}}</td>
+                                <td>{{list.noofHeadCount}}</td>
                                 <td>
                                     <button class="upload" (click)="delete(list.id)">Delete</button>
                                 </td>
@@ -96,7 +96,7 @@
                             (change)="incomingfile($event)" placeholder="Upload file" accept=".xlsx">
                     </div>
                     <div class="col-lg-4">
-                        <a href="https://103.12.1.76//DigiPVTAPI/Templates/Import_Allowance_Units.xlsx" style="color:navy"><u>Template.XLSX</u></a>
+                        <a href="https://103.12.1.76//DigiPVTAPI/Templates/UploadHeadCount.xlsx" style="color:navy"><u>Template.XLSX</u></a>
                     </div>
                 </div>
                 <br>

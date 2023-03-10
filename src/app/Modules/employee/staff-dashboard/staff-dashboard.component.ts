@@ -8,6 +8,7 @@ import Swal from 'sweetalert2';
  import * as JSZip from 'jszip';
 // import Swal from 'sweetalert2';
  import * as XLSX from 'xlsx';
+import { ExportToCsv } from 'export-to-csv';
 declare var JSZipUtils: any;
 @Component({
   selector: 'app-staff-dashboard',
@@ -1997,12 +1998,14 @@ export class StaffDashboardComponent implements OnInit {
 
 
 
-  filename:any;
+
   
+
+
+  fileName = 'Staff Reports.xlsx';
   exportexcel(): void {
-debugger;
     /* table id is passed over here */
-    let element = document.getElementById('lvs');
+    let element = document.getElementById('downloadaplication');
     const ws: XLSX.WorkSheet = XLSX.utils.table_to_sheet(element);
 
     /* generate workbook and add the worksheet */
@@ -2010,8 +2013,66 @@ debugger;
     XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
 
     /* save to file */
-    XLSX.writeFile(wb, this.filename);
+    XLSX.writeFile(wb, this.fileName);
+
   }
+
+  undefined: any;
+  sequenceNumber1: any
+  attendancelist: any
+  public exportexcel1() {
+    debugger
+    var ExportData = [];
+    this.sequenceNumber1 = 0;
+    this.undefined = 'NA'
+    for (let i = 0; i < this.stafflist.length; i++) {
+      debugger;
+      this.sequenceNumber1 = i + 1;
+      let singleData = {
+        EmployeeId: String,
+        EmployeeName: String,
+        Department: String,
+        Level: String,
+        Gender: String,
+        Position: String,
+        Email: String,
+        DateOfJoining: String,
+        Manager: String,
+        
+      }
+      //singleData.SequenceNumber = this.sequenceNumber1;
+      singleData.EmployeeId = this.stafflist[i].employeID;
+      singleData.EmployeeName = this.stafflist[i].fullname;
+      singleData.Department = this.stafflist[i].department_name;
+      singleData.Level = this.stafflist[i].level;
+      // singleData.CompanyName = this.companycode;
+      singleData.Gender = this.stafflist[i].gender;
+      singleData.Position = this.stafflist[i].role;
+      singleData.Email = this.stafflist[i].emailID;
+      singleData.DateOfJoining = this.stafflist[i].joiningDate;
+      singleData.Manager = this.stafflist[i].manager;
+      ExportData.push(singleData);
+      debugger
+    }
+    const Export_to_excel_options = {
+      fieldSeparator: ',',
+      quoteStrings: '"',
+      decimalSeparator: '.',
+      showLabels: true,
+      showTitle: true,
+      title: 'STAFF REPORT',
+      useTextFile: false,
+      useBom: true,
+      useKeysAsHeaders: true,
+      filename: 'STAFF REPORT'
+    };
+    const csvExporter = new ExportToCsv(Export_to_excel_options);
+    debugger
+    csvExporter.generateCsv(ExportData);
+
+  }
+
+
 
 
 }

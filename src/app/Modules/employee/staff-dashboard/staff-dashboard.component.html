@@ -82,9 +82,17 @@
             </div>
         </div><br>
 
+        <div class="row">
+            <div class="col-lg-10"></div>
+            <div class="col-lg-2">
+                <button class="addnew" (click)="exportexcel1()">Export to Excel</button>
+            </div>
+        </div>
+        <br>
+
         <div class="row" >
             <div class="col-md-12">
-                <table class="table" id="lvs"
+                <table class="table" id="downloadaplication"
                     *ngIf="(stafflist  | paginate: { itemsPerPage: count1, currentPage: p})?.length > 0; else noResults">
                     <thead>
                         <tr >

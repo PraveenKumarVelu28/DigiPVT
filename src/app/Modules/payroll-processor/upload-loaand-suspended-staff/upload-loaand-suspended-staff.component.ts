@@ -42,13 +42,7 @@ export class UploadLOAandSuspendedStaffComponent implements OnInit {
     debugger
     this.companyid = sessionStorage.getItem('companyid');
     this.GetUploadLoAandSuspendedStaff();
-    this.DigiPVTService.GetAllStaffNew().
-    subscribe({
-      next: data => {
-        debugger
-        this.stafflist = data;
-      }
-    })
+  
 
     this.DigiPVTService.GetPayPeriodSetting().subscribe(data => {
         debugger
@@ -58,20 +52,14 @@ export class UploadLOAandSuspendedStaffComponent implements OnInit {
 
   public GetUploadLoAandSuspendedStaff(){
     debugger
-    if(this.companyid==1007){
-      this.DigiPVTService.GetUploadedMasterFileForAffinity().subscribe(data => {
+  
+      this.DigiPVTService.GetUploadLoAandSuspendedStaff().subscribe(data => {
         debugger
         this.componentmaster = data;
         console.log("componentmaster", this.componentmaster);
       });
-    }
-  else{
-    this.DigiPVTService.GetUploadedMasterFile().subscribe(data => {
-      debugger
-      this.componentmaster = data;
-      console.log("componentmaster", this.componentmaster);
-    });
-  }
+
+ 
   }
 
   incomingfile(event: any) {

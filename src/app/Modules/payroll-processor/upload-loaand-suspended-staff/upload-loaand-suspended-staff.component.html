@@ -55,7 +55,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="container-fluid">
-                    <table class="table" id="downloadaplication" *ngIf="companyid==1007">
+                    <table class="table" id="downloadaplication" >
                         <thead>
                             <tr>
                                 <th>EmployeID</th>
@@ -68,7 +68,7 @@
                         </thead>
                         <tbody>
                             <tr *ngFor="let list of componentmaster|filter:term |paginate: { itemsPerPage: count2, currentPage: p1}  "  >
-                                <td>{{list.employeeNo}}</td>
+                                <td>{{list.employeID}}</td>
                                 <td>{{list.employeeName}}</td>
                                 <td>{{list.remarks}}</td>
                                 <td>{{list.paydate|date}}</td>
@@ -84,7 +84,7 @@
 
                 
                 </div>
-                <div class="text-right" *ngIf="componentmaster.lenght>count2">
+                <div class="text-right" *ngIf="componentmaster.length>count2">
                     <pagination-controls (pageChange)="p1 = $event"  previousLabel=""
                     nextLabel="" class="poppinns"></pagination-controls>               
                 </div>

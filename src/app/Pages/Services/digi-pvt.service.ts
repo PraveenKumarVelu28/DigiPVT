@@ -1869,6 +1869,10 @@ export class DigiPVTService {
   } 
 
 
+
+
+  
+
       
   public GetUploadLoAandSuspendedStaff() {
     return this.http.get<any[]>(

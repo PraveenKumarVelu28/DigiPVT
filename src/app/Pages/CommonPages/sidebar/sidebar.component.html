@@ -867,12 +867,12 @@
 
 
 <a (click)="UploadLOA()" class="nonactive"
-[ngClass]="(active == 'UploadMasterFile' ) && !mini ? 'menu1' : (active == 'UploadMasterFile')&&mini?'menu-mini':'menu'">
+[ngClass]="(active == 'UploadLOA' ) && !mini ? 'menu1' : (active == 'UploadLOA')&&mini?'menu-mini':'menu'">
 <div class="test_case">
 <div>
-  <img *ngIf="(active == 'UploadMasterFile' && !mini)" src="assets/Images/revamp/announcementwhite.png">
-  <img *ngIf="active != 'UploadMasterFile' " src="assets/Images/revamp/announcementnewgray-icon.png">
-  <img *ngIf="(active == 'UploadMasterFile' && mini) " src="assets/Images/revamp/announcementnewblue-icon.png">
+  <img *ngIf="(active == 'UploadLOA' && !mini)" src="assets/Images/revamp/announcementwhite.png">
+  <img *ngIf="active != 'UploadLOA' " src="assets/Images/revamp/announcementnewgray-icon.png">
+  <img *ngIf="(active == 'UploadLOA' && mini) " src="assets/Images/revamp/announcementnewblue-icon.png">
 </div>&nbsp;&nbsp;&nbsp;
 <div *ngIf="!mini">
   <span class="icon-text d-flex">Upload LOA and Suspended File</span>

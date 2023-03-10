@@ -98,7 +98,7 @@
 
 
 
-<a data-toggle="collapse" data-target="#SummaryValidation" *ngIf="login == 9 && (companyid == 1001|| companyid == 1006 )"
+<a data-toggle="collapse" data-target="#SummaryValidation" *ngIf="login == 9 && (companyid == 1001|| companyid == 1006 || companyid == 1005)"
 (click)="PayrollSummaryValidation()"
 [ngClass]="(active == 'PayrollSummaryValidation' )&&!mini ? 'menu1' : (active == 'PayrollSummaryValidation')&&mini?'menu-mini':'menu'">
 <div class="test_case">
@@ -810,6 +810,73 @@
   <div *ngIf="!mini">
     <span class="icon-text d-flex">Upload Head Count</span>
   </div>
+</div>
+</a>
+
+
+</div>
+
+
+<a data-toggle="collapse" data-target="#HeadCountForMWC"
+*ngIf="login == 9 && companyid == 1005 " (click)="HeadCountValidation()"
+[ngClass]="(active == 'holi' )&&!mini ? 'menu1' : (active == 'holi')&&mini?'menu-mini':'menu'">
+<div class="test_case">
+  <div>
+    <img *ngIf="(active == 312&&!mini)" src="assets/Images/revamp/reportswhite-icon.png">
+    <img *ngIf="active != 312" src="assets/Images/revamp/reportsnewgray-icon.png">
+    <img *ngIf="(active == 312&&mini)" src="assets/Images/revamp/reportsnewblue-icon.png">
+  </div>&nbsp;&nbsp;&nbsp;
+  <div *ngIf="!mini">
+    <span class="icon-text d-flex">Head Count Validation</span>
+  </div>
+</div>
+</a>
+
+
+
+<div id="HeadCountForMWC" class="collapse" [ngClass]="mini?'':' sub-collapse'" >
+<a (click)="ValidatedHeadCount()" class="nonactive"
+  [ngClass]="(active == 'ValidatedHeadCount' )&&!mini ? 'menu1' : (active == 'ValidatedHeadCount')&&mini?'menu-mini':'menu'">
+<div class="test_case">
+  <div>
+    <img *ngIf="(active == 'ValidatedHeadCount'&&!mini)" src="assets/Images/revamp/attendancecorrectionwhite-icon.png">
+    <img *ngIf="active != 'ValidatedHeadCount'" src="assets/Images/revamp/attendancecorrectiongray-icon.png">
+    <img *ngIf="(active == 'ValidatedHeadCount'&&mini)" src="assets/Images/revamp/attendancecorrectionblue-icon.png">
+  </div>&nbsp;&nbsp;&nbsp;
+  <div *ngIf="!mini">
+    <span class="icon-text d-flex">Validated Head Count</span>
+  </div>
+</div>
+</a>
+
+
+<a (click)="UploadMasterFile()" class="nonactive"
+[ngClass]="(active == 'UploadMasterFile' ) && !mini ? 'menu1' : (active == 'UploadMasterFile')&&mini?'menu-mini':'menu'">
+<div class="test_case">
+<div>
+  <img *ngIf="(active == 'UploadMasterFile' && !mini)" src="assets/Images/revamp/announcementwhite.png">
+  <img *ngIf="active != 'UploadMasterFile' " src="assets/Images/revamp/announcementnewgray-icon.png">
+  <img *ngIf="(active == 'UploadMasterFile' && mini) " src="assets/Images/revamp/announcementnewblue-icon.png">
+</div>&nbsp;&nbsp;&nbsp;
+<div *ngIf="!mini">
+  <span class="icon-text d-flex">Upload Master File</span>
+</div>
+</div>
+</a>
+
+
+
+<a (click)="UploadLOA()" class="nonactive"
+[ngClass]="(active == 'UploadMasterFile' ) && !mini ? 'menu1' : (active == 'UploadMasterFile')&&mini?'menu-mini':'menu'">
+<div class="test_case">
+<div>
+  <img *ngIf="(active == 'UploadMasterFile' && !mini)" src="assets/Images/revamp/announcementwhite.png">
+  <img *ngIf="active != 'UploadMasterFile' " src="assets/Images/revamp/announcementnewgray-icon.png">
+  <img *ngIf="(active == 'UploadMasterFile' && mini) " src="assets/Images/revamp/announcementnewblue-icon.png">
+</div>&nbsp;&nbsp;&nbsp;
+<div *ngIf="!mini">
+  <span class="icon-text d-flex">Upload LOA and Suspended File</span>
+</div>
 </div>
 </a>
 

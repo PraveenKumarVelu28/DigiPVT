@@ -760,6 +760,15 @@ export class DigiPVTService {
     return this.http.post(this.url, data);
   }
 
+  public InsertUploadLoAandSuspendedStaff(data: any) {
+    debugger;
+    this.url = this.host + '/Master/InsertUploadLoAandSuspendedStaff';
+    return this.http.post(this.url, data);
+  }
+
+
+  
+
   public InsertUploadedMasterFileForAffinitiy(data: any) {
     debugger;
     this.url = 'http://localhost:1807/' + '/Master/InsertUploadedMasterFileForAffinitiy';
@@ -1859,6 +1868,14 @@ export class DigiPVTService {
     );
   } 
 
+
+      
+  public GetUploadLoAandSuspendedStaff() {
+    return this.http.get<any[]>(
+      this.host + "/Master/GetUploadLoAandSuspendedStaff"
+    );
+  } 
+  
 
   
   

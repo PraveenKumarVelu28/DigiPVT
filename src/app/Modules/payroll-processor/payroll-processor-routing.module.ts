@@ -78,8 +78,13 @@ import { EmployeeBatchMasterComponent } from './employee-batch-master/employee-b
 import { TimeandAttendanceEligibilityMasterComponent } from './timeand-attendance-eligibility-master/timeand-attendance-eligibility-master.component';
 import { ValidatedStatutoryDeductionsComponent } from './validated-statutory-deductions/validated-statutory-deductions.component';
 import { UploadLoanReportComponent } from './upload-loan-report/upload-loan-report.component';
+import { UploadLOAandSuspendedStaffComponent } from './upload-loaand-suspended-staff/upload-loaand-suspended-staff.component';
 const routes: Routes = [
   { path: '', component: PayrollProcessorComponent },
+
+  { path: 'UploadLOAandSuspendedStaff', component: UploadLOAandSuspendedStaffComponent },
+
+
   { path: 'ValidatedHolidayEnCashments', component: ValidatedHolidayEnCashmentsComponent },
 
   { path: 'UploadLoanReport', component: UploadLoanReportComponent },

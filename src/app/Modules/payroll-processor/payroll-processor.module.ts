@@ -81,6 +81,7 @@ import { TimeandAttendanceEligibilityMasterComponent } from './timeand-attendanc
 import { EmployeeBatchMasterComponent } from './employee-batch-master/employee-batch-master.component';
 import { ValidatedStatutoryDeductionsComponent } from './validated-statutory-deductions/validated-statutory-deductions.component';
 import { UploadLoanReportComponent } from './upload-loan-report/upload-loan-report.component';
+import { UploadLOAandSuspendedStaffComponent } from './upload-loaand-suspended-staff/upload-loaand-suspended-staff.component';
 
 
 
@@ -165,7 +166,8 @@ import { UploadLoanReportComponent } from './upload-loan-report/upload-loan-repo
     TimeandAttendanceEligibilityMasterComponent,
     EmployeeBatchMasterComponent,
     ValidatedStatutoryDeductionsComponent,
-    UploadLoanReportComponent
+    UploadLoanReportComponent,
+    UploadLOAandSuspendedStaffComponent
   ],
   imports: [
     PayrollProcessorRoutingModule,

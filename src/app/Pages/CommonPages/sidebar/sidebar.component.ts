@@ -180,6 +180,9 @@ export class SidebarComponent implements OnInit {
 
 
   public ValidatedPayrollSummary() {
+
+  
+
     this.active = 'ValidatedPayrollSummary'
     localStorage.setItem("pagename", "ValidatedPayrollSummary")
     this.data11.emit('ValidatedPayrollSummary')
@@ -193,8 +196,12 @@ export class SidebarComponent implements OnInit {
       title: 'Access Payroll Summary Validation',
       html: `<input type="text" id="login" class="swal2-input"  placeholder="Enter 4 Digit Pin">
     `,
+
+    
       confirmButtonText: 'Submit',
-      focusConfirm: false,
+      showLoaderOnConfirm: true,
+      
+      
       preConfirm: () => {
         debugger
         const login: any = document.getElementById('login') as HTMLElement
@@ -1231,6 +1238,15 @@ this.data11.emit('ValidatedMaster')
     debugger
     this.active = 'UploadMasterFile';
     this.router.navigate(['/PayrollProcessor/UploadMasterList']);
+
+
+  }
+
+
+  public UploadLOA() {
+    debugger
+    this.active = 'UploadLOA';
+    this.router.navigate(['/PayrollProcessor/UploadLOAandSuspendedStaff']);
 
 
   }

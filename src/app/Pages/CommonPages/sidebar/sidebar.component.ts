@@ -314,9 +314,8 @@ this.data11.emit('ValidatedMaster')
     document.getElementById('NHANDRValidation')?.setAttribute("class", "sub-collapse collapse hide");
     document.getElementById('HeadCount')?.setAttribute("class", "sub-collapse collapse hide");
     document.getElementById('OvertimeValidation')?.setAttribute("class", "sub-collapse collapse hide");
-
-
-    localStorage.setItem('Pagename', 'Announcements')
+    localStorage.setItem('Pagename', 'BonusValidation')
+    this.data11.emit('BonusValidation')
   }
 
 
@@ -334,13 +333,15 @@ this.data11.emit('ValidatedMaster')
     document.getElementById('HeadCount')?.setAttribute("class", "sub-collapse collapse hide");
     document.getElementById('OvertimeValidation')?.setAttribute("class", "sub-collapse collapse hide");
     // document.getElementById('staff')?.setAttribute("class", "sub-collapse collapse hide");
-    localStorage.setItem('Pagename', 'Announcements')
+    localStorage.setItem('Pagename', 'PayrollSummaryValidation')
+    this.data11.emit('PayrollSummaryValidation')
   }
 
   PhilHealthValidation() {
     debugger
     this.active = 'PhilHealthValidation';
-    localStorage.setItem('Pagename', 'Announcements')
+    localStorage.setItem('Pagename', 'PhilHealthValidation')
+    this.data11.emit('PhilHealthValidation')
   }
 
 
@@ -348,20 +349,23 @@ this.data11.emit('ValidatedMaster')
   AllowanceValidation() {
     debugger
     this.active = 999;
-    localStorage.setItem('Pagename', 'Announcements')
+    localStorage.setItem('Pagename', 'AllowanceValidation')
+    this.data11.emit('AllowanceValidation')
   }
 
   OvertimeValidation() {
     debugger
     this.active = 'ot';
-    localStorage.setItem('Pagename', 'Announcements')
+    localStorage.setItem('Pagename', 'OvertimeValidation')
+    this.data11.emit('OvertimeValidation')
   }
 
   public uploadRetrovalues() {
     debugger
 
-    localStorage.setItem('Pagename', 'Over Time');
+    localStorage.setItem('Pagename', 'uploadRetrovalues');
     this.router.navigate(['/PayrollProcessor/UploadRetroValuesOT']);
+    this.data11.emit('uploadRetrovalues')
 
     // Swal.fire({
     //   title: 'Access Basic Pay Validation',
@@ -389,6 +393,7 @@ this.data11.emit('ValidatedMaster')
     debugger
     this.active = 'PayRoll'
     localStorage.setItem('PayRoll', 'PayRoll')
+    this.data11.emit('PayRoll')
 
   }
 
@@ -398,11 +403,13 @@ this.data11.emit('ValidatedMaster')
     if (this.login == '2') {
       localStorage.setItem('Pagename', 'Attendance Details')
       this.router.navigate(['/Manager/MyTeamAttendence']);
+      this.data11.emit('Attendance Details')
 
     }
     else {
       localStorage.setItem('Pagename', 'Attendance Details')
       this.router.navigate(['/Employee/AttendenceDetails']);
+      this.data11.emit('Attendance Details')
 
     }
 
@@ -413,22 +420,26 @@ this.data11.emit('ValidatedMaster')
     if (this.login == '6') {
       this.router.navigate(['/Employee/LeaveListDashboard']);
       localStorage.setItem('Pagename', 'Leaves')
+      this.data11.emit('Leaves')
 
 
     }
     else if (this.login == '9') {
       this.router.navigate(['/HR/Hrleavereuest']);
       localStorage.setItem('Pagename', 'Leaves')
+      this.data11.emit('Leaves')
 
     }
     else if (this.login == '2') {
       this.router.navigate(['/Manager/MyTeamLeaveDetails']);
       localStorage.setItem('Pagename', 'Leaves')
+      this.data11.emit('Leaves')
 
     }
     else {
       this.router.navigate(['/Employee/LeaveListDashboard']);
       localStorage.setItem('Pagename', 'Leaves')
+      this.data11.emit('Leaves')
 
     }
 
@@ -441,18 +452,23 @@ this.data11.emit('ValidatedMaster')
     if (this.login == '6') {
       localStorage.setItem('Pagename', 'Timesheet Request')
       this.router.navigate(['/Employee/TimeSheet']);
+      this.data11.emit('TimeSheet')
     }
+  
     else if (this.login == '9') {
       localStorage.setItem('Pagename', 'Timesheet Request')
       this.router.navigate(['/Employee/TimeSheet']);
+      this.data11.emit('TimeSheet')
     }
     else if (this.login == '8') {
       localStorage.setItem('Pagename', 'Timesheet Request')
       this.router.navigate(['/Employee/TimeSheet']);
+      this.data11.emit('TimeSheet')
     }
     else {
       localStorage.setItem('Pagename', 'Timesheet Request')
       this.router.navigate(['/Manager/MyTeamTimesheet']);
+      this.data11.emit('TimeSheet')
 
     }
 
@@ -464,21 +480,25 @@ this.data11.emit('ValidatedMaster')
     if (this.login == '6') {
       localStorage.setItem('Pagename', 'Locator Request')
       this.router.navigate(['/Employee/LocatorDashboard']);
+      this.data11.emit('Locator Request')
 
     }
     else if (this.login == '9') {
       localStorage.setItem('Pagename', 'Locator Request')
       this.router.navigate(['/Employee/LocatorDashboard']);
+      this.data11.emit('Locator Request')
 
     }
     else if (this.login == '8') {
       localStorage.setItem('Pagename', 'Locator Request')
       this.router.navigate(['/Employee/LocatorDashboard']);
+      this.data11.emit('Locator Request')
 
     }
     else {
       localStorage.setItem('Pagename', 'Locator Request')
       this.router.navigate(['/Manager/ManagerLocatorDetails']);
+      this.data11.emit('Locator Request')
 
     }
   }
@@ -487,26 +507,34 @@ this.data11.emit('ValidatedMaster')
     this.active = 17;
     localStorage.setItem('Pagename', 'Loans Request')
     this.router.navigate(['/Employee/Employeeloandash']);
+    this.data11.emit('Loans Request')
 
   }
 
 
   public Request() {
     this.active = 14
+    localStorage.setItem('Pagename', 'Request')
+    this.data11.emit('Request')
   }
 
   public Reports() {
     this.active = 11
+    localStorage.setItem('Pagename', 'Reports')
+    this.data11.emit('Reports')
   }
 
   public Doccuments() {
     this.active = 12
+    localStorage.setItem('Pagename', 'Doccuments')
+    this.data11.emit('Doccuments')
   }
 
   public Help() {
     this.active = 13
     localStorage.setItem('Pagename', 'Help')
     this.router.navigate(['/Admin/Help']);
+    this.data11.emit('Help')
   }
 
   public PayInputs() {
@@ -523,6 +551,7 @@ this.data11.emit('ValidatedMaster')
     this.active = 'Resignation';
     localStorage.setItem('Pagename', 'Employee Resignation')
     this.router.navigate(['/Employee/EmployeeResignation']);
+    this.data11.emit('Employee Resignation')
 
   }
 
@@ -530,6 +559,7 @@ this.data11.emit('ValidatedMaster')
     this.active = 'ExceptionBulkLogs';
     localStorage.setItem('Pagename', 'Exception Bulk Logs')
     this.router.navigate(['/HR/StaffBulkUploadExceptions']);
+    this.data11.emit('Exception Bulk Logs')
 
   }
 
@@ -605,6 +635,7 @@ this.data11.emit('ValidatedMaster')
     this.active = 26;
     localStorage.setItem('Pagename', 'Timesheet Report')
     this.router.navigate(['/Employee/TimesheetReports']);
+    this.data11.emit('Timesheet Report')
 
 
   }
@@ -613,6 +644,7 @@ this.data11.emit('ValidatedMaster')
     this.active = 25
     localStorage.setItem('Pagename', 'Leave Report')
     this.router.navigate(['/Employee/LeaveReports']);
+    this.data11.emit('Leave Report')
   }
 
 
@@ -622,13 +654,16 @@ this.data11.emit('ValidatedMaster')
     if (this.login == 6) {
       localStorage.setItem('Pagename', 'Attendance Correction Report')
       this.router.navigate(['/Employee/AttendanceCorrectionReport']);
+      this.data11.emit('Attendance Correction Report')
     } else if (this.login == 9) {
       localStorage.setItem('Pagename', 'Attendance Correction Report')
       this.router.navigate(['/Employee/AttendanceCorrectionReport']);
+      this.data11.emit('Attendance Correction Report')
     }
     else {
       localStorage.setItem('Pagename', 'Attendance Correction Report')
       this.router.navigate(['/Manager/TeamAttendanceCorrectionReports']);
+      this.data11.emit('Attendance Correction Report')
     }
 
   }
@@ -637,6 +672,7 @@ this.data11.emit('ValidatedMaster')
     this.active = 101
     localStorage.setItem('Pagename', 'EmployeeOvertimeReport')
     this.router.navigate(['/Employee/EmployeeOvertimeReport']);
+    this.data11.emit('EmployeeOvertimeReport')
   }
 
 
@@ -644,6 +680,7 @@ this.data11.emit('ValidatedMaster')
     this.active = 100
     localStorage.setItem('Pagename', 'EmployeeAttendanceReport')
     this.router.navigate(['/Employee/EmployeeAttendanceReport']);
+    this.data11.emit('EmployeeAttendanceReport')
   }
 
 
@@ -653,9 +690,11 @@ this.data11.emit('ValidatedMaster')
     if (this.login == 6) {
       localStorage.setItem('Pagename', 'Attendance Report')
       this.router.navigate(['/Employee/AttendanceReports']);
+      this.data11.emit('Attendance Report')
     } else {
       localStorage.setItem('Pagename', 'Attendance Report')
       this.router.navigate(['/Manager/TeamAttendanceReports']);
+      this.data11.emit('Attendance Report')
     }
 
   }
@@ -666,21 +705,25 @@ this.data11.emit('ValidatedMaster')
       this.active = 10;
       localStorage.setItem('Pagename', 'OverTime Details')
       this.router.navigate(['/Manager/MyTeamOverTimeDetails']);
+      this.data11.emit('OverTime Report')
     }
     else if (this.login == '9') {
       this.active = 10;
       localStorage.setItem('Pagename', 'OverTime Details')
       this.router.navigate(['/Manager/MyTeamOverTimeDetails']);
+      this.data11.emit('OverTime Report')
     }
     else if (this.login == '11') {
       this.active = 10;
       localStorage.setItem('Pagename', 'OverTime Details')
       this.router.navigate(['/Manager/MyTeamOverTimeDetails']);
+      this.data11.emit('OverTime Report')
     }
     else {
       this.active = 10;
       localStorage.setItem('Pagename', 'OverTime Details')
       this.router.navigate(['/Employee/MyOverTimeDetails']);
+      this.data11.emit('OverTime Report')
     }
 
 
@@ -692,9 +735,11 @@ this.data11.emit('ValidatedMaster')
     if (this.login == 2) {
       localStorage.setItem('Pagename', 'Shift Details');
       this.router.navigate(['/Employee/MyTeamWeeklyShift']);
+      this.data11.emit('Shift Details')
     } else {
       localStorage.setItem('Pagename', 'Shift Details');
       this.router.navigate(['/Employee/WeeklyShift']);
+      this.data11.emit('Shift Details')
 
     }
 
@@ -706,10 +751,13 @@ this.data11.emit('ValidatedMaster')
     this.active = 'attendancecorrection';
     this.router.navigate(['/Employee/AttendanceCorrection']);
     localStorage.setItem('Pagename', 'Attendance Correction')
+    this.data11.emit('Attendance Correction')
   }
 
   public getAttendacmenu() {
     this.active = 8;
+    localStorage.setItem('Pagename', 'Get Attendacmenu')
+    this.data11.emit('Get Attendacmenu')
 
   }
 
@@ -717,6 +765,8 @@ this.data11.emit('ValidatedMaster')
     this.active = 'UploadStaffLeaves'
 
     this.router.navigate(['/PayrollProcessor/StaffLeavesUpload'])
+    localStorage.setItem('Pagename', 'UploadStaffLeaves')
+    this.data11.emit('UploadStaffLeaves')
 
   }
 
@@ -735,15 +785,14 @@ this.data11.emit('ValidatedMaster')
     this.active='UploadSystemGeneratedLWOP'
 
     this.router.navigate(['/PayrollProcessor/UploadGeneratedLwop'])
+    localStorage.setItem('Pagename', 'UploadSystemGeneratedLWOP')
+    this.data11.emit('UploadSystemGeneratedLWOP')
 
 
   }
 
   public UploadAllowance() {
-    
-          this.router.navigate(['/PayrollProcessor/UploadAllowance'])
-      
-
+    this.router.navigate(['/PayrollProcessor/UploadAllowance'])
   }
 
   public UploadPayperiodAllowance() {
@@ -755,8 +804,9 @@ this.data11.emit('ValidatedMaster')
 
   public UploadBonusValues() {
     this.active = 'UploadBonusValues'
-    localStorage.setItem("clickname", "Upload Staff Leaves")
+    localStorage.setItem("clickname", "UploadBonusValues")
     this.router.navigate(['/PayrollProcessor/UploadBonusValues'])
+    this.data11.emit('UploadBonusValues')
     // Swal.fire({
     //   title: 'Access Basic Pay Validation',
     //   html: `<input type="text" id="login" class="swal2-input"  placeholder="Enter 4 Digit Pin">
@@ -782,7 +832,8 @@ this.data11.emit('ValidatedMaster')
 
   public FMAValidation() {
     this.active = 'fma'
-    localStorage.setItem("clickname", "Upload Pay Period Allowance")
+    localStorage.setItem("pagename", "FMAValidation")
+    this.data11.emit('FMAValidation')
 
   }
 
@@ -801,26 +852,20 @@ this.data11.emit('ValidatedMaster')
     document.getElementById('OvertimeValidation')?.setAttribute("class", "sub-collapse collapse hide");
 
     
-    localStorage.setItem("clickname", "Upload Pay Period Allowance")
+    localStorage.setItem("pagename", "LoanProceeds")
+    this.data11.emit('LoanProceeds')
 
   }
 
 
   public UploadFMAAllowance() {
-
-   
-
-   
-          this.router.navigate(['/PayrollProcessor/FMAValidation'])
-      
-
+  this.router.navigate(['/PayrollProcessor/FMAValidation'])
   }
 
   public ValidatedRunTaxValidation() {
-
     this.active = 'ValidatedRunTaxValidation'
     localStorage.setItem("pagename", "Validated Run TaxValidation")
-
+    this.data11.emit('Validated Run TaxValidation')
     this.DigiPVTService.GetValidationPassword().subscribe(data => {
       debugger
       this.validation = data.filter(x=>x.menuName=='Validated Run TaxValidation');

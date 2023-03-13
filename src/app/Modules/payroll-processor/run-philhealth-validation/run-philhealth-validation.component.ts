@@ -330,13 +330,8 @@ export class RunPhilhealthValidationComponent implements OnInit {
                         debugger;
                         this.StaffSalaryReports = res;
                         this.ID1 = [];
-                        if(this.companyid!=1007){
-                          location.href = '#/PayrollProcessor/ValidatedColaValues'
-                        }
-                        else{
-                          location.href = '#/PayrollProcessor/ValidatedStatutoryDeductions'
-
-                        }                      }
+                        location.href = '#/PayrollProcessor/ValidatedPayrollSummaryReport'
+                      }
                     )
 
                   

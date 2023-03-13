@@ -55,6 +55,31 @@ export class BonusValidationDetailsComponent implements OnInit {
         }
       })
   }
+
+
+  public getfilter(){
+    this.DigiofficeService.GetValidatedBonusDetails()
+    .subscribe({
+      next: data => {
+        debugger
+        this.timedetails = data.filter(x=>x.taxableBonus<90000);
+
+        this.count = this.timedetails.length
+      }, error: (err) => {
+        Swal.fire('Issue in Getting Staff Over Time Details');
+        // Insert error in Db Here//
+        var obj = {
+          'PageName': this.currentUrl,
+          'ErrorMessage': err.error.message
+        }
+        this.DigiofficeService.InsertExceptionLogs(obj).subscribe(
+          data => {
+            debugger
+          },
+        )
+      }
+    })
+  }
   fileName = ' Bonus Validation Details Reports.xlsx';
   exportexcel(): void {
     debugger

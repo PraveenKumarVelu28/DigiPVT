@@ -9,12 +9,13 @@ declare var JSZipUtils: any;
 
 
 @Component({
-  selector: 'app-run-allowance-validation',
-  templateUrl: './run-allowance-validation.component.html',
-  styleUrls: ['./run-allowance-validation.component.css']
+  selector: 'app-run-overtime-report-validation',
+  templateUrl: './run-overtime-report-validation.component.html',
+  styleUrls: ['./run-overtime-report-validation.component.css']
 })
-export class RunAllowanceValidationComponent implements OnInit {
+export class RunOvertimeReportValidationComponent implements OnInit {
 
+ 
   viewMode = 'tab1';
 
   constructor(public DigiofficeService: DigiPVTService, public router: Router, private datePipe: DatePipe) {
@@ -42,12 +43,9 @@ export class RunAllowanceValidationComponent implements OnInit {
   cutofflist:any;
   PaycodeID:any;
   PayPeriodSettingList:any;
-  companyid:any;
   ngOnInit(): void {
     this.PaycodeID = "";
     this.myDate = new Date();
-    this.companyid = sessionStorage.getItem('companyid');
-
     this.latestdate= this.datePipe.transform( this.myDate , 'yyyy-MM-dd');
     debugger
 
@@ -289,7 +287,7 @@ export class RunAllowanceValidationComponent implements OnInit {
   }
   Swal.fire({
     title: 'Are you sure?',
-    text: 'To Run Payroll For This Period!',
+    text: 'To Run Tax Validation In This Period',
     showCancelButton: true,
     confirmButtonText: 'Yes, Accept it!',
     cancelButtonText: 'No, keep it'
@@ -325,12 +323,12 @@ export class RunAllowanceValidationComponent implements OnInit {
                   debugger;
                  
                     this.LOPDays = 0;
-                    this.DigiofficeService.GetRunAllowanceValidation(this.ID1[i],  this.startdate, this.enddate).subscribe(
+                    this.DigiofficeService.Get_PreliminaryReport(this.ID1[i], this.LOPDays, this.startdate, this.enddate).subscribe(
                       res => {
                         debugger;
                         this.StaffSalaryReports = res;
                         this.ID1 = [];
-                        location.href = '#/PayrollProcessor/ValidatedAllowanceDetails'
+                        location.href = '#/PayrollProcessor/ValidatedTaxValues'
                       }
                     )
 
@@ -693,7 +691,7 @@ export class RunAllowanceValidationComponent implements OnInit {
               if (result.value==true) {
                 Swal.fire({
                   title: 'Are you sure?',
-                  text: 'To Run Lwop Validation In This Period',
+                  text: 'To Run Tax Validation In This Period',
                  
                   showCancelButton: true,
                   confirmButtonText: 'Yes, Accept it!',
@@ -708,7 +706,7 @@ export class RunAllowanceValidationComponent implements OnInit {
                           debugger;
                          
                             this.LOPDays = 0;
-                            this.DigiofficeService.GetRunAllowanceValidation(this.ID[i],  this.startdate, this.enddate).subscribe(
+                            this.DigiofficeService.GetRunUploadedPayrollElementsForPayperiodValidation(this.ID[i],  this.startdate, this.enddate).subscribe(
                               res => {
                                 debugger;
                                 this.StaffSalaryReports = res;
@@ -719,14 +717,7 @@ export class RunAllowanceValidationComponent implements OnInit {
                                 )
                                 this.Payrollvis = true
                                 this.InsertNotification();
-                                if(this.companyid==1001){
-                                  location.href = '#/PayrollProcessor/ValidatedAllowanceDetails'
-
-                                }
-                                else{
-                                  location.href = '#/PayrollProcessor/ValidatedAllowanceDetailsForMWC'
-
-                                }
+                                location.href = '#/PayrollProcessor/ValidatedTandLDetails'
                               }
                             )
   
@@ -758,7 +749,7 @@ export class RunAllowanceValidationComponent implements OnInit {
            
               Swal.fire({
                 title: 'Are you sure?',
-                text: 'To Run Lwop Validation In This Period',
+                text: 'To Run Tax Validation In This Period',
                
                 showCancelButton: true,
                 confirmButtonText: 'Yes, Accept it!',
@@ -773,7 +764,7 @@ export class RunAllowanceValidationComponent implements OnInit {
                         debugger;
                        
                           this.LOPDays = 0;
-                          this.DigiofficeService.GetRunAllowanceValidation(this.ID[i],  this.startdate, this.enddate).subscribe(
+                          this.DigiofficeService.GetRunUploadedPayrollElementsForPayperiodValidation(this.ID[i],  this.startdate, this.enddate).subscribe(
                             res => {
                               debugger;
                               this.StaffSalaryReports = res;
@@ -784,14 +775,8 @@ export class RunAllowanceValidationComponent implements OnInit {
                               )
                               this.Payrollvis = true
                               this.InsertNotification();
-                              if(this.companyid==1001){
-                                location.href = '#/PayrollProcessor/ValidatedAllowanceDetails'
-
-                              }
-                              else{
-                                location.href = '#/PayrollProcessor/ValidatedAllowanceDetailsForMWC'
-
-                              }                            }
+                              location.href = '#/PayrollProcessor/ValidatedTandLDetails'
+                            }
                           )
 
                         
@@ -894,6 +879,5 @@ export class RunAllowanceValidationComponent implements OnInit {
   hdmfsalaryloan: any;
   benefits: any;
  
-
 
 }

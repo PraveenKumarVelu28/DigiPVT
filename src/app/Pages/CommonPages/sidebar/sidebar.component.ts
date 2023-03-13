@@ -301,7 +301,10 @@ this.data11.emit('ValidatedMaster')
 
 
 
-  
+  NetPayValidation() {
+    debugger
+    this.active = 7877;
+  }
 
   BonusValidation() {
     debugger
@@ -346,6 +349,8 @@ this.data11.emit('ValidatedMaster')
     localStorage.setItem('Pagename', 'PhilHealthValidation')
     this.data11.emit('PhilHealthValidation')
   }
+
+
 
   AllowanceValidation() {
     debugger
@@ -538,6 +543,16 @@ this.data11.emit('ValidatedMaster')
     this.data11.emit('Help')
   }
 
+  public PayInputs() {
+    this.active = 'PayInputs'
+    localStorage.setItem('Pagename', 'Help')
+ 
+  }
+
+
+  
+
+
   public EmployeeResignation() {
     this.active = 'Resignation';
     localStorage.setItem('Pagename', 'Employee Resignation')
@@ -575,8 +590,12 @@ this.data11.emit('ValidatedMaster')
         debugger
         const login: any = document.getElementById('login') as HTMLElement
 
-        if (login.value == this.validation[0].password) {
+        if (login.value == this.validation[0].password && this.companyid==1001) {
           this.router.navigate(['/PayrollProcessor/ValidatedAllowanceDetails']);
+        }
+        else if (login.value == this.validation[0].password && this.companyid==1005){
+          this.router.navigate(['/PayrollProcessor/ValidatedAllowanceDetailsForMWC']);
+
         }
         else {
           Swal.showValidationMessage(`Please enter correct pin`)
@@ -587,6 +606,38 @@ this.data11.emit('ValidatedMaster')
 
   }
 
+  public PayInputValidation() {
+    this.active = 'PayInputValidation';
+    localStorage.setItem('Pagename', 'Exception Bulk Logs')
+
+    this.DigiPVTService.GetValidationPassword().subscribe(data => {
+      debugger
+      this.validation = data.filter(x=>x.menuName=='Validated Payroll Inputs');
+      console.log("validation", this.validation);
+    });
+
+
+    Swal.fire({
+      title: 'Access Payroll Input Validation',
+      html: `<input type="text" id="login" class="swal2-input"  placeholder="Enter 4 Digit Pin">
+    `,
+      confirmButtonText: 'Submit',
+      focusConfirm: false,
+      preConfirm: () => {
+        debugger
+        const login: any = document.getElementById('login') as HTMLElement
+
+        if (login.value == this.validation[0].password) {
+          this.router.navigate(['/PayrollProcessor/ValidatedPayrollInputs']);
+        }
+        else {
+          Swal.showValidationMessage(`Please enter correct pin`)
+        }
+      }
+    })
+
+
+  }
 
 
 
@@ -729,6 +780,14 @@ this.data11.emit('ValidatedMaster')
 
   }
 
+  public UploadOvertimeReport() {
+    this.active = 'UploadOvertimeReport'
+
+    this.router.navigate(['/PayrollProcessor/UploadOvertimeReport'])
+
+  }
+
+
 
 
 
@@ -780,6 +839,13 @@ this.data11.emit('ValidatedMaster')
   }
 
 
+  public UploadNetPayValues() {
+    this.active = 'UploadNetPayValues'
+    localStorage.setItem("clickname", "UploadNetPayValues")
+    this.router.navigate(['/PayrollProcessor/UploadNetPayValues'])
+   
+   
+  }
 
   public FMAValidation() {
     this.active = 'fma'
@@ -1229,6 +1295,40 @@ this.data11.emit('ValidatedMaster')
 
   }
 
+  
+  public ValidatedNetPay() {
+    debugger
+    this.active = 6676;
+    localStorage.setItem('Pagename', 'Staff')
+
+    this.DigiPVTService.GetValidationPassword().subscribe(data => {
+      debugger
+      this.validation = data.filter(x=>x.menuName=='Validated Net Pay Details');
+      console.log("validation", this.validation);
+    });
+
+    Swal.fire({
+      title: 'Access Net Pay Validation',
+      html: `<input type="text" id="login" class="swal2-input"  placeholder="Enter 4 Digit Pin">
+    `,
+      confirmButtonText: 'Submit',
+      focusConfirm: false,
+      preConfirm: () => {
+        debugger
+        const login: any = document.getElementById('login') as HTMLElement
+ 
+        if (login.value == this.validation[0].password) {
+          this.router.navigate(['/PayrollProcessor/ValidateNetPayDetails']);
+        }
+        else {
+          Swal.showValidationMessage(`Please enter correct pin`)
+        }
+      }
+    })
+
+
+  }
+
   public ValidatedBankstats() {
     debugger
     this.active = 2345;
@@ -1645,7 +1745,7 @@ this.data11.emit('ValidatedMaster')
         const login: any = document.getElementById('login') as HTMLElement
 
         if (login.value == this.validation[0].password) {
-          this.router.navigate(['/PayrollProcessor/ValidatedTandLDetails']);
+          this.router.navigate(['/PayrollProcessor/ValidatedOvertimeReportDetails']);
         }
         else {
           Swal.showValidationMessage(`Please enter correct pin`)
@@ -1654,6 +1754,42 @@ this.data11.emit('ValidatedMaster')
     })
 
   }
+
+
+  public ValidatedOvertimeDetails() {
+    debugger
+   
+    this.active = 'ValidatedTandLDetails';
+    localStorage.setItem('Pagename', 'Staff')
+
+    this.DigiPVTService.GetValidationPassword().subscribe(data => {
+      debugger
+      this.validation = data.filter(x => x.menuName == 'Validated Overtime Details');
+      console.log("validation", this.validation);
+    });
+
+
+    Swal.fire({
+      title: 'Access Overtime Validation',
+      html: `<input type="text" id="login" class="swal2-input"  placeholder="Enter 4 Digit Pin">
+    `,
+      confirmButtonText: 'Submit',
+      focusConfirm: false,
+      preConfirm: () => {
+        debugger
+        const login: any = document.getElementById('login') as HTMLElement
+
+        if (login.value == this.validation[0].password) {
+          this.router.navigate(['/PayrollProcessor/RunOvertimeReportValidation']);
+        }
+        else {
+          Swal.showValidationMessage(`Please enter correct pin`)
+        }
+      }
+    })
+
+  }
+
 
 
 

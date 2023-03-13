@@ -7,14 +7,14 @@ import { ExportToCsv } from 'export-to-csv';
 import { DatePipe, formatDate } from '@angular/common';
 declare var JSZipUtils: any;
 
-
 @Component({
-  selector: 'app-run-allowance-validation',
-  templateUrl: './run-allowance-validation.component.html',
-  styleUrls: ['./run-allowance-validation.component.css']
+  selector: 'app-run-payroll-input-validation',
+  templateUrl: './run-payroll-input-validation.component.html',
+  styleUrls: ['./run-payroll-input-validation.component.css']
 })
-export class RunAllowanceValidationComponent implements OnInit {
+export class RunPayrollInputValidationComponent implements OnInit {
 
+ 
   viewMode = 'tab1';
 
   constructor(public DigiofficeService: DigiPVTService, public router: Router, private datePipe: DatePipe) {
@@ -42,12 +42,9 @@ export class RunAllowanceValidationComponent implements OnInit {
   cutofflist:any;
   PaycodeID:any;
   PayPeriodSettingList:any;
-  companyid:any;
   ngOnInit(): void {
     this.PaycodeID = "";
     this.myDate = new Date();
-    this.companyid = sessionStorage.getItem('companyid');
-
     this.latestdate= this.datePipe.transform( this.myDate , 'yyyy-MM-dd');
     debugger
 
@@ -325,12 +322,12 @@ export class RunAllowanceValidationComponent implements OnInit {
                   debugger;
                  
                     this.LOPDays = 0;
-                    this.DigiofficeService.GetRunAllowanceValidation(this.ID1[i],  this.startdate, this.enddate).subscribe(
+                    this.DigiofficeService.GetRunPayrollSummaryReportValidation(this.ID1[i],  this.startdate, this.enddate).subscribe(
                       res => {
                         debugger;
                         this.StaffSalaryReports = res;
                         this.ID1 = [];
-                        location.href = '#/PayrollProcessor/ValidatedAllowanceDetails'
+                        location.href = '#/PayrollProcessor/ValidatedPayrollSummaryReport'
                       }
                     )
 
@@ -693,7 +690,7 @@ export class RunAllowanceValidationComponent implements OnInit {
               if (result.value==true) {
                 Swal.fire({
                   title: 'Are you sure?',
-                  text: 'To Run Lwop Validation In This Period',
+                  text: 'To Run Pay Sum Validation In This Period',
                  
                   showCancelButton: true,
                   confirmButtonText: 'Yes, Accept it!',
@@ -708,7 +705,7 @@ export class RunAllowanceValidationComponent implements OnInit {
                           debugger;
                          
                             this.LOPDays = 0;
-                            this.DigiofficeService.GetRunAllowanceValidation(this.ID[i],  this.startdate, this.enddate).subscribe(
+                            this.DigiofficeService.GetRunPayrollInputReportValidation(this.ID[i],  this.startdate, this.enddate).subscribe(
                               res => {
                                 debugger;
                                 this.StaffSalaryReports = res;
@@ -719,14 +716,7 @@ export class RunAllowanceValidationComponent implements OnInit {
                                 )
                                 this.Payrollvis = true
                                 this.InsertNotification();
-                                if(this.companyid==1001){
-                                  location.href = '#/PayrollProcessor/ValidatedAllowanceDetails'
-
-                                }
-                                else{
-                                  location.href = '#/PayrollProcessor/ValidatedAllowanceDetailsForMWC'
-
-                                }
+                                location.href = '#/PayrollProcessor/ValidatedPayrollInputs'
                               }
                             )
   
@@ -758,8 +748,7 @@ export class RunAllowanceValidationComponent implements OnInit {
            
               Swal.fire({
                 title: 'Are you sure?',
-                text: 'To Run Lwop Validation In This Period',
-               
+                text: 'To Run Pay Sum Validation In This Period',               
                 showCancelButton: true,
                 confirmButtonText: 'Yes, Accept it!',
                 cancelButtonText: 'No, keep it'
@@ -773,7 +762,7 @@ export class RunAllowanceValidationComponent implements OnInit {
                         debugger;
                        
                           this.LOPDays = 0;
-                          this.DigiofficeService.GetRunAllowanceValidation(this.ID[i],  this.startdate, this.enddate).subscribe(
+                          this.DigiofficeService.GetRunPayrollInputReportValidation(this.ID[i],  this.startdate, this.enddate).subscribe(
                             res => {
                               debugger;
                               this.StaffSalaryReports = res;
@@ -784,14 +773,8 @@ export class RunAllowanceValidationComponent implements OnInit {
                               )
                               this.Payrollvis = true
                               this.InsertNotification();
-                              if(this.companyid==1001){
-                                location.href = '#/PayrollProcessor/ValidatedAllowanceDetails'
-
-                              }
-                              else{
-                                location.href = '#/PayrollProcessor/ValidatedAllowanceDetailsForMWC'
-
-                              }                            }
+                              location.href = '#/PayrollProcessor/ValidatedPayrollInputs'
+                            }
                           )
 
                         

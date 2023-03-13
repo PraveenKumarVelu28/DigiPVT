@@ -6,15 +6,14 @@ import * as XLSX from 'xlsx';
 import { ExportToCsv } from 'export-to-csv';
 import { DatePipe, formatDate } from '@angular/common';
 declare var JSZipUtils: any;
-
-
 @Component({
-  selector: 'app-run-allowance-validation',
-  templateUrl: './run-allowance-validation.component.html',
-  styleUrls: ['./run-allowance-validation.component.css']
+  selector: 'app-run-net-pay-validation',
+  templateUrl: './run-net-pay-validation.component.html',
+  styleUrls: ['./run-net-pay-validation.component.css']
 })
-export class RunAllowanceValidationComponent implements OnInit {
+export class RunNetPayValidationComponent implements OnInit {
 
+  
   viewMode = 'tab1';
 
   constructor(public DigiofficeService: DigiPVTService, public router: Router, private datePipe: DatePipe) {
@@ -42,12 +41,9 @@ export class RunAllowanceValidationComponent implements OnInit {
   cutofflist:any;
   PaycodeID:any;
   PayPeriodSettingList:any;
-  companyid:any;
   ngOnInit(): void {
     this.PaycodeID = "";
     this.myDate = new Date();
-    this.companyid = sessionStorage.getItem('companyid');
-
     this.latestdate= this.datePipe.transform( this.myDate , 'yyyy-MM-dd');
     debugger
 
@@ -321,25 +317,42 @@ export class RunAllowanceValidationComponent implements OnInit {
       const myDate = this.startdate;
         const locale = 'en-US';
   this.startdate = formatDate(myDate, format, locale);
-                
+              this.DigiofficeService.GetStaffLeavesForPayrollByDate(this.startdate, this.enddate, this.ID1[i]).subscribe(
+                res => {
                   debugger;
-                 
+                  if (res.length == 0) {
                     this.LOPDays = 0;
-                    this.DigiofficeService.GetRunAllowanceValidation(this.ID1[i],  this.startdate, this.enddate).subscribe(
+                    this.DigiofficeService.Get_Salary_Splitsfor15days(this.ID1[i], this.LOPDays, this.startdate, this.enddate).subscribe(
                       res => {
                         debugger;
                         this.StaffSalaryReports = res;
                         this.ID1 = [];
-                        location.href = '#/PayrollProcessor/ValidatedAllowanceDetails'
+                        location.href = '#/PayRoll'
                       }
                     )
 
-                  
+                  } else {
+                    this.LOPDays = res[0].noOfDays;
+                    if (this.LOPDays <= 2) {
+                      this.LOPDays = this.LOPDays;
+                    }
+                    else {
+                      this.LOPDays = this.LOPDays - 2;
+                    }
+                    this.DigiofficeService.Get_Salary_Splitsfor15days(this.ID1[i], this.LOPDays, this.startdate, this.enddate).subscribe(
+                      res => {
+                        debugger;
+                        this.StaffSalaryReports = res;
+                        this.ID1 = [];
+                        location.href = '#/PayRoll'
+                      }
+                    )
+                  }
 
-                
+                }
 
 
-              
+              )
 
             }
 
@@ -693,7 +706,7 @@ export class RunAllowanceValidationComponent implements OnInit {
               if (result.value==true) {
                 Swal.fire({
                   title: 'Are you sure?',
-                  text: 'To Run Lwop Validation In This Period',
+                  text: 'To Run COLA Validation In This Period',
                  
                   showCancelButton: true,
                   confirmButtonText: 'Yes, Accept it!',
@@ -708,7 +721,7 @@ export class RunAllowanceValidationComponent implements OnInit {
                           debugger;
                          
                             this.LOPDays = 0;
-                            this.DigiofficeService.GetRunAllowanceValidation(this.ID[i],  this.startdate, this.enddate).subscribe(
+                            this.DigiofficeService.GetRunNetPayValidation(this.ID[i],  this.startdate, this.enddate).subscribe(
                               res => {
                                 debugger;
                                 this.StaffSalaryReports = res;
@@ -719,14 +732,7 @@ export class RunAllowanceValidationComponent implements OnInit {
                                 )
                                 this.Payrollvis = true
                                 this.InsertNotification();
-                                if(this.companyid==1001){
-                                  location.href = '#/PayrollProcessor/ValidatedAllowanceDetails'
-
-                                }
-                                else{
-                                  location.href = '#/PayrollProcessor/ValidatedAllowanceDetailsForMWC'
-
-                                }
+                                location.href = '#/PayrollProcessor/ValidateNetPayDetails'
                               }
                             )
   
@@ -758,7 +764,7 @@ export class RunAllowanceValidationComponent implements OnInit {
            
               Swal.fire({
                 title: 'Are you sure?',
-                text: 'To Run Lwop Validation In This Period',
+                text: 'To Run COLA Validation In This Period',
                
                 showCancelButton: true,
                 confirmButtonText: 'Yes, Accept it!',
@@ -773,7 +779,7 @@ export class RunAllowanceValidationComponent implements OnInit {
                         debugger;
                        
                           this.LOPDays = 0;
-                          this.DigiofficeService.GetRunAllowanceValidation(this.ID[i],  this.startdate, this.enddate).subscribe(
+                          this.DigiofficeService.GetRunNetPayValidation(this.ID[i],  this.startdate, this.enddate).subscribe(
                             res => {
                               debugger;
                               this.StaffSalaryReports = res;
@@ -784,14 +790,8 @@ export class RunAllowanceValidationComponent implements OnInit {
                               )
                               this.Payrollvis = true
                               this.InsertNotification();
-                              if(this.companyid==1001){
-                                location.href = '#/PayrollProcessor/ValidatedAllowanceDetails'
-
-                              }
-                              else{
-                                location.href = '#/PayrollProcessor/ValidatedAllowanceDetailsForMWC'
-
-                              }                            }
+                              location.href = '#/PayrollProcessor/ValidateNetPayDetails'
+                            }
                           )
 
                         

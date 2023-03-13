@@ -1,112 +1,122 @@
-<app-loader *ngIf="loader"></app-loader>
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-md-12">
-            <div class="row">
-                <div class="col-md-12">
-                    <ul>
-
-
-                        <a class="active Heading underlineclr" routerLink="/PayrollProcessor/MyTeamOverTimeDetails">
-                            Basic Pay Validation Details</a>
-
-                    </ul>
-                </div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="row">
+            <div class="col-lg-12">
+                <ul>
+                    <a class="active Heading underlineclr" routerLink="/PayrollProcessor/MyTeamOverTimeDetails">
+                        Allowance Validation Details</a>
+                </ul>
             </div>
-            <br>
-            <div class="card ">
-                <div class="row">
-                    <div class="col-lg-1">
-                        <img src="assets/Images/filter.svg" class="filter-img">
-                        <p class="filter">Filter By</p>
-                    </div>
-                    <div class="col-lg-3">
-                        <input class="form-control" type="text" placeholder="Search  BasicPayValidation....">
-                    </div>
-                    <!-- <div class="col-md-2">
+        </div>
+        <br>
+        <div class="card ">
+            <div class="row">
+                <div class="col-lg-1">
+                    <img src="assets/Images/filter.svg" class="filter-img">
+                    <p class="filter">Filter By</p>
+                </div>
+                <div class=col-lg-4>
+                    <input type="text" class="form-control" name="" id=""
+                        placeholder="search Allowance Validation Details... ">
+                </div>
+              
+                <!-- <div class="col-md-2">
                         <p>Pay Date
                             <input class="form-control input-date  " type="date" onkeydown="return false"
                                 placeholder="Duration" id="sdate" name="sdate" [(ngModel)]="sdate"
                                 >
                     </div> -->
 
-                    <!-- <div class="col-md-4">
+                <!-- <div class="col-md-4">
                         <p><br>
                             <input class="form-control" id="term" name="term" [(ngModel)]="term" type="search"
                                 (ngModelChange)="FilterAttendence()" placeholder="Search for staff.. ">
                     </div> -->
-                    <div class="col-md-3">
-                        <br />
+                <div class="col-md-3">
 
-                        <button class="form-control AddExpense1" routerLink="/PayrollProcessor/RunBasicPayValidation"
-                            style="width: 80%;">Run New Validation
-                        </button>
-                    </div>
-                    <div class="col-md-3">
-                        <button class="form-control AddExpense2" style="width: 80%;" (click)="exportexcel1()">Export to
-                            Excel</button>
-                    </div>
-
+                    <button class="form-control AddExpense" routerLink="/PayrollProcessor/RunAllowanceValidation"
+                        style="width: 80%;">Run New Validation
+                    </button>
                 </div>
+                <div class="col-md-3">
+
+                    <button class="form-control AddExpense" 
+                        style="width: 80%;" (click)="exportexcel()">Export to Excel
+                    </button>
+                </div>
+
             </div>
-            <br>
-            <div class="row">
+        </div>
+
+        <!-- <div class="row">
                 <div class="col-lg-10"></div>
                 <div class="col-lg-2">
-                    <!-- <Button class="AddButton" (click)="ExporttoExcel()">Export to Excel</Button> -->
+                    <Button class="AddButton" (click)="ExporttoExcel()">Export to Excel</Button>
                 </div>
+            </div> -->
+        <br>
+
+
+
+        <div class="row">
+            <div class="col-md-10">
+                <!-- <p class="show3res">SHOWING <span>{{timedetails.length}}</span> RESULTS </p> -->
+
             </div>
-            <br>
-            <div class="row listscroll ">
+        </div><br>
+
+
+        <div class="col-md-12 listscroll">
+            <div class="container-fluid">
                 <table class="table" id="downloadaplication">
                     <thead>
                         <tr class="thwidth">
                             <th>Employee ID</th>
                             <th>Employee Name</th>
-                            <th>Basic Pay</th>
-                            <th class="thwidth">Effective Date</th>
-                            <th *ngIf="companyid!=1005" class="thwidth">No Of Working Days</th>
-                            <th  *ngIf="companyid!=1007" class="thwidth">No Of Incomplete Days</th>
-                            <th *ngIf="companyid==1005" class="thwidth">Unworked Days</th>
 
+                            <th class="thwidth">Pay Date</th>
 
-                            <th class="thwidth">Uploaded Basic Pay Adjustment</th>
-                            <th class="thwidth">Validated Basic Pay Adjustment</th>
-                            <th class="thwidth">Descrepency Basic Pay Adjustment</th>
-                            <th>Actions</th>
+                            <th class="thwidth">Element Name</th>
+                            <th class="thwidth">Element Value</th>
+                            <th class="thwidth">Uploaded Allowance Adjustment</th>
+                            <th class="thwidth">Validated Allowance Adjustment</th>
+                            <th class="thwidth">Allowance Adj Descrepency</th>
+                           
+
                         </tr>
                         <tr
                             *ngFor="let time of timedetails| filter:term |paginate: { itemsPerPage: count1, currentPage: p}">
-                            <td [ngClass]="{'bgred':time.bcolor=='1' }">{{time.employeID}}</td>
-                            <td [ngClass]="{'bgred':time.bcolor=='1' }">{{time.name}}</td>
-
-                            <td [ngClass]="{'bgred':time.bcolor=='1' }">{{time.basicPay}}</td>
-                            <td [ngClass]="{'bgred':time.bcolor=='1' }">{{time.paydate|date}}</td>
-                            <td  *ngIf="companyid!=1005" [ngClass]="{'bgred':time.bcolor=='1' }">{{time.noofworkingdays}}</td>
-                            <td *ngIf="companyid!=1007"  [ngClass]="{'bgred':time.bcolor=='1' }">{{time.noofIncompleteDays}}</td>
-                            <td  *ngIf="companyid==1005" [ngClass]="{'bgred':time.bcolor=='1' }">{{time.unworkedDays}}</td>
-
-                            
-                            <td [ngClass]="{'bgred':time.bcolor=='1' }">{{time.uploadedBasicPayAdjustment}}</td>
-                            <td [ngClass]="{'bgred':time.bcolor=='1' }">{{time.basicPayAdjustment}}</td>
-                            <td [ngClass]="{'bgred':time.bcolor=='1' }">{{time.basicPayAdjustmentDescrepency}}</td>
-                            <td>
-                                <button class="upload" (click)="delete(time.id)">Delete</button>
+                            <td [ngClass]="{'bgred':time.bcolor=='1' }">{{time.employeid}}</td>
+                            <td [ngClass]="{'bgred':time.bcolor=='1' }" >{{time.name}}</td>
+                            <td [ngClass]="{'bgred':time.bcolor=='1' }" >{{time.paydate|date}}</td>
+                            <td [ngClass]="{'bgred':time.bcolor=='1' }">{{time.elementName}}</td>
+                            <td [ngClass]="{'bgred':time.bcolor=='1' }" >{{time.elementValue}}</td>
+                            <td [ngClass]="{'bgred':time.bcolor=='1' }">
+                                {{time.uploadedAllowanceAdjustment}}</td>
+                            <td  [ngClass]="{'bgblue':time.bfourcolor=='1' }"
+                               >{{time.allowanceAdjustment}}
                             </td>
+                            <td  [ngClass]="{'bgblue':time.bfourcolor=='1' }"
+                               >{{time.allowanceAdjustmentDescrepency}}</td>
+                           
+
+
+
                         </tr>
                     </thead>
                 </table>
-            </div>
-            <div class="text-right" *ngIf="timedetails.length>count1">
-                <pagination-controls (pageChange)="p = $event"  previousLabel=""
-                nextLabel="" class="poppinns"></pagination-controls>                        
+
+                <!-- <span *ngIf="preapprovaldetails1.length==0"><b>No Results Found</b></span> -->
             </div>
 
-            <!-- <span *ngIf="preapprovaldetails1.length==0"><b>No Results Found</b></span> -->
+        </div>
 
-
-
-            <!-- <div *ngSwitchCase="'tab333'" id="tab333">
+        
+<div class="text-right" *ngIf="timedetails.length>count1">
+    <pagination-controls (pageChange)="p = $event"  previousLabel=""
+    nextLabel="" class="poppinns"></pagination-controls>                        
+</div>
+        <!-- <div *ngSwitchCase="'tab333'" id="tab333">
                             <br />
                             <br />
                             <div class="row">
@@ -203,7 +213,15 @@
                                 </div>
                             </div>
                         </div> -->
-        </div>
+
+
+
     </div>
-    
+    <div class="row">
+        <div class="col-lg-5"></div>
+        <div class="col-lg-2">
+        </div>
+        <div class="col-lg-5"></div>
+    </div>
 </div>
+<div class="col-md-1"></div>

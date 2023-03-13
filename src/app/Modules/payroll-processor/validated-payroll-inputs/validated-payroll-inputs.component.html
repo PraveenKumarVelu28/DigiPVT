@@ -1,4 +1,3 @@
-<app-loader *ngIf="loader"></app-loader>
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-12">
@@ -8,7 +7,7 @@
 
 
                         <a class="active Heading underlineclr" routerLink="/PayrollProcessor/MyTeamOverTimeDetails">
-                            Basic Pay Validation Details</a>
+                            Validated Payroll Inputs </a>
 
                     </ul>
                 </div>
@@ -38,12 +37,12 @@
                     <div class="col-md-3">
                         <br />
 
-                        <button class="form-control AddExpense1" routerLink="/PayrollProcessor/RunBasicPayValidation"
+                        <button class="form-control AddExpense1" routerLink="/PayrollProcessor/RunPayrollInputValidation"
                             style="width: 80%;">Run New Validation
                         </button>
                     </div>
                     <div class="col-md-3">
-                        <button class="form-control AddExpense2" style="width: 80%;" (click)="exportexcel1()">Export to
+                        <button class="form-control AddExpense2" style="width: 80%;" (click)="exportexcel()">Export to
                             Excel</button>
                     </div>
 
@@ -61,45 +60,41 @@
                 <table class="table" id="downloadaplication">
                     <thead>
                         <tr class="thwidth">
-                            <th>Employee ID</th>
-                            <th>Employee Name</th>
-                            <th>Basic Pay</th>
-                            <th class="thwidth">Effective Date</th>
-                            <th *ngIf="companyid!=1005" class="thwidth">No Of Working Days</th>
-                            <th  *ngIf="companyid!=1007" class="thwidth">No Of Incomplete Days</th>
-                            <th *ngIf="companyid==1005" class="thwidth">Unworked Days</th>
-
-
-                            <th class="thwidth">Uploaded Basic Pay Adjustment</th>
-                            <th class="thwidth">Validated Basic Pay Adjustment</th>
-                            <th class="thwidth">Descrepency Basic Pay Adjustment</th>
-                            <th>Actions</th>
+                            <th>PaySum Employee ID</th>
+                            <th>Pay Input Employee ID</th>
+                            <th>PaySum Employee Name</th>
+                            <th>PayInput Employee Name</th>
+                            <th>Element Name</th>
+                            <th class="thwidth">PaySum Value</th>
+                            <th class="thwidth">Pay Input Value</th>
+                            <th class="thwidth">Descrepency</th>
+                            <th class="thwidth">PayDate</th>
+                           
                         </tr>
                         <tr
                             *ngFor="let time of timedetails| filter:term |paginate: { itemsPerPage: count1, currentPage: p}">
-                            <td [ngClass]="{'bgred':time.bcolor=='1' }">{{time.employeID}}</td>
-                            <td [ngClass]="{'bgred':time.bcolor=='1' }">{{time.name}}</td>
+                            <td [ngClass]="{'bgred':time.bcolor=='1 ', 'bgreen':time.bcolor=='0 ' }">{{time.employeID}}</td>
+                            <td [ngClass]="{'bgred':time.bcolor=='1 ', 'bgreen':time.bcolor=='0 ' }">{{time.employeID}}</td>
 
-                            <td [ngClass]="{'bgred':time.bcolor=='1' }">{{time.basicPay}}</td>
-                            <td [ngClass]="{'bgred':time.bcolor=='1' }">{{time.paydate|date}}</td>
-                            <td  *ngIf="companyid!=1005" [ngClass]="{'bgred':time.bcolor=='1' }">{{time.noofworkingdays}}</td>
-                            <td *ngIf="companyid!=1007"  [ngClass]="{'bgred':time.bcolor=='1' }">{{time.noofIncompleteDays}}</td>
-                            <td  *ngIf="companyid==1005" [ngClass]="{'bgred':time.bcolor=='1' }">{{time.unworkedDays}}</td>
+                            <td [ngClass]="{'bgred':time.bcolor=='1 ', 'bgreen':time.bcolor=='0 ' }">{{time.name}}</td>
+                            <td [ngClass]="{'bgred':time.bcolor=='1 ', 'bgreen':time.bcolor=='0 ' }">{{time.name}}</td>
+                            <td [ngClass]="{'bgred':time.bcolor=='1 ', 'bgreen':time.bcolor=='0 ' }">{{time.elementName}}</td>
+                            <td [ngClass]="{'bgred':time.bcolor=='1 ', 'bgreen':time.bcolor=='0 ' }">{{time.currentPayrollValue}}</td>
 
-                            
-                            <td [ngClass]="{'bgred':time.bcolor=='1' }">{{time.uploadedBasicPayAdjustment}}</td>
-                            <td [ngClass]="{'bgred':time.bcolor=='1' }">{{time.basicPayAdjustment}}</td>
-                            <td [ngClass]="{'bgred':time.bcolor=='1' }">{{time.basicPayAdjustmentDescrepency}}</td>
-                            <td>
-                                <button class="upload" (click)="delete(time.id)">Delete</button>
-                            </td>
+
+                            <td [ngClass]="{'bgred':time.bcolor=='1 ', 'bgreen':time.bcolor=='0 ' }">{{time.previousPayrollValue}}</td>
+
+
+                            <td [ngClass]="{'bgred':time.bcolor=='1 ', 'bgreen':time.bcolor=='0 ' }">{{time.payValueDescrepency}}</td>
+                            <td [ngClass]="{'bgred':time.bcolor=='1 ', 'bgreen':time.bcolor=='0 ' }">{{time.paydate|date}}</td>
+
                         </tr>
                     </thead>
                 </table>
             </div>
-            <div class="text-right" *ngIf="timedetails.length>count1">
+            <div class="text-right">
                 <pagination-controls (pageChange)="p = $event"  previousLabel=""
-                nextLabel="" class="poppinns"></pagination-controls>                        
+                nextLabel="" class="poppinns"></pagination-controls>               
             </div>
 
             <!-- <span *ngIf="preapprovaldetails1.length==0"><b>No Results Found</b></span> -->
@@ -205,5 +200,5 @@
                         </div> -->
         </div>
     </div>
-    
+    <div class="col-md-1"></div>
 </div>

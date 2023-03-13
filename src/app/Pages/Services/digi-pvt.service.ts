@@ -760,22 +760,41 @@ export class DigiPVTService {
     return this.http.post(this.url, data);
   }
 
+    
+  
+  public InsertUploadnetpayvalues(data: any) {
+    debugger;
+    this.url = this.host + '/Master/InsertUploadnetpayvalues';
+    return this.http.post(this.url, data);
+  }
+
   public InsertUploadLoAandSuspendedStaff(data: any) {
     debugger;
     this.url = this.host + '/Master/InsertUploadLoAandSuspendedStaff';
     return this.http.post(this.url, data);
   }
 
+  public InsertUploadovertimereport(data: any) {
+    debugger;
+    this.url = this.host + '/Master/InsertUploadovertimereport';
+    return this.http.post(this.url, data);
+  }
 
+
+  
   
 
   public InsertUploadedMasterFileForAffinitiy(data: any) {
     debugger;
-    this.url = 'http://localhost:1807/' + '/Master/InsertUploadedMasterFileForAffinitiy';
+    this.url = this.host  + '/Master/InsertUploadedMasterFileForAffinitiy';
     return this.http.post(this.url, data);
   }
   
-  
+  public InsertUploadedMasterFileMWC(data: any) {
+    debugger;
+    this.url = this.host  + '/Master/InsertUploadedMasterFileMWC';
+    return this.http.post(this.url, data);
+  }
   
 
 
@@ -1868,7 +1887,14 @@ export class DigiPVTService {
     );
   } 
 
+  public GetUploadnetpayvalues() {
+    return this.http.get<any[]>(
+      this.host + "/Master/GetUploadnetpayvalues"
+    );
+  } 
 
+
+  
 
 
   
@@ -1879,6 +1905,15 @@ export class DigiPVTService {
       this.host + "/Master/GetUploadLoAandSuspendedStaff"
     );
   } 
+
+  public GetUploadovertimereport() {
+    return this.http.get<any[]>(
+      this.host + "/Master/GetUploadovertimereport"
+    );
+  } 
+  
+  
+
   
 
   
@@ -1939,6 +1974,21 @@ export class DigiPVTService {
     );
   }
   
+
+  public   GetValidatedPayrollInputs() {
+    return this.http.get<any[]>(
+      this.host + "/Master/GetValidatedPayrollInputs"
+    );
+  }
+  
+  public   GetValidatedNetPayDetails() {
+    return this.http.get<any[]>(
+      this.host + "/Master/GetValidatedNetPayDetails"
+    );
+  }
+  
+  
+
   public   GetValidatedMasterFile() {
     return this.http.get<any[]>(
       this.host + "/Master/GetValidatedMasterFile"
@@ -2084,6 +2134,13 @@ export class DigiPVTService {
     return this.http.get<any[]>(this.host + "/Announcement/GetRunPayrollSummaryReportValidation?EmployeeID=" + EmployeeID  + "&startdate=" + startdate + "&enddate=" + enddate);
   }
 
+  public GetRunPayrollInputReportValidation(EmployeeID: any,  startdate: any, enddate: any) {
+    //debugger
+    return this.http.get<any[]>(this.host + "/Announcement/GetRunPayrollInputReportValidation?EmployeeID=" + EmployeeID  + "&startdate=" + startdate + "&enddate=" + enddate);
+  }
+
+
+  
 
 
   public GetRunBasicPayValidation(EmployeeID: any,  startdate: any, enddate: any) {
@@ -2102,6 +2159,14 @@ export class DigiPVTService {
     //debugger
     return this.http.get<any[]>(this.host + "/Announcement/GetRunCOLAValidation?EmployeeID=" + EmployeeID  + "&startdate=" + startdate + "&enddate=" + enddate);
   }
+
+  
+  public GetRunNetPayValidation(EmployeeID: any,  startdate: any, enddate: any) {
+    //debugger
+    return this.http.get<any[]>(this.host + "/Announcement/GetRunNetPayValidation?EmployeeID=" + EmployeeID  + "&startdate=" + startdate + "&enddate=" + enddate);
+  }
+
+  
 
 
   public GetRunPhilHealthValidation(EmployeeID: any,  startdate: any, enddate: any) {
@@ -2195,6 +2260,13 @@ export class DigiPVTService {
     this.url = this.host + '/Master/InsertBonusValidation';
     return this.http.post(this.url, data);
   }
+
+  public UploadBonusValuesForMWC(data: any) {
+    //debugger;
+    this.url = this.host + '/Master/UploadBonusValuesForMWC';
+    return this.http.post(this.url, data);
+  }
+  
   
   
 

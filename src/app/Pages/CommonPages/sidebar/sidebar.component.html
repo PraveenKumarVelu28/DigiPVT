@@ -97,6 +97,62 @@
 </div>
 
 
+<a data-toggle="collapse" data-target="#InputValidation" *ngIf="login == 9 && ( companyid == 1005 ) "
+(click)="PayInputs()"
+[ngClass]="(active == 'PayInputs' )&&!mini ? 'menu1' : (active == 'PayInputs')&&mini?'menu-mini':'menu'">
+<div class="test_case">
+  <div>
+    <img *ngIf="(active == 'PayInputs'&&!mini)" src="assets/Images/revamp/Payroll Summary Validationwhite-icon.png">
+    <img *ngIf="active != 'PayInputs' " src="assets/Images/revamp/Payroll Summary Validationgray-icon.png">
+    <img *ngIf="(active == 'PayInputs'&&mini) " src="assets/Images/revamp/Payroll Summary Validationwhite-icon.png">
+  </div>&nbsp;&nbsp;&nbsp;
+  <div *ngIf="!mini">
+    <span class="icon-text d-flex">Payroll Inputs Validation</span>
+  </div>
+</div>
+</a>
+
+
+
+
+
+
+<div id="InputValidation" class="collapse" [ngClass]="mini?'':' sub-collapse'">
+<a (click)="PayInputValidation()"   
+[ngClass]="(active == 'PayInputValidation' )&&!mini ? 'menu1' : (active == 'PayInputValidation')&&mini?'menu-mini':'menu'">
+<div class="test_case">
+<div>
+<img *ngIf="(active == 'PayInputValidation'&&!mini)" src="assets/Images/revamp/validatedpayrollsummaryuploadwhite-icon.png">
+<img *ngIf="active != 'PayInputValidation' " src="assets/Images/revamp/validatedpayrollsummaryuploadgray-icon.png">
+<img *ngIf="(active == 'PayInputValidation'&&mini) " src="assets/Images/revamp/validatedpayrollsummaryuploadwhite-icon.png">
+</div>&nbsp;&nbsp;&nbsp;
+<div *ngIf="!mini">
+<span class="icon-text d-flex">Validated Payroll Inputs </span>
+</div>
+</div>
+</a>
+
+
+
+
+<a (click)="UploadPayrollInputs()" class="nonactive"
+  [ngClass]="(active == 'UploadPayrollInputs' )&&!mini ? 'menu1' : (active == 'UploadPayrollInputs' )&&mini?'menu-mini':'menu'">
+<div class="test_case">
+<div>
+  <img *ngIf="(active == 'UploadPayrollInputs'&&!mini)" src="assets/Images/revamp/validatedpayrollsummaryuploadwhite-icon.png">
+  <img *ngIf="active != 'UploadPayrollInputs' " src="assets/Images/revamp/validatedpayrollsummaryuploadgray-icon.png">
+  <img *ngIf="(active == 'UploadPayrollInputs'&&mini) " src="assets/Images/revamp/validatedpayrollsummaryuploadblue-icon.png">
+</div>&nbsp;&nbsp;&nbsp;
+<div *ngIf="!mini">
+  <span class="icon-text d-flex">Upload Payroll Inputs</span> 
+</div >
+</div>
+</a>
+
+
+</div>
+
+
 
 <a data-toggle="collapse" data-target="#SummaryValidation" *ngIf="login == 9 && (companyid == 1001|| companyid == 1006 || companyid == 1005)"
 (click)="PayrollSummaryValidation()"
@@ -145,7 +201,7 @@
 </div>
 
 <a data-toggle="collapse" data-target="#TaxValidation"
-*ngIf="login == 9 && (companyid == 1001 || companyid == 10013 || companyid == 1008)" (click)="TaxValidation()"
+*ngIf="login == 9 && (companyid == 1001 || companyid == 10013 || companyid == 1008 || companyid == 1005)" (click)="TaxValidation()"
 [ngClass]="(active == 'TaxValidation' )&&!mini ? 'menu1' : (active == 'TaxValidation')&&mini?'menu-mini':'menu'">
 <div class="test_case">
 <div>
@@ -189,8 +245,10 @@
 </a>
 </div>
 
+
+
 <a data-toggle="collapse" data-target="#BasicPayValidation"
-*ngIf="login == 9 && (companyid == 1001 || companyid == 1002 || companyid == 1006 || companyid == 10013)" (click)="BasicPayValidation()"
+*ngIf="login == 9 && (companyid == 1001 || companyid == 1002 || companyid == 1006 || companyid == 1005 || companyid == 10013)" (click)="BasicPayValidation()"
 [ngClass]="(active == 'BasicPayValidation' )&&!mini ? 'menu1' : (active == 'BasicPayValidation')&&mini?'menu-mini':'menu'">
 <div class="test_case">
 <div>
@@ -693,7 +751,55 @@
 
 
   
-  <a data-toggle="collapse" data-target="#BonusValidation" *ngIf="login == 9 && (companyid == 1001 || companyid == 1002|| companyid == 1006 || companyid == 10013 || companyid == 1008)"
+  <a data-toggle="collapse" data-target="#AllowanceValidation" *ngIf="login == 9 && (companyid == 1001  || companyid == 1005)"
+  (click)="AllowanceValidation()"
+  [ngClass]="(active == 988 )&&!mini ? 'menu1' : (active == 988)&&mini?'menu-mini':'menu'">
+  <div class="test_case">
+    <div>
+      <img *ngIf="(active == 988&&!mini)" src="assets/Images/revamp/bonusvalidationwhite-icon.png">
+      <img *ngIf="active != 988 " src="assets/Images/revamp/bonusvalidationgray-icon.png">
+      <img *ngIf="(active == 988&&mini) " src="assets/Images/revamp/bonusvalidationblue-icon.png">
+    </div>&nbsp;&nbsp;&nbsp;
+    <div *ngIf="!mini"> 
+      <span class="icon-text d-flex">Allowance Validation</span>
+    </div>
+  </div>
+</a>
+
+
+
+<div id="AllowanceValidation" class="collapse" [ngClass]="mini?'':' sub-collapse'">
+  <a (click)="RunAllowanceValidation()" class="nonactive"
+    [ngClass]="(active == 2345 )&&!mini ? 'menu1' : (active == 2345)&&mini?'menu-mini':'menu'">
+    <div class="test_case">
+      <div>
+        <img *ngIf="(active == 2345&&!mini)" src="assets/Images/revamp/validatedbonusdetailswhite-icon.png">
+        <img *ngIf="active != 2345 " src="assets/Images/revamp/validatedbonusdetailsgray-icon.png">
+        <img *ngIf="(active == 2345&&mini) " src="assets/Images/revamp/validatedbonusdetailsblue-icon.png">
+      </div>&nbsp;&nbsp;&nbsp;
+      <div *ngIf="!mini">
+        <span class="icon-text d-flex">Validated Allowance Details</span>
+      </div>
+    </div>
+   </a>
+
+  <a (click)="UploadAllowance()" class="nonactive"
+    [ngClass]="(active == 'UploadBonusValues' )&&!mini ? 'menu1' : (active == 'UploadBonusValues')&&mini?'menu-mini':'menu'" *ngIf="companyid==1001">
+    <div class="test_case">
+      <div>
+        <img *ngIf="(active == 'UploadBonusValues'&&!mini)" src="assets/Images/revamp/uploadbonusvaluewhite-icon.png">
+        <img *ngIf="active != 'UploadBonusValues' " src="assets/Images/revamp/uploadbonusvaluegray-icon.png">
+        <img *ngIf="(active == 'UploadBonusValues'&&mini) " src="assets/Images/revamp/uploadbonusvalueblue-icon.png">
+      </div>&nbsp;&nbsp;&nbsp;
+      <div *ngIf="!mini">
+        <span class="icon-text d-flex">Upload Allowance Values</span>
+      </div>
+    </div>
+  </a>
+</div>
+
+  
+  <a data-toggle="collapse" data-target="#BonusValidation" *ngIf="login == 9 && (companyid == 1001 || companyid == 1002|| companyid == 1006 || companyid == 10013 || companyid == 1008 || companyid == 1005)"
   (click)="BonusValidation()"
   [ngClass]="(active == 988 )&&!mini ? 'menu1' : (active == 988)&&mini?'menu-mini':'menu'">
   <div class="test_case">
@@ -735,6 +841,54 @@
       </div>&nbsp;&nbsp;&nbsp;
       <div *ngIf="!mini">
         <span class="icon-text d-flex">Upload Bonus Values</span>
+      </div>
+    </div>
+  </a>
+</div>
+
+
+<a data-toggle="collapse" data-target="#NetPayValidation" *ngIf="login == 9 && (companyid == 1005)"
+  (click)="NetPayValidation()"
+  [ngClass]="(active == 7877 )&&!mini ? 'menu1' : (active == 7877)&&mini?'menu-mini':'menu'">
+  <div class="test_case">
+    <div>
+      <img *ngIf="(active == 7877&&!mini)" src="assets/Images/revamp/bonusvalidationwhite-icon.png">
+      <img *ngIf="active != 7877 " src="assets/Images/revamp/bonusvalidationgray-icon.png">
+      <img *ngIf="(active == 7877&&mini) " src="assets/Images/revamp/bonusvalidationblue-icon.png">
+    </div>&nbsp;&nbsp;&nbsp;
+    <div *ngIf="!mini"> 
+      <span class="icon-text d-flex">Net Pay Validation</span>
+    </div>
+  </div>
+</a>
+
+
+
+<div id="NetPayValidation" class="collapse" [ngClass]="mini?'':' sub-collapse'">
+  <a (click)="ValidatedNetPay()" class="nonactive"
+    [ngClass]="(active == 6676 )&&!mini ? 'menu1' : (active == 6676)&&mini?'menu-mini':'menu'">
+    <div class="test_case">
+      <div>
+        <img *ngIf="(active == 6676&&!mini)" src="assets/Images/revamp/validatedbonusdetailswhite-icon.png">
+        <img *ngIf="active != 6676 " src="assets/Images/revamp/validatedbonusdetailsgray-icon.png">
+        <img *ngIf="(active == 6676&&mini) " src="assets/Images/revamp/validatedbonusdetailsblue-icon.png">
+      </div>&nbsp;&nbsp;&nbsp;
+      <div *ngIf="!mini">
+        <span class="icon-text d-flex">Validated Net Pay Details</span>
+      </div>
+    </div>
+   </a>
+
+  <a (click)="UploadNetPayValues()" class="nonactive"
+    [ngClass]="(active == 'UploadNetPayValues' )&&!mini ? 'menu1' : (active == 'UploadNetPayValues')&&mini?'menu-mini':'menu'">
+    <div class="test_case">
+      <div>
+        <img *ngIf="(active == 'UploadNetPayValues'&&!mini)" src="assets/Images/revamp/uploadbonusvaluewhite-icon.png">
+        <img *ngIf="active != 'UploadNetPayValues' " src="assets/Images/revamp/uploadbonusvaluegray-icon.png">
+        <img *ngIf="(active == 'UploadNetPayValues'&&mini) " src="assets/Images/revamp/uploadbonusvalueblue-icon.png">
+      </div>&nbsp;&nbsp;&nbsp;
+      <div *ngIf="!mini">
+        <span class="icon-text d-flex">Upload Net Pay Values</span>
       </div>
     </div>
   </a>
@@ -1002,6 +1156,57 @@
 </a>
 
 </div>
+
+
+<a data-toggle="collapse" data-target="#OvertimeValidationMWC"
+*ngIf="login == 9 && (companyid == 1005  ) " (click)="OvertimeValidation()"
+[ngClass]="(active == 'ot' )&&!mini ? 'menu1' : (active == 'ot')&&mini?'menu-mini':'menu'">
+<div class="test_case">
+<div>
+  <img *ngIf="(active == 'ot'&&!mini)" src="assets/Images/revamp/shiftdetailswhite-icon.png">
+  <img *ngIf="active != 'ot' " src="assets/Images/revamp/shiftdetailsgry-icon.png">
+  <img *ngIf="(active == 'ot'&&mini) " src="assets/Images/revamp/shiftdetailsblue-icon.png">
+</div>&nbsp;&nbsp;&nbsp;
+<div *ngIf="!mini">
+  <span class="icon-text d-flex">Overtime Validation</span>
+</div>
+</div>
+</a>
+
+<div id="OvertimeValidationMWC" class="collapse" [ngClass]="mini?'':' sub-collapse'" >
+
+  <a (click)="ValidatedOvertimeDetails()" class="nonactive"
+[ngClass]="(active == 'ValidatedTandLDetails' ) && !mini ? 'menu1' : (active == 'ValidatedTandLDetails')&&mini?'menu-mini':'menu'">
+<div class="test_case">
+  <div>
+    <img *ngIf="(active == 'ValidatedTandLDetails' && !mini)" src="assets/Images/revamp/timesheetwhite-icon.png">
+    <img *ngIf="active != 'ValidatedTandLDetails' " src="assets/Images/revamp/timesheetgray-icon.png">
+    <img *ngIf="(active == 'ValidatedTandLDetails' && mini) " src="assets/Images/revamp/timesheetrequestblue-icon (2).png">
+  </div>&nbsp;&nbsp;&nbsp;
+  <div *ngIf="!mini">
+    <span class="icon-text d-flex">Validated Overtime Details</span>
+  </div>
+</div>
+</a>
+
+  <a (click)="UploadOvertimeReport()" class="nonactive"
+  [ngClass]="(active == 'UploadOvertimeReport' ) && !mini ? 'menu1' : (active == 'UploadOvertimeReport')&&mini?'menu-mini':'menu'">
+    <div class="test_case">
+      <div>
+        <img *ngIf="(active == 'UploadOvertimeReport' && !mini)" src="assets/Images/revamp/announcementwhite.png">
+        <img *ngIf="active != 'UploadOvertimeReport' " src="assets/Images/revamp/announcementnewgray-icon.png">
+        <img *ngIf="(active == 'UploadOvertimeReport' && mini) " src="assets/Images/revamp/announcementnewblue-icon.png">
+          </div>&nbsp;&nbsp;&nbsp;
+      <div *ngIf="!mini">
+        <span class="icon-text d-flex">Upload Overtime Values</span>
+      </div>
+    </div>
+  </a>
+
+
+
+</div>
+
 
 <a (click)="Master()" data-toggle="collapse" data-target="#Master" *ngIf="login == 1 && companyid != 1007" 
 [ngClass]="(active == 'Master' ) && !mini ? 'menu1' : (active == 'Master')&&mini?'menu-mini':'menu'">

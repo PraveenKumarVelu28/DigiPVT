@@ -150,6 +150,7 @@ export class UploadBonusValuesComponent implements OnInit {
   EndDate:any;
   StaffID:any;
   Paydate:any;
+  HiredDate:any;
   public attachmentsurl: any = [];
    public Upload_file() {
     debugger
@@ -254,6 +255,50 @@ export class UploadBonusValuesComponent implements OnInit {
               
                 Swal.fire('Saved Successfully')
                 this.loader=false
+              
+               
+            
+              // // this.SavePositionDetails();
+              // var eb = {
+              //   'EmergencyContactName': this.exceldata[this.i-(this.exceldata.length)].EmergencyContactName,
+              //   'EmergencyContactRelationship': this.exceldata[this.i-(this.exceldata.length)].EmergencyContactRelationship,
+              //   'EmergencyContactMobileNumber': this.exceldata[this.i-(this.exceldata.length)].EmergencyContactMobileNumber,
+              //   'StaffID':  this.StaffID
+              // }
+              // this.i++;
+              // this.AliprojectService.InsertMyAddressDetails(eb).subscribe(
+                
+              //   data => {
+              //     debugger
+              //     Swal.fire('Staffs Added Successfully');
+              //     // this.router.navigate(['/EmployeeDashboard']);
+        
+              //   },
+              // )
+             
+             
+             
+              
+             
+            }, error: (err) => {
+              Swal.fire('Issue in Inserting Attendance Units');
+              // Insert error in Db Here//
+            
+            }
+          }
+          )
+          }
+          else if(this.companyid==1005){
+            var obj={
+              attachmenturlforexport:this.exceldata
+            }
+            this.DigiPVTService.UploadBonusValuesForMWC(obj).subscribe({
+              next: data => {
+  
+              debugger
+              this.StaffID=data;
+              
+                Swal.fire('Saved Successfully')
               
                
             

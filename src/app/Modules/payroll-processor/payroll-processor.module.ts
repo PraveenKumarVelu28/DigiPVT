@@ -82,6 +82,15 @@ import { EmployeeBatchMasterComponent } from './employee-batch-master/employee-b
 import { ValidatedStatutoryDeductionsComponent } from './validated-statutory-deductions/validated-statutory-deductions.component';
 import { UploadLoanReportComponent } from './upload-loan-report/upload-loan-report.component';
 import { UploadLOAandSuspendedStaffComponent } from './upload-loaand-suspended-staff/upload-loaand-suspended-staff.component';
+import { ValidatedPayrollInputsComponent } from './validated-payroll-inputs/validated-payroll-inputs.component';
+import { RunPayrollInputValidationComponent } from './run-payroll-input-validation/run-payroll-input-validation.component';
+import { UploadOvertimeReportComponent } from './upload-overtime-report/upload-overtime-report.component';
+import { RunOvertimeReportValidationComponent } from './run-overtime-report-validation/run-overtime-report-validation.component';
+import { ValidatedOvertimeReportDetailsComponent } from './validated-overtime-report-details/validated-overtime-report-details.component';
+import { ValidatedAllowanceDetailsForMWCComponent } from './validated-allowance-details-for-mwc/validated-allowance-details-for-mwc.component';
+import { RunNetPayValidationComponent } from './run-net-pay-validation/run-net-pay-validation.component';
+import { ValidateNetPayDetailsComponent } from './validate-net-pay-details/validate-net-pay-details.component';
+import { UploadNetPayValuesComponent } from './upload-net-pay-values/upload-net-pay-values.component';
 
 
 
@@ -167,7 +176,16 @@ import { UploadLOAandSuspendedStaffComponent } from './upload-loaand-suspended-s
     EmployeeBatchMasterComponent,
     ValidatedStatutoryDeductionsComponent,
     UploadLoanReportComponent,
-    UploadLOAandSuspendedStaffComponent
+    UploadLOAandSuspendedStaffComponent,
+    ValidatedPayrollInputsComponent,
+    RunPayrollInputValidationComponent,
+    UploadOvertimeReportComponent,
+    RunOvertimeReportValidationComponent,
+    ValidatedOvertimeReportDetailsComponent,
+    ValidatedAllowanceDetailsForMWCComponent,
+    RunNetPayValidationComponent,
+    ValidateNetPayDetailsComponent,
+    UploadNetPayValuesComponent
   ],
   imports: [
     PayrollProcessorRoutingModule,

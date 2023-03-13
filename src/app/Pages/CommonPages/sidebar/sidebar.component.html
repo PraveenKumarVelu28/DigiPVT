@@ -201,7 +201,7 @@
 </div>
 
 <a data-toggle="collapse" data-target="#TaxValidation"
-*ngIf="login == 9 && (companyid == 1001 || companyid == 10013 || companyid == 1008)" (click)="TaxValidation()"
+*ngIf="login == 9 && (companyid == 1001 || companyid == 10013 || companyid == 1008 || companyid == 1005)" (click)="TaxValidation()"
 [ngClass]="(active == 'TaxValidation' )&&!mini ? 'menu1' : (active == 'TaxValidation')&&mini?'menu-mini':'menu'">
 <div class="test_case">
 <div>
@@ -244,6 +244,8 @@
   </div>
 </a>
 </div>
+
+
 
 <a data-toggle="collapse" data-target="#BasicPayValidation"
 *ngIf="login == 9 && (companyid == 1001 || companyid == 1002 || companyid == 1006 || companyid == 1005 || companyid == 10013)" (click)="BasicPayValidation()"
@@ -782,7 +784,7 @@
    </a>
 
   <a (click)="UploadAllowance()" class="nonactive"
-    [ngClass]="(active == 'UploadBonusValues' )&&!mini ? 'menu1' : (active == 'UploadBonusValues')&&mini?'menu-mini':'menu'">
+    [ngClass]="(active == 'UploadBonusValues' )&&!mini ? 'menu1' : (active == 'UploadBonusValues')&&mini?'menu-mini':'menu'" *ngIf="companyid==1001">
     <div class="test_case">
       <div>
         <img *ngIf="(active == 'UploadBonusValues'&&!mini)" src="assets/Images/revamp/uploadbonusvaluewhite-icon.png">
@@ -797,7 +799,7 @@
 </div>
 
   
-  <a data-toggle="collapse" data-target="#BonusValidation" *ngIf="login == 9 && (companyid == 1001 || companyid == 1002|| companyid == 1006 || companyid == 10013 || companyid == 1008)"
+  <a data-toggle="collapse" data-target="#BonusValidation" *ngIf="login == 9 && (companyid == 1001 || companyid == 1002|| companyid == 1006 || companyid == 10013 || companyid == 1008 || companyid == 1005)"
   (click)="BonusValidation()"
   [ngClass]="(active == 988 )&&!mini ? 'menu1' : (active == 988)&&mini?'menu-mini':'menu'">
   <div class="test_case">
@@ -839,6 +841,54 @@
       </div>&nbsp;&nbsp;&nbsp;
       <div *ngIf="!mini">
         <span class="icon-text d-flex">Upload Bonus Values</span>
+      </div>
+    </div>
+  </a>
+</div>
+
+
+<a data-toggle="collapse" data-target="#NetPayValidation" *ngIf="login == 9 && (companyid == 1005)"
+  (click)="NetPayValidation()"
+  [ngClass]="(active == 7877 )&&!mini ? 'menu1' : (active == 7877)&&mini?'menu-mini':'menu'">
+  <div class="test_case">
+    <div>
+      <img *ngIf="(active == 7877&&!mini)" src="assets/Images/revamp/bonusvalidationwhite-icon.png">
+      <img *ngIf="active != 7877 " src="assets/Images/revamp/bonusvalidationgray-icon.png">
+      <img *ngIf="(active == 7877&&mini) " src="assets/Images/revamp/bonusvalidationblue-icon.png">
+    </div>&nbsp;&nbsp;&nbsp;
+    <div *ngIf="!mini"> 
+      <span class="icon-text d-flex">Net Pay Validation</span>
+    </div>
+  </div>
+</a>
+
+
+
+<div id="NetPayValidation" class="collapse" [ngClass]="mini?'':' sub-collapse'">
+  <a (click)="ValidatedNetPay()" class="nonactive"
+    [ngClass]="(active == 6676 )&&!mini ? 'menu1' : (active == 6676)&&mini?'menu-mini':'menu'">
+    <div class="test_case">
+      <div>
+        <img *ngIf="(active == 6676&&!mini)" src="assets/Images/revamp/validatedbonusdetailswhite-icon.png">
+        <img *ngIf="active != 6676 " src="assets/Images/revamp/validatedbonusdetailsgray-icon.png">
+        <img *ngIf="(active == 6676&&mini) " src="assets/Images/revamp/validatedbonusdetailsblue-icon.png">
+      </div>&nbsp;&nbsp;&nbsp;
+      <div *ngIf="!mini">
+        <span class="icon-text d-flex">Validated Net Pay Details</span>
+      </div>
+    </div>
+   </a>
+
+  <a (click)="UploadNetPayValues()" class="nonactive"
+    [ngClass]="(active == 'UploadNetPayValues' )&&!mini ? 'menu1' : (active == 'UploadNetPayValues')&&mini?'menu-mini':'menu'">
+    <div class="test_case">
+      <div>
+        <img *ngIf="(active == 'UploadNetPayValues'&&!mini)" src="assets/Images/revamp/uploadbonusvaluewhite-icon.png">
+        <img *ngIf="active != 'UploadNetPayValues' " src="assets/Images/revamp/uploadbonusvaluegray-icon.png">
+        <img *ngIf="(active == 'UploadNetPayValues'&&mini) " src="assets/Images/revamp/uploadbonusvalueblue-icon.png">
+      </div>&nbsp;&nbsp;&nbsp;
+      <div *ngIf="!mini">
+        <span class="icon-text d-flex">Upload Net Pay Values</span>
       </div>
     </div>
   </a>

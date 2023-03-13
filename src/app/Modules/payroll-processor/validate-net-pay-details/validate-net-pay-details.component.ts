@@ -7,30 +7,30 @@ import { ExportToCsv } from 'export-to-csv';
 declare var JSZipUtils: any;
 
 @Component({
-  selector: 'app-bonus-validation-details',
-  templateUrl: './bonus-validation-details.component.html',
-  styleUrls: ['./bonus-validation-details.component.css']
+  selector: 'app-validate-net-pay-details',
+  templateUrl: './validate-net-pay-details.component.html',
+  styleUrls: ['./validate-net-pay-details.component.css']
 })
-export class BonusValidationDetailsComponent implements OnInit {
+export class ValidateNetPayDetailsComponent implements OnInit {
+
 
   constructor(public DigiofficeService: DigiPVTService, public router: Router) { }
+
+  ngOnInit(): void {
+
+    this.GetValidatedNetPayDetails();
+  }
+
   timedetails:any;
   count:any;
   currentUrl:any;
   term:any;
   p: any = 1;
   count1: any = 10;
-  companyid:any;
-  ngOnInit(): void {
-    this.companyid = sessionStorage.getItem('companyid');
 
-    this.GetBonusValidation();
-  }
-
-
-  public GetBonusValidation() {
+  public GetValidatedNetPayDetails() {
     debugger
-    this.DigiofficeService.GetValidatedBonusDetails()
+    this.DigiofficeService.GetValidatedNetPayDetails()
       .subscribe({
         next: data => {
           debugger
@@ -53,33 +53,8 @@ export class BonusValidationDetailsComponent implements OnInit {
       })
   }
 
-
-  public getfilter(){
-    this.DigiofficeService.GetValidatedBonusDetails()
-    .subscribe({
-      next: data => {
-        debugger
-        this.timedetails = data.filter(x=>x.taxableBonus<90000);
-
-        this.count = this.timedetails.length
-      }, error: (err) => {
-        Swal.fire('Issue in Getting Staff Over Time Details');
-        // Insert error in Db Here//
-        var obj = {
-          'PageName': this.currentUrl,
-          'ErrorMessage': err.error.message
-        }
-        this.DigiofficeService.InsertExceptionLogs(obj).subscribe(
-          data => {
-            debugger
-          },
-        )
-      }
-    })
-  }
-  fileName = ' Bonus Validation Details Reports.xlsx';
+  fileName = 'Basic Pay Validation Details Reports.xlsx';
   exportexcel(): void {
-    debugger
     /* table id is passed over here */
     let element = document.getElementById('downloadaplication');
     const ws: XLSX.WorkSheet = XLSX.utils.table_to_sheet(element);
@@ -92,5 +67,6 @@ export class BonusValidationDetailsComponent implements OnInit {
     XLSX.writeFile(wb, this.fileName);
 
   }
+
 
 }

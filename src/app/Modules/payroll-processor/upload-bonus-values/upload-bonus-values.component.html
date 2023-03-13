@@ -54,7 +54,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="container-fluid">
-                    <table class="table" id="downloadaplication" *ngIf="companyid!=10013 && companyid!=1008">
+                    <table class="table" id="downloadaplication" *ngIf="companyid!=10013 && companyid!=1008 && companyid!=1005">
                         <thead>
                             <tr>
                                 <th>Name</th>
@@ -118,6 +118,51 @@
                                 <td>{{list.forteenthMonthBonus}}</td>
                                 <td>{{list.performanceBonus}}</td>
                                 <td>{{list.lopdays}}</td>
+                                <td>{{list.taxableBonus}}</td>
+                                <td>{{list.nonTaxableBonus}}</td>
+
+                                
+                                <td > 
+                                    <button class="upload"  (click)="delete(list.id)">Delete</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    
+                    <table class="table" id="downloadaplication" *ngIf="companyid==1005">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>EmployeeID</th>
+                                <th>Pay Date</th>
+                                <th>Basic Salary</th>
+                                <th>Hired Date</th>
+                             
+                                <th>Mid Year Bonus</th>
+                                <th>13th Month Bonus One</th>
+                                <th>13th Month Bonus Two</th>
+                                <th>Year End Bonus</th>
+                              
+                                <th>Taxable Bonus</th>
+                                <th>NonTaxable Bonus</th>
+                                <th>Actions</th>
+                                
+                                <!-- <th>Attachment</th>
+                                <th *ngIf="roleid=='1'">Actions</th> -->
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let list of componentmaster|filter:term |paginate: { itemsPerPage: count2, currentPage: p1}  "  >
+                                <td>{{list.name}}</td>
+                                <td>{{list.employeID}}</td>
+                                <td>{{list.payDate|date}}</td>
+                                <td>{{list.basicSalary}}</td>
+                                <td>{{list.hiredDate|date}}</td>
+                                <td>{{list.midYearBonus}}</td>
+                                <td>{{list.thirteenthMonthBonusOne}}</td>
+                                <td>{{list.thirteenthMonthBonusTWO}}</td>
+                                <td>{{list.yearEndBonus}}</td>
                                 <td>{{list.taxableBonus}}</td>
                                 <td>{{list.nonTaxableBonus}}</td>
 

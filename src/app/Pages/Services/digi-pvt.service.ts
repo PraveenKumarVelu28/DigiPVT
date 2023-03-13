@@ -760,6 +760,14 @@ export class DigiPVTService {
     return this.http.post(this.url, data);
   }
 
+    
+  
+  public InsertUploadnetpayvalues(data: any) {
+    debugger;
+    this.url = this.host + '/Master/InsertUploadnetpayvalues';
+    return this.http.post(this.url, data);
+  }
+
   public InsertUploadLoAandSuspendedStaff(data: any) {
     debugger;
     this.url = this.host + '/Master/InsertUploadLoAandSuspendedStaff';
@@ -1879,7 +1887,14 @@ export class DigiPVTService {
     );
   } 
 
+  public GetUploadnetpayvalues() {
+    return this.http.get<any[]>(
+      this.host + "/Master/GetUploadnetpayvalues"
+    );
+  } 
 
+
+  
 
 
   
@@ -1965,6 +1980,13 @@ export class DigiPVTService {
       this.host + "/Master/GetValidatedPayrollInputs"
     );
   }
+  
+  public   GetValidatedNetPayDetails() {
+    return this.http.get<any[]>(
+      this.host + "/Master/GetValidatedNetPayDetails"
+    );
+  }
+  
   
 
   public   GetValidatedMasterFile() {
@@ -2138,6 +2160,14 @@ export class DigiPVTService {
     return this.http.get<any[]>(this.host + "/Announcement/GetRunCOLAValidation?EmployeeID=" + EmployeeID  + "&startdate=" + startdate + "&enddate=" + enddate);
   }
 
+  
+  public GetRunNetPayValidation(EmployeeID: any,  startdate: any, enddate: any) {
+    //debugger
+    return this.http.get<any[]>(this.host + "/Announcement/GetRunNetPayValidation?EmployeeID=" + EmployeeID  + "&startdate=" + startdate + "&enddate=" + enddate);
+  }
+
+  
+
 
   public GetRunPhilHealthValidation(EmployeeID: any,  startdate: any, enddate: any) {
     //debugger
@@ -2230,6 +2260,13 @@ export class DigiPVTService {
     this.url = this.host + '/Master/InsertBonusValidation';
     return this.http.post(this.url, data);
   }
+
+  public UploadBonusValuesForMWC(data: any) {
+    //debugger;
+    this.url = this.host + '/Master/UploadBonusValuesForMWC';
+    return this.http.post(this.url, data);
+  }
+  
   
   
 

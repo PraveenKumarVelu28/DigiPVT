@@ -84,8 +84,20 @@ import { RunPayrollInputValidationComponent } from './run-payroll-input-validati
 import { UploadOvertimeReportComponent } from './upload-overtime-report/upload-overtime-report.component';
 import { RunOvertimeReportValidationComponent } from './run-overtime-report-validation/run-overtime-report-validation.component';
 import { ValidatedOvertimeReportDetailsComponent } from './validated-overtime-report-details/validated-overtime-report-details.component';
+import { ValidatedAllowanceDetailsForMWCComponent } from './validated-allowance-details-for-mwc/validated-allowance-details-for-mwc.component';
+import { UploadNetPayValuesComponent } from './upload-net-pay-values/upload-net-pay-values.component';
+import { RunNetPayValidationComponent } from './run-net-pay-validation/run-net-pay-validation.component';
+import { ValidateNetPayDetailsComponent } from './validate-net-pay-details/validate-net-pay-details.component';
 const routes: Routes = [
   { path: '', component: PayrollProcessorComponent },
+  { path: 'RunNetPayValidation', component: RunNetPayValidationComponent },
+
+  { path: 'ValidateNetPayDetails', component: ValidateNetPayDetailsComponent },
+
+  { path: 'UploadNetPayValues', component: UploadNetPayValuesComponent },
+
+  { path: 'ValidatedAllowanceDetailsForMWC', component: ValidatedAllowanceDetailsForMWCComponent },
+
   { path: 'ValidatedOvertimeReportDetails', component: ValidatedOvertimeReportDetailsComponent },
 
   { path: 'RunOvertimeReportValidation', component: RunOvertimeReportValidationComponent },

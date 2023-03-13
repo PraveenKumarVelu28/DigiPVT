@@ -298,7 +298,10 @@ this.data11.emit('ValidatedMaster')
 
 
 
-  
+  NetPayValidation() {
+    debugger
+    this.active = 7877;
+  }
 
   BonusValidation() {
     debugger
@@ -584,8 +587,12 @@ this.data11.emit('ValidatedMaster')
         debugger
         const login: any = document.getElementById('login') as HTMLElement
 
-        if (login.value == this.validation[0].password) {
+        if (login.value == this.validation[0].password && this.companyid==1001) {
           this.router.navigate(['/PayrollProcessor/ValidatedAllowanceDetails']);
+        }
+        else if (login.value == this.validation[0].password && this.companyid==1005){
+          this.router.navigate(['/PayrollProcessor/ValidatedAllowanceDetailsForMWC']);
+
         }
         else {
           Swal.showValidationMessage(`Please enter correct pin`)
@@ -829,6 +836,13 @@ this.data11.emit('ValidatedMaster')
   }
 
 
+  public UploadNetPayValues() {
+    this.active = 'UploadNetPayValues'
+    localStorage.setItem("clickname", "UploadNetPayValues")
+    this.router.navigate(['/PayrollProcessor/UploadNetPayValues'])
+   
+   
+  }
 
   public FMAValidation() {
     this.active = 'fma'
@@ -1268,6 +1282,40 @@ this.data11.emit('ValidatedMaster')
  
         if (login.value == this.validation[0].password) {
           this.router.navigate(['/PayrollProcessor/BonusValidationDetails']);
+        }
+        else {
+          Swal.showValidationMessage(`Please enter correct pin`)
+        }
+      }
+    })
+
+
+  }
+
+  
+  public ValidatedNetPay() {
+    debugger
+    this.active = 6676;
+    localStorage.setItem('Pagename', 'Staff')
+
+    this.DigiPVTService.GetValidationPassword().subscribe(data => {
+      debugger
+      this.validation = data.filter(x=>x.menuName=='Validated Net Pay Details');
+      console.log("validation", this.validation);
+    });
+
+    Swal.fire({
+      title: 'Access Net Pay Validation',
+      html: `<input type="text" id="login" class="swal2-input"  placeholder="Enter 4 Digit Pin">
+    `,
+      confirmButtonText: 'Submit',
+      focusConfirm: false,
+      preConfirm: () => {
+        debugger
+        const login: any = document.getElementById('login') as HTMLElement
+ 
+        if (login.value == this.validation[0].password) {
+          this.router.navigate(['/PayrollProcessor/ValidateNetPayDetails']);
         }
         else {
           Swal.showValidationMessage(`Please enter correct pin`)

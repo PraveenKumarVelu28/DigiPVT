@@ -25,9 +25,11 @@ export class LwopValidationDetailsComponent implements OnInit {
   term:any;
   p: any = 1;
   count1: any = 10;
+  loader : any
 
   public GetValidatedLwopDetails() {
     debugger
+    this.loader=false
     this.DigiofficeService.GetValidatedLwopDetails()
       .subscribe({
         next: data => {
@@ -35,6 +37,7 @@ export class LwopValidationDetailsComponent implements OnInit {
           this.timedetails = data;
 
           this.count = this.timedetails.length
+          this.loader=false
         }, error: (err) => {
           Swal.fire('Issue in Getting Staff Over Time Details');
           // Insert error in Db Here//
@@ -63,6 +66,32 @@ export class LwopValidationDetailsComponent implements OnInit {
 
     /* save to file */
     XLSX.writeFile(wb, this.fileName);
+
+  }
+
+  delete(ID : any){
+    debugger
+    Swal.fire({
+      title: 'Are you sure?',
+      text: 'You Want to delete it.',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Yes, Delete it!',
+      cancelButtonText: 'No, keep it'
+    }).then((result) => {
+      if (result.value == true) {
+        this.DigiofficeService.DeleteValidatedLwopDetails(ID)
+          .subscribe({
+            next: data => {
+              debugger
+              Swal.fire('Deleted Successfully')
+              location.reload();
+              this.loader=false
+              
+            }
+          })
+      }
+    })
 
   }
 

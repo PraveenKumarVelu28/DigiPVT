@@ -181,7 +181,7 @@ export class SidebarComponent implements OnInit {
 
   public ValidatedPayrollSummary() {
 
-  
+  debugger
 
     this.active = 'ValidatedPayrollSummary'
     localStorage.setItem("pagename", "ValidatedPayrollSummary")
@@ -196,10 +196,11 @@ export class SidebarComponent implements OnInit {
       title: 'Access Payroll Summary Validation',
       html: `<input type="text" id="login" class="swal2-input"  placeholder="Enter 4 Digit Pin">
     `,
-
-    
-      confirmButtonText: 'Submit',
-      showLoaderOnConfirm: true,
+      confirmButtonText: 'Submit', 
+     showLoaderOnConfirm: true,
+      allowEnterKey:true,
+     
+      //keydownListenerCapture:true,
       
       
       preConfirm: () => {
@@ -219,6 +220,8 @@ export class SidebarComponent implements OnInit {
     })
 
   }
+
+ 
 
 
   public NHANDRValidation() {
@@ -1771,5 +1774,7 @@ this.data11.emit('ValidatedMaster')
     debugger
     this.mini = val;
   }
+
+ 
 
 }

@@ -1,3 +1,4 @@
+<app-loader *ngIf="loader"></app-loader>
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-12">
@@ -99,16 +100,8 @@
                                                 <th class="thwidth">No Of Days Available</th>
                                                 <th class="thwidth">Uploaded Leave Days</th>
                                                 <th class="thwidth">Lwop Days</th>
-                                                
-    
-    
-    
-    
-    
-    
-    
-    
-    
+                                                <th>Action</th>
+                                                   
                                             </tr>
                                             <tr
                                                 *ngFor="let time of timedetails| filter:term |paginate: { itemsPerPage: count1, currentPage: p}">
@@ -118,6 +111,9 @@
                                                 <td [ngClass]="{'bgred':time.bcolor=='1' }">{{time.validatedLWOPDays}}</td>
                                                 <td [ngClass]="{'bgred':time.bcolor=='1' }">{{time.uploadedLwopDays}}</td>
                                                 <td [ngClass]="{'bgred':time.bcolor=='1' }">{{time.systemGeneratedLwopDays}}</td>
+                                                <td>
+                                                    <button class="upload" (click)="delete(time.id)">Delete</button>
+                                                </td>
                                                 
     
     

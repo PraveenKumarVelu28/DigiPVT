@@ -37,9 +37,11 @@ export class UploadLOAandSuspendedStaffComponent implements OnInit {
   Paydate:any;
   companyid:any;
   public attachmentsurl: any = [];
+  loader : any
 
   ngOnInit(): void {
     debugger
+    this.loader=false
     this.companyid = sessionStorage.getItem('companyid');
     this.GetUploadLoAandSuspendedStaff();
   
@@ -47,6 +49,7 @@ export class UploadLOAandSuspendedStaffComponent implements OnInit {
     this.DigiPVTService.GetPayPeriodSetting().subscribe(data => {
         debugger
         this.PayPeriodSettingList = data;
+        this.loader=false
       });
   }
 
@@ -56,6 +59,7 @@ export class UploadLOAandSuspendedStaffComponent implements OnInit {
       this.DigiPVTService.GetUploadLoAandSuspendedStaff().subscribe(data => {
         debugger
         this.componentmaster = data;
+        this.loader=false
         console.log("componentmaster", this.componentmaster);
       });
 
@@ -202,6 +206,7 @@ export class UploadLOAandSuspendedStaffComponent implements OnInit {
         debugger
         Swal.fire('Updated Successfully')
         this.ngOnInit();
+        this.loader=false
       }
     })
        
@@ -225,6 +230,7 @@ export class UploadLOAandSuspendedStaffComponent implements OnInit {
               debugger
               Swal.fire('Deleted Successfully')
               location.reload();
+              this.loader=false
               
             }
           })

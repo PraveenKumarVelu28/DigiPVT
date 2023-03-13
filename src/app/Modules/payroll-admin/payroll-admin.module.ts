@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
 import { PayrollAdminRoutingModule } from './payroll-admin-routing.module';
 import { PayrollAdminComponent } from './payroll-admin.component';
 import { ValidationpasswordDashboardComponent } from './validationpassword-dashboard/validationpassword-dashboard.component';

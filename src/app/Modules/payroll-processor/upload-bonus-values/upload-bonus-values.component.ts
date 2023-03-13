@@ -22,10 +22,12 @@ export class UploadBonusValuesComponent implements OnInit {
   stafflist:any;
   PayPeriodSettingList:any;
   companyid:any;
+  loader : any
 
 
   ngOnInit(): void {
     debugger;
+    this.loader=false
     this.companyid = sessionStorage.getItem('companyid');
 
     this.GetBonusValidation();
@@ -35,6 +37,7 @@ export class UploadBonusValuesComponent implements OnInit {
       next: data => {
         debugger
         this.stafflist = data;
+        this.loader=false
        
        
       }
@@ -43,6 +46,7 @@ export class UploadBonusValuesComponent implements OnInit {
     this.DigiPVTService.GetPayPeriodSetting().subscribe(data => {
         debugger
         this.PayPeriodSettingList = data;
+        this.loader=false
         
       });
     
@@ -55,6 +59,7 @@ export class UploadBonusValuesComponent implements OnInit {
     this.DigiPVTService.GetBonusValidation().subscribe(data => {
       debugger
       this.componentmaster = data;
+      this.loader=false
       console.log("componentmaster", this.componentmaster);
     });
   
@@ -130,6 +135,7 @@ export class UploadBonusValuesComponent implements OnInit {
               debugger
               Swal.fire('Deleted Successfully')
               location.reload();
+              this.loader=false
               
             }
           })
@@ -192,6 +198,7 @@ export class UploadBonusValuesComponent implements OnInit {
               this.StaffID=data;
               
                 Swal.fire('Saved Successfully')
+                this.loader=false
               
                
             
@@ -246,6 +253,7 @@ export class UploadBonusValuesComponent implements OnInit {
               this.StaffID=data;
               
                 Swal.fire('Saved Successfully')
+                this.loader=false
               
                
             
@@ -298,6 +306,7 @@ export class UploadBonusValuesComponent implements OnInit {
   
               debugger
               this.StaffID=data;
+              this.loader=false
               
                 Swal.fire('Saved Successfully')
               

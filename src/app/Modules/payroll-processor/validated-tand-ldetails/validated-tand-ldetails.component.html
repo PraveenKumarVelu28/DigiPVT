@@ -1,3 +1,4 @@
+<app-loader *ngIf="loader"></app-loader>
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-12">
@@ -65,6 +66,7 @@
                             <th class="thwidth">Validated Amount </th>
                             <th class="thwidth">Amount Descrepency</th>
                             <th class="thwidth">PayDate</th>
+                            <th>Action</th>
                         </tr>
                         <tr
                             *ngFor="let time of timedetails| filter:term |paginate: { itemsPerPage: count1, currentPage: p}">
@@ -77,6 +79,9 @@
                             <td [ngClass]="{'bgred':time.bcolor=='1' }">{{time.systemGeneratedAmount}}</td>
                             <td [ngClass]="{'bgred':time.bcolor=='1' }">{{time.amountDescrepency}}</td>
                             <td [ngClass]="{'bgred':time.bcolor=='1' }">{{time.paydate|date}}</td>
+                            <td>
+                                <button class="upload" (click)="delete(time.id)">Delete</button>
+                            </td>
                         </tr>
                     </thead>
                 </table>

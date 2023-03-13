@@ -4781,6 +4781,77 @@ export class DigiPVTService {
       this.host + "/Vendor/DeleteValidationMaster?ID=" + ID);
   }
 
+
+  public DeleteValidatedPayrollSummaryDetails(ID: any) {
+    return this.http.get<any[]>(
+      this.host + "/Master/DeleteValidatedPayrollSummaryDetails=" + ID);
+  }
+
+  public DeleteValidatedBasicPayAllowances(ID : any){
+    return this.http.get<any[]>(
+      this.host + "/Master/DeleteValidatedBasicPayAllowances?ID=" + ID);
+  }
+
+  public DeleteValidatedLwopDetails(ID : any){
+    return this.http.get<any[]>(
+      this.host + "/Master/DeleteValidatedLwopDetails?ID=" + ID);
+  }
+
+  public DeleteValidatedBonusValues(ID : any){
+    return this.http.get<any[]>(
+      this.host + "/Master/DeleteValidatedBonusValues?ID=" + ID);
+  }
+
+  public DeleteValidatedLoanProceeds(ID: any) {
+    return this.http.get<any[]>(
+      this.host + "/Master/DeleteValidatedLoanProceeds?ID=" + ID);
+  }
+
+  public DeleteValidatedBlankStats(ID: any) {
+    return this.http.get<any[]>(
+      this.host + "/Master/DeleteValidatedBlankStats?ID=" + ID);
+  }
+
+  public DeleteValidatedMasterFile(ID: any) {
+    return this.http.get<any[]>(
+      this.host + "/Master/DeleteValidatedMasterFile?ID=" + ID);
+  }
+
+  public DeleteValidatedHeadCount(ID: any) {
+    return this.http.get<any[]>(
+      this.host + "/Master/DeleteValidatedHeadCount?ID=" + ID);
+  }
+
+  public DeleteValidatedPayrollElementsForPayperiod(ID: any) {
+    return this.http.get<any[]>(
+      this.host + "/Master/DeleteValidatedPayrollElementsForPayperiod?ID=" + ID);
+  }
+
+  public DeleteValidatedPhilHealthValues(ID: any) {
+    return this.http.get<any[]>(
+      this.host + "/Master/DeleteValidatedPhilHealthValues?ID=" + ID);
+  }
+
+  public DeleteValidatedSubjectLoadValues(ID: any) {
+    return this.http.get<any[]>(
+      this.host + "/Master/DeleteValidatedSubjectLoadValues?ID=" + ID);
+  }
+
+
+  public DeleteRetroValidatedBasicPayAllowances(ID: any) {
+    return this.http.get<any[]>(
+      this.host + "/Master/DeleteRetroValidatedBasicPayAllowances?ID=" + ID);
+  }
+
+
+  public DeleteValidatedHolidayEncashment(ID: any) {
+    return this.http.get<any[]>(
+      this.host + "/Master/DeleteValidatedHolidayEncashment?ID=" + ID);
+  }
+
+
+
+
 }
 
 

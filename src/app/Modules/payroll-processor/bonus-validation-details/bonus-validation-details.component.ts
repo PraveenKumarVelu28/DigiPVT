@@ -21,7 +21,9 @@ export class BonusValidationDetailsComponent implements OnInit {
   p: any = 1;
   count1: any = 10;
   companyid:any;
+  loader : any
   ngOnInit(): void {
+    this.loader=false
     this.companyid = sessionStorage.getItem('companyid');
 
     this.GetBonusValidation();
@@ -37,6 +39,7 @@ export class BonusValidationDetailsComponent implements OnInit {
           this.timedetails = data;
 
           this.count = this.timedetails.length
+          this.loader=false
         }, error: (err) => {
           Swal.fire('Issue in Getting Staff Over Time Details');
           // Insert error in Db Here//
@@ -65,6 +68,32 @@ export class BonusValidationDetailsComponent implements OnInit {
 
     /* save to file */
     XLSX.writeFile(wb, this.fileName);
+
+  }
+
+  delete(ID : any){
+    debugger
+    Swal.fire({
+      title: 'Are you sure?',
+      text: 'You Want to delete it.',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Yes, Delete it!',
+      cancelButtonText: 'No, keep it'
+    }).then((result) => {
+      if (result.value == true) {
+        this.DigiofficeService.DeleteValidatedBonusValues(ID)
+          .subscribe({
+            next: data => {
+              debugger
+              Swal.fire('Deleted Successfully')
+              location.reload();
+              this.loader=false
+              
+            }
+          })
+      }
+    })
 
   }
 

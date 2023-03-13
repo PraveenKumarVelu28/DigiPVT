@@ -25,7 +25,6 @@ export class HolidaysComponent implements OnInit {
   arrayBuffer: any;
   filetype: any;
   file: any;
-
   i:any;
   startdate:any;
   Attachment:any;
@@ -35,21 +34,24 @@ export class HolidaysComponent implements OnInit {
   Paydate:any;
   HolidayDate:any;
   public attachmentsurl: any = [];
-
+  loader :any
   ngOnInit(): void {
     debugger
+    this.loader=false
     this.GetHolidays();
     this.DigiPVTService.GetAllStaffNew().
     subscribe({
       next: data => {
         debugger
         this.stafflist = data;
+        this.loader=false
       }
     })
 
     this.DigiPVTService.GetPayPeriodSetting().subscribe(data => {
         debugger
         this.PayPeriodSettingList = data;
+        this.loader=false
       });
   }
 
@@ -58,6 +60,7 @@ export class HolidaysComponent implements OnInit {
     this.DigiPVTService.GetHolidays().subscribe(data => {
       debugger
       this.componentmaster = data;
+      this.loader=false
       console.log("componentmaster", this.componentmaster);
     });
   }
@@ -171,7 +174,7 @@ export class HolidaysComponent implements OnInit {
               debugger
               Swal.fire('Deleted Successfully')
               location.reload();
-              
+              this.loader=false
             }
           })
       }

@@ -14,18 +14,21 @@ declare var JSZipUtils: any;
 export class ValidatedHeadCountDetailsComponent implements OnInit {
 
   constructor(public DigiofficeService: DigiPVTService, public router: Router) { }
-
-  ngOnInit(): void {
-
-    this.GetValidatedHeadCount();
-  }
-
   timedetails:any;
   count:any;
   currentUrl:any;
   term:any;
   p: any = 1;
   count1: any = 10;
+  loader : any
+
+
+  ngOnInit(): void {
+
+    this.GetValidatedHeadCount();
+    this.loader=false
+  }
+
 
   public GetValidatedHeadCount() {
     debugger
@@ -36,6 +39,7 @@ export class ValidatedHeadCountDetailsComponent implements OnInit {
           this.timedetails = data;
 
           this.count = this.timedetails.length
+          this.loader=false
         }, error: (err) => {
           Swal.fire('Issue in Getting Staff Over Time Details');
           // Insert error in Db Here//
@@ -64,6 +68,32 @@ export class ValidatedHeadCountDetailsComponent implements OnInit {
 
     /* save to file */
     XLSX.writeFile(wb, this.fileName);
+
+  }
+
+  delete(ID : any){
+    debugger
+    Swal.fire({
+      title: 'Are you sure?',
+      text: 'You Want to delete it.',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Yes, Delete it!',
+      cancelButtonText: 'No, keep it'
+    }).then((result) => {
+      if (result.value == true) {
+        this.DigiofficeService.DeleteValidatedHeadCount(ID)
+          .subscribe({
+            next: data => {
+              debugger
+              Swal.fire('Deleted Successfully')
+              location.reload();
+              this.loader=false
+              
+            }
+          })
+      }
+    })
 
   }
 

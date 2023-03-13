@@ -65,6 +65,7 @@
                             <th class="thwidth">Validated Subject Load </th>
                             <th class="thwidth">Subject Load Dscrepency</th>
                             <th class="thwidth">PayDate</th>
+                            <th>Action</th>
                         </tr>
                         <tr
                             *ngFor="let time of timedetails| filter:term |paginate: { itemsPerPage: count1, currentPage: p}">
@@ -77,6 +78,9 @@
                             <td [ngClass]="{'bgred':time.bcolor=='1' }">{{time.regularsubjectadjustment}}</td>
                             <td [ngClass]="{'bgred':time.bcolor=='1' }">{{time.regularsubjectadjustmentdescrepency}}</td>
                             <td [ngClass]="{'bgred':time.bcolor=='1' }">{{time.paydate}}</td>
+                            <td>
+                                <button class="upload" (click)="delete(time.id)">Delete</button>
+                            </td>
                         </tr>
                     </thead>
                 </table>

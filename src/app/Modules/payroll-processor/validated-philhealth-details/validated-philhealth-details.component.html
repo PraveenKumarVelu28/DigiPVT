@@ -72,6 +72,7 @@
                             <th>System Generated PHIC_ER Total</th>
                             <th>PHIC_ER Descrepency</th>
                             <th class="thwidth">PayDate</th>
+                            <th>Action</th>
                         </tr>
                         <tr
                             *ngFor="let time of timedetails| filter:term |paginate: { itemsPerPage: count1, currentPage: p}">
@@ -91,6 +92,9 @@
                             <td [ngClass]="{'bgred':time.bcolor=='1' }">{{time.validated_PHIC_ER}}</td>
                             <td [ngClass]="{'bgred':time.bcolor=='1' }">{{time.phic_erdescrepency}}</td>
                             <td [ngClass]="{'bgred':time.bcolor=='1' }">{{time.paydate}}</td>
+                            <td>
+                                <button class="upload" (click)="delete(time.id)">Delete</button>
+                            </td>
                         </tr>
                     </thead>
                 </table>

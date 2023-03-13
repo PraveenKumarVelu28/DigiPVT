@@ -1,3 +1,4 @@
+<app-loader *ngIf="loader"></app-loader>
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-12">
@@ -127,6 +128,7 @@
                                 <th class="thwidth">Uploaded Non Taxable Bonus</th>
                                 <th class="thwidth">Validated Non Taxable Bonus</th>
                                 <th class="thwidth">Descrepency Non Taxable Bonus</th>
+                                <th>Action</th>
                             </tr>
                             <tr
                                 *ngFor="let time of timedetails| filter:term |paginate: { itemsPerPage: count1, currentPage: p}">
@@ -171,6 +173,9 @@
                                 <td 
                                     [ngClass]="{'bgviolet':time.bNonTaxcolor=='1' }">
                                     {{time.nonTaxableBonusdescrepencyValue}}</td>
+                                    <td>
+                                        <button class="upload" (click)="delete(time.id)">Delete</button>
+                                    </td>
 
 
 
@@ -182,14 +187,13 @@
                             <tr class="thwidth">
                                 <th>Employee ID</th>
                                 <th>Employee Name</th>
-
                                 <th class="thwidth">Pay Date</th>
-
                                 <th class="thwidth">Uploaded 13th Month Bonus</th>
                                 <th class="thwidth">90k Exemption Taxable Bonus</th>
                                 <th class="thwidth">Uploaded 13th Month Bonus Tax</th>
                                 <th class="thwidth">Validated 13th Month Bonus Tax</th>
                                 <th class="thwidth">Descrepency 13th Month Bonus Tax</th>
+                                <th>Action</th>
                                
                                
                             </tr>
@@ -213,6 +217,9 @@
                                     [ngClass]="{'bgyellow':time.bTaxcolor=='1' }"
                                     >
                                     {{time.taxableBonusdescrepencyValue}}</td>
+                                    <td>
+                                        <button class="upload" (click)="delete(time.id)">Delete</button>
+                                    </td>
 
 
                                

@@ -323,12 +323,7 @@ export class RunLoanProceedsValidationComponent implements OnInit {
   this.startdate = formatDate(myDate, format, locale);
                 
                   debugger;
-
-
-
-
-                  
-                  
+                 
                     this.LOPDays = 0;
                     this.DigiofficeService.GetRunLoanProceedsValidation(this.ID1[i],  this.startdate, this.enddate).subscribe(
                       res => {

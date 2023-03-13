@@ -286,7 +286,7 @@ export class RunTandLValidationComponent implements OnInit {
   }
   Swal.fire({
     title: 'Are you sure?',
-    text: 'To Run Tax Validation In This Period',
+    text: 'To Run Payroll For This Period!',
     showCancelButton: true,
     confirmButtonText: 'Yes, Accept it!',
     cancelButtonText: 'No, keep it'
@@ -322,12 +322,12 @@ export class RunTandLValidationComponent implements OnInit {
                   debugger;
                  
                     this.LOPDays = 0;
-                    this.DigiofficeService.Get_PreliminaryReport(this.ID1[i], this.LOPDays, this.startdate, this.enddate).subscribe(
+                    this.DigiofficeService.GetRunUploadedPayrollElementsForPayperiodValidation(this.ID1[i],  this.startdate, this.enddate).subscribe(
                       res => {
                         debugger;
                         this.StaffSalaryReports = res;
                         this.ID1 = [];
-                        location.href = '#/PayrollProcessor/ValidatedTaxValues'
+                        location.href = '#/PayrollProcessor/ValidatedTandLDetails'
                       }
                     )
 

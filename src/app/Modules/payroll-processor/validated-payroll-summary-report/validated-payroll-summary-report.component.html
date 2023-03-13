@@ -1,10 +1,11 @@
+<app-loader *ngIf="loader"></app-loader>
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-12">
             <div class="row">
                 <div class="col-md-12">
                     <ul>
-
+                        app-loader
 
                         <a class="active Heading underlineclr" routerLink="/PayrollProcessor/MyTeamOverTimeDetails">
                             Payroll Summary Validation Details</a>
@@ -42,7 +43,7 @@
                         </button>
                     </div>
                     <div class="col-md-3">
-                        <button class="form-control AddExpense2" style="width: 80%;" (click)="exportexcel()">Export to
+                        <button class="form-control AddExpense2" style="width: 80%;" (click)="exportexcel1()">Export to
                             Excel</button>
                     </div>
 
@@ -69,6 +70,7 @@
                             <th class="thwidth">Current Payperiod Value</th>
                             <th class="thwidth">Payperiod Value Descrepency</th>
                             <th class="thwidth">PayDate</th>
+                            <th>Actions</th>
                            
                         </tr>
                         <tr
@@ -87,6 +89,9 @@
 
                             <td [ngClass]="{'bgred':time.bcolor=='1 ', 'bgreen':time.bcolor=='0 ' }">{{time.payValueDescrepency}}</td>
                             <td [ngClass]="{'bgred':time.bcolor=='1 ', 'bgreen':time.bcolor=='0 ' }">{{time.paydate|date}}</td>
+                            <td>
+                                <button class="upload" (click)="delete(time.id)">Delete</button>
+                            </td>
 
                         </tr>
                     </thead>

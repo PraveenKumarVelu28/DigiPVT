@@ -317,42 +317,25 @@ export class RunClothingAllowanceComponent implements OnInit {
       const myDate = this.startdate;
         const locale = 'en-US';
   this.startdate = formatDate(myDate, format, locale);
-              this.DigiofficeService.GetStaffLeavesForPayrollByDate(this.startdate, this.enddate, this.ID1[i]).subscribe(
-                res => {
+                
                   debugger;
-                  if (res.length == 0) {
+                 
                     this.LOPDays = 0;
-                    this.DigiofficeService.Get_Salary_Splitsfor15days(this.ID1[i], this.LOPDays, this.startdate, this.enddate).subscribe(
+                    this.DigiofficeService.GetRunCOLAValidation(this.ID1[i],  this.startdate, this.enddate).subscribe(
                       res => {
                         debugger;
                         this.StaffSalaryReports = res;
                         this.ID1 = [];
-                        location.href = '#/PayRoll'
+                        location.href = '#/PayrollProcessor/ValidatedColaValues'
                       }
                     )
 
-                  } else {
-                    this.LOPDays = res[0].noOfDays;
-                    if (this.LOPDays <= 2) {
-                      this.LOPDays = this.LOPDays;
-                    }
-                    else {
-                      this.LOPDays = this.LOPDays - 2;
-                    }
-                    this.DigiofficeService.Get_Salary_Splitsfor15days(this.ID1[i], this.LOPDays, this.startdate, this.enddate).subscribe(
-                      res => {
-                        debugger;
-                        this.StaffSalaryReports = res;
-                        this.ID1 = [];
-                        location.href = '#/PayRoll'
-                      }
-                    )
-                  }
+                  
 
-                }
+                
 
 
-              )
+              
 
             }
 

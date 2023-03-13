@@ -19,14 +19,18 @@ export class ComponentMappingDashboardComponent implements OnInit {
   arrayBuffer: any;
   filetype: any;
   file: any;
+  loader : any
   ngOnInit(): void {
+    this.loader=false
     this.GetComponentMapping();
+    
   }
  
   public GetComponentMapping(){
     this.DigiPVTService.GetComponentMapping().subscribe(data => {
       debugger
       this.componentmapping = data;
+      this.loader=false
       
     console.log("ComponentMapping",this.componentmapping);
     });
@@ -98,6 +102,7 @@ export class ComponentMappingDashboardComponent implements OnInit {
           
               Swal.fire('Saved Successfully')
               this.ngOnInit();
+              this.loader=false
             // // this.SavePositionDetails();
             // var eb = {
             //   'EmergencyContactName': this.exceldata[this.i-(this.exceldata.length)].EmergencyContactName,
@@ -143,6 +148,7 @@ export class ComponentMappingDashboardComponent implements OnInit {
               debugger
               Swal.fire('Deleted Successfully')
               location.reload();
+              this.loader=false
             }
           })
       }

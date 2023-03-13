@@ -33,21 +33,24 @@ export class UploadAttendanceDaysCountComponent implements OnInit {
   StaffID:any;
   Paydate:any;
   public attachmentsurl: any = [];
-
+  loader : any
   ngOnInit(): void {
     debugger
+    this.loader=false
     this.GetUploadedAttendanceCounts();
     this.DigiPVTService.GetAllStaffNew().
     subscribe({
       next: data => {
         debugger
         this.stafflist = data;
+        this.loader=false
       }
     })
 
     this.DigiPVTService.GetPayPeriodSetting().subscribe(data => {
         debugger
         this.PayPeriodSettingList = data;
+        this.loader=false
       });
   }
 
@@ -56,6 +59,7 @@ export class UploadAttendanceDaysCountComponent implements OnInit {
     this.DigiPVTService.GetUploadedAttendanceCounts().subscribe(data => {
       debugger
       this.componentmaster = data;
+      this.loader=false
       console.log("componentmaster", this.componentmaster);
     });
   }
@@ -135,6 +139,7 @@ export class UploadAttendanceDaysCountComponent implements OnInit {
               debugger
               Swal.fire('Updated Successfully')
               this.ngOnInit();
+              this.loader=false
             }
           })
       }
@@ -158,6 +163,7 @@ export class UploadAttendanceDaysCountComponent implements OnInit {
               debugger
               Swal.fire('Deleted Successfully')
               location.reload();
+              this.loader=false
               
             }
           })

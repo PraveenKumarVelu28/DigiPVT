@@ -8,3 +8,8 @@
     background-color: #d7ffe0;
     color: black;
   }
+
+  .listscroll {
+    overflow-x: scroll;
+  }
+  

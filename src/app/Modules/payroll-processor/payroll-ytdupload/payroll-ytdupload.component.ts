@@ -36,15 +36,18 @@ export class PayrollYTDUploadComponent implements OnInit {
   StaffID:any;
   Paydate:any;
   public attachmentsurl: any = [];
+  loader : any
 
   ngOnInit(): void {
     debugger
+    this.loader=false
     this.GetPayrollYTD();
     this.DigiPVTService.GetAllStaffNew().
     subscribe({
       next: data => {
         debugger
         this.stafflist = data;
+        this.loader=false
       }
     })
 
@@ -59,6 +62,7 @@ export class PayrollYTDUploadComponent implements OnInit {
     this.DigiPVTService.GetPayrollYTD().subscribe(data => {
       debugger
       this.componentmaster = data;
+      this.loader=false
       console.log("componentmaster", this.componentmaster);
     });
   }
@@ -123,8 +127,10 @@ export class PayrollYTDUploadComponent implements OnInit {
             next: data => {
             debugger
             this.StaffID=data;
+            this.loader=false
               Swal.fire('Saved Successfully')
               this.ngOnInit();
+              this.loader=false
             // // this.SavePositionDetails();
             // var eb = {
             //   'EmergencyContactName': this.exceldata[this.i-(this.exceldata.length)].EmergencyContactName,
@@ -169,6 +175,7 @@ export class PayrollYTDUploadComponent implements OnInit {
               debugger
               Swal.fire('Deleted Successfully')
               location.reload();
+              this.loader=false
               
             }
           })

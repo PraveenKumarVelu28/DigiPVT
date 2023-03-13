@@ -1,3 +1,4 @@
+<app-loader *ngIf="loader"></app-loader>
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-12">
@@ -68,6 +69,7 @@
                             <th class="thwidth">Remarks</th>
 
                             <th class="thwidth">PayDate</th>
+                            <th>Action</th>
 
                         
                            
@@ -83,6 +85,9 @@
                             <td [ngClass]="{'bgred':time.bcolor=='1' }">{{time.tag}}</td>
 
                             <td [ngClass]="{'bgred':time.bcolor=='1' }">{{time.paydate|date}}</td>
+                             <td>
+                                <button class="upload" (click)="delete(time.id)">Delete</button>
+                             </td>
                            
                         </tr>
                     </thead>

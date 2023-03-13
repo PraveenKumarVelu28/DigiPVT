@@ -26,16 +26,18 @@ export class ValidatedPayrollSummaryReportComponent implements OnInit {
   term:any;
   p: any = 1;
   count1: any = 10;
+  loader : any
 
   public GetValidatedPayrollSummaryDetails() {
     debugger
+    this.loader=false;
     this.DigiofficeService.GetValidatedPayrollSummaryDetails()
       .subscribe({
         next: data => {
           debugger
           this.timedetails = data;
-
           this.count = this.timedetails.length
+          this.loader=false;
         }, error: (err) => {
           Swal.fire('Issue in Getting Staff Over Time Details');
           // Insert error in Db Here//
@@ -52,20 +54,92 @@ export class ValidatedPayrollSummaryReportComponent implements OnInit {
       })
   }
 
-  fileName = 'Basic Pay Validation Details Reports.xlsx';
-  exportexcel(): void {
-    /* table id is passed over here */
-    let element = document.getElementById('downloadaplication');
-    const ws: XLSX.WorkSheet = XLSX.utils.table_to_sheet(element);
 
-    /* generate workbook and add the worksheet */
-    const wb: XLSX.WorkBook = XLSX.utils.book_new();
-    XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
 
-    /* save to file */
-    XLSX.writeFile(wb, this.fileName);
+  delete(ID : any){
+    debugger
+    Swal.fire({
+      title: 'Are you sure?',
+      text: 'You Want to delete it.',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Yes, Delete it!',
+      cancelButtonText: 'No, keep it'
+    }).then((result) => {
+      if (result.value == true) {
+        this.DigiofficeService.DeleteValidatedPayrollSummaryDetails(ID)
+          .subscribe({
+            next: data => {
+              debugger
+              Swal.fire('Deleted Successfully')
+              location.reload();
+              this.loader=false;
+              
+            }
+          })
+      }
+    })
 
   }
+
+  undefined: any;
+  sequenceNumber1: any
+  attendancelist: any
+  public exportexcel1() {
+    debugger
+    var ExportData = [];
+    this.sequenceNumber1 = 0;
+    this.undefined = 'NA'
+    for (let i = 0; i < this.timedetails.length; i++) {
+      debugger;
+      this.sequenceNumber1 = i + 1;
+      let singleData = {
+        EmployeeID: String,
+        EmployeeName: String,
+        ElementName: String,
+        ElementDesciption: String,
+        ElementType: String,
+        PreviousPayperiodValue: String,
+        CurrentPayperiodValue: String,
+        PayperiodValueDescrepency: String,
+        PayDate: String,
+     
+
+      }
+      //singleData.SequenceNumber = this.sequenceNumber1;
+      singleData.EmployeeID = this.timedetails[i].employeID;
+      singleData.EmployeeName = this.timedetails[i].name;
+      singleData.ElementName = this.timedetails[i].elementName;
+      singleData.ElementDesciption = this.timedetails[i].elementDescription;
+      // singleData.CompanyName = this.companycode;
+      singleData.ElementType = this.timedetails[i].elementType;
+      singleData.PreviousPayperiodValue = this.timedetails[i].previousPayrollValue;
+      singleData.CurrentPayperiodValue = this.timedetails[i].currentPayrollValue;
+      singleData.PayperiodValueDescrepency = this.timedetails[i].payValueDescrepency;
+      singleData.PayDate = this.timedetails[i].paydate;
+      ExportData.push(singleData);
+      debugger
+    }
+    const Export_to_excel_options = {
+      fieldSeparator: ',',
+      quoteStrings: '"',
+      decimalSeparator: '.',
+      showLabels: true,
+      showTitle: true,
+      title: 'Payroll Summary Report',
+      useTextFile: false,
+      useBom: true,
+      useKeysAsHeaders: true,
+      filename: 'Payroll Summary Report'
+    };
+    const csvExporter = new ExportToCsv(Export_to_excel_options);
+    debugger
+    csvExporter.generateCsv(ExportData);
+
+  }
+
+
+
 
 
 

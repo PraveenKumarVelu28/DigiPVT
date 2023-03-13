@@ -37,9 +37,11 @@ export class UploadBasicPayValuesComponent implements OnInit {
   stafflistdetails:any;
   companyid:any;
   public attachmentsurl: any = [];
+  loader : any
 
   ngOnInit(): void {
     debugger
+    this.loader=false
     this.companyid = sessionStorage.getItem('companyid');
     this.GetBasicpayAdjustments();
     this.DigiPVTService.GetAllStaffNew().
@@ -47,6 +49,7 @@ export class UploadBasicPayValuesComponent implements OnInit {
       next: data => {
         debugger
         this.stafflist = data;
+        this.loader=false
       }
     })
 
@@ -56,12 +59,14 @@ export class UploadBasicPayValuesComponent implements OnInit {
       next: data => {
         debugger
         this.stafflistdetails = data;
+        this.loader=false
       }
     })
 
     this.DigiPVTService.GetPayPeriodSetting().subscribe(data => {
         debugger
         this.PayPeriodSettingList = data;
+        this.loader=false
       });
   }
 
@@ -70,6 +75,7 @@ export class UploadBasicPayValuesComponent implements OnInit {
     this.DigiPVTService.GetBasicpayAdjustments().subscribe(data => {
       debugger
       this.componentmaster = data;
+      this.loader=false
       console.log("componentmaster", this.componentmaster);
     });
   }
@@ -112,6 +118,7 @@ export class UploadBasicPayValuesComponent implements OnInit {
       let apiarray = [];
       if(this.companyid==1007){
        this.stafflist= this.stafflistdetails
+       this.loader=false
       }
       for (this.i = 0; this.i < this.exceldata.length; this.i++) {
             this.stafflistcopy123=this.stafflist.filter((x: { employeID: any; })=>x.employeID==this.exceldata[this.i].EmployeID)          
@@ -138,6 +145,7 @@ export class UploadBasicPayValuesComponent implements OnInit {
             next: data => {
             debugger
             this.StaffID=data;
+            this.loader=false
               Swal.fire('Saved Successfully')
               this.ngOnInit();
             // // this.SavePositionDetails();
@@ -184,7 +192,7 @@ export class UploadBasicPayValuesComponent implements OnInit {
               debugger
               Swal.fire('Deleted Successfully')
               location.reload();
-              
+              this.loader=false
             }
           })
       }

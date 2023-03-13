@@ -15,18 +15,21 @@ export class ValidatedRetroBasicPayAdjustmentsComponent implements OnInit {
   
   constructor(public DigiofficeService: DigiPVTService, public router: Router) { }
   companyid:any;
-  ngOnInit(): void {
-    this.companyid = sessionStorage.getItem('companyid');
-    this.GetRetroValidatedBasicPayAllowances();
-  }
-
   timedetails:any;
   count:any;
   currentUrl:any;
   term:any;
   p: any = 1;
   count1: any = 10;
+  loader : any
 
+  ngOnInit(): void {
+    this.loader=false
+    this.companyid = sessionStorage.getItem('companyid');
+    this.GetRetroValidatedBasicPayAllowances();
+  }
+
+  
   public GetRetroValidatedBasicPayAllowances() {
     debugger
     this.DigiofficeService.GetRetroValidatedBasicPayAllowances()
@@ -34,8 +37,8 @@ export class ValidatedRetroBasicPayAdjustmentsComponent implements OnInit {
         next: data => {
           debugger
           this.timedetails = data;
-
           this.count = this.timedetails.length
+          this.loader=false
         }, error: (err) => {
           Swal.fire('Issue in Getting Staff Over Time Details');
           // Insert error in Db Here//
@@ -65,6 +68,88 @@ export class ValidatedRetroBasicPayAdjustmentsComponent implements OnInit {
     XLSX.writeFile(wb, this.fileName);
 
   }
+
+
+  delete(ID : any){
+    debugger
+    Swal.fire({
+      title: 'Are you sure?',
+      text: 'You Want to delete it.',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Yes, Delete it!',
+      cancelButtonText: 'No, keep it'
+    }).then((result) => {
+      if (result.value == true) {
+        this.DigiofficeService.DeleteRetroValidatedBasicPayAllowances(ID)
+          .subscribe({
+            next: data => {
+              debugger
+              Swal.fire('Deleted Successfully')
+              location.reload();
+              this.loader=false
+            }
+          })
+      }
+    })
+
+  }
+
+  undefined: any;
+  sequenceNumber1: any
+  attendancelist: any
+  public exportexcel1() {
+    debugger
+    var ExportData = [];
+    this.sequenceNumber1 = 0;
+    this.undefined = 'NA'
+    for (let i = 0; i < this.timedetails.length; i++) {
+      debugger;
+      this.sequenceNumber1 = i + 1;
+      let singleData = {
+        EmployeeID: String,
+        EmployeeName: String,
+        OldBasicPay: String,
+        NewBasicPay : String,
+        EffectiveDate: String,
+        PayDate: String,
+        UploadedBasicPayAdjustment: String,
+        ValidatedBasicPayAdjustment: String,
+        DescrepencyBasicPayAdjustment: String,
+  
+      }
+      //singleData.SequenceNumber = this.sequenceNumber1;
+      singleData.EmployeeID = this.timedetails[i].employeID;
+      singleData.EmployeeName = this.timedetails[i].name;
+      singleData.OldBasicPay = this.timedetails[i].oldbasicpay;
+      singleData.NewBasicPay = this.timedetails[i].basicPay;
+      singleData.EffectiveDate = this.timedetails[i].effectiveDate;
+      singleData.PayDate = this.timedetails[i].noofPayperiods;
+      singleData.UploadedBasicPayAdjustment = this.timedetails[i].uploadedBasicPayAdjustment;
+      singleData.ValidatedBasicPayAdjustment = this.timedetails[i].basicPayAdjustment;
+      singleData.DescrepencyBasicPayAdjustment = this.timedetails[i].basicPayAdjustmentDescrepency;
+
+      ExportData.push(singleData);
+      debugger
+    }
+    const Export_to_excel_options = {
+      fieldSeparator: ',',
+      quoteStrings: '"',
+      decimalSeparator: '.',
+      showLabels: true,
+      showTitle: true,
+      title: 'Basic Pay Validation Reports.xlsx',
+      useTextFile: false,
+      useBom: true,
+      useKeysAsHeaders: true,
+      filename: 'Basic Pay Validation Reports.xlsx'
+    };
+    const csvExporter = new ExportToCsv(Export_to_excel_options);
+    debugger
+    csvExporter.generateCsv(ExportData);
+
+  }
+
 
 
 }

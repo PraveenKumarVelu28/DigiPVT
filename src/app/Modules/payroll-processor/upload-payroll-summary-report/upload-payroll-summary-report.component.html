@@ -1,3 +1,4 @@
+<app-loader *ngIf="loader"></app-loader>
 <div class="row">
     <div class="col-md-12">
         <div class="row">
@@ -20,7 +21,7 @@
                         <div class="col-md-3">
                             <br />
                             <button class="form-control AddExpense3" 
-                                style="width: 60%;" (click)="exportexcel()">Export to Excel
+                                style="width: 60%;" (click)="exportexcel1()">Export to Excel
                             </button>
                         </div>
                         <div class="col-md-4">
@@ -62,7 +63,8 @@
                                 <th>Element Description</th>  
                                 <th>Paydate</th>  
                                 <th>Previous Payroll Value</th>  
-                                <th>Current Payroll Value</th>   
+                                <th>Current Payroll Value</th>  
+                                <th>Action</th> 
                                
                             </tr>
                         </thead>

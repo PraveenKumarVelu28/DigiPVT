@@ -33,21 +33,25 @@ export class UploadRetroValuesOTComponent implements OnInit {
   StaffID:any;
   Paydate:any;
   public attachmentsurl: any = [];
+  loader : any
 
   ngOnInit(): void {
     debugger
+    this.loader=false
     this.GetOTRetroAdjustment();
     this.DigiPVTService.GetAllStaffNew().
     subscribe({
       next: data => {
         debugger
         this.stafflist = data;
+        this.loader=false
       }
     })
 
     this.DigiPVTService.GetPayPeriodSetting().subscribe(data => {
         debugger
         this.PayPeriodSettingList = data;
+        this.loader=false
       });
   }
 
@@ -56,6 +60,7 @@ export class UploadRetroValuesOTComponent implements OnInit {
     this.DigiPVTService.GetOTRetroAdjustment().subscribe(data => {
       debugger
       this.componentmaster = data;
+      this.loader=false
       console.log("componentmaster", this.componentmaster);
     });
   }
@@ -168,7 +173,7 @@ export class UploadRetroValuesOTComponent implements OnInit {
               debugger
               Swal.fire('Deleted Successfully')
               location.reload();
-              
+              this.loader=false
             }
           })
       }

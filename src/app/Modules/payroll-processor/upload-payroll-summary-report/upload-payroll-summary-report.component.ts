@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ExportToCsv } from 'export-to-csv';
 import { DigiPVTService } from 'src/app/Pages/Services/digi-pvt.service';
 import Swal from 'sweetalert2';
 import * as XLSX from 'xlsx';
@@ -35,9 +36,11 @@ export class UploadPayrollSummaryReportComponent implements OnInit {
   StaffID:any;
   Paydate:any;
   public attachmentsurl: any = [];
+  loader : any
 
   ngOnInit(): void {
     debugger
+    this.loader=false
     this.GetUploadPayrollSummaryReport();
     this.DigiPVTService.GetAllStaffNew().
     subscribe({
@@ -58,6 +61,7 @@ export class UploadPayrollSummaryReportComponent implements OnInit {
     this.DigiPVTService.GetUploadPayrollSummaryReport().subscribe(data => {
       debugger
       this.componentmaster = data;
+      this.loader=false
       console.log("componentmaster", this.componentmaster);
     });
   }
@@ -243,6 +247,63 @@ export class UploadPayrollSummaryReportComponent implements OnInit {
     XLSX.writeFile(wb, this.fileName);
 
   }
+
+
+
+  undefined: any;
+  sequenceNumber1: any
+  attendancelist: any
+  public exportexcel1() {
+    debugger
+    var ExportData = [];
+    this.sequenceNumber1 = 0;
+    this.undefined = 'NA'
+    for (let i = 0; i < this.componentmaster.length; i++) {
+      debugger;
+      this.sequenceNumber1 = i + 1;
+      let singleData = {
+        EmployeID: String,
+        Name: String,
+        ElementType: String,
+        ElementName: String,
+        ElementDescription: String,
+        Paydate: String,
+        PreviousPayrollValue: String,
+        CurrentPayrollValue: String,
+     
+
+      }
+      //singleData.SequenceNumber = this.sequenceNumber1;
+      singleData.EmployeID = this.componentmaster[i].employeID;
+      singleData.Name = this.componentmaster[i].name;
+      singleData.ElementType = this.componentmaster[i].elementType;
+      singleData.ElementName = this.componentmaster[i].elementName;
+      // singleData.CompanyName = this.companycode;
+      singleData.ElementDescription = this.componentmaster[i].elementDescription;
+      singleData.Paydate = this.componentmaster[i].paydate;
+      singleData.PreviousPayrollValue = this.componentmaster[i].previousPayrollValue;
+      singleData.CurrentPayrollValue = this.componentmaster[i].currentPayrollValue;
+      ExportData.push(singleData);
+      debugger
+    }
+    const Export_to_excel_options = {
+      fieldSeparator: ',',
+      quoteStrings: '"',
+      decimalSeparator: '.',
+      showLabels: true,
+      showTitle: true,
+      title: 'Upload Payroll Summary Report',
+      useTextFile: false,
+      useBom: true,
+      useKeysAsHeaders: true,
+      filename: 'Upload Payroll Summary Report'
+    };
+    const csvExporter = new ExportToCsv(Export_to_excel_options);
+    debugger
+    csvExporter.generateCsv(ExportData);
+
+  }
+
 
 
 }

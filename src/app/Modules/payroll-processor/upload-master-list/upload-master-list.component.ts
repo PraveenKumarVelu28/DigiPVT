@@ -37,9 +37,11 @@ export class UploadMasterListComponent implements OnInit {
   Paydate:any;
   companyid:any;
   public attachmentsurl: any = [];
+  loader : any
 
   ngOnInit(): void {
     debugger
+    this.loader=false
     this.companyid = sessionStorage.getItem('companyid');
     this.GetUploadedMasterFile();
     this.DigiPVTService.GetAllStaffNew().
@@ -53,6 +55,7 @@ export class UploadMasterListComponent implements OnInit {
     this.DigiPVTService.GetPayPeriodSetting().subscribe(data => {
         debugger
         this.PayPeriodSettingList = data;
+        this.loader=false
       });
   }
 
@@ -62,6 +65,7 @@ export class UploadMasterListComponent implements OnInit {
       this.DigiPVTService.GetUploadedMasterFileForAffinity().subscribe(data => {
         debugger
         this.componentmaster = data;
+        this.loader=false
         console.log("componentmaster", this.componentmaster);
       });
     }
@@ -69,6 +73,7 @@ export class UploadMasterListComponent implements OnInit {
     this.DigiPVTService.GetUploadedMasterFile().subscribe(data => {
       debugger
       this.componentmaster = data;
+      this.loader=false
       console.log("componentmaster", this.componentmaster);
     });
   }
@@ -206,6 +211,7 @@ export class UploadMasterListComponent implements OnInit {
 if(this.companyid==1007){
   var obj={
     attachmenturlforexport:this.exceldata
+ 
   }
   this.DigiPVTService.InsertUploadedMasterFileForAffinitiy(obj)
     .subscribe({
@@ -213,6 +219,7 @@ if(this.companyid==1007){
         debugger
         Swal.fire('Updated Successfully')
         this.ngOnInit();
+        this.loader=false
       }
     })
 }
@@ -226,6 +233,7 @@ if(this.companyid==1007){
         debugger
         Swal.fire('Updated Successfully')
         this.ngOnInit();
+        this.loader=false
       }
     })
  }      
@@ -249,6 +257,7 @@ if(this.companyid==1007){
               debugger
               Swal.fire('Deleted Successfully')
               location.reload();
+              this.loader=false
               
             }
           })

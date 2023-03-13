@@ -69,6 +69,7 @@
                             <th class="thwidth">Pay Input Value</th>
                             <th class="thwidth">Descrepency</th>
                             <th class="thwidth">PayDate</th>
+                            <th>Action</th>
                            
                         </tr>
                         <tr
@@ -87,6 +88,9 @@
 
                             <td [ngClass]="{'bgred':time.bcolor=='1 ', 'bgreen':time.bcolor=='0 ' }">{{time.payValueDescrepency}}</td>
                             <td [ngClass]="{'bgred':time.bcolor=='1 ', 'bgreen':time.bcolor=='0 ' }">{{time.paydate|date}}</td>
+                            <td>
+                                <button class="upload" (click)="delete(timedetails.id)">Delete</button>
+                            </td>
 
                         </tr>
                     </thead>

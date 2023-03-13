@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './Pages/login/login.component';
 import { FooterComponent } from './Pages/CommonPages/footer/footer.component';
 import { HeaderComponent } from './Pages/CommonPages/header/header.component';
-import { LoaderComponent } from './Pages/CommonPages/loader/loader.component';
+// import { LoaderComponent } from './Pages/CommonPages/loader/loader.component';
 import { SidebarComponent } from './Pages/CommonPages/sidebar/sidebar.component';
 import { SharedModule } from './Modules/shared/shared.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -19,7 +19,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     LoginComponent,
     FooterComponent,
     HeaderComponent,
-    LoaderComponent,
+    //LoaderComponent,
     SidebarComponent,
   ],
   imports: [

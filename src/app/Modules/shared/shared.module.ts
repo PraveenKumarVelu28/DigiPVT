@@ -8,7 +8,7 @@ import { NgWizardConfig, NgWizardModule, THEME } from 'ng-wizard';
 import { NgxDropzoneModule } from 'ngx-dropzone';
 import {Ng2SearchPipeModule } from 'ng2-search-filter';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
-
+ import { LoaderComponent } from 'src/app/Pages/CommonPages/loader/loader.component';
 
 const ngWizardConfig: NgWizardConfig = {
   theme: THEME.circles
@@ -16,6 +16,7 @@ const ngWizardConfig: NgWizardConfig = {
 @NgModule({
   declarations: [
     SharedComponent,
+     LoaderComponent
    
   ],
   imports: [
@@ -35,7 +36,7 @@ const ngWizardConfig: NgWizardConfig = {
     NgxPaginationModule,
     NgWizardModule,
     Ng2SearchPipeModule,
-    //  LoaderComponent,
+     LoaderComponent,
      NgMultiSelectDropDownModule,
       //Ng2SearchPipeModule,
     //  SpinnerComponent,

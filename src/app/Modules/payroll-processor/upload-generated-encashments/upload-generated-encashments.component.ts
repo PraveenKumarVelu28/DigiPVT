@@ -35,21 +35,25 @@ export class UploadGeneratedEncashmentsComponent implements OnInit {
   StaffID:any;
   Paydate:any;
   public attachmentsurl: any = [];
+  loader : any
 
   ngOnInit(): void {
     debugger
+    this.loader=false
     this.GetUploadedholidayEncashment();
     this.DigiPVTService.GetAllStaffNew().
     subscribe({
       next: data => {
         debugger
         this.stafflist = data;
+        this.loader=false
       }
     })
 
     this.DigiPVTService.GetPayPeriodSetting().subscribe(data => {
         debugger
         this.PayPeriodSettingList = data;
+        this.loader=false
       });
   }
 
@@ -58,6 +62,7 @@ export class UploadGeneratedEncashmentsComponent implements OnInit {
     this.DigiPVTService.GetUploadedholidayEncashment().subscribe(data => {
       debugger
       this.componentmaster = data;
+      this.loader=false
       console.log("componentmaster", this.componentmaster);
     });
   }
@@ -124,6 +129,7 @@ export class UploadGeneratedEncashmentsComponent implements OnInit {
             this.StaffID=data;
               Swal.fire('Saved Successfully')
               this.ngOnInit();
+              this.loader=false
             // // this.SavePositionDetails();
             // var eb = {
             //   'EmergencyContactName': this.exceldata[this.i-(this.exceldata.length)].EmergencyContactName,
@@ -168,6 +174,7 @@ export class UploadGeneratedEncashmentsComponent implements OnInit {
               debugger
               Swal.fire('Deleted Successfully')
               location.reload();
+              this.loader=false
               
             }
           })

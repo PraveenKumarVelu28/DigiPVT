@@ -20,10 +20,12 @@ export class UploadGeneratedLwopComponent implements OnInit {
   stafflist:any;
   PayPeriodSettingList:any;
   roleid: any
+  loader : any
 
 
   ngOnInit(): void {
     debugger
+    this.loader=false
     this.GetGeneratedLwopValues();
 
     this.DigiPVTService.GetAllStaffNew().
@@ -31,6 +33,7 @@ export class UploadGeneratedLwopComponent implements OnInit {
       next: data => {
         debugger
         this.stafflist = data;
+        this.loader=false
        
        
       }
@@ -39,6 +42,7 @@ export class UploadGeneratedLwopComponent implements OnInit {
     this.DigiPVTService.GetPayPeriodSetting().subscribe(data => {
         debugger
         this.PayPeriodSettingList = data;
+        this.loader=false
         
       });
     
@@ -51,6 +55,7 @@ export class UploadGeneratedLwopComponent implements OnInit {
     this.DigiPVTService.GetGeneratedLwopValues().subscribe(data => {
       debugger
       this.componentmaster = data;
+      this.loader=false
       console.log("componentmaster", this.componentmaster);
     });
   
@@ -126,6 +131,7 @@ export class UploadGeneratedLwopComponent implements OnInit {
               debugger
               Swal.fire('Deleted Successfully')
               location.reload();
+              this.loader=false
               
             }
           })
@@ -145,6 +151,7 @@ export class UploadGeneratedLwopComponent implements OnInit {
     debugger
     if (this.exceldata == undefined) {
       Swal.fire('Choose a File');
+      this.loader=false
     } else {
       let apiarray = [];
 
@@ -188,6 +195,7 @@ export class UploadGeneratedLwopComponent implements OnInit {
 
             debugger
             this.StaffID=data;
+            this.loader=false
             
               Swal.fire('Saved Successfully')
             

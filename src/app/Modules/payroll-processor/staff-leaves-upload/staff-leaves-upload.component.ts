@@ -26,16 +26,31 @@ export class StaffLeavesUploadComponent implements OnInit {
   roleid: any
   p: any = 1;
   count1: any = 10;
+  loader: any
+  fromlogin: any;
+  exceldata: any;
+  arrayBuffer: any;
+  filetype: any;
+  file: any;
+  i:any;
+  startdate:any;
+  Attachment:any;
+  stafflistcopy123:any;
+  EndDate:any;
+  StaffID:any;
+  Paydate:any;
 
 
   ngOnInit(): void {
     debugger
+    this.loader=false
 
     this.DigiPVTService.GetAllStaffNew().
     subscribe({
       next: data => {
         debugger
         this.stafflist = data;
+        this.loader=false
        
        
       }
@@ -44,20 +59,13 @@ export class StaffLeavesUploadComponent implements OnInit {
     this.DigiPVTService.GetPayPeriodSetting().subscribe(data => {
         debugger
         this.PayPeriodSettingList = data;
+        this.loader=false
         
       });
     
     
   }
-
-
-
  
-  fromlogin: any;
-  exceldata: any;
-  arrayBuffer: any;
-  filetype: any;
-  file: any;
 
   incomingfile(event: any) {
     debugger;
@@ -123,6 +131,7 @@ export class StaffLeavesUploadComponent implements OnInit {
               debugger
               Swal.fire('Deleted Successfully')
               location.reload();
+              this.loader=false
               
             }
           })
@@ -130,13 +139,7 @@ export class StaffLeavesUploadComponent implements OnInit {
     })
   }
 
-  i:any;
-  startdate:any;
-  Attachment:any;
-  stafflistcopy123:any;
-  EndDate:any;
-  StaffID:any;
-  Paydate:any;
+
   public attachmentsurl: any = [];
    public Upload_file() {
     debugger
@@ -152,6 +155,8 @@ export class StaffLeavesUploadComponent implements OnInit {
              
              if(this.stafflistcopy123.length!=0){
               this.StaffID = this.stafflistcopy123[0].id
+              this.loader=false
+
              }
              else{
               this.StaffID = 0
@@ -183,6 +188,8 @@ export class StaffLeavesUploadComponent implements OnInit {
 
             debugger
             this.StaffID=data;
+            this.loader=false
+
             
               Swal.fire('Saved Successfully')
             

@@ -2,7 +2,7 @@
     <div class="col-md-12">
         <div class="row">
             <div class="col-lg-11">
-                <p class="Heading">Upload Basic Pay Details</p>
+                <p class="Heading">Upload Overtime Report</p>
             </div>
         </div>
         <div class="row FilterClass">
@@ -28,7 +28,7 @@
                             <br />
     
                             <button class="form-control AddExpense3" 
-                              data-toggle="modal" data-target="#import">Upload Basicpay
+                              data-toggle="modal" data-target="#import">Upload Overtime Report
                                 
                             </button>
                         </div>
@@ -55,25 +55,33 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="container-fluid">
-                    <table class="table" id="downloadaplication">
+                    <table class="table" id="downloadaplication" >
                         <thead>
                             <tr>
                                 <th>EmployeID</th>
-                                <th>Name</th>
-                                <th>Basic Pay</th>
-                                <th>Effective Date</th>    
-                                <th>Basic Pay Adjustment</th>  
-                                <th>Actions</th>    
+                                <th>Employee Name</th>
+                                <th>Element Name</th>
+                                <th>Units</th>
+                                <th>Date</th>
+                                <th>Ot Amount</th>
+                                <th>Hourly Rate</th>
+                                <th>PayDate</th>  
+                              
                                
                             </tr>
                         </thead>
                         <tbody>
-                            <tr *ngFor="let list of componentmaster|filter:term |paginate: { itemsPerPage: count1, currentPage: p}  "  >
+                            <tr *ngFor="let list of componentmaster|filter:term |paginate: { itemsPerPage: count2, currentPage: p1}  "  >
                                 <td>{{list.employeID}}</td>
-                                <td>{{list.name}}</td>
-                                <td>{{list.basicpay}}</td>
-                                <td>{{list.effectivedate|date}}</td>
-                                <td>{{list.basicpayadjustment}}</td>
+                                <td>{{list.employeeName}}</td>
+                                <td>{{list.elementname}}</td>
+                                <td>{{list.units}}</td>
+                                <td>{{list.date|date}}</td>
+                                <td>{{list.otamount}}</td>
+                                <td>{{list.hourlyrate}}</td>
+                                <td>{{list.paydate|date}}</td>
+                               
+                               
                                 <td>
                                     <button class="upload" (click)="delete(list.id)">Delete</button>
                                 </td>
@@ -81,14 +89,15 @@
                             </tr>
                         </tbody>
                     </table>
+
+                
+                </div>
+                <div class="text-right" *ngIf="componentmaster.length>count2">
+                    <pagination-controls (pageChange)="p1 = $event"  previousLabel=""
+                    nextLabel="" class="poppinns"></pagination-controls>               
                 </div>
             </div>
-           
-        </div>
-
-        <div class="text-right" *ngIf="componentmaster.length>count1">
-            <pagination-controls (pageChange)="p = $event"  previousLabel=""
-            nextLabel="" class="poppinns"></pagination-controls>                        
+            <div class="col-md-1"></div>
         </div>
     </div>
 </div>
@@ -99,7 +108,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title">Basic Pay Validation Details</h4>
+                <h4 class="modal-title">Upload Overtime Report</h4>
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
             <div class="modal-body">
@@ -109,14 +118,15 @@
                             (change)="incomingfile($event)" placeholder="Upload file" accept=".xlsx">
                     </div>
                     <div class="col-lg-4">
-                        <a href="https://103.12.1.76//DigiPVTAPI/Templates/Import_BasicPay_Data.xlsx" style="color:navy"><u>Template.XLSX</u></a>
+                        <a href="https://103.12.1.76//DigiPVTAPI/Templates/Import_MasterFileData.xlsx" style="color:navy"><u>Template.XLSX</u></a>
                     </div>
                 </div>
                 <br>
                 <div class="row">
                     <div class="col-lg-6">
                         <button type="button" class="form-control AddExpense" data-dismiss="modal"
-                      (click)="Upload_file()" >Upload Basicpay </button>
+                      (click)="Upload_file()" >Upload 
+                      Overtime Report </button>
                     </div>
                 </div>
             </div>

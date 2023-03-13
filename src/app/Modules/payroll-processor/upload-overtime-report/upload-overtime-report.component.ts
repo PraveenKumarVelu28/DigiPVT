@@ -7,12 +7,13 @@ declare var JSZipUtils: any;
 
 
 @Component({
-  selector: 'app-upload-master-list',
-  templateUrl: './upload-master-list.component.html',
-  styleUrls: ['./upload-master-list.component.css']
+  selector: 'app-upload-overtime-report',
+  templateUrl: './upload-overtime-report.component.html',
+  styleUrls: ['./upload-overtime-report.component.css']
 })
-export class UploadMasterListComponent implements OnInit {
+export class UploadOvertimeReportComponent implements OnInit {
 
+ 
  
   constructor(public DigiPVTService: DigiPVTService, public router: Router) { }
   componentmaster: any;
@@ -41,14 +42,8 @@ export class UploadMasterListComponent implements OnInit {
   ngOnInit(): void {
     debugger
     this.companyid = sessionStorage.getItem('companyid');
-    this.GetUploadedMasterFile();
-    this.DigiPVTService.GetAllStaffNew().
-    subscribe({
-      next: data => {
-        debugger
-        this.stafflist = data;
-      }
-    })
+    this.GetUploadovertimereport();
+  
 
     this.DigiPVTService.GetPayPeriodSetting().subscribe(data => {
         debugger
@@ -56,22 +51,16 @@ export class UploadMasterListComponent implements OnInit {
       });
   }
 
-  public GetUploadedMasterFile(){
+  public GetUploadovertimereport(){
     debugger
-    if(this.companyid==1007){
-      this.DigiPVTService.GetUploadedMasterFileForAffinity().subscribe(data => {
+  
+      this.DigiPVTService.GetUploadovertimereport().subscribe(data => {
         debugger
         this.componentmaster = data;
         console.log("componentmaster", this.componentmaster);
       });
-    }
-  else{
-    this.DigiPVTService.GetUploadedMasterFile().subscribe(data => {
-      debugger
-      this.componentmaster = data;
-      console.log("componentmaster", this.componentmaster);
-    });
-  }
+
+ 
   }
 
   incomingfile(event: any) {
@@ -203,11 +192,12 @@ export class UploadMasterListComponent implements OnInit {
 
       //   }
         // this.AliprojectService.InsertRoleType(eb1)
-if(this.companyid==1007){
+
+
   var obj={
     attachmenturlforexport:this.exceldata
   }
-  this.DigiPVTService.InsertUploadedMasterFileForAffinitiy(obj)
+  this.DigiPVTService.InsertUploadovertimereport(obj)
     .subscribe({
       next: data => {
         debugger
@@ -215,33 +205,7 @@ if(this.companyid==1007){
         this.ngOnInit();
       }
     })
-}
-else if (this.companyid==1005){
-  var obj={
-    attachmenturlforexport:this.exceldata
-  }
-  this.DigiPVTService.InsertUploadedMasterFileMWC(obj)
-    .subscribe({
-      next: data => {
-        debugger
-        Swal.fire('Updated Successfully')
-        this.ngOnInit();
-      }
-    })
-}
- else{
-  var obj={
-    attachmenturlforexport:this.exceldata
-  }
-  this.DigiPVTService.InsertUploadedMasterFile(obj)
-    .subscribe({
-      next: data => {
-        debugger
-        Swal.fire('Updated Successfully')
-        this.ngOnInit();
-      }
-    })
- }      
+       
       }
     // }
   }
@@ -282,6 +246,7 @@ else if (this.companyid==1005){
     XLSX.writeFile(wb, this.fileName);
 
   }
+
 
 
 }

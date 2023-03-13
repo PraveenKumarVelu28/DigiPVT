@@ -7,23 +7,21 @@ import { ExportToCsv } from 'export-to-csv';
 import { DatePipe, formatDate } from '@angular/common';
 declare var JSZipUtils: any;
 
+
 @Component({
-  selector: 'app-run-philhealth-validation',
-  templateUrl: './run-philhealth-validation.component.html',
-  styleUrls: ['./run-philhealth-validation.component.css']
+  selector: 'app-run-overtime-report-validation',
+  templateUrl: './run-overtime-report-validation.component.html',
+  styleUrls: ['./run-overtime-report-validation.component.css']
 })
-export class RunPhilhealthValidationComponent implements OnInit {
+export class RunOvertimeReportValidationComponent implements OnInit {
 
  
-  
   viewMode = 'tab1';
-  companyid:any;
+
   constructor(public DigiofficeService: DigiPVTService, public router: Router, private datePipe: DatePipe) {
     this.minDate.setDate(this.minDate.getDate() - 1);
     this.maxDate.setDate(this.maxDate.getDate() + 7);
     this.bsRangeValue = [this.bsValue, this.maxDate];
-    this.companyid = sessionStorage.getItem('companyid');
-
   }
   loader:any;
   Role: any;
@@ -289,7 +287,7 @@ export class RunPhilhealthValidationComponent implements OnInit {
   }
   Swal.fire({
     title: 'Are you sure?',
-    text: 'To Run Payroll For This Period!',
+    text: 'To Run Tax Validation In This Period',
     showCancelButton: true,
     confirmButtonText: 'Yes, Accept it!',
     cancelButtonText: 'No, keep it'
@@ -325,12 +323,12 @@ export class RunPhilhealthValidationComponent implements OnInit {
                   debugger;
                  
                     this.LOPDays = 0;
-                    this.DigiofficeService.GetRunPhilHealthValidation(this.ID1[i],  this.startdate, this.enddate).subscribe(
+                    this.DigiofficeService.Get_PreliminaryReport(this.ID1[i], this.LOPDays, this.startdate, this.enddate).subscribe(
                       res => {
                         debugger;
                         this.StaffSalaryReports = res;
                         this.ID1 = [];
-                        location.href = '#/PayrollProcessor/ValidatedPayrollSummaryReport'
+                        location.href = '#/PayrollProcessor/ValidatedTaxValues'
                       }
                     )
 
@@ -446,7 +444,6 @@ export class RunPhilhealthValidationComponent implements OnInit {
 
 
   }
-
 
 
   public InsertNotification() {
@@ -694,7 +691,7 @@ export class RunPhilhealthValidationComponent implements OnInit {
               if (result.value==true) {
                 Swal.fire({
                   title: 'Are you sure?',
-                  text: 'To Run Statutory Validation In This Period',
+                  text: 'To Run Tax Validation In This Period',
                  
                   showCancelButton: true,
                   confirmButtonText: 'Yes, Accept it!',
@@ -709,7 +706,7 @@ export class RunPhilhealthValidationComponent implements OnInit {
                           debugger;
                          
                             this.LOPDays = 0;
-                            this.DigiofficeService.GetRunPhilHealthValidation(this.ID[i],  this.startdate, this.enddate).subscribe(
+                            this.DigiofficeService.GetRunUploadedPayrollElementsForPayperiodValidation(this.ID[i],  this.startdate, this.enddate).subscribe(
                               res => {
                                 debugger;
                                 this.StaffSalaryReports = res;
@@ -720,15 +717,7 @@ export class RunPhilhealthValidationComponent implements OnInit {
                                 )
                                 this.Payrollvis = true
                                 this.InsertNotification();
-                                if(this.companyid!=1007){
-                                  location.href = '#/PayrollProcessor/ValidatedColaValues'
-                                }
-                                else{
-                                  location.href = '#/PayrollProcessor/ValidatedStatutoryDeductions'
-
-                                }
-                                
-                                
+                                location.href = '#/PayrollProcessor/ValidatedTandLDetails'
                               }
                             )
   
@@ -760,7 +749,7 @@ export class RunPhilhealthValidationComponent implements OnInit {
            
               Swal.fire({
                 title: 'Are you sure?',
-                text: 'To Run Statutory Validation In This Period',
+                text: 'To Run Tax Validation In This Period',
                
                 showCancelButton: true,
                 confirmButtonText: 'Yes, Accept it!',
@@ -775,7 +764,7 @@ export class RunPhilhealthValidationComponent implements OnInit {
                         debugger;
                        
                           this.LOPDays = 0;
-                          this.DigiofficeService.GetRunPhilHealthValidation(this.ID[i],  this.startdate, this.enddate).subscribe(
+                          this.DigiofficeService.GetRunUploadedPayrollElementsForPayperiodValidation(this.ID[i],  this.startdate, this.enddate).subscribe(
                             res => {
                               debugger;
                               this.StaffSalaryReports = res;
@@ -786,13 +775,7 @@ export class RunPhilhealthValidationComponent implements OnInit {
                               )
                               this.Payrollvis = true
                               this.InsertNotification();
-                              if(this.companyid!=1007){
-                                location.href = '#/PayrollProcessor/ValidatedColaValues'
-                              }
-                              else{
-                                location.href = '#/PayrollProcessor/ValidatedStatutoryDeductions'
-
-                              }
+                              location.href = '#/PayrollProcessor/ValidatedTandLDetails'
                             }
                           )
 
@@ -896,7 +879,5 @@ export class RunPhilhealthValidationComponent implements OnInit {
   hdmfsalaryloan: any;
   benefits: any;
  
-
-
 
 }

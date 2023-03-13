@@ -1,3 +1,7 @@
 .listscroll {
     overflow-x: scroll;
   }
+  .bgred {
+    background-color: #FFD7D7;
+    color: black;
+  }

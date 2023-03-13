@@ -27,7 +27,7 @@
                         <div class="col-md-3">
                             <br />
     
-                            <button class="form-control AddExpense3" 
+                            <button  class="form-control AddExpense3" 
                               data-toggle="modal" data-target="#import">Upload Master File
                                 
                             </button>
@@ -108,10 +108,11 @@
                             <tr>
                                 <th>EmployeID</th>
                                 <th>Name</th>
-                                
+                                <th *ngIf="companyid==1005">Element Name</th>
+                                <th *ngIf="companyid==1005">Element Value</th>
                                 <th>Joining Date</th>    
-                                <th>Terminate Date</th>   
-                                <th>Salary Effective Date</th>  
+                                <th *ngIf="companyid!=1005">Terminate Date</th>   
+                                <th *ngIf="companyid!=1005">Salary Effective Date</th>  
                                 <th>PayDate</th>  
                               
                                
@@ -121,9 +122,11 @@
                             <tr *ngFor="let list of componentmaster|filter:term |paginate: { itemsPerPage: count2, currentPage: p1}  "  >
                                 <td>{{list.employeID}}</td>
                                 <td>{{list.name}}</td>
+                                <td  *ngIf="companyid==1005">{{list.elementname}}</td>
+                                <td *ngIf="companyid==1005">{{list.elementvalue}}</td>
                                 <td>{{list.joiningDate|date}}</td>
-                                <td>{{list.retiredDate|date}}</td>
-                                <td>{{list.salaryEffectiveDate|date}}</td>
+                                <td *ngIf="companyid!=1005">{{list.retiredDate|date}}</td>
+                                <td *ngIf="companyid!=1005">{{list.salaryEffectiveDate|date}}</td>
                                 <td>{{list.paydate|date}}</td>
                                
                                
@@ -160,8 +163,11 @@
                         <input type="file" accept=".xls,.xlsx" style="display: inline-block;"
                             (change)="incomingfile($event)" placeholder="Upload file" accept=".xlsx">
                     </div>
-                    <div class="col-lg-4">
+                    <div class="col-lg-4" *ngIf="companyid!=1005">
                         <a href="https://103.12.1.76//DigiPVTAPI/Templates/Import_MasterFileData.xlsx" style="color:navy"><u>Template.XLSX</u></a>
+                    </div>
+                    <div class="col-lg-4" *ngIf="companyid==1005">
+                        <a href="https://103.12.1.76//DigiPVTAPI/Templates/Import_MasterFileDataForMWC.xlsx" style="color:navy"><u>Template.XLSX</u></a>
                     </div>
                 </div>
                 <br>

@@ -87,6 +87,7 @@ import { RunPayrollInputValidationComponent } from './run-payroll-input-validati
 import { UploadOvertimeReportComponent } from './upload-overtime-report/upload-overtime-report.component';
 import { RunOvertimeReportValidationComponent } from './run-overtime-report-validation/run-overtime-report-validation.component';
 import { ValidatedOvertimeReportDetailsComponent } from './validated-overtime-report-details/validated-overtime-report-details.component';
+import { ValidatedAllowanceDetailsForMWCComponent } from './validated-allowance-details-for-mwc/validated-allowance-details-for-mwc.component';
 
 
 
@@ -177,7 +178,8 @@ import { ValidatedOvertimeReportDetailsComponent } from './validated-overtime-re
     RunPayrollInputValidationComponent,
     UploadOvertimeReportComponent,
     RunOvertimeReportValidationComponent,
-    ValidatedOvertimeReportDetailsComponent
+    ValidatedOvertimeReportDetailsComponent,
+    ValidatedAllowanceDetailsForMWCComponent
   ],
   imports: [
     PayrollProcessorRoutingModule,
